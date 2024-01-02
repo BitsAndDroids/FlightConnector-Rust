@@ -1,1164 +1,1164 @@
 {
   "Fuel": [
     {
-      "outputName": "FUEL SELECTED QUANTITY PERCENT",
+      "output_name": "FUEL SELECTED QUANTITY PERCENT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel quantity %",
+      "update_every": 0.01,
+      "cb_text": "Fuel quantity %",
       "prefix": 275,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "AUTOPILOT AIRSPEED HOLD VAR",
+      "output_name": "AUTOPILOT AIRSPEED HOLD VAR",
       "metric": "knots",
-      "updateEvery": 0,
-      "cbText": "AP airspeed var",
+      "update_every": 0,
+      "cb_text": "AP airspeed var",
       "prefix": 700,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK CENTER LEVEL",
+      "output_name": "FUEL TANK CENTER LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank center level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank center level",
       "prefix": 234,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK CENTER2 LEVEL",
+      "output_name": "FUEL TANK CENTER2 LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank center 2 level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank center 2 level",
       "prefix": 235,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK CENTER3 LEVEL",
+      "output_name": "FUEL TANK CENTER3 LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank center 3 level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank center 3 level",
       "prefix": 236,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK LEFT MAIN LEVEL",
+      "output_name": "FUEL TANK LEFT MAIN LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank left main level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank left main level",
       "prefix": 237,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK LEFT AUX LEVEL",
+      "output_name": "FUEL TANK LEFT AUX LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank left aux level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank left aux level",
       "prefix": 238,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK LEFT TIP LEVEL",
+      "output_name": "FUEL TANK LEFT TIP LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank left tip level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank left tip level",
       "prefix": 239,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK RIGHT MAIN LEVEL",
+      "output_name": "FUEL TANK RIGHT MAIN LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank right main level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank right main level",
       "prefix": 240,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK RIGHT AUX LEVEL",
+      "output_name": "FUEL TANK RIGHT AUX LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank right aux level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank right aux level",
       "prefix": 241,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK RIGHT TIP LEVEL",
+      "output_name": "FUEL TANK RIGHT TIP LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank right tip level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank right tip level",
       "prefix": 242,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK EXTERNAL1 LEVEL",
+      "output_name": "FUEL TANK EXTERNAL1 LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank external 1 level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank external 1 level",
       "prefix": 243,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK EXTERNAL2 LEVEL",
+      "output_name": "FUEL TANK EXTERNAL2 LEVEL",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Fuel tank external 2 level",
+      "update_every": 0.01,
+      "cb_text": "Fuel tank external 2 level",
       "prefix": 244,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FUEL TANK CENTER CAPACITY",
+      "output_name": "FUEL TANK CENTER CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank center capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank center capacity",
       "prefix": 245,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK CENTER2 CAPACITY",
+      "output_name": "FUEL TANK CENTER2 CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank center 2 capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank center 2 capacity",
       "prefix": 246,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK CENTER3 CAPACITY",
+      "output_name": "FUEL TANK CENTER3 CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank center 3 capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank center 3 capacity",
       "prefix": 247,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK LEFT MAIN CAPACITY",
+      "output_name": "FUEL TANK LEFT MAIN CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank left main capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank left main capacity",
       "prefix": 248,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK LEFT AUX CAPACITY",
+      "output_name": "FUEL TANK LEFT AUX CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank left aux capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank left aux capacity",
       "prefix": 249,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK LEFT TIP CAPACITY",
+      "output_name": "FUEL TANK LEFT TIP CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank left tip capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank left tip capacity",
       "prefix": 250,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK RIGHT MAIN CAPACITY",
+      "output_name": "FUEL TANK RIGHT MAIN CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank right main capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank right main capacity",
       "prefix": 251,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK RIGHT AUX CAPACITY",
+      "output_name": "FUEL TANK RIGHT AUX CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank right aux capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank right aux capacity",
       "prefix": 252,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK RIGHT TIP CAPACITY",
+      "output_name": "FUEL TANK RIGHT TIP CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank right tip capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank right tip capacity",
       "prefix": 253,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK EXTERNAL1 CAPACITY",
+      "output_name": "FUEL TANK EXTERNAL1 CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank external 1 capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank external 1 capacity",
       "prefix": 254,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK EXTERNAL2 CAPACITY",
+      "output_name": "FUEL TANK EXTERNAL2 CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank external 2 capacity",
+      "update_every": 1,
+      "cb_text": "Fuel tank external 2 capacity",
       "prefix": 255,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL LEFT CAPACITY",
+      "output_name": "FUEL LEFT CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel left capacity",
+      "update_every": 1,
+      "cb_text": "Fuel left capacity",
       "prefix": 256,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL RIGHT CAPACITY",
+      "output_name": "FUEL RIGHT CAPACITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel right capacity",
+      "update_every": 1,
+      "cb_text": "Fuel right capacity",
       "prefix": 257,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK CENTER QUANTITY",
+      "output_name": "FUEL TANK CENTER QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank center quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank center quantity",
       "prefix": 258,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK CENTER2 QUANTITY",
+      "output_name": "FUEL TANK CENTER2 QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank center 2 quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank center 2 quantity",
       "prefix": 259,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK CENTER3 QUANTITY",
+      "output_name": "FUEL TANK CENTER3 QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank center 3 quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank center 3 quantity",
       "prefix": 260,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK LEFT MAIN QUANTITY",
+      "output_name": "FUEL TANK LEFT MAIN QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank left main quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank left main quantity",
       "prefix": 261,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK LEFT AUX QUANTITY",
+      "output_name": "FUEL TANK LEFT AUX QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank left aux quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank left aux quantity",
       "prefix": 262,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK LEFT TIP QUANTITY",
+      "output_name": "FUEL TANK LEFT TIP QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank left tip quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank left tip quantity",
       "prefix": 263,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK RIGHT MAIN QUANTITY",
+      "output_name": "FUEL TANK RIGHT MAIN QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank right main quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank right main quantity",
       "prefix": 264,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK RIGHT AUX QUANTITY",
+      "output_name": "FUEL TANK RIGHT AUX QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank right aux quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank right aux quantity",
       "prefix": 265,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK RIGHT TIP QUANTITY",
+      "output_name": "FUEL TANK RIGHT TIP QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank right tip quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank right tip quantity",
       "prefix": 266,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK EXTERNAL1 QUANTITY",
+      "output_name": "FUEL TANK EXTERNAL1 QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank external 1",
+      "update_every": 1,
+      "cb_text": "Fuel tank external 1",
       "prefix": 267,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TANK EXTERNAL2 QUANTITY",
+      "output_name": "FUEL TANK EXTERNAL2 QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel tank external 2 quantity",
+      "update_every": 1,
+      "cb_text": "Fuel tank external 2 quantity",
       "prefix": 268,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL LEFT QUANTITY",
+      "output_name": "FUEL LEFT QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel left quantity",
+      "update_every": 1,
+      "cb_text": "Fuel left quantity",
       "prefix": 269,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL RIGHT QUANTITY",
+      "output_name": "FUEL RIGHT QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel right quantity",
+      "update_every": 1,
+      "cb_text": "Fuel right quantity",
       "prefix": 270,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FUEL TOTAL QUANTITY",
+      "output_name": "FUEL TOTAL QUANTITY",
       "metric": "Gallons",
-      "updateEvery": 1,
-      "cbText": "Fuel total quantity",
+      "update_every": 1,
+      "cb_text": "Fuel total quantity",
       "prefix": 271,
-      "type": 0
+      "output_type": 0
     }
   ],
   "Data": [
     {
-      "outputName": "PLANE ALT ABOVE GROUND",
+      "output_name": "PLANE ALT ABOVE GROUND",
       "metric": "Feet",
-      "updateEvery": 100,
-      "cbText": "Feet above ground",
+      "update_every": 100,
+      "cb_text": "Feet above ground",
       "prefix": 312,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "SIM ON GROUND",
+      "output_name": "SIM ON GROUND",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) on the ground",
+      "update_every": 0,
+      "cb_text": "(bool) on the ground",
       "prefix": 323,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "VERTICAL SPEED",
+      "output_name": "VERTICAL SPEED",
       "metric": "Feet per second",
-      "updateEvery": 10,
-      "cbText": "Vertical speed",
+      "update_every": 10,
+      "cb_text": "Vertical speed",
       "prefix": 590,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "TITLE",
+      "output_name": "TITLE",
       "metric": "NULL",
-      "updateEvery": 0,
-      "cbText": "Plane name",
+      "update_every": 0,
+      "cb_text": "Plane name",
       "prefix": 999,
-      "type": 5
+      "output_type": 5
     }
   ],
   "Instruments": [
     {
-      "outputName": "BAROMETER PRESSURE",
+      "output_name": "BAROMETER PRESSURE",
       "metric": "Millibars",
-      "updateEvery": 10,
-      "cbText": "Barometer pressure",
+      "update_every": 10,
+      "cb_text": "Barometer pressure",
       "prefix": 632,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "AIRSPEED INDICATED",
+      "output_name": "AIRSPEED INDICATED",
       "metric": "Knots",
-      "updateEvery": 1,
-      "cbText": "Indicated airspeed",
+      "update_every": 1,
+      "cb_text": "Indicated airspeed",
       "prefix": 326,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "HEADING INDICATOR",
+      "output_name": "HEADING INDICATOR",
       "metric": "Radians",
-      "updateEvery": 0.02,
-      "cbText": "Indicated heading",
+      "update_every": 0.02,
+      "cb_text": "Indicated heading",
       "prefix": 344,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "INDICATED ALTITUDE",
+      "output_name": "INDICATED ALTITUDE",
       "metric": "Feet",
-      "updateEvery": 10,
-      "cbText": "Indicated altitude",
+      "update_every": 10,
+      "cb_text": "Indicated altitude",
       "prefix": 335,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "KOHLSMAN SETTING HG",
+      "output_name": "KOHLSMAN SETTING HG",
       "metric": "inHg",
-      "updateEvery": 0,
-      "cbText": "Kohlsman HG",
+      "update_every": 0,
+      "cb_text": "Kohlsman HG",
       "prefix": 337,
-      "type": 6
+      "output_type": 6
     }
   ],
   "GPS": [
     {
-      "outputName": "GPS GROUND SPEED",
+      "output_name": "GPS GROUND SPEED",
       "metric": "Meters per second",
-      "updateEvery": 1,
-      "cbText": "GPS groundspeed",
+      "update_every": 1,
+      "cb_text": "GPS groundspeed",
       "prefix": 430,
-      "type": 7
+      "output_type": 7
     },
     {
-      "outputName": "GPS WP BEARING",
+      "output_name": "GPS WP BEARING",
       "metric": "Degrees",
-      "updateEvery": 1,
-      "cbText": "GPS course to steer",
+      "update_every": 1,
+      "cb_text": "GPS course to steer",
       "prefix": 454,
-      "type": 0
+      "output_type": 0
     }
   ],
   "Autopilot": [
     {
-      "outputName": "AUTOPILOT HEADING LOCK DIR",
+      "output_name": "AUTOPILOT HEADING LOCK DIR",
       "metric": "Degrees",
-      "updateEvery": 0,
-      "cbText": "AP heading lock",
+      "update_every": 0,
+      "cb_text": "AP heading lock",
       "prefix": 582,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "AUTOPILOT ALTITUDE LOCK VAR",
+      "output_name": "AUTOPILOT ALTITUDE LOCK VAR",
       "metric": "Feet",
-      "updateEvery": 0,
-      "cbText": "AP altitude lock var",
+      "update_every": 0,
+      "cb_text": "AP altitude lock var",
       "prefix": 584,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "AUTOPILOT VERTICAL HOLD VAR",
+      "output_name": "AUTOPILOT VERTICAL HOLD VAR",
       "metric": "Feet/minute",
-      "updateEvery": 0,
-      "cbText": "AP vertical hold var",
+      "update_every": 0,
+      "cb_text": "AP vertical hold var",
       "prefix": 590,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "AUTOPILOT AVAILABLE",
+      "output_name": "AUTOPILOT AVAILABLE",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP available",
+      "update_every": 0,
+      "cb_text": "(bool) AP available",
       "prefix": 576,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT MASTER",
+      "output_name": "AUTOPILOT MASTER",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP master",
+      "update_every": 0,
+      "cb_text": "(bool) AP master",
       "prefix": 577,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT WING LEVELER",
+      "output_name": "AUTOPILOT WING LEVELER",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP wing leveler",
+      "update_every": 0,
+      "cb_text": "(bool) AP wing leveler",
       "prefix": 579,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT NAV1 LOCK",
+      "output_name": "AUTOPILOT NAV1 LOCK",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP NAV1 lock",
+      "update_every": 0,
+      "cb_text": "(bool) AP NAV1 lock",
       "prefix": 580,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT HEADING LOCK",
+      "output_name": "AUTOPILOT HEADING LOCK",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP heading lock",
+      "update_every": 0,
+      "cb_text": "(bool) AP heading lock",
       "prefix": 581,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT ALTITUDE LOCK",
+      "output_name": "AUTOPILOT ALTITUDE LOCK",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP altitude lock",
+      "update_every": 0,
+      "cb_text": "(bool) AP altitude lock",
       "prefix": 583,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT ATTITUDE HOLD",
+      "output_name": "AUTOPILOT ATTITUDE HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP attitude lock",
+      "update_every": 0,
+      "cb_text": "(bool) AP attitude lock",
       "prefix": 585,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT GLIDESLOPE HOLD",
+      "output_name": "AUTOPILOT GLIDESLOPE HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP glideslope hold",
+      "update_every": 0,
+      "cb_text": "(bool) AP glideslope hold",
       "prefix": 586,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT APPROACH HOLD",
+      "output_name": "AUTOPILOT APPROACH HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP approach hold",
+      "update_every": 0,
+      "cb_text": "(bool) AP approach hold",
       "prefix": 588,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT BACKCOURSE HOLD",
+      "output_name": "AUTOPILOT BACKCOURSE HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP backcourse hold",
+      "update_every": 0,
+      "cb_text": "(bool) AP backcourse hold",
       "prefix": 589,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT FLIGHT DIRECTOR ACTIVE",
+      "output_name": "AUTOPILOT FLIGHT DIRECTOR ACTIVE",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP flight director",
+      "update_every": 0,
+      "cb_text": "(bool) AP flight director",
       "prefix": 591,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT AIRSPEED HOLD",
+      "output_name": "AUTOPILOT AIRSPEED HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP airspeed hold",
+      "update_every": 0,
+      "cb_text": "(bool) AP airspeed hold",
       "prefix": 594,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT MACH HOLD",
+      "output_name": "AUTOPILOT MACH HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP mach hold",
+      "update_every": 0,
+      "cb_text": "(bool) AP mach hold",
       "prefix": 596,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT YAW DAMPER",
+      "output_name": "AUTOPILOT YAW DAMPER",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP yaw damper",
+      "update_every": 0,
+      "cb_text": "(bool) AP yaw damper",
       "prefix": 598,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT THROTTLE ARM",
+      "output_name": "AUTOPILOT THROTTLE ARM",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP throttle arm",
+      "update_every": 0,
+      "cb_text": "(bool) AP throttle arm",
       "prefix": 600,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT TAKEOFF POWER ACTIVE",
+      "output_name": "AUTOPILOT TAKEOFF POWER ACTIVE",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP takeoff power",
+      "update_every": 0,
+      "cb_text": "(bool) AP takeoff power",
       "prefix": 601,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOTHROTTLE ACTIVE",
+      "output_name": "AUTOTHROTTLE ACTIVE",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Autothrottle",
+      "update_every": 0,
+      "cb_text": "(bool) Autothrottle",
       "prefix": 602,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT NAV1 LOCK",
+      "output_name": "AUTOPILOT NAV1 LOCK",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP NAV1 lock",
+      "update_every": 0,
+      "cb_text": "(bool) AP NAV1 lock",
       "prefix": 580,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT VERTICAL HOLD",
+      "output_name": "AUTOPILOT VERTICAL HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP vertical hold",
+      "update_every": 0,
+      "cb_text": "(bool) AP vertical hold",
       "prefix": 604,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AUTOPILOT RPM HOLD",
+      "output_name": "AUTOPILOT RPM HOLD",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) AP RPM hold",
+      "update_every": 0,
+      "cb_text": "(bool) AP RPM hold",
       "prefix": 605,
-      "type": 4
+      "output_type": 4
     }
   ],
   "NAV and COMS": [
     {
-      "outputName": "COM ACTIVE FREQUENCY:1",
+      "output_name": "COM ACTIVE FREQUENCY:1",
       "metric": "Khz",
-      "updateEvery": 0,
-      "cbText": "Com 1 active",
+      "update_every": 0,
+      "cb_text": "Com 1 active",
       "prefix": 900,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "COM ACTIVE FREQUENCY:2",
+      "output_name": "COM ACTIVE FREQUENCY:2",
       "metric": "Khz",
-      "updateEvery": 0,
-      "cbText": "Com 2 active",
+      "update_every": 0,
+      "cb_text": "Com 2 active",
       "prefix": 902,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "COM STANDBY FREQUENCY:1",
+      "output_name": "COM STANDBY FREQUENCY:1",
       "metric": "Khz",
-      "updateEvery": 0,
-      "cbText": "Com 1 standby",
+      "update_every": 0,
+      "cb_text": "Com 1 standby",
       "prefix": 901,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "COM STANDBY FREQUENCY:2",
+      "output_name": "COM STANDBY FREQUENCY:2",
       "metric": "Khz",
-      "updateEvery": 0,
-      "cbText": "Com 2 standby",
+      "update_every": 0,
+      "cb_text": "Com 2 standby",
       "prefix": 903,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV ACTIVE FREQUENCY:1",
+      "output_name": "NAV ACTIVE FREQUENCY:1",
       "metric": "KHz",
-      "updateEvery": 0,
-      "cbText": "NAV 1 active",
+      "update_every": 0,
+      "cb_text": "NAV 1 active",
       "prefix": 910,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV STANDBY FREQUENCY:1",
+      "output_name": "NAV STANDBY FREQUENCY:1",
       "metric": "KHz",
-      "updateEvery": 0,
-      "cbText": "NAV 1 standby",
+      "update_every": 0,
+      "cb_text": "NAV 1 standby",
       "prefix": 911,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV ACTIVE FREQUENCY:2",
+      "output_name": "NAV ACTIVE FREQUENCY:2",
       "metric": "KHz",
-      "updateEvery": 0,
-      "cbText": "NAV 2 active",
+      "update_every": 0,
+      "cb_text": "NAV 2 active",
       "prefix": 912,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV STANDBY FREQUENCY:2",
+      "output_name": "NAV STANDBY FREQUENCY:2",
       "metric": "KHz",
-      "updateEvery": 0,
-      "cbText": "NAV 2 standby",
+      "update_every": 0,
+      "cb_text": "NAV 2 standby",
       "prefix": 913,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV RADIAL ERROR:1",
+      "output_name": "NAV RADIAL ERROR:1",
       "metric": "Degrees",
-      "updateEvery": 0,
-      "cbText": "NAV 1 radial error",
+      "update_every": 0,
+      "cb_text": "NAV 1 radial error",
       "prefix": 914,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV VOR LATLONALT:1",
+      "output_name": "NAV VOR LATLONALT:1",
       "metric": "SIMCONNECT_DATA_LATLONALT",
-      "updateEvery": 0,
-      "cbText": "Nav 1 VOR LATLONALT",
+      "update_every": 0,
+      "cb_text": "Nav 1 VOR LATLONALT",
       "prefix": 915,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "ADF ACTIVE FREQUENCY:1",
+      "output_name": "ADF ACTIVE FREQUENCY:1",
       "metric": "Hz",
-      "updateEvery": 0,
-      "cbText": "ADF 1 active",
+      "update_every": 0,
+      "cb_text": "ADF 1 active",
       "prefix": 954,
-      "type": 8
+      "output_type": 8
     },
     {
-      "outputName": "ADF STANDBY FREQUENCY:1",
+      "output_name": "ADF STANDBY FREQUENCY:1",
       "metric": "Hz",
-      "updateEvery": 0,
-      "cbText": "ADF 1 standby",
+      "update_every": 0,
+      "cb_text": "ADF 1 standby",
       "prefix": 955,
-      "type": 8
+      "output_type": 8
     },
     {
-      "outputName": "ADF RADIAL:1",
+      "output_name": "ADF RADIAL:1",
       "metric": "Degrees",
-      "updateEvery": 0,
-      "cbText": "ADF 1 radial",
+      "update_every": 0,
+      "cb_text": "ADF 1 radial",
       "prefix": 956,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "ADF SIGNAL:1",
+      "output_name": "ADF SIGNAL:1",
       "metric": "Number",
-      "updateEvery": 0,
-      "cbText": "ADF 1 signal",
+      "update_every": 0,
+      "cb_text": "ADF 1 signal",
       "prefix": 957,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "ADF ACTIVE FREQUENCY:2",
+      "output_name": "ADF ACTIVE FREQUENCY:2",
       "metric": "Hz",
-      "updateEvery": 0,
-      "cbText": "ADF 2 active",
+      "update_every": 0,
+      "cb_text": "ADF 2 active",
       "prefix": 958,
-      "type": 8
+      "output_type": 8
     },
     {
-      "outputName": "ADF STANDBY FREQUENCY:2",
+      "output_name": "ADF STANDBY FREQUENCY:2",
       "metric": "Hz",
-      "updateEvery": 0,
-      "cbText": "ADF 2 standby",
+      "update_every": 0,
+      "cb_text": "ADF 2 standby",
       "prefix": 959,
-      "type": 8
+      "output_type": 8
     },
     {
-      "outputName": "ADF RADIAL:2",
+      "output_name": "ADF RADIAL:2",
       "metric": "Degrees",
-      "updateEvery": 0,
-      "cbText": "ADF 2 radial",
+      "update_every": 0,
+      "cb_text": "ADF 2 radial",
       "prefix": 960,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "ADF SIGNAL:2",
+      "output_name": "ADF SIGNAL:2",
       "metric": "Number",
-      "updateEvery": 0,
-      "cbText": "ADF 2 signal",
+      "update_every": 0,
+      "cb_text": "ADF 2 signal",
       "prefix": 961,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV DME:1",
+      "output_name": "NAV DME:1",
       "metric": "Nautical miles",
-      "updateEvery": 0,
-      "cbText": "NAV DME 1",
+      "update_every": 0,
+      "cb_text": "NAV DME 1",
       "prefix": 950,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV DMESPEED:1",
+      "output_name": "NAV DMESPEED:1",
       "metric": "Knots",
-      "updateEvery": 0,
-      "cbText": "NAV DME 1 speed",
+      "update_every": 0,
+      "cb_text": "NAV DME 1 speed",
       "prefix": 951,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV DME:2",
+      "output_name": "NAV DME:2",
       "metric": "Nautical miles",
-      "updateEvery": 0,
-      "cbText": "NAV DME 2",
+      "update_every": 0,
+      "cb_text": "NAV DME 2",
       "prefix": 952,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV DMESPEED:2",
+      "output_name": "NAV DMESPEED:2",
       "metric": "Knots",
-      "updateEvery": 0,
-      "cbText": "NAV DME 2 speed",
+      "update_every": 0,
+      "cb_text": "NAV DME 2 speed",
       "prefix": 953,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "TRANSPONDER CODE:1",
+      "output_name": "TRANSPONDER CODE:1",
       "metric": "number",
-      "updateEvery": 0,
-      "cbText": "Transponder 1 code",
+      "update_every": 0,
+      "cb_text": "Transponder 1 code",
       "prefix": 962,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "TRANSPONDER CODE:2",
+      "output_name": "TRANSPONDER CODE:2",
       "metric": "number",
-      "updateEvery": 0,
-      "cbText": "Transponder 2 code",
+      "update_every": 0,
+      "cb_text": "Transponder 2 code",
       "prefix": 963,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV OBS:1",
+      "output_name": "NAV OBS:1",
       "metric": "Degrees",
-      "updateEvery": 0.1,
-      "cbText": "NAV OBS 1",
+      "update_every": 0.1,
+      "cb_text": "NAV OBS 1",
       "prefix": 606,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "NAV OBS:2",
+      "output_name": "NAV OBS:2",
       "metric": "Degrees",
-      "updateEvery": 0.1,
-      "cbText": "NAV OBS 2",
+      "update_every": 0.1,
+      "cb_text": "NAV OBS 2",
       "prefix": 607,
-      "type": 0
+      "output_type": 0
     }
   ],
   "Lights": [
     {
-      "outputName": "LIGHT TAXI ON",
+      "output_name": "LIGHT TAXI ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Taxi lights",
+      "update_every": 0,
+      "cb_text": "(bool) Taxi lights",
       "prefix": 133,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT STROBE ON",
+      "output_name": "LIGHT STROBE ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Strobe lights",
+      "update_every": 0,
+      "cb_text": "(bool) Strobe lights",
       "prefix": 134,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT PANEL ON",
+      "output_name": "LIGHT PANEL ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Panel lights",
+      "update_every": 0,
+      "cb_text": "(bool) Panel lights",
       "prefix": 135,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT RECOGNITION ON",
+      "output_name": "LIGHT RECOGNITION ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Recognition lights",
+      "update_every": 0,
+      "cb_text": "(bool) Recognition lights",
       "prefix": 136,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT WING ON",
+      "output_name": "LIGHT WING ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Wing lights",
+      "update_every": 0,
+      "cb_text": "(bool) Wing lights",
       "prefix": 137,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT LOGO ON",
+      "output_name": "LIGHT LOGO ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Logo lights",
+      "update_every": 0,
+      "cb_text": "(bool) Logo lights",
       "prefix": 138,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT CABIN ON",
+      "output_name": "LIGHT CABIN ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Cabin lights",
+      "update_every": 0,
+      "cb_text": "(bool) Cabin lights",
       "prefix": 139,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT HEAD ON",
+      "output_name": "LIGHT HEAD ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Head light",
+      "update_every": 0,
+      "cb_text": "(bool) Head light",
       "prefix": 140,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT BRAKE ON",
+      "output_name": "LIGHT BRAKE ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Brake lights (not the brakes!)",
+      "update_every": 0,
+      "cb_text": "(bool) Brake lights (not the brakes!)",
       "prefix": 141,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT NAV ON",
+      "output_name": "LIGHT NAV ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) NAV lights",
+      "update_every": 0,
+      "cb_text": "(bool) NAV lights",
       "prefix": 142,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT BEACON ON",
+      "output_name": "LIGHT BEACON ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Beacon lights",
+      "update_every": 0,
+      "cb_text": "(bool) Beacon lights",
       "prefix": 143,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "LIGHT LANDING ON",
+      "output_name": "LIGHT LANDING ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Landing lights",
+      "update_every": 0,
+      "cb_text": "(bool) Landing lights",
       "prefix": 144,
-      "type": 4
+      "output_type": 4
     }
   ],
   "Warnings": [
     {
-      "outputName": "STALL WARNING",
+      "output_name": "STALL WARNING",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Stall warning",
+      "update_every": 0,
+      "cb_text": "(bool) Stall warning",
       "prefix": 333,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "STALL WARNING",
+      "output_name": "STALL WARNING",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Master caution",
+      "update_every": 0,
+      "cb_text": "(bool) Master caution",
       "prefix": 1000,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "STALL WARNING",
+      "output_name": "STALL WARNING",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Master warning",
+      "update_every": 0,
+      "cb_text": "(bool) Master warning",
       "prefix": 1001,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "OVERSPEED WARNING",
+      "output_name": "OVERSPEED WARNING",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Overspeed warning",
+      "update_every": 0,
+      "cb_text": "(bool) Overspeed warning",
       "prefix": 334,
-      "type": 4
+      "output_type": 4
     }
   ],
   "Mechanical": [
     {
-      "outputName": "BRAKE PARKING INDICATOR",
+      "output_name": "BRAKE PARKING INDICATOR",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Parking brake indicator",
+      "update_every": 0,
+      "cb_text": "(bool) Parking brake indicator",
       "prefix": 505,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "AILERON TRIM",
+      "output_name": "AILERON TRIM",
       "metric": "Radians",
-      "updateEvery": 0,
-      "cbText": "Aileron trim degrees",
+      "update_every": 0,
+      "cb_text": "Aileron trim degrees",
       "prefix": 562,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "AILERON TRIM PCT",
+      "output_name": "AILERON TRIM PCT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Aileron trim %",
+      "update_every": 0.01,
+      "cb_text": "Aileron trim %",
       "prefix": 563,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "RUDDER TRIM",
+      "output_name": "RUDDER TRIM",
       "metric": "Radians",
-      "updateEvery": 0.01,
-      "cbText": "Rudder trim degrees",
+      "update_every": 0.01,
+      "cb_text": "Rudder trim degrees",
       "prefix": 566,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "RUDDER TRIM PCT",
+      "output_name": "RUDDER TRIM PCT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Rudder trim %",
+      "update_every": 0.01,
+      "cb_text": "Rudder trim %",
       "prefix": 567,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "ELEVATOR TRIM POSITION",
+      "output_name": "ELEVATOR TRIM POSITION",
       "metric": "Radians",
-      "updateEvery": 0.01,
-      "cbText": "Elevator trim position degrees",
+      "update_every": 0.01,
+      "cb_text": "Elevator trim position degrees",
       "prefix": 498,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "ELEVATOR TRIM PCT",
+      "output_name": "ELEVATOR TRIM PCT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Elevator trim %",
+      "update_every": 0.01,
+      "cb_text": "Elevator trim %",
       "prefix": 500,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FLAPS HANDLE PERCENT",
+      "output_name": "FLAPS HANDLE PERCENT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Flaps handle %",
+      "update_every": 0.01,
+      "cb_text": "Flaps handle %",
       "prefix": 510,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "FLAPS HANDLE INDEX",
+      "output_name": "FLAPS HANDLE INDEX",
       "metric": "Number",
-      "updateEvery": 0,
-      "cbText": "Flaps handle index",
+      "update_every": 0,
+      "cb_text": "Flaps handle index",
       "prefix": 511,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "FLAPS NUM HANDLE POSITIONS",
+      "output_name": "FLAPS NUM HANDLE POSITIONS",
       "metric": "Number",
-      "updateEvery": 0,
-      "cbText": "Flaps number handle positions",
+      "update_every": 0,
+      "cb_text": "Flaps number handle positions",
       "prefix": 512,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "TRAILING EDGE FLAPS LEFT PERCENT",
+      "output_name": "TRAILING EDGE FLAPS LEFT PERCENT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Trailing edge flaps left %",
+      "update_every": 0.01,
+      "cb_text": "Trailing edge flaps left %",
       "prefix": 513,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "TRAILING EDGE FLAPS RIGHT PERCENT",
+      "output_name": "TRAILING EDGE FLAPS RIGHT PERCENT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Trailing edge flaps right %",
+      "update_every": 0.01,
+      "cb_text": "Trailing edge flaps right %",
       "prefix": 514,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "TRAILING EDGE FLAPS LEFT ANGLE",
+      "output_name": "TRAILING EDGE FLAPS LEFT ANGLE",
       "metric": "Radians",
-      "updateEvery": 0.01,
-      "cbText": "Trailing edge flaps left degrees",
+      "update_every": 0.01,
+      "cb_text": "Trailing edge flaps left degrees",
       "prefix": 515,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "TRAILING EDGE FLAPS RIGHT ANGLE",
+      "output_name": "TRAILING EDGE FLAPS RIGHT ANGLE",
       "metric": "Radians",
-      "updateEvery": 0.01,
-      "cbText": "Trailing edge flaps right degree",
+      "update_every": 0.01,
+      "cb_text": "Trailing edge flaps right degree",
       "prefix": 516,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "LEADING EDGE FLAPS LEFT PERCENT",
+      "output_name": "LEADING EDGE FLAPS LEFT PERCENT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Leading edge flaps left %",
+      "update_every": 0.01,
+      "cb_text": "Leading edge flaps left %",
       "prefix": 517,
-      "type": 1
+      "output_type": 1
     },
     {
-      "outputName": "LEADING EDGE FLAPS RIGHT PERCENT",
+      "output_name": "LEADING EDGE FLAPS RIGHT PERCENT",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Leading edge flaps right %",
+      "update_every": 0.01,
+      "cb_text": "Leading edge flaps right %",
       "prefix": 518,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "LEADING EDGE FLAPS LEFT ANGLE",
+      "output_name": "LEADING EDGE FLAPS LEFT ANGLE",
       "metric": "Radians",
-      "updateEvery": 0.01,
-      "cbText": "Leading edge flaps left degrees",
+      "update_every": 0.01,
+      "cb_text": "Leading edge flaps left degrees",
       "prefix": 519,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "LEADING EDGE FLAPS RIGHT ANGLE",
+      "output_name": "LEADING EDGE FLAPS RIGHT ANGLE",
       "metric": "Radians",
-      "updateEvery": 0.01,
-      "cbText": "Leading edge flaps right degrees",
+      "update_every": 0.01,
+      "cb_text": "Leading edge flaps right degrees",
       "prefix": 520,
-      "type": 2
+      "output_type": 2
     },
     {
-      "outputName": "GEAR HANDLE POSITION",
+      "output_name": "GEAR HANDLE POSITION",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Gear handle position",
+      "update_every": 0,
+      "cb_text": "(bool) Gear handle position",
       "prefix": 526,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "GEAR HYDRAULIC PRESSURE",
+      "output_name": "GEAR HYDRAULIC PRESSURE",
       "metric": "psf",
-      "updateEvery": 1,
-      "cbText": "Gear hydraulic pressure",
+      "update_every": 1,
+      "cb_text": "Gear hydraulic pressure",
       "prefix": 527,
-      "type": 0
+      "output_type": 0
     },
     {
-      "outputName": "TAILWHEEL LOCK ON",
+      "output_name": "TAILWHEEL LOCK ON",
       "metric": "Bool",
-      "updateEvery": 0,
-      "cbText": "(bool) Tailwheel lock",
+      "update_every": 0,
+      "cb_text": "(bool) Tailwheel lock",
       "prefix": 528,
-      "type": 4
+      "output_type": 4
     },
     {
-      "outputName": "GEAR CENTER POSITION",
+      "output_name": "GEAR CENTER POSITION",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Gear center position %",
+      "update_every": 0.01,
+      "cb_text": "Gear center position %",
       "prefix": 529,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "GEAR LEFT POSITION",
+      "output_name": "GEAR LEFT POSITION",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Gear left position %",
+      "update_every": 0.01,
+      "cb_text": "Gear left position %",
       "prefix": 530,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "GEAR RIGHT POSITION",
+      "output_name": "GEAR RIGHT POSITION",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Gear right position %",
+      "update_every": 0.01,
+      "cb_text": "Gear right position %",
       "prefix": 531,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "GEAR TAIL POSITION",
+      "output_name": "GEAR TAIL POSITION",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Gear tail position %",
+      "update_every": 0.01,
+      "cb_text": "Gear tail position %",
       "prefix": 532,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "GEAR AUX POSITION",
+      "output_name": "GEAR AUX POSITION",
       "metric": "Percent Over 100",
-      "updateEvery": 0.01,
-      "cbText": "Gear AUX position %",
+      "update_every": 0.01,
+      "cb_text": "Gear AUX position %",
       "prefix": 533,
-      "type": 5
+      "output_type": 5
     },
     {
-      "outputName": "GEAR TOTAL PCT EXTENDED",
+      "output_name": "GEAR TOTAL PCT EXTENDED",
       "metric": "Percentage",
-      "updateEvery": 0.01,
-      "cbText": "Gear total extended %",
+      "update_every": 0.01,
+      "cb_text": "Gear total extended %",
       "prefix": 536,
-      "type": 5
+      "output_type": 5
     }
   ]
 }
