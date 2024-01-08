@@ -19,7 +19,7 @@ use lazy_static::lazy_static;
 const MAX_RETURNED_ITEMS: usize = 255;
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<std::sync::mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
 }
 
 enum SimCommand {
