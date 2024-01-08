@@ -3,7 +3,7 @@
     "beforeDevCommand": "pnpm run dev",
     "beforeBuildCommand": "pnpm run build",
     "devPath": "http://localhost:3000",
-    "distDir": "./out"
+    "distDir": "../out"
   },
   "package": {
     "productName": "bits-and-droids-connector",

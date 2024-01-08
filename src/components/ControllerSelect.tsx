@@ -21,6 +21,8 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
 
     return (
         <select
+            // generate a unique key for each select element
+            key={Math.random()}
             className={"rounded m-2 text-gray-700 p-2"}
             onChange={(e) => {
                 console.log(e.currentTarget.value);

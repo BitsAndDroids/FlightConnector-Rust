@@ -35,7 +35,7 @@ export const ControllerSelectComponent = () => {
         <>
             <div>
                 {comPorts.map((port) => (
-                    <ControllerSelect comPorts={comPorts} setComPort={setComPort}/>
+                    <ControllerSelect comPorts={comPorts} setComPort={setComPort} key={Math.random()}/>
                 ))}
             </div>
         </>

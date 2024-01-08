@@ -3,7 +3,7 @@ pub mod output_parser {
     use crate::events::output::Output;
     use std::collections::HashMap;
 
-    pub fn parse_json(path: &str) -> Vec<Category> {
+    pub fn get_categories_from_file(path: &str) -> Vec<Category> {
         let file = std::fs::File::open(&path)
             .expect(format!("Failed to open file at {:?}", &path).as_str());
         let reader = std::io::BufReader::new(file);

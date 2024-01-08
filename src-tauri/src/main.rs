@@ -1,9 +1,10 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+use mpsc::channel;
 use serialport::SerialPort;
 use simconnect;
-use simconnect::SimConnector;
+use simconnect::{SimConnector};
 use simconnect::DWORD;
 use std::collections::HashMap;
 use std::io::Read;
@@ -12,8 +13,18 @@ use std::thread::sleep;
 use std::time::Duration;
 use tauri::Manager;
 use tokio::io::{self};
+use std::sync::{Arc, mpsc, Mutex};
+use lazy_static::lazy_static;
 
 const MAX_RETURNED_ITEMS: usize = 255;
+
+lazy_static! {
+    static ref SENDER: Arc<Mutex<Option<std::sync::mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
+}
+
+enum SimCommand {
+    NewCommand(i16),
+}
 
 struct RequestModes {
     float: DWORD,
@@ -50,7 +61,7 @@ impl Events {
             available_events,
             sim_start,
         }
-    }
+        }
 }
 
 #[repr(C, packed)]
@@ -70,8 +81,9 @@ struct DataStructContainer {
 }
 
 mod events;
+mod simconnect_mod;
 
-use events::output_parser::output_parser::parse_json;
+use events::output_parser::output_parser::get_categories_from_file;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 
@@ -110,15 +122,6 @@ async fn get_com_ports() -> Vec<String> {
     ports_output
 }
 
-async fn test_app_handle(app: tauri::AppHandle, message: String) {
-    app.emit_all(
-        "event-name",
-        Payload {
-            message: format!("{}", message),
-        },
-    )
-    .unwrap();
-}
 
 async fn poll_com_port(app: tauri::AppHandle, port: String) {
     println!("Polling COM port");
@@ -134,7 +137,6 @@ async fn poll_com_port(app: tauri::AppHandle, port: String) {
                 if byte[0] == b'\n' {
                     let message = String::from_utf8_lossy(&buffer);
                     println!("Read message from serial port: {}", message);
-                    send_message_to_js(app.clone(), &message).await;
                     buffer.clear();
                 } else {
                     buffer.push(byte[0]);
@@ -143,31 +145,10 @@ async fn poll_com_port(app: tauri::AppHandle, port: String) {
             Err(ref e) if e.kind() == io::ErrorKind::TimedOut => (),
             Err(e) => eprintln!("{:?}", e),
         }
-        tokio::time::sleep(std::time::Duration::from_micros(10)).await;
+        tokio::time::sleep(Duration::from_micros(10)).await;
     }
 }
 
-async fn send_message_to_js(app: tauri::AppHandle, command: &str) {
-    test_app_handle(app.clone(), command.parse().unwrap()).await;
-}
-
-fn define_outputs(conn: &mut SimConnector) {
-    let categories = get_output_categories();
-    for category in categories {
-        println!("Category: {}", category.name);
-        for output in category.outputs {
-            conn.add_data_definition(
-                RequestModes::FLOAT,
-                &*output.output_name,
-                &*output.metric,
-                simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                output.prefix,
-                output.update_every,
-            );
-            println!("Output: {}", output.output_name);
-        }
-    }
-}
 
 fn subscribe_to_events(conn: &mut SimConnector) {
     let events = Events::new();
@@ -176,13 +157,22 @@ fn subscribe_to_events(conn: &mut SimConnector) {
     }
 }
 
-fn connect_simconnect() {
+#[tauri::command]
+fn send_command(app: tauri::AppHandle, command: i16) {
+    println!("Command: {}", command);
+    let sender = SENDER
+        .lock()
+        .unwrap()
+        .as_ref()
+        .expect("SimConnect not initialized")
+        .clone();
+    sender.send(SimCommand::NewCommand(command)).unwrap();
+}
+
+fn connect_simconnect(rx: mpsc::Receiver<SimCommand>) {
     let mut conn = simconnect::SimConnector::new();
     let events = Events::new();
     conn.connect("SimConnect Tauri");
-    let epsilon: f32 = 100.000000;
-    //let context = conn.get_context();
-    //conn.call_dispatch(Some(call_dispatch), context);
 
     conn.add_data_definition(
         RequestModes::STRING,
@@ -193,7 +183,14 @@ fn connect_simconnect() {
         0.0,
     );
 
-    define_outputs(&mut conn);
+    let mut input_registry = simconnect_mod::input_registry::InputRegistry::new();
+    input_registry.load_inputs();
+    input_registry.define_inputs(&mut conn);
+
+    let mut output_registry = simconnect_mod::output_registry::OutputRegistry::new();
+    output_registry.load_outputs();
+    output_registry.define_outputs(&mut conn);
+
     subscribe_to_events(&mut conn);
 
     conn.request_data_on_sim_object(
@@ -220,8 +217,25 @@ fn connect_simconnect() {
     );
 
     loop {
+        match rx.try_recv(){
+            Ok(SimCommand::NewCommand(command)) => {
+                println!("Command in thread: {}", command);
+                conn.transmit_client_event(
+                    0,
+                    command as u32,
+                    0,
+                    simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
+                    simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
+                );
+            }
+            Err(mpsc::TryRecvError::Empty) => (),
+            Err(mpsc::TryRecvError::Disconnected) => {
+                println!("Disconnected");
+                break;
+            }
+        }
         match conn.get_next_message() {
-            Ok(simconnect::DispatchResult::SimobjectData(data)) => {
+            Ok(simconnect::DispatchResult::SimObjectData(data)) => {
                 match data.dwDefineID {
                     RequestModes::FLOAT => {
                         unsafe {
@@ -253,7 +267,7 @@ fn connect_simconnect() {
                     0 => {
                         println!("1");
                     }
-                    _ => (),
+                    _ => ()
                 }
             }
             Ok(simconnect::DispatchResult::Event(data)) => {
@@ -276,19 +290,48 @@ fn connect_simconnect() {
 }
 
 fn get_output_categories() -> Vec<events::category::Category> {
-    parse_json("src/events/outputs.json")
+    get_categories_from_file("src/events/outputs.json")
+}
+
+fn poll_microcontroller_for_inputs() {
+    let mut port = serialport::new("COM3", 115200)
+        .timeout(std::time::Duration::from_millis(7000))
+        .open()
+        .expect("Failed to open port");
+    let mut buffer: Vec<u8> = Vec::new();
+    loop {
+        let mut byte = [0u8; 1];
+        match port.read(&mut byte) {
+            Ok(_) => {
+                if byte[0] == b'\n' {
+                    let message = String::from_utf8_lossy(&buffer);
+                    println!("Read message from serial port: {}", message);
+                    buffer.clear();
+                } else {
+                    buffer.push(byte[0]);
+                }
+            }
+            Err(ref e) if e.kind() == io::ErrorKind::TimedOut => (),
+            Err(e) => eprintln!("{:?}", e),
+        }
+        std::thread::sleep(std::time::Duration::from_micros(10));
+    }
 }
 
 fn main() {
+    let (tx, rx) = mpsc::channel::<SimCommand>();
+    *SENDER.lock().unwrap() = Some(tx);
+    std::thread::spawn(move || {
+        connect_simconnect(rx);
+    });
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             start_com_connection,
-            get_com_ports
+            get_com_ports,
+            send_command
         ])
         .setup(|app| {
-            std::thread::spawn(move || {
-                connect_simconnect();
-            });
+
             Ok(())
         })
         .run(tauri::generate_context!())

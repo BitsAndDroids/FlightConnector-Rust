@@ -15,8 +15,12 @@ function App() {
     };
 
     const [greetMsg, setGreetMsg] = useState("");
+    const [commandId, setCommandId] = useState(0);
     const [name, setName] = useState("");
 
+    async function send_command() {
+        invoke("send_command", {command: commandId})
+    }
 
     return (
         <div className="flex justify-center align-middle  h-full w-full flex-col ">
@@ -43,6 +47,22 @@ function App() {
                     <ControllerSelectComponent/>
                 </div>
             </form>
+            <div className={"flex flex-col justify-center align-middle"}>
+                <input className={"rounded-md bg-gray-900 text-white text-sm font-semibold px-3.5 py-2.5 m-2"}
+                       type={"number"} placeholder={"Enter command id"}
+                          onChange={(e) => {
+                                setCommandId(parseInt(e.target.value));
+                          }}
+                />
+                <button type="button"
+                        className={"rounded-md bg-green-900 text-white text-sm font-semibold px-3.5 py-2.5 m-2"}
+                        onClick={() => {
+                            send_command();
+                        }
+                        }
+                >Send
+                </button>
+            </div>
             <p>{greetMsg}</p>
         </div>
     );
