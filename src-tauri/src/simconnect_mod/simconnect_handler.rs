@@ -41,7 +41,7 @@ impl SimconnectHandler {
         self.output_registry.define_outputs(&mut self.simconnect);
     }
 
-    pub fn poll_simconnect_message_queue(&mut self){
+    fn poll_simconnect_message_queue(&mut self){
         println!("Polling simconnect message queue");
     }
 }
