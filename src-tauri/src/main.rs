@@ -170,7 +170,7 @@ fn send_command(app: tauri::AppHandle, command: i16) {
 }
 
 fn connect_simconnect(rx: mpsc::Receiver<SimCommand>) {
-    let mut conn = simconnect::SimConnector::new();
+    let mut conn = SimConnector::new();
     let events = Events::new();
     conn.connect("SimConnect Tauri");
 
