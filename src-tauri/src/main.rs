@@ -2,6 +2,11 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use serialport::SerialPort;
+
+#[cfg(target_os = "windows")]
+mod simconnect_mod;
+mod events;
+
 //only import if windows
 #[cfg(target_os = "windows")]
 use simconnect;
@@ -12,51 +17,10 @@ use simconnect::DWORD;
 
 use std::io::Read;
 use std::string::ToString;
-use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
+use serde_json::error::Category;
 use tokio::io::{self};
-
-
-
-// impl Events {
-//     fn new() -> Self {
-//         let mut available_events: HashMap<DWORD, Event> = HashMap::new();
-//         let sim_start: Event = Event {
-//             id: 0,
-//             description: "SimStart",
-//         };
-//
-//         available_events.insert(0, sim_start.clone());
-//
-//         Self {
-//             available_events,
-//             sim_start,
-//         }
-//         }
-// }
-//
-// #[repr(C, packed)]
-// struct DataStruct {
-//     id: DWORD,
-//     value: f64,
-// }
-//
-// struct StringStruct {
-//     id: DWORD,
-//     //string 256
-//     value: [u8; MAX_RETURNED_ITEMS],
-// }
-
-// struct DataStructContainer {
-//     data: [DataStruct; MAX_RETURNED_ITEMS],
-// }
-
-// mod events;
-// mod simconnect_mod;
-//
-// use events::output_parser::output_parser::get_categories_from_file;
-
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+use crate::events::output_registry;
 
 #[tauri::command]
 fn start_com_connection(app: tauri::AppHandle, port: String) {
@@ -76,11 +40,6 @@ fn start_com_connection(app: tauri::AppHandle, port: String) {
     });
 }
 
-// define the payload struct
-#[derive(Clone, serde::Serialize)]
-struct Payload {
-    message: String,
-}
 
 #[tauri::command]
 async fn get_com_ports() -> Vec<String> {
@@ -91,6 +50,14 @@ async fn get_com_ports() -> Vec<String> {
         .map(|port| port.to_string())
         .collect::<Vec<_>>();
     ports_output
+}
+
+#[tauri::command]
+async fn get_outputs() -> Vec<events::category::Category>{
+    println!("Getting outputs");
+    let mut output_registry = output_registry::OutputRegistry::new();
+    output_registry.load_outputs();
+    output_registry.categories
 }
 
 async fn poll_com_port(app: tauri::AppHandle, port: String) {
@@ -119,67 +86,6 @@ async fn poll_com_port(app: tauri::AppHandle, port: String) {
     }
 }
 
-// fn subscribe_to_events(conn: &mut SimConnector) {
-//     let events = Events::new();
-//     for event in events.available_events {
-//         conn.subscribe_to_system_event(event.1.id, event.1.description);
-//     }
-// }
-//
-// #[tauri::command]
-// fn send_command(app: tauri::AppHandle, command: i16) {
-//     println!("Command: {}", command);
-//     let sender = SENDER
-//         .lock()
-//         .unwrap()
-//         .as_ref()
-//         .expect("SimConnect not initialized")
-//         .clone();
-//     sender.send(SimCommand::NewCommand(command)).unwrap();
-// }
-
-// fn connect_simconnect(rx: mpsc::Receiver<SimCommand>) {
-//     let mut conn = SimConnector::new();
-//     let events = Events::new();
-//     conn.connect("SimConnect Tauri");
-//
-//     conn.add_data_definition(
-//         RequestModes::STRING,
-//         "TITLE",
-//         "",
-//         simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
-//         202,
-//         0.0,
-//     );
-//
-//     conn.request_data_on_sim_object(
-//         0,
-//         RequestModes::FLOAT,
-//         0,
-//         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-//         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-//             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-//         0,
-//         1,
-//         0,
-//     );
-//     conn.request_data_on_sim_object(
-//         1,
-//         RequestModes::STRING,
-//         0,
-//         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-//         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-//             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-//         0,
-//         1,
-//         0,
-//     );
-//
-// }
-
-// fn get_output_categories() -> Vec<events::category::Category> {
-//     get_categories_from_file("src/events/outputs.json")
-// }
 
 fn poll_microcontroller_for_inputs() {
     let mut port = serialport::new("COM3", 115200)
@@ -218,6 +124,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             start_com_connection,
             get_com_ports,
+            get_outputs,
             /*send_command*/
         ])
         .setup(|app| Ok(()))

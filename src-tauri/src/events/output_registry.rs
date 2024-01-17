@@ -1,11 +1,11 @@
 use crate::events::category::Category;
 use crate::events::output::Output;
 use crate::events::output_parser::output_parser;
-use crate::RequestModes;
+
 
 #[derive(Debug)]
 pub struct OutputRegistry {
-    pub(crate) categories:  Vec<Category>,
+    pub categories:  Vec<Category>,
     pub outputs: Vec<Output>,
     output_path: String,
 }
@@ -49,17 +49,5 @@ impl OutputRegistry {
         None
     }
 
-    pub fn define_outputs(&self, conn: &mut simconnect::SimConnector) {
-        for output in &self.outputs {
-            conn.add_data_definition(
-                RequestModes::FLOAT,
-                &*output.output_name,
-                &*output.metric,
-                simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                output.id,
-                output.update_every,
-            );
-            println!("Output: {:?}", output);
-        }
-    }
+
 }

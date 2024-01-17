@@ -1,5 +1,5 @@
-use crate::simconnect_mod::input_registry::InputRegistry;
-use crate::simconnect_mod::output_registry::OutputRegistry;
+use crate::events::input_registry::InputRegistry;
+use crate::events::output_registry::OutputRegistry;
 
 const MAX_RETURNED_ITEMS: usize = 255;
 
@@ -17,6 +17,40 @@ struct Events {
     available_events: HashMap<DWORD, Event>,
     sim_start: Event,
 }
+
+// impl Events {
+//     fn new() -> Self {
+//         let mut available_events: HashMap<DWORD, Event> = HashMap::new();
+//         let sim_start: Event = Event {
+//             id: 0,
+//             description: "SimStart",
+//         };
+//
+//         available_events.insert(0, sim_start.clone());
+//
+//         Self {
+//             available_events,
+//             sim_start,
+//         }
+//         }
+// }
+
+//
+// #[repr(C, packed)]
+// struct DataStruct {
+//     id: DWORD,
+//     value: f64,
+// }
+//
+// struct StringStruct {
+//     id: DWORD,
+//     //string 256
+//     value: [u8; MAX_RETURNED_ITEMS],
+// }
+
+// struct DataStructContainer {
+//     data: [DataStruct; MAX_RETURNED_ITEMS],
+//}
 
 enum SimCommand {
     NewCommand(i16),
@@ -38,6 +72,12 @@ pub struct SimconnectHandler {
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
     POLLING_INTERVAL: u8,
+}
+
+// define the payload struct
+#[derive(Clone, serde::Serialize)]
+struct Payload {
+    message: String,
 }
 
 impl SimconnectHandler {
@@ -63,6 +103,18 @@ impl SimconnectHandler {
         }
     }
 
+    // #[tauri::command]
+// fn send_command(app: tauri::AppHandle, command: i16) {
+//     println!("Command: {}", command);
+//     let sender = SENDER
+//         .lock()
+//         .unwrap()
+//         .as_ref()
+//         .expect("SimConnect not initialized")
+//         .clone();
+//     sender.send(SimCommand::NewCommand(command)).unwrap();
+// }
+
     pub fn initialize_connection(&mut self) {
         println!("Initializing connection");
         self.simconnect.connect("Bits and Droids connector");
@@ -73,8 +125,36 @@ impl SimconnectHandler {
     }
 
     fn poll_simconnect_message_queue(&mut self) {
-        println!("Polling simconnect message queue");
-
+        //     conn.add_data_definition(
+//         RequestModes::STRING,
+//         "TITLE",
+//         "",
+//         simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
+//         202,
+//         0.0,
+//     );
+//     conn.request_data_on_sim_object(
+//         0,
+//         RequestModes::FLOAT,
+//         0,
+//         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+//         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+//             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+//         0,
+//         1,
+//         0,
+//     );
+//     conn.request_data_on_sim_object(
+//         1,
+//         RequestModes::STRING,
+//         0,
+//         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+//         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+//             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+//         0,
+//         1,
+//         0,
+//     );
         loop {
             match rx.try_recv() {
                 Ok(SimCommand::NewCommand(command)) => {
@@ -147,4 +227,26 @@ impl SimconnectHandler {
             sleep(Duration::from_millis(16));
         }
     }
+
+    /*pub fn define_inputs(&self, conn: &mut simconnect::SimConnector){
+       for input in &self.inputs {
+           conn.map_client_event_to_sim_event(
+               input.0.clone() as SIMCONNECT_CLIENT_EVENT_ID,
+               input.1.event.as_str(),
+           );
+       }
+   }*/
+    /*  pub fn define_outputs(&self, conn: &mut simconnect::SimConnector) {
+       for output in &self.outputs {
+           conn.add_data_definition(
+               RequestModes::FLOAT,
+               &*output.output_name,
+               &*output.metric,
+               simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
+               output.id,
+               output.update_every,
+           );
+           println!("Output: {:?}", output);
+       }
+   }*/
 }

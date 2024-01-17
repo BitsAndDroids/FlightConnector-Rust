@@ -33,10 +33,10 @@ impl EventRegistry {
     pub fn get_event_by_id(&self, event_id: u32) -> Option<&Event> {
         self.events.get_by_id(event_id)
     }
-    pub fn subscribe_to_events(&self, simconnect: &mut SimConnect) {
+  /*  pub fn subscribe_to_events(&self, simconnect: &mut SimConnect) {
         for event in self.events.iter() {
             simconnect.subscribe_to_event(event);
         }
-    }
+    }*/
 
 }

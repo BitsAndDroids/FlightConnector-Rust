@@ -5,7 +5,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel quantity %",
-      "prefix": 275,
+      "id": 275,
       "output_type": 5
     },
     {
@@ -13,7 +13,7 @@
       "metric": "knots",
       "update_every": 0,
       "cb_text": "AP airspeed var",
-      "prefix": 700,
+      "id": 700,
       "output_type": 0
     },
     {
@@ -21,7 +21,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank center level",
-      "prefix": 234,
+      "id": 234,
       "output_type": 5
     },
     {
@@ -29,7 +29,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank center 2 level",
-      "prefix": 235,
+      "id": 235,
       "output_type": 5
     },
     {
@@ -37,7 +37,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank center 3 level",
-      "prefix": 236,
+      "id": 236,
       "output_type": 5
     },
     {
@@ -45,7 +45,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank left main level",
-      "prefix": 237,
+      "id": 237,
       "output_type": 5
     },
     {
@@ -53,7 +53,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank left aux level",
-      "prefix": 238,
+      "id": 238,
       "output_type": 5
     },
     {
@@ -61,7 +61,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank left tip level",
-      "prefix": 239,
+      "id": 239,
       "output_type": 5
     },
     {
@@ -69,7 +69,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank right main level",
-      "prefix": 240,
+      "id": 240,
       "output_type": 5
     },
     {
@@ -77,7 +77,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank right aux level",
-      "prefix": 241,
+      "id": 241,
       "output_type": 5
     },
     {
@@ -85,7 +85,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank right tip level",
-      "prefix": 242,
+      "id": 242,
       "output_type": 5
     },
     {
@@ -93,7 +93,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank external 1 level",
-      "prefix": 243,
+      "id": 243,
       "output_type": 5
     },
     {
@@ -101,7 +101,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Fuel tank external 2 level",
-      "prefix": 244,
+      "id": 244,
       "output_type": 5
     },
     {
@@ -109,7 +109,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank center capacity",
-      "prefix": 245,
+      "id": 245,
       "output_type": 0
     },
     {
@@ -117,7 +117,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank center 2 capacity",
-      "prefix": 246,
+      "id": 246,
       "output_type": 0
     },
     {
@@ -125,7 +125,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank center 3 capacity",
-      "prefix": 247,
+      "id": 247,
       "output_type": 0
     },
     {
@@ -133,7 +133,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank left main capacity",
-      "prefix": 248,
+      "id": 248,
       "output_type": 0
     },
     {
@@ -141,7 +141,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank left aux capacity",
-      "prefix": 249,
+      "id": 249,
       "output_type": 0
     },
     {
@@ -149,7 +149,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank left tip capacity",
-      "prefix": 250,
+      "id": 250,
       "output_type": 0
     },
     {
@@ -157,7 +157,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank right main capacity",
-      "prefix": 251,
+      "id": 251,
       "output_type": 0
     },
     {
@@ -165,7 +165,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank right aux capacity",
-      "prefix": 252,
+      "id": 252,
       "output_type": 0
     },
     {
@@ -173,7 +173,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank right tip capacity",
-      "prefix": 253,
+      "id": 253,
       "output_type": 0
     },
     {
@@ -181,7 +181,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank external 1 capacity",
-      "prefix": 254,
+      "id": 254,
       "output_type": 0
     },
     {
@@ -189,7 +189,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank external 2 capacity",
-      "prefix": 255,
+      "id": 255,
       "output_type": 0
     },
     {
@@ -197,7 +197,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel left capacity",
-      "prefix": 256,
+      "id": 256,
       "output_type": 0
     },
     {
@@ -205,7 +205,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel right capacity",
-      "prefix": 257,
+      "id": 257,
       "output_type": 0
     },
     {
@@ -213,7 +213,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank center quantity",
-      "prefix": 258,
+      "id": 258,
       "output_type": 0
     },
     {
@@ -221,7 +221,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank center 2 quantity",
-      "prefix": 259,
+      "id": 259,
       "output_type": 0
     },
     {
@@ -229,7 +229,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank center 3 quantity",
-      "prefix": 260,
+      "id": 260,
       "output_type": 0
     },
     {
@@ -237,7 +237,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank left main quantity",
-      "prefix": 261,
+      "id": 261,
       "output_type": 0
     },
     {
@@ -245,7 +245,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank left aux quantity",
-      "prefix": 262,
+      "id": 262,
       "output_type": 0
     },
     {
@@ -253,7 +253,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank left tip quantity",
-      "prefix": 263,
+      "id": 263,
       "output_type": 0
     },
     {
@@ -261,7 +261,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank right main quantity",
-      "prefix": 264,
+      "id": 264,
       "output_type": 0
     },
     {
@@ -269,7 +269,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank right aux quantity",
-      "prefix": 265,
+      "id": 265,
       "output_type": 0
     },
     {
@@ -277,7 +277,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank right tip quantity",
-      "prefix": 266,
+      "id": 266,
       "output_type": 0
     },
     {
@@ -285,7 +285,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank external 1",
-      "prefix": 267,
+      "id": 267,
       "output_type": 0
     },
     {
@@ -293,7 +293,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel tank external 2 quantity",
-      "prefix": 268,
+      "id": 268,
       "output_type": 0
     },
     {
@@ -301,7 +301,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel left quantity",
-      "prefix": 269,
+      "id": 269,
       "output_type": 0
     },
     {
@@ -309,7 +309,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel right quantity",
-      "prefix": 270,
+      "id": 270,
       "output_type": 0
     },
     {
@@ -317,7 +317,7 @@
       "metric": "Gallons",
       "update_every": 1,
       "cb_text": "Fuel total quantity",
-      "prefix": 271,
+      "id": 271,
       "output_type": 0
     }
   ],
@@ -327,7 +327,7 @@
       "metric": "Feet",
       "update_every": 100,
       "cb_text": "Feet above ground",
-      "prefix": 312,
+      "id": 312,
       "output_type": 0
     },
     {
@@ -335,7 +335,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) on the ground",
-      "prefix": 323,
+      "id": 323,
       "output_type": 4
     },
     {
@@ -343,7 +343,7 @@
       "metric": "Feet per second",
       "update_every": 10,
       "cb_text": "Vertical speed",
-      "prefix": 590,
+      "id": 590,
       "output_type": 0
     },
     {
@@ -351,7 +351,7 @@
       "metric": "NULL",
       "update_every": 0,
       "cb_text": "Plane name",
-      "prefix": 999,
+      "id": 999,
       "output_type": 5
     }
   ],
@@ -361,7 +361,7 @@
       "metric": "Millibars",
       "update_every": 10,
       "cb_text": "Barometer pressure",
-      "prefix": 632,
+      "id": 632,
       "output_type": 0
     },
     {
@@ -369,7 +369,7 @@
       "metric": "Knots",
       "update_every": 1,
       "cb_text": "Indicated airspeed",
-      "prefix": 326,
+      "id": 326,
       "output_type": 0
     },
     {
@@ -377,7 +377,7 @@
       "metric": "Radians",
       "update_every": 0.02,
       "cb_text": "Indicated heading",
-      "prefix": 344,
+      "id": 344,
       "output_type": 2
     },
     {
@@ -385,7 +385,7 @@
       "metric": "Feet",
       "update_every": 10,
       "cb_text": "Indicated altitude",
-      "prefix": 335,
+      "id": 335,
       "output_type": 0
     },
     {
@@ -393,7 +393,7 @@
       "metric": "inHg",
       "update_every": 0,
       "cb_text": "Kohlsman HG",
-      "prefix": 337,
+      "id": 337,
       "output_type": 6
     }
   ],
@@ -403,7 +403,7 @@
       "metric": "Meters per second",
       "update_every": 1,
       "cb_text": "GPS groundspeed",
-      "prefix": 430,
+      "id": 430,
       "output_type": 7
     },
     {
@@ -411,7 +411,7 @@
       "metric": "Degrees",
       "update_every": 1,
       "cb_text": "GPS course to steer",
-      "prefix": 454,
+      "id": 454,
       "output_type": 0
     }
   ],
@@ -421,7 +421,7 @@
       "metric": "Degrees",
       "update_every": 0,
       "cb_text": "AP heading lock",
-      "prefix": 582,
+      "id": 582,
       "output_type": 0
     },
     {
@@ -429,7 +429,7 @@
       "metric": "Feet",
       "update_every": 0,
       "cb_text": "AP altitude lock var",
-      "prefix": 584,
+      "id": 584,
       "output_type": 0
     },
     {
@@ -437,7 +437,7 @@
       "metric": "Feet/minute",
       "update_every": 0,
       "cb_text": "AP vertical hold var",
-      "prefix": 590,
+      "id": 590,
       "output_type": 0
     },
     {
@@ -445,7 +445,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP available",
-      "prefix": 576,
+      "id": 576,
       "output_type": 4
     },
     {
@@ -453,7 +453,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP master",
-      "prefix": 577,
+      "id": 577,
       "output_type": 4
     },
     {
@@ -461,7 +461,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP wing leveler",
-      "prefix": 579,
+      "id": 579,
       "output_type": 4
     },
     {
@@ -469,7 +469,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP NAV1 lock",
-      "prefix": 580,
+      "id": 580,
       "output_type": 4
     },
     {
@@ -477,7 +477,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP heading lock",
-      "prefix": 581,
+      "id": 581,
       "output_type": 4
     },
     {
@@ -485,7 +485,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP altitude lock",
-      "prefix": 583,
+      "id": 583,
       "output_type": 4
     },
     {
@@ -493,7 +493,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP attitude lock",
-      "prefix": 585,
+      "id": 585,
       "output_type": 4
     },
     {
@@ -501,7 +501,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP glideslope hold",
-      "prefix": 586,
+      "id": 586,
       "output_type": 4
     },
     {
@@ -509,7 +509,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP approach hold",
-      "prefix": 588,
+      "id": 588,
       "output_type": 4
     },
     {
@@ -517,7 +517,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP backcourse hold",
-      "prefix": 589,
+      "id": 589,
       "output_type": 4
     },
     {
@@ -525,7 +525,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP flight director",
-      "prefix": 591,
+      "id": 591,
       "output_type": 4
     },
     {
@@ -533,7 +533,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP airspeed hold",
-      "prefix": 594,
+      "id": 594,
       "output_type": 4
     },
     {
@@ -541,7 +541,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP mach hold",
-      "prefix": 596,
+      "id": 596,
       "output_type": 4
     },
     {
@@ -549,7 +549,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP yaw damper",
-      "prefix": 598,
+      "id": 598,
       "output_type": 4
     },
     {
@@ -557,7 +557,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP throttle arm",
-      "prefix": 600,
+      "id": 600,
       "output_type": 4
     },
     {
@@ -565,7 +565,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP takeoff power",
-      "prefix": 601,
+      "id": 601,
       "output_type": 4
     },
     {
@@ -573,7 +573,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Autothrottle",
-      "prefix": 602,
+      "id": 602,
       "output_type": 4
     },
     {
@@ -581,7 +581,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP NAV1 lock",
-      "prefix": 580,
+      "id": 580,
       "output_type": 4
     },
     {
@@ -589,7 +589,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP vertical hold",
-      "prefix": 604,
+      "id": 604,
       "output_type": 4
     },
     {
@@ -597,7 +597,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) AP RPM hold",
-      "prefix": 605,
+      "id": 605,
       "output_type": 4
     }
   ],
@@ -607,7 +607,7 @@
       "metric": "Khz",
       "update_every": 0,
       "cb_text": "Com 1 active",
-      "prefix": 900,
+      "id": 900,
       "output_type": 0
     },
     {
@@ -615,7 +615,7 @@
       "metric": "Khz",
       "update_every": 0,
       "cb_text": "Com 2 active",
-      "prefix": 902,
+      "id": 902,
       "output_type": 0
     },
     {
@@ -623,7 +623,7 @@
       "metric": "Khz",
       "update_every": 0,
       "cb_text": "Com 1 standby",
-      "prefix": 901,
+      "id": 901,
       "output_type": 0
     },
     {
@@ -631,7 +631,7 @@
       "metric": "Khz",
       "update_every": 0,
       "cb_text": "Com 2 standby",
-      "prefix": 903,
+      "id": 903,
       "output_type": 0
     },
     {
@@ -639,7 +639,7 @@
       "metric": "KHz",
       "update_every": 0,
       "cb_text": "NAV 1 active",
-      "prefix": 910,
+      "id": 910,
       "output_type": 0
     },
     {
@@ -647,7 +647,7 @@
       "metric": "KHz",
       "update_every": 0,
       "cb_text": "NAV 1 standby",
-      "prefix": 911,
+      "id": 911,
       "output_type": 0
     },
     {
@@ -655,7 +655,7 @@
       "metric": "KHz",
       "update_every": 0,
       "cb_text": "NAV 2 active",
-      "prefix": 912,
+      "id": 912,
       "output_type": 0
     },
     {
@@ -663,7 +663,7 @@
       "metric": "KHz",
       "update_every": 0,
       "cb_text": "NAV 2 standby",
-      "prefix": 913,
+      "id": 913,
       "output_type": 0
     },
     {
@@ -671,7 +671,7 @@
       "metric": "Degrees",
       "update_every": 0,
       "cb_text": "NAV 1 radial error",
-      "prefix": 914,
+      "id": 914,
       "output_type": 0
     },
     {
@@ -679,7 +679,7 @@
       "metric": "SIMCONNECT_DATA_LATLONALT",
       "update_every": 0,
       "cb_text": "Nav 1 VOR LATLONALT",
-      "prefix": 915,
+      "id": 915,
       "output_type": 0
     },
     {
@@ -687,7 +687,7 @@
       "metric": "Hz",
       "update_every": 0,
       "cb_text": "ADF 1 active",
-      "prefix": 954,
+      "id": 954,
       "output_type": 8
     },
     {
@@ -695,7 +695,7 @@
       "metric": "Hz",
       "update_every": 0,
       "cb_text": "ADF 1 standby",
-      "prefix": 955,
+      "id": 955,
       "output_type": 8
     },
     {
@@ -703,7 +703,7 @@
       "metric": "Degrees",
       "update_every": 0,
       "cb_text": "ADF 1 radial",
-      "prefix": 956,
+      "id": 956,
       "output_type": 0
     },
     {
@@ -711,7 +711,7 @@
       "metric": "Number",
       "update_every": 0,
       "cb_text": "ADF 1 signal",
-      "prefix": 957,
+      "id": 957,
       "output_type": 0
     },
     {
@@ -719,7 +719,7 @@
       "metric": "Hz",
       "update_every": 0,
       "cb_text": "ADF 2 active",
-      "prefix": 958,
+      "id": 958,
       "output_type": 8
     },
     {
@@ -727,7 +727,7 @@
       "metric": "Hz",
       "update_every": 0,
       "cb_text": "ADF 2 standby",
-      "prefix": 959,
+      "id": 959,
       "output_type": 8
     },
     {
@@ -735,7 +735,7 @@
       "metric": "Degrees",
       "update_every": 0,
       "cb_text": "ADF 2 radial",
-      "prefix": 960,
+      "id": 960,
       "output_type": 0
     },
     {
@@ -743,7 +743,7 @@
       "metric": "Number",
       "update_every": 0,
       "cb_text": "ADF 2 signal",
-      "prefix": 961,
+      "id": 961,
       "output_type": 0
     },
     {
@@ -751,7 +751,7 @@
       "metric": "Nautical miles",
       "update_every": 0,
       "cb_text": "NAV DME 1",
-      "prefix": 950,
+      "id": 950,
       "output_type": 0
     },
     {
@@ -759,7 +759,7 @@
       "metric": "Knots",
       "update_every": 0,
       "cb_text": "NAV DME 1 speed",
-      "prefix": 951,
+      "id": 951,
       "output_type": 0
     },
     {
@@ -767,7 +767,7 @@
       "metric": "Nautical miles",
       "update_every": 0,
       "cb_text": "NAV DME 2",
-      "prefix": 952,
+      "id": 952,
       "output_type": 0
     },
     {
@@ -775,7 +775,7 @@
       "metric": "Knots",
       "update_every": 0,
       "cb_text": "NAV DME 2 speed",
-      "prefix": 953,
+      "id": 953,
       "output_type": 0
     },
     {
@@ -783,7 +783,7 @@
       "metric": "number",
       "update_every": 0,
       "cb_text": "Transponder 1 code",
-      "prefix": 962,
+      "id": 962,
       "output_type": 0
     },
     {
@@ -791,7 +791,7 @@
       "metric": "number",
       "update_every": 0,
       "cb_text": "Transponder 2 code",
-      "prefix": 963,
+      "id": 963,
       "output_type": 0
     },
     {
@@ -799,7 +799,7 @@
       "metric": "Degrees",
       "update_every": 0.1,
       "cb_text": "NAV OBS 1",
-      "prefix": 606,
+      "id": 606,
       "output_type": 0
     },
     {
@@ -807,7 +807,7 @@
       "metric": "Degrees",
       "update_every": 0.1,
       "cb_text": "NAV OBS 2",
-      "prefix": 607,
+      "id": 607,
       "output_type": 0
     }
   ],
@@ -817,7 +817,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Taxi lights",
-      "prefix": 133,
+      "id": 133,
       "output_type": 4
     },
     {
@@ -825,7 +825,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Strobe lights",
-      "prefix": 134,
+      "id": 134,
       "output_type": 4
     },
     {
@@ -833,7 +833,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Panel lights",
-      "prefix": 135,
+      "id": 135,
       "output_type": 4
     },
     {
@@ -841,7 +841,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Recognition lights",
-      "prefix": 136,
+      "id": 136,
       "output_type": 4
     },
     {
@@ -849,7 +849,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Wing lights",
-      "prefix": 137,
+      "id": 137,
       "output_type": 4
     },
     {
@@ -857,7 +857,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Logo lights",
-      "prefix": 138,
+      "id": 138,
       "output_type": 4
     },
     {
@@ -865,7 +865,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Cabin lights",
-      "prefix": 139,
+      "id": 139,
       "output_type": 4
     },
     {
@@ -873,7 +873,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Head light",
-      "prefix": 140,
+      "id": 140,
       "output_type": 4
     },
     {
@@ -881,7 +881,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Brake lights (not the brakes!)",
-      "prefix": 141,
+      "id": 141,
       "output_type": 4
     },
     {
@@ -889,7 +889,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) NAV lights",
-      "prefix": 142,
+      "id": 142,
       "output_type": 4
     },
     {
@@ -897,7 +897,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Beacon lights",
-      "prefix": 143,
+      "id": 143,
       "output_type": 4
     },
     {
@@ -905,7 +905,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Landing lights",
-      "prefix": 144,
+      "id": 144,
       "output_type": 4
     }
   ],
@@ -915,7 +915,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Stall warning",
-      "prefix": 333,
+      "id": 333,
       "output_type": 4
     },
     {
@@ -923,7 +923,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Master caution",
-      "prefix": 1000,
+      "id": 1000,
       "output_type": 4
     },
     {
@@ -931,7 +931,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Master warning",
-      "prefix": 1001,
+      "id": 1001,
       "output_type": 4
     },
     {
@@ -939,7 +939,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Overspeed warning",
-      "prefix": 334,
+      "id": 334,
       "output_type": 4
     }
   ],
@@ -949,7 +949,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Parking brake indicator",
-      "prefix": 505,
+      "id": 505,
       "output_type": 4
     },
     {
@@ -957,7 +957,7 @@
       "metric": "Radians",
       "update_every": 0,
       "cb_text": "Aileron trim degrees",
-      "prefix": 562,
+      "id": 562,
       "output_type": 2
     },
     {
@@ -965,7 +965,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Aileron trim %",
-      "prefix": 563,
+      "id": 563,
       "output_type": 5
     },
     {
@@ -973,7 +973,7 @@
       "metric": "Radians",
       "update_every": 0.01,
       "cb_text": "Rudder trim degrees",
-      "prefix": 566,
+      "id": 566,
       "output_type": 2
     },
     {
@@ -981,7 +981,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Rudder trim %",
-      "prefix": 567,
+      "id": 567,
       "output_type": 5
     },
     {
@@ -989,7 +989,7 @@
       "metric": "Radians",
       "update_every": 0.01,
       "cb_text": "Elevator trim position degrees",
-      "prefix": 498,
+      "id": 498,
       "output_type": 2
     },
     {
@@ -997,7 +997,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Elevator trim %",
-      "prefix": 500,
+      "id": 500,
       "output_type": 5
     },
     {
@@ -1005,7 +1005,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Flaps handle %",
-      "prefix": 510,
+      "id": 510,
       "output_type": 5
     },
     {
@@ -1013,7 +1013,7 @@
       "metric": "Number",
       "update_every": 0,
       "cb_text": "Flaps handle index",
-      "prefix": 511,
+      "id": 511,
       "output_type": 0
     },
     {
@@ -1021,7 +1021,7 @@
       "metric": "Number",
       "update_every": 0,
       "cb_text": "Flaps number handle positions",
-      "prefix": 512,
+      "id": 512,
       "output_type": 0
     },
     {
@@ -1029,7 +1029,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Trailing edge flaps left %",
-      "prefix": 513,
+      "id": 513,
       "output_type": 5
     },
     {
@@ -1037,7 +1037,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Trailing edge flaps right %",
-      "prefix": 514,
+      "id": 514,
       "output_type": 5
     },
     {
@@ -1045,7 +1045,7 @@
       "metric": "Radians",
       "update_every": 0.01,
       "cb_text": "Trailing edge flaps left degrees",
-      "prefix": 515,
+      "id": 515,
       "output_type": 2
     },
     {
@@ -1053,7 +1053,7 @@
       "metric": "Radians",
       "update_every": 0.01,
       "cb_text": "Trailing edge flaps right degree",
-      "prefix": 516,
+      "id": 516,
       "output_type": 2
     },
     {
@@ -1061,7 +1061,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Leading edge flaps left %",
-      "prefix": 517,
+      "id": 517,
       "output_type": 1
     },
     {
@@ -1069,7 +1069,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Leading edge flaps right %",
-      "prefix": 518,
+      "id": 518,
       "output_type": 5
     },
     {
@@ -1077,7 +1077,7 @@
       "metric": "Radians",
       "update_every": 0.01,
       "cb_text": "Leading edge flaps left degrees",
-      "prefix": 519,
+      "id": 519,
       "output_type": 2
     },
     {
@@ -1085,7 +1085,7 @@
       "metric": "Radians",
       "update_every": 0.01,
       "cb_text": "Leading edge flaps right degrees",
-      "prefix": 520,
+      "id": 520,
       "output_type": 2
     },
     {
@@ -1093,7 +1093,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Gear handle position",
-      "prefix": 526,
+      "id": 526,
       "output_type": 4
     },
     {
@@ -1101,7 +1101,7 @@
       "metric": "psf",
       "update_every": 1,
       "cb_text": "Gear hydraulic pressure",
-      "prefix": 527,
+      "id": 527,
       "output_type": 0
     },
     {
@@ -1109,7 +1109,7 @@
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Tailwheel lock",
-      "prefix": 528,
+      "id": 528,
       "output_type": 4
     },
     {
@@ -1117,7 +1117,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Gear center position %",
-      "prefix": 529,
+      "id": 529,
       "output_type": 5
     },
     {
@@ -1125,7 +1125,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Gear left position %",
-      "prefix": 530,
+      "id": 530,
       "output_type": 5
     },
     {
@@ -1133,7 +1133,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Gear right position %",
-      "prefix": 531,
+      "id": 531,
       "output_type": 5
     },
     {
@@ -1141,7 +1141,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Gear tail position %",
-      "prefix": 532,
+      "id": 532,
       "output_type": 5
     },
     {
@@ -1149,7 +1149,7 @@
       "metric": "Percent Over 100",
       "update_every": 0.01,
       "cb_text": "Gear AUX position %",
-      "prefix": 533,
+      "id": 533,
       "output_type": 5
     },
     {
@@ -1157,7 +1157,7 @@
       "metric": "Percentage",
       "update_every": 0.01,
       "cb_text": "Gear total extended %",
-      "prefix": 536,
+      "id": 536,
       "output_type": 5
     }
   ]

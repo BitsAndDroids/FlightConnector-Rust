@@ -1,11 +1,10 @@
 use std::collections::HashMap;
-use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use crate::events::input::{Input};
 use crate::events::input_parser::output_parser::get_inputs_from_file;
 
 #[derive(Debug)]
 pub struct InputRegistry {
-    pub(crate) inputs: HashMap<i32, Input>,
+    pub inputs: HashMap<i32, Input>,
     input_path: String,
 }
 
@@ -29,12 +28,5 @@ impl InputRegistry {
         self.inputs.get(&input_id)
     }
 
-    pub fn define_inputs(&self, conn: &mut simconnect::SimConnector){
-        for input in &self.inputs {
-            conn.map_client_event_to_sim_event(
-                input.0.clone() as SIMCONNECT_CLIENT_EVENT_ID,
-                input.1.event.as_str(),
-            );
-        }
-    }
+
 }
