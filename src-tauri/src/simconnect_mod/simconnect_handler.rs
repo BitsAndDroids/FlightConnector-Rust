@@ -1,7 +1,38 @@
 use crate::simconnect_mod::input_registry::InputRegistry;
 use crate::simconnect_mod::output_registry::OutputRegistry;
 
-// #[derive(Debug)]
+const MAX_RETURNED_ITEMS: usize = 255;
+
+lazy_static! {
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
+}
+
+#[derive(Clone)]
+struct Event {
+    id: DWORD,
+    description: &'static str,
+}
+
+struct Events {
+    available_events: HashMap<DWORD, Event>,
+    sim_start: Event,
+}
+
+enum SimCommand {
+    NewCommand(i16),
+}
+
+struct RequestModes {
+    float: DWORD,
+    string: DWORD,
+}
+
+impl RequestModes {
+    const FLOAT: DWORD = 0;
+    const STRING: DWORD = 1;
+}
+
+#[derive(Debug)]
 pub struct SimconnectHandler {
     pub(crate) simconnect: simconnect::SimConnector,
     pub(crate) input_registry: InputRegistry,
@@ -23,7 +54,7 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn start_connection(&mut self){
+    pub fn start_connection(&mut self) {
         println!("Starting connection");
         self.initialize_connection();
         loop {
@@ -32,7 +63,7 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn initialize_connection(&mut self){
+    pub fn initialize_connection(&mut self) {
         println!("Initializing connection");
         self.simconnect.connect("Bits and Droids connector");
         self.input_registry.load_inputs();
@@ -41,7 +72,79 @@ impl SimconnectHandler {
         self.output_registry.define_outputs(&mut self.simconnect);
     }
 
-    fn poll_simconnect_message_queue(&mut self){
+    fn poll_simconnect_message_queue(&mut self) {
         println!("Polling simconnect message queue");
+
+        loop {
+            match rx.try_recv() {
+                Ok(SimCommand::NewCommand(command)) => {
+                    println!("Command in thread: {}", command);
+                    conn.transmit_client_event(
+                        0,
+                        command as u32,
+                        0,
+                        simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
+                        simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
+                    );
+                }
+                Err(mpsc::TryRecvError::Empty) => (),
+                Err(mpsc::TryRecvError::Disconnected) => {
+                    println!("Disconnected");
+                    break;
+                }
+            }
+            match conn.get_next_message() {
+                Ok(simconnect::DispatchResult::SimObjectData(data)) => {
+                    match data.dwDefineID {
+                        RequestModes::FLOAT => {
+                            unsafe {
+                                let sim_data_ptr =
+                                    std::ptr::addr_of!(data.dwData) as *const DataStructContainer;
+                                let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
+                                let count = data.dwDefineCount as usize;
+                                println!("{}", count);
+                                // itterate through the array of data structs
+                                for i in 0..count {
+                                    let value = sim_data_value.data[i].value;
+                                    let prefix = sim_data_value.data[i].id;
+                                    println!("{}", prefix.to_string());
+                                    println!("{}", value);
+                                }
+                            }
+                        }
+                        RequestModes::STRING => {
+                            unsafe {
+                                println!("2 strings");
+                                let sim_data_ptr =
+                                    std::ptr::addr_of!(data.dwData) as *const StringStruct;
+                                let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
+                                //byte array to string
+                                let string = std::str::from_utf8(&sim_data_value.value).unwrap();
+                                println!("{}", string);
+                            }
+                        }
+                        0 => {
+                            println!("1");
+                        }
+                        _ => ()
+                    }
+                }
+                Ok(simconnect::DispatchResult::Event(data)) => {
+                    // handle Event variant ...
+                    let sim_data_ptr = std::ptr::addr_of!(data.dwData) as *const DWORD;
+                    println!(
+                    let sim_data_value = unsafe { std::ptr::read_unaligned(sim_data_ptr).to_string() };
+                        "EVENT {}",
+                        events
+                            .available_events
+                            .get(&sim_data_value.parse::<DWORD>().unwrap())
+                            .unwrap()
+                            .description
+                    );
+                }
+                _ => (),
+            }
+            sleep(Duration::from_millis(16));
+        }
     }
 }
