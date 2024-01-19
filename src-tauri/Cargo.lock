@@ -2837,9 +2837,8 @@ dependencies = [
 
 [[package]]
 name = "simconnect"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2a03660c96266459cc0ace6b5369d34f3c45cc0141d0dee3af3a76af5745a0d1"
+version = "0.3.1"
+source = "git+https://github.com/BitsAndDroids/simconnect-rust.git?branch=debug_struct#b97f974e65e79a45268f6e1299fbffb4aac8c941"
 dependencies = [
  "bindgen",
 ]

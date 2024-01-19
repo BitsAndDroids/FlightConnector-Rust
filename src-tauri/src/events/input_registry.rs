@@ -1,6 +1,7 @@
-use std::collections::HashMap;
-use crate::events::input::{Input};
 use crate::events::input_parser::output_parser::get_inputs_from_file;
+use std::collections::HashMap;
+
+use super::input::Input;
 
 #[derive(Debug)]
 pub struct InputRegistry {
@@ -27,6 +28,5 @@ impl InputRegistry {
     pub fn get_input(&self, input_id: i32) -> Option<&Input> {
         self.inputs.get(&input_id)
     }
-
-
 }
+

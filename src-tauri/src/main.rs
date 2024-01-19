@@ -1,26 +1,29 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use serialport::SerialPort;
+pub use serialport::SerialPort;
 
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
+
 mod events;
 
-//only import if windows
-#[cfg(target_os = "windows")]
-use simconnect;
-#[cfg(target_os = "windows")]
-use simconnect::SimConnector;
-#[cfg(target_os = "windows")]
-use simconnect::DWORD;
+lazy_static! {
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
+}
 
+enum SimCommand {
+    NewCommand(i16),
+}
+
+use lazy_static::lazy_static;
 use std::io::Read;
 use std::string::ToString;
+use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
-use serde_json::error::Category;
-use tokio::io::{self};
+
 use crate::events::output_registry;
+use tokio::io::{self};
 
 #[tauri::command]
 fn start_com_connection(app: tauri::AppHandle, port: String) {
@@ -40,7 +43,6 @@ fn start_com_connection(app: tauri::AppHandle, port: String) {
     });
 }
 
-
 #[tauri::command]
 async fn get_com_ports() -> Vec<String> {
     let ports = serialport::available_ports().expect("No ports found!");
@@ -53,14 +55,14 @@ async fn get_com_ports() -> Vec<String> {
 }
 
 #[tauri::command]
-async fn get_outputs() -> Vec<events::category::Category>{
+async fn get_outputs() -> Vec<events::category::Category> {
     println!("Getting outputs");
     let mut output_registry = output_registry::OutputRegistry::new();
     output_registry.load_outputs();
     output_registry.categories
 }
 
-async fn poll_com_port(app: tauri::AppHandle, port: String) {
+async fn poll_com_port(_app: tauri::AppHandle, port: String) {
     println!("Polling COM port");
     let mut port = serialport::new(port, 115200)
         .timeout(std::time::Duration::from_millis(7000))
@@ -85,7 +87,6 @@ async fn poll_com_port(app: tauri::AppHandle, port: String) {
         tokio::time::sleep(Duration::from_micros(10)).await;
     }
 }
-
 
 fn poll_microcontroller_for_inputs() {
     let mut port = serialport::new("COM3", 115200)
@@ -113,13 +114,13 @@ fn poll_microcontroller_for_inputs() {
 }
 
 fn main() {
-    /*  let (tx, rx) = mpsc::channel::<SimCommand>();
-     *SENDER.lock().unwrap() = Some(tx);*/
-    std::thread::spawn(move || {
+    let (tx, rx) = mpsc::channel::<SimCommand>();
+    *SENDER.lock().unwrap() = Some(tx);
+    /*  std::thread::spawn(move || {
         //if windows
         #[cfg(target_os = "windows")]
         connect_simconnect(rx);
-    });
+    });*/
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             start_com_connection,
@@ -131,3 +132,4 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
+
