@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface Props {
   category: Category,
-  toggleOutput: (outputName: string) => void,
+  toggleOutput: (output: Output) => void,
 }
 
 const OutputCategory = ({ category, toggleOutput }: Props) => {
@@ -12,17 +12,17 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [outputs, setOutputs] = useState<Output[]>(category.outputs);
 
-  function toggleOutputState(outputName: string) {
+  function toggleOutputState(output: Output) {
     // Change selected state of output
     let newOutputs = outputs.map(output => {
-      if (output.output_name === outputName) {
+      if (output.output_name === output.output_name.toLowerCase()) {
         return { ...output, selected: !output.selected }; // Returning a new object here
       }
       return output; // If not the matching output, return the original
     });
 
     setOutputs(newOutputs);
-    toggleOutput(outputName);
+    toggleOutput(output);
   }
 
 
@@ -42,7 +42,7 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
                 type="checkbox"
                 id={output.output_name}
                 name={output.output_name}
-                onChange={() => toggleOutputState(output.output_name)}
+                onChange={() => toggleOutputState(output)}
                 value={output.output_name}
                 checked={output.selected}
               />

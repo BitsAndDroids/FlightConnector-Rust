@@ -1,6 +1,7 @@
 'use client';
 import OutputCategory from "@/components/outputs/OutputCategory";
 import { Category } from "@/model/Category";
+import { Output } from "@/model/Output";
 import { invoke } from "@tauri-apps/api/tauri";
 import { useEffect, useState } from "react";
 
@@ -21,8 +22,8 @@ const OutputMenu = () => {
   }, []);
 
 
-  function toggleOutput(outputName: string) {
-    outputName = outputName.toLowerCase();
+  function toggleOutput(output: Output) {
+    let outputName = output.output_name.toLowerCase();
     let newSelectedOutputs = [...selectedOutputs]; // copy the array
     if (newSelectedOutputs.includes(outputName)) {
       newSelectedOutputs = newSelectedOutputs.filter((output) => output !== outputName);
