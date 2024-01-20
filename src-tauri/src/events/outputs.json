@@ -465,14 +465,6 @@
       "output_type": 4
     },
     {
-      "output_name": "AUTOPILOT NAV1 LOCK",
-      "metric": "Bool",
-      "update_every": 0,
-      "cb_text": "(bool) AP NAV1 lock",
-      "id": 580,
-      "output_type": 4
-    },
-    {
       "output_name": "AUTOPILOT HEADING LOCK",
       "metric": "Bool",
       "update_every": 0,
@@ -919,7 +911,7 @@
       "output_type": 4
     },
     {
-      "output_name": "STALL WARNING",
+      "output_name": "MASTER CAUTION",
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Master caution",
@@ -927,7 +919,7 @@
       "output_type": 4
     },
     {
-      "output_name": "STALL WARNING",
+      "output_name": "MASTER WARNING",
       "metric": "Bool",
       "update_every": 0,
       "cb_text": "(bool) Master warning",

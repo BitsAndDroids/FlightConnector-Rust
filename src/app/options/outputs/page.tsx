@@ -1,17 +1,38 @@
 'use client';
+import OutputCategory from "@/components/outputs/OutputCategory";
 import { Category } from "@/model/Category";
 import { invoke } from "@tauri-apps/api/tauri";
 import { useEffect, useState } from "react";
 
 const OutputMenu = () => {
-  const [categories, setCategories] = useState<Category[]>();
+  const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>())
+  const [selectedOutputs, setSelectedOutputs] = useState<string[]>([])
 
   useEffect(() => {
+
     getCategories().then((categories) => {
-      setCategories(categories);
+      let categoryMap = new Map<string, Category>();
+      for (let category of categories) {
+        categoryMap.set(category.name, category);
+      }
+      setCategories(categoryMap)
     }
     )
   }, []);
+
+
+  function toggleOutput(outputName: string) {
+    outputName = outputName.toLowerCase();
+    let newSelectedOutputs = [...selectedOutputs]; // copy the array
+    if (newSelectedOutputs.includes(outputName)) {
+      newSelectedOutputs = newSelectedOutputs.filter((output) => output !== outputName);
+    } else {
+      newSelectedOutputs.push(outputName);
+    }
+    console.log(newSelectedOutputs);
+    setSelectedOutputs(newSelectedOutputs);
+  }
+
 
   async function getCategories() {
     return invoke("get_outputs").then((r) => {
@@ -21,30 +42,20 @@ const OutputMenu = () => {
     )
   }
 
-  // Retrieve outputs from tauri
   return (
     <div>
-      <h1>Outputs</h1>
-      <div className="flex flex-row flex-wrap">
-        {categories?.map((category) => {
-          return (
-            <div className="mb-4 min-w-[250px] m-4">
-              <h2 className="text-white text-xl mb-2">{category.name}</h2>
-              {category.outputs.map((output) => {
-                return (
-                  <div>
-                    <input
-                      className="text-white"
-                      type="checkbox"
-                      id={output.output_name}
-                      name={output.output_name}
-                      value={output.output_name} />
-                    <label className="text-white ml-2" htmlFor={output.output_name}>{output.output_name.toLowerCase()}</label>
-                  </div>
-                )
-              })}
-            </div>
-          )
+      <h1 className="text-white">Outputs</h1>
+      <h2 className="text-white text-xl my-2">Selected Outputs</h2>
+      {selectedOutputs.map((output) => {
+        return <p key={output.toUpperCase()} className="text-white">{output}</p>
+      })}
+      <div className="flex flex-col flex-wrap max-h-[550px]">
+        {/* {categories?.map((category) => { */}
+        {/*   return OutputCategory({ category }); */}
+        {/* }) */}
+        {/* } */}
+        {[...categories?.keys()].map((key) => {
+          return <OutputCategory key={key} category={categories?.get(key) as Category} toggleOutput={toggleOutput} />
         })
         }
       </div>

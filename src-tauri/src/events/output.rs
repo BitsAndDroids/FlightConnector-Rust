@@ -14,5 +14,6 @@ pub struct Output {
 pub enum OutputType {
     String = 0,
     Integer = 1,
-    Bool = 2,
+    Float = 2,
+    Bool = 3,
 }
