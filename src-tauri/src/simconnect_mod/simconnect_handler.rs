@@ -2,6 +2,7 @@ use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
 use crate::events::output::Output;
 use crate::events::output_registry::OutputRegistry;
+use crate::events::SimCommand;
 use lazy_static::lazy_static;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
@@ -15,7 +16,8 @@ use std::time::Duration;
 const MAX_RETURNED_ITEMS: usize = 255;
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand::SimCommand>>>> =
+        Arc::new(Mutex::new(None));
 }
 
 #[derive(Clone)]
@@ -62,10 +64,6 @@ struct DataStructContainer {
     data: [DataStruct; MAX_RETURNED_ITEMS],
 }
 
-enum SimCommand {
-    NewCommand(i16),
-}
-
 struct RequestModes {
     float: DWORD,
     string: DWORD,
@@ -81,7 +79,7 @@ pub struct SimconnectHandler {
     pub(crate) simconnect: simconnect::SimConnector,
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
-    pub(crate) rx: mpsc::Receiver<SimCommand>,
+    pub(crate) rx: mpsc::Receiver<SimCommand::SimCommand>,
     POLLING_INTERVAL: u8,
 }
 
@@ -92,7 +90,7 @@ struct Payload {
 }
 
 impl SimconnectHandler {
-    pub fn new(rx: mpsc::Receiver<SimCommand>) -> Self {
+    pub fn new(rx: mpsc::Receiver<SimCommand::SimCommand>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -170,7 +168,7 @@ impl SimconnectHandler {
         let events = Events::new();
         loop {
             match self.rx.try_recv() {
-                Ok(SimCommand::NewCommand(command)) => {
+                Ok(SimCommand::SimCommand::NewCommand(command)) => {
                     println!("Command in thread: {}", command);
                     self.simconnect.transmit_client_event(
                         0,
@@ -200,7 +198,7 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    println!("{}", prefix.to_string());
+                                    println!("{}", prefix);
                                     println!("{}", value);
                                 }
                             }

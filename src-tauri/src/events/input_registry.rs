@@ -29,4 +29,3 @@ impl InputRegistry {
         self.inputs.get(&input_id)
     }
 }
-

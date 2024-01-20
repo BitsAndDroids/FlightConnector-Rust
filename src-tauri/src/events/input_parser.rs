@@ -1,5 +1,5 @@
 pub mod output_parser {
-    use crate::events::input::{Input};
+    use crate::events::input::Input;
 
     pub fn get_inputs_from_file(path: &str) -> Vec<Input> {
         let file = std::fs::File::open(&path)
