@@ -12,17 +12,17 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [outputs, setOutputs] = useState<Output[]>(category.outputs);
 
-  function toggleOutputState(output: Output) {
+  function toggleOutputState(outputChanged: Output) {
     // Change selected state of output
     let newOutputs = outputs.map(output => {
-      if (output.output_name === output.output_name.toLowerCase()) {
+      if (output.output_name === outputChanged.output_name) {
         return { ...output, selected: !output.selected }; // Returning a new object here
       }
       return output; // If not the matching output, return the original
     });
 
     setOutputs(newOutputs);
-    toggleOutput(output);
+    toggleOutput(outputChanged);
   }
 
 
