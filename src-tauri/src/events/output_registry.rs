@@ -1,11 +1,11 @@
 use crate::events::category::Category;
-use crate::events::output::Output;
 use crate::events::output_parser::output_parser;
-use crate::RequestModes;
+
+use super::output::Output;
 
 #[derive(Debug)]
 pub struct OutputRegistry {
-    pub(crate) categories:  Vec<Category>,
+    pub categories: Vec<Category>,
     pub outputs: Vec<Output>,
     output_path: String,
 }
@@ -30,7 +30,7 @@ impl OutputRegistry {
     pub fn get_categories() -> Vec<Category> {
         output_parser::get_categories_from_file("src/events/outputs.json")
     }
-    
+
     pub fn get_category(&self, category_name: &str) -> Option<&Category> {
         for category in &self.categories {
             if category.name == category_name {
@@ -39,8 +39,8 @@ impl OutputRegistry {
         }
         None
     }
-    
-    pub fn get_output_by_id(&self, output_id: u32) -> Option<&Output>{
+
+    pub fn get_output_by_id(&self, output_id: u32) -> Option<&Output> {
         for output in &self.outputs {
             if output.id == output_id {
                 return Some(output);
@@ -49,17 +49,8 @@ impl OutputRegistry {
         None
     }
 
-    pub fn define_outputs(&self, conn: &mut simconnect::SimConnector) {
-        for output in &self.outputs {
-            conn.add_data_definition(
-                RequestModes::FLOAT,
-                &*output.output_name,
-                &*output.metric,
-                simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                output.id,
-                output.update_every,
-            );
-            println!("Output: {:?}", output);
-        }
+    pub fn get_outputs(&self) -> &Vec<Output> {
+        &self.outputs
     }
 }
+
