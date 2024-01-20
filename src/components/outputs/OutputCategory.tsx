@@ -27,9 +27,9 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
 
 
   return (
-    <>
+    <div className="">
       <div className="flex flex-row">
-        <h2 className="text-white text-xl my-2">{category.name}</h2>
+        <h2 className="text-white text-xl mb-2">{category.name}</h2>
         <button type="button" className="text-white rounded-m ml-4 text-sm" onClick={() => setCollapsed(!collapsed)}>{collapsed ? "Show" : "Hide"}</button>
       </div>
       {!collapsed &&
@@ -53,7 +53,7 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
         })
       }
       ) : <></>
-    </>
+    </div>
   )
 
 };

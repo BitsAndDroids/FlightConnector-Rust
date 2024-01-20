@@ -46,15 +46,20 @@ const OutputMenu = () => {
   return (
     <div>
       <h1 className="text-white">Outputs</h1>
-      <h2 className="text-white text-xl my-2">Selected Outputs</h2>
-      {selectedOutputs.map((output) => {
-        return <p key={output.toUpperCase()} className="text-white">{output}</p>
-      })}
+      <div className="flex flex-row">
+        <div className="flex flex-col h-60 w-60 bg-gray-800 rounded-md mr-2 p-4">
+          <h2 className="text-white my-2 font-bold text-xl">Available sets</h2>
+        </div>
+        <div className="bg-gray-800 p-4 rounded-md">
+          <h2 className="text-white text-xl my-2 font-bold">Selected Outputs</h2>
+          <div className="h-60 max-h-60 mb-4 flex flex-col flex-wrap">
+            {selectedOutputs.map((output) => {
+              return <p key={output.toUpperCase()} className="text-white mr-4">{output}</p>
+            })}
+          </div>
+        </div>
+      </div>
       <div className="flex flex-col flex-wrap max-h-[550px]">
-        {/* {categories?.map((category) => { */}
-        {/*   return OutputCategory({ category }); */}
-        {/* }) */}
-        {/* } */}
         {[...categories?.keys()].map((key) => {
           return <OutputCategory key={key} category={categories?.get(key) as Category} toggleOutput={toggleOutput} />
         })
