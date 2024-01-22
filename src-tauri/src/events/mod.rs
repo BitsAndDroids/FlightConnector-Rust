@@ -1,4 +1,4 @@
-pub mod SimCommand;
+pub mod sim_command;
 pub(crate) mod category;
 pub mod input;
 pub mod input_parser;

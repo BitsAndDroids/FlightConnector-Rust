@@ -9,7 +9,7 @@ mod simconnect_mod;
 mod events;
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand::SimCommand>>>> =
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<sim_command::SimCommand>>>> =
         Arc::new(Mutex::new(None));
 }
 
@@ -19,7 +19,7 @@ use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
 
-use crate::events::{output_registry, SimCommand};
+use crate::events::{output_registry, sim_command};
 use tokio::io::{self};
 
 #[tauri::command]

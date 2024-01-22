@@ -1,4 +1,5 @@
 'use client';
+import TabFolders from "@/components/TabFolders";
 import OutputCategory from "@/components/outputs/OutputCategory";
 import { Category } from "@/model/Category";
 import { Output } from "@/model/Output";
@@ -6,11 +7,11 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { useEffect, useState } from "react";
 
 const OutputMenu = () => {
-  const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>())
-  const [selectedOutputs, setSelectedOutputs] = useState<string[]>([])
+  const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>());
+  const [selectedOutputs, setSelectedOutputs] = useState<string[]>([]);
+  const [bundle, setBundle] = useState<string>("Placeholder");
 
   useEffect(() => {
-
     getCategories().then((categories) => {
       let categoryMap = new Map<string, Category>();
       for (let category of categories) {
@@ -21,8 +22,7 @@ const OutputMenu = () => {
     )
   }, []);
 
-
-  function toggleOutput(output: Output) {
+  function toggleOutput(output: Output, categoryName: string) {
     let outputName = output.output_name.toLowerCase();
     let newSelectedOutputs = [...selectedOutputs]; // copy the array
     if (newSelectedOutputs.includes(outputName)) {
@@ -30,39 +30,30 @@ const OutputMenu = () => {
     } else {
       newSelectedOutputs.push(outputName);
     }
-    console.log(newSelectedOutputs);
+    let categoryChanged = categories.get(categoryName);
+    categoryChanged!.outputs.find((output) => output.output_name.toLowerCase() === outputName)!.selected = !output.selected;
+    setCategories(new Map(categories.set(categoryName, categoryChanged!)));
     setSelectedOutputs(newSelectedOutputs);
   }
 
-
   async function getCategories() {
     return invoke("get_outputs").then((r) => {
-      console.log(r);
       return r as Category[];
     }
     )
   }
 
   return (
-    <div>
-      <h1 className="text-white">Outputs</h1>
-      <div className="flex flex-row">
+    <div className="flex flex-row">
+      <div className="flex flex-row mt-12">
         <div className="flex flex-col h-60 w-60 bg-gray-800 rounded-md mr-2 p-4">
           <h2 className="text-white my-2 font-bold text-xl">Available sets</h2>
         </div>
-        <div className="bg-gray-800 p-4 rounded-md">
-          <h2 className="text-white text-xl my-2 font-bold">Selected Outputs</h2>
-          <div className="h-60 max-h-60 mb-4 flex flex-col flex-wrap">
-            {selectedOutputs.map((output) => {
-              return <p key={output.toUpperCase()} className="text-white mr-4">{output}</p>
-            })}
-          </div>
-        </div>
       </div>
-      <div className="flex flex-col flex-wrap max-h-[550px]">
-        {[...categories?.keys()].map((key) => {
-          return <OutputCategory key={key} category={categories?.get(key) as Category} toggleOutput={toggleOutput} />
-        })
+      <div className="w-[800px]">
+        <h2 className="text-white text-4xl font-bold pl-2">Editing: {bundle}</h2>
+        {categories.size > 0 &&
+          <TabFolders categories={categories} toggleOutput={toggleOutput} />
         }
       </div>
     </div>

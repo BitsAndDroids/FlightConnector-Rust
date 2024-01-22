@@ -37,8 +37,8 @@ function App() {
         <div className={"flex flex-col"}>
           <div className={"flex flex-row"}>
             <button type="button"
-              className={"rounded-md bg-green-900 text-white text-sm font-semibold px-3.5 py-2.5 m-2"}>Add
-              row
+              className={"rounded-md bg-green-900 text-white text-sm font-semibold px-3.5 py-2.5 m-2"}>
+              Add row
             </button>
             <button type="submit"
               className={"rounded-md bg-indigo-500 px-3.5 py-2.5 m-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"}>Start

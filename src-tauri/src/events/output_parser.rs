@@ -20,6 +20,8 @@ pub mod output_parser {
                 outputs: output_vec,
             });
         }
+        //sort categories by name
+        category_vec.sort_by(|a, b| a.name.cmp(&b.name));
         category_vec
     }
 }
