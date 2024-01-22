@@ -1,6 +1,6 @@
 'use client';
 import TabFolders from "@/components/TabFolders";
-import OutputCategory from "@/components/outputs/OutputCategory";
+import { Bundle } from "@/model/Bundle";
 import { Category } from "@/model/Category";
 import { Output } from "@/model/Output";
 import { invoke } from "@tauri-apps/api/tauri";
@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const OutputMenu = () => {
   const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>());
   const [selectedOutputs, setSelectedOutputs] = useState<string[]>([]);
-  const [bundle, setBundle] = useState<string>("Placeholder");
+  const [bundles, setBundles] = useState<Bundle[]>([{ name: "Placeholder", version: "1", outputs: [] }])
 
   useEffect(() => {
     getCategories().then((categories) => {
@@ -18,6 +18,9 @@ const OutputMenu = () => {
         categoryMap.set(category.name, category);
       }
       setCategories(categoryMap)
+    });
+    getBundles().then((bundles) => {
+      setBundles(bundles);
     }
     )
   }, []);
@@ -43,6 +46,13 @@ const OutputMenu = () => {
     )
   }
 
+  async function getBundles() {
+    return invoke("get_bundles").then((r) => {
+      return r as Bundle[];
+    }
+    )
+  }
+
   return (
     <div className="flex flex-row">
       <div className="flex flex-row mt-12">
@@ -51,7 +61,7 @@ const OutputMenu = () => {
         </div>
       </div>
       <div className="w-[800px]">
-        <h2 className="text-white text-4xl font-bold pl-2">Editing: {bundle}</h2>
+        <h2 className="text-white text-4xl font-bold pl-2">editing: {bundles[0].name}</h2>
         {categories.size > 0 &&
           <TabFolders categories={categories} toggleOutput={toggleOutput} />
         }

@@ -7,6 +7,7 @@ pub use serialport::SerialPort;
 mod simconnect_mod;
 
 mod events;
+mod user_settings;
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<sim_command::SimCommand>>>> =
