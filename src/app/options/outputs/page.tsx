@@ -1,16 +1,20 @@
 'use client';
 import TabFolders from "@/components/TabFolders";
+import BundleEditWidget from "@/components/bundle/BundleEditWidget";
 import { Bundle } from "@/model/Bundle";
 import { Category } from "@/model/Category";
 import { Output } from "@/model/Output";
+import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
 import { invoke } from "@tauri-apps/api/tauri";
 import { useEffect, useState } from "react";
 
 const OutputMenu = () => {
   const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>());
   const [selectedOutputs, setSelectedOutputs] = useState<string[]>([]);
-  const [bundles, setBundles] = useState<Bundle[]>([{ name: "Placeholder", version: "1", outputs: [] }])
+  const defaultBundle: Bundle = { name: "Placeholder", version: 1, outputs: [] };
+  const [bundles, setBundles] = useState<Bundle[]>([])
 
+  const bundleSettingsHandler = new BundleSettingsHander();
   useEffect(() => {
     getCategories().then((categories) => {
       let categoryMap = new Map<string, Category>();
@@ -47,21 +51,15 @@ const OutputMenu = () => {
   }
 
   async function getBundles() {
-    return invoke("get_bundles").then((r) => {
-      return r as Bundle[];
-    }
-    )
+    return await bundleSettingsHandler.getBundleSettings() as Bundle[];
   }
 
   return (
     <div className="flex flex-row">
-      <div className="flex flex-row mt-12">
-        <div className="flex flex-col h-60 w-60 bg-gray-800 rounded-md mr-2 p-4">
-          <h2 className="text-white my-2 font-bold text-xl">Available sets</h2>
-        </div>
-      </div>
+      <button className="bg-gray-800 rounded-md p-2 m-2 text-white" onClick={() => bundleSettingsHandler.addBundleSettings(defaultBundle)}>Add Bundle</button>
+      <BundleEditWidget bundles={bundles} />
       <div className="w-[800px]">
-        <h2 className="text-white text-4xl font-bold pl-2">editing: {bundles[0].name}</h2>
+        <h2 className="text-white text-4xl font-bold pl-2">editing: {bundles.length > 0 && bundles[0].name}</h2>
         {categories.size > 0 &&
           <TabFolders categories={categories} toggleOutput={toggleOutput} />
         }

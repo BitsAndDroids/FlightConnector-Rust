@@ -2,6 +2,6 @@ import { Output } from "./Output";
 
 export interface Bundle {
   name: string;
-  version: string;
+  version: number;
   outputs: Output[];
 }
