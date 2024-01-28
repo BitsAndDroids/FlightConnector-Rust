@@ -28,7 +28,7 @@ const TabFolders = ({ categories, toggleOutput }: TabFoldersProps) => {
           })
         }
       </div>
-      <div className="flex flex-col h-[550px] rounded-b-lg rounded-tr-lg flex-wrap max-h-[550px] bg-white z-[200] relative p-2">
+      <div className="flex flex-col h-[550px] rounded-b-lg rounded-tr-lg flex-wrap max-h-[550px] bg-white z-40 relative p-2">
         <CategoryCheckboxes category={categories.get(activeTab)!} toggleOutput={toggleOutput} />
       </div>
     </div >);

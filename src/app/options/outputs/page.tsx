@@ -1,4 +1,5 @@
 'use client';
+import InputDialog from "@/components/InputDialog";
 import TabFolders from "@/components/TabFolders";
 import BundleEditWidget from "@/components/bundle/BundleEditWidget";
 import { Bundle } from "@/model/Bundle";
@@ -54,7 +55,8 @@ const OutputMenu = () => {
     return await bundleSettingsHandler.getBundleSettings() as Bundle[];
   }
 
-  return (
+  return (<>
+    <InputDialog message="Add Bundle" input_hint="Bundle Name" onConfirm={(input) => bundleSettingsHandler.addBundleSettings({ name: input, version: 1, outputs: [] })} />
     <div className="flex flex-row">
       <button className="bg-gray-800 rounded-md p-2 m-2 text-white" onClick={() => bundleSettingsHandler.addBundleSettings(defaultBundle)}>Add Bundle</button>
       <BundleEditWidget bundles={bundles} />
@@ -65,6 +67,7 @@ const OutputMenu = () => {
         }
       </div>
     </div>
+  </>
   )
 }
 
