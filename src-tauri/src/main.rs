@@ -114,6 +114,7 @@ fn start_simconnect_connection() {
     let (tx, rx) = mpsc::channel();
     #[cfg(target_os = "windows")]
     let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
+    #[cfg(target_os = "windows")]
     simconnect_handler.start_connection();
     *SENDER.lock().unwrap() = Some(tx);
 }
@@ -137,4 +138,3 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import InputDialog from "@/components/InputDialog";
 import TabFolders from "@/components/TabFolders";
 import BundleEditWidget from "@/components/bundle/BundleEditWidget";
@@ -11,9 +11,11 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { useEffect, useState } from "react";
 
 const OutputMenu = () => {
-  const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>());
-  const [selectedOutputs, setSelectedOutputs] = useState<string[]>([]);
-  const [bundles, setBundles] = useState<Bundle[]>([])
+  const [categories, setCategories] = useState<Map<string, Category>>(
+    new Map<string, Category>(),
+  );
+  const [selectedOutputs, setSelectedOutputs] = useState<Output[]>([]);
+  const [bundles, setBundles] = useState<Bundle[]>([]);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const bundleSettingsHandler = new BundleSettingsHander();
@@ -23,24 +25,27 @@ const OutputMenu = () => {
       for (let category of categories) {
         categoryMap.set(category.name, category);
       }
-      setCategories(categoryMap)
+      setCategories(categoryMap);
     });
     getBundles().then((bundles) => {
       setBundles(bundles);
-    }
-    )
+    });
   }, []);
 
   function toggleOutput(output: Output, categoryName: string) {
-    let outputName = output.output_name.toLowerCase();
     let newSelectedOutputs = [...selectedOutputs]; // copy the array
-    if (newSelectedOutputs.includes(outputName)) {
-      newSelectedOutputs = newSelectedOutputs.filter((output) => output !== outputName);
+    if (newSelectedOutputs.includes(output)) {
+      newSelectedOutputs = newSelectedOutputs.filter(
+        (output) => output !== output,
+      );
     } else {
-      newSelectedOutputs.push(outputName);
+      newSelectedOutputs.push(output);
     }
     let categoryChanged = categories.get(categoryName);
-    categoryChanged!.outputs.find((output) => output.output_name.toLowerCase() === outputName)!.selected = !output.selected;
+    categoryChanged!.outputs.find(
+      (output) =>
+        output.output_name.toLowerCase() === output.output_name.toLowerCase(),
+    )!.selected = !output.selected;
     setCategories(new Map(categories.set(categoryName, categoryChanged!)));
     setSelectedOutputs(newSelectedOutputs);
   }
@@ -48,34 +53,60 @@ const OutputMenu = () => {
   async function getCategories() {
     return invoke("get_outputs").then((r) => {
       return r as Category[];
-    }
-    )
+    });
   }
 
   async function getBundles() {
-    return await bundleSettingsHandler.getBundleSettings() as Bundle[];
+    return (await bundleSettingsHandler.getBundleSettings()) as Bundle[];
   }
 
   function dialogResult(input: string | undefined) {
     if (input !== undefined) {
-      bundleSettingsHandler.addBundleSettings({ name: input, version: 1, outputs: [] });
+      const bundle: Bundle = {
+        name: input,
+        version: 1,
+        outputs: [],
+      };
+      bundleSettingsHandler.addBundleSettings(bundle);
+      setBundles([...bundles, bundle]);
     }
     setDialogOpen(false);
   }
 
-  return (<>
-    {dialogOpen && <InputDialog message="Enter a descriptive bundle name" placeholder="Bundle Name" InfoWindow={<BundleInfo />} onConfirm={dialogResult} />}
-    <div className="flex flex-row relative z-0">
-      <BundleEditWidget bundles={bundles} setDialogOpen={setDialogOpen} />
-      <div className="w-[800px] relative">
-        <h2 className="text-white text-4xl font-bold pl-2">editing: {bundles.length > 0 && bundles[0].name}</h2>
-        {categories.size > 0 &&
-          <TabFolders categories={categories} toggleOutput={toggleOutput} />
-        }
+  return (
+    <>
+      {dialogOpen && (
+        <InputDialog
+          message="Enter a descriptive bundle name"
+          placeholder="Bundle Name"
+          InfoWindow={<BundleInfo />}
+          onConfirm={dialogResult}
+        />
+      )}
+      <div
+        className="flex flex-row relative z-0"
+        tabIndex={dialogOpen ? -1 : 1}
+      >
+        <BundleEditWidget
+          bundles={bundles}
+          tabIndex={dialogOpen ? -1 : 1}
+          setDialogOpen={setDialogOpen}
+        />
+        <div className="w-[800px] relative">
+          <h2 className="text-white text-4xl font-bold pl-2">
+            editing: {bundles.length > 0 && bundles[0].name}
+          </h2>
+          {categories.size > 0 && (
+            <TabFolders
+              categories={categories}
+              toggleOutput={toggleOutput}
+              dialogOpen={dialogOpen}
+            />
+          )}
+        </div>
       </div>
-    </div>
-  </>
-  )
-}
+    </>
+  );
+};
 
 export default OutputMenu;

@@ -6,7 +6,7 @@ interface InfoWindowProps {
 const InfoWindow = (props: InfoWindowProps) => {
   return (
     <div className="group relative">
-      <div className="" tabIndex={0}>
+      <div className="">
         <Image src={info_icon} alt="info" height={30} />
       </div>
       <div className="hidden group-hover:flex flex-col justify-center items-center absolute z-50 top-[-45px] right-[-330px] p-4 rounded-md bg-white drop-shadow w-80">
@@ -14,5 +14,5 @@ const InfoWindow = (props: InfoWindowProps) => {
       </div>
     </div>
   );
-}
+};
 export default InfoWindow;
