@@ -6,12 +6,11 @@ const OptionsLayout = ({
   children: React.ReactNode
 }) => {
   return (
-    <div className={''}>
+    <div className={'m-8'}>
       <div>
         <Link href={'/'} className={"text-white"}>Back</Link>
       </div>
-      <div className="m-8">
-        {children}</div>
+      {children}
     </div>
   );
 }

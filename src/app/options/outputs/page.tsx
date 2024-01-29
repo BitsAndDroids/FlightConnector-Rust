@@ -1,7 +1,9 @@
 'use client';
+import InfoWindow from "@/components/InfoWindow";
 import InputDialog from "@/components/InputDialog";
 import TabFolders from "@/components/TabFolders";
 import BundleEditWidget from "@/components/bundle/BundleEditWidget";
+import BundleInfo from "@/info_blocks/BundleInfo";
 import { Bundle } from "@/model/Bundle";
 import { Category } from "@/model/Category";
 import { Output } from "@/model/Output";
@@ -14,6 +16,7 @@ const OutputMenu = () => {
   const [selectedOutputs, setSelectedOutputs] = useState<string[]>([]);
   const defaultBundle: Bundle = { name: "Placeholder", version: 1, outputs: [] };
   const [bundles, setBundles] = useState<Bundle[]>([])
+  const [dialogOpen, setDialogOpen] = useState<boolean>(true);
 
   const bundleSettingsHandler = new BundleSettingsHander();
   useEffect(() => {
@@ -55,11 +58,21 @@ const OutputMenu = () => {
     return await bundleSettingsHandler.getBundleSettings() as Bundle[];
   }
 
+  function dialogResult(input: string | undefined) {
+    if (input !== undefined) {
+      bundleSettingsHandler.addBundleSettings({ name: input, version: 1, outputs: [] });
+    }
+    setDialogOpen(false);
+  }
+
   return (<>
-    <InputDialog message="Add Bundle" input_hint="Bundle Name" onConfirm={(input) => bundleSettingsHandler.addBundleSettings({ name: input, version: 1, outputs: [] })} />
+    {dialogOpen && <InputDialog message="Enter a descriptive bundle name" placeholder="Bundle Name" InfoWindow={<BundleInfo />} onConfirm={dialogResult} />}j
     <div className="flex flex-row">
-      <button className="bg-gray-800 rounded-md p-2 m-2 text-white" onClick={() => bundleSettingsHandler.addBundleSettings(defaultBundle)}>Add Bundle</button>
-      <BundleEditWidget bundles={bundles} />
+      <button className="bg-gray-800 rounded-md p-2 m-2 text-white" onClick={() => {
+        setDialogOpen(true);
+        console.log(dialogOpen);
+      }}>Add Bundle</button>
+      <BundleEditWidget bundles={bundles} setDialogOpen={setDialogOpen} />
       <div className="w-[800px]">
         <h2 className="text-white text-4xl font-bold pl-2">editing: {bundles.length > 0 && bundles[0].name}</h2>
         {categories.size > 0 &&
