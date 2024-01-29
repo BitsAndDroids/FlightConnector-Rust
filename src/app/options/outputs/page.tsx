@@ -14,7 +14,7 @@ const OutputMenu = () => {
   const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>());
   const [selectedOutputs, setSelectedOutputs] = useState<string[]>([]);
   const [bundles, setBundles] = useState<Bundle[]>([])
-  const [dialogOpen, setDialogOpen] = useState<boolean>(true);
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const bundleSettingsHandler = new BundleSettingsHander();
   useEffect(() => {
