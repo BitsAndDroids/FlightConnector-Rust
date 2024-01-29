@@ -8,7 +8,7 @@ interface CategoryCheckboxesProps {
 
 const CategoryCheckboxes = ({ category, toggleOutput }: CategoryCheckboxesProps) => {
   return (
-    <div className="flex flex-col flex-wrap h-full w-full">
+    <div className="flex flex-col flex-wrap h-full w-full relative">
       {category.outputs.map((output) => {
         return <div key={output.output_name} className="flex flex-row items-center">
           <input type="checkbox" className="mr-2"

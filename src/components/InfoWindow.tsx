@@ -5,11 +5,11 @@ interface InfoWindowProps {
 }
 const InfoWindow = (props: InfoWindowProps) => {
   return (
-    <div className="group relative z-0">
-      <div className="">
+    <div className="group relative">
+      <div className="" tabIndex={0}>
         <Image src={info_icon} alt="info" height={30} />
       </div>
-      <div className="hidden group-hover:flex flex-col justify-center items-center absolute top-[-45px] right-[-380px] p-4 rounded-md bg-white drop-shadow w-80">
+      <div className="hidden group-hover:flex flex-col justify-center items-center absolute z-50 top-[-45px] right-[-330px] p-4 rounded-md bg-white drop-shadow w-80">
         <label className="rounded-md mx-2 text-center">{props.message}</label>
       </div>
     </div>

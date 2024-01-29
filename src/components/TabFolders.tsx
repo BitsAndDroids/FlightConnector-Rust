@@ -18,8 +18,8 @@ const TabFolders = ({ categories, toggleOutput }: TabFoldersProps) => {
   }
 
   return (
-    <div className="m-2">
-      <div className="flex flex-row justify-start mb-[-2px]">
+    <div className="m-2 relative">
+      <div className="flex flex-row justify-start mb-[-2px] relative">
         {
           categories &&
           [...categories?.keys()].map((key) => {

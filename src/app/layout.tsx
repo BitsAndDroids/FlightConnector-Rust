@@ -50,7 +50,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={"w-[100vw] h-[100vh] flex flex-col bg-black overflow-x-hidden overflow-hidden"}>
+      <body className={"w-[100vw] h-[100vh] flex flex-col bg-bitsanddroids-blue overflow-x-hidden overflow-hidden"}>
         <div className=" bg-bitsanddroids-blue mt-7 flex flex-row align-middle justify-start h-fit">
           <nav className={"text-white ml-4 bg-bitsanddroids-blue h-8"}>
             <MenuItem text={"Settings"} href={"/options/settings"} />

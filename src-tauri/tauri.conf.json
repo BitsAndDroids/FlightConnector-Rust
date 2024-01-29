@@ -56,8 +56,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "Bits and Droids Connector",
-        "width": 800,
-        "height": 600,
+        "width": 1200,
+        "height": 850,
         "label": "bits-and-droids-connector",
         "decorations": false
       }

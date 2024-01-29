@@ -1,5 +1,4 @@
 'use client';
-import InfoWindow from "@/components/InfoWindow";
 import InputDialog from "@/components/InputDialog";
 import TabFolders from "@/components/TabFolders";
 import BundleEditWidget from "@/components/bundle/BundleEditWidget";
@@ -14,7 +13,6 @@ import { useEffect, useState } from "react";
 const OutputMenu = () => {
   const [categories, setCategories] = useState<Map<string, Category>>(new Map<string, Category>());
   const [selectedOutputs, setSelectedOutputs] = useState<string[]>([]);
-  const defaultBundle: Bundle = { name: "Placeholder", version: 1, outputs: [] };
   const [bundles, setBundles] = useState<Bundle[]>([])
   const [dialogOpen, setDialogOpen] = useState<boolean>(true);
 
@@ -66,14 +64,10 @@ const OutputMenu = () => {
   }
 
   return (<>
-    {dialogOpen && <InputDialog message="Enter a descriptive bundle name" placeholder="Bundle Name" InfoWindow={<BundleInfo />} onConfirm={dialogResult} />}j
-    <div className="flex flex-row">
-      <button className="bg-gray-800 rounded-md p-2 m-2 text-white" onClick={() => {
-        setDialogOpen(true);
-        console.log(dialogOpen);
-      }}>Add Bundle</button>
+    {dialogOpen && <InputDialog message="Enter a descriptive bundle name" placeholder="Bundle Name" InfoWindow={<BundleInfo />} onConfirm={dialogResult} />}
+    <div className="flex flex-row relative z-0">
       <BundleEditWidget bundles={bundles} setDialogOpen={setDialogOpen} />
-      <div className="w-[800px]">
+      <div className="w-[800px] relative">
         <h2 className="text-white text-4xl font-bold pl-2">editing: {bundles.length > 0 && bundles[0].name}</h2>
         {categories.size > 0 &&
           <TabFolders categories={categories} toggleOutput={toggleOutput} />
