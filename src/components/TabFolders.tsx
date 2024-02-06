@@ -4,14 +4,17 @@ import TabHeader from "./TabHeader";
 import { useState } from "react";
 import CategoryCheckboxes from "./CategoryCheckboxes";
 import { Output } from "@/model/Output";
+import { Bundle } from "@/model/Bundle";
 
 interface TabFoldersProps {
+  bundle?: Bundle;
   categories: Map<string, Category>;
   dialogOpen: boolean;
   toggleOutput: (output: Output, categoryName: string) => void;
 }
 
 const TabFolders = ({
+  bundle,
   categories,
   dialogOpen,
   toggleOutput,

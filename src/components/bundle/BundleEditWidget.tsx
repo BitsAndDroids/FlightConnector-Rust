@@ -7,11 +7,15 @@ interface BundleEditWidgetProps {
   bundles: Bundle[];
   tabIndex: number;
   setDialogOpen: (open: boolean) => void;
+  setSelectedBundle: (bundle: Bundle) => void;
+  setEditBundle: (bundle: Bundle) => void;
 }
 const BundleEditWidget = ({
   bundles,
   tabIndex,
   setDialogOpen,
+  setSelectedBundle,
+  setEditBundle,
 }: BundleEditWidgetProps) => {
   return (
     <div className="flex flex-row mt-12 z-50 relative">
@@ -31,7 +35,14 @@ const BundleEditWidget = ({
         </div>
         {bundles.length > 0 &&
           bundles.map((bundle) => {
-            return <BundleRow bundle={bundle} key={bundle.name} />;
+            return (
+              <BundleRow
+                bundle={bundle}
+                key={bundle.name}
+                setSelectedBundle={setSelectedBundle}
+                setEditBundle={setEditBundle}
+              />
+            );
           })}
       </div>
     </div>

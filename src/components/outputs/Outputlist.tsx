@@ -6,8 +6,8 @@ interface OutputListProps {
 
 const OutputList = ({ bundle }: OutputListProps) => {
   return (
-    <div>
-      <h1>{bundle.name}</h1>
+    <div className="rounded-md bg-white p-4 mt-12">
+      <h1 className="mt-2 font-bold text-lg">{bundle.name}</h1>
       <div className="flex flex-col">
         {bundle.outputs.map((output) => {
           return (

@@ -1,8 +1,5 @@
-#[cfg(any(windows, target_os = "windows"))]
+#[cfg(target_os = "windows")]
 use window_shadows::set_shadow;
-
-#[cfg(any(windows, target_os = "windows"))]
-set_shadow(&window, true).unwrap();
 
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #[cfg(any(windows, target_os = "windows"))]
@@ -140,8 +137,14 @@ fn main() {
             start_simconnect_connection,
             /*send_command*/
         ])
-        .setup(|_app| Ok(()))
+        .setup(|app| {
+            #[cfg(target_os = "windows")]
+            let window = app.get_window("main").unwrap();
+
+            #[cfg(target_os = "windows")]
+            set_shadow(&window, true).expect("Unsupported platform!");
+            Ok(())
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-

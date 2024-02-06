@@ -12,6 +12,8 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { useEffect, useState } from "react";
 
 const OutputMenu = () => {
+  const [editBundle, setEditBundle] = useState<Bundle | undefined>(undefined); // [1
+  const [editMode, setEditMode] = useState<boolean>(false);
   const [categories, setCategories] = useState<Map<string, Category>>(
     new Map<string, Category>(),
   );
@@ -50,6 +52,11 @@ const OutputMenu = () => {
     )!.selected = !output.selected;
     setCategories(new Map(categories.set(categoryName, categoryChanged!)));
     setSelectedOutputs(newSelectedOutputs);
+  }
+
+  async function setEditState(bundle: Bundle) {
+    setEditMode(true);
+    setEditBundle(bundle);
   }
 
   async function getCategories() {
@@ -93,14 +100,21 @@ const OutputMenu = () => {
           bundles={bundles}
           tabIndex={dialogOpen ? -1 : 1}
           setDialogOpen={setDialogOpen}
+          setSelectedBundle={setSelectedBundle}
+          setEditBundle={setEditState}
         />
         <div className="w-[800px] relative">
-          <h2 className="text-white text-4xl font-bold pl-2">
-            editing: {bundles.length > 0 && bundles[0].name}
-          </h2>
-          {selectedBundle && <OutputList bundle={selectedBundle} />}
-          {categories.size > 0 && (
+          {!editMode && selectedBundle && (
+            <OutputList bundle={selectedBundle} />
+          )}
+          {editMode && (
+            <h2 className="text-white text-4xl font-bold pl-2">
+              editing: {bundles.length > 0 && bundles[0].name}
+            </h2>
+          )}
+          {editMode && categories.size > 0 && (
             <TabFolders
+              bundle={editBundle}
               categories={categories}
               toggleOutput={toggleOutput}
               dialogOpen={dialogOpen}
