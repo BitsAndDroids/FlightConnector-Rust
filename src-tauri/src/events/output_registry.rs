@@ -1,7 +1,6 @@
 use crate::events::category::Category;
-use crate::events::output_parser::output_parser;
 
-use super::output::Output;
+use super::{output::Output, output_parser};
 
 #[derive(Debug)]
 pub struct OutputRegistry {
@@ -32,21 +31,13 @@ impl OutputRegistry {
     }
 
     pub fn get_category(&self, category_name: &str) -> Option<&Category> {
-        for category in &self.categories {
-            if category.name == category_name {
-                return Some(category);
-            }
-        }
-        None
+        self.categories
+            .iter()
+            .find(|&category| category.name == category_name)
     }
 
     pub fn get_output_by_id(&self, output_id: u32) -> Option<&Output> {
-        for output in &self.outputs {
-            if output.id == output_id {
-                return Some(output);
-            }
-        }
-        None
+        self.outputs.iter().find(|&output| output.id == output_id)
     }
 
     pub fn get_outputs(&self) -> &Vec<Output> {

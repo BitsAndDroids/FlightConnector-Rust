@@ -1,5 +1,11 @@
+#[cfg(any(windows, target_os = "windows"))]
+use window_shadows::set_shadow;
+
+#[cfg(any(windows, target_os = "windows"))]
+set_shadow(&window, true).unwrap();
+
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+#[cfg(any(windows, target_os = "windows"))]
 pub use serialport::SerialPort;
 use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
@@ -138,3 +144,4 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
+

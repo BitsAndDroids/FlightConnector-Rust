@@ -2,6 +2,7 @@
 import InputDialog from "@/components/InputDialog";
 import TabFolders from "@/components/TabFolders";
 import BundleEditWidget from "@/components/bundle/BundleEditWidget";
+import OutputList from "@/components/outputs/Outputlist";
 import BundleInfo from "@/info_blocks/BundleInfo";
 import { Bundle } from "@/model/Bundle";
 import { Category } from "@/model/Category";
@@ -17,6 +18,7 @@ const OutputMenu = () => {
   const [selectedOutputs, setSelectedOutputs] = useState<Output[]>([]);
   const [bundles, setBundles] = useState<Bundle[]>([]);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [selectedBundle, setSelectedBundle] = useState<Bundle | undefined>();
 
   const bundleSettingsHandler = new BundleSettingsHander();
   useEffect(() => {
@@ -96,6 +98,7 @@ const OutputMenu = () => {
           <h2 className="text-white text-4xl font-bold pl-2">
             editing: {bundles.length > 0 && bundles[0].name}
           </h2>
+          {selectedBundle && <OutputList bundle={selectedBundle} />}
           {categories.size > 0 && (
             <TabFolders
               categories={categories}

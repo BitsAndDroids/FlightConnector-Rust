@@ -36,9 +36,9 @@ smol = "2.0.0"
 tokio-util = { version = "0.7.10", features = ["compat"] }
 time = { version = "0.3.30", features = [] }
 lazy_static = "1.4.0"
-
-#only add dependency when using windows
 [target.'cfg(windows)'.dependencies]
+window-shadows = "0.2.2"
+#only add dependency when using windows
 simconnect = { git = "https://github.com/BitsAndDroids/simconnect-rust.git", branch = "debug_struct" }
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
