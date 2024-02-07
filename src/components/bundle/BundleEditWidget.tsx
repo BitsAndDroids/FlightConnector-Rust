@@ -9,6 +9,7 @@ interface BundleEditWidgetProps {
   setDialogOpen: (open: boolean) => void;
   setSelectedBundle: (bundle: Bundle) => void;
   setEditBundle: (bundle: Bundle) => void;
+  deleteBundle: (bundle: Bundle) => void;
 }
 const BundleEditWidget = ({
   bundles,
@@ -16,6 +17,7 @@ const BundleEditWidget = ({
   setDialogOpen,
   setSelectedBundle,
   setEditBundle,
+  deleteBundle,
 }: BundleEditWidgetProps) => {
   return (
     <div className="flex flex-row mt-12 z-50 relative">
@@ -41,6 +43,7 @@ const BundleEditWidget = ({
                 key={bundle.name}
                 setSelectedBundle={setSelectedBundle}
                 setEditBundle={setEditBundle}
+                deleteBundle={deleteBundle}
               />
             );
           })}

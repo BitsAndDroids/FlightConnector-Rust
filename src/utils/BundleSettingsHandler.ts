@@ -28,4 +28,9 @@ export class BundleSettingsHander {
     this.bundleStore.set(bundle.name, bundle);
     this.bundleStore.save();
   }
+
+  deleteBundleSettings(bundle: Bundle): any {
+    this.bundleStore.delete(bundle.name);
+    this.bundleStore.save();
+  }
 }

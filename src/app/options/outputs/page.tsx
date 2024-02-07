@@ -107,6 +107,12 @@ const OutputMenu = () => {
     setEditBundle(editBundle);
   }
 
+  function deleteBundle(bundle: Bundle) {
+    setBundles(bundles.filter((b) => b.name !== bundle.name));
+    if (selectedBundle?.name === bundle.name) setSelectedBundle(undefined);
+    bundleSettingsHandler.deleteBundleSettings(bundle);
+  }
+
   return (
     <>
       {dialogOpen && (
@@ -127,6 +133,7 @@ const OutputMenu = () => {
           setDialogOpen={setDialogOpen}
           setSelectedBundle={setSelectedBundle}
           setEditBundle={setEditBundleState}
+          deleteBundle={deleteBundle}
         />
         <div className="w-[800px] relative">
           {!editMode && selectedBundle && (
