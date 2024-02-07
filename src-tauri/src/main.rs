@@ -7,6 +7,7 @@ pub use serialport::SerialPort;
 use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
+use tauri::Manager;
 
 mod events;
 
@@ -139,8 +140,7 @@ fn main() {
         ])
         .setup(|app| {
             #[cfg(target_os = "windows")]
-            let window = app.get_window("main").unwrap();
-
+            let window = app.get_window("bits-and-droids-connector").unwrap();
             #[cfg(target_os = "windows")]
             set_shadow(&window, true).expect("Unsupported platform!");
             Ok(())
