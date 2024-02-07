@@ -13,8 +13,8 @@ The original repo can be found at:
 ## Running the application for the first time
 The application is structured to run on Windows and Linux. Linux is only usable for development purposes. All SimConnect logic has been excluded when using Linux.
 - Navigate to the root folder of your project
-- Run in your terminal (or the terminal of your editor): `npm i` in your terminal (or the terminal of your editor)
-- Run in your terminal (or the terminal of your editor): `npm run tauri dev`
+- Run in your terminal (or the terminal of your editor): npm i
+- Run in your terminal (or the terminal of your editor): npm run tauri dev
 - The application will launch
 
 
