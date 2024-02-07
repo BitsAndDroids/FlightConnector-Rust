@@ -9,14 +9,14 @@ The original repo can be found at:
 - Install the prerequisites [using the official Tauri docs](https://tauri.app/v1/guides/getting-started/prerequisites)
 - Install [Node](https://nodejs.org/en) (version > 18.17.0)
 
-```bash
 ## Running the application for the first time
+
 The application is structured to run on Windows and Linux. Linux is only usable for development purposes. All SimConnect logic has been excluded when using Linux.
+
 - Navigate to the root folder of your project
 - Run in your terminal (or the terminal of your editor): npm i
 - Run in your terminal (or the terminal of your editor): npm run tauri dev
 - The application will launch
-
 
 ## Learn More
 
@@ -24,4 +24,3 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-```
