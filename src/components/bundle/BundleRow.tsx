@@ -7,18 +7,23 @@ interface BundleRowProps {
   bundle: Bundle;
   setSelectedBundle: (bundle: Bundle) => void;
   setEditBundle: (bundle: Bundle) => void;
+  deleteBundle: (bundle: Bundle) => void;
 }
 
 const BundleRow = ({
   bundle,
   setSelectedBundle,
   setEditBundle,
+  deleteBundle,
 }: BundleRowProps) => {
   return (
     <div
       className="flex flex-row items-center justify-between mb-2 bg-white rounded-md p-1 px-3 drop-shadow"
       key={bundle?.name}
-      onClick={() => setSelectedBundle(bundle)}
+      onClick={() => {
+        setSelectedBundle(bundle);
+        console.log("set");
+      }}
     >
       <p className="">{bundle?.name}</p>
       <div className="flex flex-row justify-between w-12">
@@ -26,8 +31,9 @@ const BundleRow = ({
           src={trashcan}
           alt="info"
           height={16}
-          onClick={() => {
-            console.log("trash");
+          onClick={(e) => {
+            deleteBundle(bundle);
+            e.stopPropagation();
           }}
           className="cursor-pointer"
         />
