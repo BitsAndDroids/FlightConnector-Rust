@@ -23,4 +23,9 @@ export class BundleSettingsHander {
     this.bundleStore.set(bundle.name, bundle);
     this.bundleStore.save();
   }
+
+  updateBundleSettings(bundle: Bundle): any {
+    this.bundleStore.set(bundle.name, bundle);
+    this.bundleStore.save();
+  }
 }

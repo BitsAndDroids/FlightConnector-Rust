@@ -4,25 +4,31 @@ import TabHeader from "./TabHeader";
 import { useState } from "react";
 import CategoryCheckboxes from "./CategoryCheckboxes";
 import { Output } from "@/model/Output";
-import { Bundle } from "@/model/Bundle";
 
 interface TabFoldersProps {
-  bundle?: Bundle;
-  categories: Map<string, Category>;
+  outputs: Output[];
   dialogOpen: boolean;
-  toggleOutput: (output: Output, categoryName: string) => void;
+  toggleOutput: (output: Output) => void;
 }
 
-const TabFolders = ({
-  bundle,
-  categories,
-  dialogOpen,
-  toggleOutput,
-}: TabFoldersProps) => {
+const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
+  let categories = new Map<string, Category>();
+  for (let output of outputs) {
+    if (categories.has(output.category)) {
+      categories.get(output.category)?.outputs.push(output);
+    } else {
+      categories.set(output.category, {
+        name: output.category,
+        outputs: [output],
+      });
+    }
+  }
   let index = categories.size;
+
   const [activeTab, setActiveTab] = useState<string>(
     categories.keys().next().value,
   );
+
   function setTab(name: string) {
     setActiveTab(name);
   }

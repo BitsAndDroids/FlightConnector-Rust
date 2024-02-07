@@ -8,6 +8,7 @@ pub struct Output {
     pub cb_text: String,
     pub id: u32,
     pub output_type: i8,
+    pub category: String,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]

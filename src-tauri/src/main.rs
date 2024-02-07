@@ -55,11 +55,11 @@ async fn get_com_ports() -> Vec<String> {
 }
 
 #[tauri::command]
-async fn get_outputs() -> Vec<events::category::Category> {
+async fn get_outputs() -> Vec<events::output::Output> {
     println!("Getting outputs");
     let mut output_registry = output_registry::OutputRegistry::new();
     output_registry.load_outputs();
-    output_registry.categories
+    output_registry.outputs
 }
 
 async fn poll_com_port(_app: tauri::AppHandle, port: String) {

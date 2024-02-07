@@ -4,7 +4,7 @@ import { Output } from "@/model/Output";
 interface CategoryCheckboxesProps {
   category: Category;
   dialogOpen: boolean;
-  toggleOutput: (output: Output, categoryName: string) => void;
+  toggleOutput: (output: Output) => void;
 }
 
 const CategoryCheckboxes = ({
@@ -20,9 +20,11 @@ const CategoryCheckboxes = ({
             <input
               type="checkbox"
               className="mr-2"
-              onChange={() => toggleOutput(output, category.name)}
-              checked={output.selected}
+              onChange={() => {
+                toggleOutput(output);
+              }}
               tabIndex={dialogOpen ? -1 : 1}
+              checked={output.selected}
             />
             <label>{output.output_name.toLowerCase()}</label>
           </div>
