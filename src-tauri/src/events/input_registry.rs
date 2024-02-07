@@ -19,7 +19,7 @@ impl InputRegistry {
     pub fn load_inputs(&mut self) {
         let inputs = get_inputs_from_file(self.input_path.as_str());
         for input in inputs {
-            self.inputs.insert(input.input_id.clone(), input);
+            self.inputs.insert(input.input_id, input);
         }
     }
     pub fn get_inputs(&self) -> &HashMap<i32, Input> {
@@ -29,4 +29,3 @@ impl InputRegistry {
         self.inputs.get(&input_id)
     }
 }
-

@@ -1,19 +1,19 @@
+#[cfg(target_os = "windows")]
+use window_shadows::set_shadow;
+
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-
+#[cfg(any(windows, target_os = "windows"))]
 pub use serialport::SerialPort;
-
+use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
+use tauri::Manager;
 
 mod events;
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
-}
-
-enum SimCommand {
-    NewCommand(i16),
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<sim_command::SimCommand>>>> =
+        Arc::new(Mutex::new(None));
 }
 
 use lazy_static::lazy_static;
@@ -22,7 +22,7 @@ use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
 
-use crate::events::output_registry;
+use crate::events::{output_registry, sim_command};
 use tokio::io::{self};
 
 #[tauri::command]
@@ -55,11 +55,11 @@ async fn get_com_ports() -> Vec<String> {
 }
 
 #[tauri::command]
-async fn get_outputs() -> Vec<events::category::Category> {
+async fn get_outputs() -> Vec<events::output::Output> {
     println!("Getting outputs");
     let mut output_registry = output_registry::OutputRegistry::new();
     output_registry.load_outputs();
-    output_registry.categories
+    output_registry.outputs
 }
 
 async fn poll_com_port(_app: tauri::AppHandle, port: String) {
@@ -113,23 +113,38 @@ fn poll_microcontroller_for_inputs() {
     }
 }
 
-fn main() {
-    let (tx, rx) = mpsc::channel::<SimCommand>();
+#[tauri::command]
+fn start_simconnect_connection() {
+    let (tx, rx) = mpsc::channel();
+    #[cfg(target_os = "windows")]
+    let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
+    #[cfg(target_os = "windows")]
+    simconnect_handler.start_connection();
     *SENDER.lock().unwrap() = Some(tx);
-    /*  std::thread::spawn(move || {
-        //if windows
-        #[cfg(target_os = "windows")]
-        connect_simconnect(rx);
-    });*/
+}
+
+fn main() {
     tauri::Builder::default()
+        .plugin(
+            tauri_plugin_log::Builder::default()
+                .targets([LogTarget::LogDir, LogTarget::Stdout, LogTarget::Webview])
+                .build(),
+        )
+        .plugin(tauri_plugin_store::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
             start_com_connection,
             get_com_ports,
             get_outputs,
+            start_simconnect_connection,
             /*send_command*/
         ])
-        .setup(|app| Ok(()))
+        .setup(|app| {
+            #[cfg(target_os = "windows")]
+            let window = app.get_window("bits-and-droids-connector").unwrap();
+            #[cfg(target_os = "windows")]
+            set_shadow(&window, true).expect("Unsupported platform!");
+            Ok(())
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-

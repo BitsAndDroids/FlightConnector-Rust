@@ -6,4 +6,3 @@ pub struct Input {
     pub input_type: i8,
     pub input_id: i32,
 }
-

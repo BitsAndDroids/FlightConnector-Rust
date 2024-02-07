@@ -2,7 +2,7 @@
   "build": {
     "beforeDevCommand": "pnpm run dev",
     "beforeBuildCommand": "pnpm run build",
-    "devPath": "http://localhost:3000",
+    "devPath": "http://localhost:1300",
     "distDir": "../out"
   },
   "package": {
@@ -34,7 +34,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.bitsanddroid.dev",
+      "identifier": "bitsanddroids",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -56,8 +56,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "Bits and Droids Connector",
-        "width": 800,
-        "height": 600,
+        "width": 1200,
+        "height": 850,
         "label": "bits-and-droids-connector",
         "decorations": false
       }

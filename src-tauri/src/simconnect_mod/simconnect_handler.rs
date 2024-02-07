@@ -2,6 +2,7 @@ use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
 use crate::events::output::Output;
 use crate::events::output_registry::OutputRegistry;
+use crate::events::sim_command;
 use lazy_static::lazy_static;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
@@ -15,7 +16,8 @@ use std::time::Duration;
 const MAX_RETURNED_ITEMS: usize = 255;
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<SimCommand>>>> = Arc::new(Mutex::new(None));
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<sim_command::SimCommand>>>> =
+        Arc::new(Mutex::new(None));
 }
 
 #[derive(Clone)]
@@ -24,6 +26,7 @@ struct Event {
     description: &'static str,
 }
 
+#[derive(Clone)]
 struct Events {
     available_events: HashMap<DWORD, Event>,
     sim_start: Event,
@@ -62,10 +65,6 @@ struct DataStructContainer {
     data: [DataStruct; MAX_RETURNED_ITEMS],
 }
 
-enum SimCommand {
-    NewCommand(i16),
-}
-
 struct RequestModes {
     float: DWORD,
     string: DWORD,
@@ -81,8 +80,8 @@ pub struct SimconnectHandler {
     pub(crate) simconnect: simconnect::SimConnector,
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
-    pub(crate) rx: mpsc::Receiver<SimCommand>,
-    POLLING_INTERVAL: u8,
+    pub(crate) rx: mpsc::Receiver<sim_command::SimCommand>,
+    polling_interval: u8,
 }
 
 // define the payload struct
@@ -92,7 +91,7 @@ struct Payload {
 }
 
 impl SimconnectHandler {
-    pub fn new(rx: mpsc::Receiver<SimCommand>) -> Self {
+    pub fn new(rx: mpsc::Receiver<sim_command::SimCommand>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -102,7 +101,7 @@ impl SimconnectHandler {
             input_registry,
             output_registry,
             rx,
-            POLLING_INTERVAL: 6,
+            polling_interval: 6,
         }
     }
 
@@ -111,7 +110,7 @@ impl SimconnectHandler {
         self.initialize_connection();
         loop {
             self.poll_simconnect_message_queue();
-            std::thread::sleep(std::time::Duration::from_secs(self.POLLING_INTERVAL as u64));
+            sleep(Duration::from_secs(self.polling_interval as u64));
         }
     }
 
@@ -170,7 +169,7 @@ impl SimconnectHandler {
         let events = Events::new();
         loop {
             match self.rx.try_recv() {
-                Ok(SimCommand::NewCommand(command)) => {
+                Ok(sim_command::SimCommand::NewCommand(command)) => {
                     println!("Command in thread: {}", command);
                     self.simconnect.transmit_client_event(
                         0,
@@ -200,7 +199,7 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    println!("{}", prefix.to_string());
+                                    println!("{}", prefix);
                                     println!("{}", value);
                                 }
                             }
