@@ -18,9 +18,12 @@ The application is structured to run on Windows and Linux. Linux is only usable 
 - Run in your terminal (or the terminal of your editor): npm run tauri dev
 - The application will launch
 
-## Learn More
+## Nextjs
+I've chosen to use Next (a React framework) for the front end of the connector. This enables us to expose API routes that can be accessed from other applications. This gives us a fully functional local web server out of the box that can be accessed from our browser/other apps.
 
+## Learn More
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
