@@ -17,7 +17,7 @@ The application is structured to run on Windows and Linux. Linux is only usable 
 - *Run in your terminal (or the terminal of your editor): npm i
 - Run in your terminal (or the terminal of your editor): npm run tauri dev
 - The application will launch
-* This only has to be done when you start the application for the first time or when packages have been changed/added to the package.JSON file
+\* This only has to be done when you start the application for the first time or when packages have been changed/added (in the package.json file)
 
 
 ## Nextjs
