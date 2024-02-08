@@ -62,6 +62,8 @@ async fn get_outputs() -> Vec<events::output::Output> {
     output_registry.outputs
 }
 
+#[tauri::command]
+
 async fn poll_com_port(_app: tauri::AppHandle, port: String) {
     println!("Polling COM port");
     let mut port = serialport::new(port, 115200)

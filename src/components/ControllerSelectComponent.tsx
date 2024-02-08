@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { listen } from "@tauri-apps/api/event";
 import { ControllerSelect } from "@/components/ControllerSelect";
 import { Bundle } from "@/model/Bundle";
+import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
 
 export const ControllerSelectComponent = () => {
   type Payload = {
@@ -12,7 +13,7 @@ export const ControllerSelectComponent = () => {
   const [comPorts, setComPorts] = useState<string[]>([]);
   const [comPort, setComPort] = useState<string>("");
   const [data, setData] = useState<string>("");
-  const [bundles, setBundle] = useState<Bundle[]>([]);
+  const [bundles, setBundles] = useState<Bundle[]>([]);
   useEffect(() => {
     async function getComPorts() {
       const ports = await invoke("get_com_ports");
@@ -27,6 +28,13 @@ export const ControllerSelectComponent = () => {
       });
     }
 
+    async function getBundles() {
+      let bundleSettingsHandler = new BundleSettingsHander();
+      let bundles = await bundleSettingsHandler.getSavedBundles();
+      setBundles(bundles);
+    }
+
+    getBundles();
     getData();
     //test
     getComPorts();
