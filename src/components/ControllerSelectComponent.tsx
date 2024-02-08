@@ -43,6 +43,10 @@ export const ControllerSelectComponent = () => {
   return (
     <>
       <div>
+        <div className="flex flex-row font-bold text-white">
+          <p className="ml-2">Com port</p>
+          <p className="ml-6">Bundle</p>
+        </div>
         {comPorts.map((port) => (
           <ControllerSelect
             bundles={bundles}

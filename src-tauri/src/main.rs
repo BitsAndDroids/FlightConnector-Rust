@@ -7,7 +7,8 @@ pub use serialport::SerialPort;
 use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
-use tauri::Manager;
+use once_cell::sync::OnceCell;
+use tauri::{AppHandle, Manager};
 
 mod events;
 
@@ -24,6 +25,12 @@ use std::time::Duration;
 
 use crate::events::{output_registry, sim_command};
 use tokio::io::{self};
+
+static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
+
+pub fn get_app_handle() -> Option<&'static AppHandle> {
+    APP_HANDLE.get()
+}
 
 #[tauri::command]
 fn start_com_connection(app: tauri::AppHandle, port: String) {
@@ -145,6 +152,9 @@ fn main() {
             let window = app.get_window("bits-and-droids-connector").unwrap();
             #[cfg(target_os = "windows")]
             set_shadow(&window, true).expect("Unsupported platform!");
+            APP_HANDLE.set(app.handle());
+            let mut bundle_registry = events::bundle_registry::BundleRegistry::new();
+            bundle_registry.load_bundle_settings();
             Ok(())
         })
         .run(tauri::generate_context!())
