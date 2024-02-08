@@ -1,3 +1,12 @@
+use crate::events::{output_registry, sim_command};
+use lazy_static::lazy_static;
+use tokio::io::{self};
+
+use std::io::Read;
+use std::string::ToString;
+use std::sync::{mpsc, Arc, Mutex};
+use std::time::Duration;
+
 #[cfg(target_os = "windows")]
 use window_shadows::set_shadow;
 
@@ -8,7 +17,7 @@ use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
 use once_cell::sync::OnceCell;
-use tauri::{AppHandle, Manager};
+use tauri::AppHandle;
 
 mod events;
 
@@ -16,15 +25,6 @@ lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<sim_command::SimCommand>>>> =
         Arc::new(Mutex::new(None));
 }
-
-use lazy_static::lazy_static;
-use std::io::Read;
-use std::string::ToString;
-use std::sync::{mpsc, Arc, Mutex};
-use std::time::Duration;
-
-use crate::events::{output_registry, sim_command};
-use tokio::io::{self};
 
 static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
 
@@ -120,16 +120,6 @@ fn poll_microcontroller_for_inputs() {
         }
         std::thread::sleep(std::time::Duration::from_micros(10));
     }
-}
-
-#[tauri::command]
-fn start_simconnect_connection() {
-    let (tx, rx) = mpsc::channel();
-    #[cfg(target_os = "windows")]
-    let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
-    #[cfg(target_os = "windows")]
-    simconnect_handler.start_connection();
-    *SENDER.lock().unwrap() = Some(tx);
 }
 
 fn main() {
