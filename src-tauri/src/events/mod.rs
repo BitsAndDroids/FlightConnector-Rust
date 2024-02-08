@@ -1,3 +1,4 @@
+pub mod bundle;
 pub(crate) mod category;
 pub mod input;
 pub mod input_parser;
