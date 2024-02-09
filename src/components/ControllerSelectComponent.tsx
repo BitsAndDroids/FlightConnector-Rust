@@ -38,14 +38,21 @@ export const ControllerSelectComponent = () => {
     else setDefaultPreset(newPreset);
   };
 
+  const deleteRow = (id: number) => {
+    console.log("delete row ", id);
+  };
+
   useEffect(() => {
     async function getComPorts() {
-      const ports = await invoke("get_com_ports");
-      setComPort((ports as string[])[0]);
-      setComPorts(ports as string[]);
+      try {
+        invoke("get_com_ports").then((result) => {
+          setComPorts(result as string[]);
+          setComPort((result as string[])[0]);
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
-
-    async function getData() {}
 
     async function getBundles() {
       let bundleSettingsHandler = new BundleSettingsHander();
@@ -53,10 +60,7 @@ export const ControllerSelectComponent = () => {
       setBundles(bundles);
     }
 
-    getBundles();
-    getData();
-    //test
-    getComPorts();
+    getComPorts().then(() => getBundles());
   }, []);
 
   return (
@@ -93,6 +97,8 @@ export const ControllerSelectComponent = () => {
               comPorts={comPorts}
               selectedComPort={comPort}
               setComPort={setComPort}
+              runBundle={runBundle}
+              removeRow={deleteRow}
               key={Math.random()}
             />
           ))}
@@ -104,6 +110,8 @@ export const ControllerSelectComponent = () => {
               comPorts={comPorts}
               selectedComPort={comPort}
               setComPort={setComPort}
+              runBundle={runBundle}
+              removeRow={deleteRow}
               key={Math.random()}
             />
           ))}

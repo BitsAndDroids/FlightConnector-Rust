@@ -9,20 +9,23 @@
 //     <option className={"text-gray-700"} key={port} value={port}>{port}</option>
 // ))}
 // </select>
-
+import Image from "next/image";
 import { Bundle } from "@/model/Bundle";
-
+import trashcan from "../../public/trashcan.svg";
+import { RunBundle } from "@/model/RunBundle";
 interface ControllerSelectProps {
   comPorts: string[];
   selectedComPort?: string;
   bundles: Bundle[];
   selectedBundle?: Bundle;
   setComPort: (port: string) => void;
+  removeRow: (id: number) => void;
+  runBundle: RunBundle;
 }
 
 export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
   return (
-    <div>
+    <div className="flex flex-row items-center">
       <select
         // generate a unique key for each select element
         key={Math.random()}
@@ -64,6 +67,9 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
             </option>
           ))}
       </select>
+      <div onClick={() => props.removeRow(props.runBundle.id)}>
+        <Image src={trashcan} alt="trashcan" height={30} width={30} />
+      </div>
     </div>
   );
 };
