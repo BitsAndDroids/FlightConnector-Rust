@@ -90,16 +90,6 @@ struct Payload {
     message: String,
 }
 
-#[tauri::command]
-fn start_simconnect_connection() {
-    let (tx, rx) = mpsc::channel();
-    #[cfg(target_os = "windows")]
-    let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
-    #[cfg(target_os = "windows")]
-    simconnect_handler.start_connection();
-    *SENDER.lock().unwrap() = Some(tx);
-}
-
 impl SimconnectHandler {
     pub fn new(rx: mpsc::Receiver<sim_command::SimCommand>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();

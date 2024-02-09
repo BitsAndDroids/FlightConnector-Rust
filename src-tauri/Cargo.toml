@@ -39,7 +39,6 @@ time = { version = "0.3.30", features = [] }
 lazy_static = "1.4.0"
 [target.'cfg(windows)'.dependencies]
 window-shadows = "0.2.2"
-#only add dependency when using windows
 simconnect = { git = "https://github.com/BitsAndDroids/simconnect-rust.git", branch = "debug_struct" }
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem

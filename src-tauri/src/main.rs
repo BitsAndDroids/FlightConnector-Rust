@@ -17,7 +17,7 @@ use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
 use once_cell::sync::OnceCell;
-use tauri::AppHandle;
+use tauri::{AppHandle, Manager};
 
 mod events;
 
@@ -121,6 +121,28 @@ fn poll_microcontroller_for_inputs() {
         std::thread::sleep(std::time::Duration::from_micros(10));
     }
 }
+
+#[tauri::command]
+fn start_simconnect_connection() {
+    let (tx, rx) = mpsc::channel();
+    #[cfg(target_os = "windows")]
+    let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
+    #[cfg(target_os = "windows")]
+    simconnect_handler.start_connection();
+    *SENDER.lock().unwrap() = Some(tx);
+}
+
+// #[tauri::command]
+// fn send_command(app: tauri::AppHandle, command: i16) {
+//     println!("Command: {}", command);
+//     let sender = SENDER
+//         .lock()
+//         .unwrap()
+//         .as_ref()
+//         .expect("SimConnect not initialized")
+//         .clone();
+//     sender.send(SimCommand::NewCommand(command)).unwrap();
+// }
 
 fn main() {
     tauri::Builder::default()

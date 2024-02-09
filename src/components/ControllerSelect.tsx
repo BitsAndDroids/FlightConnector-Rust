@@ -14,7 +14,9 @@ import { Bundle } from "@/model/Bundle";
 
 interface ControllerSelectProps {
   comPorts: string[];
+  selectedComPort?: string;
   bundles: Bundle[];
+  selectedBundle?: Bundle;
   setComPort: (port: string) => void;
 }
 
@@ -65,4 +67,3 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
     </div>
   );
 };
-
