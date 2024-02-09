@@ -1,3 +1,12 @@
+use crate::events::{output_registry, sim_command};
+use lazy_static::lazy_static;
+use tokio::io::{self};
+
+use std::io::Read;
+use std::string::ToString;
+use std::sync::{mpsc, Arc, Mutex};
+use std::time::Duration;
+
 #[cfg(target_os = "windows")]
 use window_shadows::set_shadow;
 
@@ -7,7 +16,8 @@ pub use serialport::SerialPort;
 use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
-use tauri::Manager;
+use once_cell::sync::OnceCell;
+use tauri::{AppHandle, Manager};
 
 mod events;
 
@@ -16,14 +26,11 @@ lazy_static! {
         Arc::new(Mutex::new(None));
 }
 
-use lazy_static::lazy_static;
-use std::io::Read;
-use std::string::ToString;
-use std::sync::{mpsc, Arc, Mutex};
-use std::time::Duration;
+static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
 
-use crate::events::{output_registry, sim_command};
-use tokio::io::{self};
+pub fn get_app_handle() -> Option<&'static AppHandle> {
+    APP_HANDLE.get()
+}
 
 #[tauri::command]
 fn start_com_connection(app: tauri::AppHandle, port: String) {
@@ -61,6 +68,8 @@ async fn get_outputs() -> Vec<events::output::Output> {
     output_registry.load_outputs();
     output_registry.outputs
 }
+
+#[tauri::command]
 
 async fn poll_com_port(_app: tauri::AppHandle, port: String) {
     println!("Polling COM port");
@@ -123,6 +132,18 @@ fn start_simconnect_connection() {
     *SENDER.lock().unwrap() = Some(tx);
 }
 
+// #[tauri::command]
+// fn send_command(app: tauri::AppHandle, command: i16) {
+//     println!("Command: {}", command);
+//     let sender = SENDER
+//         .lock()
+//         .unwrap()
+//         .as_ref()
+//         .expect("SimConnect not initialized")
+//         .clone();
+//     sender.send(SimCommand::NewCommand(command)).unwrap();
+// }
+
 fn main() {
     tauri::Builder::default()
         .plugin(
@@ -143,6 +164,9 @@ fn main() {
             let window = app.get_window("bits-and-droids-connector").unwrap();
             #[cfg(target_os = "windows")]
             set_shadow(&window, true).expect("Unsupported platform!");
+            APP_HANDLE.set(app.handle());
+            let mut bundle_registry = events::bundle_registry::BundleRegistry::new();
+            bundle_registry.load_bundle_settings();
             Ok(())
         })
         .run(tauri::generate_context!())

@@ -33,4 +33,14 @@ export class BundleSettingsHander {
     this.bundleStore.delete(bundle.name);
     this.bundleStore.save();
   }
+
+  async getSavedBundles(): Promise<Bundle[]> {
+    const bundles = [];
+    const keys = await this.bundleStore.keys();
+    for (const key of keys) {
+      console.log(key);
+      bundles.push((await this.bundleStore.get(key)) as Bundle);
+    }
+    return bundles;
+  }
 }

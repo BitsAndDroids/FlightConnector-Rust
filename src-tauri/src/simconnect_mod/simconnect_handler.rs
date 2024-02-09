@@ -263,4 +263,3 @@ impl SimconnectHandler {
         }
     }
 }
-

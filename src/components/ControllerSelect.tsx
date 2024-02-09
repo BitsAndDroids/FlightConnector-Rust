@@ -10,28 +10,60 @@
 // ))}
 // </select>
 
-import {useEffect} from "react";
+import { Bundle } from "@/model/Bundle";
 
 interface ControllerSelectProps {
-    comPorts: string[];
-    setComPort: (port: string) => void;
+  comPorts: string[];
+  selectedComPort?: string;
+  bundles: Bundle[];
+  selectedBundle?: Bundle;
+  setComPort: (port: string) => void;
 }
 
 export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
-
-    return (
-        <select
-            // generate a unique key for each select element
-            key={Math.random()}
-            className={"rounded m-2 text-gray-700 p-2"}
-            onChange={(e) => {
-                console.log(e.currentTarget.value);
-                props.setComPort(e.currentTarget.value);
-            }}
+  return (
+    <div>
+      <select
+        // generate a unique key for each select element
+        key={Math.random()}
+        className={"rounded m-2 text-gray-700 p-2"}
+        onChange={(e) => {
+          console.log(e.currentTarget.value);
+          props.setComPort(e.currentTarget.value);
+        }}
+      >
+        {props.comPorts.map((port) => (
+          <option className={"text-gray-700"} key={port} value={port}>
+            {port}
+          </option>
+        ))}
+      </select>
+      <select
+        key={Math.random()}
+        className={"rounded m-2 text-gray-700 p-2"}
+        onChange={(e) => {
+          console.log(e.currentTarget.value);
+          props.setComPort(e.currentTarget.value);
+        }}
+      >
+        <option
+          key={Math.random()}
+          value={"No outputs"}
+          className={"text-gray-700"}
         >
-            {props.comPorts.map((port) => (
-                <option className={"text-gray-700"} key={port} value={port}>{port}</option>
-            ))}
-        </select>
-    );
-}
+          No outputs
+        </option>
+        {props.bundles.length > 0 &&
+          props.bundles.map((bundle) => (
+            <option
+              className={"text-gray-700"}
+              key={bundle.name}
+              value={bundle.name}
+            >
+              {bundle.name}
+            </option>
+          ))}
+      </select>
+    </div>
+  );
+};

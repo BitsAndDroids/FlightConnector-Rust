@@ -312,6 +312,7 @@ name = "bits-and-droids-connector"
 version = "0.1.0"
 dependencies = [
  "lazy_static",
+ "once_cell",
  "serde",
  "serde_json",
  "serialport",
