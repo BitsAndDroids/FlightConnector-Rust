@@ -26,7 +26,18 @@ export const ControllerSelectComponent = () => {
     id: 0,
   });
   const [preset, setPreset] = useState<Preset>();
-  const addRow = () => {};
+  const addRow = () => {
+    let presetToAlter: Preset = preset ? preset : defaultPreset;
+    let newPreset = { ...presetToAlter };
+    newPreset.runBundles.push({
+      id: 0,
+      comport: "",
+      bundle: { name: "", outputs: [], version: 0 },
+    });
+    if (preset) setPreset(newPreset);
+    else setDefaultPreset(newPreset);
+  };
+
   useEffect(() => {
     async function getComPorts() {
       const ports = await invoke("get_com_ports");
