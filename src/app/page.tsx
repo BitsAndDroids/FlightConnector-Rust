@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from "react";
+import React, { Suspense } from "react";
 import { RunComponent } from "@/components/RunComponent";
 
 export default function HomePage() {

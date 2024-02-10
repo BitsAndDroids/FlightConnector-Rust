@@ -1,10 +1,15 @@
-"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MenuItem from "@/components/nav/MenuItem";
 import { Titlebar } from "@/components/nav/titlebar";
+import { Suspense } from "react";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Bits and Droids flight connector",
+};
 
 export default function RootLayout({
   children,
@@ -15,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={
-          "w-[100vw] h-[100vh] flex flex-col bg-bitsanddroids-blue overflow-x-hidden overflow-hidden"
+          "w-screen h-screen min-h-screen flex flex-col bg-bitsanddroids-blue overflow-x-hidden overflow-hidden"
         }
       >
         <div className=" bg-bitsanddroids-blue mt-7 flex flex-row align-middle justify-start h-fit">
