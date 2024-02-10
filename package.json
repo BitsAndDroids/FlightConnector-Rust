@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.5.1",
-    "next": "14.0.4",
+    "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
     "tauri-plugin-log-api": "github:tauri-apps/tauri-plugin-log#v1",

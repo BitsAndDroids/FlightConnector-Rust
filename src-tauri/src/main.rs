@@ -1,23 +1,23 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use crate::events::{output_registry, sim_command};
 use lazy_static::lazy_static;
+use once_cell::sync::OnceCell;
+use tauri::{AppHandle, Manager};
 use tokio::io::{self};
 
 use std::io::Read;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
+use tauri_plugin_log::LogTarget;
 
 #[cfg(target_os = "windows")]
 use window_shadows::set_shadow;
-
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
-#[cfg(any(windows, target_os = "windows"))]
+#[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
-use tauri_plugin_log::LogTarget;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
-use once_cell::sync::OnceCell;
-use tauri::{AppHandle, Manager};
 
 mod events;
 
@@ -52,7 +52,12 @@ fn start_com_connection(app: tauri::AppHandle, port: String) {
 
 #[tauri::command]
 async fn get_com_ports() -> Vec<String> {
-    let ports = serialport::available_ports().expect("No ports found!");
+    // TODO This
+    println!("Getting COM ports");
+    let ports = match serialport::available_ports() {
+        Ok(ports) => ports,
+        Err(_) => Vec::new(),
+    };
     let ports_output = ports
         .iter()
         .map(|port| port.port_name.as_str())
@@ -70,7 +75,6 @@ async fn get_outputs() -> Vec<events::output::Output> {
 }
 
 #[tauri::command]
-
 async fn poll_com_port(_app: tauri::AppHandle, port: String) {
     println!("Polling COM port");
     let mut port = serialport::new(port, 115200)
@@ -164,9 +168,7 @@ fn main() {
             let window = app.get_window("bits-and-droids-connector").unwrap();
             #[cfg(target_os = "windows")]
             set_shadow(&window, true).expect("Unsupported platform!");
-            APP_HANDLE.set(app.handle());
-            let mut bundle_registry = events::bundle_registry::BundleRegistry::new();
-            bundle_registry.load_bundle_settings();
+            APP_HANDLE.set(app.handle().clone()).unwrap();
             Ok(())
         })
         .run(tauri::generate_context!())
