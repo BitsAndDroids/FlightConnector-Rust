@@ -22,7 +22,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         <select
           // generate a unique key for each select element
           key={Math.random()}
-          className={"rounded m-2 text-gray-700 p-2"}
+          className={"rounded m-2 text-gray-700 p-2 w-[150px]"}
           onChange={(e) => {
             console.log(e.currentTarget.value);
             props.setComPort(e.currentTarget.value);
@@ -36,7 +36,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         </select>
         <select
           key={Math.random()}
-          className={"rounded m-2 text-gray-700 p-2"}
+          className={"rounded m-2 text-gray-700 p-2 w-[300px]"}
           onChange={(e) => {
             console.log(e.currentTarget.value);
             props.setComPort(e.currentTarget.value);
