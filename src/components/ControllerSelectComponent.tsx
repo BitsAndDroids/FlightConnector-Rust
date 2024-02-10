@@ -50,7 +50,7 @@ export const ControllerSelectComponent = () => {
     let presetToAlter: Preset = preset ? preset : defaultPreset;
     let newPreset = { ...presetToAlter };
     newPreset.runBundles.push({
-      id: 0,
+      id: newPreset.runBundles.length + 1,
       comport: "",
       bundle: { name: "", outputs: [], version: 0 },
     });
@@ -59,7 +59,14 @@ export const ControllerSelectComponent = () => {
   };
 
   const deleteRow = (id: number) => {
-    console.log("delete row ", id);
+    let presetToAlter: Preset = preset ? preset : defaultPreset;
+    let newPreset = { ...presetToAlter };
+    newPreset.runBundles = presetToAlter.runBundles.filter(
+      (runBundle) => runBundle.id !== id,
+    );
+    console.log(presetToAlter);
+    if (preset) setPreset(newPreset);
+    else setDefaultPreset(newPreset);
   };
 
   function run() {
@@ -92,7 +99,7 @@ export const ControllerSelectComponent = () => {
           </div>
           <div className="flex flex-row font-bold text-white">
             <p className="ml-2">Com port</p>
-            <p className="ml-6">Bundle</p>
+            <p className="ml-24">Bundle</p>
           </div>
           {preset &&
             preset.runBundles.map((runBundle) => (
