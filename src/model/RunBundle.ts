@@ -2,6 +2,6 @@ import { Bundle } from "./Bundle";
 
 export interface RunBundle {
   id: number;
-  comport: string;
+  com_port: string;
   bundle: Bundle;
 }

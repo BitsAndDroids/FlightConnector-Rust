@@ -2,6 +2,7 @@ use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
 use crate::events::output::Output;
 use crate::events::output_registry::OutputRegistry;
+use crate::events::run_bundle::RunBundle;
 use crate::events::sim_command;
 use lazy_static::lazy_static;
 use simconnect::DWORD;
@@ -105,7 +106,8 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn start_connection(&mut self) {
+    pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
+        println!("length: {}", run_bundles.len());
         println!("Starting connection");
         self.initialize_connection();
         loop {
