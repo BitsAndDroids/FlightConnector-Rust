@@ -9,7 +9,8 @@ interface ControllerSelectProps {
   selectedComPort?: string;
   bundles: Bundle[];
   selectedBundle?: Bundle;
-  setComPort: (port: string) => void;
+  setComPort: (comPort: string, runBundle: any) => void;
+  setBundle: (bundle: string, runBundle: any) => void;
   removeRow: (id: number) => void;
   runBundle: RunBundle;
 }
@@ -23,9 +24,10 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
           // generate a unique key for each select element
           key={Math.random()}
           className={"rounded m-2 text-gray-700 p-2 w-[150px]"}
+          value={props.runBundle.com_port}
           onChange={(e) => {
             console.log(e.currentTarget.value);
-            props.setComPort(e.currentTarget.value);
+            props.setComPort(e.currentTarget.value, props.runBundle);
           }}
         >
           {props.comPorts.map((port) => (
@@ -37,9 +39,10 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         <select
           key={Math.random()}
           className={"rounded m-2 text-gray-700 p-2 w-[300px]"}
+          value={props.runBundle.bundle.name}
           onChange={(e) => {
             console.log(e.currentTarget.value);
-            props.setComPort(e.currentTarget.value);
+            props.setBundle(e.currentTarget.value, props.runBundle);
           }}
         >
           <option

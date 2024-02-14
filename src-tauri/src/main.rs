@@ -1,5 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use crate::events::{output_registry, sim_command};
+use events::run_bundle::RunBundle;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use tauri::{AppHandle, Manager};
@@ -10,6 +11,8 @@ use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
 use tauri_plugin_log::LogTarget;
+
+use std::thread;
 
 #[cfg(target_os = "windows")]
 use window_shadows::set_shadow;
@@ -127,26 +130,16 @@ fn poll_microcontroller_for_inputs() {
 }
 
 #[tauri::command]
-fn start_simconnect_connection() {
-    let (tx, rx) = mpsc::channel();
-    #[cfg(target_os = "windows")]
-    let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
-    #[cfg(target_os = "windows")]
-    simconnect_handler.start_connection();
-    *SENDER.lock().unwrap() = Some(tx);
+fn start_simconnect_connection(run_bundle: Vec<RunBundle>) {
+    thread::spawn(|| {
+        let (tx, rx) = mpsc::channel();
+        #[cfg(target_os = "windows")]
+        let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
+        #[cfg(target_os = "windows")]
+        simconnect_handler.start_connection(run_bundle);
+        *SENDER.lock().unwrap() = Some(tx);
+    });
 }
-
-// #[tauri::command]
-// fn send_command(app: tauri::AppHandle, command: i16) {
-//     println!("Command: {}", command);
-//     let sender = SENDER
-//         .lock()
-//         .unwrap()
-//         .as_ref()
-//         .expect("SimConnect not initialized")
-//         .clone();
-//     sender.send(SimCommand::NewCommand(command)).unwrap();
-// }
 
 fn main() {
     tauri::Builder::default()

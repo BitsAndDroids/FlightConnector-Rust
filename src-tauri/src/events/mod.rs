@@ -7,5 +7,5 @@ pub mod input_registry;
 pub mod output;
 pub mod output_parser;
 pub mod output_registry;
-pub mod run_bundles;
+pub mod run_bundle;
 pub mod sim_command;

@@ -40,7 +40,7 @@ export const ControllerSelectComponent = () => {
   const [defaultPreset, setDefaultPreset] = useState<Preset>({
     name: "default",
     runBundles: [
-      { id: 0, comport: "", bundle: { name: "", outputs: [], version: 0 } },
+      { id: 0, com_port: "", bundle: { name: "", outputs: [], version: 0 } },
     ],
     version: "1.0",
     id: 0,
@@ -51,7 +51,7 @@ export const ControllerSelectComponent = () => {
     let newPreset = { ...presetToAlter };
     newPreset.runBundles.push({
       id: newPreset.runBundles.length + 1,
-      comport: "",
+      com_port: "",
       bundle: { name: "", outputs: [], version: 0 },
     });
     if (preset) setPreset(newPreset);
@@ -70,7 +70,51 @@ export const ControllerSelectComponent = () => {
   };
 
   function run() {
-    invoke("run_simconnect", { comPort: comPort, bundle: "bundle" });
+    console.log("running");
+    invoke("start_simconnect_connection", {
+      runBundle: defaultPreset.runBundles,
+    }).then((result) => {
+      console.log(result);
+    });
+  }
+
+  function setComPortForRunBundle(comPort: string, runBundle: any) {
+    let newPreset = { ...getPresetOrDefault() };
+    newPreset.runBundles = newPreset.runBundles.map((bundle) => {
+      if (bundle.id === runBundle.id) {
+        bundle.com_port = comPort;
+      }
+      return bundle;
+    });
+    if (preset) setPreset(newPreset);
+    else setDefaultPreset(newPreset);
+  }
+
+  function setBundleForRunBundle(bundleName: string, runBundle: any) {
+    let newPreset = { ...getPresetOrDefault() };
+    newPreset.runBundles = newPreset.runBundles.map((rb) => {
+      if (runBundle.id === rb.id) {
+        const bundleAltered = bundles.find((b) => b.name === bundleName);
+        if (!bundleAltered)
+          throw new Error(
+            "this bundle doesn't exist in the bundle list... This shouldn't be possible",
+          );
+        rb.bundle = bundleAltered;
+      }
+      return rb;
+    });
+    setPresetOrDefault(newPreset);
+  }
+
+  function setPresetOrDefault(alteredPreset: Preset) {
+    if (preset) setPreset(alteredPreset);
+    else setDefaultPreset(alteredPreset);
+  }
+
+  function getPresetOrDefault() {
+    let presetToReturn: Preset = defaultPreset;
+    if (preset) presetToReturn = preset;
+    return presetToReturn;
   }
 
   return (
@@ -108,7 +152,8 @@ export const ControllerSelectComponent = () => {
                 selectedBundle={runBundle.bundle}
                 comPorts={comPorts}
                 selectedComPort={comPort}
-                setComPort={setComPort}
+                setComPort={setComPortForRunBundle}
+                setBundle={setBundleForRunBundle}
                 runBundle={runBundle}
                 removeRow={deleteRow}
                 key={Math.random()}
@@ -121,7 +166,8 @@ export const ControllerSelectComponent = () => {
                 selectedBundle={runBundle.bundle}
                 comPorts={comPorts}
                 selectedComPort={comPort}
-                setComPort={setComPort}
+                setComPort={setComPortForRunBundle}
+                setBundle={setBundleForRunBundle}
                 runBundle={runBundle}
                 removeRow={deleteRow}
                 key={Math.random()}
