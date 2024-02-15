@@ -1,3 +1,4 @@
+use crate::events::bundle::Bundle;
 use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
 use crate::events::output::Output;
@@ -116,17 +117,21 @@ impl SimconnectHandler {
         }
     }
 
-    // #[tauri::command]
-    // fn send_command(app: tauri::AppHandle, command: i16) {
-    //     println!("Command: {}", command);
-    //     let sender = SENDER
-    //         .lock()
-    //         .unwrap()
-    //         .as_ref()
-    //         .expect("SimConnect not initialized")
-    //         .clone();
-    //     sender.send(SimCommand::NewCommand(command)).unwrap();
-    // }
+    pub fn check_if_output_in_bundle(&self, output_to_find: &Output, run_bundles: &Vec<RunBundle>) {
+        for run_bundle in run_bundles.iter() {
+            match run_bundle
+                .bundle
+                .outputs
+                .iter()
+                .find(|&output| output.id == output_to_find.id)
+            {
+                Some(x) => self.send_output_to_device(x, run_bundle.com_port),
+                None => (),
+            }
+        }
+    }
+
+    pub fn send_output_to_device(&mut self, output: &Output, comport: String) {}
 
     pub fn initialize_connection(&mut self) {
         println!("Initializing connection");
@@ -138,36 +143,36 @@ impl SimconnectHandler {
     }
 
     fn poll_simconnect_message_queue(&mut self) {
-        //     conn.add_data_definition(
-        //         RequestModes::STRING,
-        //         "TITLE",
-        //         "",
-        //         simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
-        //         202,
-        //         0.0,
-        //     );
-        //     conn.request_data_on_sim_object(
-        //         0,
-        //         RequestModes::FLOAT,
-        //         0,
-        //         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-        //         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-        //             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-        //         0,
-        //         1,
-        //         0,
-        //     );
-        //     conn.request_data_on_sim_object(
-        //         1,
-        //         RequestModes::STRING,
-        //         0,
-        //         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-        //         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-        //             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-        //         0,
-        //         1,
-        //         0,
-        //     );
+        conn.add_data_definition(
+            RequestModes::STRING,
+            "TITLE",
+            "",
+            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
+            202,
+            0.0,
+        );
+        conn.request_data_on_sim_object(
+            0,
+            RequestModes::FLOAT,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
+        conn.request_data_on_sim_object(
+            1,
+            RequestModes::STRING,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
         let events = Events::new();
         loop {
             match self.rx.try_recv() {
