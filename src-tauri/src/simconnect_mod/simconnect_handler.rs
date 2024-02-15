@@ -6,6 +6,7 @@ use crate::events::output_registry::OutputRegistry;
 use crate::events::run_bundle::RunBundle;
 use crate::events::sim_command;
 use lazy_static::lazy_static;
+use serialport::SerialPort;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
@@ -83,8 +84,11 @@ pub struct SimconnectHandler {
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
     pub(crate) rx: mpsc::Receiver<sim_command::SimCommand>,
+    active_com_ports: Vec<Box<dyn SerialPort>>,
     polling_interval: u8,
 }
+
+impl Sealed for SimconnectHandler {}
 
 // define the payload struct
 #[derive(Clone, serde::Serialize)]
