@@ -131,7 +131,15 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn send_output_to_device(&mut self, output: &Output, comport: String) {}
+    pub fn send_output_to_device(&mut self, output: &Output, com_port: String) {
+        //TODO send output to comport
+        let mut port = serialport::new(com_port, 115200)
+            .timeout(Duration::from_millis(10))
+            .open()
+            .expect("Failed to open port");
+        port.write(output.id.to_string().as_bytes())
+            .expect("Sending the output failed");
+    }
 
     pub fn initialize_connection(&mut self) {
         println!("Initializing connection");
