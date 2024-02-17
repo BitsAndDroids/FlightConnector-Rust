@@ -88,8 +88,6 @@ pub struct SimconnectHandler {
     polling_interval: u8,
 }
 
-impl Sealed for SimconnectHandler {}
-
 // define the payload struct
 #[derive(Clone, serde::Serialize)]
 struct Payload {
@@ -108,12 +106,28 @@ impl SimconnectHandler {
             output_registry,
             rx,
             polling_interval: 6,
+            active_com_ports: vec![],
+        }
+    }
+
+    fn connect_to_devices(&mut self, run_bundles: &[RunBundle]) {
+        println!("Connecting to devices");
+        for run_bundle in run_bundles.iter() {
+            match serialport::new(&run_bundle.com_port, 115200).open() {
+                Ok(port) => {
+                    self.active_com_ports.push(port);
+                }
+                Err(e) => {
+                    println!("Failed to open port: {}", e);
+                }
+            }
         }
     }
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
         println!("length: {}", run_bundles.len());
         println!("Starting connection");
+        self.connect_to_devices(&run_bundles);
         self.initialize_connection();
         loop {
             self.poll_simconnect_message_queue();
@@ -121,7 +135,11 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn check_if_output_in_bundle(&self, output_to_find: &Output, run_bundles: &Vec<RunBundle>) {
+    pub fn check_if_output_in_bundle(
+        &mut self,
+        output_to_find: &Output,
+        run_bundles: &Vec<RunBundle>,
+    ) {
         for run_bundle in run_bundles.iter() {
             match run_bundle
                 .bundle
@@ -129,19 +147,19 @@ impl SimconnectHandler {
                 .iter()
                 .find(|&output| output.id == output_to_find.id)
             {
-                Some(x) => self.send_output_to_device(x, run_bundle.com_port),
+                Some(x) => self.send_output_to_device(x, &run_bundle.com_port),
                 None => (),
             }
         }
     }
 
-    pub fn send_output_to_device(&mut self, output: &Output, com_port: String) {
+    pub fn send_output_to_device(&mut self, output: &Output, com_port: &str) {
         //TODO send output to comport
         let mut port = serialport::new(com_port, 115200)
             .timeout(Duration::from_millis(10))
             .open()
             .expect("Failed to open port");
-        port.write(output.id.to_string().as_bytes())
+        port.write_all(output.id.to_string().as_bytes())
             .expect("Sending the output failed");
     }
 
@@ -155,7 +173,7 @@ impl SimconnectHandler {
     }
 
     fn poll_simconnect_message_queue(&mut self) {
-        conn.add_data_definition(
+        self.simconnect.add_data_definition(
             RequestModes::STRING,
             "TITLE",
             "",
@@ -163,7 +181,7 @@ impl SimconnectHandler {
             202,
             0.0,
         );
-        conn.request_data_on_sim_object(
+        self.simconnect.request_data_on_sim_object(
             0,
             RequestModes::FLOAT,
             0,
@@ -174,7 +192,7 @@ impl SimconnectHandler {
             1,
             0,
         );
-        conn.request_data_on_sim_object(
+        self.simconnect.request_data_on_sim_object(
             1,
             RequestModes::STRING,
             0,
