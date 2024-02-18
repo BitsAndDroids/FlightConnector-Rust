@@ -74,6 +74,8 @@ async fn get_com_ports() -> Vec<String> {
                         None => "Unknown".to_string(),
                     }
                 ),
+                SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
+                SerialPortType::PciPort => "PCI Serial".to_string(),
                 _ => "".to_string(),
             };
             format!("{}, {}", port.port_name.as_str(), port_type_info)
