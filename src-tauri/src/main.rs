@@ -3,6 +3,7 @@ use crate::events::{output_registry, sim_command};
 use events::run_bundle::RunBundle;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
+use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tokio::io::{self};
 
@@ -61,10 +62,22 @@ async fn get_com_ports() -> Vec<String> {
         Ok(ports) => ports,
         Err(_) => Vec::new(),
     };
+    println!("Available ports are: {:?}", ports);
     let ports_output = ports
         .iter()
-        .map(|port| port.port_name.as_str())
-        .map(|port| port.to_string())
+        .map(|port| {
+            let port_type_info = match &port.port_type {
+                SerialPortType::UsbPort(info) => format!(
+                    "{}",
+                    match &info.product {
+                        Some(product) => product.to_string(),
+                        None => "Unknown".to_string(),
+                    }
+                ),
+                _ => "".to_string(),
+            };
+            format!("{}, {}", port.port_name.as_str(), port_type_info)
+        })
         .collect::<Vec<_>>();
     ports_output
 }

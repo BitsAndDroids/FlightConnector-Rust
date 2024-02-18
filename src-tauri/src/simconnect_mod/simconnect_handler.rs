@@ -110,17 +110,29 @@ impl SimconnectHandler {
         }
     }
 
-    fn connect_to_devices(&mut self, run_bundles: &[RunBundle]) {
+    fn connect_to_devices(&mut self, run_bundles: &Vec<RunBundle>) {
         println!("Connecting to devices");
         for run_bundle in run_bundles.iter() {
-            match serialport::new(&run_bundle.com_port, 115200).open() {
+            let parts: Vec<&str> = run_bundle.com_port.split(",").collect();
+            let com_port: String = match parts.first() {
+                Some(x) => x.to_string(),
+                None => {
+                    continue;
+                }
+            };
+            println!("Com port: {}", com_port);
+            let serial_conn = match serialport::new(com_port, 115200).open() {
                 Ok(port) => {
-                    self.active_com_ports.push(port);
+                    &self.active_com_ports.push(port);
+                    self.active_com_ports
+                        .first_mut()
+                        .unwrap()
+                        .write_all("900 123750".as_bytes());
                 }
                 Err(e) => {
                     println!("Failed to open port: {}", e);
                 }
-            }
+            };
         }
     }
 
@@ -138,7 +150,7 @@ impl SimconnectHandler {
     pub fn check_if_output_in_bundle(
         &mut self,
         output_to_find: &Output,
-        run_bundles: &Vec<RunBundle>,
+        run_bundles: &[RunBundle],
     ) {
         for run_bundle in run_bundles.iter() {
             match run_bundle
