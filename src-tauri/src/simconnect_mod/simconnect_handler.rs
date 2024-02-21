@@ -85,6 +85,7 @@ pub struct SimconnectHandler {
     pub(crate) output_registry: OutputRegistry,
     pub(crate) rx: mpsc::Receiver<sim_command::SimCommand>,
     active_com_ports: Vec<Box<dyn SerialPort>>,
+    run_bundles: Vec<RunBundle>,
     polling_interval: u8,
 }
 
@@ -107,6 +108,7 @@ impl SimconnectHandler {
             rx,
             polling_interval: 6,
             active_com_ports: vec![],
+            run_bundles: vec![],
         }
     }
 
@@ -127,7 +129,7 @@ impl SimconnectHandler {
                     self.active_com_ports
                         .first_mut()
                         .unwrap()
-                        .write_all("900 123750".as_bytes());
+                        .write_all("test".as_bytes());
                 }
                 Err(e) => {
                     println!("Failed to open port: {}", e);
@@ -147,31 +149,31 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn check_if_output_in_bundle(
-        &mut self,
-        output_to_find: &Output,
-        run_bundles: &[RunBundle],
-    ) {
-        for run_bundle in run_bundles.iter() {
-            match run_bundle
+    pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
+        let mut com_ports = vec![];
+        for run_bundle in self.run_bundles.iter() {
+            if run_bundle
                 .bundle
                 .outputs
                 .iter()
-                .find(|&output| output.id == output_to_find.id)
+                .any(|output| output.id == output_id)
             {
-                Some(x) => self.send_output_to_device(x, &run_bundle.com_port),
-                None => (),
+                com_ports.push(run_bundle.com_port.clone())
             }
+        }
+
+        for com_port in com_ports {
+            self.send_output_to_device(output_id, &com_port, value);
         }
     }
 
-    pub fn send_output_to_device(&mut self, output: &Output, com_port: &str) {
+    pub fn send_output_to_device(&mut self, output_id: u32, com_port: &str, value: f64) {
         //TODO send output to comport
         let mut port = serialport::new(com_port, 115200)
             .timeout(Duration::from_millis(10))
             .open()
             .expect("Failed to open port");
-        port.write_all(output.id.to_string().as_bytes())
+        port.write_all(output_id.to_string().as_bytes())
             .expect("Sending the output failed");
     }
 
@@ -248,8 +250,7 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    println!("{}", prefix);
-                                    println!("{}", value);
+                                    self.check_if_output_in_bundle(prefix, value);
                                 }
                             }
                         }
