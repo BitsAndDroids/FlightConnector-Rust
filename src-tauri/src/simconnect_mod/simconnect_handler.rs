@@ -112,9 +112,9 @@ impl SimconnectHandler {
         }
     }
 
-    fn connect_to_devices(&mut self, run_bundles: &Vec<RunBundle>) {
+    fn connect_to_devices(&mut self) {
         println!("Connecting to devices");
-        for run_bundle in run_bundles.iter() {
+        for run_bundle in self.run_bundles.iter() {
             let parts: Vec<&str> = run_bundle.com_port.split(",").collect();
             let com_port: String = match parts.first() {
                 Some(x) => x.to_string(),
@@ -139,9 +139,8 @@ impl SimconnectHandler {
     }
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
-        println!("length: {}", run_bundles.len());
-        println!("Starting connection");
-        self.connect_to_devices(&run_bundles);
+        self.run_bundles = run_bundles;
+        self.connect_to_devices();
         self.initialize_connection();
         loop {
             self.poll_simconnect_message_queue();
