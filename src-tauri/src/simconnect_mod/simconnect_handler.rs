@@ -84,7 +84,7 @@ pub struct SimconnectHandler {
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
     pub(crate) rx: mpsc::Receiver<sim_command::SimCommand>,
-    active_com_ports: Vec<Box<dyn SerialPort>>,
+    active_com_ports: HashMap<String, Box<dyn SerialPort>>,
     run_bundles: Vec<RunBundle>,
     polling_interval: u8,
 }
@@ -107,29 +107,33 @@ impl SimconnectHandler {
             output_registry,
             rx,
             polling_interval: 6,
-            active_com_ports: vec![],
+            active_com_ports: HashMap::new(),
             run_bundles: vec![],
+        }
+    }
+
+    fn parse_com_port(com_port: &str) -> String {
+        let parts: Vec<&str> = com_port.split(',').collect();
+        match parts.first() {
+            Some(x) => x.to_string(),
+            None => "".to_string(),
+        }
+    }
+
+    fn set_com_ports(&mut self) {
+        for run_bundle in &mut self.run_bundles {
+            let parsed_com_port = Self::parse_com_port(&run_bundle.com_port);
+            run_bundle.com_port = parsed_com_port
         }
     }
 
     fn connect_to_devices(&mut self) {
         println!("Connecting to devices");
         for run_bundle in self.run_bundles.iter() {
-            let parts: Vec<&str> = run_bundle.com_port.split(",").collect();
-            let com_port: String = match parts.first() {
-                Some(x) => x.to_string(),
-                None => {
-                    continue;
-                }
-            };
-            println!("Com port: {}", com_port);
-            let serial_conn = match serialport::new(com_port, 115200).open() {
+            let com_port = run_bundle.com_port.clone();
+            match serialport::new(com_port.clone(), 115200).open() {
                 Ok(port) => {
-                    &self.active_com_ports.push(port);
-                    self.active_com_ports
-                        .first_mut()
-                        .unwrap()
-                        .write_all("test".as_bytes());
+                    self.active_com_ports.insert(com_port, port);
                 }
                 Err(e) => {
                     println!("Failed to open port: {}", e);
@@ -140,6 +144,7 @@ impl SimconnectHandler {
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
         self.run_bundles = run_bundles;
+        self.set_com_ports();
         self.connect_to_devices();
         self.initialize_connection();
         loop {
@@ -167,13 +172,17 @@ impl SimconnectHandler {
     }
 
     pub fn send_output_to_device(&mut self, output_id: u32, com_port: &str, value: f64) {
+        let formatted_str = format!("{} {}\n", output_id, value);
         //TODO send output to comport
-        let mut port = serialport::new(com_port, 115200)
-            .timeout(Duration::from_millis(10))
-            .open()
-            .expect("Failed to open port");
-        port.write_all(output_id.to_string().as_bytes())
-            .expect("Sending the output failed");
+        match self.active_com_ports.get_mut(com_port) {
+            Some(port) => {
+                port.write_all(formatted_str.as_bytes())
+                    .expect("Sending the output failed");
+            }
+            None => {
+                println!("Port not found: {}", com_port);
+            }
+        }
     }
 
     pub fn initialize_connection(&mut self) {
@@ -249,7 +258,9 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
+                                    println!("{}: {}", prefix, value);
                                     self.check_if_output_in_bundle(prefix, value);
+                                    std::thread::sleep(std::time::Duration::from_millis(0));
                                 }
                             }
                         }
@@ -298,17 +309,21 @@ impl SimconnectHandler {
             );
         }
     }
+
     pub fn define_outputs(&self, outputs: &Vec<Output>) {
-        for output in outputs {
-            self.simconnect.add_data_definition(
-                RequestModes::FLOAT,
-                &*output.output_name,
-                &*output.metric,
-                simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                output.id,
-                output.update_every,
-            );
-            println!("Output: {:?}", output);
+        let run_bundles = &self.run_bundles;
+        for runBundle in run_bundles {
+            for output in &runBundle.bundle.outputs {
+                self.simconnect.add_data_definition(
+                    RequestModes::FLOAT,
+                    &*output.output_name,
+                    &*output.metric,
+                    simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
+                    output.id,
+                    output.update_every,
+                );
+                println!("Output: {:?}", output);
+            }
         }
     }
 }

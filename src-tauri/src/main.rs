@@ -145,13 +145,13 @@ fn poll_microcontroller_for_inputs() {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(run_bundle: Vec<RunBundle>) {
+fn start_simconnect_connection(run_bundles: Vec<RunBundle>) {
     thread::spawn(|| {
         let (tx, rx) = mpsc::channel();
         #[cfg(target_os = "windows")]
         let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
         #[cfg(target_os = "windows")]
-        simconnect_handler.start_connection(run_bundle);
+        simconnect_handler.start_connection(run_bundles);
         *SENDER.lock().unwrap() = Some(tx);
     });
 }
