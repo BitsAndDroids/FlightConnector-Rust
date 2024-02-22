@@ -9,11 +9,21 @@ import { Preset } from "@/model/Preset";
 export const ControllerSelectComponent = () => {
   useEffect(() => {
     async function getComPorts() {
-      console.log("get com ports");
       try {
         invoke("get_com_ports").then((result) => {
           setComPorts(result as string[]);
           setComPort((result as string[])[0]);
+          let preset: Preset = defaultPreset;
+          setDefaultPreset({
+            ...preset,
+            runBundles: [
+              {
+                id: 0,
+                com_port: (result as string[])[0],
+                bundle: { name: "", outputs: [], version: 0 },
+              },
+            ],
+          });
         });
       } catch (e) {
         console.log(e);
@@ -41,7 +51,11 @@ export const ControllerSelectComponent = () => {
   const [defaultPreset, setDefaultPreset] = useState<Preset>({
     name: "default",
     runBundles: [
-      { id: 0, com_port: "", bundle: { name: "", outputs: [], version: 0 } },
+      {
+        id: 0,
+        com_port: comPorts[0],
+        bundle: { name: "", outputs: [], version: 0 },
+      },
     ],
     version: "1.0",
     id: 0,
@@ -65,7 +79,6 @@ export const ControllerSelectComponent = () => {
     newPreset.runBundles = presetToAlter.runBundles.filter(
       (runBundle) => runBundle.id !== id,
     );
-    console.log(presetToAlter);
     if (preset) setPreset(newPreset);
     else setDefaultPreset(newPreset);
   };
