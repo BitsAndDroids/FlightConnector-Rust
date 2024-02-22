@@ -4,5 +4,5 @@ use serde::{Deserialize, Serialize};
 pub struct Input {
     pub event: String,
     pub input_type: i8,
-    pub input_id: i32,
+    pub input_id: u32,
 }
