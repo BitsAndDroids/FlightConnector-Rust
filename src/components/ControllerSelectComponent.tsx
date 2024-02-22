@@ -14,6 +14,18 @@ export const ControllerSelectComponent = () => {
         invoke("get_com_ports").then((result) => {
           setComPorts(result as string[]);
           setComPort((result as string[])[0]);
+          console.log("com ports", comPorts);
+          let preset: Preset = defaultPreset;
+          setDefaultPreset({
+            ...preset,
+            runBundles: [
+              {
+                id: 0,
+                com_port: (result as string[])[0],
+                bundle: { name: "", outputs: [], version: 0 },
+              },
+            ],
+          });
         });
       } catch (e) {
         console.log(e);
@@ -41,7 +53,11 @@ export const ControllerSelectComponent = () => {
   const [defaultPreset, setDefaultPreset] = useState<Preset>({
     name: "default",
     runBundles: [
-      { id: 0, com_port: "", bundle: { name: "", outputs: [], version: 0 } },
+      {
+        id: 0,
+        com_port: comPorts[0],
+        bundle: { name: "", outputs: [], version: 0 },
+      },
     ],
     version: "1.0",
     id: 0,
@@ -71,6 +87,7 @@ export const ControllerSelectComponent = () => {
   };
 
   function toggleRunConnection() {
+    console.log("toggle run connection ", defaultPreset.runBundles);
     if (connectionRunning) {
       invoke("stop_simconnect_connection");
     } else {
