@@ -5,6 +5,6 @@ multilingual = false
 src = "src"
 title = "Flightconnector docs"
 [output.html]
-git-repository-url = "https://github.com/BitsAndDroids/ConnectorDocs"
+git-repository-url = "https://github.com/BitsAndDroids/FlightConnector-Rust"
 edit-url-template = "https://github.com/BitsAndDroids/FlightConnector-Rust/edit/main/connector-docs/{path}"
 git-repository-icon = "fa-github"
