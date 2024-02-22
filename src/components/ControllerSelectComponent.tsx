@@ -33,6 +33,7 @@ export const ControllerSelectComponent = () => {
   }, []);
 
   const [comPorts, setComPorts] = useState<string[]>([]);
+  const [connectionRunning, setConnectionRunning] = useState<boolean>(false);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPort, setComPort] = useState<string>("");
   const [bundles, setBundles] = useState<Bundle[]>([]);
@@ -69,13 +70,17 @@ export const ControllerSelectComponent = () => {
     else setDefaultPreset(newPreset);
   };
 
-  function run() {
-    console.log("running");
-    invoke("start_simconnect_connection", {
-      runBundles: defaultPreset.runBundles,
-    }).then((result) => {
-      console.log(result);
-    });
+  function toggleRunConnection() {
+    if (connectionRunning) {
+      invoke("stop_simconnect_connection");
+    } else {
+      invoke("start_simconnect_connection", {
+        runBundles: defaultPreset.runBundles,
+      }).then((result) => {
+        console.log(result);
+      });
+    }
+    setConnectionRunning(!connectionRunning);
   }
 
   function setComPortForRunBundle(comPort: string, runBundle: any) {
@@ -133,12 +138,10 @@ export const ControllerSelectComponent = () => {
             </button>
             <button
               type="button"
-              className={
-                "rounded-md bg-indigo-500 px-3.5 py-2.5 m-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-              }
-              onClick={run}
+              className={`${connectionRunning ? "bg-red-700" : "bg-emerald-800"} rounded-md bg-indigo-500 px-3.5 py-2.5 m-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400`}
+              onClick={toggleRunConnection}
             >
-              Start
+              {connectionRunning ? "Stop" : "Start"}
             </button>
           </div>
           <div className="flex flex-row font-bold text-white">

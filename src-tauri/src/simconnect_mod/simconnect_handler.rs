@@ -2,7 +2,6 @@ use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::run_bundle::RunBundle;
-use crate::events::sim_command;
 use lazy_static::lazy_static;
 use serialport::SerialPort;
 use simconnect::DWORD;
@@ -18,8 +17,7 @@ use std::time::Duration;
 const MAX_RETURNED_ITEMS: usize = 255;
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<sim_command::SimCommand>>>> =
-        Arc::new(Mutex::new(None));
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
 }
 
 #[derive(Clone)]
@@ -82,7 +80,7 @@ pub struct SimconnectHandler {
     pub(crate) simconnect: simconnect::SimConnector,
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
-    pub(crate) rx: mpsc::Receiver<sim_command::SimCommand>,
+    pub(crate) rx: mpsc::Receiver<u16>,
     active_com_ports: HashMap<String, Box<dyn SerialPort>>,
     run_bundles: Vec<RunBundle>,
     polling_interval: u8,
@@ -95,7 +93,7 @@ struct Payload {
 }
 
 impl SimconnectHandler {
-    pub fn new(rx: mpsc::Receiver<sim_command::SimCommand>) -> Self {
+    pub fn new(rx: mpsc::Receiver<u16>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -127,7 +125,6 @@ impl SimconnectHandler {
     }
 
     fn connect_to_devices(&mut self) {
-        println!("Connecting to devices");
         for run_bundle in self.run_bundles.iter() {
             let com_port = run_bundle.com_port.clone();
             match serialport::new(com_port.clone(), 115200).open() {
@@ -146,10 +143,7 @@ impl SimconnectHandler {
         self.set_com_ports();
         self.connect_to_devices();
         self.initialize_connection();
-        loop {
-            self.poll_simconnect_message_queue();
-            sleep(Duration::from_secs(self.polling_interval as u64));
-        }
+        self.poll_simconnect_message_queue();
     }
 
     fn send_input_to_simconnect(&self, command: DWORD) {
@@ -240,7 +234,6 @@ impl SimconnectHandler {
     }
 
     pub fn initialize_connection(&mut self) {
-        println!("Initializing connection");
         self.simconnect.connect("Bits and Droids connector");
         self.input_registry.load_inputs();
         self.output_registry.load_outputs();
@@ -280,18 +273,14 @@ impl SimconnectHandler {
             0,
         );
         let events = Events::new();
-        loop {
+        let mut connection_running = true;
+        while connection_running {
             self.poll_microcontroller_for_inputs();
             match self.rx.try_recv() {
-                Ok(sim_command::SimCommand::NewCommand(command)) => {
-                    println!("Command in thread: {}", command);
-                    self.simconnect.transmit_client_event(
-                        0,
-                        command as u32,
-                        0,
-                        simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
-                        simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
-                    );
+                Ok(r) => {
+                    if r == 9999 {
+                        connection_running = false;
+                    }
                 }
                 Err(mpsc::TryRecvError::Empty) => (),
                 Err(mpsc::TryRecvError::Disconnected) => {
@@ -308,12 +297,10 @@ impl SimconnectHandler {
                                     std::ptr::addr_of!(data.dwData) as *const DataStructContainer;
                                 let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
                                 let count = data.dwDefineCount as usize;
-                                println!("{}", count);
                                 // itterate through the array of data structs
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    println!("{}: {}", prefix, value);
                                     self.check_if_output_in_bundle(prefix, value);
                                     std::thread::sleep(std::time::Duration::from_millis(0));
                                 }
@@ -321,7 +308,6 @@ impl SimconnectHandler {
                         }
                         RequestModes::STRING => {
                             unsafe {
-                                println!("2 strings");
                                 let sim_data_ptr =
                                     std::ptr::addr_of!(data.dwData) as *const StringStruct;
                                 let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);

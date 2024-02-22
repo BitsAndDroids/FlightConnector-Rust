@@ -1,5 +1,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use crate::events::{output_registry, sim_command};
+use crate::events::output_registry;
 use events::run_bundle::RunBundle;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
@@ -7,6 +7,7 @@ use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tokio::io::{self};
 
+use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
@@ -25,8 +26,7 @@ mod simconnect_mod;
 mod events;
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<sim_command::SimCommand>>>> =
-        Arc::new(Mutex::new(None));
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
 }
 
 static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
@@ -43,7 +43,6 @@ fn start_com_connection(app: tauri::AppHandle, port: String) {
         .map(|port| port.port_name.as_str())
         .collect::<Vec<_>>()
         .join(", ");
-    println!("Available ports are: {}", ports_output);
     std::thread::spawn(move || {
         tokio::runtime::Builder::new_current_thread()
             .enable_all()
@@ -54,14 +53,25 @@ fn start_com_connection(app: tauri::AppHandle, port: String) {
 }
 
 #[tauri::command]
+fn stop_simconnect_connection() {
+    let sender = SENDER.lock().unwrap().deref().clone();
+    match sender {
+        Some(sender) => {
+            sender.send(9999).unwrap();
+        }
+        None => {
+            eprintln!("Failed to send data");
+        }
+    }
+}
+
+#[tauri::command]
 async fn get_com_ports() -> Vec<String> {
     // TODO This
-    println!("Getting COM ports");
     let ports = match serialport::available_ports() {
         Ok(ports) => ports,
         Err(_) => Vec::new(),
     };
-    println!("Available ports are: {:?}", ports);
     let ports_output = ports
         .iter()
         .map(|port| {
@@ -85,7 +95,6 @@ async fn get_com_ports() -> Vec<String> {
 
 #[tauri::command]
 async fn get_outputs() -> Vec<events::output::Output> {
-    println!("Getting outputs");
     let mut output_registry = output_registry::OutputRegistry::new();
     output_registry.load_outputs();
     output_registry.outputs
@@ -93,7 +102,6 @@ async fn get_outputs() -> Vec<events::output::Output> {
 
 #[tauri::command]
 async fn poll_com_port(_app: tauri::AppHandle, port: String) {
-    println!("Polling COM port");
     let mut port = serialport::new(port, 115200)
         .timeout(std::time::Duration::from_millis(7000))
         .open()
@@ -105,7 +113,6 @@ async fn poll_com_port(_app: tauri::AppHandle, port: String) {
             Ok(_) => {
                 if byte[0] == b'\n' {
                     let message = String::from_utf8_lossy(&buffer);
-                    println!("Read message from serial port: {}", message);
                     buffer.clear();
                 } else {
                     buffer.push(byte[0]);
@@ -120,13 +127,13 @@ async fn poll_com_port(_app: tauri::AppHandle, port: String) {
 
 #[tauri::command]
 fn start_simconnect_connection(run_bundles: Vec<RunBundle>) {
+    let (tx, rx) = mpsc::channel();
+    *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {
-        let (tx, rx) = mpsc::channel();
         #[cfg(target_os = "windows")]
         let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
-        *SENDER.lock().unwrap() = Some(tx);
     });
 }
 
@@ -143,7 +150,7 @@ fn main() {
             get_com_ports,
             get_outputs,
             start_simconnect_connection,
-            /*send_command*/
+            stop_simconnect_connection /*send_command*/
         ])
         .setup(|app| {
             #[cfg(target_os = "windows")]
