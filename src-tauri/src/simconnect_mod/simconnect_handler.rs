@@ -208,7 +208,7 @@ impl SimconnectHandler {
             let mut buffer: Vec<u8> = Vec::new();
             let mut byte = [0u8; 1];
             let mut reading = true;
-            if (active_com_port.1.bytes_to_read().unwrap() > 0) {
+            if active_com_port.1.bytes_to_read().unwrap() > 0 {
                 while reading {
                     match active_com_port.1.read(&mut byte) {
                         Ok(_) => {
@@ -219,7 +219,7 @@ impl SimconnectHandler {
                                 //set buffer to \n
                                 buffer.push(byte[0]);
                                 reading = false;
-                            } else if (byte[0] != b'\r') {
+                            } else if byte[0] != b'\r' {
                                 buffer.push(byte[0]);
                             }
                         }
@@ -231,8 +231,8 @@ impl SimconnectHandler {
         for message in messages {
             //parse message to u32 and send to simconnect
             match message.trim().parse::<DWORD>() {
-                Ok(parsed_DWORD) => {
-                    self.send_input_to_simconnect(parsed_DWORD);
+                Ok(dword) => {
+                    self.send_input_to_simconnect(dword);
                 }
                 Err(e) => eprintln!("{:?}", e),
             }
@@ -356,7 +356,7 @@ impl SimconnectHandler {
     pub fn define_inputs(&self, inputs: &HashMap<u32, Input>) {
         for input in inputs {
             self.simconnect.map_client_event_to_sim_event(
-                input.0.clone() as SIMCONNECT_CLIENT_EVENT_ID,
+                *input.0 as SIMCONNECT_CLIENT_EVENT_ID,
                 input.1.event.as_str(),
             );
         }
@@ -364,8 +364,8 @@ impl SimconnectHandler {
 
     pub fn define_outputs(&self) {
         let run_bundles = &self.run_bundles;
-        for runBundle in run_bundles {
-            for output in &runBundle.bundle.outputs {
+        for run_bundle in run_bundles {
+            for output in &run_bundle.bundle.outputs {
                 self.simconnect.add_data_definition(
                     RequestModes::FLOAT,
                     &output.output_name,
