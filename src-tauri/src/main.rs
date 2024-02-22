@@ -7,7 +7,6 @@ use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tokio::io::{self};
 
-use std::io::Read;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
@@ -116,31 +115,6 @@ async fn poll_com_port(_app: tauri::AppHandle, port: String) {
             Err(e) => eprintln!("{:?}", e),
         }
         tokio::time::sleep(Duration::from_micros(10)).await;
-    }
-}
-
-fn poll_microcontroller_for_inputs() {
-    let mut port = serialport::new("COM3", 115200)
-        .timeout(std::time::Duration::from_millis(7000))
-        .open()
-        .expect("Failed to open port");
-    let mut buffer: Vec<u8> = Vec::new();
-    loop {
-        let mut byte = [0u8; 1];
-        match port.read(&mut byte) {
-            Ok(_) => {
-                if byte[0] == b'\n' {
-                    let message = String::from_utf8_lossy(&buffer);
-                    println!("Read message from serial port: {}", message);
-                    buffer.clear();
-                } else {
-                    buffer.push(byte[0]);
-                }
-            }
-            Err(ref e) if e.kind() == io::ErrorKind::TimedOut => (),
-            Err(e) => eprintln!("{:?}", e),
-        }
-        std::thread::sleep(std::time::Duration::from_micros(10));
     }
 }
 

@@ -1,7 +1,5 @@
-use crate::events::bundle::Bundle;
 use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
-use crate::events::output::Output;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::run_bundle::RunBundle;
 use crate::events::sim_command;
@@ -10,6 +8,7 @@ use serialport::SerialPort;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
+use std::io::Read;
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::sync::Mutex;
@@ -153,6 +152,24 @@ impl SimconnectHandler {
         }
     }
 
+    fn send_input_to_simconnect(&self, command: DWORD) {
+        //TODO send input to simconnect
+        match self.input_registry.get_input(command) {
+            Some(input) => {
+                self.simconnect.transmit_client_event(
+                    0,
+                    input.input_id,
+                    0,
+                    simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
+                    simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
+                );
+            }
+            _ => {
+                println!("Input not found: {}", command);
+            }
+        }
+    }
+
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
         let mut com_ports = vec![];
         for run_bundle in self.run_bundles.iter() {
@@ -185,13 +202,50 @@ impl SimconnectHandler {
         }
     }
 
+    fn poll_microcontroller_for_inputs(&mut self) {
+        let mut messages: Vec<String> = Vec::new();
+        for active_com_port in &mut self.active_com_ports {
+            let mut buffer: Vec<u8> = Vec::new();
+            let mut byte = [0u8; 1];
+            let mut reading = true;
+            if (active_com_port.1.bytes_to_read().unwrap() > 0) {
+                while reading {
+                    match active_com_port.1.read(&mut byte) {
+                        Ok(_) => {
+                            if byte[0] == b'\n' {
+                                let message = String::from_utf8_lossy(&buffer);
+                                messages.push(message.to_string());
+                                buffer.clear();
+                                //set buffer to \n
+                                buffer.push(byte[0]);
+                                reading = false;
+                            } else if (byte[0] != b'\r') {
+                                buffer.push(byte[0]);
+                            }
+                        }
+                        Err(e) => eprintln!("{:?}", e),
+                    }
+                }
+            }
+        }
+        for message in messages {
+            //parse message to u32 and send to simconnect
+            match message.trim().parse::<DWORD>() {
+                Ok(parsed_DWORD) => {
+                    self.send_input_to_simconnect(parsed_DWORD);
+                }
+                Err(e) => eprintln!("{:?}", e),
+            }
+        }
+    }
+
     pub fn initialize_connection(&mut self) {
         println!("Initializing connection");
         self.simconnect.connect("Bits and Droids connector");
         self.input_registry.load_inputs();
         self.output_registry.load_outputs();
         self.define_inputs(self.input_registry.get_inputs());
-        self.define_outputs(self.output_registry.get_outputs());
+        self.define_outputs();
     }
 
     fn poll_simconnect_message_queue(&mut self) {
@@ -227,6 +281,7 @@ impl SimconnectHandler {
         );
         let events = Events::new();
         loop {
+            self.poll_microcontroller_for_inputs();
             match self.rx.try_recv() {
                 Ok(sim_command::SimCommand::NewCommand(command)) => {
                     println!("Command in thread: {}", command);
@@ -275,9 +330,6 @@ impl SimconnectHandler {
                                 println!("{}", string);
                             }
                         }
-                        0 => {
-                            println!("1");
-                        }
                         _ => (),
                     }
                 }
@@ -301,7 +353,7 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn define_inputs(&self, inputs: &HashMap<i32, Input>) {
+    pub fn define_inputs(&self, inputs: &HashMap<u32, Input>) {
         for input in inputs {
             self.simconnect.map_client_event_to_sim_event(
                 input.0.clone() as SIMCONNECT_CLIENT_EVENT_ID,
@@ -310,19 +362,18 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn define_outputs(&self, outputs: &Vec<Output>) {
+    pub fn define_outputs(&self) {
         let run_bundles = &self.run_bundles;
         for runBundle in run_bundles {
             for output in &runBundle.bundle.outputs {
                 self.simconnect.add_data_definition(
                     RequestModes::FLOAT,
-                    &*output.output_name,
-                    &*output.metric,
+                    &output.output_name,
+                    &output.metric,
                     simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
                     output.id,
                     output.update_every,
                 );
-                println!("Output: {:?}", output);
             }
         }
     }

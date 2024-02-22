@@ -5,7 +5,7 @@ use super::input::Input;
 
 #[derive(Debug)]
 pub struct InputRegistry {
-    pub inputs: HashMap<i32, Input>,
+    pub inputs: HashMap<u32, Input>,
     input_path: String,
 }
 
@@ -22,10 +22,10 @@ impl InputRegistry {
             self.inputs.insert(input.input_id, input);
         }
     }
-    pub fn get_inputs(&self) -> &HashMap<i32, Input> {
+    pub fn get_inputs(&self) -> &HashMap<u32, Input> {
         &self.inputs
     }
-    pub fn get_input(&self, input_id: i32) -> Option<&Input> {
+    pub fn get_input(&self, input_id: u32) -> Option<&Input> {
         self.inputs.get(&input_id)
     }
 }
