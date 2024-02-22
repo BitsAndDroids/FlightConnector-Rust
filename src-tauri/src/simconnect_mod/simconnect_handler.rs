@@ -1,3 +1,4 @@
+use crate::events::bundle::Bundle;
 use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
 use crate::events::output::Output;
@@ -5,6 +6,7 @@ use crate::events::output_registry::OutputRegistry;
 use crate::events::run_bundle::RunBundle;
 use crate::events::sim_command;
 use lazy_static::lazy_static;
+use serialport::SerialPort;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
@@ -82,6 +84,8 @@ pub struct SimconnectHandler {
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
     pub(crate) rx: mpsc::Receiver<sim_command::SimCommand>,
+    active_com_ports: HashMap<String, Box<dyn SerialPort>>,
+    run_bundles: Vec<RunBundle>,
     polling_interval: u8,
 }
 
@@ -103,12 +107,45 @@ impl SimconnectHandler {
             output_registry,
             rx,
             polling_interval: 6,
+            active_com_ports: HashMap::new(),
+            run_bundles: vec![],
+        }
+    }
+
+    fn parse_com_port(com_port: &str) -> String {
+        let parts: Vec<&str> = com_port.split(',').collect();
+        match parts.first() {
+            Some(x) => x.to_string(),
+            None => "".to_string(),
+        }
+    }
+
+    fn set_com_ports(&mut self) {
+        for run_bundle in &mut self.run_bundles {
+            let parsed_com_port = Self::parse_com_port(&run_bundle.com_port);
+            run_bundle.com_port = parsed_com_port
+        }
+    }
+
+    fn connect_to_devices(&mut self) {
+        println!("Connecting to devices");
+        for run_bundle in self.run_bundles.iter() {
+            let com_port = run_bundle.com_port.clone();
+            match serialport::new(com_port.clone(), 115200).open() {
+                Ok(port) => {
+                    self.active_com_ports.insert(com_port, port);
+                }
+                Err(e) => {
+                    println!("Failed to open port: {}", e);
+                }
+            };
         }
     }
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
-        println!("length: {}", run_bundles.len());
-        println!("Starting connection");
+        self.run_bundles = run_bundles;
+        self.set_com_ports();
+        self.connect_to_devices();
         self.initialize_connection();
         loop {
             self.poll_simconnect_message_queue();
@@ -116,17 +153,37 @@ impl SimconnectHandler {
         }
     }
 
-    // #[tauri::command]
-    // fn send_command(app: tauri::AppHandle, command: i16) {
-    //     println!("Command: {}", command);
-    //     let sender = SENDER
-    //         .lock()
-    //         .unwrap()
-    //         .as_ref()
-    //         .expect("SimConnect not initialized")
-    //         .clone();
-    //     sender.send(SimCommand::NewCommand(command)).unwrap();
-    // }
+    pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
+        let mut com_ports = vec![];
+        for run_bundle in self.run_bundles.iter() {
+            if run_bundle
+                .bundle
+                .outputs
+                .iter()
+                .any(|output| output.id == output_id)
+            {
+                com_ports.push(run_bundle.com_port.clone())
+            }
+        }
+
+        for com_port in com_ports {
+            self.send_output_to_device(output_id, &com_port, value);
+        }
+    }
+
+    pub fn send_output_to_device(&mut self, output_id: u32, com_port: &str, value: f64) {
+        let formatted_str = format!("{} {}\n", output_id, value);
+        //TODO send output to comport
+        match self.active_com_ports.get_mut(com_port) {
+            Some(port) => {
+                port.write_all(formatted_str.as_bytes())
+                    .expect("Sending the output failed");
+            }
+            None => {
+                println!("Port not found: {}", com_port);
+            }
+        }
+    }
 
     pub fn initialize_connection(&mut self) {
         println!("Initializing connection");
@@ -138,36 +195,36 @@ impl SimconnectHandler {
     }
 
     fn poll_simconnect_message_queue(&mut self) {
-        //     conn.add_data_definition(
-        //         RequestModes::STRING,
-        //         "TITLE",
-        //         "",
-        //         simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
-        //         202,
-        //         0.0,
-        //     );
-        //     conn.request_data_on_sim_object(
-        //         0,
-        //         RequestModes::FLOAT,
-        //         0,
-        //         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-        //         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-        //             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-        //         0,
-        //         1,
-        //         0,
-        //     );
-        //     conn.request_data_on_sim_object(
-        //         1,
-        //         RequestModes::STRING,
-        //         0,
-        //         simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-        //         simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-        //             | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-        //         0,
-        //         1,
-        //         0,
-        //     );
+        self.simconnect.add_data_definition(
+            RequestModes::STRING,
+            "TITLE",
+            "",
+            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
+            202,
+            0.0,
+        );
+        self.simconnect.request_data_on_sim_object(
+            0,
+            RequestModes::FLOAT,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
+        self.simconnect.request_data_on_sim_object(
+            1,
+            RequestModes::STRING,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
         let events = Events::new();
         loop {
             match self.rx.try_recv() {
@@ -201,8 +258,9 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    println!("{}", prefix);
-                                    println!("{}", value);
+                                    println!("{}: {}", prefix, value);
+                                    self.check_if_output_in_bundle(prefix, value);
+                                    std::thread::sleep(std::time::Duration::from_millis(0));
                                 }
                             }
                         }
@@ -251,17 +309,21 @@ impl SimconnectHandler {
             );
         }
     }
+
     pub fn define_outputs(&self, outputs: &Vec<Output>) {
-        for output in outputs {
-            self.simconnect.add_data_definition(
-                RequestModes::FLOAT,
-                &*output.output_name,
-                &*output.metric,
-                simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                output.id,
-                output.update_every,
-            );
-            println!("Output: {:?}", output);
+        let run_bundles = &self.run_bundles;
+        for runBundle in run_bundles {
+            for output in &runBundle.bundle.outputs {
+                self.simconnect.add_data_definition(
+                    RequestModes::FLOAT,
+                    &*output.output_name,
+                    &*output.metric,
+                    simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
+                    output.id,
+                    output.update_every,
+                );
+                println!("Output: {:?}", output);
+            }
         }
     }
 }

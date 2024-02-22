@@ -72,7 +72,7 @@ export const ControllerSelectComponent = () => {
   function run() {
     console.log("running");
     invoke("start_simconnect_connection", {
-      runBundle: defaultPreset.runBundles,
+      runBundles: defaultPreset.runBundles,
     }).then((result) => {
       console.log(result);
     });

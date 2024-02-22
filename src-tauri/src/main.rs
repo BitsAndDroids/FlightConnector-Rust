@@ -3,6 +3,7 @@ use crate::events::{output_registry, sim_command};
 use events::run_bundle::RunBundle;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
+use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tokio::io::{self};
 
@@ -61,10 +62,24 @@ async fn get_com_ports() -> Vec<String> {
         Ok(ports) => ports,
         Err(_) => Vec::new(),
     };
+    println!("Available ports are: {:?}", ports);
     let ports_output = ports
         .iter()
-        .map(|port| port.port_name.as_str())
-        .map(|port| port.to_string())
+        .map(|port| {
+            let port_type_info = match &port.port_type {
+                SerialPortType::UsbPort(info) => format!(
+                    "{}",
+                    match &info.product {
+                        Some(product) => product.to_string(),
+                        None => "Unknown".to_string(),
+                    }
+                ),
+                SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
+                SerialPortType::PciPort => "PCI Serial".to_string(),
+                _ => "".to_string(),
+            };
+            format!("{}, {}", port.port_name.as_str(), port_type_info)
+        })
         .collect::<Vec<_>>();
     ports_output
 }
@@ -130,13 +145,13 @@ fn poll_microcontroller_for_inputs() {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(run_bundle: Vec<RunBundle>) {
+fn start_simconnect_connection(run_bundles: Vec<RunBundle>) {
     thread::spawn(|| {
         let (tx, rx) = mpsc::channel();
         #[cfg(target_os = "windows")]
         let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
         #[cfg(target_os = "windows")]
-        simconnect_handler.start_connection(run_bundle);
+        simconnect_handler.start_connection(run_bundles);
         *SENDER.lock().unwrap() = Some(tx);
     });
 }
