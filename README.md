@@ -3,6 +3,9 @@
 This is a rewrite of the original connector written in C++.
 The original repo can be found at:
 [https://github.com/BitsAndDroids/Bits-and-Droids-flight-connector](https://github.com/BitsAndDroids/Bits-and-Droids-flight-connector)
+## Documentation
+
+The documentation can be found in the open source docs [Flightconnector Docs book](https://bitsanddroids.github.io/ConnectorDocs/)
 
 ## Install
 
