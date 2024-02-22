@@ -9,12 +9,10 @@ import { Preset } from "@/model/Preset";
 export const ControllerSelectComponent = () => {
   useEffect(() => {
     async function getComPorts() {
-      console.log("get com ports");
       try {
         invoke("get_com_ports").then((result) => {
           setComPorts(result as string[]);
           setComPort((result as string[])[0]);
-          console.log("com ports", comPorts);
           let preset: Preset = defaultPreset;
           setDefaultPreset({
             ...preset,
@@ -81,13 +79,11 @@ export const ControllerSelectComponent = () => {
     newPreset.runBundles = presetToAlter.runBundles.filter(
       (runBundle) => runBundle.id !== id,
     );
-    console.log(presetToAlter);
     if (preset) setPreset(newPreset);
     else setDefaultPreset(newPreset);
   };
 
   function toggleRunConnection() {
-    console.log("toggle run connection ", defaultPreset.runBundles);
     if (connectionRunning) {
       invoke("stop_simconnect_connection");
     } else {
