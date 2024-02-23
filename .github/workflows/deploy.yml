@@ -19,5 +19,6 @@ jobs:
 
       - name: Build and test with Cargo
         run: |
+          cd src-tauri
           cargo build --verbose
           cargo test --verbose
