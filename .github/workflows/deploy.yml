@@ -11,14 +11,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Set up Rust
-        uses: actions/setup-rust@v1
+      - name: build and test
+        uses: actions-rs/toolchain@v1
         with:
-          rust-version: "1.57.0" # adjust to your Rust version
-
-      - name: Build and test with Cargo
-        run: |
-          cd src-tauri
-          cargo build --verbose
-          cargo test --verbose
+          toolchain: stable
+          run: |
+            cd src-tauri
+            cargo build --verbose
+            cargo test --verbose
