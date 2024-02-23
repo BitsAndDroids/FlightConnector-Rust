@@ -1,5 +1,3 @@
-jobsname: Rust Tests
-
 on:
   pull_request:
     branches:
