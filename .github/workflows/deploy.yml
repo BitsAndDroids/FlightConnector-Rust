@@ -1,0 +1,25 @@
+jobsname: Rust Tests
+
+on:
+  pull_request:
+    branches:
+      - main # adjust to your main branch name
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: "1.57.0" # adjust to your Rust version
+
+      - name: Build and test with Cargo
+        run: |
+          cargo build --verbose
+          cargo test --verbose
