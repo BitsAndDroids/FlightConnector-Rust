@@ -1,6 +1,6 @@
 # Outputlist
 
-TODO extract this into a list
+TODO autogenerate this from the output file and sort by category in a list/table
 
 ```json
 [
