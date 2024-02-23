@@ -1,6 +1,6 @@
 [
   {
-    "output_name": "FUEL SELECTED QUANTITY PERCENT",
+    "simvar": "FUEL SELECTED QUANTITY PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel quantity %",
@@ -9,7 +9,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "AUTOPILOT AIRSPEED HOLD VAR",
+    "simvar": "AUTOPILOT AIRSPEED HOLD VAR",
     "metric": "knots",
     "update_every": 0,
     "cb_text": "AP airspeed var",
@@ -18,7 +18,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER LEVEL",
+    "simvar": "FUEL TANK CENTER LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank center level",
@@ -27,7 +27,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER2 LEVEL",
+    "simvar": "FUEL TANK CENTER2 LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank center 2 level",
@@ -36,7 +36,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER3 LEVEL",
+    "simvar": "FUEL TANK CENTER3 LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank center 3 level",
@@ -45,7 +45,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT MAIN LEVEL",
+    "simvar": "FUEL TANK LEFT MAIN LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank left main level",
@@ -54,7 +54,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT AUX LEVEL",
+    "simvar": "FUEL TANK LEFT AUX LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank left aux level",
@@ -63,7 +63,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT TIP LEVEL",
+    "simvar": "FUEL TANK LEFT TIP LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank left tip level",
@@ -72,7 +72,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT MAIN LEVEL",
+    "simvar": "FUEL TANK RIGHT MAIN LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank right main level",
@@ -81,7 +81,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT AUX LEVEL",
+    "simvar": "FUEL TANK RIGHT AUX LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank right aux level",
@@ -90,7 +90,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT TIP LEVEL",
+    "simvar": "FUEL TANK RIGHT TIP LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank right tip level",
@@ -99,7 +99,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK EXTERNAL1 LEVEL",
+    "simvar": "FUEL TANK EXTERNAL1 LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank external 1 level",
@@ -108,7 +108,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK EXTERNAL2 LEVEL",
+    "simvar": "FUEL TANK EXTERNAL2 LEVEL",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Fuel tank external 2 level",
@@ -117,7 +117,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER CAPACITY",
+    "simvar": "FUEL TANK CENTER CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank center capacity",
@@ -126,7 +126,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER2 CAPACITY",
+    "simvar": "FUEL TANK CENTER2 CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank center 2 capacity",
@@ -135,7 +135,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER3 CAPACITY",
+    "simvar": "FUEL TANK CENTER3 CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank center 3 capacity",
@@ -144,7 +144,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT MAIN CAPACITY",
+    "simvar": "FUEL TANK LEFT MAIN CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank left main capacity",
@@ -153,7 +153,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT AUX CAPACITY",
+    "simvar": "FUEL TANK LEFT AUX CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank left aux capacity",
@@ -162,7 +162,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT TIP CAPACITY",
+    "simvar": "FUEL TANK LEFT TIP CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank left tip capacity",
@@ -171,7 +171,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT MAIN CAPACITY",
+    "simvar": "FUEL TANK RIGHT MAIN CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank right main capacity",
@@ -180,7 +180,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT AUX CAPACITY",
+    "simvar": "FUEL TANK RIGHT AUX CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank right aux capacity",
@@ -189,7 +189,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT TIP CAPACITY",
+    "simvar": "FUEL TANK RIGHT TIP CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank right tip capacity",
@@ -198,7 +198,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK EXTERNAL1 CAPACITY",
+    "simvar": "FUEL TANK EXTERNAL1 CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank external 1 capacity",
@@ -207,7 +207,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK EXTERNAL2 CAPACITY",
+    "simvar": "FUEL TANK EXTERNAL2 CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank external 2 capacity",
@@ -216,7 +216,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL LEFT CAPACITY",
+    "simvar": "FUEL LEFT CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel left capacity",
@@ -225,7 +225,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL RIGHT CAPACITY",
+    "simvar": "FUEL RIGHT CAPACITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel right capacity",
@@ -234,7 +234,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER QUANTITY",
+    "simvar": "FUEL TANK CENTER QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank center quantity",
@@ -243,7 +243,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER2 QUANTITY",
+    "simvar": "FUEL TANK CENTER2 QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank center 2 quantity",
@@ -252,7 +252,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK CENTER3 QUANTITY",
+    "simvar": "FUEL TANK CENTER3 QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank center 3 quantity",
@@ -261,7 +261,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT MAIN QUANTITY",
+    "simvar": "FUEL TANK LEFT MAIN QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank left main quantity",
@@ -270,7 +270,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT AUX QUANTITY",
+    "simvar": "FUEL TANK LEFT AUX QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank left aux quantity",
@@ -279,7 +279,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK LEFT TIP QUANTITY",
+    "simvar": "FUEL TANK LEFT TIP QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank left tip quantity",
@@ -288,7 +288,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT MAIN QUANTITY",
+    "simvar": "FUEL TANK RIGHT MAIN QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank right main quantity",
@@ -297,7 +297,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT AUX QUANTITY",
+    "simvar": "FUEL TANK RIGHT AUX QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank right aux quantity",
@@ -306,7 +306,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK RIGHT TIP QUANTITY",
+    "simvar": "FUEL TANK RIGHT TIP QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank right tip quantity",
@@ -315,7 +315,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK EXTERNAL1 QUANTITY",
+    "simvar": "FUEL TANK EXTERNAL1 QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank external 1",
@@ -324,7 +324,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TANK EXTERNAL2 QUANTITY",
+    "simvar": "FUEL TANK EXTERNAL2 QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel tank external 2 quantity",
@@ -333,7 +333,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL LEFT QUANTITY",
+    "simvar": "FUEL LEFT QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel left quantity",
@@ -342,7 +342,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL RIGHT QUANTITY",
+    "simvar": "FUEL RIGHT QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel right quantity",
@@ -351,7 +351,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "FUEL TOTAL QUANTITY",
+    "simvar": "FUEL TOTAL QUANTITY",
     "metric": "Gallons",
     "update_every": 1,
     "cb_text": "Fuel total quantity",
@@ -360,7 +360,7 @@
     "category": "Fuel"
   },
   {
-    "output_name": "PLANE ALT ABOVE GROUND",
+    "simvar": "PLANE ALT ABOVE GROUND",
     "metric": "Feet",
     "update_every": 100,
     "cb_text": "Feet above ground",
@@ -369,7 +369,7 @@
     "category": "Data"
   },
   {
-    "output_name": "SIM ON GROUND",
+    "simvar": "SIM ON GROUND",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) on the ground",
@@ -378,7 +378,7 @@
     "category": "Data"
   },
   {
-    "output_name": "VERTICAL SPEED",
+    "simvar": "VERTICAL SPEED",
     "metric": "Feet per second",
     "update_every": 10,
     "cb_text": "Vertical speed",
@@ -387,7 +387,7 @@
     "category": "Data"
   },
   {
-    "output_name": "TITLE",
+    "simvar": "TITLE",
     "metric": "NULL",
     "update_every": 0,
     "cb_text": "Plane name",
@@ -396,7 +396,7 @@
     "category": "Data"
   },
   {
-    "output_name": "BAROMETER PRESSURE",
+    "simvar": "BAROMETER PRESSURE",
     "metric": "Millibars",
     "update_every": 10,
     "cb_text": "Barometer pressure",
@@ -405,7 +405,7 @@
     "category": "Instruments"
   },
   {
-    "output_name": "AIRSPEED INDICATED",
+    "simvar": "AIRSPEED INDICATED",
     "metric": "Knots",
     "update_every": 1,
     "cb_text": "Indicated airspeed",
@@ -414,7 +414,7 @@
     "category": "Instruments"
   },
   {
-    "output_name": "HEADING INDICATOR",
+    "simvar": "HEADING INDICATOR",
     "metric": "Radians",
     "update_every": 0.02,
     "cb_text": "Indicated heading",
@@ -423,7 +423,7 @@
     "category": "Instruments"
   },
   {
-    "output_name": "INDICATED ALTITUDE",
+    "simvar": "INDICATED ALTITUDE",
     "metric": "Feet",
     "update_every": 10,
     "cb_text": "Indicated altitude",
@@ -432,7 +432,7 @@
     "category": "Instruments"
   },
   {
-    "output_name": "KOHLSMAN SETTING HG",
+    "simvar": "KOHLSMAN SETTING HG",
     "metric": "inHg",
     "update_every": 0,
     "cb_text": "Kohlsman HG",
@@ -441,7 +441,34 @@
     "category": "Instruments"
   },
   {
-    "output_name": "GPS GROUND SPEED",
+    "simvar": "LOCAL TIME",
+    "metric": "Seconds",
+    "update_every": 1,
+    "cb_text": "Local time",
+    "id": 338,
+    "output_type": 0,
+    "category": "Data"
+  },
+  {
+    "simvar": "TIME ZONE OFFSET",
+    "metric": "Seconds",
+    "update_every": 1,
+    "cb_text": "Zulu time",
+    "id": 339,
+    "output_type": 0,
+    "category": "Data"
+  },
+  {
+    "simvar": "ZULU TIME",
+    "metric": "Seconds",
+    "update_every": 1,
+    "cb_text": "Zulu time",
+    "id": 340,
+    "output_type": 0,
+    "category": "Data"
+  },
+  {
+    "simvar": "GPS GROUND SPEED",
     "metric": "Meters per second",
     "update_every": 1,
     "cb_text": "GPS groundspeed",
@@ -450,7 +477,7 @@
     "category": "GPS"
   },
   {
-    "output_name": "GPS WP BEARING",
+    "simvar": "GPS WP BEARING",
     "metric": "Degrees",
     "update_every": 1,
     "cb_text": "GPS course to steer",
@@ -459,7 +486,7 @@
     "category": "GPS"
   },
   {
-    "output_name": "AUTOPILOT HEADING LOCK DIR",
+    "simvar": "AUTOPILOT HEADING LOCK DIR",
     "metric": "Degrees",
     "update_every": 0,
     "cb_text": "AP heading lock",
@@ -468,7 +495,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT ALTITUDE LOCK VAR",
+    "simvar": "AUTOPILOT ALTITUDE LOCK VAR",
     "metric": "Feet",
     "update_every": 0,
     "cb_text": "AP altitude lock var",
@@ -477,7 +504,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT VERTICAL HOLD VAR",
+    "simvar": "AUTOPILOT VERTICAL HOLD VAR",
     "metric": "Feet/minute",
     "update_every": 0,
     "cb_text": "AP vertical hold var",
@@ -486,7 +513,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT AVAILABLE",
+    "simvar": "AUTOPILOT AVAILABLE",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP available",
@@ -495,7 +522,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT MASTER",
+    "simvar": "AUTOPILOT MASTER",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP master",
@@ -504,7 +531,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT WING LEVELER",
+    "simvar": "AUTOPILOT WING LEVELER",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP wing leveler",
@@ -513,7 +540,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT HEADING LOCK",
+    "simvar": "AUTOPILOT HEADING LOCK",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP heading lock",
@@ -522,7 +549,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT ALTITUDE LOCK",
+    "simvar": "AUTOPILOT ALTITUDE LOCK",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP altitude lock",
@@ -531,7 +558,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT ATTITUDE HOLD",
+    "simvar": "AUTOPILOT ATTITUDE HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP attitude lock",
@@ -540,7 +567,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT GLIDESLOPE HOLD",
+    "simvar": "AUTOPILOT GLIDESLOPE HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP glideslope hold",
@@ -549,7 +576,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT APPROACH HOLD",
+    "simvar": "AUTOPILOT APPROACH HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP approach hold",
@@ -558,7 +585,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT BACKCOURSE HOLD",
+    "simvar": "AUTOPILOT BACKCOURSE HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP backcourse hold",
@@ -567,7 +594,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT FLIGHT DIRECTOR ACTIVE",
+    "simvar": "AUTOPILOT FLIGHT DIRECTOR ACTIVE",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP flight director",
@@ -576,7 +603,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT AIRSPEED HOLD",
+    "simvar": "AUTOPILOT AIRSPEED HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP airspeed hold",
@@ -585,7 +612,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT MACH HOLD",
+    "simvar": "AUTOPILOT MACH HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP mach hold",
@@ -594,7 +621,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT YAW DAMPER",
+    "simvar": "AUTOPILOT YAW DAMPER",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP yaw damper",
@@ -603,7 +630,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT THROTTLE ARM",
+    "simvar": "AUTOPILOT THROTTLE ARM",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP throttle arm",
@@ -612,7 +639,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT TAKEOFF POWER ACTIVE",
+    "simvar": "AUTOPILOT TAKEOFF POWER ACTIVE",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP takeoff power",
@@ -621,7 +648,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOTHROTTLE ACTIVE",
+    "simvar": "AUTOTHROTTLE ACTIVE",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Autothrottle",
@@ -630,7 +657,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT NAV1 LOCK",
+    "simvar": "AUTOPILOT NAV1 LOCK",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP NAV1 lock",
@@ -639,7 +666,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT VERTICAL HOLD",
+    "simvar": "AUTOPILOT VERTICAL HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP vertical hold",
@@ -648,7 +675,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "AUTOPILOT RPM HOLD",
+    "simvar": "AUTOPILOT RPM HOLD",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) AP RPM hold",
@@ -657,7 +684,7 @@
     "category": "Autopilot"
   },
   {
-    "output_name": "COM ACTIVE FREQUENCY:1",
+    "simvar": "COM ACTIVE FREQUENCY:1",
     "metric": "Khz",
     "update_every": 0,
     "cb_text": "Com 1 active",
@@ -666,7 +693,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "COM ACTIVE FREQUENCY:2",
+    "simvar": "COM ACTIVE FREQUENCY:2",
     "metric": "Khz",
     "update_every": 0,
     "cb_text": "Com 2 active",
@@ -675,7 +702,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "COM STANDBY FREQUENCY:1",
+    "simvar": "COM STANDBY FREQUENCY:1",
     "metric": "Khz",
     "update_every": 0,
     "cb_text": "Com 1 standby",
@@ -684,7 +711,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "COM STANDBY FREQUENCY:2",
+    "simvar": "COM STANDBY FREQUENCY:2",
     "metric": "Khz",
     "update_every": 0,
     "cb_text": "Com 2 standby",
@@ -693,7 +720,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV ACTIVE FREQUENCY:1",
+    "simvar": "NAV ACTIVE FREQUENCY:1",
     "metric": "KHz",
     "update_every": 0,
     "cb_text": "NAV 1 active",
@@ -702,7 +729,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV STANDBY FREQUENCY:1",
+    "simvar": "NAV STANDBY FREQUENCY:1",
     "metric": "KHz",
     "update_every": 0,
     "cb_text": "NAV 1 standby",
@@ -711,7 +738,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV ACTIVE FREQUENCY:2",
+    "simvar": "NAV ACTIVE FREQUENCY:2",
     "metric": "KHz",
     "update_every": 0,
     "cb_text": "NAV 2 active",
@@ -720,7 +747,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV STANDBY FREQUENCY:2",
+    "simvar": "NAV STANDBY FREQUENCY:2",
     "metric": "KHz",
     "update_every": 0,
     "cb_text": "NAV 2 standby",
@@ -729,7 +756,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV RADIAL ERROR:1",
+    "simvar": "NAV RADIAL ERROR:1",
     "metric": "Degrees",
     "update_every": 0,
     "cb_text": "NAV 1 radial error",
@@ -738,7 +765,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV VOR LATLONALT:1",
+    "simvar": "NAV VOR LATLONALT:1",
     "metric": "SIMCONNECT_DATA_LATLONALT",
     "update_every": 0,
     "cb_text": "Nav 1 VOR LATLONALT",
@@ -747,7 +774,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF ACTIVE FREQUENCY:1",
+    "simvar": "ADF ACTIVE FREQUENCY:1",
     "metric": "Hz",
     "update_every": 0,
     "cb_text": "ADF 1 active",
@@ -756,7 +783,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF STANDBY FREQUENCY:1",
+    "simvar": "ADF STANDBY FREQUENCY:1",
     "metric": "Hz",
     "update_every": 0,
     "cb_text": "ADF 1 standby",
@@ -765,7 +792,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF RADIAL:1",
+    "simvar": "ADF RADIAL:1",
     "metric": "Degrees",
     "update_every": 0,
     "cb_text": "ADF 1 radial",
@@ -774,7 +801,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF SIGNAL:1",
+    "simvar": "ADF SIGNAL:1",
     "metric": "Number",
     "update_every": 0,
     "cb_text": "ADF 1 signal",
@@ -783,7 +810,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF ACTIVE FREQUENCY:2",
+    "simvar": "ADF ACTIVE FREQUENCY:2",
     "metric": "Hz",
     "update_every": 0,
     "cb_text": "ADF 2 active",
@@ -792,7 +819,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF STANDBY FREQUENCY:2",
+    "simvar": "ADF STANDBY FREQUENCY:2",
     "metric": "Hz",
     "update_every": 0,
     "cb_text": "ADF 2 standby",
@@ -801,7 +828,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF RADIAL:2",
+    "simvar": "ADF RADIAL:2",
     "metric": "Degrees",
     "update_every": 0,
     "cb_text": "ADF 2 radial",
@@ -810,7 +837,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "ADF SIGNAL:2",
+    "simvar": "ADF SIGNAL:2",
     "metric": "Number",
     "update_every": 0,
     "cb_text": "ADF 2 signal",
@@ -819,7 +846,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV DME:1",
+    "simvar": "NAV DME:1",
     "metric": "Nautical miles",
     "update_every": 0,
     "cb_text": "NAV DME 1",
@@ -828,7 +855,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV DMESPEED:1",
+    "simvar": "NAV DMESPEED:1",
     "metric": "Knots",
     "update_every": 0,
     "cb_text": "NAV DME 1 speed",
@@ -837,7 +864,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV DME:2",
+    "simvar": "NAV DME:2",
     "metric": "Nautical miles",
     "update_every": 0,
     "cb_text": "NAV DME 2",
@@ -846,7 +873,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV DMESPEED:2",
+    "simvar": "NAV DMESPEED:2",
     "metric": "Knots",
     "update_every": 0,
     "cb_text": "NAV DME 2 speed",
@@ -855,7 +882,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "TRANSPONDER CODE:1",
+    "simvar": "TRANSPONDER CODE:1",
     "metric": "number",
     "update_every": 0,
     "cb_text": "Transponder 1 code",
@@ -864,7 +891,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "TRANSPONDER CODE:2",
+    "simvar": "TRANSPONDER CODE:2",
     "metric": "number",
     "update_every": 0,
     "cb_text": "Transponder 2 code",
@@ -873,7 +900,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV OBS:1",
+    "simvar": "NAV OBS:1",
     "metric": "Degrees",
     "update_every": 0.1,
     "cb_text": "NAV OBS 1",
@@ -882,7 +909,7 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "NAV OBS:2",
+    "simvar": "NAV OBS:2",
     "metric": "Degrees",
     "update_every": 0.1,
     "cb_text": "NAV OBS 2",
@@ -891,7 +918,25 @@
     "category": "NAV and COMS"
   },
   {
-    "output_name": "LIGHT TAXI ON",
+    "simvar": "TRANSPONDER IDENT:1",
+    "metric": "Bool",
+    "update_every": 0,
+    "cb_text": "Transponder ident",
+    "id": 608,
+    "output_type": 0,
+    "category": "NAV and COMS"
+  },
+  {
+    "simvar": "TRANSPONDER STATE:1",
+    "metric": "Enum",
+    "update_every": 0,
+    "cb_text": "Transponder state",
+    "id": 609,
+    "output_type": 0,
+    "category": "NAV and COMS"
+  },
+  {
+    "simvar": "LIGHT TAXI ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Taxi lights",
@@ -900,7 +945,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT STROBE ON",
+    "simvar": "LIGHT STROBE ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Strobe lights",
@@ -909,7 +954,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT PANEL ON",
+    "simvar": "LIGHT PANEL ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Panel lights",
@@ -918,7 +963,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT RECOGNITION ON",
+    "simvar": "LIGHT RECOGNITION ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Recognition lights",
@@ -927,7 +972,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT WING ON",
+    "simvar": "LIGHT WING ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Wing lights",
@@ -936,7 +981,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT LOGO ON",
+    "simvar": "LIGHT LOGO ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Logo lights",
@@ -945,7 +990,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT CABIN ON",
+    "simvar": "LIGHT CABIN ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Cabin lights",
@@ -954,7 +999,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT HEAD ON",
+    "simvar": "LIGHT HEAD ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Head light",
@@ -963,7 +1008,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT BRAKE ON",
+    "simvar": "LIGHT BRAKE ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Brake lights (not the brakes!)",
@@ -972,7 +1017,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT NAV ON",
+    "simvar": "LIGHT NAV ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) NAV lights",
@@ -981,7 +1026,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT BEACON ON",
+    "simvar": "LIGHT BEACON ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Beacon lights",
@@ -990,7 +1035,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "LIGHT LANDING ON",
+    "simvar": "LIGHT LANDING ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Landing lights",
@@ -999,7 +1044,7 @@
     "category": "Lights"
   },
   {
-    "output_name": "STALL WARNING",
+    "simvar": "STALL WARNING",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Stall warning",
@@ -1008,7 +1053,7 @@
     "category": "Warnings"
   },
   {
-    "output_name": "MASTER CAUTION",
+    "simvar": "MASTER CAUTION",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Master caution",
@@ -1017,7 +1062,7 @@
     "category": "Warnings"
   },
   {
-    "output_name": "MASTER WARNING",
+    "simvar": "MASTER WARNING",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Master warning",
@@ -1026,7 +1071,7 @@
     "category": "Warnings"
   },
   {
-    "output_name": "OVERSPEED WARNING",
+    "simvar": "OVERSPEED WARNING",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Overspeed warning",
@@ -1035,7 +1080,7 @@
     "category": "Warnings"
   },
   {
-    "output_name": "BRAKE PARKING INDICATOR",
+    "simvar": "BRAKE PARKING INDICATOR",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Parking brake indicator",
@@ -1044,7 +1089,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "AILERON TRIM",
+    "simvar": "AILERON TRIM",
     "metric": "Radians",
     "update_every": 0,
     "cb_text": "Aileron trim degrees",
@@ -1053,7 +1098,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "AILERON TRIM PCT",
+    "simvar": "AILERON TRIM PCT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Aileron trim %",
@@ -1062,7 +1107,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "RUDDER TRIM",
+    "simvar": "RUDDER TRIM",
     "metric": "Radians",
     "update_every": 0.01,
     "cb_text": "Rudder trim degrees",
@@ -1071,7 +1116,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "RUDDER TRIM PCT",
+    "simvar": "RUDDER TRIM PCT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Rudder trim %",
@@ -1080,7 +1125,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "ELEVATOR TRIM POSITION",
+    "simvar": "ELEVATOR TRIM POSITION",
     "metric": "Radians",
     "update_every": 0.01,
     "cb_text": "Elevator trim position degrees",
@@ -1089,7 +1134,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "ELEVATOR TRIM PCT",
+    "simvar": "ELEVATOR TRIM PCT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Elevator trim %",
@@ -1098,7 +1143,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "FLAPS HANDLE PERCENT",
+    "simvar": "FLAPS HANDLE PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Flaps handle %",
@@ -1107,7 +1152,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "FLAPS HANDLE INDEX",
+    "simvar": "FLAPS HANDLE INDEX",
     "metric": "Number",
     "update_every": 0,
     "cb_text": "Flaps handle index",
@@ -1116,7 +1161,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "FLAPS NUM HANDLE POSITIONS",
+    "simvar": "FLAPS NUM HANDLE POSITIONS",
     "metric": "Number",
     "update_every": 0,
     "cb_text": "Flaps number handle positions",
@@ -1125,7 +1170,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "TRAILING EDGE FLAPS LEFT PERCENT",
+    "simvar": "TRAILING EDGE FLAPS LEFT PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Trailing edge flaps left %",
@@ -1134,7 +1179,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "TRAILING EDGE FLAPS RIGHT PERCENT",
+    "simvar": "TRAILING EDGE FLAPS RIGHT PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Trailing edge flaps right %",
@@ -1143,7 +1188,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "TRAILING EDGE FLAPS LEFT ANGLE",
+    "simvar": "TRAILING EDGE FLAPS LEFT ANGLE",
     "metric": "Radians",
     "update_every": 0.01,
     "cb_text": "Trailing edge flaps left degrees",
@@ -1152,7 +1197,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "TRAILING EDGE FLAPS RIGHT ANGLE",
+    "simvar": "TRAILING EDGE FLAPS RIGHT ANGLE",
     "metric": "Radians",
     "update_every": 0.01,
     "cb_text": "Trailing edge flaps right degree",
@@ -1161,7 +1206,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "LEADING EDGE FLAPS LEFT PERCENT",
+    "simvar": "LEADING EDGE FLAPS LEFT PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Leading edge flaps left %",
@@ -1170,7 +1215,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "LEADING EDGE FLAPS RIGHT PERCENT",
+    "simvar": "LEADING EDGE FLAPS RIGHT PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Leading edge flaps right %",
@@ -1179,7 +1224,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "LEADING EDGE FLAPS LEFT ANGLE",
+    "simvar": "LEADING EDGE FLAPS LEFT ANGLE",
     "metric": "Radians",
     "update_every": 0.01,
     "cb_text": "Leading edge flaps left degrees",
@@ -1188,7 +1233,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "LEADING EDGE FLAPS RIGHT ANGLE",
+    "simvar": "LEADING EDGE FLAPS RIGHT ANGLE",
     "metric": "Radians",
     "update_every": 0.01,
     "cb_text": "Leading edge flaps right degrees",
@@ -1197,7 +1242,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR HANDLE POSITION",
+    "simvar": "GEAR HANDLE POSITION",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Gear handle position",
@@ -1206,7 +1251,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR HYDRAULIC PRESSURE",
+    "simvar": "GEAR HYDRAULIC PRESSURE",
     "metric": "psf",
     "update_every": 1,
     "cb_text": "Gear hydraulic pressure",
@@ -1215,7 +1260,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "TAILWHEEL LOCK ON",
+    "simvar": "TAILWHEEL LOCK ON",
     "metric": "Bool",
     "update_every": 0,
     "cb_text": "(bool) Tailwheel lock",
@@ -1224,7 +1269,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR CENTER POSITION",
+    "simvar": "GEAR CENTER POSITION",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Gear center position %",
@@ -1233,7 +1278,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR LEFT POSITION",
+    "simvar": "GEAR LEFT POSITION",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Gear left position %",
@@ -1242,7 +1287,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR RIGHT POSITION",
+    "simvar": "GEAR RIGHT POSITION",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Gear right position %",
@@ -1251,7 +1296,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR TAIL POSITION",
+    "simvar": "GEAR TAIL POSITION",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Gear tail position %",
@@ -1260,7 +1305,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR AUX POSITION",
+    "simvar": "GEAR AUX POSITION",
     "metric": "Percent Over 100",
     "update_every": 0.01,
     "cb_text": "Gear AUX position %",
@@ -1269,7 +1314,7 @@
     "category": "Mechanical"
   },
   {
-    "output_name": "GEAR TOTAL PCT EXTENDED",
+    "simvar": "GEAR TOTAL PCT EXTENDED",
     "metric": "Percentage",
     "update_every": 0.01,
     "cb_text": "Gear total extended %",

@@ -1,5 +1,5 @@
 export interface Output {
-  output_name: string;
+  simvar: string;
   metric: string;
   update_every: number;
   cb_text: string;

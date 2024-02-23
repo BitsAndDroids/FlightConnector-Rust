@@ -14,7 +14,7 @@ const OutputList = ({ bundle }: OutputListProps) => {
         {bundle.outputs.map((output) => {
           return (
             <p key={output.id} className="text-sm">
-              {output.output_name}
+              {output.simvar}
             </p>
           );
         })}

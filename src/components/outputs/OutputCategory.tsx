@@ -14,7 +14,7 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
   function toggleOutputState(outputChanged: Output) {
     // Change selected state of output
     let newOutputs = outputs.map((output) => {
-      if (output.output_name === outputChanged.output_name) {
+      if (output.simvar === outputChanged.simvar) {
         return { ...output, selected: !output.selected }; // Returning a new object here
       }
       return output; // If not the matching output, return the original
@@ -39,22 +39,19 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
       {!collapsed &&
         outputs.map((output) => {
           return (
-            <div className="flex flex-row ml-4" key={output.output_name}>
+            <div className="flex flex-row ml-4" key={output.simvar}>
               <input
                 className="text-white"
                 type="checkbox"
-                id={output.output_name}
-                name={output.output_name}
+                id={output.simvar}
+                name={output.simvar}
                 onChange={() => toggleOutputState(output)}
-                value={output.output_name}
+                value={output.simvar}
                 checked={output.selected}
               />
 
-              <label
-                className="text-white ml-2 mr-4"
-                htmlFor={output.output_name}
-              >
-                {output.output_name.toLowerCase()}
+              <label className="text-white ml-2 mr-4" htmlFor={output.simvar}>
+                {output.simvar.toLowerCase()}
               </label>
             </div>
           );

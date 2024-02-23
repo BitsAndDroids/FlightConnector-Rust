@@ -176,7 +176,8 @@ impl SimconnectHandler {
                 com_ports.push(run_bundle.com_port.clone())
             }
         }
-
+        let output = self.output_registry.get_output_by_id(output_id);
+        println!("Output: {:?}, value {}", output, value);
         for com_port in com_ports {
             self.send_output_to_device(output_id, &com_port, value);
         }
@@ -301,6 +302,7 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
+                                    println!("{}: {}", prefix, value);
                                     self.check_if_output_in_bundle(prefix, value);
                                     std::thread::sleep(std::time::Duration::from_millis(0));
                                 }
@@ -352,14 +354,22 @@ impl SimconnectHandler {
         let run_bundles = &self.run_bundles;
         for run_bundle in run_bundles {
             for output in &run_bundle.bundle.outputs {
-                self.simconnect.add_data_definition(
-                    RequestModes::FLOAT,
-                    &output.output_name,
-                    &output.metric,
-                    simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                    output.id,
-                    output.update_every,
-                );
+                println!("Output: {:?}", output);
+                match self.output_registry.get_output_by_id(output.id) {
+                    Some(latest_output) => {
+                        self.simconnect.add_data_definition(
+                            RequestModes::FLOAT,
+                            &latest_output.simvar,
+                            &latest_output.metric,
+                            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
+                            latest_output.id,
+                            latest_output.update_every,
+                        );
+                    }
+                    None => {
+                        println!("Output not found: {:?}", output);
+                    }
+                }
             }
         }
     }
