@@ -11,7 +11,7 @@ export default function HomePage() {
             "mt-10 text-2xl font-bold tracking-tight text-white sm:text-4xl"
           }
         >
-          CONNECTOR TEST
+          FLIGHT CONNECTOR
         </h1>
       </div>
       <RunComponent />
