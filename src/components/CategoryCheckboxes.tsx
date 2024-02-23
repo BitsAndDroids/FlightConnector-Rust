@@ -16,7 +16,7 @@ const CategoryCheckboxes = ({
     <div className="flex flex-col flex-wrap h-full w-full relative">
       {category.outputs.map((output) => {
         return (
-          <div key={output.output_name} className="flex flex-row items-center">
+          <div key={output.simvar} className="flex flex-row items-center">
             <input
               type="checkbox"
               className="mr-2"
@@ -26,7 +26,7 @@ const CategoryCheckboxes = ({
               tabIndex={dialogOpen ? -1 : 1}
               checked={output.selected}
             />
-            <label>{output.output_name.toLowerCase()}</label>
+            <label>{output.simvar.toLowerCase()}</label>
           </div>
         );
       })}

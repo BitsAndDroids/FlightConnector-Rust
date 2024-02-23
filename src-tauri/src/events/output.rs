@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Output {
-    pub output_name: String,
+    pub simvar: String,
     pub metric: String,
     pub update_every: f32,
     pub cb_text: String,
