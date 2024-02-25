@@ -143,7 +143,8 @@ impl SimconnectHandler {
         self.set_com_ports();
         self.connect_to_devices();
         self.initialize_connection();
-        self.poll_simconnect_message_queue();
+        self.initialize_simconnect();
+        self.main_event_loop();
     }
 
     fn send_input_to_simconnect(&self, command: DWORD) {
@@ -234,45 +235,7 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn initialize_connection(&mut self) {
-        self.simconnect.connect("Bits and Droids connector");
-        self.input_registry.load_inputs();
-        self.output_registry.load_outputs();
-        self.define_inputs(self.input_registry.get_inputs());
-        self.define_outputs();
-    }
-
-    fn poll_simconnect_message_queue(&mut self) {
-        self.simconnect.add_data_definition(
-            RequestModes::STRING,
-            "TITLE",
-            "",
-            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
-            202,
-            0.0,
-        );
-        self.simconnect.request_data_on_sim_object(
-            0,
-            RequestModes::FLOAT,
-            0,
-            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-            0,
-            1,
-            0,
-        );
-        self.simconnect.request_data_on_sim_object(
-            1,
-            RequestModes::STRING,
-            0,
-            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-            0,
-            1,
-            0,
-        );
+    fn main_event_loop(&mut self) {
         let events = Events::new();
         let mut connection_running = true;
         while connection_running {
@@ -339,6 +302,47 @@ impl SimconnectHandler {
             }
             sleep(Duration::from_millis(16));
         }
+    }
+
+    pub fn initialize_connection(&mut self) {
+        self.simconnect.connect("Bits and Droids connector");
+        self.input_registry.load_inputs();
+        self.output_registry.load_outputs();
+        self.define_inputs(self.input_registry.get_inputs());
+        self.define_outputs();
+    }
+
+    fn initialize_simconnect(&mut self) {
+        self.simconnect.add_data_definition(
+            RequestModes::STRING,
+            "TITLE",
+            "",
+            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
+            202,
+            0.0,
+        );
+        self.simconnect.request_data_on_sim_object(
+            0,
+            RequestModes::FLOAT,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
+        self.simconnect.request_data_on_sim_object(
+            1,
+            RequestModes::STRING,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
     }
 
     pub fn define_inputs(&self, inputs: &HashMap<u32, Input>) {
