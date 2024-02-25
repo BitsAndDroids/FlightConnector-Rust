@@ -1,5 +1,7 @@
 use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
+use crate::events::output::Output;
+use crate::events::output::OutputType;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::run_bundle::RunBundle;
 use lazy_static::lazy_static;
@@ -165,6 +167,36 @@ impl SimconnectHandler {
         }
     }
 
+    fn parse_output_based_on_type(&mut self, val: f64, output: &Output) -> String {
+        //TODO parse output based on type
+        match output.output_type {
+            OutputType::Boolean => {
+                if val > 0.5 {
+                    "1".to_string()
+                } else {
+                    "0".to_string()
+                }
+            }
+            OutputType::Integer => (val as i32).to_string(),
+            OutputType::Seconds => todo!(),
+            OutputType::Secondsaftermidnight => {
+                let hours = val / 3600;
+                let total_secs = val % 3600;
+                let minutes = (total_secs) / 60;
+                let seconds = (total_secs) % 60;
+                format!("{}:{}:{}", hours, minutes, seconds)
+            }
+            OutputType::Percentage => (val as i32).to_string(),
+            OutputType::Degrees => todo!(),
+            OutputType::ADF => todo!(),
+            OutputType::INHG => todo!(),
+            OutputType::Meterspersecond => {
+                //mps to kmh
+                (val * 3.6).to_string()
+            }
+        }
+    }
+
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
         let mut com_ports = vec![];
         for run_bundle in self.run_bundles.iter() {
@@ -177,15 +209,18 @@ impl SimconnectHandler {
                 com_ports.push(run_bundle.com_port.clone())
             }
         }
-        let output = self.output_registry.get_output_by_id(output_id);
-        println!("Output: {:?}, value {}", output, value);
+        let output = *self.output_registry.get_output_by_id(output_id).unwrap();
         for com_port in com_ports {
-            self.send_output_to_device(output_id, &com_port, value);
+            self.send_output_to_device(&output, &com_port, value);
         }
     }
 
-    pub fn send_output_to_device(&mut self, output_id: u32, com_port: &str, value: f64) {
-        let formatted_str = format!("{} {}\n", output_id, value);
+    fn send_output_to_device(&mut self, output: &Output, com_port: &str, value: f64) {
+        let formatted_str = format!(
+            "{} {}\n",
+            output.id,
+            self.parse_output_based_on_type(value, &output)
+        );
         //TODO send output to comport
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => {

@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
+#[derive(Serialize, Deserialize, Clone, Debug, Copy)]
 pub struct Output {
     pub simvar: String,
     pub metric: String,
@@ -34,7 +34,7 @@ impl<'de> Deserialize<'de> for OutputType {
             "adf" => Ok(OutputType::ADF),
             "boolean" => Ok(OutputType::Boolean),
             "integer" => Ok(OutputType::Integer),
-            "Seconds" => Ok(OutputType::Seconds),
+            "seconds" => Ok(OutputType::Seconds),
             "secondsaftermidnight" => Ok(OutputType::Secondsaftermidnight),
             "percentage" => Ok(OutputType::Percentage),
             "degrees" => Ok(OutputType::Degrees),
