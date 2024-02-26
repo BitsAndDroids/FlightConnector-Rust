@@ -1,5 +1,7 @@
 use crate::events::input::Input;
 use crate::events::input_registry::InputRegistry;
+use crate::events::output::Output;
+use crate::events::output::OutputType;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::run_bundle::RunBundle;
 use lazy_static::lazy_static;
@@ -143,7 +145,8 @@ impl SimconnectHandler {
         self.set_com_ports();
         self.connect_to_devices();
         self.initialize_connection();
-        self.poll_simconnect_message_queue();
+        self.initialize_simconnect();
+        self.main_event_loop();
     }
 
     fn send_input_to_simconnect(&self, command: DWORD) {
@@ -164,7 +167,40 @@ impl SimconnectHandler {
         }
     }
 
+    fn parse_output_based_on_type(&mut self, val: f64, output: &Output) -> String {
+        //TODO parse output based on type
+        match output.output_type {
+            OutputType::Boolean => {
+                if val > 0.5 {
+                    "1".to_string()
+                } else {
+                    "0".to_string()
+                }
+            }
+            OutputType::Integer => (val as i32).to_string(),
+            OutputType::Seconds => todo!(),
+            OutputType::Secondsaftermidnight => {
+                let sec_from_midnight = val as i32;
+                let hours = sec_from_midnight / 3600;
+                let total_secs = sec_from_midnight % 3600;
+                let minutes = (total_secs) / 60;
+                let seconds = (total_secs) % 60;
+                format!("{}:{}:{}", hours, minutes, seconds)
+            }
+            OutputType::Percentage => (val as i32).to_string(),
+            OutputType::Degrees => todo!(),
+            OutputType::ADF => todo!(),
+            OutputType::INHG => todo!(),
+            OutputType::Meterspersecond => {
+                //mps to kmh
+                (val * 3.6).to_string()
+            }
+        }
+    }
+
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
+        let output_registry = self.output_registry.clone();
+        let output = output_registry.get_output_by_id(output_id).unwrap();
         let mut com_ports = vec![];
         for run_bundle in self.run_bundles.iter() {
             if run_bundle
@@ -176,15 +212,19 @@ impl SimconnectHandler {
                 com_ports.push(run_bundle.com_port.clone())
             }
         }
-        let output = self.output_registry.get_output_by_id(output_id);
-        println!("Output: {:?}, value {}", output, value);
         for com_port in com_ports {
-            self.send_output_to_device(output_id, &com_port, value);
+            self.send_output_to_device(&output, &com_port, value);
         }
     }
 
-    pub fn send_output_to_device(&mut self, output_id: u32, com_port: &str, value: f64) {
-        let formatted_str = format!("{} {}\n", output_id, value);
+    fn send_output_to_device(&mut self, output: &Output, com_port: &str, value: f64) {
+        let formatted_str = format!(
+            "{} {}\n",
+            output.id,
+            self.parse_output_based_on_type(value, &output)
+        );
+
+        println!("type {:?} {:?}", output.output_type, formatted_str);
         //TODO send output to comport
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => {
@@ -234,45 +274,7 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn initialize_connection(&mut self) {
-        self.simconnect.connect("Bits and Droids connector");
-        self.input_registry.load_inputs();
-        self.output_registry.load_outputs();
-        self.define_inputs(self.input_registry.get_inputs());
-        self.define_outputs();
-    }
-
-    fn poll_simconnect_message_queue(&mut self) {
-        self.simconnect.add_data_definition(
-            RequestModes::STRING,
-            "TITLE",
-            "",
-            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
-            202,
-            0.0,
-        );
-        self.simconnect.request_data_on_sim_object(
-            0,
-            RequestModes::FLOAT,
-            0,
-            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-            0,
-            1,
-            0,
-        );
-        self.simconnect.request_data_on_sim_object(
-            1,
-            RequestModes::STRING,
-            0,
-            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
-            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
-                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
-            0,
-            1,
-            0,
-        );
+    fn main_event_loop(&mut self) {
         let events = Events::new();
         let mut connection_running = true;
         while connection_running {
@@ -302,7 +304,6 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    println!("{}: {}", prefix, value);
                                     self.check_if_output_in_bundle(prefix, value);
                                     std::thread::sleep(std::time::Duration::from_millis(0));
                                 }
@@ -339,6 +340,47 @@ impl SimconnectHandler {
             }
             sleep(Duration::from_millis(16));
         }
+    }
+
+    pub fn initialize_connection(&mut self) {
+        self.simconnect.connect("Bits and Droids connector");
+        self.input_registry.load_inputs();
+        self.output_registry.load_outputs();
+        self.define_inputs(self.input_registry.get_inputs());
+        self.define_outputs();
+    }
+
+    fn initialize_simconnect(&mut self) {
+        self.simconnect.add_data_definition(
+            RequestModes::STRING,
+            "TITLE",
+            "",
+            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_STRING256,
+            202,
+            0.0,
+        );
+        self.simconnect.request_data_on_sim_object(
+            0,
+            RequestModes::FLOAT,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
+        self.simconnect.request_data_on_sim_object(
+            1,
+            RequestModes::STRING,
+            0,
+            simconnect::SIMCONNECT_PERIOD_SIMCONNECT_PERIOD_SIM_FRAME,
+            simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED
+                | simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
+            0,
+            1,
+            0,
+        );
     }
 
     pub fn define_inputs(&self, inputs: &HashMap<u32, Input>) {
