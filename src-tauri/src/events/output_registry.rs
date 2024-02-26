@@ -2,7 +2,7 @@ use crate::events::category::Category;
 
 use super::{output::Output, output_parser};
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct OutputRegistry {
     pub categories: Vec<Category>,
     pub outputs: Vec<Output>,

@@ -180,8 +180,9 @@ impl SimconnectHandler {
             OutputType::Integer => (val as i32).to_string(),
             OutputType::Seconds => todo!(),
             OutputType::Secondsaftermidnight => {
-                let hours = val / 3600;
-                let total_secs = val % 3600;
+                let sec_from_midnight = val as i32;
+                let hours = sec_from_midnight / 3600;
+                let total_secs = sec_from_midnight % 3600;
                 let minutes = (total_secs) / 60;
                 let seconds = (total_secs) % 60;
                 format!("{}:{}:{}", hours, minutes, seconds)
@@ -198,6 +199,8 @@ impl SimconnectHandler {
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
+        let output_registry = self.output_registry.clone();
+        let output = output_registry.get_output_by_id(output_id).unwrap();
         let mut com_ports = vec![];
         for run_bundle in self.run_bundles.iter() {
             if run_bundle
@@ -209,7 +212,6 @@ impl SimconnectHandler {
                 com_ports.push(run_bundle.com_port.clone())
             }
         }
-        let output = *self.output_registry.get_output_by_id(output_id).unwrap();
         for com_port in com_ports {
             self.send_output_to_device(&output, &com_port, value);
         }
@@ -221,6 +223,8 @@ impl SimconnectHandler {
             output.id,
             self.parse_output_based_on_type(value, &output)
         );
+
+        println!("type {:?} {:?}", output.output_type, formatted_str);
         //TODO send output to comport
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => {
@@ -300,7 +304,6 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    println!("{}: {}", prefix, value);
                                     self.check_if_output_in_bundle(prefix, value);
                                     std::thread::sleep(std::time::Duration::from_millis(0));
                                 }

@@ -446,7 +446,7 @@
     "update_every": 1,
     "cb_text": "Local time",
     "id": 338,
-    "output_type": "integer",
+    "output_type": "secondsaftermidnight",
     "category": "Data"
   },
   {
@@ -464,7 +464,7 @@
     "update_every": 1,
     "cb_text": "Zulu time",
     "id": 340,
-    "output_type": "integer",
+    "output_type": "secondsaftermidnight",
     "category": "Data"
   },
   {
