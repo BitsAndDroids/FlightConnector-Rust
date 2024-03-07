@@ -1,7 +1,7 @@
 pub mod output_parser {
     use serde::{Deserialize, Serialize};
 
-    use crate::events::input::Input;
+    use crate::events::input::input::Input;
 
     #[derive(Deserialize, Serialize)]
     struct Data {
