@@ -11,7 +11,7 @@ import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
 import { invoke } from "@tauri-apps/api/tauri";
 import { useEffect, useState } from "react";
 
-const OutputMenu = () => {
+const OutputsPage = () => {
   const [editBundle, setEditBundle] = useState<Bundle | undefined>(undefined); // [1
   const [editMode, setEditMode] = useState<boolean>(false);
   const [outputs, setOutputs] = useState<Output[]>([]);
@@ -160,4 +160,4 @@ const OutputMenu = () => {
   );
 };
 
-export default OutputMenu;
+export default OutputsPage;

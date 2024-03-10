@@ -1,10 +1,10 @@
 "use client";
 import React, { Suspense, useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
-import { ControllerSelect } from "@/components/ControllerSelect";
 import { Bundle } from "@/model/Bundle";
-import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
 import { Preset } from "@/model/Preset";
+import { ControllerSelect } from "./ControllerSelect";
+import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
 
 export const ControllerSelectComponent = () => {
   useEffect(() => {

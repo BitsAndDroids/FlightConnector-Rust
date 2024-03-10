@@ -1,4 +1,5 @@
 import { ReactNode, useState } from "react";
+import React from "react";
 
 interface InputDialogProps {
   message: string;
@@ -38,16 +39,32 @@ const InputDialog = (props: InputDialogProps) => {
           <label className="rounded-md mx-2 text-center">{props.message}</label>
           {props.InfoWindow && props.InfoWindow}
         </div>
-        {errorMessage && errorState && <label className="rounded-md mx-2 text-center text-red-800">{errorMessage}</label>}
-        <input className={`drop-shadow border rounded-md p-2 m-2 ${errorState ? 'border-pink-300' : 'border-gray-200'}`} placeholder={props.placeholder} />
+        {errorMessage && errorState && (
+          <label className="rounded-md mx-2 text-center text-red-800">
+            {errorMessage}
+          </label>
+        )}
+        <input
+          className={`drop-shadow border rounded-md p-2 m-2 ${errorState ? "border-pink-300" : "border-gray-200"}`}
+          placeholder={props.placeholder}
+        />
         <div className="flex flex-row justify-center">
-          <button className="bg-green-800 rounded-md p-2 m-2 text-white" onClick={() => handleConfirm()}>Confirm</button>
-          <button className="bg-red-800 rounded-md p-2 m-2 text-white" onClick={() => props.onConfirm(undefined)}>Cancel</button>
+          <button
+            className="bg-green-800 rounded-md p-2 m-2 text-white"
+            onClick={() => handleConfirm()}
+          >
+            Confirm
+          </button>
+          <button
+            className="bg-red-800 rounded-md p-2 m-2 text-white"
+            onClick={() => props.onConfirm(undefined)}
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default InputDialog;
-

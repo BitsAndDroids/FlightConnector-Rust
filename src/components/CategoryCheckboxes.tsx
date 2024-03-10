@@ -1,6 +1,6 @@
 import { Category } from "@/model/Category";
 import { Output } from "@/model/Output";
-
+import React from "react";
 interface CategoryCheckboxesProps {
   category: Category;
   dialogOpen: boolean;

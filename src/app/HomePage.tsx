@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { RunComponent } from "@/components/RunComponent";
+import { RunComponent } from "../components/RunComponent";
+import MenuLayout from "./MenuLayout";
 
 export default function HomePage() {
   return (
