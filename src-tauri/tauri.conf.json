@@ -1,8 +1,8 @@
 {
   "build": {
-    "beforeDevCommand": "pnpm run dev",
-    "beforeBuildCommand": "pnpm run build",
-    "devPath": "http://localhost:1300",
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "devPath": "http://localhost:1420",
     "distDir": "../out"
   },
   "package": {
