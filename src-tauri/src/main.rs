@@ -1,11 +1,14 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use crate::events::output_registry;
-use events::run_bundle::RunBundle;
+use events::output::output::Output;
+use events::output_registry::output_registry;
+use events::run_bundle::run_bundle::RunBundle;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tokio::io::{self};
+
+mod events;
 
 use std::ops::Deref;
 use std::string::ToString;
@@ -22,8 +25,6 @@ use window_shadows::set_shadow;
 pub use serialport::SerialPort;
 #[cfg(target_os = "windows")]
 mod simconnect_mod;
-
-mod events;
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
@@ -94,7 +95,7 @@ async fn get_com_ports() -> Vec<String> {
 }
 
 #[tauri::command]
-async fn get_outputs() -> Vec<events::output::Output> {
+async fn get_outputs() -> Vec<Output> {
     let mut output_registry = output_registry::OutputRegistry::new();
     output_registry.load_outputs();
     output_registry.outputs
