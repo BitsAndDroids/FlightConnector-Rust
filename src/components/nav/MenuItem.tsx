@@ -1,4 +1,4 @@
-import Link from "next/link";
+import React from "react";
 
 interface MenuItemProps {
   text: string;
@@ -6,10 +6,13 @@ interface MenuItemProps {
 }
 const MenuItem = (props: MenuItemProps) => {
   return (
-    <Link href={props.href} className={"p-2 bg-bitsanddroids-blue hover:bg-bitsanddroids-blue-light"}>
+    <a
+      href={props.href}
+      className={"p-2 bg-bitsanddroids-blue hover:bg-bitsanddroids-blue-light"}
+    >
       {props.text}
-    </Link>
-  )
-}
+    </a>
+  );
+};
 
 export default MenuItem;

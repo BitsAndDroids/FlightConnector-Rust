@@ -1,18 +1,15 @@
-import Link from "next/link";
 import React from "react";
-const OptionsLayout = ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
+const OptionsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className={'m-8'}>
+    <div className={"m-8"}>
       <div>
-        <Link href={'/'} className={"text-white"}>Back</Link>
+        <a href={"/"} className={"text-white"}>
+          Back
+        </a>
       </div>
       {children}
     </div>
   );
-}
+};
 
 export default OptionsLayout;
