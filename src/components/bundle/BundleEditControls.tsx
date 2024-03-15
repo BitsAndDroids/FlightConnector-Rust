@@ -1,5 +1,3 @@
-import Image from "next/image";
-import saveIcon from "../../../public/save.svg";
 interface BundleEditControlsProps {
   saveBundle: () => void;
 }
@@ -7,7 +5,7 @@ interface BundleEditControlsProps {
 const BundleEditControls = ({ saveBundle }: BundleEditControlsProps) => {
   return (
     <div className="bg-white mt-1 rounded-md p-1" onClick={() => saveBundle()}>
-      <Image src={saveIcon} alt="edit" height={20} width={20} />
+      <img src={"/save.svg"} alt="edit" className="h-[22px]" />
     </div>
   );
 };

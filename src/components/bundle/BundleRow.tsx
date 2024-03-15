@@ -1,6 +1,4 @@
-import Image from "next/image";
-import trashcan from "/public/trashcan.svg";
-import edit from "/public/edit.svg";
+// import Image from "next/image";
 import { Bundle } from "@/model/Bundle";
 
 interface BundleRowProps {
@@ -27,24 +25,22 @@ const BundleRow = ({
     >
       <p className="">{bundle?.name}</p>
       <div className="flex flex-row justify-between w-12">
-        <Image
-          src={trashcan}
+        <img
+          src={"/trashcan.svg"}
           alt="info"
-          height={16}
           onClick={(e) => {
             deleteBundle(bundle);
             e.stopPropagation();
           }}
-          className="cursor-pointer"
+          className="cursor-pointer h-[16px]"
         />
-        <Image
-          src={edit}
+        <img
+          src={"/edit.svg"}
           alt="info"
-          height={16}
           onClick={() => {
             setEditBundle(bundle);
           }}
-          className="cursor-pointer"
+          className="cursor-pointer h-[16px]"
         />
       </div>
     </div>

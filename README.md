@@ -3,11 +3,12 @@
 This is a rewrite of the original connector written in C++.
 The original repo can be found at:
 [https://github.com/BitsAndDroids/Bits-and-Droids-flight-connector](https://github.com/BitsAndDroids/Bits-and-Droids-flight-connector)
+
 ## Documentation
 
 The documentation can be found in the open-source docs [Flightconnector Docs book](https://bitsanddroids.github.io/FlightConnector-Rust/).
 
-The documentation is made using [mdbooks](https://rust-lang.github.io/mdBook/). You can find the documentation files in the connector-docs folder if you want to contribute. 
+The documentation is made using [mdbooks](https://rust-lang.github.io/mdBook/). You can find the documentation files in the connector-docs folder if you want to contribute.
 
 ## Install
 
@@ -19,19 +20,17 @@ The documentation is made using [mdbooks](https://rust-lang.github.io/mdBook/). 
 The application is structured to run on Windows and Linux. Linux is only usable for development purposes. All SimConnect logic has been excluded when using Linux.
 
 - Navigate to the root folder of your project
-- *Run in the root of the project (or the terminal of your editor): npm i
+- \*Run in the root of the project (or the terminal of your editor): npm i
 - Run in the root of your project (or the terminal of your editor): npm run tauri dev
 
-  
 \* This only has to be done when you start the application for the first time or when packages have been changed/added (in the package.json file)
 
+## React
 
-## Nextjs
-I've chosen to use Next (a React framework) for the front end of the connector. This enables us to expose API routes that can be accessed from other applications. This gives us a fully functional local web server out of the box that can be accessed from our browser/other apps.
+The frontend is developed in React. It uses the React-router-dom package for internal navigation.
 
 ## Learn More
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To learn more about React, take a look at the following resources:
 
+- [React Documentation](https://react.dev/) - learn about React features and API.

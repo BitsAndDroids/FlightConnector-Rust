@@ -1,9 +1,3 @@
-use crate::events::input::Input;
-use crate::events::input_registry::InputRegistry;
-use crate::events::output::Output;
-use crate::events::output::OutputType;
-use crate::events::output_registry::OutputRegistry;
-use crate::events::run_bundle::RunBundle;
 use lazy_static::lazy_static;
 use serialport::SerialPort;
 use simconnect::DWORD;
@@ -15,6 +9,13 @@ use std::sync::Arc;
 use std::sync::Mutex;
 use std::thread::sleep;
 use std::time::Duration;
+
+use crate::events::input::input::Input;
+use crate::events::input_registry::input_registry::InputRegistry;
+use crate::events::output::output::Output;
+use crate::events::output::output::OutputType;
+use crate::events::output_registry::output_registry::OutputRegistry;
+use crate::events::run_bundle::run_bundle::RunBundle;
 
 const MAX_RETURNED_ITEMS: usize = 255;
 

@@ -1,7 +1,5 @@
 "use client";
-import Image from "next/image";
 import { Bundle } from "@/model/Bundle";
-import trashcan from "../../public/trashcan.svg";
 import { RunBundle } from "@/model/RunBundle";
 import { Suspense } from "react";
 interface ControllerSelectProps {
@@ -64,7 +62,13 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
             ))}
         </select>
         <div onClick={() => props.removeRow(props.runBundle.id)}>
-          <Image src={trashcan} alt="trashcan" height={30} width={30} />
+          <img
+            src={"/trashcan.svg"}
+            alt="trashcan"
+            className="h-[30px]"
+            height={30}
+            width={30}
+          />
         </div>
       </div>
     </Suspense>
