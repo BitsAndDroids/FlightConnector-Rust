@@ -5,24 +5,30 @@ import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
 import { ControllerSelect } from "./ControllerSelect";
 import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
+import { RunSettingsHandler } from "@/utils/runSettingsHandler";
 
 export const ControllerSelectComponent = () => {
   useEffect(() => {
     async function getComPorts() {
       try {
-        invoke("get_com_ports").then((result) => {
+        invoke("get_com_ports").then(async (result) => {
           setComPorts(result as string[]);
           setComPort((result as string[])[0]);
           let preset: Preset = defaultPreset;
+          const amountOfConnections =
+            await new RunSettingsHandler().getAmountOfConnections();
+          const runBundles = [];
+          for (let i = 0; i < amountOfConnections; i++) {
+            console.log("adding row");
+            runBundles.push({
+              id: i,
+              com_port: (result as string[])[0],
+              bundle: { name: "", outputs: [], version: 0 },
+            });
+          }
           setDefaultPreset({
             ...preset,
-            runBundles: [
-              {
-                id: 0,
-                com_port: (result as string[])[0],
-                bundle: { name: "", outputs: [], version: 0 },
-              },
-            ],
+            runBundles: runBundles,
           });
         });
       } catch (e) {
@@ -91,6 +97,10 @@ export const ControllerSelectComponent = () => {
         runBundles: defaultPreset.runBundles,
       }).then((result) => {
         console.log(result);
+        const runSettingsHandler = new RunSettingsHandler();
+        runSettingsHandler.setAmountOfConnections(
+          defaultPreset.runBundles.length,
+        );
       });
     }
     setConnectionRunning(!connectionRunning);

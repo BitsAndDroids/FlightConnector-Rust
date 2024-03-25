@@ -7,6 +7,7 @@ use std::io::Read;
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::sync::Mutex;
+use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -58,6 +59,7 @@ struct DataStruct {
     value: f64,
 }
 
+#[repr(C, packed)]
 struct StringStruct {
     id: DWORD,
     //string 256
@@ -123,7 +125,8 @@ impl SimconnectHandler {
     fn set_com_ports(&mut self) {
         for run_bundle in &mut self.run_bundles {
             let parsed_com_port = Self::parse_com_port(&run_bundle.com_port);
-            run_bundle.com_port = parsed_com_port
+            run_bundle.com_port = parsed_com_port;
+            println!("added com port: {}", run_bundle.com_port);
         }
     }
 
@@ -132,7 +135,9 @@ impl SimconnectHandler {
             let com_port = run_bundle.com_port.clone();
             match serialport::new(com_port.clone(), 115200).open() {
                 Ok(port) => {
+                    println!("Connected to port: {}", com_port);
                     self.active_com_ports.insert(com_port, port);
+                    //sleep for 3 seconds to give the microcontroller time to boot
                 }
                 Err(e) => {
                     println!("Failed to open port: {}", e);
@@ -169,6 +174,8 @@ impl SimconnectHandler {
     }
 
     fn parse_output_based_on_type(&mut self, val: f64, output: &Output) -> String {
+        println!("Output: {:?}", output);
+        println!("Val: {:?}", val);
         //TODO parse output based on type
         match output.output_type {
             OutputType::Boolean => {
@@ -314,10 +321,15 @@ impl SimconnectHandler {
                             unsafe {
                                 let sim_data_ptr =
                                     std::ptr::addr_of!(data.dwData) as *const StringStruct;
-                                let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
-                                //byte array to string
-                                let string = std::str::from_utf8(&sim_data_value.value).unwrap();
-                                println!("{}", string);
+                                // The amount of strings received from the sim
+                                let count = data.dwDefineCount as isize;
+                                for i in 0..count {
+                                    let item_ptr = sim_data_ptr.offset(i);
+                                    let sim_data_value = std::ptr::read_unaligned(item_ptr);
+                                    let string =
+                                        std::str::from_utf8(&sim_data_value.value).unwrap();
+                                    println!("{}", string);
+                                }
                             }
                         }
                         _ => (),
