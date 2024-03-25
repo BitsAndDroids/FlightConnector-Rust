@@ -31,7 +31,7 @@ pub mod output {
             D: serde::Deserializer<'de>,
         {
             let s: String = Deserialize::deserialize(deserializer)?;
-            match s.as_str() {
+            match s.to_lowercase().as_str() {
                 "adf" => Ok(OutputType::ADF),
                 "boolean" => Ok(OutputType::Boolean),
                 "integer" => Ok(OutputType::Integer),
