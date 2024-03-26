@@ -7,13 +7,13 @@
   },
   "package": {
     "productName": "bits-and-droids-connector",
-    "version": "0.1.0"
+    "version": "0.0.1"
   },
   "tauri": {
     "updater": {
       "active": true,
       "endpoints": [
-        "https://www.bitsanddroids.com/api/releases/flightconnector"
+        "https://github.com/BitsAndDroids/FlightConnector-Rust/releases/latest/download/latest.json"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDhDRjBDRTc3RUYzRURENjIKUldSaTNUN3ZkODd3akxhM0JKT2pzb0kwTll6YThhazc4SWFsUDNaNmlpTW1QcWQvdGYrMnJwSUIK"
