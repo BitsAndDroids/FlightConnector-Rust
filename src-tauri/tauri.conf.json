@@ -10,6 +10,14 @@
     "version": "0.1.0"
   },
   "tauri": {
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://www.bitsanddroids.com/api/releases/flightconnector"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDhDRjBDRTc3RUYzRURENjIKUldSaTNUN3ZkODd3akxhM0JKT2pzb0kwTll6YThhazc4SWFsUDNaNmlpTW1QcWQvdGYrMnJwSUIK"
+    },
     "allowlist": {
       "fs": {
         "all": true
