@@ -220,7 +220,7 @@ impl SimconnectHandler {
             }
         }
         for com_port in com_ports {
-            self.send_output_to_device(&output, &com_port, value);
+            self.send_output_to_device(output, &com_port, value);
         }
     }
 
@@ -228,7 +228,7 @@ impl SimconnectHandler {
         let formatted_str = format!(
             "{} {}\n",
             output.id,
-            self.parse_output_based_on_type(value, &output)
+            self.parse_output_based_on_type(value, output)
         );
 
         println!("type {:?} {:?}", output.output_type, formatted_str);
