@@ -18,7 +18,7 @@ export default function MenuLayout() {
         </nav>
       </div>
       <Titlebar />
-      <div className="overflow-y-auto">
+      <div className="overflow-y-auto px-8">
         <Outlet />
       </div>
     </div>
