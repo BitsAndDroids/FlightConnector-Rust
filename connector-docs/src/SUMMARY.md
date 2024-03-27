@@ -4,7 +4,7 @@
 
 - [Introduction](ch01-00-introduction.md)
   - [Installation](ch01-01-installation.md)
-  - [Interface](ch01-02-interface.md)
+  - [Getting started](ch01-02-getting-started.md)
 - [Bundles](ch02-00-bundles.md)
 - [Inputs](ch03-00-inputs.md)
 - [Presets](ch04-00-presets.md)
@@ -15,7 +15,8 @@
 
 # Examples
 
+- [Button input code](examples/button_input_code.md)
+
 # Connector code docs
 
 - [Outputs](ch10-01-output.md)
-
