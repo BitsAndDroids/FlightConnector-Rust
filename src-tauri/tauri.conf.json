@@ -41,7 +41,7 @@
     },
     "bundle": {
       "active": true,
-      "targets": "all",
+      "targets": ["nsis"],
       "identifier": "bitsanddroids",
       "icon": [
         "icons/32x32.png",
