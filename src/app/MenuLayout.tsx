@@ -13,7 +13,7 @@ export default function MenuLayout() {
       <div className=" bg-bitsanddroids-blue mt-7 flex flex-row align-middle justify-start h-fit">
         <nav className={"text-white ml-4 bg-bitsanddroids-blue h-8"}>
           <MenuItem text={"Start"} href={"/"} />
-          <MenuItem text={"Settings"} href={"/options/settings"} />
+          {/* <MenuItem text={"Settings"} href={"/options/settings"} /> */}
           <MenuItem text={"Outputs"} href={"/options/outputs"} />
         </nav>
       </div>
