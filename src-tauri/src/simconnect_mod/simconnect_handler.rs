@@ -137,7 +137,6 @@ impl SimconnectHandler {
                 Ok(port) => {
                     println!("Connected to port: {}", com_port);
                     self.active_com_ports.insert(com_port, port);
-                    //sleep for 3 seconds to give the microcontroller time to boot
                 }
                 Err(e) => {
                     println!("Failed to open port: {}", e);
@@ -193,7 +192,7 @@ impl SimconnectHandler {
                 let total_secs = sec_from_midnight % 3600;
                 let minutes = (total_secs) / 60;
                 let seconds = (total_secs) % 60;
-                format!("{}:{}:{}", hours, minutes, seconds)
+                format!("{:02}:{:02}:{:02}", hours, minutes, seconds)
             }
             OutputType::Percentage => (val as i32).to_string(),
             OutputType::Degrees => todo!(),
@@ -221,7 +220,7 @@ impl SimconnectHandler {
             }
         }
         for com_port in com_ports {
-            self.send_output_to_device(&output, &com_port, value);
+            self.send_output_to_device(output, &com_port, value);
         }
     }
 
@@ -229,16 +228,20 @@ impl SimconnectHandler {
         let formatted_str = format!(
             "{} {}\n",
             output.id,
-            self.parse_output_based_on_type(value, &output)
+            self.parse_output_based_on_type(value, output)
         );
 
         println!("type {:?} {:?}", output.output_type, formatted_str);
         //TODO send output to comport
         match self.active_com_ports.get_mut(com_port) {
-            Some(port) => {
-                port.write_all(formatted_str.as_bytes())
-                    .expect("Sending the output failed");
-            }
+            Some(port) => match port.write_all(formatted_str.as_bytes()) {
+                Ok(_) => {
+                    println!("Output sent to port: {}", com_port);
+                }
+                Err(e) => {
+                    println!("Failed to write to port: {}", e);
+                }
+            },
             None => {
                 println!("Port not found: {}", com_port);
             }
@@ -251,24 +254,30 @@ impl SimconnectHandler {
             let mut buffer: Vec<u8> = Vec::new();
             let mut byte = [0u8; 1];
             let mut reading = true;
-            if active_com_port.1.bytes_to_read().unwrap() > 0 {
-                while reading {
-                    match active_com_port.1.read(&mut byte) {
-                        Ok(_) => {
-                            if byte[0] == b'\n' {
-                                let message = String::from_utf8_lossy(&buffer);
-                                messages.push(message.to_string());
-                                buffer.clear();
-                                //set buffer to \n
-                                buffer.push(byte[0]);
-                                reading = false;
-                            } else if byte[0] != b'\r' {
-                                buffer.push(byte[0]);
+            match active_com_port.1.bytes_to_read() {
+                Ok(result) => {
+                    if result == 0 {
+                        continue;
+                    }
+                    while reading {
+                        match active_com_port.1.read(&mut byte) {
+                            Ok(_) => {
+                                if byte[0] == b'\n' {
+                                    let message = String::from_utf8_lossy(&buffer);
+                                    messages.push(message.to_string());
+                                    buffer.clear();
+                                    //set buffer to \n
+                                    buffer.push(byte[0]);
+                                    reading = false;
+                                } else if byte[0] != b'\r' {
+                                    buffer.push(byte[0]);
+                                }
                             }
+                            Err(e) => eprintln!("{:?}", e),
                         }
-                        Err(e) => eprintln!("{:?}", e),
                     }
                 }
+                Err(e) => eprintln!("{:?}", e),
             }
         }
         for message in messages {
@@ -286,11 +295,11 @@ impl SimconnectHandler {
         let events = Events::new();
         let mut connection_running = true;
         while connection_running {
-            self.poll_microcontroller_for_inputs();
             match self.rx.try_recv() {
                 Ok(r) => {
                     if r == 9999 {
                         connection_running = false;
+                        break;
                     }
                 }
                 Err(mpsc::TryRecvError::Empty) => (),
@@ -299,6 +308,7 @@ impl SimconnectHandler {
                     break;
                 }
             }
+            self.poll_microcontroller_for_inputs();
             match self.simconnect.get_next_message() {
                 Ok(simconnect::DispatchResult::SimObjectData(data)) => {
                     match data.dwDefineID {
