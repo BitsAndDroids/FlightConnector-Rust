@@ -14,8 +14,8 @@ ID's are used to match inputs and outputs to the correct simulation variables.
 
 ### Input flow
 
-![Input flow](/images/input_flow.png)
+![Input flow](./images/input_flow_diagram.png)
 
 ### Output flow
 
-![Output flow](/images/output_flow.png)
+![Output flow](./images/output_flow.png)
