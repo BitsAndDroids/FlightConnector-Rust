@@ -193,7 +193,7 @@ impl SimconnectHandler {
                 let total_secs = sec_from_midnight % 3600;
                 let minutes = (total_secs) / 60;
                 let seconds = (total_secs) % 60;
-                format!("{}:{}:{}", hours, minutes, seconds)
+                format!("{:02}:{:02}:{:02}", hours, minutes, seconds)
             }
             OutputType::Percentage => (val as i32).to_string(),
             OutputType::Degrees => todo!(),
