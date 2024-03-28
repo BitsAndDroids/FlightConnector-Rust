@@ -1,0 +1,76 @@
+"use client";
+import { Bundle } from "@/model/Bundle";
+import { RunBundle } from "@/model/RunBundle";
+import { Suspense } from "react";
+interface ControllerSelectProps {
+  comPorts: string[];
+  selectedComPort?: string;
+  bundles: Bundle[];
+  selectedBundle?: Bundle;
+  setComPort: (comPort: string, runBundle: any) => void;
+  setBundle: (bundle: string, runBundle: any) => void;
+  removeRow: (id: number) => void;
+  runBundle: RunBundle;
+}
+
+export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
+  return (
+    <Suspense>
+      {" "}
+      <div className="flex flex-row items-center">
+        <select
+          // generate a unique key for each select element
+          key={Math.random()}
+          className={"rounded m-2 text-gray-700 p-2 w-[150px]"}
+          value={props.runBundle.com_port}
+          onChange={(e) => {
+            console.log(e.currentTarget.value);
+            props.setComPort(e.currentTarget.value, props.runBundle);
+          }}
+        >
+          {props.comPorts.map((port) => (
+            <option className={"text-gray-700"} key={port} value={port}>
+              {port}
+            </option>
+          ))}
+        </select>
+        <select
+          key={Math.random()}
+          className={"rounded m-2 text-gray-700 p-2 w-[300px]"}
+          value={props.runBundle.bundle.name}
+          onChange={(e) => {
+            console.log(e.currentTarget.value);
+            props.setBundle(e.currentTarget.value, props.runBundle);
+          }}
+        >
+          <option
+            key={Math.random()}
+            value={"No outputs"}
+            className={"text-gray-700"}
+          >
+            No outputs
+          </option>
+          {props.bundles.length > 0 &&
+            props.bundles.map((bundle) => (
+              <option
+                className={"text-gray-700"}
+                key={bundle.name}
+                value={bundle.name}
+              >
+                {bundle.name}
+              </option>
+            ))}
+        </select>
+        <div onClick={() => props.removeRow(props.runBundle.id)}>
+          <img
+            src={"/trashcan.svg"}
+            alt="trashcan"
+            className="h-[30px]"
+            height={30}
+            width={30}
+          />
+        </div>
+      </div>
+    </Suspense>
+  );
+};
