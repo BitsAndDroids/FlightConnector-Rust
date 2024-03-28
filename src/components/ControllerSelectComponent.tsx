@@ -121,6 +121,10 @@ export const ControllerSelectComponent = () => {
   function setBundleForRunBundle(bundleName: string, runBundle: any) {
     let newPreset = { ...getPresetOrDefault() };
     newPreset.runBundles = newPreset.runBundles.map((rb) => {
+      if (bundleName === "No outputs") {
+        rb.bundle = { name: "No outputs", outputs: [], version: 0 };
+        return rb;
+      }
       if (runBundle.id === rb.id) {
         const bundleAltered = bundles.find((b) => b.name === bundleName);
         if (!bundleAltered)
