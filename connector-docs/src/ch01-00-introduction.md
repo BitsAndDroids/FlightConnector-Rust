@@ -19,3 +19,5 @@ ID's are used to match inputs and outputs to the correct simulation variables.
 ### Output flow
 
 ![Output flow](./images/output_flow.png)
+
+{{#include ./generated/test.md}}
