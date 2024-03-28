@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -22,6 +24,23 @@ pub enum OutputType {
     ADF,
     INHG,
     Meterspersecond,
+}
+
+impl Display for OutputType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let s = match self {
+            OutputType::ADF => "ADF",
+            OutputType::Boolean => "Boolean",
+            OutputType::Integer => "Integer",
+            OutputType::Seconds => "Seconds",
+            OutputType::Secondsaftermidnight => "SecondsAfterMidnight",
+            OutputType::Percentage => "Percentage",
+            OutputType::Degrees => "Degrees",
+            OutputType::INHG => "INHG",
+            OutputType::Meterspersecond => "MetersPerSecond",
+        };
+        write!(f, "{}", s)
+    }
 }
 
 impl<'de> Deserialize<'de> for OutputType {

@@ -1,3 +1,1 @@
-## Inputs
-
-TODO add input list
+{{#include ./generated/input_list.md}}

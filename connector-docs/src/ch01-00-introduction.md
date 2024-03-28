@@ -14,10 +14,10 @@ ID's are used to match inputs and outputs to the correct simulation variables.
 
 ### Input flow
 
+You'll find a list of all available inputs in the [inputs chapter](./ch03-00-inputs.md).
 ![Input flow](./images/input_flow_diagram.png)
 
 ### Output flow
 
+You'll find a list of all available outputs in the [outputs chapter](./ch03-01-outputs.md).
 ![Output flow](./images/output_flow.png)
-
-{{#include ./generated/test.md}}

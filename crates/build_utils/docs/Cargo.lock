@@ -13,6 +13,7 @@ dependencies = [
 name = "doc_utils"
 version = "0.1.0"
 dependencies = [
+ "connector_types",
  "file_parsers",
 ]
 
