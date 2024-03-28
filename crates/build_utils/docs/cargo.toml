@@ -1,0 +1,8 @@
+[package]
+name = "doc_utils"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+file_parsers = { path = "../../file_parsers" }
+connector_types = { path = "../../types" }

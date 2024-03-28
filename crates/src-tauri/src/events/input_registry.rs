@@ -1,9 +1,7 @@
-use std::collections::HashMap;
 pub mod input_registry {
+    use connector_types::types::input::Input;
+    use file_parsers::parsers::input_parser::get_inputs_from_file;
     use std::collections::HashMap;
-
-    use crate::events::{input::input::Input, input_parser::output_parser::get_inputs_from_file};
-
     #[derive(Debug)]
     pub struct InputRegistry {
         pub inputs: HashMap<u32, Input>,

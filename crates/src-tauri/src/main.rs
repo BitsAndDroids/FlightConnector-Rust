@@ -1,7 +1,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use events::output::output::Output;
+use connector_types::types::output::Output;
+use connector_types::types::run_bundle::RunBundle;
 use events::output_registry::output_registry;
-use events::run_bundle::run_bundle::RunBundle;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use serialport::SerialPortType;

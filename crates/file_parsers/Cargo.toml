@@ -1,0 +1,13 @@
+[package]
+name = "file_parsers"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "file_parsers"
+path = "src/lib.rs"
+
+[dependencies]
+connector_types = { path = "../types/" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

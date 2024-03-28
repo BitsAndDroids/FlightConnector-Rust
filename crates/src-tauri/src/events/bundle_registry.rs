@@ -1,14 +1,5 @@
 pub mod bundle_registry {
-    use serde_json::json;
-    use std::path::PathBuf;
-    use tauri_plugin_store::with_store;
-
-    use tauri::Manager;
-    use tauri::Wry;
-    use tauri_plugin_store::StoreCollection;
-
-    use crate::events::bundle::bundle::Bundle;
-    use crate::get_app_handle;
+    use connector_types::types::bundle::Bundle;
 
     #[derive(Debug)]
     pub struct BundleRegistry {

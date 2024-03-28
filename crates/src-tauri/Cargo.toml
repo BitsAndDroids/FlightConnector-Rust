@@ -14,10 +14,13 @@ build = "build.rs"
 tauri-build = { version = "1.5.1", features = [] }
 
 [dependencies]
+file_parsers = { path = "../file_parsers/" }
+connector_types = { path = "../types/" }
 tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-log = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
 tauri-plugin-localhost = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
-tauri = { version = "1.5.4", features = [ "updater",
+tauri = { version = "1.5.4", features = [
+  "updater",
   "window-minimize",
   "window-unminimize",
   "window-hide",

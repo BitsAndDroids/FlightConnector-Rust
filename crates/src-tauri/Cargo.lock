@@ -317,6 +317,8 @@ checksum = "ed570934406eb16438a4e976b1b4500774099c13b8cb96eec99f620f05090ddf"
 name = "bits-and-droids-connector"
 version = "0.1.0"
 dependencies = [
+ "connector_types",
+ "file_parsers",
  "lazy_static",
  "once_cell",
  "serde",
@@ -692,6 +694,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d16048cd947b08fa32c24458a22f5dc5e835264f689f4f5653210c69fd107363"
 dependencies = [
  "crossbeam-utils",
+]
+
+[[package]]
+name = "connector_types"
+version = "0.1.0"
+dependencies = [
+ "serde",
 ]
 
 [[package]]
@@ -1078,6 +1087,15 @@ checksum = "38e2275cc4e4fc009b0669731a1e5ab7ebf11f469eaede2bab9309a5b4d6057f"
 dependencies = [
  "memoffset",
  "rustc_version",
+]
+
+[[package]]
+name = "file_parsers"
+version = "0.1.0"
+dependencies = [
+ "connector_types",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

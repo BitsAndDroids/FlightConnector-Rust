@@ -1,7 +1,6 @@
 pub mod output_registry {
-    use crate::events::{
-        category::category::Category, output::output::Output, output_parser::output_parser,
-    };
+    use connector_types::types::{category::Category, output::Output};
+    use file_parsers::parsers::output_parser;
 
     #[derive(Clone, Debug)]
     pub struct OutputRegistry {

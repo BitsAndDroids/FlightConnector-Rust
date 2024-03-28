@@ -11,12 +11,12 @@ use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
 
-use crate::events::input::input::Input;
 use crate::events::input_registry::input_registry::InputRegistry;
-use crate::events::output::output::Output;
-use crate::events::output::output::OutputType;
 use crate::events::output_registry::output_registry::OutputRegistry;
-use crate::events::run_bundle::run_bundle::RunBundle;
+use connector_types::types::input::Input;
+use connector_types::types::output::Output;
+use connector_types::types::output::OutputType;
+use connector_types::types::run_bundle::RunBundle;
 
 const MAX_RETURNED_ITEMS: usize = 255;
 
