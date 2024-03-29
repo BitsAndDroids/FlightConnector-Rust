@@ -2259,11 +2259,6 @@
       "input_type": 0,
       "event": "SIM_PAUSE_OFF",
       "input_id": 909
-    },
-    {
-      "input_type": 60,
-      "event": "G1000 MENU TOGGLE",
-      "input_id": 758
     }
   ]
 }
