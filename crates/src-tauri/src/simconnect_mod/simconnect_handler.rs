@@ -7,7 +7,6 @@ use std::io::Read;
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::sync::Mutex;
-use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -17,6 +16,8 @@ use connector_types::types::input::Input;
 use connector_types::types::output::Output;
 use connector_types::types::output::OutputType;
 use connector_types::types::run_bundle::RunBundle;
+
+use super::wasm;
 
 const MAX_RETURNED_ITEMS: usize = 255;
 
@@ -154,7 +155,7 @@ impl SimconnectHandler {
         self.main_event_loop();
     }
 
-    fn send_input_to_simconnect(&self, command: DWORD) {
+    fn send_input_to_simconnect(&mut self, command: DWORD) {
         //TODO send input to simconnect
         match self.input_registry.get_input(command) {
             Some(input) => {
@@ -167,6 +168,7 @@ impl SimconnectHandler {
                 );
             }
             _ => {
+                wasm::send_wasm_data(&mut self.simconnect, command);
                 println!("Input not found: {}", command);
             }
         }
@@ -345,6 +347,11 @@ impl SimconnectHandler {
                         _ => (),
                     }
                 }
+                Ok(simconnect::DispatchResult::ClientData(data)) => {
+                    let object_data: simconnect::SIMCONNECT_RECV_CLIENT_DATA = *data;
+                    let id = object_data._base.dwRequestID;
+                    println!("Client data received: {}", id);
+                }
                 Ok(simconnect::DispatchResult::Event(data)) => {
                     // handle Event variant ...
                     let sim_data_ptr = std::ptr::addr_of!(data.dwData) as *const DWORD;
@@ -404,6 +411,7 @@ impl SimconnectHandler {
             1,
             0,
         );
+        wasm::register_wasm_data(&mut self.simconnect);
     }
 
     pub fn define_inputs(&self, inputs: &HashMap<u32, Input>) {
