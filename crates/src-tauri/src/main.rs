@@ -7,9 +7,8 @@ use once_cell::sync::OnceCell;
 use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tokio::io::{self};
-
 mod events;
-
+mod simconnect_mod;
 use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
@@ -24,7 +23,6 @@ use window_shadows::set_shadow;
 #[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
 #[cfg(target_os = "windows")]
-mod simconnect_mod;
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
