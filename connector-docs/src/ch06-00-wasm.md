@@ -1,4 +1,4 @@
-## WASM
+# WASM
 
 Usually, the connector communicates with MFS2020 using SimConnect. SimConnect is an interface that exposes the simulation data to other software. This interface provides an easy way to start consuming the sim data but has some downsides.
 
@@ -11,4 +11,3 @@ Luckily, there is an answer to this problem! MFS2020 provides functionality that
 ![WASM flow diagram](./images/wasm_flow.png)
 
 The great benefit of this system is that we can add more functionality to this module when necessary. That way we’re able to interact with new aircraft the moment they’re released.
-

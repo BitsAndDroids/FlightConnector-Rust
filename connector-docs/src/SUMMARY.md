@@ -10,13 +10,11 @@
 - [Outputs](ch03-01-outputs.md)
 - [Presets](ch04-00-presets.md)
 - [Calibration](ch05-00-calibration.md)
-- [Events](ch06-00-events.md)
-  - [Outputlist](ch06-01-outputlist.md)
-- [WASM](ch07-00-wasm.md)
+- [WASM](ch06-00-wasm.md)
 
 # Examples
 
-- [Button input code](examples/button_input_code.md)
+- [Button input code](examples/button/button_input_code.md)
 
 # Connector code docs
 

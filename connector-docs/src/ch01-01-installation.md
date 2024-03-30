@@ -7,7 +7,7 @@ During startup the connector will automatically check for updates on Github. A p
 
 ## WASM
 
-The WASM module unlocks more simulation variables to interact with. You can read a full explanation in the [WASM chapter](./ch07-00-wasm.md).
+The WASM module unlocks more simulation variables to interact with. You can read a full explanation in the [WASM chapter](./ch06-00-wasm.md).
 You're able to install the module by copying the entire wasm_module into the MFS2020 community package folder.
 
 If you wan't to ensure the module is properly installed you're able to follow these steps:
