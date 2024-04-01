@@ -21,7 +21,7 @@ First place the pushbutton in the middle of the breadboard so it bridges the gap
 
 ## Writing the firmware
 
-In order to actually make the controller actually interact with the button we need to write a small bit of code. Don’t forget to make any changes if you’ve decided to connect the button to another pin.
+We need to write a small bit of code to make the controller interact with the button. Remember to make any changes if you’ve decided to connect the button to another pin.
 
 ```cpp
 {{#include ./btn_ap_master.ino}}
