@@ -12,6 +12,7 @@
     "@tauri-apps/api": "^1.5.1",
     "react": "^18",
     "react-dom": "^18",
+    "uuid": "^9.0.1",
     "tauri-plugin-log-api": "github:tauri-apps/tauri-plugin-log#v1",
     "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#v1",
     "react-router-dom": "^6.22.3"
@@ -21,6 +22,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "9.0.8",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "postcss": "^8",
