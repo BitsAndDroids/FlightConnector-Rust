@@ -1,4 +1,4 @@
-## Presets
+# Presets
 
 Presets are a way to save multiple device configurations for flight simmers that want to match their setup to their needs. This makes it simple to swap your devices when you switch your airliner for a general aviation plane. In short, each preset contains one or multiple bundles (A bundle is a device matched with the outputs it needs to receive) that can be saved as a set.
 
