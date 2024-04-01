@@ -35,6 +35,14 @@ export const ControllerSelectComponent = () => {
         console.log(e);
       }
     }
+    async function getLastPreset() {
+      const runSettingsHandler = new RunSettingsHandler();
+      const lastPreset = await runSettingsHandler.getLastPreset();
+      if (lastPreset) {
+        setDefaultPreset(lastPreset);
+        setPreset(lastPreset);
+      }
+    }
 
     async function getBundles() {
       let bundleSettingsHandler = new BundleSettingsHander();
@@ -44,6 +52,7 @@ export const ControllerSelectComponent = () => {
 
     getComPorts().then(() => {
       getBundles();
+      getLastPreset();
       setLoaded(true);
     });
   }, []);
@@ -93,15 +102,16 @@ export const ControllerSelectComponent = () => {
     if (connectionRunning) {
       invoke("stop_simconnect_connection");
     } else {
+      const runSettingsHandler = new RunSettingsHandler();
       invoke("start_simconnect_connection", {
         runBundles: defaultPreset.runBundles,
       }).then((result) => {
         console.log(result);
-        const runSettingsHandler = new RunSettingsHandler();
         runSettingsHandler.setAmountOfConnections(
           defaultPreset.runBundles.length,
         );
       });
+      runSettingsHandler.setLastPreset(defaultPreset);
     }
     setConnectionRunning(!connectionRunning);
   }
