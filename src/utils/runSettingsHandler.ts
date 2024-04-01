@@ -17,13 +17,13 @@ export class RunSettingsHandler {
     this.runSettingsStore.save();
   }
 
-  setLastPreset(preset: Preset): any {
-    this.runSettingsStore.set("lastPreset", preset);
+  setLastPresetId(id: string): any {
+    this.runSettingsStore.set("lastPresetId", id);
     this.runSettingsStore.save();
   }
 
-  async getLastPreset(): Promise<Preset | null> {
-    return (await this.runSettingsStore.get("lastPreset")) || null;
+  async getLastPresetId(): Promise<string | null> {
+    return await this.runSettingsStore.get("lastPresetId");
   }
 
   async getLastRunBundles(): Promise<RunBundle[]> {

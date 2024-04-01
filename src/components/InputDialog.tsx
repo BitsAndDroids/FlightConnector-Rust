@@ -33,7 +33,7 @@ const InputDialog = (props: InputDialogProps) => {
   }
 
   return (
-    <div className="w-screen h-screen min-h-screen min-w-screen absolute t-0 l-0 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
+    <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
       <div className="flex flex-col mb-16 rounded-md w-fit h-fit bg-white p-8 border-gray-200 border">
         <div className="flex flex-row justify-center items-center">
           <label className="rounded-md mx-2 text-center">{props.message}</label>

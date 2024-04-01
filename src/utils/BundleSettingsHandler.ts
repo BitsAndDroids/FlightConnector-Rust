@@ -1,11 +1,9 @@
 import { Bundle } from "@/model/Bundle";
 import { Store } from "tauri-plugin-store-api";
 export class BundleSettingsHander {
-  store: Store;
   bundleStore: Store;
 
   constructor() {
-    this.store = new Store(".settings.dat");
     this.bundleStore = new Store(".bundleSettings.dat");
   }
 
