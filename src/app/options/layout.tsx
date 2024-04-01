@@ -1,7 +1,7 @@
 import React from "react";
 const OptionsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className={"m-8"}>
+    <div className={""}>
       <div>
         <a href={"/"} className={"text-white"}>
           Back

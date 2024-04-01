@@ -1,7 +1,7 @@
 import { RunBundle } from "./RunBundle";
 
 export interface Preset {
-  id: number;
+  id: string;
   name: string;
   version: string;
   runBundles: RunBundle[];
