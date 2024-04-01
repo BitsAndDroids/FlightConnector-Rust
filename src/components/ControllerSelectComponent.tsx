@@ -62,7 +62,6 @@ export const ControllerSelectComponent = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPort, setComPort] = useState<string>("");
   const [bundles, setBundles] = useState<Bundle[]>([]);
-  const [presets, setPresets] = useState<Preset[]>([]);
   const [defaultPreset, setDefaultPreset] = useState<Preset>({
     name: "default",
     runBundles: [
@@ -75,6 +74,7 @@ export const ControllerSelectComponent = () => {
     version: "1.0",
     id: 0,
   });
+  const [presets, setPresets] = useState<Preset[]>([defaultPreset]);
   const [preset, setPreset] = useState<Preset>();
   const addRow = () => {
     let presetToAlter: Preset = preset ? preset : defaultPreset;
@@ -102,16 +102,16 @@ export const ControllerSelectComponent = () => {
     if (connectionRunning) {
       invoke("stop_simconnect_connection");
     } else {
-      const runSettingsHandler = new RunSettingsHandler();
       invoke("start_simconnect_connection", {
         runBundles: defaultPreset.runBundles,
       }).then((result) => {
         console.log(result);
+        const runSettingsHandler = new RunSettingsHandler();
         runSettingsHandler.setAmountOfConnections(
           defaultPreset.runBundles.length,
         );
+        savePreset();
       });
-      runSettingsHandler.setLastPreset(defaultPreset);
     }
     setConnectionRunning(!connectionRunning);
   }
@@ -159,6 +159,12 @@ export const ControllerSelectComponent = () => {
     return presetToReturn;
   }
 
+  async function savePreset() {
+    const runSettingsHandler = new RunSettingsHandler();
+    const presetToSave = preset ? preset : defaultPreset;
+    await runSettingsHandler.setLastPreset(presetToSave);
+  }
+
   return (
     <>
       {loaded && (
@@ -167,7 +173,7 @@ export const ControllerSelectComponent = () => {
             <button
               type="button"
               className={
-                "rounded-md bg-green-900 text-white text-sm font-semibold px-3.5 py-2.5 m-2"
+                "rounded-md bg-green-600 text-white text-sm font-semibold px-3.5 py-2.5 m-2"
               }
               onClick={addRow}
             >
@@ -180,6 +186,22 @@ export const ControllerSelectComponent = () => {
             >
               {connectionRunning ? "Stop" : "Start"}
             </button>
+            <button
+              type="button"
+              className={
+                "rounded-md bg-green-600 text-white text-sm font-semibold px-3.5 py-2.5 m-2 flex flex-row items-center"
+              }
+              onClick={savePreset}
+            >
+              {" "}
+              <img src="save.svg" alt="save" className="w-4 h-4 mr-2" />
+              Save preset{" "}
+            </button>
+            <select className="rounded-lg h-10 mt-2 px-4">
+              {presets.map((preset) => (
+                <option key={preset.id}>{preset.name}</option>
+              ))}
+            </select>
           </div>
           <div className="flex flex-row font-bold text-white">
             <p className="ml-2">Com port</p>
