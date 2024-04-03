@@ -1751,7 +1751,7 @@
   },
   {
     "id": 2028,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
     "action_text": "Alt inc",
     "action_type": "input",
     "output_format": "",
@@ -1761,7 +1761,7 @@
   },
   {
     "id": 2029,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
     "action_text": "alt dec",
     "action_type": "input",
     "output_format": "",
@@ -1771,7 +1771,7 @@
   },
   {
     "id": 2030,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
     "action_text": " alt inc 100",
     "action_type": "input",
     "output_format": "",
@@ -1781,7 +1781,7 @@
   },
   {
     "id": 2031,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
     "action_text": " alt dec 100",
     "action_type": "input",
     "output_format": "",
@@ -1791,7 +1791,7 @@
   },
   {
     "id": 2032,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
     "action_text": " alt inc 1000",
     "action_type": "input",
     "output_format": "",
@@ -1801,7 +1801,7 @@
   },
   {
     "id": 2033,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
     "action_text": " alt dec 1000",
     "action_type": "input",
     "output_format": "",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": 2035,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "0 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " nav mode 0-5",
     "action_type": "input",
     "output_format": "",
@@ -1831,7 +1831,7 @@
   },
   {
     "id": 2036,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "1 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -1841,7 +1841,7 @@
   },
   {
     "id": 2037,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "2 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -1851,7 +1851,7 @@
   },
   {
     "id": 2038,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "3 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -1861,7 +1861,7 @@
   },
   {
     "id": 2039,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "4 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -1871,7 +1871,7 @@
   },
   {
     "id": 2040,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "0 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " MFD range 010,20,40,80,160,320",
     "action_type": "input",
     "output_format": "",
@@ -1881,7 +1881,7 @@
   },
   {
     "id": 2041,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "1 (>L:A320_Neo_MFD_Range_1)",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -1891,7 +1891,7 @@
   },
   {
     "id": 2042,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "2 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -1901,7 +1901,7 @@
   },
   {
     "id": 2043,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "3 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -1911,7 +1911,7 @@
   },
   {
     "id": 2044,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "4 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -1921,7 +1921,7 @@
   },
   {
     "id": 2045,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "5 (>L:A320_Neo_MFD_Range_1)",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -1931,7 +1931,7 @@
   },
   {
     "id": 2046,
-    "action": " (>L:BTN_WPT_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_WPT_1_FILTER_ACTIVE)",
     "action_text": " Wpt btn off",
     "action_type": "input",
     "output_format": "",
@@ -1941,7 +1941,7 @@
   },
   {
     "id": 2047,
-    "action": " (>L:BTN_WPT_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_WPT_1_FILTER_ACTIVE)",
     "action_text": " Wpt btn on",
     "action_type": "input",
     "output_format": "",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": 2048,
-    "action": " (>L:BTN_CSTR_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn off",
     "action_type": "input",
     "output_format": "",
@@ -1961,7 +1961,7 @@
   },
   {
     "id": 2049,
-    "action": " (>L:BTN_CSTR_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn on",
     "action_type": "input",
     "output_format": "",
@@ -1971,7 +1971,7 @@
   },
   {
     "id": 2050,
-    "action": " (>L:BTN_VORD_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_VORD_1_FILTER_ACTIVE)",
     "action_text": " VORD btn off",
     "action_type": "input",
     "output_format": "",
@@ -1981,7 +1981,7 @@
   },
   {
     "id": 2051,
-    "action": " (>L:BTN_VORD_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_VORD_1_FILTER_ACTIVE)",
     "action_text": " VORD btn on",
     "action_type": "input",
     "output_format": "",
@@ -1991,7 +1991,7 @@
   },
   {
     "id": 2052,
-    "action": " (>L:BTN_NDB_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_NDB_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn off",
     "action_type": "input",
     "output_format": "",
@@ -2001,7 +2001,7 @@
   },
   {
     "id": 2053,
-    "action": " (>L:BTN_NDB_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_NDB_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn on",
     "action_type": "input",
     "output_format": "",
@@ -2011,7 +2011,7 @@
   },
   {
     "id": 2054,
-    "action": " (>L:BTN_ARPT_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn off",
     "action_type": "input",
     "output_format": "",
@@ -2021,7 +2021,7 @@
   },
   {
     "id": 2055,
-    "action": " (>L:BTN_ARPT_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn on",
     "action_type": "input",
     "output_format": "",
@@ -2031,7 +2031,7 @@
   },
   {
     "id": 2056,
-    "action": " (>L:BTN_LS_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_LS_1_FILTER_ACTIVE)",
     "action_text": " LS btn off",
     "action_type": "input",
     "output_format": "",
@@ -2041,7 +2041,7 @@
   },
   {
     "id": 2057,
-    "action": " (>L:BTN_LS_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_LS_1_FILTER_ACTIVE)",
     "action_text": " LS btn on",
     "action_type": "input",
     "output_format": "",
@@ -2151,7 +2151,7 @@
   },
   {
     "id": 2500,
-    "action": " (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
+    "action": "2 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -2161,7 +2161,7 @@
   },
   {
     "id": 2501,
-    "action": " (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
+    "action": "1 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -2171,7 +2171,7 @@
   },
   {
     "id": 2502,
-    "action": " (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
+    "action": "0 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -4161,7 +4161,7 @@
   },
   {
     "id": 2028,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
     "action_text": "Alt inc",
     "action_type": "input",
     "output_format": "",
@@ -4171,7 +4171,7 @@
   },
   {
     "id": 2029,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
     "action_text": "alt dec",
     "action_type": "input",
     "output_format": "",
@@ -4181,7 +4181,7 @@
   },
   {
     "id": 2030,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
     "action_text": " alt inc 100",
     "action_type": "input",
     "output_format": "",
@@ -4191,7 +4191,7 @@
   },
   {
     "id": 2031,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
     "action_text": " alt dec 100",
     "action_type": "input",
     "output_format": "",
@@ -4201,7 +4201,7 @@
   },
   {
     "id": 2032,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
     "action_text": " alt inc 1000",
     "action_type": "input",
     "output_format": "",
@@ -4211,7 +4211,7 @@
   },
   {
     "id": 2033,
-    "action": " (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
+    "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
     "action_text": " alt dec 1000",
     "action_type": "input",
     "output_format": "",
@@ -4231,7 +4231,7 @@
   },
   {
     "id": 2035,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "0 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " nav mode 0-5",
     "action_type": "input",
     "output_format": "",
@@ -4241,7 +4241,7 @@
   },
   {
     "id": 2036,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "1 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -4251,7 +4251,7 @@
   },
   {
     "id": 2037,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "2 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -4261,7 +4261,7 @@
   },
   {
     "id": 2038,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "3 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -4271,7 +4271,7 @@
   },
   {
     "id": 2039,
-    "action": " (>L:A320_Neo_MFD_NAV_MODE_1)",
+    "action": "4 (>L:A320_Neo_MFD_NAV_MODE_1)",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -4281,7 +4281,7 @@
   },
   {
     "id": 2040,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "0 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " MFD range 010,20,40,80,160,320",
     "action_type": "input",
     "output_format": "",
@@ -4291,7 +4291,7 @@
   },
   {
     "id": 2041,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "1 (>L:A320_Neo_MFD_Range_1)",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -4301,7 +4301,7 @@
   },
   {
     "id": 2042,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "2 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -4311,7 +4311,7 @@
   },
   {
     "id": 2043,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "3 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -4321,7 +4321,7 @@
   },
   {
     "id": 2044,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "4 (>L:A320_Neo_MFD_Range_1)",
     "action_text": " ",
     "action_type": "input",
     "output_format": "",
@@ -4331,7 +4331,7 @@
   },
   {
     "id": 2045,
-    "action": " (>L:A320_Neo_MFD_Range_1)",
+    "action": "5 (>L:A320_Neo_MFD_Range_1)",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -4341,7 +4341,7 @@
   },
   {
     "id": 2046,
-    "action": " (>L:BTN_WPT_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_WPT_1_FILTER_ACTIVE)",
     "action_text": " Wpt btn off",
     "action_type": "input",
     "output_format": "",
@@ -4351,7 +4351,7 @@
   },
   {
     "id": 2047,
-    "action": " (>L:BTN_WPT_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_WPT_1_FILTER_ACTIVE)",
     "action_text": " Wpt btn on",
     "action_type": "input",
     "output_format": "",
@@ -4361,7 +4361,7 @@
   },
   {
     "id": 2048,
-    "action": " (>L:BTN_CSTR_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn off",
     "action_type": "input",
     "output_format": "",
@@ -4371,7 +4371,7 @@
   },
   {
     "id": 2049,
-    "action": " (>L:BTN_CSTR_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn on",
     "action_type": "input",
     "output_format": "",
@@ -4381,7 +4381,7 @@
   },
   {
     "id": 2050,
-    "action": " (>L:BTN_VORD_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_VORD_1_FILTER_ACTIVE)",
     "action_text": " VORD btn off",
     "action_type": "input",
     "output_format": "",
@@ -4391,7 +4391,7 @@
   },
   {
     "id": 2051,
-    "action": " (>L:BTN_VORD_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_VORD_1_FILTER_ACTIVE)",
     "action_text": " VORD btn on",
     "action_type": "input",
     "output_format": "",
@@ -4401,7 +4401,7 @@
   },
   {
     "id": 2052,
-    "action": " (>L:BTN_NDB_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_NDB_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn off",
     "action_type": "input",
     "output_format": "",
@@ -4411,7 +4411,7 @@
   },
   {
     "id": 2053,
-    "action": " (>L:BTN_NDB_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_NDB_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn on",
     "action_type": "input",
     "output_format": "",
@@ -4421,7 +4421,7 @@
   },
   {
     "id": 2054,
-    "action": " (>L:BTN_ARPT_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn off",
     "action_type": "input",
     "output_format": "",
@@ -4431,7 +4431,7 @@
   },
   {
     "id": 2055,
-    "action": " (>L:BTN_ARPT_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
     "action_text": " CSTR btn on",
     "action_type": "input",
     "output_format": "",
@@ -4441,7 +4441,7 @@
   },
   {
     "id": 2056,
-    "action": " (>L:BTN_LS_1_FILTER_ACTIVE)",
+    "action": "0 (>L:BTN_LS_1_FILTER_ACTIVE)",
     "action_text": " LS btn off",
     "action_type": "input",
     "output_format": "",
@@ -4451,7 +4451,7 @@
   },
   {
     "id": 2057,
-    "action": " (>L:BTN_LS_1_FILTER_ACTIVE)",
+    "action": "1 (>L:BTN_LS_1_FILTER_ACTIVE)",
     "action_text": " LS btn on",
     "action_type": "input",
     "output_format": "",
@@ -4561,7 +4561,7 @@
   },
   {
     "id": 2500,
-    "action": " (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
+    "action": "2 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -4571,7 +4571,7 @@
   },
   {
     "id": 2501,
-    "action": " (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
+    "action": "1 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -4581,7 +4581,7 @@
   },
   {
     "id": 2502,
-    "action": " (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
+    "action": "0 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
     "action_text": "",
     "action_type": "input",
     "output_format": "",
@@ -4862,7 +4862,7 @@
   {
     "id": 2222,
     "action": "test",
-    "action_text": "action_texts go here",
+    "action_text": "Comments go here",
     "action_type": "input",
     "output_format": "",
     "update_every": 0.0,

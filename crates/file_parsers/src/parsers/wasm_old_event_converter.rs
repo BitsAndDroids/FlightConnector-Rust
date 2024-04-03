@@ -26,20 +26,7 @@ fn parse_event_line(line: &str) -> WasmEvent {
         .split(|c| c == '^' || c == '#' || c == '$' || c == '/')
         .collect();
     println!("{:?}", parts);
-    let action = parts[0]
-        .trim_start_matches(|c: char| {
-            c == '0'
-                || c == '1'
-                || c == '2'
-                || c == '3'
-                || c == '4'
-                || c == '5'
-                || c == '6'
-                || c == '7'
-                || c == '8'
-                || c == '9'
-        })
-        .to_string();
+    let action = parts[0].to_string();
     let type_unformated: &str = parts[1];
     let mut action_type: String = type_unformated.to_string();
     action_type.retain(|c| c.is_numeric());
