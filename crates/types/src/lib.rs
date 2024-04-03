@@ -4,4 +4,5 @@ pub mod types {
     pub mod input;
     pub mod output;
     pub mod run_bundle;
+    pub mod wasm_event;
 }
