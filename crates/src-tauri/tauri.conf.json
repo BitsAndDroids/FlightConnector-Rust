@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "bits-and-droids-connector",
-    "version": "0.2.6"
+    "version": "0.2.7"
   },
   "tauri": {
     "updater": {
