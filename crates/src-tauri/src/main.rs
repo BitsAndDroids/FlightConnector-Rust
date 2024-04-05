@@ -8,6 +8,7 @@ use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tokio::io::{self};
 mod events;
+mod sim_utils;
 mod simconnect_mod;
 use std::ops::Deref;
 use std::string::ToString;
