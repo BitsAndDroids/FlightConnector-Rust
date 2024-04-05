@@ -152,6 +152,7 @@ impl SimconnectHandler {
         self.connect_to_devices();
         self.initialize_connection();
         self.initialize_simconnect();
+        wasm::register_wasm_data(&mut self.simconnect);
         self.main_event_loop();
     }
 
@@ -263,17 +264,19 @@ impl SimconnectHandler {
                     }
                     while reading {
                         match active_com_port.1.read(&mut byte) {
-                            Ok(_) => {
-                                if byte[0] == b'\n' {
-                                    let message = String::from_utf8_lossy(&buffer);
-                                    messages.push(message.to_string());
-                                    buffer.clear();
-                                    //set buffer to \n
-                                    buffer.push(byte[0]);
-                                    reading = false;
-                                } else if byte[0] != b'\r' {
-                                    buffer.push(byte[0]);
-                                }
+                            Ok(bytes_read) => {
+                                (0..bytes_read).for_each(|i| {
+                                    if byte[i] == b'\n' {
+                                        let message = String::from_utf8_lossy(&buffer);
+                                        messages.push(message.to_string());
+                                        buffer.clear();
+                                        //set buffer to \n
+                                        buffer.push(byte[i]);
+                                        reading = false;
+                                    } else if byte[i] != b'\r' {
+                                        buffer.push(byte[i]);
+                                    }
+                                });
                             }
                             Err(e) => eprintln!("{:?}", e),
                         }
@@ -411,7 +414,6 @@ impl SimconnectHandler {
             1,
             0,
         );
-        wasm::register_wasm_data(&mut self.simconnect);
     }
 
     pub fn define_inputs(&self, inputs: &HashMap<u32, Input>) {
