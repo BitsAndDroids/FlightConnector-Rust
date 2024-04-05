@@ -158,7 +158,6 @@ impl SimconnectHandler {
     }
 
     fn send_input_to_simconnect(&mut self, command: DWORD) {
-        //TODO send input to simconnect
         match self.input_registry.get_input(command) {
             Some(input) => {
                 self.simconnect.transmit_client_event(
@@ -179,7 +178,6 @@ impl SimconnectHandler {
     fn parse_output_based_on_type(&mut self, val: f64, output: &Output) -> String {
         println!("Output: {:?}", output);
         println!("Val: {:?}", val);
-        //TODO parse output based on type
         match output.output_type {
             OutputType::Boolean => sim_utils::output_converters::val_to_bool(val),
             OutputType::Integer => (val as i32).to_string(),
@@ -222,7 +220,6 @@ impl SimconnectHandler {
         );
 
         println!("type {:?} {:?}", output.output_type, formatted_str);
-        //TODO send output to comport
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => match port.write_all(formatted_str.as_bytes()) {
                 Ok(_) => {
