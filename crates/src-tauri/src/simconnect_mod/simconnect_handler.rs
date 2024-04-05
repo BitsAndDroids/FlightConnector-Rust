@@ -18,6 +18,7 @@ use connector_types::types::output::OutputType;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::wasm;
+use crate::sim_utils;
 
 const MAX_RETURNED_ITEMS: usize = 255;
 
@@ -179,30 +180,16 @@ impl SimconnectHandler {
         println!("Val: {:?}", val);
         //TODO parse output based on type
         match output.output_type {
-            OutputType::Boolean => {
-                if val > 0.5 {
-                    "1".to_string()
-                } else {
-                    "0".to_string()
-                }
-            }
+            OutputType::Boolean => sim_utils::output_converters::val_to_bool(val),
             OutputType::Integer => (val as i32).to_string(),
-            OutputType::Seconds => todo!(),
-            OutputType::Secondsaftermidnight => {
-                let sec_from_midnight = val as i32;
-                let hours = sec_from_midnight / 3600;
-                let total_secs = sec_from_midnight % 3600;
-                let minutes = (total_secs) / 60;
-                let seconds = (total_secs) % 60;
-                format!("{:02}:{:02}:{:02}", hours, minutes, seconds)
-            }
+            OutputType::Seconds => (val as i32).to_string(),
+            OutputType::Secondsaftermidnight => sim_utils::output_converters::seconds_to_time(val),
             OutputType::Percentage => (val as i32).to_string(),
-            OutputType::Degrees => todo!(),
-            OutputType::ADF => todo!(),
-            OutputType::INHG => todo!(),
+            OutputType::Degrees => sim_utils::output_converters::radian_to_degree(val).to_string(),
+            OutputType::ADF => (val as i32).to_string(),
+            OutputType::INHG => sim_utils::output_converters::value_to_inhg(val).to_string(),
             OutputType::Meterspersecond => {
-                //mps to kmh
-                (val * 3.6).to_string()
+                sim_utils::output_converters::mps_to_kmh(val).to_string()
             }
         }
     }
@@ -349,8 +336,7 @@ impl SimconnectHandler {
                 }
                 Ok(simconnect::DispatchResult::ClientData(data)) => {
                     let object_data: simconnect::SIMCONNECT_RECV_CLIENT_DATA = *data;
-                    let id = object_data._base.dwRequestID;
-                    println!("Client data received: {}", id);
+                    let _id = object_data._base.dwRequestID;
                 }
                 Ok(simconnect::DispatchResult::Event(data)) => {
                     // handle Event variant ...
