@@ -1,5 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use connector_types::types::output::Output;
+use connector_types::types::output_format::FormatOutput;
 use connector_types::types::run_bundle::RunBundle;
 use events::output_registry::output_registry;
 use lazy_static::lazy_static;
@@ -96,8 +97,20 @@ async fn get_com_ports() -> Vec<String> {
 #[tauri::command]
 async fn get_outputs() -> Vec<Output> {
     let mut output_registry = output_registry::OutputRegistry::new();
+    let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     output_registry.load_outputs();
-    output_registry.outputs
+    wasm_registry.load_wasm();
+
+    //merge the two outputs from the registries
+    //using the FormatOutput trait
+    let mut outputs: Vec<Output> = Vec::new();
+    for output in output_registry.get_outputs().iter() {
+        outputs.push(output.clone());
+    }
+    for output in wasm_registry.get_wasm_outputs().iter() {
+        outputs.push(output.get_output_format().clone());
+    }
+    outputs
 }
 
 #[tauri::command]

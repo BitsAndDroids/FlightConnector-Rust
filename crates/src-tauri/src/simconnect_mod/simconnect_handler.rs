@@ -364,6 +364,7 @@ impl SimconnectHandler {
         self.output_registry.load_outputs();
         self.define_inputs(self.input_registry.get_inputs());
         self.define_outputs();
+        self.define_wasm_outputs();
     }
 
     fn initialize_simconnect(&mut self) {
@@ -406,6 +407,10 @@ impl SimconnectHandler {
                 input.1.event.as_str(),
             );
         }
+    }
+
+    pub fn define_wasm_outputs(&self) {
+        //
     }
 
     pub fn define_outputs(&self) {

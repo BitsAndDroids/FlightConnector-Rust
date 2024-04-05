@@ -3,6 +3,7 @@ pub mod types {
     pub mod category;
     pub mod input;
     pub mod output;
+    pub mod output_format;
     pub mod run_bundle;
     pub mod wasm_event;
 }
