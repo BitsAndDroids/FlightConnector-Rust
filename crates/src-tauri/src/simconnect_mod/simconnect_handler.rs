@@ -335,8 +335,12 @@ impl SimconnectHandler {
                     }
                 }
                 Ok(simconnect::DispatchResult::ClientData(data)) => {
-                    let object_data: simconnect::SIMCONNECT_RECV_CLIENT_DATA = *data;
-                    let _id = object_data._base.dwRequestID;
+                    println!("CLIENT DATA");
+                    let sim_data_ptr = std::ptr::addr_of!(data._base.dwData) as *const DWORD;
+                    println!("{:?}", sim_data_ptr);
+                    let sim_data_value =
+                        unsafe { std::ptr::read_unaligned(sim_data_ptr).to_string() };
+                    println!("CLIENT DATA {}", sim_data_value);
                 }
                 Ok(simconnect::DispatchResult::Event(data)) => {
                     // handle Event variant ...
