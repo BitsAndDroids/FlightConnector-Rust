@@ -126,12 +126,13 @@ async fn poll_com_port(_app: tauri::AppHandle, port: String) {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(run_bundles: Vec<RunBundle>) {
+fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
-        let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
+        let mut simconnect_handler =
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });

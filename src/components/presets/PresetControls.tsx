@@ -24,6 +24,7 @@ export const PresetControls = (props: PresetControlsProps) => {
       id: newPreset.runBundles.length + 1,
       com_port: "",
       bundle: { name: "", outputs: [], version: 0 },
+      connected: false,
     });
     props.setPreset(newPreset);
   };
@@ -44,6 +45,7 @@ export const PresetControls = (props: PresetControlsProps) => {
             id: 0,
             com_port: "",
             bundle: { name: "", outputs: [], version: 0 },
+            connected: false,
           },
         ],
       };

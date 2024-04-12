@@ -18,6 +18,16 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
     <Suspense>
       {" "}
       <div className="flex flex-row items-center">
+        {props.runBundle.connected && (
+          <div>
+            <div className="rounded-lg w-4 h-4 min-w-4 min-h-4 bg-green-400 mr-1" />
+          </div>
+        )}
+        {!props.runBundle.connected && (
+          <div>
+            <div className="rounded-lg w-4 h-4 min-w-4 min-h-4 bg-red-400 mr-1" />
+          </div>
+        )}
         <select
           // generate a unique key for each select element
           key={Math.random()}
