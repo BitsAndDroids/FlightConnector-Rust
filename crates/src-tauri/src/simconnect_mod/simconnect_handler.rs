@@ -1,4 +1,6 @@
 use lazy_static::lazy_static;
+use serde::Deserialize;
+use serde::Serialize;
 use serialport::SerialPort;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
@@ -9,6 +11,7 @@ use std::sync::Arc;
 use std::sync::Mutex;
 use std::thread::sleep;
 use std::time::Duration;
+use tauri::Manager;
 
 use crate::events::input_registry::input_registry::InputRegistry;
 use crate::events::output_registry::output_registry::OutputRegistry;
@@ -24,6 +27,13 @@ const MAX_RETURNED_ITEMS: usize = 255;
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+struct Connections {
+    name: String,
+    connected: bool,
+    id: i32,
 }
 
 #[derive(Clone)]
@@ -87,6 +97,7 @@ pub struct SimconnectHandler {
     pub(crate) simconnect: simconnect::SimConnector,
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
+    pub(crate) app_handle: tauri::AppHandle,
     pub(crate) rx: mpsc::Receiver<u16>,
     active_com_ports: HashMap<String, Box<dyn SerialPort>>,
     run_bundles: Vec<RunBundle>,
@@ -100,7 +111,7 @@ struct Payload {
 }
 
 impl SimconnectHandler {
-    pub fn new(rx: mpsc::Receiver<u16>) -> Self {
+    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<u16>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -109,6 +120,7 @@ impl SimconnectHandler {
             simconnect,
             input_registry,
             output_registry,
+            app_handle,
             rx,
             polling_interval: 6,
             active_com_ports: HashMap::new(),
@@ -133,18 +145,38 @@ impl SimconnectHandler {
     }
 
     fn connect_to_devices(&mut self) {
+        let mut connected_ports: Vec<Connections> = vec![];
+
         for run_bundle in self.run_bundles.iter() {
             let com_port = run_bundle.com_port.clone();
             match serialport::new(com_port.clone(), 115200).open() {
                 Ok(port) => {
                     println!("Connected to port: {}", com_port);
-                    self.active_com_ports.insert(com_port, port);
+                    self.active_com_ports.insert(com_port.clone(), port);
+                    connected_ports.push(Connections {
+                        name: com_port,
+                        connected: true,
+                        id: run_bundle.id.clone(),
+                    });
                 }
                 Err(e) => {
                     println!("Failed to open port: {}", e);
                 }
             };
         }
+
+        for connected_port in connected_ports.iter() {
+            self.emit_connections(connected_port.to_owned());
+        }
+    }
+
+    fn emit_connections(&mut self, conn: Connections) {
+        self.app_handle.emit_all("connection_event", conn).unwrap();
+        // let mut connections: Vec<String> = vec![];
+        // for (com_port, _) in &self.active_com_ports {
+        //     connections.push(com_port.clone());
+        // }
+        // wasm::send_connections(&mut self.simconnect, connections);
     }
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {

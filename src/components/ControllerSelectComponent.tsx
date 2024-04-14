@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  Dispatch,
-  SetStateAction,
-  Suspense,
-  useEffect,
-  useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
@@ -14,7 +8,13 @@ import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
 import { RunSettingsHandler } from "@/utils/runSettingsHandler";
 import PresetControls from "./presets/PresetControls";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
+import { listen } from "@tauri-apps/api/event";
 interface ControllerSelectComponentProps {}
+interface Connections {
+  name: string;
+  connected: boolean;
+  id: number;
+}
 export const ControllerSelectComponent = (
   props: ControllerSelectComponentProps,
 ) => {
@@ -30,12 +30,19 @@ export const ControllerSelectComponent = (
         id: 0,
         com_port: comPorts[0],
         bundle: { name: "", outputs: [], version: 0 },
+        connected: false,
       },
     ],
     version: "1.0",
     id: "0",
   });
   const [presets, setPresets] = useState<Preset[]>([preset]);
+  async function startConnectionEventListener() {
+    await listen<Connections>("connection_event", (event) => {
+      console.log(event);
+      setConnected(event.payload.connected, event.payload.id);
+    });
+  }
   useEffect(() => {
     async function getComPorts() {
       try {
@@ -83,6 +90,7 @@ export const ControllerSelectComponent = (
               id: 0,
               com_port: comPorts[0],
               bundle: { name: "", outputs: [], version: 0 },
+              connected: false,
             },
           ],
           version: "1.0",
@@ -101,6 +109,26 @@ export const ControllerSelectComponent = (
     });
   }, []);
 
+  const resetAllConnections = () => {
+    let newPreset = { ...preset };
+    newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
+      runBundle.connected = false;
+      return runBundle;
+    });
+    setPreset(newPreset);
+  };
+
+  const setConnected = (connected: boolean, id: number) => {
+    let newPreset = { ...preset };
+    newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
+      if (runBundle.id === id) {
+        runBundle.connected = connected;
+      }
+      return runBundle;
+    });
+    setPreset(newPreset);
+  };
+
   const deleteRow = (id: number) => {
     let newPreset = { ...preset };
     newPreset.runBundles = newPreset.runBundles.filter(
@@ -112,16 +140,22 @@ export const ControllerSelectComponent = (
   function toggleRunConnection() {
     if (connectionRunning) {
       invoke("stop_simconnect_connection");
+      resetAllConnections();
     } else {
       invoke("start_simconnect_connection", {
         runBundles: preset.runBundles,
       }).then((result) => {
         console.log(result);
-        const runSettingsHandler = new RunSettingsHandler();
-        runSettingsHandler.setLastPresetId(preset.id);
       });
     }
+    startConnectionEventListener();
     setConnectionRunning(!connectionRunning);
+  }
+
+  function onChangePreset(preset: Preset) {
+    const runSettingsHandler = new RunSettingsHandler();
+    runSettingsHandler.setLastPresetId(preset.id);
+    setPreset(preset);
   }
 
   function setComPortForRunBundle(comPort: string, runBundle: any) {
@@ -142,10 +176,12 @@ export const ControllerSelectComponent = (
     let newPreset = { ...set };
     newPreset.runBundles = newPreset.runBundles.map((rb) => {
       if (bundleName === "No outputs") {
-        rb.bundle = { name: "No outputs", outputs: [], version: 0 };
-        return rb;
+        if (rb.id === runBundle.id) {
+          rb.bundle = { name: "No outputs", outputs: [], version: 0 };
+          return rb;
+        }
       }
-      if (runBundle.id === rb.id) {
+      if (rb.id === runBundle.id) {
         const bundleAltered = bundles.find((b) => b.name === bundleName);
         if (!bundleAltered)
           throw new Error(
@@ -166,14 +202,14 @@ export const ControllerSelectComponent = (
             <div className={"flex flex-row"}>
               <button
                 type="button"
-                className={`${connectionRunning ? "bg-red-700" : "bg-emerald-800"} rounded-md bg-indigo-500 px-3.5 py-2.5 m-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400`}
+                className={`${connectionRunning ? "bg-red-700 hover:bg-red-800" : "bg-green-600 hover:bg-green-800"} rounded-md bg-green-600 px-3.5 py-2.5 m-2 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400`}
                 onClick={toggleRunConnection}
               >
                 {connectionRunning ? "Stop" : "Start"}
               </button>
             </div>
             <PresetControls
-              setPreset={setPreset}
+              setPreset={onChangePreset}
               activePreset={preset}
               setPresets={setPresets}
               presets={presets}
