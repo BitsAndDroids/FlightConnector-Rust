@@ -14,6 +14,7 @@ build = "build.rs"
 tauri-build = { version = "1.5.1", features = [] }
 
 [dependencies]
+log = "0.4.14"
 file_parsers = { path = "../file_parsers/" }
 connector_types = { path = "../types/" }
 tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
