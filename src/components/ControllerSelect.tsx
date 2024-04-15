@@ -6,7 +6,6 @@ interface ControllerSelectProps {
   comPorts: string[];
   selectedComPort?: string;
   bundles: Bundle[];
-  selectedBundle?: Bundle;
   setComPort: (comPort: string, runBundle: any) => void;
   setBundle: (bundle: string, runBundle: any) => void;
   removeRow: (id: number) => void;
@@ -48,7 +47,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         <select
           key={Math.random()}
           className={"rounded m-2 text-gray-700 p-2 w-[300px]"}
-          value={props.runBundle.bundle.name}
+          value={props.runBundle.bundle_name || ""}
           onChange={(e) => {
             console.log(e.currentTarget.value);
             props.setBundle(e.currentTarget.value, props.runBundle);

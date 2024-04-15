@@ -23,7 +23,7 @@ export const PresetControls = (props: PresetControlsProps) => {
     newPreset.runBundles.push({
       id: newPreset.runBundles.length + 1,
       com_port: "",
-      bundle: { name: "", outputs: [], version: 0 },
+      bundle_name: "",
       connected: false,
     });
     props.setPreset(newPreset);
@@ -44,7 +44,7 @@ export const PresetControls = (props: PresetControlsProps) => {
           {
             id: 0,
             com_port: "",
-            bundle: { name: "", outputs: [], version: 0 },
+            bundle_name: "",
             connected: false,
           },
         ],
@@ -83,8 +83,6 @@ export const PresetControls = (props: PresetControlsProps) => {
           className="rounded-lg h-10 mt-2 px-4"
           value={props.activePreset.id}
           onChange={async (e) => {
-            console.log(props.activePreset);
-            console.log(props.presets);
             let preset = await presetSettingsHandler.getPresetById(
               e.currentTarget.value,
             );

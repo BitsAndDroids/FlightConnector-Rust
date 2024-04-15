@@ -1,14 +1,14 @@
 "use client";
-import { WebviewWindow } from "@tauri-apps/api/window";
+import { Window } from "@tauri-apps/api/window";
 import React, { Suspense, useEffect, useState } from "react";
 
 export const Titlebar: React.FC = () => {
-  const [appWindow, setAppWindow] = useState<WebviewWindow>();
+  const [appWindow, setAppWindow] = useState<Window>();
   useEffect(() => {
     const fetchAppWindow = async () => {
       try {
         import("@tauri-apps/api/window").then((tauri) =>
-          setAppWindow(tauri.appWindow),
+          setAppWindow(new Window("bits-and-droids-connector")),
         );
         console.log("here we go");
       } catch (e) {
@@ -24,7 +24,7 @@ export const Titlebar: React.FC = () => {
   };
 
   const onMaximize = () => {
-    appWindow && appWindow.maximize();
+    appWindow && appWindow.toggleMaximize();
   };
 
   const onClose = () => {

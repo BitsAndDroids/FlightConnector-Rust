@@ -14,12 +14,12 @@ use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
-use tauri_plugin_log::LogTarget;
+use tauri_plugin_log::{Target, TargetKind};
 
 use std::thread;
 
-#[cfg(target_os = "windows")]
-use window_shadows::set_shadow;
+// #[cfg(target_os = "windows")]
+// use window_shadows::set_shadow;
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
@@ -57,7 +57,14 @@ fn stop_simconnect_connection() {
     let sender = SENDER.lock().unwrap().deref().clone();
     match sender {
         Some(sender) => {
-            sender.send(9999).unwrap();
+            match sender.send(9999) {
+                Ok(_) => {
+                    eprintln!("Sent stop message to simconnect");
+                }
+                Err(_) => {
+                    eprintln!("Failed to send stop message to simconnect");
+                }
+            };
         }
         None => {
             eprintln!("Failed to send data");
@@ -126,13 +133,17 @@ async fn poll_com_port(_app: tauri::AppHandle, port: String) {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
+fn start_simconnect_connection(
+    app: tauri::AppHandle,
+    run_bundles: Vec<RunBundle>,
+    preset_id: String,
+) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx, preset_id);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -140,12 +151,17 @@ fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_store::Builder::new().build())
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(
-            tauri_plugin_log::Builder::default()
-                .targets([LogTarget::LogDir, LogTarget::Stdout, LogTarget::Webview])
+            tauri_plugin_log::Builder::new()
+                .targets([
+                    Target::new(TargetKind::Stdout),
+                    Target::new(TargetKind::LogDir { file_name: None }),
+                    Target::new(TargetKind::Webview),
+                ])
                 .build(),
         )
-        .plugin(tauri_plugin_store::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
             start_com_connection,
             get_com_ports,
@@ -154,10 +170,6 @@ fn main() {
             stop_simconnect_connection /*send_command*/
         ])
         .setup(|app| {
-            #[cfg(target_os = "windows")]
-            let window = app.get_window("bits-and-droids-connector").unwrap();
-            #[cfg(target_os = "windows")]
-            set_shadow(&window, true).expect("Unsupported platform!");
             APP_HANDLE.set(app.handle().clone()).unwrap();
             Ok(())
         })
