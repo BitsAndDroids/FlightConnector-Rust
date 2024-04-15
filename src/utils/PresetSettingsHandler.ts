@@ -1,5 +1,5 @@
 import { Preset } from "@/model/Preset";
-import { Store } from "tauri-plugin-store-api";
+import { Store } from "@tauri-apps/plugin-store";
 
 export class PresetSettingsHandler {
   store: Store;

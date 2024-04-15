@@ -1,62 +1,39 @@
 {
+  "version": "0.2.10",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm run build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../../dist"
+    "frontendDist": "../../dist",
+    "devUrl": "http://localhost:1420"
   },
-  "package": {
-    "productName": "bits-and-droids-connector",
-    "version": "0.2.9"
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "updater"],
+    "resources": [
+      "src/events/outputs.json",
+      "src/events/inputs.json",
+      "wasm_module",
+      "SimConnect.dll"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
   },
-  "tauri": {
+  "productName": "bits-and-droids-connector",
+  "identifier": "bitsanddroids",
+  "plugins": {
     "updater": {
-      "active": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDhDRjBDRTc3RUYzRURENjIKUldSaTNUN3ZkODd3akxhM0JKT2pzb0kwTll6YThhazc4SWFsUDNaNmlpTW1QcWQvdGYrMnJwSUIK",
       "endpoints": [
         "https://github.com/BitsAndDroids/FlightConnector-Rust/releases/latest/download/latest.json"
-      ],
-      "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDhDRjBDRTc3RUYzRURENjIKUldSaTNUN3ZkODd3akxhM0JKT2pzb0kwTll6YThhazc4SWFsUDNaNmlpTW1QcWQvdGYrMnJwSUIK"
-    },
-    "allowlist": {
-      "fs": {
-        "all": true
-      },
-      "all": false,
-      "shell": {
-        "all": false,
-        "open": true
-      },
-      "window": {
-        "all": false,
-        "close": true,
-        "hide": true,
-        "show": true,
-        "maximize": true,
-        "minimize": true,
-        "unmaximize": true,
-        "unminimize": true,
-        "startDragging": true
-      }
-    },
-    "bundle": {
-      "active": true,
-      "targets": ["nsis", "updater"],
-      "identifier": "bitsanddroids",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ],
-      "resources": [
-        "src/events/outputs.json",
-        "src/events/inputs.json",
-        "wasm_module",
-        "SimConnect.dll"
       ]
-    },
+    }
+  },
+  "app": {
     "security": {
       "csp": null
     },

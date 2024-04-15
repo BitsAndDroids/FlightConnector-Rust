@@ -14,12 +14,12 @@ use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use std::time::Duration;
-use tauri_plugin_log::LogTarget;
+use tauri_plugin_log::{Target, TargetKind};
 
 use std::thread;
 
-#[cfg(target_os = "windows")]
-use window_shadows::set_shadow;
+// #[cfg(target_os = "windows")]
+// use window_shadows::set_shadow;
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
@@ -140,12 +140,17 @@ fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_store::Builder::new().build())
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(
-            tauri_plugin_log::Builder::default()
-                .targets([LogTarget::LogDir, LogTarget::Stdout, LogTarget::Webview])
+            tauri_plugin_log::Builder::new()
+                .targets([
+                    Target::new(TargetKind::Stdout),
+                    Target::new(TargetKind::LogDir { file_name: None }),
+                    Target::new(TargetKind::Webview),
+                ])
                 .build(),
         )
-        .plugin(tauri_plugin_store::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
             start_com_connection,
             get_com_ports,
@@ -154,10 +159,6 @@ fn main() {
             stop_simconnect_connection /*send_command*/
         ])
         .setup(|app| {
-            #[cfg(target_os = "windows")]
-            let window = app.get_window("bits-and-droids-connector").unwrap();
-            #[cfg(target_os = "windows")]
-            set_shadow(&window, true).expect("Unsupported platform!");
             APP_HANDLE.set(app.handle().clone()).unwrap();
             Ok(())
         })

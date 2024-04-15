@@ -174,7 +174,7 @@ impl SimconnectHandler {
     }
 
     fn emit_connections(&mut self, conn: Connections) {
-        self.app_handle.emit_all("connection_event", conn).unwrap();
+        self.app_handle.emit("connection_event", conn).unwrap();
     }
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {

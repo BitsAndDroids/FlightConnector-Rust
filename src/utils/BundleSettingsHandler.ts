@@ -1,5 +1,5 @@
 import { Bundle } from "@/model/Bundle";
-import { Store } from "tauri-plugin-store-api";
+import { Store } from "@tauri-apps/plugin-store";
 export class BundleSettingsHander {
   bundleStore: Store;
 
