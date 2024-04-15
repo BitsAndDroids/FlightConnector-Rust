@@ -1,4 +1,5 @@
 {
+  "version": "0.2.10",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm run build",
@@ -23,7 +24,6 @@
     ]
   },
   "productName": "bits-and-droids-connector",
-  "version": "0.2.9",
   "identifier": "bitsanddroids",
   "plugins": {
     "updater": {
@@ -50,4 +50,3 @@
     ]
   }
 }
-
