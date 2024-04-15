@@ -158,7 +158,7 @@ impl SimconnectHandler {
                     connected_ports.push(Connections {
                         name: com_port,
                         connected: true,
-                        id: run_bundle.id.clone(),
+                        id: run_bundle.id,
                     });
                 }
                 Err(e) => {
