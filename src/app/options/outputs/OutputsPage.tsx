@@ -96,6 +96,9 @@ const OutputsPage = () => {
     setEditMode(true);
     resetOutputs();
     let outputState = [...outputs];
+    if (!editBundle.outputs) {
+      return;
+    }
     for (let output of editBundle.outputs) {
       for (let o of outputState) {
         if (o.id === output.id) {
