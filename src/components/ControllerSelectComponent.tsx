@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { invoke } from "@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/core";
 import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
 import { ControllerSelect } from "./ControllerSelect";

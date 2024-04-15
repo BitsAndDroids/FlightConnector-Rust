@@ -1,6 +1,5 @@
-import { Preset } from "@/model/Preset";
 import { RunBundle } from "@/model/RunBundle";
-import { Store } from "tauri-plugin-store-api";
+import { Store } from "@tauri-apps/plugin-store";
 export class RunSettingsHandler {
   runSettingsStore: Store;
   constructor() {
