@@ -1,6 +1,6 @@
 import { Bundle } from "@/model/Bundle";
 import { Store } from "@tauri-apps/plugin-store";
-export class BundleSettingsHander {
+export class BundleSettingsHandler {
   bundleStore: Store;
 
   constructor() {
@@ -15,6 +15,10 @@ export class BundleSettingsHander {
       bundles.push(bundle);
     }
     return bundles;
+  }
+
+  getBundleSettingsByName(name: string): Promise<Bundle> {
+    return this.bundleStore.get(name) as Promise<Bundle>;
   }
 
   addBundleSettings(bundle: Bundle): any {
@@ -36,7 +40,6 @@ export class BundleSettingsHander {
     const bundles = [];
     const keys = await this.bundleStore.keys();
     for (const key of keys) {
-      console.log(key);
       bundles.push((await this.bundleStore.get(key)) as Bundle);
     }
     return bundles;

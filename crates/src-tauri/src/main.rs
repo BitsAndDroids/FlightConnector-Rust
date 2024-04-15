@@ -57,7 +57,14 @@ fn stop_simconnect_connection() {
     let sender = SENDER.lock().unwrap().deref().clone();
     match sender {
         Some(sender) => {
-            sender.send(9999).unwrap();
+            match sender.send(9999) {
+                Ok(_) => {
+                    eprintln!("Sent stop message to simconnect");
+                }
+                Err(_) => {
+                    eprintln!("Failed to send stop message to simconnect");
+                }
+            };
         }
         None => {
             eprintln!("Failed to send data");
@@ -126,13 +133,17 @@ async fn poll_com_port(_app: tauri::AppHandle, port: String) {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
+fn start_simconnect_connection(
+    app: tauri::AppHandle,
+    run_bundles: Vec<RunBundle>,
+    preset_id: String,
+) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx, preset_id);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
