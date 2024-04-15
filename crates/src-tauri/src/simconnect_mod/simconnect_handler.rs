@@ -190,7 +190,7 @@ impl SimconnectHandler {
         //TODO send input to simconnect
         match self.input_registry.get_input(command) {
             Some(input) => {
-                info!(target: "input", "Input found: {}", input.input_id);
+                info!(target: "input", "Input found: {}, {}", input.input_id, input.event);
                 self.simconnect.transmit_client_event(
                     0,
                     input.input_id,
