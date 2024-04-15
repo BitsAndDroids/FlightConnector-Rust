@@ -1,4 +1,4 @@
-## Your first flight with the Connector
+# Your first flight with the Connector
 
 Let's setup the connector and take it for a spin. The simplest action to perform is to connect a button to the connector and see if it works. We will use the simulator to see if the button press is registered.
 So, let's get started.
