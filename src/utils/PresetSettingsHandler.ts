@@ -18,6 +18,18 @@ export class PresetSettingsHandler {
     this.store.set(preset.id, preset);
     this.store.save();
   }
+  async migratePreset(preset: Preset): Promise<void> {
+    const data: any = preset;
+    if (data.runBundles) {
+      for (const runBundle of data.runBundles) {
+        if (runBundle.bundle) {
+          runBundle.bundle_name = runBundle.bundle.name;
+          delete runBundle.bundle;
+        }
+      }
+    }
+    this.updatePreset(data);
+  }
   async getPresetById(id: string): Promise<Preset | null> {
     return this.store.get(id);
   }
@@ -26,6 +38,7 @@ export class PresetSettingsHandler {
     const presets: Preset[] = [];
     for (const key of keys) {
       const preset = (await this.store.get(key)) as Preset;
+      this.migratePreset(preset);
       if (preset) {
         presets.push(preset);
       }

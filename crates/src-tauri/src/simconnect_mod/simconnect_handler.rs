@@ -35,6 +35,7 @@ struct Connections {
     name: String,
     connected: bool,
     id: i32,
+    preset_id: String,
 }
 
 #[derive(Clone)]
@@ -103,6 +104,7 @@ pub struct SimconnectHandler {
     active_com_ports: HashMap<String, Box<dyn SerialPort>>,
     run_bundles: Vec<RunBundle>,
     polling_interval: u8,
+    preset_id: String,
 }
 
 // define the payload struct
@@ -112,7 +114,7 @@ struct Payload {
 }
 
 impl SimconnectHandler {
-    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<u16>) -> Self {
+    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<u16>, preset_id: String) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -126,6 +128,7 @@ impl SimconnectHandler {
             polling_interval: 6,
             active_com_ports: HashMap::new(),
             run_bundles: vec![],
+            preset_id,
         }
     }
 
@@ -141,7 +144,6 @@ impl SimconnectHandler {
         for run_bundle in &mut self.run_bundles {
             let parsed_com_port = Self::parse_com_port(&run_bundle.com_port);
             run_bundle.com_port = parsed_com_port;
-            println!("added com port: {}", run_bundle.com_port);
         }
     }
 
@@ -152,13 +154,13 @@ impl SimconnectHandler {
             let com_port = run_bundle.com_port.clone();
             match serialport::new(com_port.clone(), 115200).open() {
                 Ok(port) => {
-                    println!("Connected to port: {}", com_port);
                     self.active_com_ports.insert(com_port.clone(), port);
                     info!(target: "connections", "Connected to port: {}", com_port);
                     connected_ports.push(Connections {
                         name: com_port,
                         connected: true,
                         id: run_bundle.id,
+                        preset_id: self.preset_id.clone(),
                     });
                 }
                 Err(e) => {
@@ -174,6 +176,7 @@ impl SimconnectHandler {
     }
 
     fn emit_connections(&mut self, conn: Connections) {
+        println!("Emitting connection event");
         self.app_handle.emit("connection_event", conn).unwrap();
     }
 
@@ -228,7 +231,10 @@ impl SimconnectHandler {
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
         let output_registry = self.output_registry.clone();
-        let output = output_registry.get_output_by_id(output_id).unwrap();
+        let output = match output_registry.get_output_by_id(output_id) {
+            Some(output) => output,
+            None => return,
+        };
         let mut com_ports = vec![];
         for run_bundle in self.run_bundles.iter() {
             if run_bundle
@@ -346,7 +352,6 @@ impl SimconnectHandler {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
                                     self.check_if_output_in_bundle(prefix, value);
-                                    std::thread::sleep(std::time::Duration::from_millis(0));
                                 }
                             }
                         }
@@ -388,7 +393,7 @@ impl SimconnectHandler {
                 }
                 _ => (),
             }
-            sleep(Duration::from_millis(16));
+            sleep(Duration::from_millis(1));
         }
     }
 
