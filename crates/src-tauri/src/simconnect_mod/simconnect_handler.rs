@@ -1,4 +1,5 @@
 use lazy_static::lazy_static;
+use log::{error, info};
 use serde::Deserialize;
 use serde::Serialize;
 use serialport::SerialPort;
@@ -153,6 +154,7 @@ impl SimconnectHandler {
                 Ok(port) => {
                     println!("Connected to port: {}", com_port);
                     self.active_com_ports.insert(com_port.clone(), port);
+                    info!(target: "connections", "Connected to port: {}", com_port);
                     connected_ports.push(Connections {
                         name: com_port,
                         connected: true,
@@ -160,6 +162,7 @@ impl SimconnectHandler {
                     });
                 }
                 Err(e) => {
+                    error!(target: "connections", "Failed to open port: {}", e);
                     println!("Failed to open port: {}", e);
                 }
             };
@@ -172,11 +175,6 @@ impl SimconnectHandler {
 
     fn emit_connections(&mut self, conn: Connections) {
         self.app_handle.emit_all("connection_event", conn).unwrap();
-        // let mut connections: Vec<String> = vec![];
-        // for (com_port, _) in &self.active_com_ports {
-        //     connections.push(com_port.clone());
-        // }
-        // wasm::send_connections(&mut self.simconnect, connections);
     }
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
@@ -192,6 +190,7 @@ impl SimconnectHandler {
         //TODO send input to simconnect
         match self.input_registry.get_input(command) {
             Some(input) => {
+                info!(target: "input", "Input found: {}", input.input_id);
                 self.simconnect.transmit_client_event(
                     0,
                     input.input_id,
@@ -201,6 +200,7 @@ impl SimconnectHandler {
                 );
             }
             _ => {
+                info!(target: "input", "Input not found: {} sending to WASM", command);
                 wasm::send_wasm_data(&mut self.simconnect, command);
                 println!("Input not found: {}", command);
             }
@@ -257,9 +257,11 @@ impl SimconnectHandler {
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => match port.write_all(formatted_str.as_bytes()) {
                 Ok(_) => {
+                    info!(target: "output", "Output {} sent to port: {}", formatted_str, com_port);
                     println!("Output sent to port: {}", com_port);
                 }
                 Err(e) => {
+                    error!(target: "output", "Failed to write to port: {}", e);
                     println!("Failed to write to port: {}", e);
                 }
             },

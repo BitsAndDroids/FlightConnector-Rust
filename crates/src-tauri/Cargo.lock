@@ -320,6 +320,7 @@ dependencies = [
  "connector_types",
  "file_parsers",
  "lazy_static",
+ "log",
  "once_cell",
  "serde",
  "serde_json",
