@@ -1,5 +1,5 @@
 {
-  "version": "0.2.11",
+  "version": "0.2.12",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm run build",
@@ -27,12 +27,17 @@
   "identifier": "bitsanddroids",
   "plugins": {
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDhDRjBDRTc3RUYzRURENjIKUldSaTNUN3ZkODd3akxhM0JKT2pzb0kwTll6YThhazc4SWFsUDNaNmlpTW1QcWQvdGYrMnJwSUIK",
       "endpoints": [
-        "https://github.com/BitsAndDroids/FlightConnector-Rust/releases/latest/download/latest.json"
-      ]
+        "https://www.github.com/BitsAndDroids/FlightConnector-Rust/releases/latest/download/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDhDRjBDRTc3RUYzRURENjIKUldSaTNUN3ZkODd3akxhM0JKT2pzb0kwTll6YThhazc4SWFsUDNaNmlpTW1QcWQvdGYrMnJwSUIK",
+      "dialog": true,
+      "windows": {
+        "installMode": "quiet"
+      }
     }
   },
+
   "app": {
     "security": {
       "csp": null

@@ -11,13 +11,14 @@ const OutputList = ({ bundle }: OutputListProps) => {
         <h1 className="mt-2 font-bold text-lg">{bundle.name}</h1>
       )}
       <div className="flex flex-col">
-        {bundle.outputs.map((output) => {
-          return (
-            <p key={output.id} className="text-sm">
-              {output.simvar}
-            </p>
-          );
-        })}
+        {bundle.outputs &&
+          bundle.outputs.map((output) => {
+            return (
+              <p key={output.id} className="text-sm">
+                {output.simvar}
+              </p>
+            );
+          })}
       </div>
     </div>
   );
