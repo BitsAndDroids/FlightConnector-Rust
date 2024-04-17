@@ -18,12 +18,8 @@ use tauri_plugin_log::{Target, TargetKind};
 
 use std::thread;
 
-// #[cfg(target_os = "windows")]
-// use window_shadows::set_shadow;
-// Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
-#[cfg(target_os = "windows")]
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
