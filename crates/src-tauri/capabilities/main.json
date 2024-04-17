@@ -21,6 +21,11 @@
     "store:allow-load",
     "store:allow-keys",
     "store:default",
-    "log:default"
+    "log:default",
+    "updater:default",
+    "updater:allow-check",
+    "updater:allow-download-and-install",
+    "dialog:default"
   ]
 }
+

@@ -17,7 +17,8 @@ tauri-build = { version = "2.0.0-beta", features = [] }
 log = "^0.4"
 file_parsers = { path = "../file_parsers/" }
 connector_types = { path = "../types/" }
-tauri-plugin-updater = "2.0.0-beta"
+tauri-plugin-updater = { version = "2.0.0-beta", features = ["rustls-tls"] }
+tauri-plugin-process = "2.0.0-beta"
 tauri-plugin-store = "2.0.0-beta"
 tauri-plugin-log = "2.0.0-beta"
 tauri-plugin-localhost = "2.0.0-beta"
@@ -32,6 +33,7 @@ tokio-util = { version = "0.7.10", features = ["compat"] }
 time = { version = "0.3.30", features = [] }
 lazy_static = "1.4.0"
 tauri-plugin-shell = "2.0.0-beta.3"
+tauri-plugin-dialog = "2.0.0-beta.4"
 [target.'cfg(windows)'.dependencies]
 simconnect = { git = "https://github.com/BitsAndDroids/simconnect-rust.git", branch = "debug_struct" }
 [features]

@@ -6,6 +6,8 @@ use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
+use tauri_plugin_dialog::DialogExt;
+use tauri_plugin_updater::UpdaterExt;
 use tokio::io::{self};
 mod events;
 mod sim_utils;
@@ -151,6 +153,7 @@ fn start_simconnect_connection(
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(
@@ -170,6 +173,38 @@ fn main() {
             stop_simconnect_connection /*send_command*/
         ])
         .setup(|app| {
+            let app_handle = app.app_handle().clone();
+            tauri::async_runtime::spawn(async move {
+                let builder = app_handle.updater_builder();
+                let updater = builder.build().unwrap();
+
+                let update = match updater.check().await {
+                    Ok(Some(update)) => update,
+                    Ok(None) => {
+                        println!("no update.");
+                        return;
+                    }
+                    Err(err) => {
+                        println!("err: {:?}", err);
+                        return;
+                    }
+                };
+
+                println!("update available");
+                let Ok(package) = update.download(|_, _| {}, || {}).await else {
+                    return;
+                };
+                println!("downloaded");
+                match update.install(package) {
+                    Ok(_) => {
+                        println!("restart");
+                        app_handle.restart();
+                    }
+                    Err(err) => {
+                        println!("err: {:?}", err);
+                    }
+                }
+            });
             APP_HANDLE.set(app.handle().clone()).unwrap();
             Ok(())
         })
