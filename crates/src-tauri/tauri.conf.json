@@ -1,5 +1,5 @@
 {
-  "version": "0.0.9",
+  "version": "0.2.12",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm run build",

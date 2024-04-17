@@ -8,14 +8,12 @@ use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
 use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_updater::UpdaterExt;
-use tokio::io::{self};
 mod events;
 mod sim_utils;
 mod simconnect_mod;
 use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
-use std::time::Duration;
 use tauri_plugin_log::{Target, TargetKind};
 
 use std::thread;
@@ -35,23 +33,6 @@ static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
 
 pub fn get_app_handle() -> Option<&'static AppHandle> {
     APP_HANDLE.get()
-}
-
-#[tauri::command]
-fn start_com_connection(app: tauri::AppHandle, port: String) {
-    let ports = serialport::available_ports().expect("No ports found!");
-    let ports_output = ports
-        .iter()
-        .map(|port| port.port_name.as_str())
-        .collect::<Vec<_>>()
-        .join(", ");
-    std::thread::spawn(move || {
-        tokio::runtime::Builder::new_current_thread()
-            .enable_all()
-            .build()
-            .unwrap()
-            .block_on(poll_com_port(app, port))
-    });
 }
 
 #[tauri::command]
@@ -110,31 +91,6 @@ async fn get_outputs() -> Vec<Output> {
 }
 
 #[tauri::command]
-async fn poll_com_port(_app: tauri::AppHandle, port: String) {
-    let mut port = serialport::new(port, 115200)
-        .timeout(std::time::Duration::from_millis(7000))
-        .open()
-        .expect("Failed to open port");
-    let mut buffer: Vec<u8> = Vec::new();
-    loop {
-        let mut byte = [0u8; 1];
-        match port.read(&mut byte) {
-            Ok(_) => {
-                if byte[0] == b'\n' {
-                    let message = String::from_utf8_lossy(&buffer);
-                    buffer.clear();
-                } else {
-                    buffer.push(byte[0]);
-                }
-            }
-            Err(ref e) if e.kind() == io::ErrorKind::TimedOut => (),
-            Err(e) => eprintln!("{:?}", e),
-        }
-        tokio::time::sleep(Duration::from_micros(10)).await;
-    }
-}
-
-#[tauri::command]
 fn start_simconnect_connection(
     app: tauri::AppHandle,
     run_bundles: Vec<RunBundle>,
@@ -166,7 +122,6 @@ fn main() {
                 .build(),
         )
         .invoke_handler(tauri::generate_handler![
-            start_com_connection,
             get_com_ports,
             get_outputs,
             start_simconnect_connection,
@@ -190,18 +145,28 @@ fn main() {
                     }
                 };
 
-                println!("update available");
-                let Ok(package) = update.download(|_, _| {}, || {}).await else {
-                    return;
-                };
-                println!("downloaded");
-                match update.install(package) {
-                    Ok(_) => {
-                        println!("restart");
-                        app_handle.restart();
-                    }
-                    Err(err) => {
-                        println!("err: {:?}", err);
+                let message = app_handle
+                    .dialog()
+                    .message("A new update is available. Do you want to download and install it?")
+                    .title("Update available")
+                    .ok_button_label("Update")
+                    .cancel_button_label("Later")
+                    .blocking_show();
+
+                if message {
+                    println!("update available");
+                    let Ok(package) = update.download(|_, _| {}, || {}).await else {
+                        return;
+                    };
+                    println!("downloaded");
+                    match update.install(package) {
+                        Ok(_) => {
+                            println!("restart");
+                            app_handle.restart();
+                        }
+                        Err(err) => {
+                            println!("err: {:?}", err);
+                        }
                     }
                 }
             });
