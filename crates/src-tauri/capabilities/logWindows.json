@@ -1,8 +1,8 @@
 {
-  "identifier": "main",
+  "identifier": "logs",
   "$schema": "../gen/schemas/desktop-schema.json",
   "local": true,
-  "windows": ["bits-and-droids-connector"],
+  "windows": ["logWindow"],
   "permissions": [
     "path:default",
     "webview:allow-create-webview",

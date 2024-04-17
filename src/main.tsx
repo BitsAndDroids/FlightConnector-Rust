@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as ReactDOM from "react-dom/client";
 import MenuLayout from "./app/MenuLayout";
 import OutputsPage from "./app/options/outputs/OutputsPage";
+import { LogPage } from "./app/logs/LogPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
     path: "/options/outputs",
     element: <MenuLayout />,
     children: [{ path: "/options/outputs", element: <OutputsPage /> }],
+  },
+  {
+    path: "/logs",
+    element: <LogPage />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")! as HTMLElement).render(

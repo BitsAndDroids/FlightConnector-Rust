@@ -3,7 +3,14 @@ import "./globals.css";
 import { Titlebar } from "@/components/nav/titlebar";
 import { Outlet } from "react-router-dom";
 
+import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 export default function MenuLayout() {
+  function openLogWindow() {
+    const webview = new WebviewWindow("logWindow", {
+      url: "/logs",
+      title: "Logs",
+    });
+  }
   return (
     <div
       className={
@@ -15,6 +22,9 @@ export default function MenuLayout() {
           <MenuItem text={"Start"} href={"/"} />
           {/* <MenuItem text={"Settings"} href={"/options/settings"} /> */}
           <MenuItem text={"Outputs"} href={"/options/outputs"} />
+          <button className="mx-2" onClick={() => openLogWindow()}>
+            Logs
+          </button>
         </nav>
       </div>
       <Titlebar />

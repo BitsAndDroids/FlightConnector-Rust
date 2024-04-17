@@ -18,12 +18,8 @@ use tauri_plugin_log::{Target, TargetKind};
 
 use std::thread;
 
-// #[cfg(target_os = "windows")]
-// use window_shadows::set_shadow;
-// Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
-#[cfg(target_os = "windows")]
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
@@ -66,13 +62,11 @@ async fn get_com_ports() -> Vec<String> {
         .iter()
         .map(|port| {
             let port_type_info = match &port.port_type {
-                SerialPortType::UsbPort(info) => format!(
-                    "{}",
-                    match &info.product {
-                        Some(product) => product.to_string(),
-                        None => "Unknown".to_string(),
-                    }
-                ),
+                SerialPortType::UsbPort(info) => (match &info.product {
+                    Some(product) => product.to_string(),
+                    None => "Unknown".to_string(),
+                })
+                .to_string(),
                 SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
                 SerialPortType::PciPort => "PCI Serial".to_string(),
                 _ => "".to_string(),
@@ -101,7 +95,7 @@ fn start_simconnect_connection(
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx, preset_id);
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -125,7 +119,7 @@ fn main() {
             get_com_ports,
             get_outputs,
             start_simconnect_connection,
-            stop_simconnect_connection /*send_command*/
+            stop_simconnect_connection, /*send_command*/
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
