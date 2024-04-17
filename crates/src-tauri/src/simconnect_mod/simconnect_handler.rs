@@ -35,7 +35,6 @@ struct Connections {
     name: String,
     connected: bool,
     id: i32,
-    preset_id: String,
 }
 
 #[derive(Clone)]
@@ -104,7 +103,6 @@ pub struct SimconnectHandler {
     active_com_ports: HashMap<String, Box<dyn SerialPort>>,
     run_bundles: Vec<RunBundle>,
     polling_interval: u8,
-    preset_id: String,
 }
 
 // define the payload struct
@@ -114,7 +112,7 @@ struct Payload {
 }
 
 impl SimconnectHandler {
-    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<u16>, preset_id: String) -> Self {
+    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<u16>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -128,7 +126,6 @@ impl SimconnectHandler {
             polling_interval: 6,
             active_com_ports: HashMap::new(),
             run_bundles: vec![],
-            preset_id,
         }
     }
 
@@ -160,7 +157,6 @@ impl SimconnectHandler {
                         name: com_port,
                         connected: true,
                         id: run_bundle.id,
-                        preset_id: self.preset_id.clone(),
                     });
                 }
                 Err(e) => {
@@ -211,9 +207,6 @@ impl SimconnectHandler {
     }
 
     fn parse_output_based_on_type(&mut self, val: f64, output: &Output) -> String {
-        println!("Output: {:?}", output);
-        println!("Val: {:?}", val);
-        //TODO parse output based on type
         match output.output_type {
             OutputType::Boolean => sim_utils::output_converters::val_to_bool(val),
             OutputType::Integer => (val as i32).to_string(),
@@ -258,21 +251,17 @@ impl SimconnectHandler {
             self.parse_output_based_on_type(value, output)
         );
 
-        println!("type {:?} {:?}", output.output_type, formatted_str);
-        //TODO send output to comport
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => match port.write_all(formatted_str.as_bytes()) {
                 Ok(_) => {
                     info!(target: "output", "Output {} sent to port: {}", formatted_str, com_port);
-                    println!("Output sent to port: {}", com_port);
                 }
                 Err(e) => {
                     error!(target: "output", "Failed to write to port: {}", e);
-                    println!("Failed to write to port: {}", e);
                 }
             },
             None => {
-                println!("Port not found: {}", com_port);
+                error!(target: "output", "Port not connected: {}", com_port);
             }
         }
     }

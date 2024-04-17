@@ -1,5 +1,4 @@
 import { RunComponent } from "../components/RunComponent";
-
 export default function HomePage() {
   return (
     <div className="flex justify-center align-middle  h-full w-full flex-col ">
