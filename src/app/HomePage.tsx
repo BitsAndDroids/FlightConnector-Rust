@@ -1,16 +1,6 @@
 import { RunComponent } from "../components/RunComponent";
 
 export default function HomePage() {
-  useEffect(() => {
-    async function checkForUpdates() {
-      const update = await check();
-      if (update?.available) {
-        // await update.downloadAndInstall();
-      }
-    }
-    checkForUpdates();
-  }, []);
-
   return (
     <div className="flex justify-center align-middle  h-full w-full flex-col ">
       <div className="flex flex-col justify-center align-middle items-center">
