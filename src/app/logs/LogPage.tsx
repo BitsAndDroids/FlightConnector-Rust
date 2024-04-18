@@ -45,7 +45,7 @@ export const LogPage: React.FC = () => {
     scrollToBottom();
   }, [lines]);
   return (
-    <div className="bg-bitsanddroids-blue h-screen w-screen p-8">
+    <div className="bg-bitsanddroids-blue h-screen w-screen p-8  overflow-x-hidden">
       <div className="flex flex-row">
         <h1
           className={
@@ -71,7 +71,7 @@ export const LogPage: React.FC = () => {
           </button>
         )}
       </div>
-      <div className="max-h-[400px] h-[400px] overflow-y-scroll">
+      <div className="min-h-[100px] h-4/5 overflow-y-scroll">
         {lines.map((line, index) => (
           <div key={index} ref={logEndRef} className="text-white">
             {line}
