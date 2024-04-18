@@ -214,7 +214,7 @@ impl SimconnectHandler {
             OutputType::Secondsaftermidnight => sim_utils::output_converters::seconds_to_time(val),
             OutputType::Percentage => (val as i32).to_string(),
             OutputType::Degrees => sim_utils::output_converters::radian_to_degree(val).to_string(),
-            OutputType::ADF => (val as i32).to_string(),
+            OutputType::ADF => ((val as i32) / 100).to_string(),
             OutputType::INHG => sim_utils::output_converters::value_to_inhg(val).to_string(),
             OutputType::Meterspersecond => {
                 sim_utils::output_converters::mps_to_kmh(val).to_string()
