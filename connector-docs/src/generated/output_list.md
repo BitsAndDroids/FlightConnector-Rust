@@ -103,8 +103,10 @@
 | TRANSPONDER CODE:2 | number | 0 | Transponder 2 code | 963 | Integer | NAV and COMS |
 | NAV OBS:1 | Degrees | 0.1 | NAV OBS 1 | 606 | Integer | NAV and COMS |
 | NAV OBS:2 | Degrees | 0.1 | NAV OBS 2 | 607 | Integer | NAV and COMS |
-| TRANSPONDER IDENT:1 | Bool | 0 | Transponder ident | 608 | Integer | NAV and COMS |
-| TRANSPONDER STATE:1 | Enum | 0 | Transponder state | 609 | Integer | NAV and COMS |
+| TRANSPONDER IDENT:1 | Bool | 0 | Transponder ident 1 | 608 | Integer | NAV and COMS |
+| TRANSPONDER STATE:1 | Enum | 0 | Transponder state 1 | 609 | Integer | NAV and COMS |
+| TRANSPONDER IDENT:2 | Bool | 0 | Transponder ident 2 | 610 | Integer | NAV and COMS |
+| TRANSPONDER STATE:2 | Enum | 0 | Transponder state 2 | 611 | Integer | NAV and COMS |
 | LIGHT TAXI ON | Bool | 0 | (bool) Taxi lights | 133 | Boolean | Lights |
 | LIGHT STROBE ON | Bool | 0 | (bool) Strobe lights | 134 | Boolean | Lights |
 | LIGHT PANEL ON | Bool | 0 | (bool) Panel lights | 135 | Boolean | Lights |
