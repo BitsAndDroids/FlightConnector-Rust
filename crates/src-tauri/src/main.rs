@@ -7,24 +7,20 @@ use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use serialport::SerialPortType;
 use tauri::{AppHandle, Manager};
-use tokio::io::{self};
+use tauri_plugin_dialog::DialogExt;
+use tauri_plugin_updater::UpdaterExt;
 mod events;
 mod sim_utils;
 mod simconnect_mod;
 use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
-use std::time::Duration;
-use tauri_plugin_log::LogTarget;
+use tauri_plugin_log::{Target, TargetKind};
 
 use std::thread;
 
 #[cfg(target_os = "windows")]
-use window_shadows::set_shadow;
-// Prevents additional console window on Windows in release, DO NOT REMOVE!!
-#[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
-#[cfg(target_os = "windows")]
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
@@ -37,28 +33,18 @@ pub fn get_app_handle() -> Option<&'static AppHandle> {
 }
 
 #[tauri::command]
-fn start_com_connection(app: tauri::AppHandle, port: String) {
-    let ports = serialport::available_ports().expect("No ports found!");
-    let ports_output = ports
-        .iter()
-        .map(|port| port.port_name.as_str())
-        .collect::<Vec<_>>()
-        .join(", ");
-    std::thread::spawn(move || {
-        tokio::runtime::Builder::new_current_thread()
-            .enable_all()
-            .build()
-            .unwrap()
-            .block_on(poll_com_port(app, port))
-    });
-}
-
-#[tauri::command]
 fn stop_simconnect_connection() {
     let sender = SENDER.lock().unwrap().deref().clone();
     match sender {
         Some(sender) => {
-            sender.send(9999).unwrap();
+            match sender.send(9999) {
+                Ok(_) => {
+                    eprintln!("Sent stop message to simconnect");
+                }
+                Err(_) => {
+                    eprintln!("Failed to send stop message to simconnect");
+                }
+            };
         }
         None => {
             eprintln!("Failed to send data");
@@ -77,13 +63,11 @@ async fn get_com_ports() -> Vec<String> {
         .iter()
         .map(|port| {
             let port_type_info = match &port.port_type {
-                SerialPortType::UsbPort(info) => format!(
-                    "{}",
-                    match &info.product {
-                        Some(product) => product.to_string(),
-                        None => "Unknown".to_string(),
-                    }
-                ),
+                SerialPortType::UsbPort(info) => (match &info.product {
+                    Some(product) => product.to_string(),
+                    None => "Unknown".to_string(),
+                })
+                .to_string(),
                 SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
                 SerialPortType::PciPort => "PCI Serial".to_string(),
                 _ => "".to_string(),
@@ -114,37 +98,17 @@ async fn get_outputs() -> Vec<Output> {
 }
 
 #[tauri::command]
-async fn poll_com_port(_app: tauri::AppHandle, port: String) {
-    let mut port = serialport::new(port, 115200)
-        .timeout(std::time::Duration::from_millis(7000))
-        .open()
-        .expect("Failed to open port");
-    let mut buffer: Vec<u8> = Vec::new();
-    loop {
-        let mut byte = [0u8; 1];
-        match port.read(&mut byte) {
-            Ok(_) => {
-                if byte[0] == b'\n' {
-                    let message = String::from_utf8_lossy(&buffer);
-                    buffer.clear();
-                } else {
-                    buffer.push(byte[0]);
-                }
-            }
-            Err(ref e) if e.kind() == io::ErrorKind::TimedOut => (),
-            Err(e) => eprintln!("{:?}", e),
-        }
-        tokio::time::sleep(Duration::from_micros(10)).await;
-    }
-}
-
-#[tauri::command]
-fn start_simconnect_connection(run_bundles: Vec<RunBundle>) {
+fn start_simconnect_connection(
+    app: tauri::AppHandle,
+    run_bundles: Vec<RunBundle>,
+    preset_id: String,
+) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
-        let mut simconnect_handler = simconnect_mod::simconnect_handler::SimconnectHandler::new(rx);
+        let mut simconnect_handler =
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -152,24 +116,67 @@ fn start_simconnect_connection(run_bundles: Vec<RunBundle>) {
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_store::Builder::new().build())
+        .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(
-            tauri_plugin_log::Builder::default()
-                .targets([LogTarget::LogDir, LogTarget::Stdout, LogTarget::Webview])
+            tauri_plugin_log::Builder::new()
+                .targets([
+                    Target::new(TargetKind::Stdout),
+                    Target::new(TargetKind::LogDir { file_name: None }),
+                    Target::new(TargetKind::Webview),
+                ])
                 .build(),
         )
-        .plugin(tauri_plugin_store::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
-            start_com_connection,
             get_com_ports,
             get_outputs,
             start_simconnect_connection,
-            stop_simconnect_connection /*send_command*/
+            stop_simconnect_connection, /*send_command*/
         ])
         .setup(|app| {
-            #[cfg(target_os = "windows")]
-            let window = app.get_window("bits-and-droids-connector").unwrap();
-            #[cfg(target_os = "windows")]
-            set_shadow(&window, true).expect("Unsupported platform!");
+            let app_handle = app.app_handle().clone();
+            tauri::async_runtime::spawn(async move {
+                let builder = app_handle.updater_builder();
+                let updater = builder.build().unwrap();
+
+                let update = match updater.check().await {
+                    Ok(Some(update)) => update,
+                    Ok(None) => {
+                        println!("no update.");
+                        return;
+                    }
+                    Err(err) => {
+                        println!("err: {:?}", err);
+                        return;
+                    }
+                };
+
+                let message = app_handle
+                    .dialog()
+                    .message("A new update is available. Do you want to download and install it?")
+                    .title("Update available")
+                    .ok_button_label("Update")
+                    .cancel_button_label("Later")
+                    .blocking_show();
+
+                if message {
+                    println!("update available");
+                    let Ok(package) = update.download(|_, _| {}, || {}).await else {
+                        return;
+                    };
+                    println!("downloaded");
+                    match update.install(package) {
+                        Ok(_) => {
+                            println!("restart");
+                            app_handle.restart();
+                        }
+                        Err(err) => {
+                            println!("err: {:?}", err);
+                        }
+                    }
+                }
+            });
             APP_HANDLE.set(app.handle().clone()).unwrap();
             Ok(())
         })

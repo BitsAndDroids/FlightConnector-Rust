@@ -7,8 +7,8 @@ import OutputList from "@/components/outputs/Outputlist";
 import BundleInfo from "@/info_blocks/BundleInfo";
 import { Bundle } from "@/model/Bundle";
 import { Output } from "@/model/Output";
-import { BundleSettingsHander } from "@/utils/BundleSettingsHandler";
-import { invoke } from "@tauri-apps/api/tauri";
+import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
+import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
 
 const OutputsPage = () => {
@@ -19,7 +19,7 @@ const OutputsPage = () => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [selectedBundle, setSelectedBundle] = useState<Bundle | undefined>();
 
-  const bundleSettingsHandler = new BundleSettingsHander();
+  const bundleSettingsHandler = new BundleSettingsHandler();
   useEffect(() => {
     getOutputs().then((outputs) => {
       setOutputs(outputs);
@@ -96,6 +96,9 @@ const OutputsPage = () => {
     setEditMode(true);
     resetOutputs();
     let outputState = [...outputs];
+    if (!editBundle.outputs) {
+      return;
+    }
     for (let output of editBundle.outputs) {
       for (let o of outputState) {
         if (o.id === output.id) {

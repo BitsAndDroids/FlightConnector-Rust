@@ -1,7 +1,4 @@
-"use client";
 import { RunComponent } from "../components/RunComponent";
-import MenuLayout from "./MenuLayout";
-
 export default function HomePage() {
   return (
     <div className="flex justify-center align-middle  h-full w-full flex-col ">

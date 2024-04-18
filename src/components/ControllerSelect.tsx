@@ -6,7 +6,6 @@ interface ControllerSelectProps {
   comPorts: string[];
   selectedComPort?: string;
   bundles: Bundle[];
-  selectedBundle?: Bundle;
   setComPort: (comPort: string, runBundle: any) => void;
   setBundle: (bundle: string, runBundle: any) => void;
   removeRow: (id: number) => void;
@@ -17,7 +16,18 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
   return (
     <Suspense>
       {" "}
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center relative">
+        {props.runBundle.connected && (
+          <div>
+            <div className="rounded-lg w-4 h-4 min-w-4 min-h-4 bg-green-400 mr-1 absolute -left-4 top-5" />
+          </div>
+        )}
+        {!props.runBundle.connected && (
+          <div>
+            <div className="rounded-lg w-4 h-4 min-w-4 min-h-4 bg-red-400 mr-1 absolute -left-4 top-5" />
+          </div>
+        )}
+
         <select
           // generate a unique key for each select element
           key={Math.random()}
@@ -37,7 +47,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         <select
           key={Math.random()}
           className={"rounded m-2 text-gray-700 p-2 w-[300px]"}
-          value={props.runBundle.bundle.name}
+          value={props.runBundle.bundle_name || ""}
           onChange={(e) => {
             console.log(e.currentTarget.value);
             props.setBundle(e.currentTarget.value, props.runBundle);
