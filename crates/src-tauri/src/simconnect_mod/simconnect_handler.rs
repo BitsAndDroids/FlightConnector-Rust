@@ -223,6 +223,7 @@ impl SimconnectHandler {
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
+        println!("Checking if output in bundle {}", output_id);
         let output_registry = self.output_registry.clone();
         let output = match output_registry.get_output_by_id(output_id) {
             Some(output) => output,
@@ -334,6 +335,7 @@ impl SimconnectHandler {
                     match data.dwDefineID {
                         RequestModes::FLOAT => {
                             unsafe {
+                                println!("Received float data");
                                 let sim_data_ptr =
                                     std::ptr::addr_of!(data.dwData) as *const DataStructContainer;
                                 let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
@@ -370,13 +372,17 @@ impl SimconnectHandler {
                     println!("{:?}", sim_data_ptr);
                     let sim_data_value =
                         unsafe { std::ptr::read_unaligned(sim_data_ptr).to_string() };
+
                     println!("CLIENT DATA {}", sim_data_value);
+                    // let id = data.dwDefineID;
+                    // println!("id {}", id);
                 }
                 Ok(simconnect::DispatchResult::Event(data)) => {
                     // handle Event variant ...
                     let sim_data_ptr = std::ptr::addr_of!(data.dwData) as *const DWORD;
                     let sim_data_value =
                         unsafe { std::ptr::read_unaligned(sim_data_ptr).to_string() };
+                    info!(target: "event", "EVENT {}", sim_data_value);
                     println!(
                         "EVENT {}",
                         events

@@ -1,14 +1,15 @@
 use connector_types::types::wasm_event::WasmEvent;
 use simconnect::{
     DWORD, SIMCONNECT_CLIENTDATAOFFSET_AUTO, SIMCONNECT_CLIENT_DATA_ID,
+    SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_ON_SET,
     SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_SECOND,
     SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_DEFAULT, SIMCONNECT_CREATE_CLIENT_DATA_FLAG_DEFAULT,
     SIMCONNECT_UNUSED,
 };
 
 const WASM_DATA_ID: SIMCONNECT_CLIENT_DATA_ID = 1;
-const WASM_DEFINITION_ID: u32 = 12;
-const REQUEST_ID: u32 = 10;
+const WASM_DEFINITION_ID: u32 = 101;
+const REQUEST_ID: u32 = 101;
 const DATASIZE: DWORD = 256;
 
 struct client_data_properties {
@@ -50,9 +51,8 @@ fn create_wasm_client(
     conn.create_client_data(
         wasm_client_config.id,
         wasm_client_config.data_size,
-        simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED,
+        simconnect::SIMCONNECT_CREATE_CLIENT_DATA_FLAG_DEFAULT,
     );
-
     conn.add_to_client_data_definition(
         wasm_client_config.definition_id,
         SIMCONNECT_CLIENTDATAOFFSET_AUTO,
@@ -60,11 +60,12 @@ fn create_wasm_client(
         0.0,
         SIMCONNECT_UNUSED,
     );
+
     conn.request_client_data(
         wasm_client_config.id,
         wasm_client_config.request_id,
         wasm_client_config.definition_id,
-        SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_SECOND,
+        SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_ON_SET,
         SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_DEFAULT,
         0,
         0,
