@@ -921,7 +921,7 @@
     "simvar": "TRANSPONDER IDENT:1",
     "metric": "Bool",
     "update_every": 0,
-    "cb_text": "Transponder ident",
+    "cb_text": "Transponder ident 1",
     "id": 608,
     "output_type": "integer",
     "category": "NAV and COMS"
@@ -930,8 +930,26 @@
     "simvar": "TRANSPONDER STATE:1",
     "metric": "Enum",
     "update_every": 0,
-    "cb_text": "Transponder state",
+    "cb_text": "Transponder state 1",
     "id": 609,
+    "output_type": "integer",
+    "category": "NAV and COMS"
+  },
+  {
+    "simvar": "TRANSPONDER IDENT:2",
+    "metric": "Bool",
+    "update_every": 0,
+    "cb_text": "Transponder ident 2",
+    "id": 610,
+    "output_type": "integer",
+    "category": "NAV and COMS"
+  },
+  {
+    "simvar": "TRANSPONDER STATE:2",
+    "metric": "Enum",
+    "update_every": 0,
+    "cb_text": "Transponder state 2",
+    "id": 611,
     "output_type": "integer",
     "category": "NAV and COMS"
   },
