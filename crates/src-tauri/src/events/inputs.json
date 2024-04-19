@@ -327,6 +327,16 @@
     },
     {
       "input_type": 0,
+      "event": "ADF1_RADIO_TENTHS_DEC",
+      "input_id": 390
+    },
+    {
+      "input_type": 0,
+      "event": "ADF1_RADIO_TENTHS_INC",
+      "input_id": 391
+    },
+    {
+      "input_type": 0,
       "event": "ADF1_WHOLE_INC",
       "input_id": 180
     },
