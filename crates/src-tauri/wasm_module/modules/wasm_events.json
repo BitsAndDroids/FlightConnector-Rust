@@ -4843,7 +4843,7 @@
     {
       "id": 6011,
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR,Feet)",
-      "action_text": "Alt test",
+      "action_text": "Alt ap lock var",
       "action_type": "output",
       "output_format": "int",
       "update_every": 0.0,
@@ -4853,19 +4853,9 @@
     {
       "id": 6012,
       "action": "(A:AUTOPILOT HEADING LOCK DIR,Degrees)",
-      "action_text": "Heading test",
+      "action_text": "Heading lock direction",
       "action_type": "output",
       "output_format": "int",
-      "update_every": 0.0,
-      "min": 0.0,
-      "max": 100.0
-    },
-    {
-      "id": 2222,
-      "action": "test",
-      "action_text": "Comments go here",
-      "action_type": "input",
-      "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0
