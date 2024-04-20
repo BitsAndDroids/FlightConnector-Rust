@@ -1071,24 +1071,6 @@
     "category": "Warnings"
   },
   {
-    "simvar": "MASTER CAUTION",
-    "metric": "Bool",
-    "update_every": 0,
-    "cb_text": "(bool) Master caution",
-    "id": 1000,
-    "output_type": "boolean",
-    "category": "Warnings"
-  },
-  {
-    "simvar": "MASTER WARNING",
-    "metric": "Bool",
-    "update_every": 0,
-    "cb_text": "(bool) Master warning",
-    "id": 1001,
-    "output_type": "boolean",
-    "category": "Warnings"
-  },
-  {
     "simvar": "OVERSPEED WARNING",
     "metric": "Bool",
     "update_every": 0,

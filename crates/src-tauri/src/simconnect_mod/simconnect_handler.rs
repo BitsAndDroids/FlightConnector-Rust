@@ -1,3 +1,4 @@
+use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
 use log::{error, info};
 use serde::Deserialize;
@@ -16,12 +17,15 @@ use tauri::Manager;
 
 use crate::events::input_registry::input_registry::InputRegistry;
 use crate::events::output_registry::output_registry::OutputRegistry;
+use crate::events::wasm_registry::WASMRegistry;
+use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::input::Input;
 use connector_types::types::output::Output;
 use connector_types::types::output::OutputType;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::wasm;
+use super::wasm::send_wasm_command;
 use crate::sim_utils;
 
 const MAX_RETURNED_ITEMS: usize = 255;
@@ -41,29 +45,6 @@ struct Connections {
 struct Event {
     id: DWORD,
     description: &'static str,
-}
-
-#[derive(Clone)]
-struct Events {
-    available_events: HashMap<DWORD, Event>,
-    sim_start: Event,
-}
-
-impl Events {
-    fn new() -> Self {
-        let mut available_events: HashMap<DWORD, Event> = HashMap::new();
-        let sim_start: Event = Event {
-            id: 0,
-            description: "SimStart",
-        };
-
-        available_events.insert(0, sim_start.clone());
-
-        Self {
-            available_events,
-            sim_start,
-        }
-    }
 }
 
 #[repr(C, packed)]
@@ -98,6 +79,7 @@ pub struct SimconnectHandler {
     pub(crate) simconnect: simconnect::SimConnector,
     pub(crate) input_registry: InputRegistry,
     pub(crate) output_registry: OutputRegistry,
+    pub(crate) wasm_registry: WASMRegistry,
     pub(crate) app_handle: tauri::AppHandle,
     pub(crate) rx: mpsc::Receiver<u16>,
     active_com_ports: HashMap<String, Box<dyn SerialPort>>,
@@ -117,10 +99,13 @@ impl SimconnectHandler {
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
         let output_registry = OutputRegistry::new();
+        let wasm_registry = WASMRegistry::new();
+
         Self {
             simconnect,
             input_registry,
             output_registry,
+            wasm_registry,
             app_handle,
             rx,
             polling_interval: 6,
@@ -182,7 +167,6 @@ impl SimconnectHandler {
         self.connect_to_devices();
         self.initialize_connection();
         self.initialize_simconnect();
-        wasm::register_wasm_data(&mut self.simconnect);
         self.main_event_loop();
     }
 
@@ -223,7 +207,7 @@ impl SimconnectHandler {
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
-        println!("Checking if output in bundle {}", output_id);
+        println!("Checking if output in bundle {}, {}", output_id, value);
         let output_registry = self.output_registry.clone();
         let output = match output_registry.get_output_by_id(output_id) {
             Some(output) => output,
@@ -313,7 +297,6 @@ impl SimconnectHandler {
     }
 
     fn main_event_loop(&mut self) {
-        let events = Events::new();
         let mut connection_running = true;
         while connection_running {
             match self.rx.try_recv() {
@@ -330,8 +313,9 @@ impl SimconnectHandler {
                 }
             }
             self.poll_microcontroller_for_inputs();
-            match self.simconnect.get_next_message() {
+            match &mut self.simconnect.get_next_message() {
                 Ok(simconnect::DispatchResult::SimObjectData(data)) => {
+                    println!("Processing sim object data");
                     match data.dwDefineID {
                         RequestModes::FLOAT => {
                             unsafe {
@@ -367,30 +351,23 @@ impl SimconnectHandler {
                     }
                 }
                 Ok(simconnect::DispatchResult::ClientData(data)) => {
-                    println!("CLIENT DATA");
-                    let sim_data_ptr = std::ptr::addr_of!(data._base.dwData) as *const DWORD;
-                    println!("{:?}", sim_data_ptr);
-                    let sim_data_value =
-                        unsafe { std::ptr::read_unaligned(sim_data_ptr).to_string() };
-
-                    println!("CLIENT DATA {}", sim_data_value);
-                    // let id = data.dwDefineID;
-                    // println!("id {}", id);
+                    let sim_data_ptr = std::ptr::addr_of!(data._base.dwData) as *const f64;
+                    unsafe {
+                        let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
+                        let output_id = data._base.dwDefineID;
+                        let output_value = sim_data_value;
+                        self.check_if_output_in_bundle(output_id, output_value);
+                    }
                 }
                 Ok(simconnect::DispatchResult::Event(data)) => {
-                    // handle Event variant ...
-                    let sim_data_ptr = std::ptr::addr_of!(data.dwData) as *const DWORD;
-                    let sim_data_value =
-                        unsafe { std::ptr::read_unaligned(sim_data_ptr).to_string() };
-                    info!(target: "event", "EVENT {}", sim_data_value);
-                    println!(
-                        "EVENT {}",
-                        events
-                            .available_events
-                            .get(&sim_data_value.parse::<DWORD>().unwrap())
-                            .unwrap()
-                            .description
-                    );
+                    let sim_data_ptr = std::ptr::addr_of!(data.dwData) as *const f64;
+                    unsafe {
+                        let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
+                        // TODO send to microcontroller
+                        let output_id = data.uEventID;
+                        let output_value = sim_data_value;
+                        self.check_if_output_in_bundle(output_id, output_value);
+                    }
                 }
                 _ => (),
             }
@@ -403,6 +380,7 @@ impl SimconnectHandler {
         self.input_registry.load_inputs();
         self.output_registry.load_outputs();
         self.define_inputs(self.input_registry.get_inputs());
+        wasm::register_wasm_data(&mut self.simconnect);
         self.define_outputs();
         self.define_wasm_outputs();
     }
@@ -453,13 +431,16 @@ impl SimconnectHandler {
         //
     }
 
-    pub fn define_outputs(&self) {
+    pub fn define_outputs(&mut self) {
+        let wasm_registry = &self.wasm_registry;
+
         let run_bundles = &self.run_bundles;
+        let mut outputs_not_found = vec![];
         for run_bundle in run_bundles {
             for output in &run_bundle.bundle.outputs {
-                println!("Output: {:?}", output);
                 match self.output_registry.get_output_by_id(output.id) {
                     Some(latest_output) => {
+                        println!("Output found: {:?} {}", output.id, output.simvar);
                         self.simconnect.add_data_definition(
                             RequestModes::FLOAT,
                             &latest_output.simvar,
@@ -470,10 +451,53 @@ impl SimconnectHandler {
                         );
                     }
                     None => {
+                        outputs_not_found.push(output);
                         println!("Output not found: {:?}", output);
                     }
                 }
             }
         }
+        self.simconnect
+            .add_to_client_data_definition(106, 0, 4096, 0.0, 0);
+        send_wasm_command(&mut self.simconnect, "clear");
+        let mut items = 0;
+        outputs_not_found.into_iter().for_each(|output| {
+            // match wasm_registry.get_wasm_output_by_id(output.id) {
+            //     Some(wasm_output) => {
+            println!("ADD WASM: {:?}", output);
+
+            let wasm_event = WasmEvent {
+                id: output.id,
+                action: output.simvar.to_string(),
+                action_text: "".to_string(),
+                action_type: "output".to_string(),
+                output_format: "".to_string(),
+                update_every: output.update_every,
+                value: 0.0,
+                min: 0.0,
+                max: 0.0,
+                offset: (std::mem::size_of::<f64>() * items) as u32,
+            };
+            register_wasm_event(&mut self.simconnect, wasm_event);
+            self.simconnect.add_to_client_data_definition(
+                output.id,
+                (std::mem::size_of::<f64>() * items) as u32,
+                std::mem::size_of::<f64>() as u32,
+                output.update_every,
+                0,
+            );
+            self.simconnect.request_client_data(
+                2,
+                output.id,
+                output.id,
+                simconnect::SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_ON_SET,
+                simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED,
+                0,
+                0,
+                0,
+            );
+
+            items += 1;
+        });
     }
 }

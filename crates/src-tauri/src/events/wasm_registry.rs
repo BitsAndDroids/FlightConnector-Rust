@@ -1,4 +1,5 @@
 use connector_types::types::wasm_event::WasmEvent;
+#[derive(Debug)]
 pub struct WASMRegistry {
     wasm_outpus: Vec<WasmEvent>,
     wasm_inputs: Vec<WasmEvent>,
@@ -28,7 +29,7 @@ impl WASMRegistry {
             .collect();
     }
 
-    pub fn get_wasm_output_by_id(&self, output_id: u16) -> Option<&WasmEvent> {
+    pub fn get_wasm_output_by_id(&self, output_id: u32) -> Option<&WasmEvent> {
         self.wasm_outpus
             .iter()
             .find(|&output| output.id == output_id)

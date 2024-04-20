@@ -55,6 +55,8 @@ fn parse_event_line(line: &str) -> WasmEvent {
         update_every,
         min,
         max,
+        offset: 0,
+        value: 0.0,
     }
 }
 
