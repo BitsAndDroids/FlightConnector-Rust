@@ -212,7 +212,7 @@ impl SimconnectHandler {
             OutputType::Integer => (val as i32).to_string(),
             OutputType::Seconds => (val as i32).to_string(),
             OutputType::Secondsaftermidnight => sim_utils::output_converters::seconds_to_time(val),
-            OutputType::Percentage => (val as i32).to_string(),
+            OutputType::Percentage => ((val * 100.1) as i32).to_string(),
             OutputType::Degrees => sim_utils::output_converters::radian_to_degree(val).to_string(),
             OutputType::ADF => ((val as i32) / 100).to_string(),
             OutputType::INHG => sim_utils::output_converters::value_to_inhg(val).to_string(),
