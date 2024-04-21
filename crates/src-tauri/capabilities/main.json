@@ -4,6 +4,7 @@
   "local": true,
   "windows": ["bits-and-droids-connector"],
   "permissions": [
+    "dialog:allow-message",
     "path:default",
     "webview:allow-create-webview",
     "webview:allow-create-webview-window",
