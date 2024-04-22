@@ -22,6 +22,7 @@
     "store:allow-set",
     "store:allow-save",
     "store:allow-load",
+    "store:allow-delete",
     "store:allow-keys",
     "store:default",
     "log:default",
