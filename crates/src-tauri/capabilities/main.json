@@ -5,6 +5,7 @@
   "windows": ["bits-and-droids-connector"],
   "permissions": [
     "dialog:allow-message",
+    "dialog:allow-open",
     "path:default",
     "webview:allow-create-webview",
     "webview:allow-create-webview-window",

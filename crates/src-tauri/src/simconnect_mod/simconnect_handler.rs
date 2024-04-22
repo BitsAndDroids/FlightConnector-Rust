@@ -24,6 +24,7 @@ use connector_types::types::output::Output;
 use connector_types::types::output::OutputType;
 use connector_types::types::run_bundle::RunBundle;
 
+use super::output_formatter::parse_output_based_on_type;
 use super::wasm;
 use super::wasm::send_wasm_command;
 use crate::sim_utils;
@@ -190,22 +191,6 @@ impl SimconnectHandler {
         }
     }
 
-    fn parse_output_based_on_type(&mut self, val: f64, output: &Output) -> String {
-        match output.output_type {
-            OutputType::Boolean => sim_utils::output_converters::val_to_bool(val),
-            OutputType::Integer => (val as i32).to_string(),
-            OutputType::Seconds => (val as i32).to_string(),
-            OutputType::Secondsaftermidnight => sim_utils::output_converters::seconds_to_time(val),
-            OutputType::Percentage => ((val * 100.1) as i32).to_string(),
-            OutputType::Degrees => sim_utils::output_converters::radian_to_degree(val).to_string(),
-            OutputType::ADF => ((val as i32) / 100).to_string(),
-            OutputType::INHG => sim_utils::output_converters::value_to_inhg(val).to_string(),
-            OutputType::Meterspersecond => {
-                sim_utils::output_converters::mps_to_kmh(val).to_string()
-            }
-        }
-    }
-
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
         println!("Checking if output in bundle {}, {}", output_id, value);
         let output_registry = self.output_registry.clone();
@@ -233,7 +218,7 @@ impl SimconnectHandler {
         let formatted_str = format!(
             "{} {}\n",
             output.id,
-            self.parse_output_based_on_type(value, output)
+            parse_output_based_on_type(value, output)
         );
 
         match self.active_com_ports.get_mut(com_port) {
