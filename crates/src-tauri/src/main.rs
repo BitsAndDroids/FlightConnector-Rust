@@ -12,10 +12,12 @@ use tauri_plugin_updater::UpdaterExt;
 mod events;
 mod sim_utils;
 mod simconnect_mod;
+mod utils;
 use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
+use utils::wasm_installer::install_wasm;
 
 use std::thread;
 
@@ -119,6 +121,7 @@ fn main() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_store::Builder::new().build())
         .plugin(tauri_plugin_updater::Builder::new().build())
+        .plugin(tauri_plugin_fs::init())
         .plugin(
             tauri_plugin_log::Builder::new()
                 .targets([
@@ -133,6 +136,7 @@ fn main() {
             get_outputs,
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
+            install_wasm
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();

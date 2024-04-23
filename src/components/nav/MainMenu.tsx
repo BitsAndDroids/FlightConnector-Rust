@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
 import { FileDialog } from "../FileDialog";
 import { useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 export const MainMenu: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   function openLogWindow() {
@@ -27,6 +28,7 @@ export const MainMenu: React.FC = () => {
   ];
   const installWasm = async (dirResult: string) => {
     console.log("installing wasm to ", dirResult);
+    invoke("install_wasm", { path: dirResult });
     setDialogOpen(false);
   };
   return (

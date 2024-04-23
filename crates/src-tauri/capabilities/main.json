@@ -30,6 +30,8 @@
     "updater:default",
     "updater:allow-check",
     "updater:allow-download-and-install",
-    "dialog:default"
+    "dialog:default",
+    "fs:read-all",
+    "fs:default"
   ]
 }
