@@ -2,7 +2,7 @@
 use connector_types::types::output::Output;
 use connector_types::types::output_format::FormatOutput;
 use connector_types::types::run_bundle::RunBundle;
-use events::output_registry::output_registry;
+use events::output_registry;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use serialport::SerialPortType;
@@ -100,11 +100,7 @@ async fn get_outputs() -> Vec<Output> {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(
-    app: tauri::AppHandle,
-    run_bundles: Vec<RunBundle>,
-    preset_id: String,
-) {
+fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {

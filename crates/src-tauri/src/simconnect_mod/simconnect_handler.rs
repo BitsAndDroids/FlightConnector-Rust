@@ -16,7 +16,7 @@ use std::time::Duration;
 use tauri::Manager;
 
 use crate::events::input_registry::input_registry::InputRegistry;
-use crate::events::output_registry::output_registry::OutputRegistry;
+use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
 use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::input::Input;

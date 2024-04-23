@@ -1,8 +1,9 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import React from "react";
 import { open } from "@tauri-apps/plugin-dialog";
 interface InputDialogProps {
   message: string;
+  value?: string;
   placeholder?: string;
   setDialogOpen?: (open: boolean) => void;
   onConfirm: (input?: string) => void;
@@ -15,6 +16,12 @@ export const FileDialog = (props: InputDialogProps) => {
   const [selectedDirectory, setSelectedDirectory] = useState<
     string | null | undefined
   >();
+
+  useEffect(() => {
+    if (props.value) {
+      setSelectedDirectory(props.value);
+    }
+  }, []);
 
   function validateInput(input: string) {
     if (!input || input.length === 0) {
@@ -60,6 +67,7 @@ export const FileDialog = (props: InputDialogProps) => {
           className={`drop-shadow border rounded-md p-2 m-2 ${errorState ? "border-pink-300" : "border-gray-200"}`}
           placeholder={props.placeholder}
           value={selectedDirectory || ""}
+          onChange={(e) => setSelectedDirectory(e.target.value)}
         />
         <div className="flex flex-row justify-center">
           <button

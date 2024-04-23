@@ -5,8 +5,11 @@ import { TopMenuItem } from "@/components/nav/TopMenuItem";
 import { FileDialog } from "../FileDialog";
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
+import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 export const MainMenu: React.FC = () => {
+  const connectorSettingsHandler = new ConnectorSettingsHandler();
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [communityFolderPath, setCommunityFolderPath] = useState<string>("");
   function openLogWindow() {
     const webview = new WebviewWindow("logWindow", {
       url: "/logs",
@@ -22,15 +25,28 @@ export const MainMenu: React.FC = () => {
     { title: "Manage presets", route: "/options/settings/presets" },
     {
       title: "Install WASM",
-      action: () => setDialogOpen(true),
+      action: () => openWASMDialog(),
       active: true,
     },
   ];
+
+  const openWASMDialog = async () => {
+    const savedPath = await connectorSettingsHandler.getCommunityFolderPath();
+    if (savedPath) {
+      setCommunityFolderPath(savedPath);
+    }
+    setDialogOpen(true);
+  };
   const installWasm = async (dirResult: string) => {
     console.log("installing wasm to ", dirResult);
+    await connectorSettingsHandler.setCommunityFolderPath(dirResult);
     invoke("install_wasm", { path: dirResult });
+    await connectorSettingsHandler.setWASMModulePath(
+      `${dirResult}\\BitsAndDroidsModule`,
+    );
     setDialogOpen(false);
   };
+
   return (
     <>
       {dialogOpen && (
@@ -38,6 +54,7 @@ export const MainMenu: React.FC = () => {
           message="Please select the MFS community folder"
           onConfirm={(val: string) => installWasm(val)}
           setDialogOpen={setDialogOpen}
+          value={communityFolderPath}
         />
       )}
       <div
