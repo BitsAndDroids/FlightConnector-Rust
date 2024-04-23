@@ -29,10 +29,12 @@ export const FileDialog = (props: InputDialogProps) => {
   }
 
   function handleConfirm() {
-    let value = document.getElementsByTagName("input")[0].value;
-    const valid = validateInput(value);
-    if (!valid) return;
-    props.onConfirm(value);
+    if (selectedDirectory === undefined || selectedDirectory === null) {
+      setErrorState(true);
+      setErrorMessage("Please select a directory");
+      return;
+    }
+    props.onConfirm(selectedDirectory);
   }
 
   const openDirectoryDialog = async () => {

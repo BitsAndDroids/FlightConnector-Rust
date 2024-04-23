@@ -21,19 +21,20 @@ export const MainMenu: React.FC = () => {
     { title: "Manage presets", route: "/options/settings/presets" },
     {
       title: "Install WASM",
-      action: () => installWasm(),
+      action: () => setDialogOpen(true),
       active: true,
     },
   ];
-  const installWasm = async () => {
-    setDialogOpen(true);
+  const installWasm = async (dirResult: string) => {
+    console.log("installing wasm to ", dirResult);
+    setDialogOpen(false);
   };
   return (
     <>
       {dialogOpen && (
         <FileDialog
           message="Please select the MFS community folder"
-          onConfirm={() => setDialogOpen(false)}
+          onConfirm={(val: string) => installWasm(val)}
           setDialogOpen={setDialogOpen}
         />
       )}
