@@ -2,6 +2,8 @@ use std::fmt::Display;
 
 use serde::{Deserialize, Serialize};
 
+use super::output_format::FormatOutput;
+
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Output {
     pub simvar: String,
@@ -64,5 +66,11 @@ impl<'de> Deserialize<'de> for OutputType {
                 s
             ))),
         }
+    }
+}
+
+impl FormatOutput for Output {
+    fn get_output_format(&self) -> Output {
+        self.clone()
     }
 }

@@ -1,7 +1,8 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use connector_types::types::output::Output;
+use connector_types::types::output_format::FormatOutput;
 use connector_types::types::run_bundle::RunBundle;
-use events::output_registry::output_registry;
+use events::output_registry;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
 use serialport::SerialPortType;
@@ -11,10 +12,12 @@ use tauri_plugin_updater::UpdaterExt;
 mod events;
 mod sim_utils;
 mod simconnect_mod;
+mod utils;
 use std::ops::Deref;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
+use utils::wasm_installer::install_wasm;
 
 use std::thread;
 
@@ -80,16 +83,24 @@ async fn get_com_ports() -> Vec<String> {
 #[tauri::command]
 async fn get_outputs() -> Vec<Output> {
     let mut output_registry = output_registry::OutputRegistry::new();
+    let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     output_registry.load_outputs();
-    output_registry.outputs
+    wasm_registry.load_wasm();
+
+    //merge the two outputs from the registries
+    //using the FormatOutput trait
+    let mut outputs: Vec<Output> = Vec::new();
+    for output in output_registry.get_outputs().iter() {
+        outputs.push(output.clone());
+    }
+    for output in wasm_registry.get_wasm_outputs().iter() {
+        outputs.push(output.get_output_format().clone());
+    }
+    outputs
 }
 
 #[tauri::command]
-fn start_simconnect_connection(
-    app: tauri::AppHandle,
-    run_bundles: Vec<RunBundle>,
-    preset_id: String,
-) {
+fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {
@@ -104,8 +115,9 @@ fn start_simconnect_connection(
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
-        .plugin(tauri_plugin_store::Builder::new().build())
+        .plugin(tauri_plugin_store::Builder::default().build())
         .plugin(tauri_plugin_updater::Builder::new().build())
+        .plugin(tauri_plugin_fs::init())
         .plugin(
             tauri_plugin_log::Builder::new()
                 .targets([
@@ -120,6 +132,7 @@ fn main() {
             get_outputs,
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
+            install_wasm
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
