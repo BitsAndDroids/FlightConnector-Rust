@@ -48,7 +48,10 @@ const SettingsPage = () => {
       </div>
       <div className="bg-white rounded-md mt-4 p-4">
         <label className="flex flex-row items-center">
-          <InfoWindow message="The terminal ready signal can be used to force a reset when the connector initializes a connection with a microcontroller. Depending on your connected devices it might be nescesarry to order your devices to work with the resets." />
+          <InfoWindow
+            docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch05-00-settings.html#enable-trs"
+            message="The terminal ready signal can be used to force a reset when the connector initializes a connection with a microcontroller. Depending on your connected devices it might be nescesarry to order your devices to work with the resets."
+          />
           Use terminal ready signal
           <input
             type="checkbox"
