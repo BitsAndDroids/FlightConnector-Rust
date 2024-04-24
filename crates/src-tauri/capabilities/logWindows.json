@@ -23,6 +23,7 @@
     "store:allow-save",
     "store:allow-load",
     "store:allow-keys",
+    "store:allow-delete",
     "store:default",
     "log:default",
     "updater:default",
