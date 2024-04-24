@@ -9,10 +9,11 @@ These settings affect the way the connector interacts with your devices.
 
 ### Enable TRS
 
-|         |         |
-| ------- | ------- |
-| Type    | boolean |
-| Default | false   |
+|         |          |
+| ------- | -------- |
+| Iput    | checkbox |
+| Type    | boolean  |
+| Default | false    |
 
 The terminal-ready signal is a signal that can be sent to your devices when the connector connects to your controller.
 Specific microcontrollers like the Arduino use this signal to prepare the controller for incoming data.
