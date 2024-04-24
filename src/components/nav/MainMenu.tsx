@@ -10,8 +10,14 @@ export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = new ConnectorSettingsHandler();
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [communityFolderPath, setCommunityFolderPath] = useState<string>("");
+  const openWindow = async (windowName: string, url: string) => {
+    new WebviewWindow(windowName, {
+      url: `/${url}`,
+      title: windowName,
+    });
+  };
   function openLogWindow() {
-    const webview = new WebviewWindow("logWindow", {
+    new WebviewWindow("logWindow", {
       url: "/logs",
       title: "Logs",
     });
@@ -21,7 +27,11 @@ export const MainMenu: React.FC = () => {
     { title: "Custom output settings", route: "/options/outputs/output" },
   ];
   const settingsMenuItems = [
-    { title: "Settings", route: "/options/settings" },
+    {
+      title: "Connection settings",
+      action: () => openWindow("settings", "options/settings"),
+      active: true,
+    },
     { title: "Manage presets", route: "/options/settings/presets" },
     {
       title: "Install WASM",
@@ -37,7 +47,8 @@ export const MainMenu: React.FC = () => {
     }
     setDialogOpen(true);
   };
-  const installWasm = async (dirResult: string) => {
+  const installWasm = async (dirResult?: string) => {
+    if (!dirResult) return;
     console.log("installing wasm to ", dirResult);
     await connectorSettingsHandler.setCommunityFolderPath(dirResult);
     invoke("install_wasm", { path: dirResult });
@@ -52,7 +63,7 @@ export const MainMenu: React.FC = () => {
       {dialogOpen && (
         <FileDialog
           message="Please select the MFS community folder"
-          onConfirm={(val: string) => installWasm(val)}
+          onConfirm={(input?: string) => installWasm(input)}
           setDialogOpen={setDialogOpen}
           value={communityFolderPath}
         />

@@ -7,10 +7,10 @@ During startup the connector will automatically check for updates on Github. A p
 
 ## WASM
 
-The WASM module unlocks more simulation variables to interact with. You can read a full explanation in the [WASM chapter](./ch06-00-wasm.md).
+The WASM module unlocks more simulation variables with which to interact. The [WASM chapter](./ch06-00-wasm.md) provides a full explanation.
 You're able to install the module by copying the entire wasm_module into the MFS2020 community package folder.
 
-If you wan't to ensure the module is properly installed you're able to follow these steps:
+If you want to ensure the module is properly installed, you're able to follow these steps:
 
 - Start MFS2020
 - Open the option menu
@@ -19,6 +19,20 @@ If you wan't to ensure the module is properly installed you're able to follow th
 - Open the console
 - Search for BitsAndDroids
 
-If the search results show messages that the module was initialized the module loaded properly.
+If the search results show messages that the module was initialized, the module will be loaded properly.
 
-> I'm working on porting over the installer to the new connector to make installing the module as easy as pressing a button.
+### Install from the connector
+
+You’re able to install the WASM module using the installer in the connector.
+
+- Click on settings
+- Select install WASM
+- Click on the “select directory” button
+- Search for the MFS2020 community folder
+
+![wasm install community folder](./images/wasm/install_wasm_community.png)
+
+- Click “Select folder”
+- Click confirm
+
+To check if the installation succeeded, you can open the community folder. If the installation succeeded, there should be a folder called BitsAndDroidsModule.

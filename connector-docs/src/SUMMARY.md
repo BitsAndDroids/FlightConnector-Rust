@@ -9,7 +9,7 @@
 - [Inputs](ch03-00-inputs.md)
 - [Outputs](ch03-01-outputs.md)
 - [Presets](ch04-00-presets.md)
-- [Calibration](ch05-00-calibration.md)
+- [Settings](ch05-00-settings.md)
 - [WASM](ch06-00-wasm.md)
 
 # Examples

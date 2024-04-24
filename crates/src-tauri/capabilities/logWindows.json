@@ -2,7 +2,7 @@
   "identifier": "logs",
   "$schema": "../gen/schemas/desktop-schema.json",
   "local": true,
-  "windows": ["logWindow"],
+  "windows": ["logWindow", "settings"],
   "permissions": [
     "path:default",
     "webview:allow-create-webview",
@@ -28,6 +28,7 @@
     "updater:default",
     "updater:allow-check",
     "updater:allow-download-and-install",
-    "dialog:default"
+    "dialog:default",
+    "dialog:allow-message"
   ]
 }

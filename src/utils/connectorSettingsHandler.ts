@@ -1,5 +1,6 @@
 import { RunBundle } from "@/model/RunBundle";
 import { Store } from "@tauri-apps/plugin-store";
+import { ConnectorSettings } from "./models/ConnectorSettings";
 export class ConnectorSettingsHandler {
   runSettingsStore: Store;
   constructor() {
@@ -14,6 +15,15 @@ export class ConnectorSettingsHandler {
   async setWASMModulePath(path: string): Promise<void> {
     this.runSettingsStore.set("wasmModulePath", path);
     this.runSettingsStore.save();
+  }
+
+  async setConnectorSettings(settings: ConnectorSettings): Promise<void> {
+    this.runSettingsStore.set("connectorSettings", settings);
+    this.runSettingsStore.save();
+  }
+
+  async getConnectorSettings(): Promise<ConnectorSettings | null> {
+    return await this.runSettingsStore.get("connectorSettings");
   }
 
   async getCommunityFolderPath(): Promise<string | null> {

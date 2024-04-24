@@ -120,8 +120,6 @@
 | LIGHT BEACON ON | Bool | 0 | (bool) Beacon lights | 143 | Boolean | Lights |
 | LIGHT LANDING ON | Bool | 0 | (bool) Landing lights | 144 | Boolean | Lights |
 | STALL WARNING | Bool | 0 | (bool) Stall warning | 333 | Boolean | Warnings |
-| MASTER CAUTION | Bool | 0 | (bool) Master caution | 1000 | Boolean | Warnings |
-| MASTER WARNING | Bool | 0 | (bool) Master warning | 1001 | Boolean | Warnings |
 | OVERSPEED WARNING | Bool | 0 | (bool) Overspeed warning | 334 | Boolean | Warnings |
 | BRAKE PARKING INDICATOR | Bool | 0 | (bool) Parking brake indicator | 505 | Boolean | Mechanical |
 | AILERON TRIM | Radians | 0 | Aileron trim degrees | 562 | Degrees | Mechanical |

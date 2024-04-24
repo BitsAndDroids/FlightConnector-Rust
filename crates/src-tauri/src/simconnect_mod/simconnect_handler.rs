@@ -1,3 +1,4 @@
+use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
 use log::{error, info};
@@ -8,12 +9,18 @@ use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
 use std::io::Read;
+use std::path::PathBuf;
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::sync::Mutex;
 use std::thread::sleep;
 use std::time::Duration;
+use tauri::EventLoopMessage;
 use tauri::Manager;
+use tauri::Wry;
+use tauri_plugin_store::with_store;
+use tauri_plugin_store::Store;
+use tauri_plugin_store::StoreCollection;
 
 use crate::events::input_registry::input_registry::InputRegistry;
 use crate::events::output_registry::OutputRegistry;
@@ -21,7 +28,6 @@ use crate::events::wasm_registry::WASMRegistry;
 use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::input::Input;
 use connector_types::types::output::Output;
-use connector_types::types::output::OutputType;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
@@ -85,7 +91,7 @@ pub struct SimconnectHandler {
     pub(crate) rx: mpsc::Receiver<u16>,
     active_com_ports: HashMap<String, Box<dyn SerialPort>>,
     run_bundles: Vec<RunBundle>,
-    polling_interval: u8,
+    connector_settings: ConnectorSettings,
 }
 
 // define the payload struct
@@ -101,6 +107,7 @@ impl SimconnectHandler {
         let input_registry = InputRegistry::new();
         let output_registry = OutputRegistry::new();
         let wasm_registry = WASMRegistry::new();
+        let connector_settings = ConnectorSettings { use_trs: false };
 
         Self {
             simconnect,
@@ -109,9 +116,9 @@ impl SimconnectHandler {
             wasm_registry,
             app_handle,
             rx,
-            polling_interval: 6,
             active_com_ports: HashMap::new(),
             run_bundles: vec![],
+            connector_settings,
         }
     }
 
@@ -120,6 +127,30 @@ impl SimconnectHandler {
         match parts.first() {
             Some(x) => x.to_string(),
             None => "".to_string(),
+        }
+    }
+
+    fn load_connector_settings(&mut self) {
+        let stores = self.app_handle.app_handle().state::<StoreCollection<Wry>>();
+        let path = PathBuf::from(".connectorSettings.dat");
+
+        let handle_store = |store: &mut Store<Wry>| {
+            if let Some(settings) = store.get("connectorSettings") {
+                self.connector_settings = serde_json::from_value(settings.clone()).unwrap();
+            }
+            Ok(())
+        };
+
+        match with_store(
+            self.app_handle.app_handle().clone(),
+            stores,
+            path,
+            handle_store,
+        ) {
+            Ok(_) => {}
+            Err(e) => {
+                error!("Failed to load connector settings: {:?}", e);
+            }
         }
     }
 
@@ -135,8 +166,29 @@ impl SimconnectHandler {
 
         for run_bundle in self.run_bundles.iter() {
             let com_port = run_bundle.com_port.clone();
+
             match serialport::new(com_port.clone(), 115200).open() {
-                Ok(port) => {
+                Ok(mut port) => {
+                    if self.connector_settings.use_trs {
+                        match port.write_data_terminal_ready(true) {
+                            Ok(_) => {
+                                println!("Data terminal ready sent")
+                            }
+                            Err(e) => {
+                                println!("Failed to send data terminal ready: {}", e)
+                            }
+                        };
+                        std::thread::sleep(Duration::from_millis(300));
+                        match port.write_data_terminal_ready(false) {
+                            Ok(_) => {
+                                println!("Data terminal ready sent")
+                            }
+                            Err(e) => {
+                                println!("Failed to send data terminal ready: {}", e)
+                            }
+                        };
+                    }
+                    std::thread::sleep(Duration::from_millis(400));
                     self.active_com_ports.insert(com_port.clone(), port);
                     info!(target: "connections", "Connected to port: {}", com_port);
                     connected_ports.push(Connections {
@@ -164,6 +216,7 @@ impl SimconnectHandler {
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
         self.run_bundles = run_bundles;
+        self.load_connector_settings();
         self.set_com_ports();
         self.connect_to_devices();
         self.initialize_connection();
