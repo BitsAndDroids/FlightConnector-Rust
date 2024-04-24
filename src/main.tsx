@@ -5,6 +5,7 @@ import * as ReactDOM from "react-dom/client";
 import MenuLayout from "./app/MenuLayout";
 import OutputsPage from "./app/options/outputs/OutputsPage";
 import { LogPage } from "./app/logs/LogPage";
+import SettingsPage from "./app/options/settings/SettingsPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
     element: <MenuLayout />,
     children: [{ path: "/options/outputs", element: <OutputsPage /> }],
   },
+  {
+    path: "/options/settings",
+    element: <SettingsPage />,
+  },
+
   {
     path: "/logs",
     element: <LogPage />,

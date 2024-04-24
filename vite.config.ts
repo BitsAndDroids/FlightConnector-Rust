@@ -7,7 +7,6 @@ export default defineConfig(async () => ({
   plugins: [react()],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
-  //
   resolve: {
     alias: {
       // 4. tell vite to use the `src-tauri` directory

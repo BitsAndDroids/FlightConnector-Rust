@@ -202,7 +202,7 @@ export const ControllerSelectComponent = () => {
   return (
     <>
       {loaded && (
-        <div>
+        <div className="flex flex-col items-center">
           <div className={"flex flex-col"}>
             <div className={"flex flex-row"}>
               <button
@@ -221,8 +221,8 @@ export const ControllerSelectComponent = () => {
             />
           </div>
 
-          <div className="flex flex-row font-bold text-white">
-            <p className="ml-2">Com port</p>
+          <div className="flex flex-row w-full font-bold text-white">
+            <p className="ml-6">Com port</p>
             <p className="ml-24">Bundle</p>
           </div>
           {preset &&
