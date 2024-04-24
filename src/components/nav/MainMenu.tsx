@@ -91,7 +91,7 @@ export const MainMenu: React.FC = () => {
               href={"/options/outputs"}
               subMenuItems={outputMenuItems}
             />
-            <button className="mx-2 mt-2" onClick={() => openLogWindow()}>
+            <button className="mx-2 " onClick={() => openLogWindow()}>
               Logs
             </button>
           </nav>
