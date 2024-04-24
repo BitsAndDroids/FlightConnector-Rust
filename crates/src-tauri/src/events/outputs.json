@@ -382,7 +382,7 @@
     "metric": "Feet per second",
     "update_every": 10,
     "cb_text": "Vertical speed",
-    "id": 590,
+    "id": 330,
     "output_type": "integer",
     "category": "Data"
   },
