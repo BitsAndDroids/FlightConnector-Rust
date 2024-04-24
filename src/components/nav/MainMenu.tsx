@@ -48,6 +48,7 @@ export const MainMenu: React.FC = () => {
     setDialogOpen(true);
   };
   const installWasm = async (dirResult?: string) => {
+    setDialogOpen(false);
     if (!dirResult) return;
     console.log("installing wasm to ", dirResult);
     await connectorSettingsHandler.setCommunityFolderPath(dirResult);
@@ -55,7 +56,6 @@ export const MainMenu: React.FC = () => {
     await connectorSettingsHandler.setWASMModulePath(
       `${dirResult}\\BitsAndDroidsModule`,
     );
-    setDialogOpen(false);
   };
 
   return (
