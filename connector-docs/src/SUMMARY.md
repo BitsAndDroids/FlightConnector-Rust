@@ -10,6 +10,7 @@
 - [Outputs](ch03-01-outputs.md)
 - [Presets](ch04-00-presets.md)
 - [Settings](ch05-00-settings.md)
+  - [Logs](ch05-01-logs.md)
 - [WASM](ch06-00-wasm.md)
 
 # Examples
