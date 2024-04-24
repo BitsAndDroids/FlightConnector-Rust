@@ -9,8 +9,9 @@ These settings affect the way the connector interacts with your devices.
 
 ### Enable TRS
 
-| Type    | boolean |
+|         |         |
 | ------- | ------- |
+| Type    | boolean |
 | Default | false   |
 
 The terminal-ready signal is a signal that can be sent to your devices when the connector connects to your controller.
