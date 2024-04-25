@@ -1,5 +1,5 @@
-pub fn radian_to_degree(val: f64) -> f64 {
-    val * 180.0 / std::f64::consts::PI
+pub fn radian_to_degree(val: f64) -> i32 {
+    (val * 180.0 / std::f64::consts::PI) as i32
 }
 
 pub fn value_to_inhg(val: f64) -> i32 {
