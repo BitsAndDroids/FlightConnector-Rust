@@ -5,7 +5,7 @@ interface InfoWindowProps {
 }
 const InfoWindow = (props: InfoWindowProps) => {
   const openDocs = () => {
-    new WebviewWindow("docs", { url: props.docs_url });
+    new WebviewWindow("docs", { url: props.docs_url, title: "docs" });
   };
 
   return (
