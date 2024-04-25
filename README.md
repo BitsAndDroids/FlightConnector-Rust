@@ -4,6 +4,8 @@ This is a rewrite of the original connector written in C++.
 The original repo can be found at:
 [https://github.com/BitsAndDroids/Bits-and-Droids-flight-connector](https://github.com/BitsAndDroids/Bits-and-Droids-flight-connector)
 
+![image](https://github.com/BitsAndDroids/FlightConnector-Rust/assets/77780263/f932f6ed-90a4-4802-972f-a3f82b851962)
+
 ## Documentation
 
 The documentation can be found in the open-source docs [Flightconnector Docs book](https://bitsanddroids.github.io/FlightConnector-Rust/).
