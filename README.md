@@ -11,8 +11,17 @@ The original repo can be found at:
 The documentation can be found in the open-source docs [Flightconnector Docs book](https://bitsanddroids.github.io/FlightConnector-Rust/).
 
 The documentation is made using [mdbooks](https://rust-lang.github.io/mdBook/). You can find the documentation files in the connector-docs folder if you want to contribute.
+
+## How does it work
+The connector makes use of serial communication to communicate between your microcontrollers. 
+### Outputs
 ![image](https://github.com/BitsAndDroids/FlightConnector-Rust/assets/77780263/515a7e2f-1f8c-4775-bc03-2059d094dafb)
+The connector receives commands from Microsoft Flight Simulator 2020 and translates these commands to serial messages. These messages are formatted as "{ID} {VALUE}". Your able to write your own translation layer to decode the messages on your microcontrollers. Your also able to utilize the Flight sim library to do the heavy lifting for you. 
+### Inputs
 ![image](https://github.com/BitsAndDroids/FlightConnector-Rust/assets/77780263/c61f46c2-cb8b-461d-8fed-7b629e33c7ec)
+The connector also listens to inputs from your microcontrollers. This makes use of an ID system to translate incomming messages to simulation events. The flight sim library can be used to simplify this process.  
+## Library 
+The library can be installed from the official Arduino IDE. You can also download the library from the [Github repo](https://github.com/BitsAndDroids/BitsAndDroidsFlightSimLibrary).
 
 ## Install
 
