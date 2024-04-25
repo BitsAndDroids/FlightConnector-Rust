@@ -13,7 +13,7 @@ export const PresetList = (props: PresetListProps) => {
   };
 
   return (
-    <div className="bg-white rounded-md p-4 w-80">
+    <div className="bg-white rounded-md p-4 w-80 h-fit">
       {props.presets.map((preset) => (
         <div key={preset.id}>
           <Row
