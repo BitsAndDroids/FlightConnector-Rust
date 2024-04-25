@@ -1,6 +1,6 @@
-import { SubmenuItem } from "./SubmenuItem";
 import { MenuItem } from "./MenuItem";
 import { SubMenu } from "./SubMenu";
+import { SubmenuItem } from "./SubmenuItem";
 
 interface MenuItemProps {
   text: string;

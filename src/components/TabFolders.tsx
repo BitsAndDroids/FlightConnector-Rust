@@ -1,9 +1,9 @@
 "use client";
 import { Category } from "@/model/Category";
-import TabHeader from "./TabHeader";
+import { Output } from "@/model/Output";
 import { useState } from "react";
 import CategoryCheckboxes from "./CategoryCheckboxes";
-import { Output } from "@/model/Output";
+import TabHeader from "./TabHeader";
 
 interface TabFoldersProps {
   outputs: Output[];

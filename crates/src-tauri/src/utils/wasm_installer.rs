@@ -6,7 +6,6 @@ use tauri::Manager;
 pub fn install_wasm(app: tauri::AppHandle, path: String) {
     let exe_path = std::env::current_dir().unwrap();
     let wasm_path = exe_path.join("wasm_module");
-    println!("exe_path: {:?}", wasm_path);
     let mut files = return_files_in_dir(wasm_path.to_str().unwrap());
     for file in files {
         let file_path = file.path().clone();
@@ -19,8 +18,6 @@ pub fn install_wasm(app: tauri::AppHandle, path: String) {
         }
         std::fs::copy(file.path(), dest_path);
     }
-
-    println!("Installing wasm in dir: {}", path);
 }
 
 fn return_files_in_dir(dir: &str) -> Vec<std::fs::DirEntry> {
@@ -37,4 +34,11 @@ fn return_files_in_dir(dir: &str) -> Vec<std::fs::DirEntry> {
         files.push(entry);
     }
     files
+}
+
+fn check_if_path_ends_in_community(path: &str) -> bool {
+    let path = Path::new(path);
+    let mut path = path.iter();
+    let last = path.last().unwrap();
+    last.to_str().unwrap() == "community"
 }

@@ -1,11 +1,11 @@
-import { Titlebar } from "@/components/nav/titlebar";
-import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
-import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
-import { FileDialog } from "../FileDialog";
-import { useState } from "react";
-import { invoke } from "@tauri-apps/api/core";
+import { Titlebar } from "@/components/nav/titlebar";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
+import { invoke } from "@tauri-apps/api/core";
+import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import { FileDialog } from "../FileDialog";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = new ConnectorSettingsHandler();
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);

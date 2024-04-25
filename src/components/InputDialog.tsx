@@ -1,5 +1,4 @@
-import { ReactNode, useState } from "react";
-import React from "react";
+import React, { ReactNode, useState } from "react";
 
 interface InputDialogProps {
   message: string;

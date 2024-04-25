@@ -56,7 +56,6 @@ fn stop_simconnect_connection() {
 
 #[tauri::command]
 async fn get_com_ports() -> Vec<String> {
-    // TODO This
     let ports = match serialport::available_ports() {
         Ok(ports) => ports,
         Err(_) => Vec::new(),

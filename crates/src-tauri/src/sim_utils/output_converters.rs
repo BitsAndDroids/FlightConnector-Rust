@@ -1,3 +1,7 @@
+#[cfg(test)]
+#[path = "output_converters_tests.rs"]
+mod output_converters_tests;
+
 pub fn radian_to_degree(val: f64) -> i32 {
     (val * 180.0 / std::f64::consts::PI) as i32
 }
