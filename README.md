@@ -11,6 +11,8 @@ The original repo can be found at:
 The documentation can be found in the open-source docs [Flightconnector Docs book](https://bitsanddroids.github.io/FlightConnector-Rust/).
 
 The documentation is made using [mdbooks](https://rust-lang.github.io/mdBook/). You can find the documentation files in the connector-docs folder if you want to contribute.
+![image](https://github.com/BitsAndDroids/FlightConnector-Rust/assets/77780263/515a7e2f-1f8c-4775-bc03-2059d094dafb)
+![image](https://github.com/BitsAndDroids/FlightConnector-Rust/assets/77780263/c61f46c2-cb8b-461d-8fed-7b629e33c7ec)
 
 ## Install
 
