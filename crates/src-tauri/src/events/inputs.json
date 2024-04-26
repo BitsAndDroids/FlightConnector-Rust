@@ -17,6 +17,26 @@
     },
     {
       "input_type": 0,
+      "event": "XPNDR_IDENT_OFF",
+      "input_id": 103
+    },
+    {
+      "input_type": 0,
+      "event": "XPNDR_IDENT_ON",
+      "input_id": 104
+    },
+    {
+      "input_type": 0,
+      "event": "XPNDR_IDENT_TOGGLE",
+      "input_id": 105
+    },
+    {
+      "input_type": 2,
+      "event": "XPNDR_SET",
+      "input_id": 106
+    },
+    {
+      "input_type": 0,
       "event": "COM_RADIO_WHOLE_DEC",
       "input_id": 111
     },
