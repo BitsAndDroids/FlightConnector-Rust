@@ -24,9 +24,11 @@ impl WASMRegistry {
             .filter(|event| event.action_type == "output")
             .collect();
         self.wasm_inputs = wasm_events
+            .clone()
             .into_iter()
             .filter(|event| event.action_type == "input")
             .collect();
+        println!("Input event count: {}", self.wasm_inputs.len());
     }
 
     pub fn get_wasm_output_by_id(&self, output_id: u32) -> Option<&WasmEvent> {
@@ -37,5 +39,9 @@ impl WASMRegistry {
 
     pub fn get_wasm_outputs(&self) -> &Vec<WasmEvent> {
         &self.wasm_outpus
+    }
+
+    pub fn get_wasm_inputs(&self) -> &Vec<WasmEvent> {
+        &self.wasm_inputs
     }
 }

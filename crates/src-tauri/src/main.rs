@@ -85,7 +85,6 @@ async fn get_outputs() -> Vec<Output> {
     let mut output_registry = output_registry::OutputRegistry::new();
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     output_registry.load_outputs();
-    wasm_registry.load_wasm();
 
     //merge the two outputs from the registries
     //using the FormatOutput trait
