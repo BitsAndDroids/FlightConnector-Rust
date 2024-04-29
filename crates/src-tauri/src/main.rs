@@ -18,6 +18,7 @@ use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
 use utils::wasm_installer::install_wasm;
+use events::get_wasm_events;
 
 use std::thread;
 
@@ -85,6 +86,7 @@ async fn get_outputs() -> Vec<Output> {
     let mut output_registry = output_registry::OutputRegistry::new();
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     output_registry.load_outputs();
+    wasm_registry.load_wasm();
 
     //merge the two outputs from the registries
     //using the FormatOutput trait
@@ -131,7 +133,8 @@ fn main() {
             get_outputs,
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
-            install_wasm
+            install_wasm,
+            get_wasm_events
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
