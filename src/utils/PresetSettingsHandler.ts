@@ -14,6 +14,10 @@ export class PresetSettingsHandler {
     this.store.set(preset.id, preset);
     this.store.save();
   }
+  async deletePreset(id: string): Promise<void> {
+    this.store.delete(id);
+    this.store.save();
+  }
   async addPreset(preset: Preset): Promise<void> {
     this.store.set(preset.id, preset);
     this.store.save();

@@ -16,5 +16,18 @@ If you want to create a new preset, press the Create new preset button. This pro
 
 You can edit your presets by changing the run configuration by adding and removing rows, changing devices, and altering the bundles. Remember to save your changes before changing the preset you’ve equipped.
 
-> These changes will only be saved once you press the save preset button.
+> These changes will automatically be saved when you make changes
 
+## Delete a preset
+
+You're able to remove a preset from the manage preset page.
+
+- Click on settings in the main menu
+- Navigate to the Manage presets page
+- Click on the trashcan to delete the preset
+
+> You're not able to delete the default preset
+
+## Edit preset name
+
+> This is a placeholder. This functionality isn't finished yet.

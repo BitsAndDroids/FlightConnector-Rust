@@ -36,6 +36,11 @@ export const MainMenu: React.FC = () => {
       action: () => openWindow("settings", "options/settings"),
       active: true,
     },
+    {
+      title: "Manage presets",
+      route: "/options/preset-manager",
+      active: true,
+    },
     { title: "Manage presets", route: "/options/settings/presets" },
     {
       title: "Install WASM",
@@ -95,7 +100,7 @@ export const MainMenu: React.FC = () => {
               href={"/options/outputs"}
               subMenuItems={outputMenuItems}
             />
-            <button className="mx-2 mt-2" onClick={() => openLogWindow()}>
+            <button className="mx-2 " onClick={() => openLogWindow()}>
               Logs
             </button>
           </nav>

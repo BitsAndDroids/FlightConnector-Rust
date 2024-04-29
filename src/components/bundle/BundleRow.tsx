@@ -1,5 +1,6 @@
 // import Image from "next/image";
 import { Bundle } from "@/model/Bundle";
+import { Row } from "../elements/Row";
 
 interface BundleRowProps {
   bundle: Bundle;
@@ -15,35 +16,14 @@ const BundleRow = ({
   deleteBundle,
 }: BundleRowProps) => {
   return (
-    <div
-      className="flex flex-row items-center justify-between mb-2 bg-white rounded-md p-1 px-3 drop-shadow"
-      key={bundle?.name}
-      onClick={() => {
-        setSelectedBundle(bundle);
-        console.log("set");
-      }}
-    >
-      <p className="">{bundle?.name}</p>
-      <div className="flex flex-row justify-between w-12">
-        <img
-          src={"/trashcan.svg"}
-          alt="info"
-          onClick={(e) => {
-            deleteBundle(bundle);
-            e.stopPropagation();
-          }}
-          className="cursor-pointer h-[16px]"
-        />
-        <img
-          src={"/edit.svg"}
-          alt="info"
-          onClick={() => {
-            setEditBundle(bundle);
-          }}
-          className="cursor-pointer h-[16px]"
-        />
-      </div>
-    </div>
+    <Row
+      id={bundle.name}
+      name={bundle.name}
+      object={bundle}
+      onDelete={deleteBundle}
+      onEdit={setEditBundle}
+      onClick={setSelectedBundle}
+    />
   );
 };
 

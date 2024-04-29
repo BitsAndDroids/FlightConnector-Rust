@@ -1,2272 +1,2292 @@
 {
   "inputs": [
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_MASTER_IGNITION_SWITCH",
       "input_id": 201
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "COM_RADIO_SET",
       "input_id": 100
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "COM2_RADIO_SET",
       "input_id": 102
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
+      "event": "XPNDR_IDENT_OFF",
+      "input_id": 103
+    },
+    {
+      "input_type": "trigger",
+      "event": "XPNDR_IDENT_ON",
+      "input_id": 104
+    },
+    {
+      "input_type": "trigger",
+      "event": "XPNDR_IDENT_TOGGLE",
+      "input_id": 105
+    },
+    {
+      "input_type": "set_value_com",
+      "event": "XPNDR_SET",
+      "input_id": 106
+    },
+    {
+      "input_type": "trigger",
       "event": "COM_RADIO_WHOLE_DEC",
       "input_id": 111
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM_RADIO_WHOLE_INC",
       "input_id": 112
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM2_RADIO_WHOLE_DEC",
       "input_id": 113
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM2_RADIO_WHOLE_INC",
       "input_id": 114
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM1_RADIO_SWAP",
       "input_id": 116
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM2_RADIO_SWAP",
       "input_id": 117
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV1_RADIO_SWAP",
       "input_id": 118
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV2_RADIO_SWAP",
       "input_id": 119
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM_RADIO_FRACT_DEC",
       "input_id": 124
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM_RADIO_FRACT_INC",
       "input_id": 125
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "COM_STBY_RADIO_SET",
       "input_id": 260
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM2_RADIO_FRACT_DEC",
       "input_id": 120
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM2_RADIO_FRACT_INC",
       "input_id": 121
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM_RADIO_FRACT_DEC_CARRY",
       "input_id": 126
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM_RADIO_FRACT_INC_CARRY",
       "input_id": 127
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM2_RADIO_FRACT_DEC_CARRY",
       "input_id": 122
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "COM2_RADIO_FRACT_INC_CARRY",
       "input_id": 123
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "COM2_STBY_RADIO_SET",
       "input_id": 261
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV1_RADIO_FRACT_INC",
       "input_id": 128
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV1_RADIO_FRACT_DEC",
       "input_id": 129
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV2_RADIO_FRACT_INC",
       "input_id": 130
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV2_RADIO_FRACT_DEC",
       "input_id": 131
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV1_RADIO_WHOLE_INC",
       "input_id": 132
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV1_RADIO_WHOLE_DEC",
       "input_id": 133
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV2_RADIO_WHOLE_INC",
       "input_id": 134
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "NAV2_RADIO_WHOLE_DEC",
       "input_id": 135
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_DME1_IDENT_ENABLE",
       "input_id": 136
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_DME1_IDENT_DISABLE",
       "input_id": 137
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "RADIO_SELECTED_DME1_IDENT_SET",
       "input_id": 138
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_DM1E_IDENT_TOGGLE",
       "input_id": 139
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_DME2_IDENT_ENABLE",
       "input_id": 140
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_DME2_IDENT_DISABLE",
       "input_id": 141
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "RADIO_SELECTED_DME2_IDENT_SET",
       "input_id": 142
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_DME2_IDENT_TOGGLE",
       "input_id": 143
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_DME",
       "input_id": 144
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_VOR1_IDENT_ENABLE",
       "input_id": 145
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_VOR1_IDENT_DISABLE",
       "input_id": 146
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "RADIO_SELECTED_VOR1_IDENT_SET",
       "input_id": 147
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_VOR1_IDENT_TOGGLE",
       "input_id": 148
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_VOR2_IDENT_ENABLE",
       "input_id": 149
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_VOR2_IDENT_DISABLE",
       "input_id": 150
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "RADIO_SELECTED_VOR2_IDENT_SET",
       "input_id": 151
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_VOR2_IDENT_TOGGLE",
       "input_id": 152
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_VOR",
       "input_id": 153
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "VOR1_OBI_DEC",
       "input_id": 154
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "VOR1_OBI_INC",
       "input_id": 155
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "VOR2_OBI_DEC",
       "input_id": 156
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "VOR2_OBI_INC",
       "input_id": 157
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_ADF_IDENT_ENABLE",
       "input_id": 158
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_ADF_IDENT_DISABLE",
       "input_id": 159
     },
     {
-      "input_type": 2,
+      "input_type": "set_value_com",
       "event": "RADIO_SELECTED_ADF_IDENT_SET",
       "input_id": 160
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_SELECTED_ADF_IDENT_TOGGLE",
       "input_id": 161
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_CARD_INC",
       "input_id": 162
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_CARD_DEC",
       "input_id": 163
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ADF_CARD_SET",
       "input_id": 164
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_100_INC",
       "input_id": 165
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_10_INC",
       "input_id": 166
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_1_INC",
       "input_id": 167
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_100_DEC",
       "input_id": 168
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_10_DEC",
       "input_id": 169
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF_1_DEC",
       "input_id": 170
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ADF_COMPLETE_SET",
       "input_id": 179
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF1_RADIO_TENTHS_DEC",
       "input_id": 390
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF1_RADIO_TENTHS_INC",
       "input_id": 391
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF1_WHOLE_INC",
       "input_id": 180
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF1_WHOLE_DEC",
       "input_id": 181
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_100_INC",
       "input_id": 182
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_10_INC",
       "input_id": 183
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_1_INC",
       "input_id": 184
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_RADIO_TENTHS_INC",
       "input_id": 185
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_100_DEC",
       "input_id": 186
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_10_DEC",
       "input_id": 187
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_1_DEC",
       "input_id": 188
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_RADIO_TENTHS_DEC",
       "input_id": 189
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_WHOLE_INC",
       "input_id": 190
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_WHOLE_DEC",
       "input_id": 191
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_FRACT_DEC_CARRY",
       "input_id": 192
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ADF2_FRACT_INC_CARRY",
       "input_id": 193
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ADF2_COMPLETE_SET",
       "input_id": 194
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_ADF2_IDENT_DISABLE",
       "input_id": 195
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_ADF2_IDENT_ENABLE",
       "input_id": 196
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RADIO_ADF2_IDENT_TOGGLE",
       "input_id": 197
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "RADIO_ADF2_IDENT_SET",
       "input_id": 200
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "adf_frqTransfert",
       "input_id": 201
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_1000_INC",
       "input_id": 171
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_100_INC",
       "input_id": 172
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_10_INC",
       "input_id": 173
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_1_INC",
       "input_id": 174
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_1000_DEC",
       "input_id": 175
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_100_DEC",
       "input_id": 176
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_10_DEC",
       "input_id": 177
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "XPNDR_1_DEC",
       "input_id": 178
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "XPNDR_SET",
       "input_id": 201
     },
     {
-      "input_type": 4,
+      "input_type": "set_value_bool",
       "event": "AVIONICS_MASTER_1_SET",
       "input_id": 402
     },
     {
-      "input_type": 5,
+      "input_type": "set_value_bool",
       "event": "AVIONICS_MASTER_1_SET",
       "input_id": 401
     },
     {
-      "input_type": 4,
+      "input_type": "set_value_bool",
       "event": "AVIONICS_MASTER_2_SET",
       "input_id": 404
     },
     {
-      "input_type": 5,
+      "input_type": "set_value_bool",
       "event": "AVIONICS_MASTER_2_SET",
       "input_id": 403
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "BAT_1_ON",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "BAT_2_ON",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "BAT_1_OFF",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "BAT_2_OFF",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "PARKING_BRAKES",
       "input_id": 420
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_MASTER_1_BATTERY",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_MASTER_2_BATTERY",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_EXTERNAL_POWER",
       "input_id": 408
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_MASTER_BATTERY",
       "input_id": 405
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_MASTER_BATTERY_ALTERNATOR",
       "input_id": 407
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "G1000_MFD_ZOOMIN_BUTTON",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "G1000_MFD_ZOOMOUT_BUTTON",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MASTER",
       "input_id": 301
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_HEADING_HOLD",
       "input_id": 302
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_ALTITUDE_HOLD",
       "input_id": 303
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ATT_HOLD_ON",
       "input_id": 304
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_LOC_HOLD_ON",
       "input_id": 305
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_APR_HOLD_ON",
       "input_id": 306
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_HDG_HOLD_ON",
       "input_id": 307
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ALT_HOLD_ON",
       "input_id": 308
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_WING_LEVELER_ON",
       "input_id": 309
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_BC_HOLD_ON",
       "input_id": 310
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_NAV1_HOLD_ON",
       "input_id": 311
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ATT_HOLD_OFF",
       "input_id": 312
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_LOC_HOLD_OFF",
       "input_id": 313
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_APR_HOLD_OFF",
       "input_id": 314
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_HDG_HOLD_OFF",
       "input_id": 315
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ALT_HOLD_OFF",
       "input_id": 316
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_WING_LEVELER_OFF",
       "input_id": 317
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_BC_HOLD_OFF",
       "input_id": 318
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_NAV1_HOLD_OFF",
       "input_id": 319
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_AIRSPEED_HOLD",
       "input_id": 320
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_SPEED_HOLD",
       "input_id": 321
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ALT_VAR_INC",
       "input_id": 322
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ALT_VAR_DEC",
       "input_id": 323
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_VS_VAR_INC",
       "input_id": 324
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_VS_VAR_DEC",
       "input_id": 325
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_SPD_VAR_INC",
       "input_id": 326
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_SPD_VAR_DEC",
       "input_id": 327
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_MACH_HOLD",
       "input_id": 328
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MACH_VAR_INC",
       "input_id": 329
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MACH_VAR_DEC",
       "input_id": 330
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MACH_HOLD",
       "input_id": 331
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_ALT_VAR_SET_METRIC",
       "input_id": 332
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_VS_VAR_SET_ENGLISH",
       "input_id": 333
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_SPD_VAR_SET",
       "input_id": 334
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_MACH_VAR_SET",
       "input_id": 335
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_AIRSPEED_ON",
       "input_id": 336
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_AIRSPEED_OFF",
       "input_id": 337
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_AIRSPEED_SET",
       "input_id": 338
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MACH_ON",
       "input_id": 339
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MACH_OFF",
       "input_id": 340
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_MACH_SET",
       "input_id": 341
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_ALTITUDE_ON",
       "input_id": 342
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_ALTITUDE_OFF",
       "input_id": 343
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_PANEL_ALTITUDE_SET",
       "input_id": 345
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_HEADING_ON",
       "input_id": 346
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_HEADING_OFF",
       "input_id": 347
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_PANEL_HEADING_SET",
       "input_id": 348
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_MACH_ON",
       "input_id": 349
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_MACH_OFF",
       "input_id": 350
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_PANEL_MACH_SET",
       "input_id": 351
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_SPEED_ON",
       "input_id": 352
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_SPEED_OFF",
       "input_id": 353
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_PANEL_SPEED_SET",
       "input_id": 354
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_ALT_VAR_SET_ENGLISH",
       "input_id": 355
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_VS_VAR_SET_METRIC",
       "input_id": 356
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_SPEED_HOLD_TOGGLE",
       "input_id": 357
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PANEL_MACH_HOLD_TOGGLE",
       "input_id": 358
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AP_NAV_SELECT_SET",
       "input_id": 359
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PITCH_REF_INC_UP",
       "input_id": 360
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PITCH_REF_INC_DN",
       "input_id": 361
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_PITCH_REF_SELECT",
       "input_id": 362
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ATT_HOLD",
       "input_id": 304
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_LOC_HOLD",
       "input_id": 364
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_APR_HOLD",
       "input_id": 365
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_HDG_HOLD",
       "input_id": 366
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_ALT_HOLD",
       "input_id": 367
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_WING_LEVELER",
       "input_id": 368
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_BC_HOLD",
       "input_id": 369
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_NAV1_HOLD",
       "input_id": 370
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "HEADING_BUG_INC",
       "input_id": 371
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "HEADING_BUG_DEC",
       "input_id": 372
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FLIGHT_DIRECTOR",
       "input_id": 373
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_VS_HOLD",
       "input_id": 374
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "KOHLSMAN_INC",
       "input_id": 375
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "KOHLSMAN_DEC",
       "input_id": 376
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AUTO_THROTTLE_ARM",
       "input_id": 378
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AUTO_THROTTLE_TO_GA",
       "input_id": 379
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FLAPS_UP",
       "input_id": 501
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FLAPS_1",
       "input_id": 502
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FLAPS_2",
       "input_id": 503
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FLAPS_3",
       "input_id": 504
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FLAPS_DOWN",
       "input_id": 505
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FLAPS_INCR",
       "input_id": 506
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FLAPS_DECR",
       "input_id": 507
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "AXIS_FLAPS_SET",
       "input_id": 0
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "PITOT_HEAT_TOGGLE",
       "input_id": 508
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "PITOT_HEAT_ON",
       "input_id": 509
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "PITOT_HEAT_OFF",
       "input_id": 510
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO",
       "input_id": 511
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO_DECR",
       "input_id": 512
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO_INCR",
       "input_id": 513
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO1_OFF",
       "input_id": 514
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO1_RIGHT",
       "input_id": 515
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO1_LEFT",
       "input_id": 516
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO1_BOTH",
       "input_id": 517
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO1_START",
       "input_id": 518
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO2_OFF",
       "input_id": 519
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO2_RIGHT",
       "input_id": 520
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO2_LEFT",
       "input_id": 521
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO2_BOTH",
       "input_id": 522
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO2_START",
       "input_id": 523
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO3_OFF",
       "input_id": 524
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO3_RIGHT",
       "input_id": 525
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO3_LEFT",
       "input_id": 526
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO3_BOTH",
       "input_id": 527
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO3_START",
       "input_id": 528
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO4_OFF",
       "input_id": 529
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO4_RIGHT",
       "input_id": 530
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO4_LEFT",
       "input_id": 531
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO4_BOTH",
       "input_id": 532
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO4_START",
       "input_id": 533
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO_OFF",
       "input_id": 534
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO_RIGHT",
       "input_id": 535
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO_LEFT",
       "input_id": 536
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO_BOTH",
       "input_id": 537
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO_START",
       "input_id": 538
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO1_DECR",
       "input_id": 539
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO1_INCR",
       "input_id": 540
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO2_DECR",
       "input_id": 541
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO2_INCR",
       "input_id": 542
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO3_DECR",
       "input_id": 543
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO3_INCR",
       "input_id": 544
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO4_DECR",
       "input_id": 545
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "MAGNETO4_INCR",
       "input_id": 546
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "MAGNETO_SET",
       "input_id": 547
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "MAGNETO1_SET",
       "input_id": 548
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "MAGNETO2_SET",
       "input_id": 549
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "MAGNETO3_SET",
       "input_id": 550
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "MAGNETO4_SET",
       "input_id": 551
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ANTI_ICE_ON",
       "input_id": 552
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ANTI_ICE_OFF",
       "input_id": 553
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ANTI_ICE_SET",
       "input_id": 554
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ANTI_ICE_TOGGLE",
       "input_id": 555
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ANTI_ICE_TOGGLE_ENG1",
       "input_id": 556
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ANTI_ICE_TOGGLE_ENG2",
       "input_id": 557
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ANTI_ICE_TOGGLE_ENG3",
       "input_id": 558
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ANTI_ICE_TOGGLE_ENG4",
       "input_id": 559
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ANTI_ICE_SET_ENG1",
       "input_id": 560
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ANTI_ICE_SET_ENG2",
       "input_id": 561
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ANTI_ICE_SET_ENG3",
       "input_id": 562
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "ANTI_ICE_SET_ENG4",
       "input_id": 563
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FUEL_VALVE_ALL",
       "input_id": 564
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FUEL_VALVE_ENG1",
       "input_id": 565
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FUEL_VALVE_ENG2",
       "input_id": 566
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FUEL_VALVE_ENG3",
       "input_id": 567
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FUEL_VALVE_ENG4",
       "input_id": 568
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_OFF",
       "input_id": 569
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_ALL",
       "input_id": 570
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_LEFT",
       "input_id": 571
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_RIGHT",
       "input_id": 572
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_LEFT_AUX",
       "input_id": 573
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_RIGHT_AUX",
       "input_id": 574
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_CENTER",
       "input_id": 575
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "FUEL_SELECTOR_SET",
       "input_id": 576
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_OFF",
       "input_id": 577
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_ALL",
       "input_id": 578
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_LEFT",
       "input_id": 579
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_RIGHT",
       "input_id": 580
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_LEFT_AUX",
       "input_id": 581
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_RIGHT_AUX",
       "input_id": 582
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_CENTER",
       "input_id": 583
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "FUEL_SELECTOR_2_SET",
       "input_id": 584
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_OFF",
       "input_id": 585
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_ALL",
       "input_id": 586
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_LEFT",
       "input_id": 587
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_RIGHT",
       "input_id": 588
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_LEFT_AUX",
       "input_id": 589
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_RIGHT_AUX",
       "input_id": 590
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_CENTER",
       "input_id": 591
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "FUEL_SELECTOR_3_SET",
       "input_id": 592
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_OFF",
       "input_id": 593
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_ALL",
       "input_id": 594
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_LEFT",
       "input_id": 595
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_RIGHT",
       "input_id": 596
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_LEFT_AUX",
       "input_id": 597
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_RIGHT_AUX",
       "input_id": 598
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_CENTER",
       "input_id": 599
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "FUEL_SELECTOR_4_SET",
       "input_id": 600
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "CROSS_FEED_OPEN",
       "input_id": 601
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "CROSS_FEED_TOGGLE",
       "input_id": 602
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "CROSS_FEED_OFF",
       "input_id": 603
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "G1000_PFD_ZOOMIN_BUTTON",
       "input_id": 251
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "G1000_PFD_ZOOMOUT_BUTTON",
       "input_id": 250
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ELEV_TRIM_DN",
       "input_id": 604
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "DOWN",
       "input_id": 605
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ELEV_TRIM_UP",
       "input_id": 606
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ELEV_UP",
       "input_id": 607
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SPOILERS_ARM_TOGGLE",
       "input_id": 608
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SPOILERS_ON",
       "input_id": 609
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SPOILERS_OFF",
       "input_id": 610
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SPOILERS_ARM_ON",
       "input_id": 611
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SPOILERS_ARM_OFF",
       "input_id": 612
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AILERON_TRIM_LEFT",
       "input_id": 613
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AILERON_TRIM_RIGHT",
       "input_id": 614
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RUDDER_TRIM_LEFT",
       "input_id": 615
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "RUDDER_TRIM_RIGHT",
       "input_id": 616
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "COWLFLAP1_SET",
       "input_id": 617
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "COWLFLAP2_SET",
       "input_id": 618
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "COWLFLAP3_SET",
       "input_id": 619
     },
     {
-      "input_type": 1,
+      "input_type": "set_value",
       "event": "COWLFLAP4_SET",
       "input_id": 620
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "INC_COWL_FLAPS",
       "input_id": 621
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "DEC_COWL_FLAPS",
       "input_id": 622
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "DEC_COWL_FLAPS1",
       "input_id": 624
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "INC_COWL_FLAPS1",
       "input_id": 623
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "DEC_COWL_FLAPS2",
       "input_id": 626
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "DEC_COWL_FLAPS3",
       "input_id": 628
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "DEC_COWL_FLAPS4",
       "input_id": 630
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "INC_COWL_FLAPS2",
       "input_id": 625
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "INC_COWL_FLAPS3",
       "input_id": 627
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "INC_COWL_FLAPS4",
       "input_id": 629
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_PUMP",
       "input_id": 631
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ELECT_FUEL_PUMP",
       "input_id": 632
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ELECT_FUEL_PUMP1",
       "input_id": 634
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ELECT_FUEL_PUMP2",
       "input_id": 636
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ELECT_FUEL_PUMP3",
       "input_id": 638
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ELECT_FUEL_PUMP4",
       "input_id": 640
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ENGINE_PRIMER",
       "input_id": 637
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_PRIMER",
       "input_id": 638
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_PRIMER1",
       "input_id": 639
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_PRIMER2",
       "input_id": 640
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_PRIMER3",
       "input_id": 641
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_PRIMER4",
       "input_id": 642
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FEATHER_SWITCHES",
       "input_id": 643
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FEATHER_SWITCH_1",
       "input_id": 644
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FEATHER_SWITCH_2",
       "input_id": 645
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FEATHER_SWITCH_3",
       "input_id": 646
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_FEATHER_SWITCH_4",
       "input_id": 647
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_PROPELLER_SYNC",
       "input_id": 648
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_AUTOFEATHER_ARM",
       "input_id": 649
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_AFTERBURNER",
       "input_id": 650
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_AFTERBURNER1",
       "input_id": 651
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_AFTERBURNER2",
       "input_id": 652
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_AFTERBURNER3",
       "input_id": 653
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_AFTERBURNER4",
       "input_id": 654
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ENGINE",
       "input_id": 655
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SPOILERS_TOGGLE",
       "input_id": 656
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_STARTER1",
       "input_id": 657
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_STARTER2",
       "input_id": 658
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_STARTER3",
       "input_id": 659
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_STARTER4",
       "input_id": 660
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ALL_STARTERS",
       "input_id": 661
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ENGINE_AUTO_START",
       "input_id": 662
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ENGINE_AUTO_SHUTDOWN",
       "input_id": 663
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_LEFT_MAIN",
       "input_id": 664
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_LEFT_MAIN",
       "input_id": 665
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_LEFT_MAIN",
       "input_id": 666
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_LEFT_MAIN",
       "input_id": 667
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_RIGHT_MAIN",
       "input_id": 668
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_2_RIGHT_MAIN",
       "input_id": 669
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_3_RIGHT_MAIN",
       "input_id": 670
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "FUEL_SELECTOR_4_RIGHT_MAIN",
       "input_id": 671
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "APU_STARTER",
       "input_id": 672
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "APU_OFF_SWITCH",
       "input_id": 673
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "APU_GENERATOR_SWITCH_TOGGLE",
       "input_id": 674
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "CABIN_NO_SMOKING_ALERT_SWITCH_TOGGLE",
       "input_id": 675
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "STROBES_TOGGLE",
       "input_id": 677
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE",
       "input_id": 676
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ALL_LIGHTS_TOGGLE",
       "input_id": 678
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "PANEL_LIGHTS_TOGGLE",
       "input_id": 679
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHTS_TOGGLE",
       "input_id": 680
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHT_UP",
       "input_id": 681
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHT_DOWN",
       "input_id": 682
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHT_LEFT",
       "input_id": 683
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHT_RIGHT",
       "input_id": 684
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHT_HOME",
       "input_id": 685
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "STROBES_ON",
       "input_id": 686
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "STROBES_OFF",
       "input_id": 687
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "PANEL_LIGHTS_ON",
       "input_id": 688
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "PANEL_LIGHTS_OFF",
       "input_id": 689
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHTS_ON",
       "input_id": 690
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "LANDING_LIGHTS_OFF",
       "input_id": 691
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_BEACON_LIGHTS",
       "input_id": 692
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_TAXI_LIGHTS",
       "input_id": 693
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_LOGO_LIGHTS",
       "input_id": 694
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_RECOGNITION_LIGHTS",
       "input_id": 695
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_WING_LIGHTS",
       "input_id": 696
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_NAV_LIGHTS",
       "input_id": 697
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_CABIN_LIGHTS",
       "input_id": 698
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GEAR_UP",
       "input_id": 699
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GEAR_DOWN",
       "input_id": 700
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_STRUCTURAL_DEICE",
       "input_id": 701
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_PROPELLER_DEICE",
       "input_id": 702
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ALTERNATOR1",
       "input_id": 703
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ALTERNATOR2",
       "input_id": 704
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ALTERNATOR3",
       "input_id": 705
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_ALTERNATOR4",
       "input_id": 706
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC",
       "input_id": 707
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_1",
       "input_id": 708
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_2",
       "input_id": 709
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_3",
       "input_id": 710
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_4",
       "input_id": 711
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_5",
       "input_id": 712
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_6",
       "input_id": 713
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_7",
       "input_id": 714
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_8",
       "input_id": 715
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_9",
       "input_id": 716
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "ATC_MENU_0",
       "input_id": 717
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT1_INC",
       "input_id": 718
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT1_DEC",
       "input_id": 719
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT2_INC",
       "input_id": 720
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT2_DEC",
       "input_id": 721
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT3_INC",
       "input_id": 722
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT3_DEC",
       "input_id": 723
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT4_INC",
       "input_id": 724
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT4_DEC",
       "input_id": 725
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT_INC",
       "input_id": 726
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "EGT_DEC",
       "input_id": 727
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TOGGLE_GPS_DRIVES_NAV1",
       "input_id": 728
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_POWER_BUTTON",
       "input_id": 729
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_NEAREST_BUTTON",
       "input_id": 730
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_OBS_BUTTON",
       "input_id": 731
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_MSG_BUTTON",
       "input_id": 732
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_MSG_BUTTON_DOWN",
       "input_id": 733
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_MSG_BUTTON_UP",
       "input_id": 734
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_FLIGHTPLAN_BUTTON",
       "input_id": 735
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_TERRAIN_BUTTON",
       "input_id": 736
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_PROCEDURE_BUTTON",
       "input_id": 737
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_ZOOMIN_BUTTON",
       "input_id": 738
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_ZOOMOUT_BUTTON",
       "input_id": 739
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_DIRECTTO_BUTTON",
       "input_id": 740
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_MENU_BUTTON",
       "input_id": 741
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_CLEAR_BUTTON",
       "input_id": 742
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_CLEAR_ALL_BUTTON",
       "input_id": 743
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_CLEAR_BUTTON_DOWN",
       "input_id": 744
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_CLEAR_BUTTON_UP",
       "input_id": 745
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_ENTER_BUTTON",
       "input_id": 746
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_CURSOR_BUTTON",
       "input_id": 747
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_GROUP_KNOB_INC",
       "input_id": 748
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_GROUP_KNOB_DEC",
       "input_id": 749
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_PAGE_KNOB_INC",
       "input_id": 750
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GPS_PAGE_KNOB_DEC",
       "input_id": 751
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "YAW_DAMPER_TOGGLE",
       "input_id": 752
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MAX_BANK_INC",
       "input_id": 803
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "AP_MAX_BANK_DEC",
       "input_id": 804
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GYRO_DRIFT_INC",
       "input_id": 805
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "GYRO_DRIFT_DEC",
       "input_id": 806
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TRUE_AIRSPEED_CAL_INC",
       "input_id": 807
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "TRUE_AIRSPEED_CAL_DEC",
       "input_id": 808
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "DECREASE_DECISION_HEIGHT",
       "input_id": 809
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "INCREASE_DECISION_HEIGHT",
       "input_id": 810
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SIM_PAUSE_ON",
       "input_id": 908
     },
     {
-      "input_type": 0,
+      "input_type": "trigger",
       "event": "SIM_PAUSE_OFF",
       "input_id": 909
     }

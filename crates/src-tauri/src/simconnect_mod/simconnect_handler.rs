@@ -1,4 +1,5 @@
 use connector_types::types::connector_settings::ConnectorSettings;
+use connector_types::types::input::InputType;
 use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
 use log::{error, info};
@@ -25,6 +26,7 @@ use tauri_plugin_store::StoreCollection;
 use crate::events::input_registry::input_registry::InputRegistry;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
+use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::input::Input;
 use connector_types::types::output::Output;
@@ -224,24 +226,35 @@ impl SimconnectHandler {
         self.main_event_loop();
     }
 
-    fn send_input_to_simconnect(&mut self, command: DWORD) {
-        match self.input_registry.get_input(command) {
-            Some(input) => {
-                info!(target: "input", "Input found: {}, {}", input.input_id, input.event);
-                self.simconnect.transmit_client_event(
-                    0,
-                    input.input_id,
-                    0,
-                    simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
-                    simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
-                );
-            }
-            _ => {
-                info!(target: "input", "Input not found: {} sending to WASM", command);
+    fn send_input_to_simconnect(&mut self, command: DWORD, val: DWORD) {
+        let input = match self.input_registry.get_input(command) {
+            Some(input) => input,
+            None => {
+                error!(target: "input", "send to wasm,: {}", command);
                 wasm::send_wasm_data(&mut self.simconnect, command);
-                println!("Input not found: {}", command);
+                return;
             }
-        }
+        };
+        let value: DWORD = match input.input_type {
+            InputType::SetValueBool => {
+                if val == 0 {
+                    0
+                } else {
+                    1
+                }
+            }
+            InputType::SetValueCom => convert_dec_to_dcb(val),
+            InputType::SetValue => val,
+            InputType::Trigger => 0,
+        };
+        println!("Sending input to simconnect: {}, {}", command, value);
+        self.simconnect.transmit_client_event(
+            0,
+            command,
+            value,
+            simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
+            simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
+        );
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
@@ -323,11 +336,31 @@ impl SimconnectHandler {
                 Err(e) => eprintln!("{:?}", e),
             }
         }
-        for message in messages {
+        for message in &messages {
+            if message.chars().count() > 4 {
+                let id = match message[0..4].trim().parse::<DWORD>() {
+                    Ok(id) => id,
+                    Err(e) => {
+                        eprintln!("{:?}", e);
+                        continue;
+                    }
+                };
+                let value = match message[5..].trim().parse::<DWORD>() {
+                    Ok(value) => value,
+                    Err(e) => {
+                        eprintln!("{:?}", e);
+                        continue;
+                    }
+                };
+                println!("Message: {}, Value: {}", id, value);
+
+                self.send_input_to_simconnect(id, value);
+                continue;
+            }
             //parse message to u32 and send to simconnect
             match message.trim().parse::<DWORD>() {
                 Ok(dword) => {
-                    self.send_input_to_simconnect(dword);
+                    self.send_input_to_simconnect(dword, 0);
                 }
                 Err(e) => eprintln!("{:?}", e),
             }
@@ -416,10 +449,11 @@ impl SimconnectHandler {
     pub fn initialize_connection(&mut self) {
         self.simconnect.connect("Bits and Droids connector");
         self.input_registry.load_inputs();
+        self.wasm_registry.load_wasm();
         self.output_registry.load_outputs();
-        self.define_inputs(self.input_registry.get_inputs());
         wasm::register_wasm_data(&mut self.simconnect);
         self.define_outputs();
+        self.define_inputs();
         self.define_wasm_outputs();
     }
 
@@ -456,7 +490,8 @@ impl SimconnectHandler {
         );
     }
 
-    pub fn define_inputs(&self, inputs: &HashMap<u32, Input>) {
+    pub fn define_inputs(&mut self) {
+        let inputs = self.input_registry.get_inputs();
         for input in inputs {
             self.simconnect.map_client_event_to_sim_event(
                 *input.0 as SIMCONNECT_CLIENT_EVENT_ID,

@@ -6,13 +6,13 @@ interface SubMenuProps {
 }
 export const SubMenu = (props: SubMenuProps) => {
   return (
-    <div className="flex flex-col cursor-pointer z-50 drop-shadow p-2 bg-white absolute rounded-md -bottom-18 -right-30 w-[200px] text-black items-center">
+    <div className="flex flex-col absolute cursor-pointer z-[999] drop-shadow m-2 bg-white rounded-md -bottom-18 -right-30 w-[200px] text-black items-center">
       {props.items.length > 0 &&
         props.items.map((item) => {
           if (!item.active) {
             return (
-              <div className="hidden">
-                <SubmenuItem menuItem={item} />;
+              <div className="hidden w-full">
+                <SubmenuItem menuItem={item} />
               </div>
             );
           }
