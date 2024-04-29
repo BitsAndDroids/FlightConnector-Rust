@@ -6,6 +6,8 @@ import MenuLayout from "./app/MenuLayout";
 import OutputsPage from "./app/options/outputs/OutputsPage";
 import { LogPage } from "./app/logs/LogPage";
 import SettingsPage from "./app/options/settings/SettingsPage";
+import { PresetManagerPage } from "./app/options/settings/PresetManagerPage";
+import { CustomEvents } from "./app/options/outputs/custom/CustomEvents";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +19,19 @@ const router = createBrowserRouter([
     element: <MenuLayout />,
     children: [{ path: "/options/outputs", element: <OutputsPage /> }],
   },
+  {
+    path: "/options/outputs/custom",
+    element: <MenuLayout />,
+    children: [{ path: "/options/outputs/custom", element: <CustomEvents /> }],
+  },
+  {
+    path: "/options/preset-manager",
+    element: <MenuLayout />,
+    children: [
+      { path: "/options/preset-manager", element: <PresetManagerPage /> },
+    ],
+  },
+
   {
     path: "/options/settings",
     element: <SettingsPage />,

@@ -17,6 +17,7 @@ pub struct WasmEvent {
     pub max: f32,
     pub value: f64,
     pub offset: u32,
+    pub plane_or_category: String,
 }
 
 impl<'de> Deserialize<'de> for WasmEvent {
@@ -36,6 +37,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
             max: f32,
             value: Option<f64>,  // Use Option<u32> for fields that may be missing
             offset: Option<u32>, // Use Option<u32> for fields that may be missing
+            plane_or_category: String,
         }
 
         let helper = WasmEventHelper::deserialize(deserializer)?;
@@ -56,6 +58,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
             max: helper.max,
             value,
             offset,
+            plane_or_category: helper.plane_or_category,
         })
     }
 }

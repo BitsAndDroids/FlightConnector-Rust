@@ -463,6 +463,24 @@ impl SimconnectHandler {
                 input.1.event.as_str(),
             );
         }
+        let wasm_inputs = self.wasm_registry.get_wasm_inputs();
+        println!("Wasm inputs: {:?}", wasm_inputs);
+        for wasm_input in wasm_inputs {
+            let wasm_event = WasmEvent {
+                id: wasm_input.id,
+                action: wasm_input.action.to_string(),
+                action_text: "".to_string(),
+                action_type: "input".to_string(),
+                output_format: "".to_string(),
+                update_every: 0.0,
+                value: 0.0,
+                min: 0.0,
+                max: 0.0,
+                offset: 0,
+                plane_or_category: "".to_string(),
+            };
+            register_wasm_event(&mut self.simconnect, wasm_event);
+        }
     }
 
     pub fn define_wasm_outputs(&self) {
@@ -515,6 +533,7 @@ impl SimconnectHandler {
                 min: 0.0,
                 max: 0.0,
                 offset: (std::mem::size_of::<f64>() * items) as u32,
+                plane_or_category: "".to_string(),
             };
             register_wasm_event(&mut self.simconnect, wasm_event);
             self.simconnect.add_to_client_data_definition(

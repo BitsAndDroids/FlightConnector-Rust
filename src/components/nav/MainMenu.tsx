@@ -24,7 +24,11 @@ export const MainMenu: React.FC = () => {
   }
   const outputMenuItems = [
     { title: "Bundle settings", route: "/options/outputs", active: true },
-    { title: "Custom output settings", route: "/options/outputs/output" },
+    {
+      title: "Custom output settings",
+      route: "/options/outputs/custom",
+      active: true,
+    },
   ];
   const settingsMenuItems = [
     {
