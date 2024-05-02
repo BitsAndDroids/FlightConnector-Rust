@@ -32,12 +32,14 @@ export const Table = ({
                     {header}
                   </th>
                 ))}
-              <th
-                className="font-semibold text-gray-800 py-3.5 pl-6 pr-3 text-left"
-                key={`actions-col`}
-              >
-                Actions
-              </th>
+              {(deleteById || editById) && (
+                <th
+                  className="font-semibold text-gray-800 py-3.5 pl-6 pr-3 text-left"
+                  key={`actions-col`}
+                >
+                  Actions
+                </th>
+              )}
             </tr>
           </thead>
           <tbody className="">
