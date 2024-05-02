@@ -15,7 +15,7 @@ export const CustomEvents = () => {
     fetchWasmEvents();
   }, []);
   return (
-    <div>
+    <div className="mt-4 h-full">
       <WASMEventTable events={events} />
     </div>
   );
