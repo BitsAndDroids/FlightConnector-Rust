@@ -1,3 +1,4 @@
+import { Header } from "@/components/elements/header";
 import { WASMEventTable } from "@/components/wasm/WASMEventTable";
 import { WASMEvent } from "@/model/WASMEvent";
 import { invoke } from "@tauri-apps/api/core";
@@ -15,7 +16,8 @@ export const CustomEvents = () => {
     fetchWasmEvents();
   }, []);
   return (
-    <div className="mt-4 h-full">
+    <div className="h-[99%] overflow-y-hidden">
+      <Header level={1} title="Custom Events" />
       <WASMEventTable events={events} />
     </div>
   );

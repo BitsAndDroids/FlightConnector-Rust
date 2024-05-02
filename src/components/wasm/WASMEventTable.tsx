@@ -7,7 +7,7 @@ interface WASMEventTableProps {
 
 export const WASMEventTable = ({ events }: WASMEventTableProps) => {
   return (
-    <div className="h-full overflow-y-hidden">
+    <div className="h-full">
       <Table
         headers={[
           "id",
@@ -21,6 +21,12 @@ export const WASMEventTable = ({ events }: WASMEventTableProps) => {
           "plane_or_category",
         ]}
         elements={events}
+        deleteById={async (id: string) => {
+          console.log("delete", id);
+        }}
+        editById={async (id: string) => {
+          console.log("edit", id);
+        }}
       />
     </div>
   );
