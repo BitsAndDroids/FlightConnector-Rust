@@ -12,7 +12,7 @@ export const Table = ({
   headers,
 }: TableProps) => {
   return (
-    <div className="bg-white rounded-md h-[90%]">
+    <div className="bg-white rounded-md h-[88%]">
       <div className="overflow-auto h-full ml-4 mr-1">
         <table className="divide-y divide-gray-300 mt-2">
           <thead className="sticky top-0 bg-white z-10">
