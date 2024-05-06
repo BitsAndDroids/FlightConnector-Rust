@@ -16,8 +16,6 @@ export const WASMEventTable = ({ events }: WASMEventTableProps) => {
           "action_type",
           "output_format",
           "update_every",
-          "min",
-          "max",
           "plane_or_category",
         ]}
         elements={events}
