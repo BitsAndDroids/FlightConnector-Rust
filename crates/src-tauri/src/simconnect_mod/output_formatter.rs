@@ -9,6 +9,7 @@ mod output_formatter_tests;
 pub fn parse_output_based_on_type(val: f64, output: &Output) -> String {
     match output.output_type {
         OutputType::Boolean => sim_utils::output_converters::val_to_bool(val),
+        OutputType::Float => val.to_string(),
         OutputType::Integer => (val as i32).to_string(),
         OutputType::Seconds => (val as i32).to_string(),
         OutputType::Secondsaftermidnight => sim_utils::output_converters::seconds_to_time(val),
