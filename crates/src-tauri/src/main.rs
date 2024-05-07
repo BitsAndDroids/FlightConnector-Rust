@@ -4,16 +4,21 @@ use connector_types::types::output_format::FormatOutput;
 use connector_types::types::run_bundle::RunBundle;
 use events::output_registry;
 use lazy_static::lazy_static;
+use log::error;
 use once_cell::sync::OnceCell;
+use serde_json::json;
 use serialport::SerialPortType;
-use tauri::{AppHandle, Manager};
+use tauri::{AppHandle, Manager, Wry};
 use tauri_plugin_dialog::DialogExt;
+use tauri_plugin_store::{with_store, Store, StoreBuilder, StoreCollection};
 use tauri_plugin_updater::UpdaterExt;
 mod events;
 mod sim_utils;
 mod simconnect_mod;
 mod utils;
+use events::get_wasm_events;
 use std::ops::Deref;
+use std::path::PathBuf;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
@@ -81,10 +86,11 @@ async fn get_com_ports() -> Vec<String> {
 }
 
 #[tauri::command]
-async fn get_outputs() -> Vec<Output> {
+async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
     let mut output_registry = output_registry::OutputRegistry::new();
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     output_registry.load_outputs();
+    wasm_registry.load_wasm(app);
 
     //merge the two outputs from the registries
     //using the FormatOutput trait
@@ -111,6 +117,34 @@ fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle
     });
 }
 
+fn init_wasm_events_to_store(app: tauri::AppHandle) {
+    let stores = app.app_handle().state::<StoreCollection<Wry>>();
+    let mut store = StoreBuilder::new(".events.dat").build(app.clone());
+    store.save();
+    let path = PathBuf::from(".events.dat");
+
+    let handle_store = |store: &mut Store<Wry>| {
+        let keys = store.keys();
+        if keys.count() == 0 {
+            let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+            wasm_registry.load_default_events();
+            let events = wasm_registry.get_default_wasm_events();
+            for event in events {
+                store.insert(event.id.to_string().clone(), json!(event))?;
+            }
+            store.save()?;
+        }
+        Ok(())
+    };
+
+    match with_store(app.app_handle().clone(), stores, path, handle_store) {
+        Ok(_) => {}
+        Err(e) => {
+            error!("Failed to load connector settings: {:?}", e);
+        }
+    }
+}
+
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
@@ -131,7 +165,8 @@ fn main() {
             get_outputs,
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
-            install_wasm
+            install_wasm,
+            get_wasm_events
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
@@ -176,6 +211,7 @@ fn main() {
                     }
                 }
             });
+            init_wasm_events_to_store(app.handle().clone());
             APP_HANDLE.set(app.handle().clone()).unwrap();
             Ok(())
         })

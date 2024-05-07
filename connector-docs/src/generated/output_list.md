@@ -1,6 +1,12 @@
 # Outputs
 | Simvar | Metric | Update Every | Callback Text | ID | Output Type | Category |
 | --- | --- | --- | --- | --- | --- | --- |
+| AMBIENT PRESSURE | inHG | 0.01 | Ambient pressure | 650 | INHG | Environment |
+| AMBIENT TEMPERATURE | Celsius | 0.01 | Ambient temperature | 651 | Integer | Environment |
+| AMBIENT WIND VELOCITY | Knots | 0.01 | Ambient wind velocity | 652 | Integer | Environment |
+| AMBIENT WIND DIRECTION | Degrees | 0.01 | Ambient wind direction | 653 | Integer | Environment |
+| AMBIENT PRECIP RATE | millimeters of water | 0.01 | Ambient precipitation rate | 654 | Integer | Environment |
+| AMBIENT PRECIP STATE | Mask | 0.01 | Ambient precipitation state (2=none, 4=rain, 8=snow) | 655 | Integer | Environment |
 | FUEL SELECTED QUANTITY PERCENT | Percent Over 100 | 0.01 | Fuel quantity % | 275 | Percentage | Fuel |
 | AUTOPILOT AIRSPEED HOLD VAR | knots | 0 | AP airspeed var | 700 | Integer | Fuel |
 | FUEL TANK CENTER LEVEL | Percent Over 100 | 0.01 | Fuel tank center level | 234 | Percentage | Fuel |
@@ -43,7 +49,7 @@
 | FUEL TOTAL QUANTITY | Gallons | 1 | Fuel total quantity | 271 | Integer | Fuel |
 | PLANE ALT ABOVE GROUND | Feet | 100 | Feet above ground | 312 | Integer | Data |
 | SIM ON GROUND | Bool | 0 | (bool) on the ground | 323 | Boolean | Data |
-| VERTICAL SPEED | Feet per second | 10 | Vertical speed | 590 | Integer | Data |
+| VERTICAL SPEED | Feet per second | 10 | Vertical speed | 330 | Integer | Data |
 | TITLE | NULL | 0 | Plane name | 999 | Percentage | Data |
 | BAROMETER PRESSURE | Millibars | 10 | Barometer pressure | 632 | Integer | Instruments |
 | AIRSPEED INDICATED | Knots | 1 | Indicated airspeed | 326 | Integer | Instruments |

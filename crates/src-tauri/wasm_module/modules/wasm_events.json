@@ -8,7 +8,8 @@
       "output_format": "time",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 1001,
@@ -18,7 +19,8 @@
       "output_format": "time",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 753,
@@ -28,7 +30,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 754,
@@ -38,7 +41,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 755,
@@ -48,7 +52,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 756,
@@ -58,7 +63,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 757,
@@ -68,7 +74,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 758,
@@ -78,7 +85,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 759,
@@ -88,7 +96,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 760,
@@ -98,7 +107,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 761,
@@ -108,7 +118,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 762,
@@ -118,7 +129,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 763,
@@ -128,7 +140,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 764,
@@ -138,7 +151,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 765,
@@ -148,7 +162,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 766,
@@ -158,7 +173,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 767,
@@ -168,7 +184,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 768,
@@ -178,7 +195,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 769,
@@ -188,7 +206,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 770,
@@ -198,7 +217,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 771,
@@ -208,7 +228,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 772,
@@ -218,7 +239,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 773,
@@ -228,7 +250,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 774,
@@ -238,7 +261,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 775,
@@ -248,7 +272,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 776,
@@ -258,7 +283,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 777,
@@ -268,7 +294,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 778,
@@ -278,7 +305,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 779,
@@ -288,7 +316,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 780,
@@ -298,7 +327,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 781,
@@ -308,7 +338,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 782,
@@ -318,7 +349,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 783,
@@ -328,7 +360,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 784,
@@ -338,7 +371,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 785,
@@ -348,7 +382,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 786,
@@ -358,7 +393,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 787,
@@ -368,7 +404,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 788,
@@ -378,7 +415,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 789,
@@ -388,7 +426,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 790,
@@ -398,7 +437,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 791,
@@ -408,7 +448,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 792,
@@ -418,7 +459,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 793,
@@ -428,7 +470,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 794,
@@ -438,7 +481,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 795,
@@ -448,7 +492,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 796,
@@ -458,7 +503,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 797,
@@ -468,7 +514,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 798,
@@ -478,7 +525,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 799,
@@ -488,7 +536,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 800,
@@ -498,7 +547,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 801,
@@ -508,7 +558,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 802,
@@ -518,7 +569,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 811,
@@ -528,7 +580,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 812,
@@ -538,7 +591,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 813,
@@ -548,7 +602,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 814,
@@ -558,7 +613,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 815,
@@ -568,7 +624,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 816,
@@ -578,7 +635,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 817,
@@ -588,7 +646,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 818,
@@ -598,7 +657,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 819,
@@ -608,7 +668,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 820,
@@ -618,7 +679,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 821,
@@ -628,7 +690,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 822,
@@ -638,7 +701,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 823,
@@ -648,7 +712,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 824,
@@ -658,7 +723,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 825,
@@ -668,7 +734,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 826,
@@ -678,7 +745,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 827,
@@ -688,7 +756,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 828,
@@ -698,7 +767,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 829,
@@ -708,7 +778,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 830,
@@ -718,7 +789,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 831,
@@ -728,7 +800,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 832,
@@ -738,7 +811,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 833,
@@ -748,7 +822,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 834,
@@ -758,7 +833,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 835,
@@ -768,7 +844,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 836,
@@ -778,7 +855,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 837,
@@ -788,7 +866,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 838,
@@ -798,7 +877,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 839,
@@ -808,7 +888,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 840,
@@ -818,7 +899,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 841,
@@ -828,7 +910,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 842,
@@ -838,7 +921,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 843,
@@ -848,7 +932,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 844,
@@ -858,7 +943,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 845,
@@ -868,7 +954,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 846,
@@ -878,7 +965,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 847,
@@ -888,7 +976,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 848,
@@ -898,7 +987,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 849,
@@ -908,7 +998,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 850,
@@ -918,7 +1009,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 851,
@@ -928,7 +1020,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 852,
@@ -938,7 +1031,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 853,
@@ -948,7 +1042,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 854,
@@ -958,7 +1053,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 855,
@@ -968,7 +1064,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 856,
@@ -978,7 +1075,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 857,
@@ -988,7 +1086,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 858,
@@ -998,7 +1097,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 859,
@@ -1008,7 +1108,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 860,
@@ -1018,7 +1119,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 861,
@@ -1028,7 +1130,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 862,
@@ -1038,7 +1141,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 863,
@@ -1048,7 +1152,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 864,
@@ -1058,7 +1163,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 865,
@@ -1068,7 +1174,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 866,
@@ -1078,7 +1185,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 867,
@@ -1088,7 +1196,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 868,
@@ -1098,7 +1207,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 869,
@@ -1108,7 +1218,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 870,
@@ -1118,7 +1229,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 871,
@@ -1128,7 +1240,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 872,
@@ -1138,7 +1251,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 873,
@@ -1148,7 +1262,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 874,
@@ -1158,7 +1273,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 875,
@@ -1168,7 +1284,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 876,
@@ -1178,7 +1295,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 877,
@@ -1188,7 +1306,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 878,
@@ -1198,7 +1317,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 879,
@@ -1208,7 +1328,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 880,
@@ -1218,7 +1339,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 881,
@@ -1228,7 +1350,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 882,
@@ -1238,7 +1361,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 883,
@@ -1248,7 +1372,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 884,
@@ -1258,7 +1383,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 885,
@@ -1268,7 +1394,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 886,
@@ -1278,7 +1405,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 887,
@@ -1288,7 +1416,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 888,
@@ -1298,7 +1427,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 889,
@@ -1308,7 +1438,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 890,
@@ -1318,7 +1449,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 891,
@@ -1328,7 +1460,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 892,
@@ -1338,7 +1471,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 893,
@@ -1348,7 +1482,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 894,
@@ -1358,7 +1493,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 895,
@@ -1368,7 +1504,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 896,
@@ -1378,7 +1515,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 897,
@@ -1388,7 +1526,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 898,
@@ -1398,7 +1537,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 899,
@@ -1408,7 +1548,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 903,
@@ -1418,7 +1559,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 904,
@@ -1428,7 +1570,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 905,
@@ -1438,7 +1581,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 906,
@@ -1448,7 +1592,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 907,
@@ -1458,7 +1603,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 910,
@@ -1468,7 +1614,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2000,
@@ -1478,7 +1625,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2001,
@@ -1488,7 +1636,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2002,
@@ -1498,7 +1647,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2003,
@@ -1508,7 +1658,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2004,
@@ -1518,7 +1669,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2005,
@@ -1528,7 +1680,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2006,
@@ -1538,7 +1691,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2007,
@@ -1548,7 +1702,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2008,
@@ -1558,7 +1713,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2009,
@@ -1568,7 +1724,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2010,
@@ -1578,7 +1735,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2011,
@@ -1588,7 +1746,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2012,
@@ -1598,7 +1757,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2013,
@@ -1608,7 +1768,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2014,
@@ -1618,7 +1779,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2015,
@@ -1628,7 +1790,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2016,
@@ -1638,7 +1801,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2017,
@@ -1648,7 +1812,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2018,
@@ -1658,7 +1823,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2019,
@@ -1668,7 +1834,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2020,
@@ -1678,7 +1845,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2021,
@@ -1688,7 +1856,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2022,
@@ -1698,7 +1867,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2023,
@@ -1708,7 +1878,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2024,
@@ -1718,7 +1889,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2025,
@@ -1728,7 +1900,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2026,
@@ -1738,7 +1911,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2027,
@@ -1748,7 +1922,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2028,
@@ -1758,7 +1933,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2029,
@@ -1768,7 +1944,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2030,
@@ -1778,7 +1955,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2031,
@@ -1788,7 +1966,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2032,
@@ -1798,7 +1977,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2033,
@@ -1808,7 +1988,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2034,
@@ -1818,7 +1999,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2035,
@@ -1828,7 +2010,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2036,
@@ -1838,7 +2021,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2037,
@@ -1848,7 +2032,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2038,
@@ -1858,7 +2043,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2039,
@@ -1868,7 +2054,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2040,
@@ -1878,7 +2065,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2041,
@@ -1888,7 +2076,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2042,
@@ -1898,7 +2087,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2043,
@@ -1908,7 +2098,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2044,
@@ -1918,7 +2109,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2045,
@@ -1928,7 +2120,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2046,
@@ -1938,7 +2131,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2047,
@@ -1948,7 +2142,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2048,
@@ -1958,7 +2153,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2049,
@@ -1968,7 +2164,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2050,
@@ -1978,7 +2175,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2051,
@@ -1988,7 +2186,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2052,
@@ -1998,7 +2197,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2053,
@@ -2008,7 +2208,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2054,
@@ -2018,7 +2219,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2055,
@@ -2028,7 +2230,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2056,
@@ -2038,7 +2241,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2057,
@@ -2048,7 +2252,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2058,
@@ -2058,7 +2263,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2059,
@@ -2068,7 +2274,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2060,
@@ -2078,7 +2285,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2061,
@@ -2088,7 +2296,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2062,
@@ -2098,7 +2307,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2063,
@@ -2108,7 +2318,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2064,
@@ -2118,7 +2329,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2065,
@@ -2128,7 +2340,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 9000,
@@ -2138,7 +2351,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 9001,
@@ -2148,7 +2362,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2500,
@@ -2158,7 +2373,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2501,
@@ -2168,7 +2384,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2502,
@@ -2178,7 +2395,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5000,
@@ -2188,7 +2406,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5001,
@@ -2198,7 +2417,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5002,
@@ -2208,7 +2428,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5003,
@@ -2218,7 +2439,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5004,
@@ -2228,7 +2450,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5005,
@@ -2238,7 +2461,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5006,
@@ -2248,7 +2472,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5007,
@@ -2258,7 +2483,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5008,
@@ -2268,7 +2494,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5009,
@@ -2278,7 +2505,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5010,
@@ -2288,7 +2516,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5011,
@@ -2298,7 +2527,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5012,
@@ -2308,7 +2538,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5013,
@@ -2318,7 +2549,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5014,
@@ -2328,7 +2560,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5015,
@@ -2338,7 +2571,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5016,
@@ -2348,7 +2582,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5017,
@@ -2358,7 +2593,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5018,
@@ -2368,7 +2604,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5019,
@@ -2378,7 +2615,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5020,
@@ -2388,7 +2626,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5021,
@@ -2398,7 +2637,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5022,
@@ -2408,7 +2648,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5023,
@@ -2418,7 +2659,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5023,
@@ -2428,7 +2670,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 753,
@@ -2438,7 +2681,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 754,
@@ -2448,7 +2692,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 755,
@@ -2458,7 +2703,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 756,
@@ -2468,7 +2714,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 757,
@@ -2478,7 +2725,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 758,
@@ -2488,7 +2736,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 759,
@@ -2498,7 +2747,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 760,
@@ -2508,7 +2758,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 761,
@@ -2518,7 +2769,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 762,
@@ -2528,7 +2780,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 763,
@@ -2538,7 +2791,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 764,
@@ -2548,7 +2802,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 765,
@@ -2558,7 +2813,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 766,
@@ -2568,7 +2824,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 767,
@@ -2578,7 +2835,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 768,
@@ -2588,7 +2846,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 769,
@@ -2598,7 +2857,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 770,
@@ -2608,7 +2868,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 771,
@@ -2618,7 +2879,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 772,
@@ -2628,7 +2890,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 773,
@@ -2638,7 +2901,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 774,
@@ -2648,7 +2912,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 775,
@@ -2658,7 +2923,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 776,
@@ -2668,7 +2934,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 777,
@@ -2678,7 +2945,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 778,
@@ -2688,7 +2956,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 779,
@@ -2698,7 +2967,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 780,
@@ -2708,7 +2978,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 781,
@@ -2718,7 +2989,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 782,
@@ -2728,7 +3000,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 783,
@@ -2738,7 +3011,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 784,
@@ -2748,7 +3022,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 785,
@@ -2758,7 +3033,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 786,
@@ -2768,7 +3044,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 787,
@@ -2778,7 +3055,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 788,
@@ -2788,7 +3066,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 789,
@@ -2798,7 +3077,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 790,
@@ -2808,7 +3088,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 791,
@@ -2818,7 +3099,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 792,
@@ -2828,7 +3110,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 793,
@@ -2838,7 +3121,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 794,
@@ -2848,7 +3132,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 795,
@@ -2858,7 +3143,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 796,
@@ -2868,7 +3154,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 797,
@@ -2878,7 +3165,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 798,
@@ -2888,7 +3176,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 799,
@@ -2898,7 +3187,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 800,
@@ -2908,7 +3198,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 801,
@@ -2918,7 +3209,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 802,
@@ -2928,7 +3220,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 811,
@@ -2938,7 +3231,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 812,
@@ -2948,7 +3242,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 813,
@@ -2958,7 +3253,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 814,
@@ -2968,7 +3264,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 815,
@@ -2978,7 +3275,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 816,
@@ -2988,7 +3286,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 817,
@@ -2998,7 +3297,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 818,
@@ -3008,7 +3308,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 819,
@@ -3018,7 +3319,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 820,
@@ -3028,7 +3330,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 821,
@@ -3038,7 +3341,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 822,
@@ -3048,7 +3352,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 823,
@@ -3058,7 +3363,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 824,
@@ -3068,7 +3374,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 825,
@@ -3078,7 +3385,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 826,
@@ -3088,7 +3396,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 827,
@@ -3098,7 +3407,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 828,
@@ -3108,7 +3418,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 829,
@@ -3118,7 +3429,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 830,
@@ -3128,7 +3440,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 831,
@@ -3138,7 +3451,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 832,
@@ -3148,7 +3462,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 833,
@@ -3158,7 +3473,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 834,
@@ -3168,7 +3484,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 835,
@@ -3178,7 +3495,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 836,
@@ -3188,7 +3506,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 837,
@@ -3198,7 +3517,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 838,
@@ -3208,7 +3528,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 839,
@@ -3218,7 +3539,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 840,
@@ -3228,7 +3550,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 841,
@@ -3238,7 +3561,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 842,
@@ -3248,7 +3572,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 843,
@@ -3258,7 +3583,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 844,
@@ -3268,7 +3594,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 845,
@@ -3278,7 +3605,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 846,
@@ -3288,7 +3616,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 847,
@@ -3298,7 +3627,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 848,
@@ -3308,7 +3638,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 849,
@@ -3318,7 +3649,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 850,
@@ -3328,7 +3660,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 851,
@@ -3338,7 +3671,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 852,
@@ -3348,7 +3682,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 853,
@@ -3358,7 +3693,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 854,
@@ -3368,7 +3704,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 855,
@@ -3378,7 +3715,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 856,
@@ -3388,7 +3726,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 857,
@@ -3398,7 +3737,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 858,
@@ -3408,7 +3748,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 859,
@@ -3418,7 +3759,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 860,
@@ -3428,7 +3770,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 861,
@@ -3438,7 +3781,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 862,
@@ -3448,7 +3792,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 863,
@@ -3458,7 +3803,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 864,
@@ -3468,7 +3814,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 865,
@@ -3478,7 +3825,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 866,
@@ -3488,7 +3836,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 867,
@@ -3498,7 +3847,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 868,
@@ -3508,7 +3858,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 869,
@@ -3518,7 +3869,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 870,
@@ -3528,7 +3880,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 871,
@@ -3538,7 +3891,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 872,
@@ -3548,7 +3902,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 873,
@@ -3558,7 +3913,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 874,
@@ -3568,7 +3924,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 875,
@@ -3578,7 +3935,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 876,
@@ -3588,7 +3946,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 877,
@@ -3598,7 +3957,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 878,
@@ -3608,7 +3968,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 879,
@@ -3618,7 +3979,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 880,
@@ -3628,7 +3990,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 881,
@@ -3638,7 +4001,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 882,
@@ -3648,7 +4012,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 883,
@@ -3658,7 +4023,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 884,
@@ -3668,7 +4034,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 885,
@@ -3678,7 +4045,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 886,
@@ -3688,7 +4056,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 887,
@@ -3698,7 +4067,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 888,
@@ -3708,7 +4078,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 889,
@@ -3718,7 +4089,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 890,
@@ -3728,7 +4100,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 891,
@@ -3738,7 +4111,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 892,
@@ -3748,7 +4122,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 893,
@@ -3758,7 +4133,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 894,
@@ -3768,7 +4144,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 895,
@@ -3778,7 +4155,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 896,
@@ -3788,7 +4166,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 897,
@@ -3798,7 +4177,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 898,
@@ -3808,7 +4188,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 899,
@@ -3818,7 +4199,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 903,
@@ -3828,7 +4210,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 904,
@@ -3838,7 +4221,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 905,
@@ -3848,7 +4232,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 906,
@@ -3858,7 +4243,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 907,
@@ -3868,7 +4254,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 910,
@@ -3878,7 +4265,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2000,
@@ -3888,7 +4276,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2001,
@@ -3898,7 +4287,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2002,
@@ -3908,7 +4298,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2003,
@@ -3918,7 +4309,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2004,
@@ -3928,7 +4320,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2005,
@@ -3938,7 +4331,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2006,
@@ -3948,7 +4342,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2007,
@@ -3958,7 +4353,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2008,
@@ -3968,7 +4364,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2009,
@@ -3978,7 +4375,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2010,
@@ -3988,7 +4386,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2011,
@@ -3998,7 +4397,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2012,
@@ -4008,7 +4408,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2013,
@@ -4018,7 +4419,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2014,
@@ -4028,7 +4430,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2015,
@@ -4038,7 +4441,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2016,
@@ -4048,7 +4452,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2017,
@@ -4058,7 +4463,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2018,
@@ -4068,7 +4474,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2019,
@@ -4078,7 +4485,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2020,
@@ -4088,7 +4496,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2021,
@@ -4098,7 +4507,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2022,
@@ -4108,7 +4518,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2023,
@@ -4118,7 +4529,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2024,
@@ -4128,7 +4540,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2025,
@@ -4138,7 +4551,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2026,
@@ -4148,7 +4562,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2027,
@@ -4158,7 +4573,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2028,
@@ -4168,7 +4584,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2029,
@@ -4178,7 +4595,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2030,
@@ -4188,7 +4606,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2031,
@@ -4198,7 +4617,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2032,
@@ -4208,7 +4628,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2033,
@@ -4218,7 +4639,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2034,
@@ -4228,7 +4650,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2035,
@@ -4238,7 +4661,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2036,
@@ -4248,7 +4672,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2037,
@@ -4258,7 +4683,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2038,
@@ -4268,7 +4694,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2039,
@@ -4278,7 +4705,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2040,
@@ -4288,7 +4716,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2041,
@@ -4298,7 +4727,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2042,
@@ -4308,7 +4738,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2043,
@@ -4318,7 +4749,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2044,
@@ -4328,7 +4760,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2045,
@@ -4338,7 +4771,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2046,
@@ -4348,7 +4782,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2047,
@@ -4358,7 +4793,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2048,
@@ -4368,7 +4804,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2049,
@@ -4378,7 +4815,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2050,
@@ -4388,7 +4826,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2051,
@@ -4398,7 +4837,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2052,
@@ -4408,7 +4848,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2053,
@@ -4418,7 +4859,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2054,
@@ -4428,7 +4870,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2055,
@@ -4438,7 +4881,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2056,
@@ -4448,7 +4892,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2057,
@@ -4458,7 +4903,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2058,
@@ -4468,7 +4914,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2059,
@@ -4478,7 +4925,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2060,
@@ -4488,7 +4936,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2061,
@@ -4498,7 +4947,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2062,
@@ -4508,7 +4958,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2063,
@@ -4518,7 +4969,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2064,
@@ -4528,7 +4980,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2065,
@@ -4538,7 +4991,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 9000,
@@ -4548,7 +5002,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 9001,
@@ -4558,7 +5013,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2500,
@@ -4568,7 +5024,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2501,
@@ -4578,7 +5035,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 2502,
@@ -4588,7 +5046,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5000,
@@ -4598,7 +5057,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5001,
@@ -4608,7 +5068,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5002,
@@ -4618,7 +5079,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5003,
@@ -4628,7 +5090,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5004,
@@ -4638,7 +5101,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5005,
@@ -4648,7 +5112,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5006,
@@ -4658,7 +5123,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5007,
@@ -4668,7 +5134,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5008,
@@ -4678,7 +5145,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5009,
@@ -4688,7 +5156,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5010,
@@ -4698,7 +5167,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5011,
@@ -4708,7 +5178,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5012,
@@ -4718,7 +5189,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5013,
@@ -4728,7 +5200,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5014,
@@ -4738,7 +5211,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5015,
@@ -4748,7 +5222,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5016,
@@ -4758,7 +5233,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5017,
@@ -4768,7 +5244,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5018,
@@ -4778,7 +5255,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5019,
@@ -4788,7 +5266,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5020,
@@ -4798,7 +5277,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5021,
@@ -4808,7 +5288,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5022,
@@ -4818,7 +5299,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 5023,
@@ -4828,7 +5310,8 @@
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 6010,
@@ -4838,7 +5321,8 @@
       "output_format": "time",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 6011,
@@ -4848,7 +5332,8 @@
       "output_format": "int",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     },
     {
       "id": 6012,
@@ -4858,7 +5343,8 @@
       "output_format": "int",
       "update_every": 0.0,
       "min": 0.0,
-      "max": 100.0
+      "max": 100.0,
+      "plane_or_category": "generic"
     }
   ]
 }

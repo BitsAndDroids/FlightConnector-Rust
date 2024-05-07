@@ -17,10 +17,17 @@ export const Header = (props: HeaderProps) => {
       1,
       {
         tag: "h1",
-        style: "mt-10 text-2xl font-bold tracking-tight text-white sm:text-4xl",
+        style:
+          "mt-10 text-2xl font-bold tracking-tight text-white sm:text-4xl mb-4",
       },
     ],
-    [2, { tag: "h2", style: "font-bold text-xl tracking-tight text-gray-800" }],
+    [
+      2,
+      {
+        tag: "h2",
+        style: "font-bold text-xl tracking-tight text-gray-800 mb-4",
+      },
+    ],
     [3, { tag: "h3", style: "1.17em" }],
   ]);
   const header = levelMap.get(props.level);
@@ -29,10 +36,5 @@ export const Header = (props: HeaderProps) => {
   };
 
   const customTag = header ? header.tag : "h1";
-  return (
-    <div>
-      {createElement(customTag, elementProps, props.title)}
-      <div></div>
-    </div>
-  );
+  return <div>{createElement(customTag, elementProps, props.title)}</div>;
 };
