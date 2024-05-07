@@ -449,7 +449,7 @@ impl SimconnectHandler {
     pub fn initialize_connection(&mut self) {
         self.simconnect.connect("Bits and Droids connector");
         self.input_registry.load_inputs();
-        self.wasm_registry.load_wasm();
+        self.wasm_registry.load_wasm(self.app_handle.clone());
         self.output_registry.load_outputs();
         wasm::register_wasm_data(&mut self.simconnect);
         self.define_outputs();

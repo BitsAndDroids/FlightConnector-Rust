@@ -20,8 +20,8 @@ export class CustomEventHandler {
     this.store.save();
   }
 
-  async deleteEvent(id: string) {
-    this.store.delete(id);
+  async deleteEvent(id: number) {
+    this.store.delete(id.toString());
     this.store.save();
   }
 

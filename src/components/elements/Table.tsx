@@ -1,7 +1,7 @@
 interface TableProps {
   elements: Record<string, any>[];
-  deleteById?: (id: string) => void;
-  editById?: (id: string) => void;
+  deleteById?: (id: number) => void;
+  editById?: (id: number) => void;
   headers: string[];
 }
 
@@ -44,7 +44,7 @@ export const Table = ({
           </thead>
           <tbody className="">
             {elements.map((element, index) => (
-              <tr key={`tr-${index}`}>
+              <tr key={`tr-${index}`} className="">
                 {headers.map((header, headerIndex) => (
                   <td
                     key={`${headerIndex}-${index}`}
@@ -55,30 +55,32 @@ export const Table = ({
                 ))}
                 <td
                   key={`$-${index}-del`}
-                  className="flex flex-row justify-center pt-4"
+                  className="py-4 pl-4 pr-3 text-sm sm:pl-6"
                 >
-                  {deleteById && (
-                    <img
-                      src={"/trashcan.svg"}
-                      alt="info"
-                      onClick={(e) => {
-                        deleteById(element.id);
-                        e.stopPropagation();
-                      }}
-                      className="cursor-pointer h-[16px] mr-2"
-                    />
-                  )}
-                  {editById && (
-                    <img
-                      src={"/edit.svg"}
-                      alt="info"
-                      onClick={(e) => {
-                        editById(element.id);
-                        e.stopPropagation();
-                      }}
-                      className="cursor-pointer h-[16px]"
-                    />
-                  )}
+                  <span className="inline-flex flex-row items-center align-middle justify-items-center h-full">
+                    {deleteById && (
+                      <img
+                        src={"/trashcan.svg"}
+                        alt="info"
+                        onClick={(e) => {
+                          deleteById(element.id);
+                          e.stopPropagation();
+                        }}
+                        className="cursor-pointer h-[16px] mr-2"
+                      />
+                    )}
+                    {editById && (
+                      <img
+                        src={"/edit.svg"}
+                        alt="info"
+                        onClick={(e) => {
+                          editById(element.id);
+                          e.stopPropagation();
+                        }}
+                        className="cursor-pointer h-[16px]"
+                      />
+                    )}
+                  </span>
                 </td>
                 {}
               </tr>

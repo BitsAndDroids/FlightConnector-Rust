@@ -3,9 +3,15 @@ import { Table } from "../elements/Table";
 
 interface WASMEventTableProps {
   events: WASMEvent[];
+  deleteEvent: (id: number) => void;
+  editEvent: (id: number) => void;
 }
 
-export const WASMEventTable = ({ events }: WASMEventTableProps) => {
+export const WASMEventTable = ({
+  events,
+  deleteEvent,
+  editEvent,
+}: WASMEventTableProps) => {
   return (
     <div className="h-full">
       <Table
@@ -19,12 +25,8 @@ export const WASMEventTable = ({ events }: WASMEventTableProps) => {
           "plane_or_category",
         ]}
         elements={events}
-        deleteById={async (id: string) => {
-          console.log("delete", id);
-        }}
-        editById={async (id: string) => {
-          console.log("edit", id);
-        }}
+        deleteById={deleteEvent}
+        editById={editEvent}
       />
     </div>
   );

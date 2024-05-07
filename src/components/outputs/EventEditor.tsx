@@ -6,16 +6,17 @@ import { useState } from "react";
 
 interface EventEditorProps {
   event?: WASMEvent;
-  onSave?: (event: WASMEvent) => void;
+  onSave: (event: WASMEvent) => void;
   onCancel?: () => void;
 }
 
 export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
   const [type, setType] = useState<string>(event?.action_type || "input");
   const [categories, setCategories] = useState<string[]>([
-    "General aviation",
-    "Airliner",
-    "Turboprop",
+    "general aviation",
+    "airliner",
+    "generic",
+    "turboprop",
   ]);
   const [newEvent, setNewEvent] = useState<WASMEvent>(
     event || {
@@ -29,7 +30,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
       max: 0.0,
       value: 0,
       offset: 0.0,
-      plane_or_category: "",
+      plane_or_category: "generic",
     },
   );
 
@@ -53,6 +54,10 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
     setNewEvent({ ...newEvent, output_format: value });
   };
 
+  const changeActionText = (value: string) => {
+    setNewEvent({ ...newEvent, action_text: value });
+  };
+
   return (
     <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
       <div className="bg-white p-8 rounded-md w-[50%]">
@@ -60,18 +65,23 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
           <Input
             label="ID"
             type="number"
-            value={event?.id.toString()}
+            value={newEvent?.id.toString()}
             onChange={changeID}
           />
           <Input
             label="Action"
             type="textarea"
-            value={event?.action}
+            value={newEvent?.action}
             onChange={changeAction}
+          />
+          <Input
+            label="Description"
+            value={newEvent?.action_text}
+            onChange={changeActionText}
           />
           <Select
             label="Type"
-            value={event?.action_type}
+            value={newEvent?.action_type}
             options={["input", "output"]}
             onChange={setType}
           />
@@ -86,7 +96,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
                   'String ("string")',
                   "Time",
                 ]}
-                value={event?.output_format}
+                value={newEvent?.output_format}
                 onChange={changeOutputFormat}
               />
               <Input
@@ -101,12 +111,16 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
           <Select
             label="Plane or category"
             options={categories}
-            value={event?.plane_or_category.toString()}
+            value={newEvent?.plane_or_category}
             onChange={changePlaneOrCategory}
           />
         </div>
         <div className="flex flex-row justify-center items-center">
-          <Button onClick={() => {}} text="Save" style="primary" />
+          <Button
+            onClick={() => onSave(newEvent)}
+            text="Save"
+            style="primary"
+          />
           <Button
             onClick={onCancel || (() => {})}
             text="Cancel"

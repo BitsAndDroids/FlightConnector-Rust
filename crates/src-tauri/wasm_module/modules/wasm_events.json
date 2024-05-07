@@ -9,7 +9,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 1001,
@@ -20,7 +20,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 753,
@@ -31,7 +31,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 754,
@@ -42,7 +42,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 755,
@@ -53,7 +53,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 756,
@@ -64,7 +64,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 757,
@@ -75,7 +75,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 758,
@@ -86,7 +86,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 759,
@@ -97,7 +97,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 760,
@@ -108,7 +108,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 761,
@@ -119,7 +119,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 762,
@@ -130,7 +130,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 763,
@@ -141,7 +141,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 764,
@@ -152,7 +152,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 765,
@@ -163,7 +163,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 766,
@@ -174,7 +174,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 767,
@@ -185,7 +185,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 768,
@@ -196,7 +196,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 769,
@@ -207,7 +207,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 770,
@@ -218,7 +218,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 771,
@@ -229,7 +229,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 772,
@@ -240,7 +240,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 773,
@@ -251,7 +251,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 774,
@@ -262,7 +262,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 775,
@@ -273,7 +273,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 776,
@@ -284,7 +284,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 777,
@@ -295,7 +295,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 778,
@@ -306,7 +306,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 779,
@@ -317,7 +317,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 780,
@@ -328,7 +328,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 781,
@@ -339,7 +339,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 782,
@@ -350,7 +350,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 783,
@@ -361,7 +361,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 784,
@@ -372,7 +372,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 785,
@@ -383,7 +383,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 786,
@@ -394,7 +394,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 787,
@@ -405,7 +405,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 788,
@@ -416,7 +416,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 789,
@@ -427,7 +427,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 790,
@@ -438,7 +438,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 791,
@@ -449,7 +449,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 792,
@@ -460,7 +460,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 793,
@@ -471,7 +471,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 794,
@@ -482,7 +482,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 795,
@@ -493,7 +493,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 796,
@@ -504,7 +504,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 797,
@@ -515,7 +515,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 798,
@@ -526,7 +526,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 799,
@@ -537,7 +537,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 800,
@@ -548,7 +548,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 801,
@@ -559,7 +559,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 802,
@@ -570,7 +570,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 811,
@@ -581,7 +581,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 812,
@@ -592,7 +592,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 813,
@@ -603,7 +603,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 814,
@@ -614,7 +614,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 815,
@@ -625,7 +625,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 816,
@@ -636,7 +636,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 817,
@@ -647,7 +647,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 818,
@@ -658,7 +658,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 819,
@@ -669,7 +669,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 820,
@@ -680,7 +680,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 821,
@@ -691,7 +691,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 822,
@@ -702,7 +702,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 823,
@@ -713,7 +713,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 824,
@@ -724,7 +724,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 825,
@@ -735,7 +735,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 826,
@@ -746,7 +746,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 827,
@@ -757,7 +757,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 828,
@@ -768,7 +768,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 829,
@@ -779,7 +779,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 830,
@@ -790,7 +790,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 831,
@@ -801,7 +801,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 832,
@@ -812,7 +812,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 833,
@@ -823,7 +823,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 834,
@@ -834,7 +834,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 835,
@@ -845,7 +845,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 836,
@@ -856,7 +856,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 837,
@@ -867,7 +867,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 838,
@@ -878,7 +878,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 839,
@@ -889,7 +889,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 840,
@@ -900,7 +900,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 841,
@@ -911,7 +911,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 842,
@@ -922,7 +922,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 843,
@@ -933,7 +933,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 844,
@@ -944,7 +944,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 845,
@@ -955,7 +955,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 846,
@@ -966,7 +966,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 847,
@@ -977,7 +977,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 848,
@@ -988,7 +988,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 849,
@@ -999,7 +999,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 850,
@@ -1010,7 +1010,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 851,
@@ -1021,7 +1021,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 852,
@@ -1032,7 +1032,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 853,
@@ -1043,7 +1043,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 854,
@@ -1054,7 +1054,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 855,
@@ -1065,7 +1065,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 856,
@@ -1076,7 +1076,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 857,
@@ -1087,7 +1087,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 858,
@@ -1098,7 +1098,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 859,
@@ -1109,7 +1109,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 860,
@@ -1120,7 +1120,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 861,
@@ -1131,7 +1131,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 862,
@@ -1142,7 +1142,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 863,
@@ -1153,7 +1153,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 864,
@@ -1164,7 +1164,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 865,
@@ -1175,7 +1175,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 866,
@@ -1186,7 +1186,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 867,
@@ -1197,7 +1197,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 868,
@@ -1208,7 +1208,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 869,
@@ -1219,7 +1219,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 870,
@@ -1230,7 +1230,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 871,
@@ -1241,7 +1241,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 872,
@@ -1252,7 +1252,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 873,
@@ -1263,7 +1263,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 874,
@@ -1274,7 +1274,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 875,
@@ -1285,7 +1285,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 876,
@@ -1296,7 +1296,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 877,
@@ -1307,7 +1307,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 878,
@@ -1318,7 +1318,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 879,
@@ -1329,7 +1329,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 880,
@@ -1340,7 +1340,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 881,
@@ -1351,7 +1351,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 882,
@@ -1362,7 +1362,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 883,
@@ -1373,7 +1373,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 884,
@@ -1384,7 +1384,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 885,
@@ -1395,7 +1395,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 886,
@@ -1406,7 +1406,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 887,
@@ -1417,7 +1417,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 888,
@@ -1428,7 +1428,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 889,
@@ -1439,7 +1439,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 890,
@@ -1450,7 +1450,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 891,
@@ -1461,7 +1461,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 892,
@@ -1472,7 +1472,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 893,
@@ -1483,7 +1483,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 894,
@@ -1494,7 +1494,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 895,
@@ -1505,7 +1505,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 896,
@@ -1516,7 +1516,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 897,
@@ -1527,7 +1527,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 898,
@@ -1538,7 +1538,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 899,
@@ -1549,7 +1549,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 903,
@@ -1560,7 +1560,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 904,
@@ -1571,7 +1571,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 905,
@@ -1582,7 +1582,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 906,
@@ -1593,7 +1593,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 907,
@@ -1604,7 +1604,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 910,
@@ -1615,7 +1615,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2000,
@@ -1626,7 +1626,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2001,
@@ -1637,7 +1637,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2002,
@@ -1648,7 +1648,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2003,
@@ -1659,7 +1659,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2004,
@@ -1670,7 +1670,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2005,
@@ -1681,7 +1681,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2006,
@@ -1692,7 +1692,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2007,
@@ -1703,7 +1703,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2008,
@@ -1714,7 +1714,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2009,
@@ -1725,7 +1725,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2010,
@@ -1736,7 +1736,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2011,
@@ -1747,7 +1747,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2012,
@@ -1758,7 +1758,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2013,
@@ -1769,7 +1769,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2014,
@@ -1780,7 +1780,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2015,
@@ -1791,7 +1791,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2016,
@@ -1802,7 +1802,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2017,
@@ -1813,7 +1813,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2018,
@@ -1824,7 +1824,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2019,
@@ -1835,7 +1835,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2020,
@@ -1846,7 +1846,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2021,
@@ -1857,7 +1857,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2022,
@@ -1868,7 +1868,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2023,
@@ -1879,7 +1879,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2024,
@@ -1890,7 +1890,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2025,
@@ -1901,7 +1901,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2026,
@@ -1912,7 +1912,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2027,
@@ -1923,7 +1923,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2028,
@@ -1934,7 +1934,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2029,
@@ -1945,7 +1945,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2030,
@@ -1956,7 +1956,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2031,
@@ -1967,7 +1967,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2032,
@@ -1978,7 +1978,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2033,
@@ -1989,7 +1989,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2034,
@@ -2000,7 +2000,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2035,
@@ -2011,7 +2011,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2036,
@@ -2022,7 +2022,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2037,
@@ -2033,7 +2033,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2038,
@@ -2044,7 +2044,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2039,
@@ -2055,7 +2055,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2040,
@@ -2066,7 +2066,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2041,
@@ -2077,7 +2077,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2042,
@@ -2088,7 +2088,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2043,
@@ -2099,7 +2099,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2044,
@@ -2110,7 +2110,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2045,
@@ -2121,7 +2121,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2046,
@@ -2132,7 +2132,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2047,
@@ -2143,7 +2143,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2048,
@@ -2154,7 +2154,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2049,
@@ -2165,7 +2165,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2050,
@@ -2176,7 +2176,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2051,
@@ -2187,7 +2187,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2052,
@@ -2198,7 +2198,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2053,
@@ -2209,7 +2209,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2054,
@@ -2220,7 +2220,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2055,
@@ -2231,7 +2231,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2056,
@@ -2242,7 +2242,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2057,
@@ -2253,7 +2253,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2058,
@@ -2264,7 +2264,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2059,
@@ -2275,7 +2275,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2060,
@@ -2286,7 +2286,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2061,
@@ -2297,7 +2297,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2062,
@@ -2308,7 +2308,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2063,
@@ -2319,7 +2319,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2064,
@@ -2330,7 +2330,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2065,
@@ -2341,7 +2341,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 9000,
@@ -2352,7 +2352,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 9001,
@@ -2363,7 +2363,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2500,
@@ -2374,7 +2374,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2501,
@@ -2385,7 +2385,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2502,
@@ -2396,7 +2396,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5000,
@@ -2407,7 +2407,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5001,
@@ -2418,7 +2418,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5002,
@@ -2429,7 +2429,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5003,
@@ -2440,7 +2440,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5004,
@@ -2451,7 +2451,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5005,
@@ -2462,7 +2462,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5006,
@@ -2473,7 +2473,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5007,
@@ -2484,7 +2484,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5008,
@@ -2495,7 +2495,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5009,
@@ -2506,7 +2506,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5010,
@@ -2517,7 +2517,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5011,
@@ -2528,7 +2528,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5012,
@@ -2539,7 +2539,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5013,
@@ -2550,7 +2550,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5014,
@@ -2561,7 +2561,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5015,
@@ -2572,7 +2572,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5016,
@@ -2583,7 +2583,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5017,
@@ -2594,7 +2594,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5018,
@@ -2605,7 +2605,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5019,
@@ -2616,7 +2616,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5020,
@@ -2627,7 +2627,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5021,
@@ -2638,7 +2638,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5022,
@@ -2649,7 +2649,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5023,
@@ -2660,7 +2660,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5023,
@@ -2671,7 +2671,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 753,
@@ -2682,7 +2682,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 754,
@@ -2693,7 +2693,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 755,
@@ -2704,7 +2704,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 756,
@@ -2715,7 +2715,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 757,
@@ -2726,7 +2726,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 758,
@@ -2737,7 +2737,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 759,
@@ -2748,7 +2748,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 760,
@@ -2759,7 +2759,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 761,
@@ -2770,7 +2770,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 762,
@@ -2781,7 +2781,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 763,
@@ -2792,7 +2792,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 764,
@@ -2803,7 +2803,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 765,
@@ -2814,7 +2814,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 766,
@@ -2825,7 +2825,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 767,
@@ -2836,7 +2836,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 768,
@@ -2847,7 +2847,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 769,
@@ -2858,7 +2858,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 770,
@@ -2869,7 +2869,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 771,
@@ -2880,7 +2880,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 772,
@@ -2891,7 +2891,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 773,
@@ -2902,7 +2902,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 774,
@@ -2913,7 +2913,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 775,
@@ -2924,7 +2924,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 776,
@@ -2935,7 +2935,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 777,
@@ -2946,7 +2946,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 778,
@@ -2957,7 +2957,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 779,
@@ -2968,7 +2968,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 780,
@@ -2979,7 +2979,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 781,
@@ -2990,7 +2990,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 782,
@@ -3001,7 +3001,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 783,
@@ -3012,7 +3012,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 784,
@@ -3023,7 +3023,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 785,
@@ -3034,7 +3034,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 786,
@@ -3045,7 +3045,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 787,
@@ -3056,7 +3056,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 788,
@@ -3067,7 +3067,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 789,
@@ -3078,7 +3078,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 790,
@@ -3089,7 +3089,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 791,
@@ -3100,7 +3100,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 792,
@@ -3111,7 +3111,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 793,
@@ -3122,7 +3122,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 794,
@@ -3133,7 +3133,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 795,
@@ -3144,7 +3144,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 796,
@@ -3155,7 +3155,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 797,
@@ -3166,7 +3166,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 798,
@@ -3177,7 +3177,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 799,
@@ -3188,7 +3188,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 800,
@@ -3199,7 +3199,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 801,
@@ -3210,7 +3210,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 802,
@@ -3221,7 +3221,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 811,
@@ -3232,7 +3232,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 812,
@@ -3243,7 +3243,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 813,
@@ -3254,7 +3254,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 814,
@@ -3265,7 +3265,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 815,
@@ -3276,7 +3276,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 816,
@@ -3287,7 +3287,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 817,
@@ -3298,7 +3298,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 818,
@@ -3309,7 +3309,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 819,
@@ -3320,7 +3320,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 820,
@@ -3331,7 +3331,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 821,
@@ -3342,7 +3342,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 822,
@@ -3353,7 +3353,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 823,
@@ -3364,7 +3364,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 824,
@@ -3375,7 +3375,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 825,
@@ -3386,7 +3386,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 826,
@@ -3397,7 +3397,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 827,
@@ -3408,7 +3408,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 828,
@@ -3419,7 +3419,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 829,
@@ -3430,7 +3430,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 830,
@@ -3441,7 +3441,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 831,
@@ -3452,7 +3452,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 832,
@@ -3463,7 +3463,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 833,
@@ -3474,7 +3474,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 834,
@@ -3485,7 +3485,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 835,
@@ -3496,7 +3496,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 836,
@@ -3507,7 +3507,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 837,
@@ -3518,7 +3518,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 838,
@@ -3529,7 +3529,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 839,
@@ -3540,7 +3540,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 840,
@@ -3551,7 +3551,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 841,
@@ -3562,7 +3562,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 842,
@@ -3573,7 +3573,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 843,
@@ -3584,7 +3584,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 844,
@@ -3595,7 +3595,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 845,
@@ -3606,7 +3606,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 846,
@@ -3617,7 +3617,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 847,
@@ -3628,7 +3628,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 848,
@@ -3639,7 +3639,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 849,
@@ -3650,7 +3650,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 850,
@@ -3661,7 +3661,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 851,
@@ -3672,7 +3672,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 852,
@@ -3683,7 +3683,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 853,
@@ -3694,7 +3694,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 854,
@@ -3705,7 +3705,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 855,
@@ -3716,7 +3716,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 856,
@@ -3727,7 +3727,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 857,
@@ -3738,7 +3738,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 858,
@@ -3749,7 +3749,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 859,
@@ -3760,7 +3760,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 860,
@@ -3771,7 +3771,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 861,
@@ -3782,7 +3782,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 862,
@@ -3793,7 +3793,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 863,
@@ -3804,7 +3804,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 864,
@@ -3815,7 +3815,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 865,
@@ -3826,7 +3826,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 866,
@@ -3837,7 +3837,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 867,
@@ -3848,7 +3848,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 868,
@@ -3859,7 +3859,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 869,
@@ -3870,7 +3870,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 870,
@@ -3881,7 +3881,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 871,
@@ -3892,7 +3892,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 872,
@@ -3903,7 +3903,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 873,
@@ -3914,7 +3914,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 874,
@@ -3925,7 +3925,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 875,
@@ -3936,7 +3936,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 876,
@@ -3947,7 +3947,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 877,
@@ -3958,7 +3958,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 878,
@@ -3969,7 +3969,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 879,
@@ -3980,7 +3980,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 880,
@@ -3991,7 +3991,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 881,
@@ -4002,7 +4002,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 882,
@@ -4013,7 +4013,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 883,
@@ -4024,7 +4024,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 884,
@@ -4035,7 +4035,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 885,
@@ -4046,7 +4046,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 886,
@@ -4057,7 +4057,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 887,
@@ -4068,7 +4068,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 888,
@@ -4079,7 +4079,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 889,
@@ -4090,7 +4090,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 890,
@@ -4101,7 +4101,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 891,
@@ -4112,7 +4112,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 892,
@@ -4123,7 +4123,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 893,
@@ -4134,7 +4134,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 894,
@@ -4145,7 +4145,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 895,
@@ -4156,7 +4156,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 896,
@@ -4167,7 +4167,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 897,
@@ -4178,7 +4178,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 898,
@@ -4189,7 +4189,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 899,
@@ -4200,7 +4200,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 903,
@@ -4211,7 +4211,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 904,
@@ -4222,7 +4222,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 905,
@@ -4233,7 +4233,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 906,
@@ -4244,7 +4244,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 907,
@@ -4255,7 +4255,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 910,
@@ -4266,7 +4266,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2000,
@@ -4277,7 +4277,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2001,
@@ -4288,7 +4288,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2002,
@@ -4299,7 +4299,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2003,
@@ -4310,7 +4310,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2004,
@@ -4321,7 +4321,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2005,
@@ -4332,7 +4332,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2006,
@@ -4343,7 +4343,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2007,
@@ -4354,7 +4354,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2008,
@@ -4365,7 +4365,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2009,
@@ -4376,7 +4376,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2010,
@@ -4387,7 +4387,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2011,
@@ -4398,7 +4398,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2012,
@@ -4409,7 +4409,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2013,
@@ -4420,7 +4420,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2014,
@@ -4431,7 +4431,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2015,
@@ -4442,7 +4442,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2016,
@@ -4453,7 +4453,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2017,
@@ -4464,7 +4464,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2018,
@@ -4475,7 +4475,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2019,
@@ -4486,7 +4486,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2020,
@@ -4497,7 +4497,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2021,
@@ -4508,7 +4508,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2022,
@@ -4519,7 +4519,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2023,
@@ -4530,7 +4530,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2024,
@@ -4541,7 +4541,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2025,
@@ -4552,7 +4552,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2026,
@@ -4563,7 +4563,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2027,
@@ -4574,7 +4574,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2028,
@@ -4585,7 +4585,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2029,
@@ -4596,7 +4596,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2030,
@@ -4607,7 +4607,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2031,
@@ -4618,7 +4618,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2032,
@@ -4629,7 +4629,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2033,
@@ -4640,7 +4640,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2034,
@@ -4651,7 +4651,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2035,
@@ -4662,7 +4662,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2036,
@@ -4673,7 +4673,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2037,
@@ -4684,7 +4684,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2038,
@@ -4695,7 +4695,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2039,
@@ -4706,7 +4706,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2040,
@@ -4717,7 +4717,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2041,
@@ -4728,7 +4728,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2042,
@@ -4739,7 +4739,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2043,
@@ -4750,7 +4750,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2044,
@@ -4761,7 +4761,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2045,
@@ -4772,7 +4772,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2046,
@@ -4783,7 +4783,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2047,
@@ -4794,7 +4794,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2048,
@@ -4805,7 +4805,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2049,
@@ -4816,7 +4816,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2050,
@@ -4827,7 +4827,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2051,
@@ -4838,7 +4838,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2052,
@@ -4849,7 +4849,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2053,
@@ -4860,7 +4860,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2054,
@@ -4871,7 +4871,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2055,
@@ -4882,7 +4882,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2056,
@@ -4893,7 +4893,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2057,
@@ -4904,7 +4904,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2058,
@@ -4915,7 +4915,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2059,
@@ -4926,7 +4926,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2060,
@@ -4937,7 +4937,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2061,
@@ -4948,7 +4948,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2062,
@@ -4959,7 +4959,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2063,
@@ -4970,7 +4970,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2064,
@@ -4981,7 +4981,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2065,
@@ -4992,7 +4992,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 9000,
@@ -5003,7 +5003,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 9001,
@@ -5014,7 +5014,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2500,
@@ -5025,7 +5025,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2501,
@@ -5036,7 +5036,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 2502,
@@ -5047,7 +5047,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5000,
@@ -5058,7 +5058,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5001,
@@ -5069,7 +5069,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5002,
@@ -5080,7 +5080,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5003,
@@ -5091,7 +5091,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5004,
@@ -5102,7 +5102,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5005,
@@ -5113,7 +5113,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5006,
@@ -5124,7 +5124,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5007,
@@ -5135,7 +5135,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5008,
@@ -5146,7 +5146,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5009,
@@ -5157,7 +5157,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5010,
@@ -5168,7 +5168,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5011,
@@ -5179,7 +5179,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5012,
@@ -5190,7 +5190,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5013,
@@ -5201,7 +5201,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5014,
@@ -5212,7 +5212,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5015,
@@ -5223,7 +5223,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5016,
@@ -5234,7 +5234,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5017,
@@ -5245,7 +5245,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5018,
@@ -5256,7 +5256,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5019,
@@ -5267,7 +5267,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5020,
@@ -5278,7 +5278,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5021,
@@ -5289,7 +5289,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5022,
@@ -5300,7 +5300,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 5023,
@@ -5311,7 +5311,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 6010,
@@ -5322,7 +5322,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 6011,
@@ -5333,7 +5333,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     },
     {
       "id": 6012,
@@ -5344,7 +5344,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ""
+      "plane_or_category": "generic"
     }
   ]
 }

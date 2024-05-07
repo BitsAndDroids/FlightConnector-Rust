@@ -3,12 +3,17 @@ import { Header } from "@/components/elements/header";
 import { EventEditor } from "@/components/outputs/EventEditor";
 import { WASMEventTable } from "@/components/wasm/WASMEventTable";
 import { WASMEvent } from "@/model/WASMEvent";
+import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
 
 export const CustomEvents = () => {
   const [events, setEvents] = useState<WASMEvent[]>([]);
   const [eventEditorOpen, setEventEditorOpen] = useState<boolean>(false);
+  const [eventToEdit, setEventToEdit] = useState<WASMEvent | undefined>(
+    undefined,
+  );
+  const wasmStore = new CustomEventHandler();
   useEffect(() => {
     const fetchWasmEvents = async () => {
       const events = await invoke("get_wasm_events").then((events: any) => {
@@ -24,10 +29,40 @@ export const CustomEvents = () => {
     setEventEditorOpen(true);
   };
 
+  const saveEvent = async (event: WASMEvent) => {
+    console.log("save event", event);
+    wasmStore.addEvent(event);
+    const newEvents = [...events, event];
+    setEvents(newEvents);
+    setEventToEdit(undefined);
+    setEventEditorOpen(false);
+  };
+
+  const deleteEvent = async (id: number) => {
+    wasmStore.deleteEvent(id);
+    const newEvents = events.filter((event) => event.id !== id);
+    setEvents(newEvents);
+  };
+
+  const editEvent = async (id: number) => {
+    console.log("edit", id);
+    setEventToEdit(events.find((event) => event.id === id));
+    setEventEditorOpen(true);
+  };
+
+  const closeEventEditor = () => {
+    setEventToEdit(undefined);
+    setEventEditorOpen(false);
+  };
+
   return (
     <>
       {eventEditorOpen && (
-        <EventEditor onCancel={() => setEventEditorOpen(false)} />
+        <EventEditor
+          onSave={saveEvent}
+          event={eventToEdit}
+          onCancel={closeEventEditor}
+        />
       )}
       <div className="h-[96%] overflow-y-hidden">
         <div className="flex flew-row align-middle ">
@@ -39,7 +74,11 @@ export const CustomEvents = () => {
             addToClassName="mt-10 mb-4 ml-2"
           />
         </div>
-        <WASMEventTable events={events} />
+        <WASMEventTable
+          events={events}
+          deleteEvent={deleteEvent}
+          editEvent={editEvent}
+        />
       </div>
     </>
   );
