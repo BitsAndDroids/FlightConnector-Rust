@@ -83,6 +83,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
             label="Type"
             value={newEvent?.action_type}
             options={["input", "output"]}
+            values={["input", "output"]}
             onChange={setType}
           />
           {type === "output" && (
@@ -95,6 +96,13 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
                   "Boolean (true, false)",
                   'String ("string")',
                   "Time",
+                ]}
+                values={[
+                  "integer",
+                  "float",
+                  "boolean",
+                  "string",
+                  "secondsaftermidnight",
                 ]}
                 value={newEvent?.output_format}
                 onChange={changeOutputFormat}
@@ -111,6 +119,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
           <Select
             label="Plane or category"
             options={categories}
+            values={categories}
             value={newEvent?.plane_or_category}
             onChange={changePlaneOrCategory}
           />

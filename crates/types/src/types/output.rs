@@ -19,6 +19,7 @@ pub struct Output {
 pub enum OutputType {
     Boolean,
     Integer,
+    Float,
     Seconds,
     Secondsaftermidnight,
     Percentage,
@@ -32,6 +33,7 @@ impl Display for OutputType {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let s = match self {
             OutputType::ADF => "ADF",
+            OutputType::Float => "Float",
             OutputType::Boolean => "Boolean",
             OutputType::Integer => "Integer",
             OutputType::Seconds => "Seconds",
@@ -55,6 +57,7 @@ impl<'de> Deserialize<'de> for OutputType {
             "adf" => Ok(OutputType::ADF),
             "boolean" => Ok(OutputType::Boolean),
             "integer" => Ok(OutputType::Integer),
+            "float" => Ok(OutputType::Float),
             "seconds" => Ok(OutputType::Seconds),
             "secondsaftermidnight" => Ok(OutputType::Secondsaftermidnight),
             "percentage" => Ok(OutputType::Percentage),
