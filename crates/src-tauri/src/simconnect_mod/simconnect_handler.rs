@@ -449,7 +449,7 @@ impl SimconnectHandler {
     pub fn initialize_connection(&mut self) {
         self.simconnect.connect("Bits and Droids connector");
         self.input_registry.load_inputs();
-        self.wasm_registry.load_wasm();
+        self.wasm_registry.load_wasm(self.app_handle.clone());
         self.output_registry.load_outputs();
         wasm::register_wasm_data(&mut self.simconnect);
         self.define_outputs();
@@ -512,6 +512,7 @@ impl SimconnectHandler {
                 min: 0.0,
                 max: 0.0,
                 offset: 0,
+                plane_or_category: "".to_string(),
             };
             register_wasm_event(&mut self.simconnect, wasm_event);
         }
@@ -567,6 +568,7 @@ impl SimconnectHandler {
                 min: 0.0,
                 max: 0.0,
                 offset: (std::mem::size_of::<f64>() * items) as u32,
+                plane_or_category: "".to_string(),
             };
             register_wasm_event(&mut self.simconnect, wasm_event);
             self.simconnect.add_to_client_data_definition(

@@ -1,5 +1,59 @@
 [
   {
+    "simvar": "AMBIENT PRESSURE",
+    "metric": "inHG",
+    "update_every": 0.01,
+    "cb_text": "Ambient pressure",
+    "id": 650,
+    "output_type": "inhg",
+    "category": "Environment"
+  },
+  {
+    "simvar": "AMBIENT TEMPERATURE",
+    "metric": "Celsius",
+    "update_every": 0.1,
+    "cb_text": "Ambient temperature",
+    "id": 651,
+    "output_type": "integer",
+    "category": "Environment"
+  },
+  {
+    "simvar": "AMBIENT WIND VELOCITY",
+    "metric": "Knots",
+    "update_every": 1,
+    "cb_text": "Ambient wind velocity",
+    "id": 652,
+    "output_type": "integer",
+    "category": "Environment"
+  },
+  {
+    "simvar": "AMBIENT WIND DIRECTION",
+    "metric": "Degrees",
+    "update_every": 1,
+    "cb_text": "Ambient wind direction",
+    "id": 653,
+    "output_type": "integer",
+    "category": "Environment"
+  },
+  {
+    "simvar": "AMBIENT PRECIP RATE",
+    "metric": "millimeters of water",
+    "update_every": 1.0,
+    "cb_text": "Ambient precipitation rate",
+    "id": 654,
+    "output_type": "integer",
+    "category": "Environment"
+  },
+  {
+    "simvar": "AMBIENT PRECIP STATE",
+    "metric": "Mask",
+    "update_every": 0.01,
+    "cb_text": "Ambient precipitation state (2=none, 4=rain, 8=snow)",
+    "id": 655,
+    "output_type": "integer",
+    "category": "Environment"
+  },
+  {
     "simvar": "FUEL SELECTED QUANTITY PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
