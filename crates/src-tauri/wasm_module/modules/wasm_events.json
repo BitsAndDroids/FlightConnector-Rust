@@ -80,7 +80,7 @@
     },
     {
       "id": 1007,
-      "action": "5 (>A:TRANSPONDER STATE, enum)",
+      "action": "5 (>A:TRANSPONDER STATE:1, enum)",
       "action_text": "Tranpsponder state ground",
       "action_type": "input",
       "output_format": "",
