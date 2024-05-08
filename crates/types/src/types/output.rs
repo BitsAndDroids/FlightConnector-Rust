@@ -20,6 +20,8 @@ pub enum OutputType {
     Boolean,
     Integer,
     Float,
+    Float1DecPlaces,
+    Float2DecPlaces,
     Seconds,
     Secondsaftermidnight,
     Percentage,
@@ -27,6 +29,7 @@ pub enum OutputType {
     ADF,
     INHG,
     Meterspersecond,
+    MeterspersecondToKnots,
 }
 
 impl Display for OutputType {
@@ -34,6 +37,8 @@ impl Display for OutputType {
         let s = match self {
             OutputType::ADF => "ADF",
             OutputType::Float => "Float",
+            OutputType::Float1DecPlaces => "Float1DecPlaces",
+            OutputType::Float2DecPlaces => "Float2DecPlaces",
             OutputType::Boolean => "Boolean",
             OutputType::Integer => "Integer",
             OutputType::Seconds => "Seconds",
@@ -42,6 +47,7 @@ impl Display for OutputType {
             OutputType::Degrees => "Degrees",
             OutputType::INHG => "INHG",
             OutputType::Meterspersecond => "MetersPerSecond",
+            OutputType::MeterspersecondToKnots => "MetersPerSecondToKnots",
         };
         write!(f, "{}", s)
     }
@@ -58,12 +64,15 @@ impl<'de> Deserialize<'de> for OutputType {
             "boolean" => Ok(OutputType::Boolean),
             "integer" => Ok(OutputType::Integer),
             "float" => Ok(OutputType::Float),
+            "float1decplaces" => Ok(OutputType::Float1DecPlaces),
+            "float2decplaces" => Ok(OutputType::Float2DecPlaces),
             "seconds" => Ok(OutputType::Seconds),
             "secondsaftermidnight" => Ok(OutputType::Secondsaftermidnight),
             "percentage" => Ok(OutputType::Percentage),
             "degrees" => Ok(OutputType::Degrees),
             "inhg" => Ok(OutputType::INHG),
             "meterspersecond" => Ok(OutputType::Meterspersecond),
+            "meterspersecondtoknots" => Ok(OutputType::MeterspersecondToKnots),
             _ => Err(serde::de::Error::custom(format!(
                 "Unknown output type: {}",
                 s

@@ -2,6 +2,7 @@ use std::path::PathBuf;
 
 use connector_types::types::wasm_event::WasmEvent;
 use log::error;
+use serde_json::json;
 use tauri::{Manager, Wry};
 use tauri_plugin_store::{with_store, Store, StoreBuilder, StoreCollection};
 #[derive(Debug)]
@@ -26,15 +27,32 @@ impl WASMRegistry {
         let wasm_events =
             file_parsers::parsers::wasm_event_parser::parse_events_from_file(&self.wasm_file_path);
         self.wasm_default_events = wasm_events;
-        println!("Input event count: {}", self.wasm_inputs.len());
+        println!("Default event count: {}", self.wasm_default_events.len());
+    }
+
+    pub fn update_defauts_to_store(&mut self, app: tauri::AppHandle) {
+        let stores = app.app_handle().state::<StoreCollection<Wry>>();
+        let path = PathBuf::from(".events.dat");
+        let handle_store = |store: &mut Store<Wry>| {
+            for event in &self.wasm_default_events {
+                store.insert(event.id.to_string().clone(), json!(event));
+            }
+            store.save();
+            Ok(())
+        };
+        match with_store(app.app_handle().clone(), stores, path, handle_store) {
+            Ok(_) => {}
+            Err(e) => {
+                error!("Failed to load connector settings: {:?}", e);
+            }
+        }
+
+        self.load_wasm(app);
     }
 
     pub fn load_wasm(&mut self, app: tauri::AppHandle) {
         let stores = app.app_handle().state::<StoreCollection<Wry>>();
-        let mut store = StoreBuilder::new(".events.dat").build(app.clone());
-        store.save();
         let path = PathBuf::from(".events.dat");
-
         let handle_store = |store: &mut Store<Wry>| {
             let keys = store.keys();
             for key in keys {

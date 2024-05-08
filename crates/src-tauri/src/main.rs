@@ -117,10 +117,15 @@ fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle
     });
 }
 
+#[tauri::command]
+fn update_default_events(app: tauri::AppHandle) {
+    let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+    wasm_registry.load_default_events();
+    wasm_registry.update_defauts_to_store(app);
+}
+
 fn init_wasm_events_to_store(app: tauri::AppHandle) {
     let stores = app.app_handle().state::<StoreCollection<Wry>>();
-    let mut store = StoreBuilder::new(".events.dat").build(app.clone());
-    store.save();
     let path = PathBuf::from(".events.dat");
 
     let handle_store = |store: &mut Store<Wry>| {
@@ -166,7 +171,8 @@ fn main() {
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
             install_wasm,
-            get_wasm_events
+            get_wasm_events,
+            update_default_events
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
