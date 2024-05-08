@@ -62,7 +62,6 @@
     "output_type": "degrees",
     "category": "Data"
   },
-
   {
     "simvar": "PLANE HEADING DEGREES TRUE",
     "metric": "Radians",
