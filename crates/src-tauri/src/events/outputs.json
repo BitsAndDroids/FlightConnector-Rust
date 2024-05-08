@@ -14,16 +14,16 @@
     "update_every": 0.1,
     "cb_text": "Ambient temperature",
     "id": 651,
-    "output_type": "integer",
+    "output_type": "float2decplaces",
     "category": "Environment"
   },
   {
     "simvar": "AMBIENT WIND VELOCITY",
     "metric": "Knots",
-    "update_every": 1,
+    "update_every": 0.1,
     "cb_text": "Ambient wind velocity",
     "id": 652,
-    "output_type": "integer",
+    "output_type": "float1decplaces",
     "category": "Environment"
   },
   {
@@ -45,13 +45,32 @@
     "category": "Environment"
   },
   {
-    "simvar": "AMBIENT PRECIP STATE",
-    "metric": "Mask",
-    "update_every": 0.01,
-    "cb_text": "Ambient precipitation state (2=none, 4=rain, 8=snow)",
-    "id": 655,
+    "simvar": "PLANE HEADING DEGREES GYRO",
+    "metric": "Degrees",
+    "update_every": 0.1,
+    "cb_text": "plane heading degrees gyro",
+    "id": 656,
     "output_type": "integer",
-    "category": "Environment"
+    "category": "Data"
+  },
+  {
+    "simvar": "PLANE HEADING DEGREES MAGNETIC",
+    "metric": "Radians",
+    "update_every": 0.01,
+    "cb_text": "plane heading degrees magnetic",
+    "id": 657,
+    "output_type": "degrees",
+    "category": "Data"
+  },
+
+  {
+    "simvar": "PLANE HEADING DEGREES TRUE",
+    "metric": "Radians",
+    "update_every": 0.01,
+    "cb_text": "Plane heading degrees true",
+    "id": 658,
+    "output_type": "degrees",
+    "category": "Data"
   },
   {
     "simvar": "FUEL SELECTED QUANTITY PERCENT",
@@ -527,7 +546,7 @@
     "update_every": 1,
     "cb_text": "GPS groundspeed",
     "id": 430,
-    "output_type": "meterspersecond",
+    "output_type": "meterspersecondtoknots",
     "category": "GPS"
   },
   {
