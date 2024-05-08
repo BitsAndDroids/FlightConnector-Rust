@@ -16,9 +16,11 @@ export const CustomEvents = () => {
   const wasmStore = new CustomEventHandler();
   useEffect(() => {
     const fetchWasmEvents = async () => {
-      const events = await invoke("get_wasm_events").then((events: any) => {
+      let events = await invoke("get_wasm_events").then((events: any) => {
         return events as WASMEvent[];
       });
+
+      events.sort((a, b) => a.id - b.id);
       setEvents(events);
     };
     fetchWasmEvents();
@@ -33,6 +35,7 @@ export const CustomEvents = () => {
     console.log("save event", event);
     wasmStore.addEvent(event);
     const newEvents = [...events, event];
+    newEvents.sort((a, b) => a.id - b.id);
     setEvents(newEvents);
     setEventToEdit(undefined);
     setEventEditorOpen(false);
@@ -55,6 +58,15 @@ export const CustomEvents = () => {
     setEventEditorOpen(false);
   };
 
+  const updateDefaultEvents = async () => {
+    await invoke("update_default_events");
+    const events = await invoke("get_wasm_events").then((events: any) => {
+      return events as WASMEvent[];
+    });
+    events.sort((a, b) => a.id - b.id);
+    setEvents(events);
+  };
+
   return (
     <>
       {eventEditorOpen && (
@@ -70,6 +82,12 @@ export const CustomEvents = () => {
           <Button
             text="Add Event"
             onClick={addEvent}
+            style="primary"
+            addToClassName="mt-10 mb-4 ml-2"
+          />
+          <Button
+            text="Refresh default events"
+            onClick={updateDefaultEvents}
             style="primary"
             addToClassName="mt-10 mb-4 ml-2"
           />
