@@ -33,6 +33,6 @@ You’re able to install the WASM module using the installer in the connector.
 ![wasm install community folder](./images/wasm/install_wasm_community.png)
 
 - Click “Select folder”
-- Click confirm
+- Click the confirm button
 
 To check if the installation succeeded, you can open the community folder. If the installation succeeded, there should be a folder called BitsAndDroidsModule.

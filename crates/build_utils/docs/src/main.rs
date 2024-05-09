@@ -82,13 +82,16 @@ fn normalize_path(path: &PathBuf) -> PathBuf {
     // Convert backslashes to forward slashes for cross-platform compatibility
     let mut normalized = PathBuf::new();
     for component in path.components() {
+        #[cfg(target_os = "linux")]
+        if let Some(component) = component.as_os_str().to_str() {
+            if component == "FlightConnector-Rust" {
+                continue;
+            }
+        }
         normalized.push(component.as_os_str());
     }
-    //if linux remove FlightConnector-Rust/ from path
-    #[cfg(target_os = "linux")]
-    let mut normalized = normalized.strip_prefix("FlightConnector-Rust/").unwrap();
 
-    normalized.to_path_buf()
+    normalized
 }
 
 fn generate_input_list() {
