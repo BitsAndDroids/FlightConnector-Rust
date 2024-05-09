@@ -8,6 +8,7 @@ By adding custom events you're able to control event the most obscure aircraft.
 These events are formatted using [Reverse Polish Notation](https://docs.flightsimulator.com/html/Additional_Information/Reverse_Polish_Notation.htm).
 The connector calls these actions custom commands.
 You're able to see and edit the custom commands from the custom events menu under the events menu.
+
 ![custom events](./images/custom_events_menu.png)
 
 ## Events broken down
