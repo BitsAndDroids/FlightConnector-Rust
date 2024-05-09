@@ -33,7 +33,7 @@ impl EventMD for Input {
             .expect("Failed to get grandparent directory")
             .parent()
             .expect("Failed to get great-grandparent directory")
-            .join("connector-docs\\src\\generated\\input_list.md");
+            .join("connector-docs/src/generated/input_list.md");
         return target_dir.to_str().unwrap().to_string();
     }
 }
@@ -56,7 +56,7 @@ impl EventMD for Output {
         let mut md = String::new();
         md.push_str("# Outputs\n");
         md.push_str(
-            "| Simvar | Metric | Update Every | Callback Text | ID | Output Type | Category |\n",
+            "| Simvar | Metric | Update Every | Callback Text | Id | Output Type | Category |\n",
         );
         md.push_str("| --- | --- | --- | --- | --- | --- | --- |\n");
         md
@@ -70,7 +70,7 @@ impl EventMD for Output {
             .expect("Failed to get grandparent directory")
             .parent()
             .expect("Failed to get great-grandparent directory")
-            .join("connector-docs\\src\\generated\\output_list.md");
+            .join("connector-docs/src/generated/output_list.md");
         return target_dir.to_str().unwrap().to_string();
     }
 }

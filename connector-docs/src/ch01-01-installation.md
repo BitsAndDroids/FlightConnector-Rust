@@ -30,7 +30,7 @@ You’re able to install the WASM module using the installer in the connector.
 - Click on the “select directory” button
 - Search for the MFS2020 community folder
 
-![wasm install community folder](./images/wasm/install_wasm_community.png)
+![WASM install community folder](./images/wasm/install_wasm_community.png)
 
 - Click “Select folder”
 - Click the confirm button
