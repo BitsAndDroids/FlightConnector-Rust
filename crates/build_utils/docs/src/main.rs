@@ -85,8 +85,6 @@ fn normalize_path(path: &PathBuf) -> PathBuf {
         normalized.push(component.as_os_str());
     }
 
-    #[cfg(target_os = "linux")]
-    let normalized = normalized.replace("FlightConnector-Rust/", "");
     normalized
 }
 
@@ -104,6 +102,8 @@ fn generate_input_list() {
         .expect("Failed to get great-grandparent directory")
         .join("crates\\src-tauri\\src\\events");
     let file_path = target_dir.join("inputs.json");
+    #[cfg(target_os = "linux")]
+    let file_path = file_path.replace("FlightConnector-Rust/", "");
     let normalized_path = normalize_path(&file_path);
     let converted_path = normalized_path.to_str().unwrap();
     let inputs = input_parser::get_inputs_from_file(converted_path);
@@ -122,6 +122,8 @@ fn generate_output_list() {
         .expect("Failed to get great-grandparent directory")
         .join("crates\\src-tauri\\src\\events");
     let file_path = target_dir.join("outputs.json");
+    #[cfg(target_os = "linux")]
+    let file_path = file_path.replace("FlightConnector-Rust/", "");
     let normalized_path = normalize_path(&file_path);
     let converted_path = normalized_path.to_str().unwrap();
 
