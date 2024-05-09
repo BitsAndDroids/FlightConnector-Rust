@@ -3,6 +3,7 @@ import { Button } from "../elements/Button";
 import { Input } from "../elements/Input";
 import { Select } from "../elements/Select";
 import { useState } from "react";
+import InfoWindow from "../InfoWindow";
 
 interface EventEditorProps {
   event?: WASMEvent;
@@ -58,6 +59,10 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
     setNewEvent({ ...newEvent, action_text: value });
   };
 
+  const changeType = (value: string) => {
+    setNewEvent({ ...newEvent, action_type: value });
+  };
+
   return (
     <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
       <div className="bg-white p-8 rounded-md w-[50%]">
@@ -67,26 +72,50 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
             type="number"
             value={newEvent?.id.toString()}
             onChange={changeID}
+            infoWindow={
+              <InfoWindow
+                docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#id"
+                message="Unique ID for the event. For inputs: If you send this id to the connector the action will be triggered. For outputs: The connector will prefix the data with this id."
+              />
+            }
           />
           <Input
             label="Action"
             type="textarea"
             value={newEvent?.action}
             onChange={changeAction}
+            infoWindow={
+              <InfoWindow
+                docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#action"
+                message="Action to be performed"
+              />
+            }
           />
           <Input
             label="Description"
             value={newEvent?.action_text}
             onChange={changeActionText}
+            infoWindow={
+              <InfoWindow
+                docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#description"
+                message="Description of the action. This text is also used as label for the checkboxes in the bundle menu for outputs."
+              />
+            }
           />
           <Select
             label="Type"
             value={newEvent?.action_type}
             options={["input", "output"]}
             values={["input", "output"]}
-            onChange={setType}
+            onChange={changeType}
+            infoWindow={
+              <InfoWindow
+                docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#type"
+                message="Type of the event. An Input lets you send data from your controller to MFS. An Output is data that gets send from MFS to your controller."
+              />
+            }
           />
-          {type === "output" && (
+          {newEvent.action_type === "output" && (
             <>
               <Select
                 label="Output format"

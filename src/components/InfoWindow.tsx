@@ -1,5 +1,5 @@
 import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
-interface InfoWindowProps {
+export interface InfoWindowProps {
   message: string;
   docs_url?: string;
 }
