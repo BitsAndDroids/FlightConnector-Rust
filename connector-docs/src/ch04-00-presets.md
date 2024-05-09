@@ -10,11 +10,20 @@ Your presets can be managed from the home screen. From here, you can create, sav
 
 ## Create a preset
 
-If you want to create a new preset, press the Create new preset button. This prompts you to enter a fitting name. The connector will save the new empty preset to your settings. It will also be selected as the current active preset. To ensure you’re using the correct set, you should see the name of your new set in the dropdown menu. If you hit start for the first time using your new preset, the connector will save the set as the last active preset. If you start the connector, your last preset will be reinstated. The connector defaults to the first available device if the device isn't connected. If this happens, the alternate device won’t be saved to memory unless you manually press the save preset button.
+If you want to create a new preset, press the Create new preset button.
+This prompts you to enter a fitting name.
+The connector will save the new empty preset to your settings.
+It will also be selected as the current active preset.
+To ensure you’re using the correct set, you should see the name of your new set in the dropdown menu.
+If you hit start for the first time using your new preset, the connector will save the set as the last active preset.
+If you start the connector, your last preset will be reinstated.
+The connector defaults to the first available device if the device isn't connected.
+If this happens, the alternate device won’t be saved to memory unless you manually press the save preset button.
 
 ## Edit a preset
 
-You can edit your presets by changing the run configuration by adding and removing rows, changing devices, and altering the bundles. Remember to save your changes before changing the preset you’ve equipped.
+You can edit your presets by changing the run configuration by adding and removing rows, changing devices, and altering the bundles.
+Remember to save your changes before changing the preset you’ve equipped.
 
 > These changes will automatically be saved when you make changes
 
