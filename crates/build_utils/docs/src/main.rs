@@ -85,7 +85,7 @@ fn normalize_path(path: &PathBuf) -> PathBuf {
         normalized.push(component.as_os_str());
     }
 
-    #[cfg(target_os = "windows")]
+    #[cfg(target_os = "linux")]
     let normalized = normalized.replace("FlightConnector-Rust/", "");
     normalized
 }

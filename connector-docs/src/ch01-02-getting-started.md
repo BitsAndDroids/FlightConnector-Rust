@@ -11,4 +11,4 @@ Open the connector and you will see the following screen:
 On this screen you're able to start/stop the connector and add/remove devices. For every peripheral you want to connect to the connector, you need to add a device. In this example we will add a single device to the connector.
 
 To keep things simple, we will use a button to connect to the connector. The button will be used to trigger the parking brake in the simulator. The connector will send the signal to the simulator when the button is pressed. For this example we will be using an Arduino Uno but any other microcontroller will work as well. The code for the Arduino Uno can be found [here](./examples/button_input_code.md).
-// THIS ARTICLE IS INCOMPLETE
+// THIS ARTICLE IS INCOMPLETE AND WILL BE EXPANDED
