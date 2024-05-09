@@ -12,6 +12,7 @@
 - [Settings](ch05-00-settings.md)
   - [Logs](ch05-01-logs.md)
 - [WASM](ch06-00-wasm.md)
+  - [Custom events](ch06-01-custom-events.md)
 
 # Examples
 

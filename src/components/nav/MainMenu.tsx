@@ -96,7 +96,7 @@ export const MainMenu: React.FC = () => {
               subMenuItems={settingsMenuItems}
             />
             <TopMenuItem
-              text={"Outputs"}
+              text={"Events"}
               href={"/options/outputs"}
               subMenuItems={outputMenuItems}
             />
