@@ -1,14 +1,15 @@
 use std::path::PathBuf;
 
-use connector_types::types::wasm_event::WasmEvent;
+use connector_types::types::{output::Output, output_format::FormatOutput, wasm_event::WasmEvent};
 use log::error;
 use serde_json::json;
 use tauri::{Manager, Wry};
 use tauri_plugin_store::{with_store, Store, StoreBuilder, StoreCollection};
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct WASMRegistry {
     wasm_outputs: Vec<WasmEvent>,
     wasm_inputs: Vec<WasmEvent>,
+    parsed_wasm_outputs: Vec<Output>,
     wasm_default_events: Vec<WasmEvent>,
     wasm_file_path: String,
 }
@@ -17,6 +18,7 @@ impl WASMRegistry {
     pub fn new() -> WASMRegistry {
         WASMRegistry {
             wasm_outputs: Vec::new(),
+            parsed_wasm_outputs: Vec::new(),
             wasm_inputs: Vec::new(),
             wasm_default_events: Vec::new(),
             wasm_file_path: String::from("wasm_module/modules/wasm_events.json"),
@@ -59,7 +61,9 @@ impl WASMRegistry {
                 let value = store.get(&key).unwrap();
                 let wasm_event: WasmEvent = serde_json::from_value(value.clone()).unwrap();
                 if wasm_event.action_type == "output" {
-                    self.wasm_outputs.push(wasm_event);
+                    self.wasm_outputs.push(wasm_event.clone());
+                    self.parsed_wasm_outputs
+                        .push(wasm_event.get_output_format());
                 } else {
                     self.wasm_inputs.push(wasm_event);
                 }
@@ -75,8 +79,8 @@ impl WASMRegistry {
         }
     }
 
-    pub fn get_wasm_output_by_id(&self, output_id: u32) -> Option<&WasmEvent> {
-        self.wasm_outputs
+    pub fn get_wasm_output_by_id(&self, output_id: u32) -> Option<&Output> {
+        self.parsed_wasm_outputs
             .iter()
             .find(|&output| output.id == output_id)
     }

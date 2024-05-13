@@ -25,7 +25,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
       action: "",
       action_type: "input",
       action_text: "",
-      output_format: "",
+      output_format: "float",
       update_every: 0.0,
       min: 0.0,
       max: 0.0,

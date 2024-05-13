@@ -51,12 +51,6 @@ export const ControllerSelectComponent = () => {
         invoke("get_com_ports").then(async (result) => {
           setComPorts(result as string[]);
           setComPort((result as string[])[0]);
-          if (preset.runBundles[0].com_port === "") {
-            let newPreset = { ...preset };
-            newPreset.runBundles[0].com_port = (result as string[])[0];
-            setPreset(newPreset);
-            updatePresets(newPreset);
-          }
         });
       } catch (e) {
         console.log(e);
@@ -150,6 +144,12 @@ export const ControllerSelectComponent = () => {
       resetAllConnections();
     } else {
       startEventListeners();
+      if (preset.runBundles[0].com_port === "") {
+        let newPreset = { ...preset };
+        newPreset.runBundles[0].com_port = (comPorts as string[])[0];
+        setPreset(newPreset);
+        updatePresets(newPreset);
+      }
       await invokeConnection(await populateRunBundles(preset.runBundles));
     }
     setConnectionRunning(!connectionRunning);
