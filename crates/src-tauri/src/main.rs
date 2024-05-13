@@ -219,6 +219,8 @@ fn main() {
             });
             init_wasm_events_to_store(app.handle().clone());
             APP_HANDLE.set(app.handle().clone()).unwrap();
+
+            app.app_handle().emit("update_event", "update_available");
             Ok(())
         })
         .run(tauri::generate_context!())

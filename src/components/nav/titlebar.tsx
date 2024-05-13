@@ -36,30 +36,34 @@ export const Titlebar: React.FC = () => {
       {" "}
       <div data-tauri-drag-region className="titlebar bg-bitsanddroids-blue">
         <div
-          className="titlebar-button"
+          className="titlebar-button cursor-pointer"
           id="titlebar-minimize"
           onClick={onMinimize}
         >
           <img
-            src="https://api.iconify.design/mdi:window-minimize.svg"
-            className={"fill-amber-50"}
+            src="https://api.iconify.design/mingcute:minimize-fill.svg?color=%23ffffff"
+            className={"fill-white"}
             alt="minimize"
           />
         </div>
         <div
-          className="titlebar-button fill-amber-50"
+          className="titlebar-button fill-amber-50 cursor-pointer"
           id="titlebar-maximize"
           onClick={onMaximize}
         >
           <img
-            src="https://api.iconify.design/mdi:window-maximize.svg"
-            className={"fill-amber-50"}
+            src="https://api.iconify.design/mdi:window-maximize.svg?color=%23ffffff"
+            className={"fill-white"}
             alt="maximize"
           />
         </div>
-        <div className="titlebar-button" id="titlebar-close" onClick={onClose}>
+        <div
+          className="titlebar-button cursor-pointer"
+          id="titlebar-close"
+          onClick={onClose}
+        >
           <img
-            src="https://api.iconify.design/mdi:close.svg"
+            src="https://api.iconify.design/mdi:close.svg?color=%23ffffff"
             alt="close"
             className={"fill-amber-50"}
           />
