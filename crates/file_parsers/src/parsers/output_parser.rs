@@ -5,6 +5,7 @@ mod output_parser_tests;
 use connector_types::types::output::Output;
 
 pub fn get_outputs_from_file(path: &str) -> Vec<Output> {
+    //if linux remove FLightCOnnector-Rust/ once from path
     let file =
         std::fs::File::open(path).unwrap_or_else(|_| panic!("Failed to open file at {:?}", &path));
     let reader = std::io::BufReader::new(file);

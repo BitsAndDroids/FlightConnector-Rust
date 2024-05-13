@@ -1,5 +1,6 @@
 use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::input::InputType;
+use connector_types::types::output_format::FormatOutput;
 use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
 use log::{error, info};
@@ -260,9 +261,13 @@ impl SimconnectHandler {
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
         println!("Checking if output in bundle {}, {}", output_id, value);
         let output_registry = self.output_registry.clone();
+        let wasm_registry = self.wasm_registry.clone();
         let output = match output_registry.get_output_by_id(output_id) {
             Some(output) => output,
-            None => return,
+            None => match wasm_registry.get_wasm_output_by_id(output_id) {
+                Some(output) => output,
+                None => return,
+            },
         };
         let mut com_ports = vec![];
         for run_bundle in self.run_bundles.iter() {

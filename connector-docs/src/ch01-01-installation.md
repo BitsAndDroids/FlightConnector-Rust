@@ -25,14 +25,14 @@ If the search results show messages that the module was initialized, the module 
 
 You’re able to install the WASM module using the installer in the connector.
 
-- Click on settings
+- Click on settings from the menubar
 - Select install WASM
 - Click on the “select directory” button
 - Search for the MFS2020 community folder
 
-![wasm install community folder](./images/wasm/install_wasm_community.png)
+![WASM install community folder](./images/wasm/install_wasm_community.png)
 
 - Click “Select folder”
-- Click confirm
+- Click the confirm button
 
 To check if the installation succeeded, you can open the community folder. If the installation succeeded, there should be a folder called BitsAndDroidsModule.

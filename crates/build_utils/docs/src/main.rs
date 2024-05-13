@@ -1,7 +1,7 @@
 use connector_types::types::input::Input;
 use connector_types::types::output::Output;
 use file_parsers::parsers::{input_parser, output_parser};
-use std::env;
+use std::{env, path::PathBuf};
 
 trait EventMD {
     fn to_md_row(&self) -> String;
@@ -33,7 +33,7 @@ impl EventMD for Input {
             .expect("Failed to get grandparent directory")
             .parent()
             .expect("Failed to get great-grandparent directory")
-            .join("connector-docs\\src\\generated\\input_list.md");
+            .join("connector-docs/src/generated/input_list.md");
         return target_dir.to_str().unwrap().to_string();
     }
 }
@@ -56,7 +56,7 @@ impl EventMD for Output {
         let mut md = String::new();
         md.push_str("# Outputs\n");
         md.push_str(
-            "| Simvar | Metric | Update Every | Callback Text | ID | Output Type | Category |\n",
+            "| Simvar | Metric | Update Every | Callback Text | Id | Output Type | Category |\n",
         );
         md.push_str("| --- | --- | --- | --- | --- | --- | --- |\n");
         md
@@ -70,13 +70,21 @@ impl EventMD for Output {
             .expect("Failed to get grandparent directory")
             .parent()
             .expect("Failed to get great-grandparent directory")
-            .join("connector-docs\\src\\generated\\output_list.md");
+            .join("connector-docs/src/generated/output_list.md");
         return target_dir.to_str().unwrap().to_string();
     }
 }
 fn main() {
     generate_input_list();
     generate_output_list();
+}
+fn normalize_path(path: &PathBuf) -> PathBuf {
+    // Convert backslashes to forward slashes for cross-platform compatibility
+    let mut normalized = PathBuf::new();
+    for component in path.components() {
+        normalized.push(component.as_os_str());
+    }
+    normalized.to_path_buf()
 }
 
 fn generate_input_list() {
@@ -91,9 +99,9 @@ fn generate_input_list() {
         .expect("Failed to get grandparent directory")
         .parent()
         .expect("Failed to get great-grandparent directory")
-        .join("crates\\src-tauri\\src\\events");
-    let file_path = target_dir.join("inputs.json");
-    let converted_path = file_path.to_str().unwrap();
+        .join("crates/src-tauri/src/events/inputs.json");
+    let normalized_path = normalize_path(&target_dir);
+    let converted_path = normalized_path.to_str().unwrap();
     let inputs = input_parser::get_inputs_from_file(converted_path);
     generate_md_list(inputs);
 }
@@ -108,9 +116,10 @@ fn generate_output_list() {
         .expect("Failed to get grandparent directory")
         .parent()
         .expect("Failed to get great-grandparent directory")
-        .join("crates\\src-tauri\\src\\events");
-    let file_path = target_dir.join("outputs.json");
-    let converted_path = file_path.to_str().unwrap();
+        .join("crates/src-tauri/src/events/outputs.json");
+    let normalized_path = normalize_path(&target_dir);
+    let converted_path = normalized_path.to_str().unwrap();
+
     let outputs = output_parser::get_outputs_from_file(converted_path);
     generate_md_list(outputs);
 }

@@ -1,6 +1,6 @@
 # Custom events
 
-As explained in the [previous chapter](./ch06-00-wasm.md) ](./ch06-00-wasm.md) not all events can be accessed through SimConnect.
+As explained in the [previous chapter](./ch06-00-wasm.md) not all events can be accessed through SimConnect.
 Using the WASM module we're able to utilize a whole new set of functionalities.
 You're able to send data to MFS or receive data and send it to your microcontroller.
 Since there are more third party planes available than my wallet allows me to obtain it's not possible to add events for everyone of them to the connector.
@@ -8,6 +8,7 @@ By adding custom events you're able to control event the most obscure aircraft.
 These events are formatted using [Reverse Polish Notation](https://docs.flightsimulator.com/html/Additional_Information/Reverse_Polish_Notation.htm).
 The connector calls these actions custom commands.
 You're able to see and edit the custom commands from the custom events menu under the events menu.
+
 ![custom events](./images/custom_events_menu.png)
 
 ## Events broken down
@@ -33,7 +34,7 @@ When the event is defined as an output the connector will prefix the value with 
 
 The action is the event that will be triggered if the connector receives the corresponding ID or the data that MFS requests.
 
-> HubHop is a website that contains a library of events created by other simmers.
+> [HubHop](https://hubhop.mobiflight.com/presets/) is a website that contains a library of events created by other simmers.
 
 You can add logical/conditional steps into these events to create complex events.
 An example of a more complex event is:

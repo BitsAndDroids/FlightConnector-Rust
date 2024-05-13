@@ -27,7 +27,7 @@ export const ControllerSelectComponent = () => {
     runBundles: [
       {
         id: 0,
-        com_port: comPorts[0],
+        com_port: "",
         bundle_name: "",
         connected: false,
       },
@@ -144,6 +144,12 @@ export const ControllerSelectComponent = () => {
       resetAllConnections();
     } else {
       startEventListeners();
+      if (preset.runBundles[0].com_port === "") {
+        let newPreset = { ...preset };
+        newPreset.runBundles[0].com_port = (comPorts as string[])[0];
+        setPreset(newPreset);
+        updatePresets(newPreset);
+      }
       await invokeConnection(await populateRunBundles(preset.runBundles));
     }
     setConnectionRunning(!connectionRunning);

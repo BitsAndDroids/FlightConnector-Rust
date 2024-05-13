@@ -2,11 +2,13 @@
 | Simvar | Metric | Update Every | Callback Text | ID | Output Type | Category |
 | --- | --- | --- | --- | --- | --- | --- |
 | AMBIENT PRESSURE | inHG | 0.01 | Ambient pressure | 650 | INHG | Environment |
-| AMBIENT TEMPERATURE | Celsius | 0.01 | Ambient temperature | 651 | Integer | Environment |
-| AMBIENT WIND VELOCITY | Knots | 0.01 | Ambient wind velocity | 652 | Integer | Environment |
-| AMBIENT WIND DIRECTION | Degrees | 0.01 | Ambient wind direction | 653 | Integer | Environment |
-| AMBIENT PRECIP RATE | millimeters of water | 0.01 | Ambient precipitation rate | 654 | Integer | Environment |
-| AMBIENT PRECIP STATE | Mask | 0.01 | Ambient precipitation state (2=none, 4=rain, 8=snow) | 655 | Integer | Environment |
+| AMBIENT TEMPERATURE | Celsius | 0.1 | Ambient temperature | 651 | Float2DecPlaces | Environment |
+| AMBIENT WIND VELOCITY | Knots | 0.1 | Ambient wind velocity | 652 | Float1DecPlaces | Environment |
+| AMBIENT WIND DIRECTION | Degrees | 1 | Ambient wind direction | 653 | Integer | Environment |
+| AMBIENT PRECIP RATE | millimeters of water | 1 | Ambient precipitation rate | 654 | Integer | Environment |
+| PLANE HEADING DEGREES GYRO | Degrees | 0.1 | plane heading degrees gyro | 656 | Integer | Data |
+| PLANE HEADING DEGREES MAGNETIC | Radians | 0.01 | plane heading degrees magnetic | 657 | Degrees | Data |
+| PLANE HEADING DEGREES TRUE | Radians | 0.01 | Plane heading degrees true | 658 | Degrees | Data |
 | FUEL SELECTED QUANTITY PERCENT | Percent Over 100 | 0.01 | Fuel quantity % | 275 | Percentage | Fuel |
 | AUTOPILOT AIRSPEED HOLD VAR | knots | 0 | AP airspeed var | 700 | Integer | Fuel |
 | FUEL TANK CENTER LEVEL | Percent Over 100 | 0.01 | Fuel tank center level | 234 | Percentage | Fuel |
@@ -59,7 +61,7 @@
 | LOCAL TIME | Seconds | 1 | Local time | 338 | SecondsAfterMidnight | Data |
 | TIME ZONE OFFSET | Seconds | 1 | Zulu time | 339 | Integer | Data |
 | ZULU TIME | Seconds | 1 | Zulu time | 340 | SecondsAfterMidnight | Data |
-| GPS GROUND SPEED | Meters per second | 1 | GPS groundspeed | 430 | MetersPerSecond | GPS |
+| GPS GROUND SPEED | Meters per second | 1 | GPS groundspeed | 430 | MetersPerSecondToKnots | GPS |
 | GPS WP BEARING | Degrees | 1 | GPS course to steer | 454 | Integer | GPS |
 | AUTOPILOT HEADING LOCK DIR | Degrees | 0 | AP heading lock | 582 | Integer | Autopilot |
 | AUTOPILOT ALTITUDE LOCK VAR | Feet | 0 | AP altitude lock var | 584 | Integer | Autopilot |
