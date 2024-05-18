@@ -13,6 +13,7 @@
       "src/events/outputs.json",
       "src/events/inputs.json",
       "wasm_module",
+      "../../connector_library",
       "SimConnect.dll"
     ],
     "icon": [

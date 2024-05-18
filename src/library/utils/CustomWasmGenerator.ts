@@ -7,6 +7,11 @@ const generateVariables = (variables: WASMEvent[]): string => {
   return variables.map(generateVariable).join("\n");
 };
 
+const generateHeaderFile = (variables: WASMEvent[]): string => {
+  const variablesString = generateVariables(variables);
+  const gettersString = generateGetters(variables);
+};
+
 const insertSwitchCases = (caseString: string, templateString: string) => {
   const templateStartMarker = "  // START CASE TEMPLATE";
   const templateEndMarker = "  // END CASE TEMPLATE";
