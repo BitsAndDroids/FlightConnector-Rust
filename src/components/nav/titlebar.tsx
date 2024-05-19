@@ -41,7 +41,7 @@ export const Titlebar: React.FC = () => {
           onClick={onMinimize}
         >
           <img
-            src="https://api.iconify.design/mdi:window-minimize.svg"
+            src="https://api.iconify.design/mdi:window-minimize.svg?color=%23f0f0f0"
             className={"fill-amber-50"}
             alt="minimize"
           />
@@ -52,14 +52,14 @@ export const Titlebar: React.FC = () => {
           onClick={onMaximize}
         >
           <img
-            src="https://api.iconify.design/mdi:window-maximize.svg"
+            src="https://api.iconify.design/mdi:window-maximize.svg?color=%23f0f0f0"
             className={"fill-amber-50"}
             alt="maximize"
           />
         </div>
         <div className="titlebar-button" id="titlebar-close" onClick={onClose}>
           <img
-            src="https://api.iconify.design/mdi:close.svg"
+            src="https://api.iconify.design/mdi:close.svg?color=%23f0f0f0"
             alt="close"
             className={"fill-amber-50"}
           />
