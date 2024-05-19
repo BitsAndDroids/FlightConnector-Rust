@@ -1,4 +1,5 @@
 import { Button } from "@/components/elements/Button";
+import { Input } from "@/components/elements/Input";
 import { Header } from "@/components/elements/header";
 import { EventEditor } from "@/components/outputs/EventEditor";
 import { WASMEventTable } from "@/components/wasm/WASMEventTable";
@@ -9,6 +10,7 @@ import { useEffect, useState } from "react";
 
 export const CustomEvents = () => {
   const [events, setEvents] = useState<WASMEvent[]>([]);
+  const [filteredEvents, setFilteredEvents] = useState<WASMEvent[]>([]);
   const [eventEditorOpen, setEventEditorOpen] = useState<boolean>(false);
   const [eventToEdit, setEventToEdit] = useState<WASMEvent | undefined>(
     undefined,
@@ -79,6 +81,11 @@ export const CustomEvents = () => {
     setEvents(events);
   };
 
+  const searchId = async (id: string) => {
+    const filteredEvents = events.filter((event) => event.id.toString() === id);
+    setFilteredEvents(filteredEvents);
+  };
+
   return (
     <>
       {eventEditorOpen && (
@@ -103,9 +110,14 @@ export const CustomEvents = () => {
             style="primary"
             addToClassName="mt-10 mb-4 ml-2"
           />
+          <Input
+            placeholder="Search by id"
+            addToClassName="mt-10"
+            onChange={(id: string) => searchId(id)}
+          />
         </div>
         <WASMEventTable
-          events={events}
+          events={filteredEvents.length > 0 ? filteredEvents : events}
           deleteEvent={deleteEvent}
           editEvent={editEvent}
         />
