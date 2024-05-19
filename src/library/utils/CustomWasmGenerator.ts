@@ -139,7 +139,7 @@ const generateCase = (variable: WASMEvent): string => {
 };
 
 const generateGetter = (variable: WASMEvent): string => {
-  return `  ${mapOutputType(variable.output_format)} getOutput${variable.id}()\{ return output${variable.id}; \}\n`;
+  return `  ${mapOutputType(variable.output_format)} getOutput${variable.id}() \{ return output${variable.id}; \}\n`;
 };
 
 const generateVariable = (variable: WASMEvent): string => {

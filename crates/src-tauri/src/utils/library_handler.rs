@@ -56,7 +56,7 @@ pub fn generate_library(
     let lib_properties_path = resource_path.join("connector_library/library.properties");
     fs::copy(
         lib_properties_path,
-        library_path.join("connector_library/library.properties"),
+        library_dest_path.join("library.properties"),
     )
     .unwrap();
     println!("Library generated in dir: {}", path);
