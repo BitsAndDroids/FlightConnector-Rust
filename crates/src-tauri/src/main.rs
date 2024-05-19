@@ -10,7 +10,7 @@ use serde_json::json;
 use serialport::SerialPortType;
 use tauri::{AppHandle, Manager, Wry};
 use tauri_plugin_dialog::DialogExt;
-use tauri_plugin_store::{with_store, Store, StoreBuilder, StoreCollection};
+use tauri_plugin_store::{with_store, Store, StoreCollection};
 use tauri_plugin_updater::UpdaterExt;
 mod events;
 mod sim_utils;
@@ -22,6 +22,8 @@ use std::path::PathBuf;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
+use utils::library_handler::get_library_header_content;
+use utils::library_handler::get_library_source_content;
 use utils::wasm_installer::install_wasm;
 
 use std::thread;
@@ -172,7 +174,9 @@ fn main() {
             stop_simconnect_connection, /*send_command*/
             install_wasm,
             get_wasm_events,
-            update_default_events
+            update_default_events,
+            get_library_header_content,
+            get_library_source_content
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();

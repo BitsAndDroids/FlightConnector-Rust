@@ -10,6 +10,7 @@ const generateVariables = (variables: WASMEvent[]): string => {
 const generateHeaderFile = (variables: WASMEvent[]): string => {
   const variablesString = generateVariables(variables);
   const gettersString = generateGetters(variables);
+  return "";
 };
 
 const insertSwitchCases = (caseString: string, templateString: string) => {

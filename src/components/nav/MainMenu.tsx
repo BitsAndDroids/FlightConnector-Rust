@@ -47,6 +47,14 @@ export const MainMenu: React.FC = () => {
       action: () => openWASMDialog(),
       active: true,
     },
+    {
+      title: "Generate library",
+      action: () =>
+        invoke("get_library_header_content").then((result) => {
+          console.log(result);
+        }),
+      active: true,
+    },
   ];
 
   const openWASMDialog = async () => {
