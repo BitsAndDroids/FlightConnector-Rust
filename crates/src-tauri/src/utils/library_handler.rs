@@ -37,22 +37,17 @@ pub fn generate_library(
     source_string: String,
 ) {
     let library_path = Path::new(&path);
-    let library_dest_header_path = library_path.join("connector_library");
-    if let Err(e) = fs::create_dir_all(&library_dest_header_path) {
+    let library_dest_path = library_path.join("BitsAndDroidsFlightSimLibrary");
+    if let Err(e) = fs::create_dir_all(&library_dest_path) {
         println!("Failed to create destination directory: {}", e);
     }
-    let library_dest_source_path = library_path.join("connector_library");
-    if let Err(e) = fs::create_dir_all(&library_dest_source_path) {
-        println!("Failed to create destination directory: {}", e);
-    }
-
     fs::write(
-        library_dest_header_path.join("BitsAndDroidsFlightConnector.h"),
+        library_dest_path.join("BitsAndDroidsFlightConnector.h"),
         header_string,
     )
     .unwrap();
     fs::write(
-        library_dest_source_path.join("BitsAndDroidsFlightConnector.cpp"),
+        library_dest_path.join("BitsAndDroidsFlightConnector.cpp"),
         source_string,
     )
     .unwrap();
