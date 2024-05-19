@@ -13,6 +13,8 @@
   - [Logs](ch05-01-logs.md)
 - [WASM](ch06-00-wasm.md)
   - [Custom events](ch06-01-custom-events.md)
+- [Library](ch07-00-library.md)
+  - [Library generator](ch07-01-library-generator.md)
 
 # Examples
 
