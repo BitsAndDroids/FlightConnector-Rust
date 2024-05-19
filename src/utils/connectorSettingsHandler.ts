@@ -12,6 +12,11 @@ export class ConnectorSettingsHandler {
     this.runSettingsStore.save();
   }
 
+  async setLibraryFolderPath(folder: string): Promise<void> {
+    this.runSettingsStore.set("libraryFolderPath", folder);
+    this.runSettingsStore.save();
+  }
+
   async setWASMModulePath(path: string): Promise<void> {
     this.runSettingsStore.set("wasmModulePath", path);
     this.runSettingsStore.save();
@@ -28,6 +33,10 @@ export class ConnectorSettingsHandler {
 
   async getCommunityFolderPath(): Promise<string | null> {
     return await this.runSettingsStore.get("communityFolderPath");
+  }
+
+  async getLibraryFolderPath(): Promise<string | null> {
+    return await this.runSettingsStore.get("libraryFolderPath");
   }
 
   async getWASMModulePath(): Promise<string | null> {

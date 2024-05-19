@@ -22,7 +22,9 @@ use std::path::PathBuf;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
+use utils::library_handler::generate_library;
 use utils::library_handler::get_library_header_content;
+use utils::library_handler::get_library_outputs;
 use utils::library_handler::get_library_source_content;
 use utils::wasm_installer::install_wasm;
 
@@ -176,7 +178,9 @@ fn main() {
             get_wasm_events,
             update_default_events,
             get_library_header_content,
-            get_library_source_content
+            get_library_source_content,
+            get_library_outputs,
+            generate_library
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
