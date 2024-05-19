@@ -34,6 +34,18 @@ export const CustomEvents = () => {
   const saveEvent = async (event: WASMEvent) => {
     console.log("save event", event);
     wasmStore.addEvent(event);
+    if (eventToEdit) {
+      const newEvents = events.map((e) => {
+        if (e.id === event.id) {
+          return event;
+        }
+        return e;
+      });
+      setEvents(newEvents);
+      setEventToEdit(undefined);
+      setEventEditorOpen(false);
+      return;
+    }
     const newEvents = [...events, event];
     newEvents.sort((a, b) => a.id - b.id);
     setEvents(newEvents);

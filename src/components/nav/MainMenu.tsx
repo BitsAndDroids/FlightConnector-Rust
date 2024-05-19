@@ -6,10 +6,15 @@ import { FileDialog } from "../FileDialog";
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
+import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = new ConnectorSettingsHandler();
-  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [installWASMDialogOpen, setInstallWASMDialogOpen] =
+    useState<boolean>(false);
+  const [generateLibraryDialogOpen, setGenerateLibraryDialogOpen] =
+    useState<boolean>(false);
   const [communityFolderPath, setCommunityFolderPath] = useState<string>("");
+  const [libraryFolderPath, setLibraryFolderPath] = useState<string>("");
   const openWindow = async (windowName: string, url: string) => {
     new WebviewWindow(windowName, {
       url: `/${url}`,
@@ -22,11 +27,16 @@ export const MainMenu: React.FC = () => {
       title: "Logs",
     });
   }
-  const outputMenuItems = [
+  const eventMenuItems = [
     { title: "Bundle settings", route: "/options/outputs", active: true },
     {
       title: "Custom output settings",
       route: "/options/outputs/custom",
+      active: true,
+    },
+    {
+      title: "Generate library",
+      action: () => openGenerateWASMLibrary(),
       active: true,
     },
   ];
@@ -54,10 +64,19 @@ export const MainMenu: React.FC = () => {
     if (savedPath) {
       setCommunityFolderPath(savedPath);
     }
-    setDialogOpen(true);
+    setInstallWASMDialogOpen(true);
   };
+
+  const openGenerateWASMLibrary = async (path?: string) => {
+    const savedPath = await connectorSettingsHandler.getLibraryFolderPath();
+    if (savedPath) {
+      setLibraryFolderPath(savedPath);
+    }
+    setGenerateLibraryDialogOpen(true);
+  };
+
   const installWasm = async (dirResult?: string) => {
-    setDialogOpen(false);
+    setInstallWASMDialogOpen(false);
     if (!dirResult) return;
     console.log("installing wasm to ", dirResult);
     await connectorSettingsHandler.setCommunityFolderPath(dirResult);
@@ -67,14 +86,30 @@ export const MainMenu: React.FC = () => {
     );
   };
 
+  const generateWASMLibrary = async (dirResult?: string) => {
+    setGenerateLibraryDialogOpen(false);
+    if (!dirResult) return;
+    console.log("generating wasm library to ", dirResult);
+    await connectorSettingsHandler.setLibraryFolderPath(dirResult);
+    generateLibrary(dirResult);
+  };
+
   return (
     <>
-      {dialogOpen && (
+      {installWASMDialogOpen && (
         <FileDialog
           message="Please select the MFS community folder"
           onConfirm={(input?: string) => installWasm(input)}
-          setDialogOpen={setDialogOpen}
+          setDialogOpen={setInstallWASMDialogOpen}
           value={communityFolderPath}
+        />
+      )}
+      {generateLibraryDialogOpen && (
+        <FileDialog
+          message="Please select the location where to save the library"
+          onConfirm={(input?: string) => generateWASMLibrary(input)}
+          setDialogOpen={setGenerateLibraryDialogOpen}
+          value={libraryFolderPath}
         />
       )}
       <div
@@ -98,7 +133,7 @@ export const MainMenu: React.FC = () => {
             <TopMenuItem
               text={"Events"}
               href={"/options/outputs"}
-              subMenuItems={outputMenuItems}
+              subMenuItems={eventMenuItems}
             />
             <button className="mx-2 " onClick={() => openLogWindow()}>
               Logs
