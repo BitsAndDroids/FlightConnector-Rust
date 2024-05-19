@@ -27,11 +27,16 @@ export const MainMenu: React.FC = () => {
       title: "Logs",
     });
   }
-  const outputMenuItems = [
+  const eventMenuItems = [
     { title: "Bundle settings", route: "/options/outputs", active: true },
     {
       title: "Custom output settings",
       route: "/options/outputs/custom",
+      active: true,
+    },
+    {
+      title: "Generate library",
+      action: () => openGenerateWASMLibrary(),
       active: true,
     },
   ];
@@ -50,11 +55,6 @@ export const MainMenu: React.FC = () => {
     {
       title: "Install WASM",
       action: () => openWASMDialog(),
-      active: true,
-    },
-    {
-      title: "Generate library",
-      action: () => openGenerateWASMLibrary(),
       active: true,
     },
   ];
@@ -133,7 +133,7 @@ export const MainMenu: React.FC = () => {
             <TopMenuItem
               text={"Events"}
               href={"/options/outputs"}
-              subMenuItems={outputMenuItems}
+              subMenuItems={eventMenuItems}
             />
             <button className="mx-2 " onClick={() => openLogWindow()}>
               Logs
