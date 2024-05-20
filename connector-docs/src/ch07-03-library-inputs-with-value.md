@@ -16,7 +16,7 @@ The library has helper functions that parse the desired values into the correct 
 
 | Expects | The InHg value to set i.e. 29.92 as |
 | Value type | float |
-| Converts | Value _ 33.8639 (to mb) _ 16 |
+| Converts | Value \* 33.8639 (to mb) \* 16 |
 | Sends | “377 16211” |
 
 ### connector.sendSetKohlmanAltimeterMb(float value)
