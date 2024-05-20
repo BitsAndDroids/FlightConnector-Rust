@@ -265,6 +265,10 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     headingTrue = cutValue.toInt();
     break;
   }
+  case 659: {
+    indicatedAltitudeCalibrated = cutValue.toInt();
+    break;
+  }
 
   // time
   case 338: {
