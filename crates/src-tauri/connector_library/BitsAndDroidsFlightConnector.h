@@ -686,6 +686,7 @@ public:
 
   int getIndicatedAirspeed() { return indicatedAirspeed; };
   int getIndicatedAltitude() { return indicatedAltitude; };
+  int getIndicatedAltitudeCalibrated() { return indicatedAltitudeCalibrated; };
   int getIndicatedHeading() { return indicatedHeading; };
   int getIndicatedGPSGroundspeed() { return indicatedGPSGroundspeed; };
   int getTrueVerticalSpeed() { return trueVerticalSpeed; };
@@ -913,6 +914,7 @@ private:
 
   int indicatedAirspeed;
   int indicatedAltitude;
+  int indicatedAltitudeCalibrated;
   int indicatedHeading;
   int indicatedGPSGroundspeed;
   int trueVerticalSpeed;

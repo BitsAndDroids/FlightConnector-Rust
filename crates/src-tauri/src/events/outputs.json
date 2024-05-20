@@ -72,6 +72,15 @@
     "category": "Data"
   },
   {
+    "simvar": "INDICATED_ALTITUDE_CALIBRATED",
+    "metric": "Feet",
+    "update_every": 1,
+    "cb_text": "Indicated altitude calibrated",
+    "id": 659,
+    "output_type": "integer",
+    "category": "Instruments"
+  },
+  {
     "simvar": "FUEL SELECTED QUANTITY PERCENT",
     "metric": "Percent Over 100",
     "update_every": 0.01,
