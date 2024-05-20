@@ -657,6 +657,8 @@ public:
   void mixtureInputHandling(int mixturePin1, int mixturePin2);
   void sendSetElevatorTrim(int value);
   void sendFlaps();
+  void sendSetKohlmanAltimeterInHg(float value);
+  void sendSetKohlmanAltimeterMb(float value);
   void setPotFlaps(byte flapsPin);
   void sendSetBrakePot(byte leftPin, byte rightPin);
   void sendSetYokeAxis(byte elevatorPin, byte aileronPin);

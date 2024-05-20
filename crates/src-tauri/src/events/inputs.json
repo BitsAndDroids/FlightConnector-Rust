@@ -956,6 +956,11 @@
       "input_id": 376
     },
     {
+      "input_type": "set_value",
+      "event": "KOHLSMAN_SET",
+      "input_id": 377
+    },
+    {
       "input_type": "trigger",
       "event": "AUTO_THROTTLE_ARM",
       "input_id": 378
