@@ -246,7 +246,13 @@ impl SimconnectHandler {
             }
             InputType::SetValueCom => convert_dec_to_dcb(val),
             InputType::SetValue => val,
-            InputType::Trigger => 0,
+            InputType::Trigger => {
+                if val == 0 {
+                    0
+                } else {
+                    val
+                }
+            }
         };
         println!("Sending input to simconnect: {}, {}", command, value);
         self.simconnect.transmit_client_event(
@@ -528,8 +534,6 @@ impl SimconnectHandler {
     }
 
     pub fn define_outputs(&mut self) {
-        let wasm_registry = &self.wasm_registry;
-
         let run_bundles = &self.run_bundles;
         let mut outputs_not_found = vec![];
         for run_bundle in run_bundles {
@@ -558,23 +562,16 @@ impl SimconnectHandler {
         send_wasm_command(&mut self.simconnect, "clear");
         let mut items = 0;
         outputs_not_found.into_iter().for_each(|output| {
-            // match wasm_registry.get_wasm_output_by_id(output.id) {
-            //     Some(wasm_output) => {
             println!("ADD WASM: {:?}", output);
 
-            let wasm_event = WasmEvent {
-                id: output.id,
-                action: output.simvar.to_string(),
-                action_text: "".to_string(),
-                action_type: "output".to_string(),
-                output_format: "".to_string(),
-                update_every: output.update_every,
-                value: 0.0,
-                min: 0.0,
-                max: 0.0,
-                offset: (std::mem::size_of::<f64>() * items) as u32,
-                plane_or_category: "".to_string(),
+            let wasm_event = match self.wasm_registry.get_wasm_event_by_id(output.id) {
+                Some(wasm_event) => wasm_event.clone(),
+                None => {
+                    println!("Wasm output not found: {:?}", output);
+                    return;
+                }
             };
+
             register_wasm_event(&mut self.simconnect, wasm_event);
             self.simconnect.add_to_client_data_definition(
                 output.id,

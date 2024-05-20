@@ -85,6 +85,10 @@ impl WASMRegistry {
             .find(|&output| output.id == output_id)
     }
 
+    pub fn get_wasm_event_by_id(&self, event_id: u32) -> Option<&WasmEvent> {
+        self.wasm_outputs.iter().find(|&event| event.id == event_id)
+    }
+
     pub fn get_wasm_outputs(&self) -> &Vec<WasmEvent> {
         &self.wasm_outputs
     }
