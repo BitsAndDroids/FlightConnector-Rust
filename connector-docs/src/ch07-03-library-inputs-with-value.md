@@ -14,14 +14,18 @@ The library has helper functions that parse the desired values into the correct 
 
 ### connector.sendSetKohlmanAltimeterInHg(float value)
 
-| Expects | The InHg value to set i.e. 29.92 as |
-| Value type | float |
-| Converts | Value \* 33.8639 (to mb) \* 16 |
-| Sends | “377 16211” |
+|            |                                     |
+| ---------- | ----------------------------------- |
+| Expects    | The InHg value to set i.e. 29.92 as |
+| Value type | float                               |
+| Converts   | Value \* 33.8639 (to mb) \* 16      |
+| Sends      | “377 16211”                         |
 
 ### connector.sendSetKohlmanAltimeterMb(float value)
 
-| Expects | The mb value to set i.e. 1011 as |
-| Value type | float |
-| Converts | Value \* 16 |
-| Sends | “377 162176” |
+|            |                                  |
+| ---------- | -------------------------------- |
+| Expects    | The mb value to set i.e. 1011 as |
+| Value type | float                            |
+| Converts   | Value \* 16                      |
+| Sends      | “377 162176”                     |
