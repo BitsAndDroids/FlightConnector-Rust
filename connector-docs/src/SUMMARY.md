@@ -15,6 +15,9 @@
   - [Custom events](ch06-01-custom-events.md)
 - [Library](ch07-00-library.md)
   - [Library generator](ch07-01-library-generator.md)
+  - [Library input events](ch07-02-library-inputs.md)
+  - [Library input/set events with values](ch07-03-library-inputs-with-value.md)
+  - [Library output functions](ch07-04-library-outputs.md)
 
 # Examples
 
