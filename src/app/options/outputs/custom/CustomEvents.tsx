@@ -30,15 +30,9 @@ export const CustomEvents = () => {
   );
   const keyArray: Array<keyof WASMEvent> = [
     "id",
-    "action",
     "action_type",
-    "action_text",
     "output_format",
     "update_every",
-    "min",
-    "max",
-    "value",
-    "offset",
     "plane_or_category",
   ];
 
@@ -55,11 +49,19 @@ export const CustomEvents = () => {
     fetchWasmEvents();
   }, []);
 
+  useEffect(() => {
+    sortEvents();
+  }, [sortSettings]);
+
   const sortEvents = () => {
-    const sortedEvents = events.sort((a, b) => {
+    const sortedEvents = filteredEvents.sort((a, b) => {
       const aValue = a[sortSettings.sortBy];
       const bValue = b[sortSettings.sortBy];
+      console.log(
+        `Sorting by: ${sortSettings.sortBy}, aValue: ${aValue}, bValue: ${bValue}, sortOrder: ${sortSettings.sortOrder}`,
+      );
       if (typeof aValue === "number" && typeof bValue === "number") {
+        console.log("number sort");
         return sortSettings.sortOrder === "asc"
           ? aValue - bValue
           : bValue - aValue;
@@ -70,6 +72,7 @@ export const CustomEvents = () => {
           ? aValue.localeCompare(bValue)
           : bValue.localeCompare(aValue);
       } else {
+        console.log("default sort");
         return 0;
       }
     });
@@ -82,17 +85,23 @@ export const CustomEvents = () => {
   };
 
   const changeSortBy = (sortBy: string) => {
-    const key = sortBy as keyof WASMEvent;
-    setSortSettings({ ...sortSettings, sortBy: key });
-    sortEvents();
+    if (!keyArray.includes(sortBy as keyof WASMEvent)) {
+      return;
+    }
+    setSortSettings((prevSettings) => ({
+      ...prevSettings,
+      sortBy: sortBy as keyof WASMEvent,
+    }));
   };
 
   const changeSortOrder = (sortOrder: string) => {
     if (sortOrder !== "asc" && sortOrder !== "desc") {
       return;
     }
-    setSortSettings({ ...sortSettings, sortOrder: sortOrder });
-    sortEvents();
+    setSortSettings((oldSettings) => ({
+      ...oldSettings,
+      sortOrder: sortOrder as "asc" | "desc",
+    }));
   };
 
   const saveEvent = async (event: WASMEvent) => {
@@ -185,7 +194,7 @@ export const CustomEvents = () => {
             options={keyArray}
             values={keyArray}
             value={sortSettings.sortBy}
-            onChange={changeSortBy}
+            onChange={(e) => changeSortBy(e)}
             addToClassName="mt-2 text-white"
           />
           <Select
@@ -194,12 +203,12 @@ export const CustomEvents = () => {
             options={["asc", "desc"]}
             values={["asc", "desc"]}
             value={sortSettings.sortOrder}
-            onChange={changeSortOrder}
+            onChange={(e) => changeSortOrder(e)}
             addToClassName="mt-2 text-white"
           />
         </div>
         <WASMEventTable
-          events={filteredEvents.length > 0 ? filteredEvents : events}
+          events={filteredEvents}
           deleteEvent={deleteEvent}
           editEvent={editEvent}
         />
