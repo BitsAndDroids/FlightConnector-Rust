@@ -44,7 +44,7 @@ export const Table = ({
           </thead>
           <tbody className="">
             {elements.map((element, index) => (
-              <tr key={`tr-${element.id}`} className="">
+              <tr key={`tr-${index}`} className="">
                 {headers.map((header, headerIndex) => (
                   <td
                     key={`${headerIndex}-${index}`}

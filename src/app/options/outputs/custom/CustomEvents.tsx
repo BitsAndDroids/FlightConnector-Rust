@@ -15,6 +15,7 @@ interface SortSettings {
   outputFormat: string | undefined;
   type: string | undefined;
 }
+
 export const CustomEvents = () => {
   const [sortSettings, setSortSettings] = useState<SortSettings>({
     sortBy: "id",
@@ -37,6 +38,7 @@ export const CustomEvents = () => {
   ];
 
   const wasmStore = new CustomEventHandler();
+
   useEffect(() => {
     const fetchWasmEvents = async () => {
       let events = await invoke("get_wasm_events").then((events: any) => {
@@ -45,42 +47,38 @@ export const CustomEvents = () => {
 
       events.sort((a, b) => a.id - b.id);
       setEvents(events);
+      setFilteredEvents(events);
     };
     fetchWasmEvents();
   }, []);
 
   useEffect(() => {
     sortEvents();
-  }, [sortSettings]);
+  }, [sortSettings, events]);
 
   const sortEvents = () => {
-    const sortedEvents = filteredEvents.sort((a, b) => {
+    const sortedEvents = [...events].sort((a, b) => {
       const aValue = a[sortSettings.sortBy];
       const bValue = b[sortSettings.sortBy];
       console.log(
         `Sorting by: ${sortSettings.sortBy}, aValue: ${aValue}, bValue: ${bValue}, sortOrder: ${sortSettings.sortOrder}`,
       );
       if (typeof aValue === "number" && typeof bValue === "number") {
-        console.log("number sort");
         return sortSettings.sortOrder === "asc"
-          ? aValue - bValue
-          : bValue - aValue;
+          ? bValue - aValue
+          : aValue - bValue;
       }
       if (typeof aValue === "string" && typeof bValue === "string") {
-        console.log("string sort");
         return sortSettings.sortOrder === "asc"
           ? aValue.localeCompare(bValue)
           : bValue.localeCompare(aValue);
-      } else {
-        console.log("default sort");
-        return 0;
       }
+      return 0;
     });
     setFilteredEvents(sortedEvents);
   };
 
   const addEvent = async () => {
-    console.log("add event");
     setEventEditorOpen(true);
   };
 
@@ -105,7 +103,6 @@ export const CustomEvents = () => {
   };
 
   const saveEvent = async (event: WASMEvent) => {
-    console.log("save event", event);
     wasmStore.addEvent(event);
     if (eventToEdit) {
       const newEvents = events.map((e) => {
@@ -122,6 +119,7 @@ export const CustomEvents = () => {
     const newEvents = [...events, event];
     newEvents.sort((a, b) => a.id - b.id);
     setEvents(newEvents);
+    setFilteredEvents(newEvents);
     setEventToEdit(undefined);
     setEventEditorOpen(false);
   };
@@ -130,10 +128,10 @@ export const CustomEvents = () => {
     wasmStore.deleteEvent(id);
     const newEvents = events.filter((event) => event.id !== id);
     setEvents(newEvents);
+    setFilteredEvents(newEvents);
   };
 
   const editEvent = async (id: number) => {
-    console.log("edit", id);
     setEventToEdit(events.find((event) => event.id === id));
     setEventEditorOpen(true);
   };
@@ -150,11 +148,15 @@ export const CustomEvents = () => {
     });
     events.sort((a, b) => a.id - b.id);
     setEvents(events);
+    setFilteredEvents(events);
   };
 
-  const searchId = async (id: string) => {
-    const filteredEvents = events.filter((event) =>
-      event.id.toString().includes(id),
+  const searchId = async (searchFor: string) => {
+    const filteredEvents = events.filter(
+      (event) =>
+        event.id.toString().includes(searchFor) ||
+        event.action.includes(searchFor) ||
+        event.action_text.includes(searchFor),
     );
     setFilteredEvents(filteredEvents);
   };
@@ -169,7 +171,7 @@ export const CustomEvents = () => {
         />
       )}
       <div className="h-[96%] overflow-y-hidden">
-        <div className="flex flew-row align-middle ">
+        <div className="flex flew-row align-middle">
           <Header level={1} title="Custom Events" />
           <Button
             text="Add Event"
@@ -184,7 +186,7 @@ export const CustomEvents = () => {
             addToClassName="mt-10 mb-4 ml-2"
           />
           <Input
-            placeholder="Search by id"
+            placeholder="Search"
             addToClassName="mt-10"
             onChange={(id: string) => searchId(id)}
           />
@@ -194,7 +196,7 @@ export const CustomEvents = () => {
             options={keyArray}
             values={keyArray}
             value={sortSettings.sortBy}
-            onChange={(e) => changeSortBy(e)}
+            onChange={changeSortBy}
             addToClassName="mt-2 text-white"
           />
           <Select
@@ -203,7 +205,7 @@ export const CustomEvents = () => {
             options={["asc", "desc"]}
             values={["asc", "desc"]}
             value={sortSettings.sortOrder}
-            onChange={(e) => changeSortOrder(e)}
+            onChange={changeSortOrder}
             addToClassName="mt-2 text-white"
           />
         </div>

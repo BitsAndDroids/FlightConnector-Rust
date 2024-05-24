@@ -55,15 +55,18 @@ impl WASMRegistry {
     pub fn load_wasm(&mut self, app: tauri::AppHandle) {
         let stores = app.app_handle().state::<StoreCollection<Wry>>();
         let path = PathBuf::from(".events.dat");
+        let mut output_counter = 0;
         let handle_store = |store: &mut Store<Wry>| {
             let keys = store.keys();
             for key in keys {
                 let value = store.get(&key).unwrap();
-                let wasm_event: WasmEvent = serde_json::from_value(value.clone()).unwrap();
+                let mut wasm_event: WasmEvent = serde_json::from_value(value.clone()).unwrap();
+                wasm_event.offset = output_counter * 8;
                 if wasm_event.action_type == "output" {
                     self.wasm_outputs.push(wasm_event.clone());
                     self.parsed_wasm_outputs
                         .push(wasm_event.get_output_format());
+                    output_counter += 1;
                 } else {
                     self.wasm_inputs.push(wasm_event);
                 }
