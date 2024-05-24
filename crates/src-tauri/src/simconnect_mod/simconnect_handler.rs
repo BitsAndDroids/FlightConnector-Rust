@@ -231,7 +231,7 @@ impl SimconnectHandler {
         let input = match self.input_registry.get_input(command) {
             Some(input) => input,
             None => {
-                error!(target: "input", "send to wasm,: {}", command);
+                info!(target: "input", "send to wasm,: {}", command);
                 wasm::send_wasm_data(&mut self.simconnect, command);
                 return;
             }
