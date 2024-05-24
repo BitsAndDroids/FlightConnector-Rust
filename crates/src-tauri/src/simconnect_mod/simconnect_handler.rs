@@ -231,7 +231,7 @@ impl SimconnectHandler {
         let input = match self.input_registry.get_input(command) {
             Some(input) => input,
             None => {
-                error!(target: "input", "send to wasm,: {}", command);
+                info!(target: "input", "send to wasm,: {}", command);
                 wasm::send_wasm_data(&mut self.simconnect, command);
                 return;
             }
@@ -560,7 +560,6 @@ impl SimconnectHandler {
         self.simconnect
             .add_to_client_data_definition(106, 0, 4096, 0.0, 0);
         send_wasm_command(&mut self.simconnect, "clear");
-        let mut items = 0;
         outputs_not_found.into_iter().for_each(|output| {
             println!("ADD WASM: {:?}", output);
 
@@ -572,26 +571,24 @@ impl SimconnectHandler {
                 }
             };
 
-            register_wasm_event(&mut self.simconnect, wasm_event);
+            register_wasm_event(&mut self.simconnect, wasm_event.clone());
             self.simconnect.add_to_client_data_definition(
-                output.id,
-                (std::mem::size_of::<f64>() * items) as u32,
+                wasm_event.id,
+                wasm_event.offset,
                 std::mem::size_of::<f64>() as u32,
-                output.update_every,
+                wasm_event.update_every,
                 0,
             );
             self.simconnect.request_client_data(
                 2,
-                output.id,
-                output.id,
+                wasm_event.id,
+                wasm_event.id,
                 simconnect::SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_ON_SET,
                 simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED,
                 0,
                 0,
                 0,
             );
-
-            items += 1;
         });
     }
 }
