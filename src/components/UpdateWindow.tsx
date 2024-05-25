@@ -17,9 +17,12 @@ export const UpdateWindow = (props: UpdateWindowProps) => {
   let [updates, setUpdates] = useState<Update[]>([] as Update[]);
   useEffect(() => {
     const fetchUpdates = async () => {
-      const response = await fetch("http://localhost:3000/api/release", {
-        method: "GET",
-      });
+      const response = await fetch(
+        "https://www.bitsanddroids.com/api/release",
+        {
+          method: "GET",
+        },
+      );
       const data = await response.json();
       updates = data;
       setUpdates(updates);
