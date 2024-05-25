@@ -7,6 +7,7 @@ import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
+import { UpdateWindow } from "../UpdateWindow";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = new ConnectorSettingsHandler();
   const [installWASMDialogOpen, setInstallWASMDialogOpen] =
@@ -15,6 +16,7 @@ export const MainMenu: React.FC = () => {
     useState<boolean>(false);
   const [communityFolderPath, setCommunityFolderPath] = useState<string>("");
   const [libraryFolderPath, setLibraryFolderPath] = useState<string>("");
+  const [updateWindowOpen, setUpdateWindowOpen] = useState<boolean>(false);
   const openWindow = async (windowName: string, url: string) => {
     new WebviewWindow(windowName, {
       url: `/${url}`,
@@ -96,6 +98,9 @@ export const MainMenu: React.FC = () => {
 
   return (
     <>
+      {updateWindowOpen && (
+        <UpdateWindow closeWindow={() => setUpdateWindowOpen(false)} />
+      )}
       {installWASMDialogOpen && (
         <FileDialog
           message="Please select the MFS community folder"
@@ -138,6 +143,10 @@ export const MainMenu: React.FC = () => {
             <button className="mx-2 " onClick={() => openLogWindow()}>
               Logs
             </button>
+            <TopMenuItem
+              text={"Release notes"}
+              action={() => setUpdateWindowOpen(true)}
+            />
           </nav>
         </div>
         <Titlebar />
