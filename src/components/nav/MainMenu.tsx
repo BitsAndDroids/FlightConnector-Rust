@@ -3,11 +3,12 @@ import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
 import { FileDialog } from "../FileDialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
 import { UpdateWindow } from "../UpdateWindow";
+import { hasReadLatestPatchNotes } from "@/utils/UpdateChecker";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = new ConnectorSettingsHandler();
   const [installWASMDialogOpen, setInstallWASMDialogOpen] =
@@ -17,6 +18,18 @@ export const MainMenu: React.FC = () => {
   const [communityFolderPath, setCommunityFolderPath] = useState<string>("");
   const [libraryFolderPath, setLibraryFolderPath] = useState<string>("");
   const [updateWindowOpen, setUpdateWindowOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkForUpdates = async () => {
+      const hasRead = await hasReadLatestPatchNotes();
+      if (!hasRead.read) {
+        connectorSettingsHandler.setLatestPatchNotesRead(hasRead.tag.tag);
+        setUpdateWindowOpen(true);
+      }
+    };
+    checkForUpdates();
+  }, []);
+
   const openWindow = async (windowName: string, url: string) => {
     new WebviewWindow(windowName, {
       url: `/${url}`,
