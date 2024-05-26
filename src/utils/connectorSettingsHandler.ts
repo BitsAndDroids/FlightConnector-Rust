@@ -27,6 +27,11 @@ export class ConnectorSettingsHandler {
     this.runSettingsStore.save();
   }
 
+  async setLatestPatchNotesRead(patchNotes: string): Promise<void> {
+    this.runSettingsStore.set("latestPatchNotesRead", patchNotes);
+    this.runSettingsStore.save();
+  }
+
   async getConnectorSettings(): Promise<ConnectorSettings | null> {
     return await this.runSettingsStore.get("connectorSettings");
   }
@@ -41,5 +46,9 @@ export class ConnectorSettingsHandler {
 
   async getWASMModulePath(): Promise<string | null> {
     return await this.runSettingsStore.get("wasmModulePath");
+  }
+
+  async getLatestPatchNotesRead(): Promise<string | null> {
+    return await this.runSettingsStore.get("latestPatchNotesRead");
   }
 }
