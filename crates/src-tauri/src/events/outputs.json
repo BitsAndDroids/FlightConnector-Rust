@@ -504,11 +504,29 @@
     "category": "Instruments"
   },
   {
+    "simvar": "VARIOMETER RATE",
+    "metric": "Feet per minute",
+    "update_every": 10,
+    "cb_text": "Vario rate",
+    "id": 345,
+    "output_type": "integer",
+    "category": "Instruments"
+  },
+  {
     "simvar": "INDICATED ALTITUDE",
     "metric": "Feet",
     "update_every": 10,
     "cb_text": "Indicated altitude",
     "id": 335,
+    "output_type": "integer",
+    "category": "Instruments"
+  },
+  {
+    "simvar": "INDICATED ALTITUDE:2",
+    "metric": "Feet",
+    "update_every": 10,
+    "cb_text": "indicated altitude",
+    "id": 336,
     "output_type": "integer",
     "category": "Instruments"
   },

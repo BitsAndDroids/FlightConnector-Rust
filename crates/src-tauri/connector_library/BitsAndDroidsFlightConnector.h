@@ -657,13 +657,13 @@ public:
   void mixtureInputHandling(int mixturePin1, int mixturePin2);
   void sendSetElevatorTrim(int value);
   void sendFlaps();
-  void sendSetKohlmanAltimeterInHg(float value);
-  void sendSetKohlmanAltimeterMb(float value);
   void setPotFlaps(byte flapsPin);
   void sendSetBrakePot(byte leftPin, byte rightPin);
   void sendSetYokeAxis(byte elevatorPin, byte aileronPin);
   void sendSetRudderPot(byte potPin);
   void sendSetElevatorTrimPot(byte potPin, int minVal, int maxVal);
+  void sendSetKohlmanAltimeterInHg(float kohlmanInhg);
+  void sendSetKohlmanAltimeterMb(float kohlmanMb);
   void setEMA_a(float a);
   byte getPercentage(int value, int minVal, float maxVal, bool reversed);
   // void setSampleSize(byte amntSamples){sampleSize = amntSamples;};
@@ -687,7 +687,9 @@ public:
   byte getFuelTotalPercentage() { return fuelTotalPercentage; };
 
   int getIndicatedAirspeed() { return indicatedAirspeed; };
+  int getVarometerRate() { return varometerRate; };
   int getIndicatedAltitude() { return indicatedAltitude; };
+  int getIndicatedAltitude2() { return indicatedAltitude2; };
   int getIndicatedAltitudeCalibrated() { return indicatedAltitudeCalibrated; };
   int getIndicatedHeading() { return indicatedHeading; };
   int getIndicatedGPSGroundspeed() { return indicatedGPSGroundspeed; };
@@ -915,7 +917,9 @@ private:
   int apHeadingLock;
 
   int indicatedAirspeed;
+  int varometerRate;
   int indicatedAltitude;
+  int indicatedAltitude2;
   int indicatedAltitudeCalibrated;
   int indicatedHeading;
   int indicatedGPSGroundspeed;
