@@ -4,6 +4,7 @@ type HTMLTagName = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 interface HeaderProps {
   title: string;
   level: number;
+  addToClassName?: string;
 }
 
 interface Header {
@@ -32,7 +33,9 @@ export const Header = (props: HeaderProps) => {
   ]);
   const header = levelMap.get(props.level);
   const elementProps: HTMLProps<HTMLElement> = {
-    className: header ? header.style : "",
+    className: header
+      ? `${header.style} ${props.addToClassName}`
+      : `${props.addToClassName}`,
   };
 
   const customTag = header ? header.tag : "h1";
