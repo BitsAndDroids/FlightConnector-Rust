@@ -16,6 +16,15 @@ interface Update {
 export const UpdateWindow = (props: UpdateWindowProps) => {
   let [updates, setUpdates] = useState<Update[]>([] as Update[]);
   const [loading, setLoading] = useState<boolean>(true);
+  const renderers = {
+    h1: (props: any) => <Header level={1} title={props.children} />,
+    h2: (props: any) => <Header level={2} title={props.children} />,
+    h3: (props: any) => (
+      <Header level={3} title={props.children} addToClassName="text-white" />
+    ),
+    li: (props: any) => <li className="list-disc">{props.children}</li>,
+    ul: (props: any) => <ul className="list-inside mb-4">{props.children}</ul>,
+  };
   useEffect(() => {
     const fetchUpdates = async () => {
       const response = await fetch(
@@ -70,17 +79,17 @@ export const UpdateWindow = (props: UpdateWindowProps) => {
               return (
                 <div
                   key={index}
-                  className=" py-2 bg-gray-700 p-6 mb-4 rounded-md w-[95%]"
+                  className=" bg-gray-700 py-8 px-6 mb-4 rounded-md w-[95%]"
                 >
                   <Header
                     level={2}
                     title={update.name}
-                    addToClassName="text-white"
+                    addToClassName="text-white mt-2"
                   />
-                  <p className="text-sm">
+                  <p className="text-sm mb-4">
                     {new Date(update.published).toLocaleDateString()}
                   </p>
-                  <Markdown children={update.body} />
+                  <Markdown children={update.body} components={renderers} />
                 </div>
               );
             })}
