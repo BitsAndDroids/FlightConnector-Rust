@@ -26,16 +26,23 @@ export const Header = (props: HeaderProps) => {
       2,
       {
         tag: "h2",
-        style: "font-bold text-xl tracking-tight text-gray-800 mb-4",
+        style: "font-bold text-xl tracking-tight text-gray-800 mb-4 mt-4",
       },
     ],
-    [3, { tag: "h3", style: "1.17em" }],
+    [
+      3,
+      {
+        tag: "h3",
+        style:
+          "1.17em font-bold text-xl tracking-tight text-gray-800 mb-4 mt-2",
+      },
+    ],
   ]);
   const header = levelMap.get(props.level);
   const elementProps: HTMLProps<HTMLElement> = {
     className: header
-      ? `${header.style} ${props.addToClassName}`
-      : `${props.addToClassName}`,
+      ? `${header.style} ${props.addToClassName ? props.addToClassName : ""}`
+      : `${props.addToClassName ? props.addToClassName : ""}`,
   };
 
   const customTag = header ? header.tag : "h1";
