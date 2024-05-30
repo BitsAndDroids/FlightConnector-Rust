@@ -253,6 +253,14 @@ impl SimconnectHandler {
                     val
                 }
             }
+            InputType::Axis => {
+                if val == 0 {
+                    0
+                } else {
+                    val
+                }
+            }
+            InputType::Action => val,
         };
         println!("Sending input to simconnect: {}, {}", command, value);
         self.simconnect.transmit_client_event(

@@ -1,6 +1,31 @@
 {
   "inputs": [
     {
+      "input_type": "action",
+      "event": "SET_THROTTLES",
+      "input_id": 199
+    },
+    {
+      "input_type": "action",
+      "event": "SET_MIXTURES",
+      "input_id": 115
+    },
+    {
+      "input_type": "action",
+      "event": "SET_PROPS",
+      "input_id": 198
+    },
+    {
+      "input_type": "action",
+      "event": "SET_BRAKES",
+      "input_id": 902
+    },
+    {
+      "input_type": "action",
+      "event": "SET_YOKE",
+      "input_id": 103
+    },
+    {
       "input_type": "axis",
       "event": "AXIS_THROTTLE1_SET",
       "input_id": 203
@@ -83,12 +108,12 @@
     {
       "input_type": "axis",
       "event": "AXIS_FLAPS_SET",
-      "input_id": 219
+      "input_id": 421
     },
     {
       "input_type": "axis",
       "event": "AXIS_RUDDER_SET",
-      "input_id": 220
+      "input_id": 901
     },
     {
       "input_type": "axis",
@@ -113,7 +138,7 @@
     {
       "input_type": "axis",
       "event": "ELEVATOR_TRIM_SET",
-      "input_id": 225
+      "input_id": 900
     },
     {
       "input_type": "axis",
