@@ -236,22 +236,33 @@ impl SimconnectHandler {
                 return;
             }
         };
-        let value: DWORD = match input.input_type {
+        let mut value = 0;
+        match input.input_type {
             InputType::SetValueBool => {
                 if val == 0 {
-                    0
+                    value = 0;
                 } else {
-                    1
+                    value = 1;
                 }
             }
-            InputType::SetValueCom => convert_dec_to_dcb(val),
-            InputType::SetValue => val,
+            InputType::SetValueCom => {
+                value = convert_dec_to_dcb(val);
+            }
+            InputType::SetValue => value = val,
             InputType::Trigger => {
                 if val == 0 {
-                    0
+                    value = 0;
                 } else {
-                    val
+                    value = val;
                 }
+            }
+            InputType::Axis => {
+                // TODO: implement axis with calibration logic
+                value = val;
+            }
+            InputType::Action => {
+                // TODO implement actions like set all throttles
+                self.excecute_action(command);
             }
         };
         println!("Sending input to simconnect: {}, {}", command, value);
@@ -262,6 +273,10 @@ impl SimconnectHandler {
             simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
             simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
         );
+    }
+
+    pub fn excecute_action(&mut self, action: u32) {
+        self.send_input_to_simconnect(action, 0);
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {

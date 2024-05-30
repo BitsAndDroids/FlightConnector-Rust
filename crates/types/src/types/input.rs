@@ -14,6 +14,8 @@ pub enum InputType {
     SetValue,
     SetValueCom,
     SetValueBool,
+    Action,
+    Axis,
 }
 
 impl Display for InputType {
@@ -23,6 +25,8 @@ impl Display for InputType {
             InputType::SetValue => "SetValue",
             InputType::SetValueCom => "SetValueCom",
             InputType::SetValueBool => "SetValueBool",
+            InputType::Action => "Action",
+            InputType::Axis => "Axis",
         };
         write!(f, "{}", s)
     }
@@ -40,6 +44,8 @@ impl<'de> Deserialize<'de> for InputType {
                 "set_value" => Ok(InputType::SetValue),
                 "set_value_com" => Ok(InputType::SetValueCom),
                 "set_value_bool" => Ok(InputType::SetValueBool),
+                "action" => Ok(InputType::Action),
+                "axis" => Ok(InputType::Axis),
                 _ => Err(serde::de::Error::custom(format!(
                     "Invalid input type: {}",
                     s
