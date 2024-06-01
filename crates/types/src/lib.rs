@@ -1,4 +1,5 @@
 pub mod types {
+    pub mod action;
     pub mod bundle;
     pub mod category;
     pub mod connector_settings;

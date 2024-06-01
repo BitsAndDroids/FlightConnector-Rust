@@ -261,7 +261,6 @@ impl SimconnectHandler {
                 value = val;
             }
             InputType::Action => {
-                // TODO implement actions like set all throttles
                 self.excecute_action(command);
             }
         };
