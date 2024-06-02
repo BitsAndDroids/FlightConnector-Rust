@@ -1,6 +1,5 @@
 use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::input::InputType;
-use connector_types::types::output_format::FormatOutput;
 use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
 use log::{error, info};
@@ -17,26 +16,24 @@ use std::sync::Arc;
 use std::sync::Mutex;
 use std::thread::sleep;
 use std::time::Duration;
-use tauri::EventLoopMessage;
 use tauri::Manager;
 use tauri::Wry;
 use tauri_plugin_store::with_store;
 use tauri_plugin_store::Store;
 use tauri_plugin_store::StoreCollection;
 
+use crate::events::action_registry::ActionRegistry;
 use crate::events::input_registry::input_registry::InputRegistry;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
-use connector_types::types::input::Input;
 use connector_types::types::output::Output;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
 use super::wasm;
 use super::wasm::send_wasm_command;
-use crate::sim_utils;
 
 const MAX_RETURNED_ITEMS: usize = 255;
 
@@ -84,10 +81,10 @@ impl RequestModes {
     const STRING: DWORD = 1;
 }
 
-#[derive(Debug)]
 pub struct SimconnectHandler {
     pub(crate) simconnect: simconnect::SimConnector,
     pub(crate) input_registry: InputRegistry,
+    pub(crate) action_registry: ActionRegistry,
     pub(crate) output_registry: OutputRegistry,
     pub(crate) wasm_registry: WASMRegistry,
     pub(crate) app_handle: tauri::AppHandle,
@@ -109,6 +106,7 @@ impl SimconnectHandler {
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
         let output_registry = OutputRegistry::new();
+        let action_registry = ActionRegistry::new();
         let wasm_registry = WASMRegistry::new();
         let connector_settings = ConnectorSettings { use_trs: false };
 
@@ -116,6 +114,7 @@ impl SimconnectHandler {
             simconnect,
             input_registry,
             output_registry,
+            action_registry,
             wasm_registry,
             app_handle,
             rx,
@@ -227,7 +226,7 @@ impl SimconnectHandler {
         self.main_event_loop();
     }
 
-    fn send_input_to_simconnect(&mut self, command: DWORD, val: DWORD) {
+    fn send_input_to_simconnect(&mut self, command: DWORD, val: DWORD, raw: String) {
         let input = match self.input_registry.get_input(command) {
             Some(input) => input,
             None => {
@@ -261,7 +260,10 @@ impl SimconnectHandler {
                 value = val;
             }
             InputType::Action => {
-                self.excecute_action(command);
+                let action = self.action_registry.get_action_by_id(command).unwrap();
+                println!("Action found: {}", action.id);
+                action.excecute_action(raw);
+                return;
             }
         };
         println!("Sending input to simconnect: {}, {}", command, value);
@@ -272,10 +274,6 @@ impl SimconnectHandler {
             simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
             simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
         );
-    }
-
-    pub fn excecute_action(&mut self, action: u32) {
-        self.send_input_to_simconnect(action, 0);
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
@@ -379,13 +377,13 @@ impl SimconnectHandler {
                 };
                 println!("Message: {}, Value: {}", id, value);
 
-                self.send_input_to_simconnect(id, value);
+                self.send_input_to_simconnect(id, value, message.to_string());
                 continue;
             }
             //parse message to u32 and send to simconnect
             match message.trim().parse::<DWORD>() {
                 Ok(dword) => {
-                    self.send_input_to_simconnect(dword, 0);
+                    self.send_input_to_simconnect(dword, 0, message.to_string());
                 }
                 Err(e) => eprintln!("{:?}", e),
             }

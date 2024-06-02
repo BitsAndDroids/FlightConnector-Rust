@@ -1,11 +1,23 @@
+use std::collections::HashMap;
+
+use connector_types::types::action::Action;
+
+use super::actions::get_actions;
 pub struct ActionRegistry {
-    actions: Vec<Action>,
+    actions: HashMap<u32, Action>,
 }
 
 impl ActionRegistry {
     pub fn new() -> ActionRegistry {
-        ActionRegistry {
-            actions: Vec::new(),
-        }
+        let actions = get_actions();
+        ActionRegistry { actions }
+    }
+
+    pub fn load_actions(&mut self) {
+        self.actions = get_actions();
+    }
+
+    pub fn get_action_by_id(&self, id: u32) -> Option<&Action> {
+        return self.actions.get(&id);
     }
 }
