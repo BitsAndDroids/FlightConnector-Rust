@@ -1,6 +1,7 @@
 use crate::events;
 use connector_types::types::wasm_event::WasmEvent;
 
+pub mod action;
 pub mod action_registry;
 pub mod actions;
 pub mod bundle_registry;

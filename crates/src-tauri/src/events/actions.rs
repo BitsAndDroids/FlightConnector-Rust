@@ -1,9 +1,10 @@
 use std::collections::HashMap;
 
-use connector_types::types::action::Action;
-use connector_types::types::action::ActionName;
+use simconnect::SimConnector;
 
-fn throttle_action(values: String) {
+use super::action::{Action, ActionName};
+
+fn throttle_action(connector: &SimConnector, values: String) {
     println!("{}", values);
     println!("TEST THROTTLE ACTION");
 }

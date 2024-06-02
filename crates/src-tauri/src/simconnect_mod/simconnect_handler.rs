@@ -262,7 +262,7 @@ impl SimconnectHandler {
             InputType::Action => {
                 let action = self.action_registry.get_action_by_id(command).unwrap();
                 println!("Action found: {}", action.id);
-                action.excecute_action(raw);
+                action.excecute_action(&self.simconnect, raw);
                 return;
             }
         };

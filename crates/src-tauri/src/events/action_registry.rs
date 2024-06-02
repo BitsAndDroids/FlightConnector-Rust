@@ -1,8 +1,6 @@
 use std::collections::HashMap;
 
-use connector_types::types::action::Action;
-
-use super::actions::get_actions;
+use super::{action::Action, actions::get_actions};
 pub struct ActionRegistry {
     actions: HashMap<u32, Action>,
 }
