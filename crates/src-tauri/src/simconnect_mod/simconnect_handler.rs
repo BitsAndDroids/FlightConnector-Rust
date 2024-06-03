@@ -6,6 +6,7 @@ use log::{error, info};
 use serde::Deserialize;
 use serde::Serialize;
 use serialport::SerialPort;
+use serialport::SerialPortType;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
@@ -166,10 +167,42 @@ impl SimconnectHandler {
     fn connect_to_devices(&mut self) {
         let mut connected_ports: Vec<Connections> = vec![];
 
+        let ports = match serialport::available_ports() {
+            Ok(ports) => ports,
+            Err(_) => Vec::new(),
+        };
+        let ports_output = ports
+            .iter()
+            .map(|port| {
+                let port_type_info = match &port.port_type {
+                    SerialPortType::UsbPort(info) => (match &info.product {
+                        Some(product) => product.to_string(),
+                        None => "Unknown".to_string(),
+                    })
+                    .to_string(),
+                    SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
+                    SerialPortType::PciPort => "PCI Serial".to_string(),
+                    _ => "".to_string(),
+                };
+                format!("{}, {}", port.port_name.as_str(), port_type_info)
+            })
+            .collect::<Vec<_>>();
+
         for run_bundle in self.run_bundles.iter() {
             let com_port = run_bundle.com_port.clone();
+            let flow_control = if ports_output.iter().any(|s| {
+                s.contains(&format!("({})", &com_port))
+                    && (s.contains("Leonardo") || s.contains("Micro"))
+            }) {
+                serialport::FlowControl::Hardware
+            } else {
+                serialport::FlowControl::Software
+            };
 
-            match serialport::new(com_port.clone(), 115200).open() {
+            match serialport::new(com_port.clone(), 115200)
+                .flow_control(flow_control)
+                .open()
+            {
                 Ok(mut port) => {
                     if self.connector_settings.use_trs {
                         match port.write_data_terminal_ready(true) {
@@ -212,7 +245,6 @@ impl SimconnectHandler {
     }
 
     fn emit_connections(&mut self, conn: Connections) {
-        println!("Emitting connection event");
         self.app_handle.emit("connection_event", conn).unwrap();
     }
 
@@ -235,6 +267,7 @@ impl SimconnectHandler {
                 return;
             }
         };
+        info!(target: "input", "Sending input to simconnect: {} id: {} val: {}",input.event,command, val);
         let mut value = 0;
         match input.input_type {
             InputType::SetValueBool => {
@@ -340,12 +373,12 @@ impl SimconnectHandler {
                         match active_com_port.1.read(&mut byte) {
                             Ok(bytes_read) => {
                                 (0..bytes_read).for_each(|i| {
-                                    if byte[i] == b'\n' {
+                                    if byte[i] == b'\n' || byte[i] == b'\r' {
                                         let message = String::from_utf8_lossy(&buffer);
                                         messages.push(message.to_string());
+                                        buffer.push(byte[i]);
                                         buffer.clear();
                                         //set buffer to \n
-                                        buffer.push(byte[i]);
                                         reading = false;
                                     } else if byte[i] != b'\r' {
                                         buffer.push(byte[i]);
@@ -360,32 +393,25 @@ impl SimconnectHandler {
             }
         }
         for message in &messages {
-            if message.chars().count() > 4 {
-                let id = match message[0..4].trim().parse::<DWORD>() {
+            let count = message.chars().count();
+            if count > 1 {
+                let id = match message
+                    .split_whitespace()
+                    .next()
+                    .unwrap_or("")
+                    .trim()
+                    .parse::<DWORD>()
+                {
                     Ok(id) => id,
                     Err(e) => {
-                        eprintln!("{:?}", e);
                         continue;
                     }
                 };
-                let value = match message[5..].trim().parse::<DWORD>() {
-                    Ok(value) => value,
-                    Err(e) => {
-                        eprintln!("{:?}", e);
-                        continue;
-                    }
-                };
-                println!("Message: {}, Value: {}", id, value);
-
-                self.send_input_to_simconnect(id, value, message.to_string());
-                continue;
-            }
-            //parse message to u32 and send to simconnect
-            match message.trim().parse::<DWORD>() {
-                Ok(dword) => {
-                    self.send_input_to_simconnect(dword, 0, message.to_string());
+                let mut value = 0;
+                if count > 5 {
+                    value = message[5..].trim().parse::<DWORD>().unwrap_or(0);
                 }
-                Err(e) => eprintln!("{:?}", e),
+                self.send_input_to_simconnect(id, value, message.to_string());
             }
         }
     }
