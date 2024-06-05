@@ -141,11 +141,6 @@
       "input_id": 900
     },
     {
-      "input_type": "axis",
-      "event": "THROTTLE2_AXIS_SET_EX1",
-      "input_id": 211
-    },
-    {
       "input_type": "trigger",
       "event": "TOGGLE_MASTER_IGNITION_SWITCH",
       "input_id": 101

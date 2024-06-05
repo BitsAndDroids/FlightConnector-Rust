@@ -62,13 +62,15 @@ void BitsAndDroidsFlightConnector::sendCombinedThrottleValues() {
 }
 
 void BitsAndDroidsFlightConnector::sendCombinedPropValues() {
-  packagedData = sprintf(valuesBuffer, "%s %i %i", "198", props[0], props[1]);
+  packagedData = sprintf(valuesBuffer, "%s %i %i %i %i", "198", props[0],
+                         props[1], props[2], props[3]);
   this->serial->println(valuesBuffer);
 }
 
 void BitsAndDroidsFlightConnector::sendCombinedMixtureValues() {
-  packagedData = sprintf(valuesBuffer, "%s %i %i", "115", mixturePercentage[0],
-                         mixturePercentage[1]);
+  packagedData =
+      sprintf(valuesBuffer, "%s %i %i %i %i", "115", mixturePercentage[0],
+              mixturePercentage[1], mixturePercentage[2], mixturePercentage[3]);
   this->serial->println(valuesBuffer);
 }
 
@@ -874,10 +876,14 @@ void BitsAndDroidsFlightConnector::switchHandling() {
 }
 
 void BitsAndDroidsFlightConnector::propsInputHandling(int propPin1,
-                                                      int propPin2) {
+                                                      int propPin2,
+                                                      int propPin3,
+                                                      int propPin4) {
   bool changed = false;
   propValue1 = smoothPot(propPin1);
   propValue2 = smoothPot(propPin2);
+  propValue3 = smoothPot(propPin3);
+  propValue4 = smoothPot(propPin4);
   if (propValue1 != oldPropValue1 || propValue2 != oldPropValue2) {
 
     if (abs(propValue1 - oldPropValue1) > 2) {
@@ -890,6 +896,16 @@ void BitsAndDroidsFlightConnector::propsInputHandling(int propPin1,
       oldPropValue2 = propValue2;
       changed = true;
     }
+    if (abs(propValue3 - oldPropValue3) > 2) {
+      props[2] = propValue3;
+      oldPropValue3 = propValue3;
+      changed = true;
+    }
+    if (abs(propValue4 - oldPropValue4) > 2) {
+      props[3] = propValue4;
+      oldPropValue4 = propValue4;
+      changed = true;
+    }
     if (changed) {
       sendCombinedPropValues();
     }
@@ -897,10 +913,14 @@ void BitsAndDroidsFlightConnector::propsInputHandling(int propPin1,
 }
 
 void BitsAndDroidsFlightConnector::mixtureInputHandling(int mixturePin1,
-                                                        int mixturePin2) {
+                                                        int mixturePin2,
+                                                        int mixturePin3,
+                                                        int mixturePin4) {
   bool changed = false;
   mixtureValue1 = smoothPot(mixturePin1);
   mixtureValue2 = smoothPot(mixturePin2);
+  mixtureValue3 = smoothPot(mixturePin3);
+  mixtureValue4 = smoothPot(mixturePin4);
   if (mixtureValue1 != oldMixtureValue1 || mixtureValue2 != oldMixtureValue2) {
 
     if (abs(mixtureValue1 - oldMixtureValue1) > 2) {
@@ -911,6 +931,16 @@ void BitsAndDroidsFlightConnector::mixtureInputHandling(int mixturePin1,
     if (abs(mixtureValue2 - oldMixtureValue2) > 2) {
       mixturePercentage[1] = mixtureValue2;
       oldMixtureValue2 = mixtureValue2;
+      changed = true;
+    }
+    if (abs(mixtureValue3 - oldMixtureValue3) > 2) {
+      mixturePercentage[2] = mixtureValue3;
+      oldMixtureValue3 = mixtureValue3;
+      changed = true;
+    }
+    if (abs(mixtureValue4 - oldMixtureValue4) > 2) {
+      mixturePercentage[3] = mixtureValue4;
+      oldMixtureValue4 = mixtureValue4;
       changed = true;
     }
     if (changed) {
