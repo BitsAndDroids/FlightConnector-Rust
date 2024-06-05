@@ -45,6 +45,15 @@
     "category": "Environment"
   },
   {
+    "simvar": "THROTTLE LOWER LIMIT",
+    "metric": "Percent Over 100",
+    "update_every": 0.01,
+    "cb_text": "Throttle lower limit",
+    "id": 655,
+    "output_type": "percentage",
+    "category": "Engines"
+  },
+  {
     "simvar": "PLANE HEADING DEGREES GYRO",
     "metric": "Degrees",
     "update_every": 0.1,

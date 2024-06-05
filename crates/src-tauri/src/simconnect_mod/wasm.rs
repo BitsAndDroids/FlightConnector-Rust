@@ -80,7 +80,6 @@ fn create_wasm_client(
 
 pub fn register_wasm_event(conn: &mut simconnect::SimConnector, event: WasmEvent) {
     let event_json = serde_json::to_string(&event).unwrap();
-    println!("event json: {:?}", event_json);
     send_wasm_command(conn, event_json.as_str());
 }
 

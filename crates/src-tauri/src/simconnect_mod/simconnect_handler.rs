@@ -295,7 +295,7 @@ impl SimconnectHandler {
             InputType::Action => {
                 let action = self.action_registry.get_action_by_id(command).unwrap();
                 println!("Action found: {}", action.id);
-                action.excecute_action(&self.simconnect, raw);
+                action.excecute_action(&self.simconnect, raw, self.action_registry.min_throttle);
                 return;
             }
         };
@@ -448,6 +448,12 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
+                                    //This value is the lower throttle limit
+                                    //This is a special case for the throttle since the range
+                                    //changes depending on the aircraft
+                                    if prefix == 655 {
+                                        self.action_registry.set_min_throttle(value as f32);
+                                    }
                                     self.check_if_output_in_bundle(prefix, value);
                                 }
                             }
@@ -574,6 +580,15 @@ impl SimconnectHandler {
     pub fn define_outputs(&mut self) {
         let run_bundles = &self.run_bundles;
         let mut outputs_not_found = vec![];
+        //we need this event to set the throttle min value
+        self.simconnect.add_data_definition(
+            RequestModes::FLOAT,
+            "THROTTLE LOWER LIMIT",
+            "Percentage",
+            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
+            655,
+            0.0,
+        );
         for run_bundle in run_bundles {
             for output in &run_bundle.bundle.outputs {
                 match self.output_registry.get_output_by_id(output.id) {
