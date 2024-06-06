@@ -1,7 +1,13 @@
-interface TableProps {
-  elements: Record<string, any>[];
+interface ElementActions<T> {
+  addSelected: (element: T, selected: boolean) => void;
+}
+
+interface TableProps<T> {
+  elements: Record<string, T>[];
   deleteById?: (id: number) => void;
   editById?: (id: number) => void;
+  addSelected?: ElementActions<T>;
+  selectable?: boolean;
   headers: string[];
 }
 
@@ -9,14 +15,17 @@ export const Table = ({
   elements,
   deleteById,
   editById,
+  addSelected,
+  selectable,
   headers,
-}: TableProps) => {
+}: TableProps<any>) => {
   return (
     <div className="bg-white rounded-md h-[88%]">
       <div className="overflow-auto h-full ml-4 mr-1">
         <table className="divide-y divide-gray-300 mt-2">
           <thead className="sticky top-0 bg-white z-10">
             <tr key={`table-${typeof elements.at(0)}`}>
+              {selectable && <th key={`select-col`}></th>}
               <th
                 key={0}
                 className="font-semibold text-gray-800 py-3.5 pl-6 pr-3 text-left"
@@ -45,6 +54,16 @@ export const Table = ({
           <tbody className="">
             {elements.map((element, index) => (
               <tr key={`tr-${index}`} className="">
+                {selectable && (
+                  <td>
+                    <input
+                      type="checkbox"
+                      onChange={(e) =>
+                        addSelected?.addSelected(element, e.target.checked)
+                      }
+                    />
+                  </td>
+                )}
                 {headers.map((header, headerIndex) => (
                   <td
                     key={`${headerIndex}-${index}`}

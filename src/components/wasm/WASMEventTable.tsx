@@ -27,6 +27,12 @@ export const WASMEventTable = ({
         elements={events}
         deleteById={deleteEvent}
         editById={editEvent}
+        selectable={true}
+        addSelected={{
+          addSelected: (element: WASMEvent, selected: boolean) => {
+            console.log(element, selected);
+          },
+        }}
       />
     </div>
   );
