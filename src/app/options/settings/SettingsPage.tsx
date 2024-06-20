@@ -1,8 +1,10 @@
 import InfoWindow from "@/components/InfoWindow";
+import { Input } from "@/components/elements/Input";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { ConnectorSettings } from "@/utils/models/ConnectorSettings";
 import { message } from "@tauri-apps/plugin-dialog";
 import { useEffect, useState } from "react";
+import { changeLaunchWhenSimStarts } from "./services/LaunchService";
 
 const SettingsPage = () => {
   const [connectorSettings, setConnectorSettings] = useState<ConnectorSettings>(
@@ -61,6 +63,14 @@ const SettingsPage = () => {
             onChange={(val) => onSettingsChange("use_trs", val.target.checked)}
           />
         </label>
+        <Input
+          label="Launch when sim starts"
+          type="checkbox"
+          value={false}
+          onChange={
+            changeLaunchWhenSimStarts as (value: boolean | string) => void
+          }
+        />
       </div>
       <button
         type="button"
