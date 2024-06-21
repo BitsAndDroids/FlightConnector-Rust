@@ -10,7 +10,7 @@ pub fn convert_old_events_to_json(path: &str) {
         wasm_events.push(event);
     }
     let event_file = serde_json::to_string(&wasm_events).unwrap();
-    std::fs::write("wasm_module/modules/wasm_events.json", event_file);
+    std::fs::write("wasm_module/modules/wasm_events.json", event_file).unwrap();
 }
 
 fn read_lines(filename: &str) -> Vec<String> {
