@@ -13,10 +13,12 @@ use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_store::{with_store, Store, StoreCollection};
 use tauri_plugin_updater::UpdaterExt;
 mod events;
+mod settings;
 mod sim_utils;
 mod simconnect_mod;
 mod utils;
 use events::get_wasm_events;
+use settings::settings_actions::toggle_run_on_sim_launch;
 use std::ops::Deref;
 use std::path::PathBuf;
 use std::string::ToString;
@@ -180,6 +182,7 @@ fn main() {
             get_library_header_content,
             get_library_source_content,
             get_library_outputs,
+            toggle_run_on_sim_launch,
             generate_library
         ])
         .setup(|app| {
