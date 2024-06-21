@@ -448,6 +448,8 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
+                                    // TODO: Move to an event triggered on plane swap
+                                    //
                                     //This value is the lower throttle limit
                                     //This is a special case for the throttle since the range
                                     //changes depending on the aircraft

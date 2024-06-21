@@ -71,7 +71,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
             label="ID"
             type="number"
             value={newEvent?.id.toString()}
-            onChange={changeID}
+            onChange={changeID as (value: string | boolean) => void}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#id"
@@ -83,7 +83,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
             label="Action"
             type="textarea"
             value={newEvent?.action}
-            onChange={changeAction}
+            onChange={changeAction as (value: string | boolean) => void}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#action"
@@ -94,7 +94,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
           <Input
             label="Description"
             value={newEvent?.action_text}
-            onChange={changeActionText}
+            onChange={changeActionText as (value: string | boolean) => void}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#description"
@@ -139,7 +139,9 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
               <Input
                 label="Update every change of"
                 value={newEvent.update_every.toString()}
-                onChange={changeUpdateEvery}
+                onChange={
+                  changeUpdateEvery as (value: string | boolean) => void
+                }
                 type="number"
                 decimals={true}
               />

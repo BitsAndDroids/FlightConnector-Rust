@@ -18,7 +18,9 @@ export const UpdateWindow = (props: UpdateWindowProps) => {
   const [loading, setLoading] = useState<boolean>(true);
   const renderers = {
     h1: (props: any) => <Header level={1} title={props.children} />,
-    h2: (props: any) => <Header level={2} title={props.children} />,
+    h2: (props: any) => (
+      <Header level={2} title={props.children} addToClassName="text-white" />
+    ),
     h3: (props: any) => (
       <Header level={3} title={props.children} addToClassName="text-white" />
     ),

@@ -30,6 +30,9 @@
     "updater:allow-check",
     "updater:allow-download-and-install",
     "dialog:default",
-    "dialog:allow-message"
+    "dialog:allow-message",
+    "fs:allow-exists",
+    "fs:allow-applocaldata-read",
+    "fs:allow-applocaldata-meta"
   ]
 }

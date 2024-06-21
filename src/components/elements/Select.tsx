@@ -31,11 +31,11 @@ export const Select = ({
       }
     >
       {label && <label className="mr-2 ml-2">{label}:</label>}
-      <div className={"flex flex-row items-center w-full"}>
+      <div className={"flex flex-row items-center w-full text-gray-800"}>
         <select
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
-          className="border border-gray-200 text-black w-full rounded-md p-2 m-2 drop-shadow w"
+          className="border border-gray-200 w-full rounded-md p-2 m-2 drop-shadow w"
         >
           {options.map((option, index) => (
             <option key={option} value={values[index]}>
