@@ -30,6 +30,7 @@ pub enum OutputType {
     INHG,
     Meterspersecond,
     MeterspersecondToKnots,
+    String,
 }
 
 impl Display for OutputType {
@@ -48,6 +49,7 @@ impl Display for OutputType {
             OutputType::INHG => "INHG",
             OutputType::Meterspersecond => "MetersPerSecond",
             OutputType::MeterspersecondToKnots => "MetersPerSecondToKnots",
+            OutputType::String => "String",
         };
         write!(f, "{}", s)
     }
@@ -73,6 +75,7 @@ impl<'de> Deserialize<'de> for OutputType {
             "inhg" => Ok(OutputType::INHG),
             "meterspersecond" => Ok(OutputType::Meterspersecond),
             "meterspersecondtoknots" => Ok(OutputType::MeterspersecondToKnots),
+            "string" => Ok(OutputType::String),
             _ => Err(serde::de::Error::custom(format!(
                 "Unknown output type: {}",
                 s

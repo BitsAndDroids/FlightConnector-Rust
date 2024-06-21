@@ -31,7 +31,7 @@ export const Select = ({
       }
     >
       {label && <label className="mr-2 ml-2">{label}:</label>}
-      <div className={"flex flex-row items-center w-full"}>
+      <div className={"flex flex-row items-center w-full text-gray-800"}>
         <select
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
