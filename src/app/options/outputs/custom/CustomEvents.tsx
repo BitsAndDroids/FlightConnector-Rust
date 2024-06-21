@@ -151,7 +151,7 @@ export const CustomEvents = () => {
     setFilteredEvents(events);
   };
 
-  const searchId = async (searchFor: string) => {
+  const searchId = (searchFor: string) => {
     const filteredEvents = events.filter(
       (event) =>
         event.id.toString().includes(searchFor) ||
@@ -188,7 +188,7 @@ export const CustomEvents = () => {
           <Input
             placeholder="Search"
             addToClassName="mt-10"
-            onChange={(id: string) => searchId(id)}
+            onChange={searchId as (value: string | boolean) => void}
           />
           <Select
             label="Sort By"
