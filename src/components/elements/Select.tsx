@@ -35,7 +35,7 @@ export const Select = ({
         <select
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
-          className="border border-gray-200 text-black w-full rounded-md p-2 m-2 drop-shadow w"
+          className="border border-gray-200 w-full rounded-md p-2 m-2 drop-shadow w"
         >
           {options.map((option, index) => (
             <option key={option} value={values[index]}>

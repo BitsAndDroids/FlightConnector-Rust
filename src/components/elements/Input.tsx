@@ -39,6 +39,7 @@ export const Input = ({
           value={value as boolean}
           label={label as string}
           onChange={onChange as (value: boolean) => void}
+          infoWindow={infoWindow}
         />
       ) : type === "textarea" ? (
         <TextArea
