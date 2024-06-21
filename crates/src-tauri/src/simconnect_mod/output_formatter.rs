@@ -21,5 +21,6 @@ pub fn parse_output_based_on_type(val: f64, output: &Output) -> String {
         OutputType::INHG => sim_utils::output_converters::value_to_inhg(val).to_string(),
         OutputType::Meterspersecond => sim_utils::output_converters::mps_to_kmh(val).to_string(),
         OutputType::MeterspersecondToKnots => sim_utils::output_converters::mps_to_kts(val),
+        OutputType::String => val.to_string(),
     }
 }
