@@ -32,7 +32,6 @@ use utils::wasm_installer::install_wasm;
 
 use std::thread;
 
-#[cfg(target_os = "windows")]
 pub use serialport::SerialPort;
 
 lazy_static! {
