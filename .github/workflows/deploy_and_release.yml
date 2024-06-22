@@ -34,6 +34,9 @@ jobs:
       - name: install frontend dependencies
         run: pnpm install # change this to npm or pnpm depending on which one you use
 
+      - name: build with verbose output
+        run: pnpm run tauri build --verbose
+
       - uses: tauri-apps/tauri-action@v0
         env:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
