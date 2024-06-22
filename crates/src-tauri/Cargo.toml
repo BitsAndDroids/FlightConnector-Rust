@@ -1,6 +1,6 @@
 [package]
 name = "bits-and-droids-connector"
-version = "0.1.0"
+version = "0.2.0"
 description = "Bits and droids connector"
 authors = ["Bits and Droids"]
 license = "MIT"
@@ -35,7 +35,8 @@ time = { version = "0.3.30", features = [] }
 lazy_static = "1.4.0"
 tauri-plugin-shell = "2.0.0-beta.3"
 tauri-plugin-dialog = "2.0.0-beta.4"
-simconnect = "0.3.0"
+[target.'cfg(windows)'.dependencies]
+simconnect = { git = "https://github.com/BitsAndDroids/simconnect-rust.git", branch = "ga-fix" }
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
 # DO NOT REMOVE!!
