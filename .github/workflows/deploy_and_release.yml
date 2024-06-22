@@ -26,15 +26,20 @@ jobs:
           toolchain: stable
           target: x86_64-pc-windows-msvc
 
+      - name: Clean old Rust build artifacts
+        working-directory: ./crates/src-tauri
+        run: cargo clean
+
+      - name: Check Rust project
+        working-directory: ./crates/src-tauri
+        run: cargo check
+
       - uses: pnpm/action-setup@v3
         with:
           version: 8
 
       - name: install frontend dependencies
         run: pnpm install # change this to npm or pnpm depending on which one you use
-
-      - name: build with verbose output
-        run: pnpm run tauri build --verbose
 
       - uses: tauri-apps/tauri-action@v0
         env:
