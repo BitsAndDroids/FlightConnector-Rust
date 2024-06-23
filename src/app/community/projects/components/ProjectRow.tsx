@@ -62,7 +62,7 @@ export const ProjectRow = ({ project }: ProjectRowProps) => {
         </div>
       </div>
       <div
-        className={`transition-all duration-500 ease-in-out mt-2 mb-4 ${
+        className={`transition-all duration-500 ease-in-out mt-2 mb-2 ${
           showDetails ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -73,13 +73,6 @@ export const ProjectRow = ({ project }: ProjectRowProps) => {
             <a href={project.projectURL}>{project.projectURL}</a>
           </div>
         )}
-        {project.shopURL && (
-          <div className="mb-2">
-            <p>Buy at:</p>
-            <a href={project.shopURL}>{project.shopURL}</a>
-          </div>
-        )}
-
         <div className="flex flex-row">
           <button className="bg-gray-800 text-white p-2 w-fit rounded font-bold">
             Add to connector
