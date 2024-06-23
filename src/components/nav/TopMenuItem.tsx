@@ -7,10 +7,13 @@ interface MenuItemProps {
   href?: string;
   action?: () => void;
   subMenuItems?: MenuItem[];
+  addToClassName?: string;
 }
 export const TopMenuItem = (props: MenuItemProps) => {
   return (
-    <div className="flex flex-row items-center mr-4 relative group/a cursor-pointer">
+    <div
+      className={`flex flex-row items-center mr-4 relative group/a cursor-pointer ${props.addToClassName}`}
+    >
       {!props.subMenuItems ? (
         <>
           {props.href && (

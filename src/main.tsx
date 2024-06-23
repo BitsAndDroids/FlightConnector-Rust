@@ -8,11 +8,16 @@ import { LogPage } from "./app/logs/LogPage";
 import SettingsPage from "./app/options/settings/SettingsPage";
 import { PresetManagerPage } from "./app/options/settings/PresetManagerPage";
 import { CustomEvents } from "./app/options/outputs/custom/CustomEvents";
+import { ProjectWindow } from "./app/community/projects/ProjectWindow";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MenuLayout />,
     children: [{ path: "/", element: <HomePage /> }],
+  },
+  {
+    path: "projects",
+    element: <ProjectWindow />,
   },
   {
     path: "/options/outputs",

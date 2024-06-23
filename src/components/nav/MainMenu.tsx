@@ -73,6 +73,17 @@ export const MainMenu: React.FC = () => {
       active: true,
     },
   ];
+  const communityMenu = [
+    {
+      title: "Community projects",
+      action: () => openCommunityProjectsWindow(),
+      active: true,
+    },
+  ];
+
+  const openCommunityProjectsWindow = () => {
+    openWindow("Projects", "projects");
+  };
 
   const openWASMDialog = async () => {
     const savedPath = await connectorSettingsHandler.getCommunityFolderPath();
@@ -153,12 +164,14 @@ export const MainMenu: React.FC = () => {
               href={"/options/outputs"}
               subMenuItems={eventMenuItems}
             />
+            <TopMenuItem text="Community" subMenuItems={communityMenu} />
             <button className="mx-2 " onClick={() => openLogWindow()}>
               Logs
             </button>
             <TopMenuItem
               text={"Release notes"}
               action={() => setUpdateWindowOpen(true)}
+              addToClassName="ml-2"
             />
           </nav>
         </div>
