@@ -31,7 +31,7 @@ It has the following modes:
     },
   ]);
   return (
-    <div className="bg-bitsanddroids-blue w-full h-full min-h-screen min-w-screen overflow-x-hidden overflow-y-scroll">
+    <div className="bg-bitsanddroids-blue w-full h-full min-h-screen min-w-screen overflow-x-hidden">
       <div className="px-8 py-2">
         <Header title="Projects" level={1} />
         {projects.map((project) => (

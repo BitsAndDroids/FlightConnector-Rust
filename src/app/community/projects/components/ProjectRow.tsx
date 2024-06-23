@@ -37,12 +37,24 @@ export const ProjectRow = ({ project }: ProjectRowProps) => {
             addToClassName="-mt-2"
           />
           <p className="-mt-4 text-gray-600 text-sm">
-            Made by: {project.maker.displayName}
+            Maker: {project.maker.displayName}
           </p>
+          <div className="flex flex-row mt-1">
+            {project.openSource && (
+              <p className="bg-green-700 text-white text-xs rounded p-1">
+                OPEN SOURCE
+              </p>
+            )}
+            {project.shopURL && (
+              <p className="ml-1 bg-orange-700 text-white text-xs rounded p-1">
+                PURCHASABLE
+              </p>
+            )}
+          </div>
         </div>
         <div className="ml-4 flex flex-col justify-items-center justify-center items-end grow">
           <button
-            className="bg-blue-500 text-white p-2 w-fit rounded"
+            className="bg-gray-800 text-white p-2 w-fit rounded"
             onClick={() => setShowDetails(!showDetails)}
           >
             {showDetails ? "Hide details" : "Show more details"}
@@ -55,12 +67,6 @@ export const ProjectRow = ({ project }: ProjectRowProps) => {
         }`}
       >
         <Markdown children={project.description} components={renderers} />
-        {project.githubURL && (
-          <div className="mb-2">
-            <p>Project repo:</p>
-            <a href={project.githubURL}>{project.githubURL}</a>
-          </div>
-        )}
         {project.projectURL && (
           <div className="mb-2">
             <p>Project blog:</p>
@@ -74,9 +80,35 @@ export const ProjectRow = ({ project }: ProjectRowProps) => {
           </div>
         )}
 
-        <button className="bg-blue-500 text-white p-2 w-fit rounded ">
-          Add project to connector
-        </button>
+        <div className="flex flex-row">
+          <button className="bg-gray-800 text-white p-2 w-fit rounded font-bold">
+            Add to connector
+          </button>
+          {project.githubURL && (
+            <a
+              className="bg-gray-800 h-fit ml-2 w-fit rounded"
+              href={project.githubURL}
+            >
+              <img
+                src="https://api.iconify.design/mdi:github.svg?color=%23f0f0f0"
+                className={"fill-gray-800 h-10"}
+                alt="minimize"
+              />
+            </a>
+          )}
+          {project.shopURL && (
+            <a
+              className="bg-gray-800 h-fit ml-2 w-fit rounded"
+              href={project.shopURL}
+            >
+              <img
+                src="https://api.iconify.design/icon-park-outline:shopping.svg?color=%23f0f0f0"
+                className={"fill-gray-800 h-8 m-1"}
+                alt="minimize"
+              />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
