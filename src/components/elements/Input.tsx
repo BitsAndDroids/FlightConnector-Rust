@@ -11,9 +11,14 @@ interface InputProps {
   placeholder?: string;
   decimals?: boolean;
   infoWindow?: ReactElement<InfoWindowProps>;
+  errorState?: InputErrorState;
   onChange?: (value: string | boolean) => void;
 }
 
+export interface InputErrorState {
+  state: boolean;
+  message?: string;
+}
 const generateCheckbox = (
   value: boolean,
   label: string,
@@ -30,6 +35,7 @@ export const Input = ({
   placeholder,
   decimals,
   infoWindow,
+  errorState,
   onChange,
 }: InputProps) => {
   return (
@@ -52,14 +58,19 @@ export const Input = ({
         <div className="flex flex-col">
           {label && <label className="mr-2 ml-2">{label}:</label>}
           <div className="flex flex-row w-full items-center">
-            <input
-              value={value as string}
-              onChange={(e) => onChange && onChange(e.target.value)}
-              type={type}
-              className={`border border-gray-200 w-full rounded-md p-2 m-2 drop-shadow ${addToClassName}`}
-              step={decimals ? "0.01" : undefined}
-              placeholder={placeholder}
-            ></input>
+            <div className="flex flex-col mr-4">
+              <input
+                value={value as string}
+                onChange={(e) => onChange && onChange(e.target.value)}
+                type={type}
+                className={`border border-gray-200 w-full rounded-md p-2 m-2 drop-shadow ${addToClassName} ${errorState?.state && "border-red-800 focus-visible:border-red-800"}`}
+                step={decimals ? "0.01" : undefined}
+                placeholder={placeholder}
+              ></input>
+              {errorState?.state && (
+                <p className="text-red-900 ml-4 -mt-2">{errorState?.message}</p>
+              )}
+            </div>
             {infoWindow}
           </div>
         </div>

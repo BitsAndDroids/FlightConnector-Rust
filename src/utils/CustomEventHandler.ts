@@ -6,6 +6,7 @@ export class CustomEventHandler {
   constructor() {
     this.store = new Store(".events.dat");
   }
+
   async getEvent(id: string): Promise<any> {
     return this.store.get(id);
   }
