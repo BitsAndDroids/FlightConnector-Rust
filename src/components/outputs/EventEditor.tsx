@@ -1,17 +1,29 @@
 import { WASMEvent } from "@/model/WASMEvent";
 import { Button } from "../elements/Button";
-import { Input } from "../elements/Input";
+import { Input, InputErrorState } from "../elements/Input";
 import { Select } from "../elements/Select";
 import { useState } from "react";
 import InfoWindow from "../InfoWindow";
+import { CustomEventHandler } from "@/utils/CustomEventHandler";
+import { message } from "@tauri-apps/plugin-dialog";
+import { EventErrors } from "@/app/options/outputs/custom/CustomEvents";
 
 interface EventEditorProps {
   event?: WASMEvent;
   onSave: (event: WASMEvent) => void;
   onCancel?: () => void;
+  eventErrors: EventErrors;
+  setEventErrors: (errors: EventErrors) => void;
 }
 
-export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
+export const EventEditor = ({
+  event,
+  onSave,
+  onCancel,
+  eventErrors,
+  setEventErrors,
+}: EventEditorProps) => {
+  const customEventHandler = new CustomEventHandler();
   const [type, setType] = useState<string>(event?.action_type || "input");
   const [categories, setCategories] = useState<string[]>([
     "general aviation",
@@ -34,6 +46,37 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
       plane_or_category: "generic",
     },
   );
+  const [originalEvent, setOriginalEvent] = useState<WASMEvent | undefined>(
+    event,
+  );
+
+  const validateID = async (value: string) => {
+    let errorMessage: string = "";
+    let errorState = false;
+    if (
+      parseInt(value) != originalEvent?.id &&
+      (await customEventHandler.getEvent(value))
+    ) {
+      errorMessage += "This ID is already used";
+      errorState = true;
+    }
+    if (parseInt(value) < 3000) {
+      if (errorMessage.length > 0) {
+        errorMessage += ", ";
+      }
+      errorMessage += "The ID has to be > 3000";
+      errorState = true;
+    }
+    if (!errorState) {
+      errorState = false;
+      errorMessage = "";
+    }
+
+    setEventErrors({
+      ...eventErrors,
+      id: { state: errorState, message: errorMessage },
+    });
+  };
 
   const changeUpdateEvery = (value: string) => {
     setNewEvent({ ...newEvent, update_every: parseFloat(value) });
@@ -43,11 +86,18 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
     setNewEvent({ ...newEvent, plane_or_category: value });
   };
 
-  const changeID = (value: string) => {
+  const changeID = async (value: string) => {
+    validateID(value);
     setNewEvent({ ...newEvent, id: parseInt(value) });
   };
 
   const changeAction = (value: string) => {
+    if (value.length > 0) {
+      setEventErrors({
+        ...eventErrors,
+        action: { state: false, message: "" },
+      });
+    }
     setNewEvent({ ...newEvent, action: value });
   };
 
@@ -56,6 +106,12 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
   };
 
   const changeActionText = (value: string) => {
+    if (value.length > 0) {
+      setEventErrors({
+        ...eventErrors,
+        action_text: { state: false, message: "" },
+      });
+    }
     setNewEvent({ ...newEvent, action_text: value });
   };
 
@@ -72,6 +128,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
             type="number"
             value={newEvent?.id.toString()}
             onChange={changeID as (value: string | boolean) => void}
+            errorState={eventErrors.id}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#id"
@@ -84,6 +141,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
             type="textarea"
             value={newEvent?.action}
             onChange={changeAction as (value: string | boolean) => void}
+            errorState={eventErrors.action}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#action"
@@ -95,6 +153,7 @@ export const EventEditor = ({ event, onSave, onCancel }: EventEditorProps) => {
             label="Description"
             value={newEvent?.action_text}
             onChange={changeActionText as (value: string | boolean) => void}
+            errorState={eventErrors.action_text}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#description"

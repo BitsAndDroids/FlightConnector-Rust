@@ -1,5 +1,5 @@
 import { Button } from "@/components/elements/Button";
-import { Input } from "@/components/elements/Input";
+import { Input, InputErrorState } from "@/components/elements/Input";
 import { Select } from "@/components/elements/Select";
 import { Header } from "@/components/elements/header";
 import { EventEditor } from "@/components/outputs/EventEditor";
@@ -7,6 +7,7 @@ import { WASMEventTable } from "@/components/wasm/WASMEventTable";
 import { WASMEvent } from "@/model/WASMEvent";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { invoke } from "@tauri-apps/api/core";
+import { message } from "@tauri-apps/plugin-dialog";
 import { useEffect, useState } from "react";
 
 interface SortSettings {
@@ -14,6 +15,12 @@ interface SortSettings {
   sortOrder: "desc" | "asc";
   outputFormat: string | undefined;
   type: string | undefined;
+}
+
+export interface EventErrors {
+  id: InputErrorState;
+  action: InputErrorState;
+  action_text: InputErrorState;
 }
 
 export const CustomEvents = () => {
@@ -29,6 +36,11 @@ export const CustomEvents = () => {
   const [eventToEdit, setEventToEdit] = useState<WASMEvent | undefined>(
     undefined,
   );
+  const [eventErrors, setEventErrors] = useState<EventErrors>({
+    id: { state: false },
+    action: { state: false },
+    action_text: { state: false },
+  });
   const keyArray: Array<keyof WASMEvent> = [
     "id",
     "action_type",
@@ -102,7 +114,34 @@ export const CustomEvents = () => {
     }));
   };
 
+  const validateEmptyString = async (event: WASMEvent) => {
+    if (event.action_text.length < 1) {
+      setEventErrors({
+        ...eventErrors,
+        action_text: { state: true, message: "This field must be filled" },
+      });
+    }
+    if (event.action.length < 1) {
+      setEventErrors({
+        ...eventErrors,
+        action: { state: true, message: "This field must be filled" },
+      });
+    }
+  };
+
   const saveEvent = async (event: WASMEvent) => {
+    await validateEmptyString(event);
+    // TODO: Fix this double validation logic
+    if (
+      eventErrors.id.state ||
+      eventErrors.action.state ||
+      eventErrors.action_text.state ||
+      event.action.length < 1 ||
+      event.action_text.length < 1
+    ) {
+      message("You need to fix the errors before saving the event");
+      return;
+    }
     wasmStore.addEvent(event);
     if (eventToEdit) {
       const newEvents = events.map((e) => {
@@ -136,8 +175,17 @@ export const CustomEvents = () => {
     setEventEditorOpen(true);
   };
 
+  const resetEventErrors = () => {
+    setEventErrors({
+      id: { state: false, message: "" },
+      action: { state: false, message: "" },
+      action_text: { state: false, message: "" },
+    });
+  };
+
   const closeEventEditor = () => {
     setEventToEdit(undefined);
+    resetEventErrors();
     setEventEditorOpen(false);
   };
 
@@ -168,6 +216,8 @@ export const CustomEvents = () => {
           onSave={saveEvent}
           event={eventToEdit}
           onCancel={closeEventEditor}
+          eventErrors={eventErrors}
+          setEventErrors={setEventErrors}
         />
       )}
       <div className="h-[96%] overflow-y-hidden">

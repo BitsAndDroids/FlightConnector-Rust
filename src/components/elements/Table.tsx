@@ -19,7 +19,7 @@ export const Table = ({
             <tr key={`table-${typeof elements.at(0)}`}>
               <th
                 key={0}
-                className="font-semibold text-gray-800 py-3.5 pl-6 pr-3 text-left"
+                className="font-semibold text-gray-800 max-w-[80px] py-3.5 pl-6 pr-3 text-left"
               >
                 {headers[0]}{" "}
               </th>
@@ -27,7 +27,7 @@ export const Table = ({
                 headers.slice(1).map((header, index) => (
                   <th
                     key={index}
-                    className="font-semibold text-gray-800 py-3.5 pl-6 pr-3 text-left"
+                    className="font-semibold text-gray-800 max-w-[110px] break-words py-3.5 pl-6 pr-3 text-left"
                   >
                     {header}
                   </th>
@@ -48,7 +48,7 @@ export const Table = ({
                 {headers.map((header, headerIndex) => (
                   <td
                     key={`${headerIndex}-${index}`}
-                    className="py-4 pl-4 pr-3 text-sm sm:pl-6"
+                    className="py-4 pl-4 pr-3 text-sm sm:pl-6 max-w-[300px] break-words"
                   >
                     {element[header as keyof typeof element]}
                   </td>
