@@ -52,6 +52,7 @@ export const Input = ({
           value={value as string}
           addToClassName={addToClassName as string}
           placeholder={placeholder as string}
+          errorState={errorState}
           onChange={onChange as (value: string) => void}
         />
       ) : (

@@ -61,6 +61,9 @@ export const EventEditor = ({
       errorState = true;
     }
     if (parseInt(value) < 3000) {
+      if (errorMessage.length > 0) {
+        errorMessage += ", ";
+      }
       errorMessage += "The ID has to be > 3000";
       errorState = true;
     }
@@ -89,6 +92,12 @@ export const EventEditor = ({
   };
 
   const changeAction = (value: string) => {
+    if (value.length > 0) {
+      setEventErrors({
+        ...eventErrors,
+        action: { state: false, message: "" },
+      });
+    }
     setNewEvent({ ...newEvent, action: value });
   };
 
@@ -97,6 +106,12 @@ export const EventEditor = ({
   };
 
   const changeActionText = (value: string) => {
+    if (value.length > 0) {
+      setEventErrors({
+        ...eventErrors,
+        action_text: { state: false, message: "" },
+      });
+    }
     setNewEvent({ ...newEvent, action_text: value });
   };
 
@@ -138,6 +153,7 @@ export const EventEditor = ({
             label="Description"
             value={newEvent?.action_text}
             onChange={changeActionText as (value: string | boolean) => void}
+            errorState={eventErrors.action_text}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#description"

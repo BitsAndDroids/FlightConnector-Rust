@@ -20,6 +20,7 @@ interface SortSettings {
 export interface EventErrors {
   id: InputErrorState;
   action: InputErrorState;
+  action_text: InputErrorState;
 }
 
 export const CustomEvents = () => {
@@ -38,6 +39,7 @@ export const CustomEvents = () => {
   const [eventErrors, setEventErrors] = useState<EventErrors>({
     id: { state: false },
     action: { state: false },
+    action_text: { state: false },
   });
   const keyArray: Array<keyof WASMEvent> = [
     "id",
@@ -112,8 +114,31 @@ export const CustomEvents = () => {
     }));
   };
 
+  const validateEmptyString = async (event: WASMEvent) => {
+    if (event.action_text.length < 1) {
+      setEventErrors({
+        ...eventErrors,
+        action_text: { state: true, message: "This field must be filled" },
+      });
+    }
+    if (event.action.length < 1) {
+      setEventErrors({
+        ...eventErrors,
+        action: { state: true, message: "This field must be filled" },
+      });
+    }
+  };
+
   const saveEvent = async (event: WASMEvent) => {
-    if (eventErrors.id.state || eventErrors.action.state) {
+    await validateEmptyString(event);
+    // TODO: Fix this double validation logic
+    if (
+      eventErrors.id.state ||
+      eventErrors.action.state ||
+      eventErrors.action_text.state ||
+      event.action.length < 1 ||
+      event.action_text.length < 1
+    ) {
       message("You need to fix the errors before saving the event");
       return;
     }
@@ -154,6 +179,7 @@ export const CustomEvents = () => {
     setEventErrors({
       id: { state: false, message: "" },
       action: { state: false, message: "" },
+      action_text: { state: false, message: "" },
     });
   };
 

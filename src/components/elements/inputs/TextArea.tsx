@@ -1,5 +1,6 @@
 import { InfoWindowProps } from "@/components/InfoWindow";
 import { ReactElement } from "react";
+import { InputErrorState } from "../Input";
 
 interface TextAreaProps {
   value?: string;
@@ -7,6 +8,7 @@ interface TextAreaProps {
   addToClassName?: string;
   placeholder?: string;
   infoWindow?: ReactElement<InfoWindowProps>;
+  errorState?: InputErrorState;
   onChange?: (value: string) => void;
 }
 
@@ -16,6 +18,7 @@ export const TextArea = ({
   addToClassName,
   placeholder,
   infoWindow,
+  errorState,
   onChange,
 }: TextAreaProps) => {
   return (
@@ -24,9 +27,10 @@ export const TextArea = ({
       <textarea
         value={value}
         onChange={(e) => onChange && onChange(e.target.value)}
-        className={`border border-gray-200 w-full rounded-md p-2 m-2 drop-shadow ${addToClassName}`}
+        className={`border border-gray-200 w-full rounded-md p-2 m-2 drop-shadow ${addToClassName} ${errorState && "border-red-800"}`}
         placeholder={placeholder}
       ></textarea>
+      {errorState && <p className="text-red-800 ml-4">{errorState.message}</p>}
 
       {infoWindow}
     </div>
