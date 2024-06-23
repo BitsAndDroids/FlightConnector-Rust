@@ -50,6 +50,7 @@ export const Input = ({
       ) : type === "textarea" ? (
         <TextArea
           value={value as string}
+          label={label}
           addToClassName={addToClassName as string}
           placeholder={placeholder as string}
           errorState={errorState}
