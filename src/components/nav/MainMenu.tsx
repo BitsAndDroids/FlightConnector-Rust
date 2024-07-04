@@ -9,6 +9,7 @@ import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
 import { UpdateWindow } from "../UpdateWindow";
 import { hasReadLatestPatchNotes } from "@/utils/UpdateChecker";
+import { BugReportWindow } from "../bugreports/BugReportWindow";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = new ConnectorSettingsHandler();
   const [installWASMDialogOpen, setInstallWASMDialogOpen] =
@@ -18,6 +19,8 @@ export const MainMenu: React.FC = () => {
   const [communityFolderPath, setCommunityFolderPath] = useState<string>("");
   const [libraryFolderPath, setLibraryFolderPath] = useState<string>("");
   const [updateWindowOpen, setUpdateWindowOpen] = useState<boolean>(false);
+  const [bugReportWindowOpen, setBugReportWindowOpen] =
+    useState<boolean>(false);
 
   useEffect(() => {
     const checkForUpdates = async () => {
@@ -109,8 +112,15 @@ export const MainMenu: React.FC = () => {
     generateLibrary(dirResult);
   };
 
+  const closeBugReportWindow = () => {
+    setBugReportWindowOpen(false);
+  };
+
   return (
     <>
+      {bugReportWindowOpen && (
+        <BugReportWindow closeWindow={closeBugReportWindow} />
+      )}
       {updateWindowOpen && (
         <UpdateWindow closeWindow={() => setUpdateWindowOpen(false)} />
       )}
@@ -166,6 +176,20 @@ export const MainMenu: React.FC = () => {
         <div className="overflow-y-auto px-8">
           <Outlet />
         </div>
+        <div className="bg-bitsanddroids-blue w-screen h-8"></div>
+        <button
+          onClick={() => setBugReportWindowOpen(true)}
+          className="absolute bottom-10 right-10 bg-white p-2 rounded-full has-tooltip"
+        >
+          <span className="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-12 -ml-[95px]">
+            report a bug
+          </span>
+          <img
+            src="https://api.iconify.design/mdi:bug-outline.svg?color=%23ad0314"
+            className={"fill-amber-50"}
+            alt="report a bug"
+          />
+        </button>
       </div>
     </>
   );

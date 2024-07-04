@@ -25,6 +25,16 @@ export class RunSettingsHandler {
     return await this.runSettingsStore.get("lastPresetId");
   }
 
+  async getAllRunSettings(): Promise<any> {
+    const keys = await this.runSettingsStore.keys();
+    const settings = {};
+    for (const key of keys) {
+      // @ts-ignore
+      settings[key] = await this.runSettingsStore.get(key);
+    }
+    return settings;
+  }
+
   async getLastRunBundles(): Promise<RunBundle[]> {
     return (await this.runSettingsStore.get("lastRunBundles")) || [];
   }

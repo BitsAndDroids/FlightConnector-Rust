@@ -1,0 +1,14 @@
+{
+  "permissions": [
+    {
+      "identifier": "http:default",
+      "allow": [
+        { "url": "https://*.tauri.app" },
+        { "url": "https://www.bitsanddroids.com/api/bug_reports" },
+        { "url": "http://localhost:3000/*" },
+        { "url": "http://localhost:3000/api/bug_reports" }
+      ],
+      "deny": [{ "url": "https://private.tauri.app" }]
+    }
+  ]
+}
