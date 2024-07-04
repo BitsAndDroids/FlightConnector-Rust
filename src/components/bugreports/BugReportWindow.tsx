@@ -20,6 +20,8 @@ export const BugReportWindow = (props: BugReportWindowProps) => {
   const getEventData = async () => {
     const eventHandler = new CustomEventHandler();
     const eventData = await eventHandler.getAllEvents();
+    // filter all events < id 3000
+    eventData.filter((event) => event.id < 3000);
     return JSON.stringify(eventData);
   };
 
