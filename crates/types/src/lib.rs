@@ -1,5 +1,6 @@
 pub mod types {
     pub mod action_response;
+    pub mod bug_report;
     pub mod bundle;
     pub mod category;
     pub mod connector_settings;

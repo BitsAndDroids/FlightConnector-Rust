@@ -12,8 +12,9 @@ export const Button = ({
   addToClassName,
 }: ButtonProps) => {
   const primary =
-    "rounded-md h-10 bg-green-600 text-white text-sm font-semibold px-3.5 py-2.5 flex flex-row items-center";
-  const danger = "bg-red-800 rounded-md p-2 m-2 text-white";
+    "rounded-md h-10 bg-green-600 text-white text-sm font-semibold px-3.5 py-2.5 flex flex-row items-center mr-2";
+  const danger =
+    "bg-red-800 rounded-md h-10 px-3.5 py-2.5 text-white text-sm font-semibold mr-2";
   const styleSwitch = (style: string) => {
     switch (style) {
       case "primary": {

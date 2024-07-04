@@ -51,4 +51,14 @@ export class ConnectorSettingsHandler {
   async getLatestPatchNotesRead(): Promise<string | null> {
     return await this.runSettingsStore.get("latestPatchNotesRead");
   }
+
+  async getAllConnectorSettings(): Promise<any> {
+    const keys = await this.runSettingsStore.keys();
+    const settings = {};
+    for (const key of keys) {
+      // @ts-ignore
+      settings[key] = await this.runSettingsStore.get(key);
+    }
+    return settings;
+  }
 }
