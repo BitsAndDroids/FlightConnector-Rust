@@ -8,21 +8,21 @@ import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { RunSettingsHandler } from "@/utils/runSettingsHandler";
 import { BugReport } from "@/model/BugReport";
 import { fetch } from "@tauri-apps/plugin-http";
+import { message } from "@tauri-apps/plugin-dialog";
 interface BugReportWindowProps {
   closeWindow: () => void;
 }
 
 export const BugReportWindow = (props: BugReportWindowProps) => {
-  const [message, setMessage] = useState<string>("");
+  const [issueMessage, setIssueMessage] = useState<string>("");
   const [issueNumber, setIssueNumber] = useState<string>("");
   const [discordUsername, setDiscordUsername] = useState<string>("");
 
   const getEventData = async () => {
     const eventHandler = new CustomEventHandler();
-    const eventData = await eventHandler.getAllEvents();
-    // filter all events < id 3000
-    // these are default events
-    eventData.filter((event) => event.id < 3000);
+    let eventData = await eventHandler.getAllEvents();
+    // filter all events > id 3000 (non-default events)
+    eventData = eventData.filter((event) => event.id > 3000);
     return JSON.stringify(eventData);
   };
 
@@ -52,7 +52,7 @@ export const BugReportWindow = (props: BugReportWindowProps) => {
     const bugReport: BugReport = {
       discord_name: discordUsername,
       github_issue_nr: issueNumber,
-      message: message,
+      message: issueMessage,
       events: await getEventData(),
       bundle_settings: await getBundleData(),
       presets: await getPresetData(),
@@ -60,8 +60,6 @@ export const BugReportWindow = (props: BugReportWindowProps) => {
       // TODO: add logs
       logs: "test",
     };
-
-    console.log(bugReport);
 
     const result = await fetch(
       "https://www.bitsanddroids.com/api/bug_reports",
@@ -73,12 +71,20 @@ export const BugReportWindow = (props: BugReportWindowProps) => {
         body: JSON.stringify(bugReport),
       },
     );
-    console.log(result);
+    if (!result.ok) {
+      await message("Failed to submit bug report", {
+        title: "Error",
+        kind: "error",
+      });
+      props.closeWindow();
+      return;
+    }
+    await message("Bug report submitted successfully");
     props.closeWindow();
   };
 
   const onChangeMessage = (value: string) => {
-    setMessage(value);
+    setIssueMessage(value);
   };
 
   const onChangeIssueNumber = (value: string) => {
