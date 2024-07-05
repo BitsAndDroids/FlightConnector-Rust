@@ -15,10 +15,6 @@ impl ActionRegistry {
         }
     }
 
-    pub fn load_actions(&mut self) {
-        self.actions = get_actions();
-    }
-
     pub fn set_min_throttle(&mut self, min_throttle: f32) {
         self.min_throttle = min_throttle;
     }

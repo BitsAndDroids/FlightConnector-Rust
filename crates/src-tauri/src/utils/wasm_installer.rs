@@ -1,13 +1,11 @@
 use std::path::Path;
 
-use tauri::Manager;
-
 #[tauri::command]
-pub fn install_wasm(app: tauri::AppHandle, path: String) {
+pub fn install_wasm(path: String) {
     let exe_path = std::env::current_dir().unwrap();
     let wasm_path = exe_path.join("wasm_module");
     println!("exe_path: {:?}", wasm_path);
-    let mut files = return_files_in_dir(wasm_path.to_str().unwrap());
+    let files = return_files_in_dir(wasm_path.to_str().unwrap());
     for file in files {
         // check if file contains wasm_event.json and skip it
         if file.path().to_str().unwrap().contains("wasm_events.json") {
@@ -19,9 +17,19 @@ pub fn install_wasm(app: tauri::AppHandle, path: String) {
             .join("BitsAndDroidsModule")
             .join(relative_path.unwrap());
         if let Some(parent_dir) = dest_path.parent() {
-            std::fs::create_dir_all(parent_dir);
+            match std::fs::create_dir_all(parent_dir) {
+                Ok(_) => {}
+                Err(e) => {
+                    println!("Error creating dir: {:?}", e);
+                }
+            };
         }
-        std::fs::copy(file.path(), dest_path);
+        match std::fs::copy(file.path(), dest_path) {
+            Ok(_) => {}
+            Err(e) => {
+                println!("Error copying file: {:?}", e);
+            }
+        };
     }
 
     println!("Installing wasm in dir: {}", path);
@@ -31,7 +39,7 @@ fn return_files_in_dir(dir: &str) -> Vec<std::fs::DirEntry> {
     let mut files = vec![];
     for entry in std::fs::read_dir(dir).unwrap() {
         let entry = entry.unwrap();
-        if (entry.file_type().unwrap().is_dir()) {
+        if entry.file_type().unwrap().is_dir() {
             let files_rec = return_files_in_dir(entry.path().to_str().unwrap());
             for file in files_rec {
                 files.push(file);

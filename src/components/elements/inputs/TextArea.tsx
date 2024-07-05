@@ -1,6 +1,7 @@
 import { InfoWindowProps } from "@/components/InfoWindow";
 import { ReactElement } from "react";
 import { InputErrorState } from "../Input";
+import { Label } from "../Label";
 
 interface TextAreaProps {
   value?: string;
@@ -25,16 +26,11 @@ export const TextArea = ({
 }: TextAreaProps) => {
   return (
     <div className="flex flex-col">
-      {label && (
-        <label className="mr-2">
-          {label}
-          {required && "*"}:
-        </label>
-      )}
+      {label && <Label text={label} required={required} />}
       <textarea
         value={value}
         onChange={(e) => onChange && onChange(e.target.value)}
-        className={`border border-gray-200 w-full rounded-md p-2 my-2 drop-shadow ${addToClassName} ${errorState?.state && "border-red-800"}`}
+        className={`border border-gray-200 w-full rounded-md p-2 mb-2 drop-shadow ${addToClassName} ${errorState?.state && "border-red-800"}`}
         placeholder={placeholder}
       ></textarea>
       {errorState && <p className="text-red-800 ml-4">{errorState.message}</p>}
