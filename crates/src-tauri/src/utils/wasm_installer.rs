@@ -1,9 +1,30 @@
-use std::path::Path;
+use std::path::{Path, PathBuf};
+
+use log::error;
+use tauri::{Manager, Wry};
+use tauri_plugin_store::{with_store, Store, StoreCollection};
 
 #[tauri::command]
-pub fn install_wasm(path: String) {
+pub fn install_wasm(app: tauri::AppHandle, path: String) {
     let exe_path = std::env::current_dir().unwrap();
     let wasm_path = exe_path.join("wasm_module");
+    let version = get_version_from_manifest();
+    let stores = app.app_handle().state::<StoreCollection<Wry>>();
+    let path = PathBuf::from(".connectorSettings.dat");
+
+    // TODO: store wasm version
+    let handle_store = |store: &mut Store<Wry>| {
+        store.insert("installedWASMVersion".to_owned(), version);
+        Ok(())
+    };
+
+    match with_store(app.app_handle().clone(), stores, path, handle_store) {
+        Ok(_) => {}
+        Err(e) => {
+            error!("Failed to load connector settings: {:?}", e);
+        }
+    }
+
     println!("exe_path: {:?}", wasm_path);
     let files = return_files_in_dir(wasm_path.to_str().unwrap());
     for file in files {
@@ -33,6 +54,44 @@ pub fn install_wasm(path: String) {
     }
 
     println!("Installing wasm in dir: {}", path);
+}
+
+fn get_version_from_manifest() -> String {
+    let exe_path = std::env::current_dir().unwrap();
+    let wasm_path = exe_path.join("wasm_module");
+    let manifest_path = wasm_path.join("manifest.json");
+    let manifest = std::fs::read_to_string(manifest_path).unwrap();
+    let parsed: serde_json::Value = serde_json::from_str(&manifest).unwrap();
+
+    parsed["package_version"].as_str().unwrap().to_owned()
+}
+
+pub fn check_if_wasm_up_to_date(app: tauri::AppHandle) -> bool {
+    //get last installed version from store
+    let stores = app.app_handle().state::<StoreCollection<Wry>>();
+    let path = PathBuf::from(".connectorSettings.dat");
+
+    let mut version: String = "0.0.0".to_owned();
+    let handle_store = |store: &mut Store<Wry>| {
+        version = match store.get("installedWASMVersion") {
+            Some(v) => v.as_str().unwrap().to_owned(),
+            None => "0.0.0".to_owned(),
+        };
+        Ok(())
+    };
+
+    match with_store(app.app_handle().clone(), stores, path, handle_store) {
+        Ok(_) => {}
+        Err(e) => {
+            error!("Failed to load connector settings: {:?}", e);
+        }
+    }
+    println!("Last installed wasm version: {}", version);
+
+    //get latest version from manifest.json
+    let latest_version = get_version_from_manifest();
+
+    true
 }
 
 fn return_files_in_dir(dir: &str) -> Vec<std::fs::DirEntry> {
