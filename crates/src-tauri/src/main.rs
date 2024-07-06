@@ -229,7 +229,10 @@ fn main() {
                 }
             });
             init_wasm_events_to_store(app.handle().clone());
-            check_if_wasm_up_to_date(app.handle().clone());
+            if !check_if_wasm_up_to_date(app.handle().clone()) {
+                println!("Wasm is not up to date");
+                install_wasm(app.handle().clone());
+            }
             APP_HANDLE.set(app.handle().clone()).unwrap();
             Ok(())
         })
