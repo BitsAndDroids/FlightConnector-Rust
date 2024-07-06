@@ -4,7 +4,7 @@ use connector_types::types::{output::Output, output_format::FormatOutput, wasm_e
 use log::error;
 use serde_json::json;
 use tauri::{Manager, Wry};
-use tauri_plugin_store::{with_store, Store, StoreBuilder, StoreCollection};
+use tauri_plugin_store::{with_store, Store, StoreCollection};
 #[derive(Debug, Clone)]
 pub struct WASMRegistry {
     wasm_outputs: Vec<WasmEvent>,
@@ -37,9 +37,19 @@ impl WASMRegistry {
         let path = PathBuf::from(".events.dat");
         let handle_store = |store: &mut Store<Wry>| {
             for event in &self.wasm_default_events {
-                store.insert(event.id.to_string().clone(), json!(event));
+                match store.insert(event.id.to_string().clone(), json!(event)) {
+                    Ok(_) => {}
+                    Err(e) => {
+                        error!("Failed to insert default event: {:?}", e);
+                    }
+                }
             }
-            store.save();
+            match store.save() {
+                Ok(_) => {}
+                Err(e) => {
+                    error!("Failed to save default events: {:?}", e);
+                }
+            }
             Ok(())
         };
         match with_store(app.app_handle().clone(), stores, path, handle_store) {
@@ -59,7 +69,7 @@ impl WASMRegistry {
         let handle_store = |store: &mut Store<Wry>| {
             let keys = store.keys();
             for key in keys {
-                let value = store.get(&key).unwrap();
+                let value = store.get(key).unwrap();
                 let mut wasm_event: WasmEvent = serde_json::from_value(value.clone()).unwrap();
                 wasm_event.offset = output_counter * 8;
                 if wasm_event.action_type == "output" {
@@ -101,9 +111,9 @@ impl WASMRegistry {
     }
 
     pub fn get_wasm_events(&self) -> Vec<WasmEvent> {
-        let mut events = self.wasm_outputs.clone();
-        let mut input_events = self.wasm_inputs.clone();
-        vec![events, input_events].concat()
+        let events = self.wasm_outputs.clone();
+        let input_events = self.wasm_inputs.clone();
+        [events, input_events].concat()
     }
 
     pub fn get_default_wasm_events(&self) -> Vec<WasmEvent> {
