@@ -1,16 +1,12 @@
 use connector_types::types::wasm_event::WasmEvent;
 use simconnect::{
     DWORD, SIMCONNECT_CLIENTDATAOFFSET_AUTO, SIMCONNECT_CLIENT_DATA_ID,
-    SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_ON_SET,
-    SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_SECOND,
-    SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_DEFAULT, SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_TAGGED,
     SIMCONNECT_CLIENT_DATA_SET_FLAG_DEFAULT, SIMCONNECT_CREATE_CLIENT_DATA_FLAG_DEFAULT,
     SIMCONNECT_UNUSED,
 };
 
 const WASM_DATA_ID: SIMCONNECT_CLIENT_DATA_ID = 1;
 const WASM_DEFINITION_ID: u32 = 101;
-const REQUEST_ID: u32 = 101;
 const DATASIZE: DWORD = 256;
 
 struct ClientDataProperties {
@@ -19,7 +15,6 @@ struct ClientDataProperties {
     definition_id: u32,
     request_id: u32,
     data_size: DWORD,
-    data_array: Vec<u8>,
 }
 
 pub fn register_wasm_data(conn: &mut simconnect::SimConnector) {
@@ -29,7 +24,6 @@ pub fn register_wasm_data(conn: &mut simconnect::SimConnector) {
         definition_id: 101,
         request_id: 102,
         data_size: 256,
-        data_array: vec![0; 256],
     };
     create_wasm_client(conn, &mut input_client);
 
@@ -39,7 +33,6 @@ pub fn register_wasm_data(conn: &mut simconnect::SimConnector) {
         definition_id: 103,
         request_id: 104,
         data_size: 4096,
-        data_array: vec![0; 4096],
     };
     create_wasm_client(conn, &mut output_client);
 
@@ -49,7 +42,6 @@ pub fn register_wasm_data(conn: &mut simconnect::SimConnector) {
         definition_id: 105,
         request_id: 106,
         data_size: 4096,
-        data_array: vec![0; 4096],
     };
     create_wasm_client(conn, &mut command_client);
 }

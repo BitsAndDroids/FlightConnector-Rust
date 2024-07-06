@@ -17,6 +17,11 @@ export class ConnectorSettingsHandler {
     this.runSettingsStore.save();
   }
 
+  async setInstalledWASMVersion(version: string): Promise<void> {
+    this.runSettingsStore.set("installedWASMVersion", version);
+    this.runSettingsStore.save();
+  }
+
   async setWASMModulePath(path: string): Promise<void> {
     this.runSettingsStore.set("wasmModulePath", path);
     this.runSettingsStore.save();

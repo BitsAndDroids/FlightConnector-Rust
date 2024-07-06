@@ -49,12 +49,6 @@ struct Connections {
     id: i32,
 }
 
-#[derive(Clone)]
-struct Event {
-    id: DWORD,
-    description: &'static str,
-}
-
 #[repr(C, packed)]
 struct DataStruct {
     id: DWORD,
@@ -109,7 +103,11 @@ impl SimconnectHandler {
         let output_registry = OutputRegistry::new();
         let action_registry = ActionRegistry::new();
         let wasm_registry = WASMRegistry::new();
-        let connector_settings = ConnectorSettings { use_trs: false };
+        let connector_settings = ConnectorSettings {
+            use_trs: false,
+            adc_resolution: 1023,
+            installed_wasm_version: "0.0.0".to_owned(),
+        };
 
         Self {
             simconnect,
@@ -268,7 +266,7 @@ impl SimconnectHandler {
             }
         };
         info!(target: "input", "Sending input to simconnect: {} id: {} val: {}",input.event,command, val);
-        let mut value = 0;
+        let value;
         match input.input_type {
             InputType::SetValueBool => {
                 if val == 0 {
@@ -295,7 +293,12 @@ impl SimconnectHandler {
             InputType::Action => {
                 let action = self.action_registry.get_action_by_id(command).unwrap();
                 println!("Action found: {}", action.id);
-                action.excecute_action(&self.simconnect, raw, self.action_registry.min_throttle);
+                action.excecute_action(
+                    &self.simconnect,
+                    raw,
+                    self.action_registry.min_throttle,
+                    self.connector_settings.adc_resolution,
+                );
                 return;
             }
         };
@@ -403,7 +406,7 @@ impl SimconnectHandler {
                     .parse::<DWORD>()
                 {
                     Ok(id) => id,
-                    Err(e) => {
+                    Err(_) => {
                         continue;
                     }
                 };
@@ -417,12 +420,10 @@ impl SimconnectHandler {
     }
 
     fn main_event_loop(&mut self) {
-        let mut connection_running = true;
-        while connection_running {
+        loop {
             match self.rx.try_recv() {
                 Ok(r) => {
                     if r == 9999 {
-                        connection_running = false;
                         break;
                     }
                 }

@@ -5,11 +5,13 @@ import { ConnectorSettings } from "@/utils/models/ConnectorSettings";
 import { useEffect, useState } from "react";
 import { FileDialog } from "@/components/FileDialog";
 import { changeLaunchWhenSimStarts } from "./services/LaunchService";
+import { HeaderDivider } from "@/components/elements/HeaderDivider";
 
 const SettingsPage = () => {
   const [connectorSettings, setConnectorSettings] = useState<ConnectorSettings>(
     {
       use_trs: false,
+      adc_resolution: 1023,
       launch_when_sim_starts: false,
     },
   );
@@ -35,6 +37,9 @@ const SettingsPage = () => {
       }
       if (savedSettings.use_trs === undefined) {
         savedSettings.use_trs = false;
+      }
+      if (savedSettings.adc_resolution === undefined) {
+        savedSettings.adc_resolution = 1023;
       }
       setConnectorSettings(savedSettings);
     };
@@ -69,6 +74,10 @@ const SettingsPage = () => {
 
         changeLaunchWhenSimStarts(value);
       }
+    }
+    if (key === "adc_resolution") {
+      if (typeof value === "number")
+        setConnectorSettings({ ...connectorSettings, adc_resolution: value });
     }
   };
 
@@ -114,6 +123,20 @@ const SettingsPage = () => {
         </h1>
       </div>
       <div className="bg-white rounded-md mt-4 p-4">
+        <HeaderDivider text="Connector settings" />
+        <Input
+          label="Launch when sim starts"
+          type="checkbox"
+          value={connectorSettings.launch_when_sim_starts}
+          onChange={(val) => onSettingsChange("launch_when_sim_starts", val)}
+          infoWindow={
+            <InfoWindow
+              docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch05-00-settings.html#launch-when-sim-starts"
+              message="When enabled, the connector will automatically start when the simulator starts."
+            />
+          }
+        />
+        <HeaderDivider text="Microcontroller settings" />
         <Input
           label="Use terminal ready signal"
           type="checkbox"
@@ -127,14 +150,16 @@ const SettingsPage = () => {
           }
         />
         <Input
-          label="Launch when sim starts"
-          type="checkbox"
-          value={connectorSettings.launch_when_sim_starts}
-          onChange={(val) => onSettingsChange("launch_when_sim_starts", val)}
+          label="ADC Resolution"
+          type="number"
+          mt={2}
+          infoLeft={true}
+          onChange={(val) => onSettingsChange("adc_resolution", val)}
+          value={connectorSettings.adc_resolution.toString()}
           infoWindow={
             <InfoWindow
-              docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch05-00-settings.html#launch-when-sim-starts"
-              message="When enabled, the connector will automatically start when the simulator starts."
+              docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch05-00-settings.html#adc-resolution"
+              message="The ADC resolution of the microcontroller. This value is used to calculate the voltage of the ADC input."
             />
           }
         />

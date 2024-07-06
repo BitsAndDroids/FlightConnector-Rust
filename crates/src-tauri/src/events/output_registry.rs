@@ -20,12 +20,6 @@ impl OutputRegistry {
         self.outputs = output_parser::get_outputs_from_file(&self.output_path);
     }
 
-    pub fn get_category(&self, category_name: &str) -> Option<&Category> {
-        self.categories
-            .iter()
-            .find(|&category| category.name == category_name)
-    }
-
     pub fn get_output_by_id(&self, output_id: u32) -> Option<&Output> {
         self.outputs.iter().find(|&output| output.id == output_id)
     }
