@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -37,6 +38,7 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 8
+          cache: "pnpm"
 
       - name: install frontend dependencies
         run: pnpm install # change this to npm or pnpm depending on which one you use
