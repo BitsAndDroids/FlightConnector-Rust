@@ -223,41 +223,45 @@ export const CustomEvents = () => {
       <div className="h-[96%] overflow-y-hidden">
         <div className="flex flew-row align-middle">
           <Header level={1} title="Custom Events" />
-          <Button
-            text="Add Event"
-            onClick={addEvent}
-            style="primary"
-            addToClassName="mt-10 mb-4 ml-2"
-          />
-          <Button
-            text="Refresh default events"
-            onClick={updateDefaultEvents}
-            style="primary"
-            addToClassName="mt-10 mb-4 ml-2"
-          />
-          <Input
-            placeholder="Search"
-            addToClassName="mt-10"
-            onChange={searchId as (value: string | boolean) => void}
-          />
-          <Select
-            label="Sort By"
-            labelPosition="top"
-            options={keyArray}
-            values={keyArray}
-            value={sortSettings.sortBy}
-            onChange={changeSortBy}
-            addToClassName="mt-2 text-white"
-          />
-          <Select
-            label="Sort Order"
-            labelPosition="top"
-            options={["asc", "desc"]}
-            values={["asc", "desc"]}
-            value={sortSettings.sortOrder}
-            onChange={changeSortOrder}
-            addToClassName="mt-2 text-white"
-          />
+          <div className="flex flex-row items-center">
+            <Button
+              text="Add Event"
+              onClick={addEvent}
+              style="primary"
+              addToClassName="ml-2 mt-4"
+            />
+            <Button
+              text="Refresh default events"
+              onClick={updateDefaultEvents}
+              style="primary"
+              addToClassName="ml-2 mt-4"
+            />
+            <Input
+              placeholder="Search"
+              addToClassName=""
+              onChange={searchId as (value: string | boolean) => void}
+            />
+            <Select
+              light={true}
+              label="Sort By"
+              labelPosition="top"
+              options={keyArray}
+              values={keyArray}
+              value={sortSettings.sortBy}
+              onChange={changeSortBy}
+              addToClassName="text-white"
+            />
+            <Select
+              light={true}
+              label="Sort Order"
+              labelPosition="top"
+              options={["asc", "desc"]}
+              values={["asc", "desc"]}
+              value={sortSettings.sortOrder}
+              onChange={changeSortOrder}
+              addToClassName="text-white"
+            />
+          </div>
         </div>
         <WASMEventTable
           events={filteredEvents}

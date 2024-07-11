@@ -10,6 +10,7 @@ interface SelectProps {
   values: string[];
   addToClassName?: string;
   infoWindow?: ReactElement<InfoWindowProps>;
+  light?: boolean;
   onChange?: (value: string) => void;
 }
 
@@ -21,6 +22,7 @@ export const Select = ({
   values,
   addToClassName,
   infoWindow,
+  light,
   onChange,
 }: SelectProps) => {
   return (
@@ -31,7 +33,7 @@ export const Select = ({
           : `flex flex-col ${addToClassName}`
       }
     >
-      {label && <Label text={label} />}
+      {label && <Label light={light} text={label} />}
       <div className={"flex flex-row items-center w-full text-gray-800"}>
         <select
           value={value}

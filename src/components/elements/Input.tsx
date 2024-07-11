@@ -16,6 +16,7 @@ interface InputProps {
   mt?: number;
   infoLeft?: boolean;
   required?: boolean;
+  light?: boolean;
   onChange?: (value: string | boolean) => void;
 }
 
@@ -43,6 +44,7 @@ export const Input = ({
   mt,
   infoLeft,
   required,
+  light,
   onChange,
 }: InputProps) => {
   return (
@@ -67,8 +69,8 @@ export const Input = ({
       ) : (
         <div className={`flex flex-row ${mt && `mt-${mt}`} items-center`}>
           {infoLeft && infoWindow}
-          <div className="flex flex-col w-full">
-            {label && <Label text={label} required={required} />}
+          <div className={`flex flex-col w-full ${!label && "mt-6"}`}>
+            {label && <Label text={label} light={light} required={required} />}
             <div className="flex flex-col mr-2">
               <input
                 value={value as string}
