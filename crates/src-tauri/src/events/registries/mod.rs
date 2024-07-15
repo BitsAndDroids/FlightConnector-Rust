@@ -1,5 +1,5 @@
 mod action_registry;
-pub mod actions;
+pub mod commands;
 mod input_registry;
 mod output_registry;
 mod wasm_registry;

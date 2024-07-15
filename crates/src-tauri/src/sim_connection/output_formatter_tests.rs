@@ -1,7 +1,7 @@
 use connector_types::types::{Output, OutputType};
 
 #[cfg(test)]
-use crate::simconnect_mod::output_formatter;
+use crate::sim_connection::output_formatter;
 
 #[test]
 fn test_parse_output_percentages() {

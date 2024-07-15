@@ -1,7 +1,7 @@
 use crate::events::registries::{ActionRegistry, InputRegistry, OutputRegistry, WASMRegistry};
 use crate::serial::read_serial_ports;
+use crate::sim_connection::wasm::register_wasm_event;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
-use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::{ConnectorSettings, InputType, Output, RunBundle, WasmEvent};
 use lazy_static::lazy_static;
 use log::{error, info};

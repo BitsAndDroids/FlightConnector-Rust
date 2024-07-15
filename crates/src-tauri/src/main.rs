@@ -2,8 +2,8 @@
 mod events;
 mod serial;
 mod settings;
+mod sim_connection;
 mod sim_utils;
-mod simconnect_mod;
 mod utils;
 
 use connector_types::types::{FormatOutput, Output, RunBundle};
@@ -12,8 +12,7 @@ use lazy_static::lazy_static;
 use log::error;
 use once_cell::sync::OnceCell;
 use serde_json::json;
-use serialport::SerialPortType;
-use settings::actions::toggle_run_on_sim_launch;
+use settings::commands::toggle_run_on_sim_launch;
 use std::ops::Deref;
 use std::path::PathBuf;
 use std::string::ToString;
@@ -63,32 +62,6 @@ fn stop_simconnect_connection() {
 }
 
 #[tauri::command]
-async fn get_com_ports() -> Vec<String> {
-    // TODO This
-    let ports = match serialport::available_ports() {
-        Ok(ports) => ports,
-        Err(_) => Vec::new(),
-    };
-    let ports_output = ports
-        .iter()
-        .map(|port| {
-            let port_type_info = match &port.port_type {
-                SerialPortType::UsbPort(info) => (match &info.product {
-                    Some(product) => product.to_string(),
-                    None => "Unknown".to_string(),
-                })
-                .to_string(),
-                SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
-                SerialPortType::PciPort => "PCI Serial".to_string(),
-                _ => "".to_string(),
-            };
-            format!("{}, {}", port.port_name.as_str(), port_type_info)
-        })
-        .collect::<Vec<_>>();
-    ports_output
-}
-
-#[tauri::command]
 async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
     let mut output_registry = OutputRegistry::new();
     let mut wasm_registry = WASMRegistry::new();
@@ -114,7 +87,7 @@ fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
+            sim_connection::simconnect_handler::SimconnectHandler::new(app, rx);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -170,12 +143,12 @@ fn main() {
                 .build(),
         )
         .invoke_handler(tauri::generate_handler![
-            get_com_ports,
+            serial::commands::get_com_ports,
             get_outputs,
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
             install_wasm,
-            events::registries::actions::get_wasm_events,
+            events::registries::commands::get_wasm_events,
             update_default_events,
             get_library_header_content,
             get_library_source_content,
