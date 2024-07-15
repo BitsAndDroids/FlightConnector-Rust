@@ -31,9 +31,9 @@ impl Action {
 }
 
 pub enum ActionName {
-    THROTTLE,
-    PROP,
-    MIXTURE,
-    RUDDER,
-    AILERON,
+    Throttle,
+    Prop,
+    Mixture,
+    Rudder,
+    Aileron,
 }

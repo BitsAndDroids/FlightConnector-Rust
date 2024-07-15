@@ -67,15 +67,15 @@ pub fn get_actions() -> HashMap<u32, Action> {
     let mut action_map = HashMap::new();
     action_map.insert(
         199,
-        Action::new(199, ActionName::THROTTLE, Box::new(throttle_action)),
+        Action::new(199, ActionName::Throttle, Box::new(throttle_action)),
     );
     action_map.insert(
         115,
-        Action::new(115, ActionName::MIXTURE, Box::new(mixture_action)),
+        Action::new(115, ActionName::Mixture, Box::new(mixture_action)),
     );
     action_map.insert(
         198,
-        Action::new(198, ActionName::PROP, Box::new(propeller_action)),
+        Action::new(198, ActionName::Prop, Box::new(propeller_action)),
     );
     action_map
 }
