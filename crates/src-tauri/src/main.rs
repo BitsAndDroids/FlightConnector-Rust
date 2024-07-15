@@ -7,13 +7,13 @@ mod simconnect_mod;
 mod utils;
 
 use connector_types::types::{FormatOutput, Output, RunBundle};
-use events::registries::{get_wasm_events, OutputRegistry, WASMRegistry};
+use events::registries::{OutputRegistry, WASMRegistry};
 use lazy_static::lazy_static;
 use log::error;
 use once_cell::sync::OnceCell;
 use serde_json::json;
 use serialport::SerialPortType;
-use settings::settings_actions::toggle_run_on_sim_launch;
+use settings::actions::toggle_run_on_sim_launch;
 use std::ops::Deref;
 use std::path::PathBuf;
 use std::string::ToString;
@@ -175,7 +175,7 @@ fn main() {
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
             install_wasm,
-            get_wasm_events,
+            events::registries::actions::get_wasm_events,
             update_default_events,
             get_library_header_content,
             get_library_source_content,

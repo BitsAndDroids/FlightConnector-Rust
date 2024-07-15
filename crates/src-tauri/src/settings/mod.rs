@@ -1,1 +1,1 @@
-pub mod settings_actions;
+pub mod actions;
