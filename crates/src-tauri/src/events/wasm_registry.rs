@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use connector_types::types::{output::Output, output_format::FormatOutput, wasm_event::WasmEvent};
+use connector_types::types::{FormatOutput, Output, WasmEvent};
 use log::error;
 use serde_json::json;
 use tauri::{Manager, Wry};

@@ -2,7 +2,7 @@
 #[path = "output_parser_tests.rs"]
 mod output_parser_tests;
 
-use connector_types::types::output::Output;
+use connector_types::types::Output;
 
 pub fn get_outputs_from_file(path: &str) -> Vec<Output> {
     //if linux remove FLightCOnnector-Rust/ once from path

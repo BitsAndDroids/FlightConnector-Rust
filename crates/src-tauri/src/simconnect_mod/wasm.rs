@@ -1,4 +1,4 @@
-use connector_types::types::wasm_event::WasmEvent;
+use connector_types::types::WasmEvent;
 use simconnect::{
     DWORD, SIMCONNECT_CLIENTDATAOFFSET_AUTO, SIMCONNECT_CLIENT_DATA_ID,
     SIMCONNECT_CLIENT_DATA_SET_FLAG_DEFAULT, SIMCONNECT_CREATE_CLIENT_DATA_FLAG_DEFAULT,

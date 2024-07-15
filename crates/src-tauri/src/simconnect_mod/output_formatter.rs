@@ -1,4 +1,4 @@
-use connector_types::types::output::{Output, OutputType};
+use connector_types::types::{Output, OutputType};
 
 use crate::sim_utils;
 

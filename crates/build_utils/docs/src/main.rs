@@ -1,5 +1,5 @@
-use connector_types::types::input::Input;
-use connector_types::types::output::Output;
+use connector_types::types::Input;
+use connector_types::types::Output;
 use file_parsers::parsers::{input_parser, output_parser};
 use std::{env, path::PathBuf};
 

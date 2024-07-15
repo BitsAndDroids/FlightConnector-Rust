@@ -1,4 +1,4 @@
-use connector_types::types::output::Output;
+use connector_types::types::{Output, OutputType};
 
 #[cfg(test)]
 use crate::simconnect_mod::output_formatter;
@@ -12,7 +12,7 @@ fn test_parse_output_percentages() {
         cb_text: "percentage".to_string(),
         id: 1,
         category: "percentage".to_string(),
-        output_type: connector_types::types::output::OutputType::Percentage,
+        output_type: OutputType::Percentage,
     };
 
     let val = 0.5;
@@ -29,7 +29,7 @@ fn test_seconds_after_midnight_to_hours() {
         cb_text: "seconds_after_midnight".to_string(),
         id: 1,
         category: "seconds_after_midnight".to_string(),
-        output_type: connector_types::types::output::OutputType::Secondsaftermidnight,
+        output_type: OutputType::Secondsaftermidnight,
     };
 
     let val = 3600.0;
@@ -46,7 +46,7 @@ fn test_radians_to_degrees() {
         cb_text: "degrees".to_string(),
         id: 1,
         category: "degrees".to_string(),
-        output_type: connector_types::types::output::OutputType::Degrees,
+        output_type: OutputType::Degrees,
     };
 
     let val = std::f64::consts::PI;
@@ -63,7 +63,7 @@ fn test_val_to_inhg() {
         cb_text: "inhg".to_string(),
         id: 1,
         category: "inhg".to_string(),
-        output_type: connector_types::types::output::OutputType::INHG,
+        output_type: OutputType::INHG,
     };
 
     let val = 29.92;
@@ -80,7 +80,7 @@ fn test_val_to_adf() {
         cb_text: "adf".to_string(),
         id: 1,
         category: "adf".to_string(),
-        output_type: connector_types::types::output::OutputType::ADF,
+        output_type: OutputType::ADF,
     };
 
     let val = 113000.0;
@@ -97,7 +97,7 @@ fn test_mps_to_kmh() {
         cb_text: "mps".to_string(),
         id: 1,
         category: "mps".to_string(),
-        output_type: connector_types::types::output::OutputType::Meterspersecond,
+        output_type: OutputType::Meterspersecond,
     };
 
     let val = 1.0;
@@ -114,7 +114,7 @@ fn test_val_to_bool() {
         cb_text: "bool".to_string(),
         id: 1,
         category: "bool".to_string(),
-        output_type: connector_types::types::output::OutputType::Boolean,
+        output_type: OutputType::Boolean,
     };
     let val = 0.5;
     let result = output_formatter::parse_output_based_on_type(val, &bool_output);
@@ -133,7 +133,7 @@ fn test_val_to_integer() {
         cb_text: "int".to_string(),
         id: 1,
         category: "int".to_string(),
-        output_type: connector_types::types::output::OutputType::Integer,
+        output_type: OutputType::Integer,
     };
 
     let val = 1.0;
@@ -150,7 +150,7 @@ fn test_val_to_seconds() {
         cb_text: "seconds".to_string(),
         id: 1,
         category: "seconds".to_string(),
-        output_type: connector_types::types::output::OutputType::Seconds,
+        output_type: OutputType::Seconds,
     };
 
     let val = 1.0;

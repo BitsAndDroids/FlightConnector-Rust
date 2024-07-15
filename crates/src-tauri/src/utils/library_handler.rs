@@ -1,9 +1,9 @@
 use std::{fs, path::Path};
 
-use connector_types::types::wasm_event::WasmEvent;
+use connector_types::types::WasmEvent;
 use tauri::Manager;
 
-use crate::events::{self};
+use crate::events::WASMRegistry;
 
 #[tauri::command]
 pub fn get_library_header_content(app: tauri::AppHandle) -> String {
@@ -65,7 +65,7 @@ pub fn generate_library(
 #[tauri::command]
 pub fn get_library_outputs(app: tauri::AppHandle) -> Vec<WasmEvent> {
     let mut outputs = Vec::new();
-    let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+    let mut wasm_registry = WASMRegistry::new();
     wasm_registry.load_wasm(app);
     let wasm_outputs = wasm_registry.get_wasm_outputs();
     for output in wasm_outputs {

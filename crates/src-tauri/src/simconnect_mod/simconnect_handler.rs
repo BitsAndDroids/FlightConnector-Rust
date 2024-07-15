@@ -1,6 +1,4 @@
-use connector_types::types::connector_settings::ConnectorSettings;
-use connector_types::types::input::InputType;
-use connector_types::types::wasm_event::WasmEvent;
+use connector_types::types::{ConnectorSettings, InputType, WasmEvent};
 use lazy_static::lazy_static;
 use log::{error, info};
 use serde::Deserialize;
@@ -10,7 +8,6 @@ use serialport::SerialPortType;
 use simconnect::DWORD;
 use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
-use std::io::Read;
 use std::path::PathBuf;
 use std::sync::mpsc;
 use std::sync::Arc;
@@ -23,15 +20,15 @@ use tauri_plugin_store::with_store;
 use tauri_plugin_store::Store;
 use tauri_plugin_store::StoreCollection;
 
-use crate::events::action_registry::ActionRegistry;
-use crate::events::input_registry::input_registry::InputRegistry;
-use crate::events::output_registry::OutputRegistry;
-use crate::events::wasm_registry::WASMRegistry;
+use crate::events::ActionRegistry;
+use crate::events::InputRegistry;
+use crate::events::OutputRegistry;
+use crate::events::WASMRegistry;
 use crate::serial::read_serial_ports;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
-use connector_types::types::output::Output;
-use connector_types::types::run_bundle::RunBundle;
+use connector_types::types::Output;
+use connector_types::types::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
 use super::wasm;
@@ -482,7 +479,6 @@ impl SimconnectHandler {
         wasm::register_wasm_data(&mut self.simconnect);
         self.define_outputs();
         self.define_inputs();
-        self.define_wasm_outputs();
     }
 
     fn initialize_simconnect(&mut self) {
@@ -546,49 +542,12 @@ impl SimconnectHandler {
         }
     }
 
-    pub fn define_wasm_outputs(&self) {
-        //
-    }
-
-    pub fn define_outputs(&mut self) {
-        let run_bundles = &self.run_bundles;
-        let mut outputs_not_found = vec![];
-        //we need this event to set the throttle min value
-        self.simconnect.add_data_definition(
-            RequestModes::FLOAT,
-            "THROTTLE LOWER LIMIT",
-            "Percentage",
-            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-            655,
-            0.0,
-        );
-        for run_bundle in run_bundles {
-            for output in &run_bundle.bundle.outputs {
-                match self.output_registry.get_output_by_id(output.id) {
-                    Some(latest_output) => {
-                        println!("Output found: {:?} {}", output.id, output.simvar);
-                        self.simconnect.add_data_definition(
-                            RequestModes::FLOAT,
-                            &latest_output.simvar,
-                            &latest_output.metric,
-                            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                            latest_output.id,
-                            latest_output.update_every,
-                        );
-                    }
-                    None => {
-                        outputs_not_found.push(output);
-                        println!("Output not found: {:?}", output);
-                    }
-                }
-            }
-        }
+    pub fn define_wasm_outputs(&mut self, outputs: Vec<Output>) {
         self.simconnect
             .add_to_client_data_definition(106, 0, 4096, 0.0, 0);
         send_wasm_command(&mut self.simconnect, "clear");
-        outputs_not_found.into_iter().for_each(|output| {
-            println!("ADD WASM: {:?}", output);
-
+        outputs.into_iter().for_each(|output| {
+            // Check if the output is a wasm output
             let wasm_event = match self.wasm_registry.get_wasm_event_by_id(output.id) {
                 Some(wasm_event) => wasm_event.clone(),
                 None => {
@@ -616,5 +575,43 @@ impl SimconnectHandler {
                 0,
             );
         });
+    }
+
+    pub fn define_outputs(&mut self) {
+        let run_bundles = &self.run_bundles;
+        let mut outputs_not_found: Vec<Output> = vec![];
+        //we need this event to set the throttle min value
+        self.simconnect.add_data_definition(
+            RequestModes::FLOAT,
+            "THROTTLE LOWER LIMIT",
+            "Percentage",
+            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
+            655,
+            0.0,
+        );
+        for run_bundle in run_bundles {
+            for output in &run_bundle.bundle.outputs {
+                match self.output_registry.get_output_by_id(output.id) {
+                    Some(latest_output) => {
+                        println!("Output found: {:?} {}", output.id, output.simvar);
+                        self.simconnect.add_data_definition(
+                            RequestModes::FLOAT,
+                            &latest_output.simvar,
+                            &latest_output.metric,
+                            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
+                            latest_output.id,
+                            latest_output.update_every,
+                        );
+                    }
+                    None => {
+                        // Add the output to the list of outputs not found
+                        // that will be used to define wasm outputs
+                        outputs_not_found.push(output.clone());
+                        println!("Output not found: {:?}", output);
+                    }
+                }
+            }
+        }
+        self.define_wasm_outputs(outputs_not_found);
     }
 }

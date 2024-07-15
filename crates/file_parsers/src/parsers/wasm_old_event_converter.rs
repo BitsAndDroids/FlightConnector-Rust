@@ -1,6 +1,6 @@
 use std::fs::read_to_string;
 
-use connector_types::types::wasm_event::WasmEvent;
+use connector_types::types::WasmEvent;
 
 pub fn convert_old_events_to_json(path: &str) {
     let mut wasm_events: Vec<WasmEvent> = Vec::new();

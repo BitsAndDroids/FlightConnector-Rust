@@ -6,11 +6,10 @@ mod sim_utils;
 mod simconnect_mod;
 mod utils;
 
-use connector_types::types::output::Output;
-use connector_types::types::output_format::FormatOutput;
-use connector_types::types::run_bundle::RunBundle;
-use events::get_wasm_events;
-use events::output_registry;
+use connector_types::types::FormatOutput;
+use connector_types::types::Output;
+use connector_types::types::RunBundle;
+use events::{get_wasm_events, OutputRegistry, WASMRegistry};
 use lazy_static::lazy_static;
 use log::error;
 use once_cell::sync::OnceCell;
@@ -26,10 +25,9 @@ use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_log::{Target, TargetKind};
 use tauri_plugin_store::{with_store, Store, StoreCollection};
 use tauri_plugin_updater::UpdaterExt;
-use utils::library_handler::generate_library;
-use utils::library_handler::get_library_header_content;
-use utils::library_handler::get_library_outputs;
-use utils::library_handler::get_library_source_content;
+use utils::library_handler::{
+    generate_library, get_library_header_content, get_library_outputs, get_library_source_content,
+};
 use utils::wasm_installer::{check_if_wasm_up_to_date, install_wasm};
 
 use std::thread;
@@ -94,8 +92,8 @@ async fn get_com_ports() -> Vec<String> {
 
 #[tauri::command]
 async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
-    let mut output_registry = output_registry::OutputRegistry::new();
-    let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+    let mut output_registry = OutputRegistry::new();
+    let mut wasm_registry = WASMRegistry::new();
     output_registry.load_outputs();
     wasm_registry.load_wasm(app);
 
@@ -126,7 +124,7 @@ fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle
 
 #[tauri::command]
 fn update_default_events(app: tauri::AppHandle) {
-    let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+    let mut wasm_registry = WASMRegistry::new();
     wasm_registry.load_default_events();
     wasm_registry.update_defauts_to_store(app);
 }
@@ -138,7 +136,7 @@ fn init_wasm_events_to_store(app: tauri::AppHandle) {
     let handle_store = |store: &mut Store<Wry>| {
         let keys = store.keys();
         if keys.count() == 0 {
-            let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+            let mut wasm_registry = WASMRegistry::new();
             wasm_registry.load_default_events();
             let events = wasm_registry.get_default_wasm_events();
             for event in events {

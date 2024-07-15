@@ -1,4 +1,4 @@
-use connector_types::types::input::Input;
+use connector_types::types::Input;
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize, Serialize)]

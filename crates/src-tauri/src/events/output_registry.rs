@@ -1,4 +1,4 @@
-use connector_types::types::{category::Category, output::Output};
+use connector_types::types::{Category, Output};
 use file_parsers::parsers::output_parser;
 
 #[derive(Clone, Debug)]

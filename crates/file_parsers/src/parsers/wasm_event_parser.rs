@@ -1,4 +1,4 @@
-use connector_types::types::wasm_event::WasmEvent;
+use connector_types::types::WasmEvent;
 use serde::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize)]
 struct EventFile {

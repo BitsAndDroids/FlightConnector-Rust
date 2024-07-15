@@ -1,4 +1,4 @@
-use connector_types::types::action_response::ActionResponse;
+use connector_types::types::{ActionResponse, ActionResponseStatus};
 
 #[tauri::command]
 pub fn toggle_run_on_sim_launch(enable: bool, exe_xml_path: String) -> ActionResponse {
@@ -6,7 +6,7 @@ pub fn toggle_run_on_sim_launch(enable: bool, exe_xml_path: String) -> ActionRes
         Ok(file) => file,
         Err(e) => {
             return ActionResponse {
-                status: connector_types::types::action_response::ActionResponseStatus::Error,
+                status: ActionResponseStatus::Error,
                 message: format!("Failed to open file: {:?}", e),
             }
         }
@@ -34,14 +34,14 @@ pub fn toggle_run_on_sim_launch(enable: bool, exe_xml_path: String) -> ActionRes
         Ok(_) => {}
         Err(e) => {
             return ActionResponse {
-                status: connector_types::types::action_response::ActionResponseStatus::Error,
+                status: ActionResponseStatus::Error,
                 message: format!("Failed to write to file: {:?}", e),
             }
         }
     }
 
     ActionResponse {
-        status: connector_types::types::action_response::ActionResponseStatus::Success,
+        status: ActionResponseStatus::Success,
         message: "Success".to_string(),
     }
 }
