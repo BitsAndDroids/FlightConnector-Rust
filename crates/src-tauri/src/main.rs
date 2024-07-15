@@ -6,10 +6,8 @@ mod sim_utils;
 mod simconnect_mod;
 mod utils;
 
-use connector_types::types::FormatOutput;
-use connector_types::types::Output;
-use connector_types::types::RunBundle;
-use events::{get_wasm_events, OutputRegistry, WASMRegistry};
+use connector_types::types::{FormatOutput, Output, RunBundle};
+use events::registries::{get_wasm_events, OutputRegistry, WASMRegistry};
 use lazy_static::lazy_static;
 use log::error;
 use once_cell::sync::OnceCell;

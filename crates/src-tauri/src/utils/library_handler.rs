@@ -3,7 +3,7 @@ use std::{fs, path::Path};
 use connector_types::types::WasmEvent;
 use tauri::Manager;
 
-use crate::events::WASMRegistry;
+use crate::events::registries::WASMRegistry;
 
 #[tauri::command]
 pub fn get_library_header_content(app: tauri::AppHandle) -> String {

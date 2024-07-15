@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
-use super::{action::Action, actions::get_actions};
+use crate::events::{actions::get_actions, Action};
+
 pub struct ActionRegistry {
     actions: HashMap<u32, Action>,
     pub min_throttle: f32,
