@@ -9,11 +9,19 @@ use tauri_plugin_store::{with_store, Store, StoreCollection};
 pub fn install_wasm(app: tauri::AppHandle) {
     let exe_path = std::env::current_dir().unwrap();
     let wasm_path = exe_path.join("wasm_module");
-    let version = get_version_from_manifest();
+    let version = match get_version_from_manifest() {
+        Ok(v) => v,
+        Err(e) => {
+            error!(
+                "Abort installation. Failed to get version from manifest: {:?}",
+                e
+            );
+            return;
+        }
+    };
     let stores = app.app_handle().state::<StoreCollection<Wry>>();
     let path = PathBuf::from(".connectorSettings.dat");
     let mut community_folder_path = "".to_owned();
-    // TODO: store wasm version
     let handle_store = |store: &mut Store<Wry>| {
         if let Some(v) = store.get("communityFolderPath") {
             community_folder_path = v.as_str().unwrap().to_owned();
@@ -33,7 +41,7 @@ pub fn install_wasm(app: tauri::AppHandle) {
         Ok(())
     };
 
-    match with_store(app.app_handle().clone(), stores, &path, handle_store) {
+    match with_store(app.app_handle().clone(), stores, path, handle_store) {
         Ok(_) => {}
         Err(e) => {
             error!("Failed to load connector settings: {:?}", e);
@@ -68,13 +76,13 @@ pub fn install_wasm(app: tauri::AppHandle) {
     }
 }
 
-fn get_version_from_manifest() -> String {
+fn get_version_from_manifest() -> Result<String, std::io::Error> {
     let exe_path = std::env::current_dir().unwrap();
     let wasm_path = exe_path.join("wasm_module");
     let manifest_path = wasm_path.join("manifest.json");
-    let manifest = std::fs::read_to_string(manifest_path).unwrap();
-    let parsed: serde_json::Value = serde_json::from_str(&manifest).unwrap();
-    parsed["package_version"].as_str().unwrap().to_owned()
+    let manifest = std::fs::read_to_string(manifest_path)?;
+    let parsed: serde_json::Value = serde_json::from_str(&manifest)?;
+    Ok(parsed["package_version"].to_string())
 }
 
 pub fn check_if_wasm_up_to_date(app: tauri::AppHandle) -> bool {
@@ -100,6 +108,7 @@ pub fn check_if_wasm_up_to_date(app: tauri::AppHandle) -> bool {
         Ok(_) => {}
         Err(e) => {
             error!("Failed to load connector settings: {:?}", e);
+            return false;
         }
     }
 
@@ -107,8 +116,13 @@ pub fn check_if_wasm_up_to_date(app: tauri::AppHandle) -> bool {
         return true;
     }
 
-    //get latest version from manifest.json
-    get_version_from_manifest() == version
+    match get_version_from_manifest() {
+        Ok(v) => version == v,
+        Err(e) => {
+            error!("Failed to get version from manifest: {:?}", e);
+            false
+        }
+    }
 }
 
 fn return_files_in_dir(dir: &str) -> Vec<std::fs::DirEntry> {
