@@ -1,4 +1,5 @@
 use connector_types::types::connector_settings::ConnectorSettings;
+use connector_types::types::connector_settings::SavedConnectorSettings;
 use connector_types::types::input::InputType;
 use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
@@ -131,13 +132,42 @@ impl SimconnectHandler {
         }
     }
 
+    fn set_settings(&mut self, saved_settings: SavedConnectorSettings) {
+        match saved_settings.use_trs {
+            Some(_) => {
+                self.connector_settings.use_trs = saved_settings.use_trs.unwrap();
+            }
+            None => {
+                self.connector_settings.use_trs = false;
+            }
+        }
+        match saved_settings.adc_resolution {
+            Some(_) => {
+                self.connector_settings.adc_resolution = saved_settings.adc_resolution.unwrap();
+            }
+            None => {
+                self.connector_settings.adc_resolution = 1023;
+            }
+        }
+        match saved_settings.installed_wasm_version {
+            Some(_) => {
+                self.connector_settings.installed_wasm_version =
+                    saved_settings.installed_wasm_version.unwrap();
+            }
+            None => {
+                self.connector_settings.installed_wasm_version = "0.0.0".to_owned();
+            }
+        }
+    }
+
     fn load_connector_settings(&mut self) {
         let stores = self.app_handle.app_handle().state::<StoreCollection<Wry>>();
         let path = PathBuf::from(".connectorSettings.dat");
+        let mut saved_settings: Option<SavedConnectorSettings> = None;
 
         let handle_store = |store: &mut Store<Wry>| {
             if let Some(settings) = store.get("connectorSettings") {
-                self.connector_settings = serde_json::from_value(settings.clone()).unwrap();
+                saved_settings = Some(serde_json::from_value(settings.clone()).unwrap());
             }
             Ok(())
         };
@@ -152,6 +182,10 @@ impl SimconnectHandler {
             Err(e) => {
                 error!("Failed to load connector settings: {:?}", e);
             }
+        }
+        //if saved settings exist, set the default settings
+        if let Some(settings) = saved_settings {
+            self.set_settings(settings);
         }
     }
 
@@ -202,6 +236,7 @@ impl SimconnectHandler {
                 .open()
             {
                 Ok(mut port) => {
+                    // if connector_settings is Some()
                     if self.connector_settings.use_trs {
                         match port.write_data_terminal_ready(true) {
                             Ok(_) => {
@@ -293,6 +328,7 @@ impl SimconnectHandler {
             InputType::Action => {
                 let action = self.action_registry.get_action_by_id(command).unwrap();
                 println!("Action found: {}", action.id);
+                // After loading the settings we've established that
                 action.excecute_action(
                     &self.simconnect,
                     raw,
