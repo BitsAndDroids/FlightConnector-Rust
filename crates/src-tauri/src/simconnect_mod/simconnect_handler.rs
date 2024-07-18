@@ -106,7 +106,7 @@ impl SimconnectHandler {
         let connector_settings = ConnectorSettings {
             use_trs: false,
             adc_resolution: 1023,
-            installed_wasm_version: "0.0.0".to_owned(),
+            installed_wasm_version: Some("0.0.0".to_owned()),
         };
 
         Self {

@@ -4,5 +4,5 @@ use serde::{Deserialize, Serialize};
 pub struct ConnectorSettings {
     pub use_trs: bool,
     pub adc_resolution: i32,
-    pub installed_wasm_version: String,
+    pub installed_wasm_version: Option<String>,
 }

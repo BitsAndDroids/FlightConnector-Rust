@@ -13,6 +13,7 @@ const SettingsPage = () => {
       use_trs: false,
       adc_resolution: 1023,
       launch_when_sim_starts: false,
+      installed_wasm_version: "0.0.0",
     },
   );
   const [communityFolderVisible, setCommunityFolderVisible] = useState(false);
