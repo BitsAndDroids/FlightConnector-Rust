@@ -60,11 +60,11 @@ export const EventEditor = ({
       errorMessage += "This ID is already used";
       errorState = true;
     }
-    if (parseInt(value) < 3000) {
+    if (parseInt(value) < 5000) {
       if (errorMessage.length > 0) {
         errorMessage += ", ";
       }
-      errorMessage += "The ID has to be > 3000";
+      errorMessage += "The ID has to be > 5000";
       errorState = true;
     }
     if (!errorState) {

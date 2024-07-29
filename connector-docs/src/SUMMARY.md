@@ -25,4 +25,6 @@
 
 # Connector code docs
 
-- [Outputs](ch10-01-output.md)
+- [Contributing](ch10-00-contributing.md)
+  - [Events](ch10-01-events.md)
+    - [Events](ch10-01-01-outputs.md)
