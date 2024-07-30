@@ -16,6 +16,7 @@ pub mod types {
     pub use bundle::Bundle;
     pub use category::Category;
     pub use connector_settings::ConnectorSettings;
+    pub use connector_settings::SavedConnectorSettings;
     pub use input::Input;
     pub use input::InputType;
     pub use output::Output;

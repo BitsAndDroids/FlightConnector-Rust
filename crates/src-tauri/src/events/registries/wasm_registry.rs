@@ -74,8 +74,7 @@ impl WASMRegistry {
                 wasm_event.offset = output_counter * 8;
                 if wasm_event.action_type == "output" {
                     self.wasm_outputs.push(wasm_event.clone());
-                    self.parsed_wasm_outputs
-                        .push(wasm_event.get_output_format());
+                    self.parsed_wasm_outputs.push(wasm_event.into());
                     output_counter += 1;
                 } else {
                     self.wasm_inputs.push(wasm_event);

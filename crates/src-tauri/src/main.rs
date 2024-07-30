@@ -74,8 +74,9 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
     for output in output_registry.get_outputs().iter() {
         outputs.push(output.clone());
     }
-    for output in wasm_registry.get_wasm_outputs().iter() {
-        outputs.push(output.get_output_format().clone());
+    for wasm_output in wasm_registry.get_wasm_outputs().iter() {
+        let output: Output = wasm_output.clone().into();
+        outputs.push(output);
     }
     outputs
 }
