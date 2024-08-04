@@ -53,16 +53,16 @@ Output type dictates the registration and formatting of events. Possible values 
             "adf" => Ok(OutputType::ADF),
             "boolean" => Ok(OutputType::Boolean),
             "integer" => Ok(OutputType::Integer),
-            "float" => Ok(OutputType::Float),
-            "float1decplaces" => Ok(OutputType::Float1DecPlaces),
-            "float2decplaces" => Ok(OutputType::Float2DecPlaces),
-            "seconds" => Ok(OutputType::Seconds),
-            "secondsaftermidnight" => Ok(OutputType::Secondsaftermidnight) // Parsed to 15:34:15,
+            "float" => Ok(OutputType::Float) // Retrieved as float send as is,
+            "float1decplaces" => Ok(OutputType::Float1DecPlaces) // Retrieved as float rounded to 1 dec place,
+            "float2decplaces" => Ok(OutputType::Float2DecPlaces) // Retrieved as float rounded to 2 dec places,
+            "seconds" => Ok(OutputType::Seconds) // Parsed to time hh:mm:ss,
+            "secondsaftermidnight" => Ok(OutputType::Secondsaftermidnight) // Parsed to 15:34:15 (time of day),
             "percentage" => Ok(OutputType::Percentage) // Parsed to 80 for 80%,
             "degrees" => Ok(OutputType::Degrees) // Retrieved as radians parsed to degrees,
             "inhg" => Ok(OutputType::INHG),
-            "meterspersecond" => Ok(OutputType::Meterspersecond),
-            "meterspersecondtoknots" => Ok(OutputType::MeterspersecondToKnots),
+            "meterspersecond" => Ok(OutputType::Meterspersecond) // retrieved as mps converted to kmh,
+            "meterspersecondtoknots" => Ok(OutputType::MeterspersecondToKnots) // Retrieved as mps converted to knots,
             "string" => Ok(OutputType::String),
 ```
 
@@ -74,6 +74,7 @@ If the value is a number, the output format is determined by the type belonging 
 
 The bundle edit menu categorizes outputs based on the category provided in the category field.
 Custom/WASM events get their own separate category.
+At a later point users will be able to add their own custom categories.
 
 ## WASM Outputs
 
@@ -95,11 +96,24 @@ Third-party developers might find that the provided Simconnect events only cover
 
 ### ID ranges
 
-Custom WASM events can be provided as a base set by the connector or as custom events by users. The base set makes use of an ID range between 1000-7000. From 7000 > is reserved for custom user events.
-This distinction is made to prevent ID clashes.
-Some default ID ranges have been reserved in an attempt to group events of popular aircraft. If you want to contribute to the event list, please open a PR where you can edit this file with a reserved ID block. Once the events are added to the connector, this block can be shortened or increased in size.
+<div class="warning">
+  The ID ranges currently are scattered everywhere, coming from the previous connector. 
+  In an attempt to organize the events, I'm working on an update that might change the current IDs of WASM events.
+  The reserved ID range is, therefore, still being contemplated.
+  For contributors of the FBW and PMDG sets, the below-mentioned ranges can be seen as final.  
+</div>
+
+Please note the following text:
+
+Custom WebAssembly (WASM) events can be provided as a base set by the connector or as custom events by users. The base set uses an ID range between 1000 and 7000, while IDs 7000 - 10000 are reserved for custom user events. This differentiation is important to prevent ID conflicts.
+
+Certain default ID ranges have been reserved for event groups of popular aircraft. If you want to contribute to the event list, please open a pull request (PR) to edit the file with a reserved ID block.
 
 - Flybywire: 2000-2500
 - PMDG: 3000-3500
 
 If you want to reserve a block, please update this page.
+
+<div class="warning">
+The current custom WebAssembly (WASM) set is expanding rapidly. We are designing a new interface to guarantee an intuitive flow for users when navigating all events.
+</div>
