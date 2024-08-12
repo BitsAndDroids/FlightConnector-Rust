@@ -419,11 +419,6 @@ impl SimconnectHandler {
                 error!(target: "output", "Port not connected: {}", com_port);
             }
         }
-
-        println!(
-            "Output sent to device: {}, value = {}",
-            formatted_str, output.value
-        );
     }
 
     fn poll_microcontroller_for_inputs(&mut self) {
