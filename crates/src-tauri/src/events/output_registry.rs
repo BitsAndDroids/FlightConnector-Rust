@@ -20,14 +20,20 @@ impl OutputRegistry {
     }
     pub fn load_outputs(&mut self) {
         let output_vec = output_parser::get_outputs_from_file(&self.output_path);
-        let mut outputs: HashMap<u32, Output> = HashMap::new();
+        self.outputs.clear();
         for output in output_vec {
-            outputs.insert(output.id, output);
+            self.outputs.insert(output.id, output);
         }
     }
 
-    pub fn get_output_by_id(&mut self, output_id: u32) -> Option<&mut Output> {
-        self.outputs.get_mut(&output_id)
+    pub fn get_output_by_id(&mut self, output_id: u32) -> Option<&Output> {
+        self.outputs.get(&output_id)
+    }
+
+    pub fn set_output_value(&mut self, output_id: u32, value: f64) {
+        if let Some(output) = self.outputs.get_mut(&output_id) {
+            output.value = value;
+        }
     }
 
     pub fn get_outputs(&self) -> &HashMap<u32, Output> {

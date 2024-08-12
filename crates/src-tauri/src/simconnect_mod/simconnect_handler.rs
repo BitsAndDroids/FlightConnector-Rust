@@ -326,7 +326,6 @@ impl SimconnectHandler {
             }
             InputType::Action => {
                 let action = self.action_registry.get_action_by_id(command).unwrap();
-                println!("Action found: {}", action.id);
                 // After loading the settings we've established that
                 action.excecute_action(
                     &self.simconnect,
@@ -348,40 +347,42 @@ impl SimconnectHandler {
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
-        println!("Checking if output in bundle {}, {}", output_id, value);
-
-        let output_idx = self
+        // Check if output exists in outputs or wasm_registry
+        let output_exists = self
             .output_registry
             .get_output_by_id(output_id)
-            .map(Some)
+            .map(|output| (true, output.id))
             .or_else(|| {
                 self.wasm_registry
                     .get_wasm_output_by_id(output_id)
-                    .map(Some)
+                    .map(|output| (true, output.id))
             })
-            .unwrap_or(None);
+            .unwrap_or((false, output_id));
 
-        if let Some(output_idx) = output_idx {
-            let com_ports: Vec<_> = self
-                .run_bundles
-                .iter()
-                .filter_map(|run_bundle| {
-                    if run_bundle
-                        .bundle
-                        .outputs
-                        .iter()
-                        .any(|output| output.id == output_id)
-                    {
-                        Some(run_bundle.com_port.clone())
-                    } else {
-                        None
-                    }
-                })
-                .collect();
+        if !output_exists.0 {
+            println!("Output does not exist: {}", output_id);
+            return;
+        }
 
-            for com_port in com_ports {
-                self.send_output_to_device(output_idx.id, &com_port, value);
-            }
+        let com_ports: Vec<_> = self
+            .run_bundles
+            .iter()
+            .filter_map(|run_bundle| {
+                if run_bundle
+                    .bundle
+                    .outputs
+                    .iter()
+                    .any(|output| output.id == output_id)
+                {
+                    Some(run_bundle.com_port.clone())
+                } else {
+                    None
+                }
+            })
+            .collect();
+
+        for com_port in com_ports {
+            self.send_output_to_device(output_exists.1, &com_port, value);
         }
     }
 
@@ -390,16 +391,21 @@ impl SimconnectHandler {
             "Sending output to device: {}, {}, {}",
             output_id, com_port, value
         );
-        let output = &mut self.output_registry.outputs.get(&output_id).unwrap(); // Accessing output directly by index
 
+        // Mutably borrow self.output_registry to set the value
+        self.output_registry.set_output_value(output_id, value);
+
+        // After setting the value, we only need immutable access to output_registry
+        let output = self.output_registry.get_output_by_id(output_id).unwrap();
+
+        // Format the output string
         let formatted_str = format!(
             "{} {}\n",
             output.id,
             parse_output_based_on_type(value, output)
         );
-        println!("Prev value: {}", output.value);
-        output.value = value;
 
+        // Mutably borrow self.active_com_ports to send data
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => match port.write_all(formatted_str.as_bytes()) {
                 Ok(_) => {
@@ -419,6 +425,7 @@ impl SimconnectHandler {
             formatted_str, output.value
         );
     }
+
     fn poll_microcontroller_for_inputs(&mut self) {
         let mut messages: Vec<String> = Vec::new();
         for active_com_port in &mut self.active_com_ports {
@@ -498,7 +505,6 @@ impl SimconnectHandler {
                     match data.dwDefineID {
                         RequestModes::FLOAT => {
                             unsafe {
-                                println!("Received float data");
                                 let sim_data_ptr =
                                     std::ptr::addr_of!(data.dwData) as *const DataStructContainer;
                                 let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
@@ -616,7 +622,7 @@ impl SimconnectHandler {
         }
         let wasm_inputs = self.wasm_registry.get_wasm_inputs();
         println!("Wasm inputs: {:?}", wasm_inputs);
-        for (key, wasm_input) in wasm_inputs {
+        for wasm_input in wasm_inputs.values() {
             let wasm_event = WasmEvent {
                 id: wasm_input.id,
                 action: wasm_input.action.to_string(),

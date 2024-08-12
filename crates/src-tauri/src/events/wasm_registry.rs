@@ -9,7 +9,7 @@ use tauri_plugin_store::{with_store, Store, StoreCollection};
 pub struct WASMRegistry {
     wasm_outputs: HashMap<u32, WasmEvent>,
     wasm_inputs: HashMap<u32, WasmEvent>,
-    parsed_wasm_outputs: Vec<Output>,
+    parsed_wasm_outputs: HashMap<u32, Output>,
     wasm_default_events: Vec<WasmEvent>,
     wasm_file_path: String,
 }
@@ -18,7 +18,7 @@ impl WASMRegistry {
     pub fn new() -> WASMRegistry {
         WASMRegistry {
             wasm_outputs: HashMap::new(),
-            parsed_wasm_outputs: Vec::new(),
+            parsed_wasm_outputs: HashMap::new(),
             wasm_inputs: HashMap::new(),
             wasm_default_events: Vec::new(),
             wasm_file_path: String::from("wasm_module/modules/wasm_events.json"),
@@ -74,7 +74,8 @@ impl WASMRegistry {
                 wasm_event.offset = output_counter * 8;
                 if wasm_event.action_type == "output" {
                     self.wasm_outputs.insert(wasm_event.id, wasm_event.clone());
-                    self.parsed_wasm_outputs.push(wasm_event.into());
+                    self.parsed_wasm_outputs
+                        .insert(wasm_event.id, wasm_event.into());
                     output_counter += 1;
                 } else {
                     self.wasm_inputs.insert(wasm_event.id, wasm_event);
@@ -91,16 +92,8 @@ impl WASMRegistry {
         }
     }
 
-    pub fn get_wasm_output_index_by_id(&self, output_id: u32) -> Option<usize> {
-        self.parsed_wasm_outputs
-            .iter()
-            .position(|output| output.id == output_id)
-    }
-
-    pub fn get_wasm_output_by_id(&mut self, output_id: u32) -> Option<&mut Output> {
-        self.parsed_wasm_outputs
-            .iter_mut()
-            .find(|output| output.id == output_id)
+    pub fn get_wasm_output_by_id(&mut self, output_id: u32) -> Option<&Output> {
+        self.parsed_wasm_outputs.get(&output_id)
     }
 
     pub fn get_wasm_event_by_id(&self, event_id: u32) -> Option<&WasmEvent> {
