@@ -1,6 +1,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use connector_types::types::output::Output;
-use connector_types::types::output_format::FormatOutput;
 use connector_types::types::run_bundle::RunBundle;
 use events::output_registry;
 use lazy_static::lazy_static;
@@ -19,6 +18,7 @@ mod simconnect_mod;
 mod utils;
 use events::get_wasm_events;
 use settings::settings_actions::toggle_run_on_sim_launch;
+use std::collections::HashMap;
 use std::ops::Deref;
 use std::path::PathBuf;
 use std::string::ToString;
@@ -99,13 +99,14 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
 
     //merge the two outputs from the registries
     //using the FormatOutput trait
-    let mut outputs: Vec<Output> = Vec::new();
-    for output in output_registry.get_outputs().iter() {
-        outputs.push(output.clone());
+    let mut outputs: HashMap<u32, Output> = HashMap::new();
+    for (_, output) in output_registry.get_outputs().iter() {
+        outputs.insert(output.id, output.clone());
     }
-    for output in wasm_registry.get_wasm_outputs().iter() {
-        outputs.push(output.get_output_format().clone());
+    for (_, output) in wasm_registry.get_wasm_outputs().iter() {
+        outputs.insert(output.id, output.clone().into());
     }
+    let outputs: Vec<Output> = outputs.into_iter().map(|(_, output)| output).collect();
     outputs
 }
 

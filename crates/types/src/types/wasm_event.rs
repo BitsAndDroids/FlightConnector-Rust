@@ -63,9 +63,9 @@ impl<'de> Deserialize<'de> for WasmEvent {
     }
 }
 
-impl FormatOutput for WasmEvent {
-    fn get_output_format(&self) -> Output {
-        let output_type: OutputType = match self.output_format.as_str() {
+impl From<WasmEvent> for Output {
+    fn from(event: WasmEvent) -> Self {
+        let output_type: OutputType = match event.output_format.as_str() {
             "boolean" => OutputType::Boolean,
             "int" => OutputType::Integer,
             "float" => OutputType::Float,
@@ -73,11 +73,11 @@ impl FormatOutput for WasmEvent {
             _ => OutputType::Integer,
         };
         Output {
-            simvar: self.action.clone(),
-            metric: self.action_text.clone(),
-            update_every: self.update_every,
-            cb_text: self.action_text.clone(),
-            id: self.id,
+            simvar: event.action,
+            metric: event.action_text.clone(),
+            update_every: event.update_every,
+            cb_text: event.action_text,
+            id: event.id,
             output_type,
             category: "WASM".to_string(),
             value: 0.0,

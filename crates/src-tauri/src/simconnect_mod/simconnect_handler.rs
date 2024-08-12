@@ -352,11 +352,11 @@ impl SimconnectHandler {
 
         let output_idx = self
             .output_registry
-            .get_output_index_by_id(output_id)
+            .get_output_by_id(output_id)
             .map(Some)
             .or_else(|| {
                 self.wasm_registry
-                    .get_wasm_output_index_by_id(output_id)
+                    .get_wasm_output_by_id(output_id)
                     .map(Some)
             })
             .unwrap_or(None);
@@ -380,17 +380,17 @@ impl SimconnectHandler {
                 .collect();
 
             for com_port in com_ports {
-                self.send_output_to_device(output_idx, &com_port, value);
+                self.send_output_to_device(output_idx.id, &com_port, value);
             }
         }
     }
 
-    fn send_output_to_device(&mut self, output_idx: usize, com_port: &str, value: f64) {
+    fn send_output_to_device(&mut self, output_id: u32, com_port: &str, value: f64) {
         println!(
             "Sending output to device: {}, {}, {}",
-            output_idx, com_port, value
+            output_id, com_port, value
         );
-        let output = &mut self.output_registry.outputs[output_idx]; // Accessing output directly by index
+        let output = &mut self.output_registry.outputs.get(&output_id).unwrap(); // Accessing output directly by index
 
         let formatted_str = format!(
             "{} {}\n",
@@ -616,7 +616,7 @@ impl SimconnectHandler {
         }
         let wasm_inputs = self.wasm_registry.get_wasm_inputs();
         println!("Wasm inputs: {:?}", wasm_inputs);
-        for wasm_input in wasm_inputs {
+        for (key, wasm_input) in wasm_inputs {
             let wasm_event = WasmEvent {
                 id: wasm_input.id,
                 action: wasm_input.action.to_string(),

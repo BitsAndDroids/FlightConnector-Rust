@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{collections::HashMap, path::PathBuf};
 
 use connector_types::types::{output::Output, output_format::FormatOutput, wasm_event::WasmEvent};
 use log::error;
@@ -7,8 +7,8 @@ use tauri::{Manager, Wry};
 use tauri_plugin_store::{with_store, Store, StoreCollection};
 #[derive(Debug, Clone)]
 pub struct WASMRegistry {
-    wasm_outputs: Vec<WasmEvent>,
-    wasm_inputs: Vec<WasmEvent>,
+    wasm_outputs: HashMap<u32, WasmEvent>,
+    wasm_inputs: HashMap<u32, WasmEvent>,
     parsed_wasm_outputs: Vec<Output>,
     wasm_default_events: Vec<WasmEvent>,
     wasm_file_path: String,
@@ -17,9 +17,9 @@ pub struct WASMRegistry {
 impl WASMRegistry {
     pub fn new() -> WASMRegistry {
         WASMRegistry {
-            wasm_outputs: Vec::new(),
+            wasm_outputs: HashMap::new(),
             parsed_wasm_outputs: Vec::new(),
-            wasm_inputs: Vec::new(),
+            wasm_inputs: HashMap::new(),
             wasm_default_events: Vec::new(),
             wasm_file_path: String::from("wasm_module/modules/wasm_events.json"),
         }
@@ -73,12 +73,11 @@ impl WASMRegistry {
                 let mut wasm_event: WasmEvent = serde_json::from_value(value.clone()).unwrap();
                 wasm_event.offset = output_counter * 8;
                 if wasm_event.action_type == "output" {
-                    self.wasm_outputs.push(wasm_event.clone());
-                    self.parsed_wasm_outputs
-                        .push(wasm_event.get_output_format());
+                    self.wasm_outputs.insert(wasm_event.id, wasm_event.clone());
+                    self.parsed_wasm_outputs.push(wasm_event.into());
                     output_counter += 1;
                 } else {
-                    self.wasm_inputs.push(wasm_event);
+                    self.wasm_inputs.insert(wasm_event.id, wasm_event);
                 }
             }
             Ok(())
@@ -105,21 +104,21 @@ impl WASMRegistry {
     }
 
     pub fn get_wasm_event_by_id(&self, event_id: u32) -> Option<&WasmEvent> {
-        self.wasm_outputs.iter().find(|&event| event.id == event_id)
+        self.wasm_outputs.get(&event_id)
     }
 
-    pub fn get_wasm_outputs(&self) -> &Vec<WasmEvent> {
+    pub fn get_wasm_outputs(&self) -> &HashMap<u32, WasmEvent> {
         &self.wasm_outputs
     }
 
-    pub fn get_wasm_inputs(&self) -> &Vec<WasmEvent> {
+    pub fn get_wasm_inputs(&self) -> &HashMap<u32, WasmEvent> {
         &self.wasm_inputs
     }
 
-    pub fn get_wasm_events(&self) -> Vec<WasmEvent> {
-        let events = self.wasm_outputs.clone();
-        let input_events = self.wasm_inputs.clone();
-        [events, input_events].concat()
+    pub fn get_wasm_events(&self) -> HashMap<u32, WasmEvent> {
+        let mut events = self.wasm_outputs.clone();
+        events.extend(self.wasm_inputs.clone());
+        events
     }
 
     pub fn get_default_wasm_events(&self) -> Vec<WasmEvent> {
