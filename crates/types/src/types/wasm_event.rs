@@ -80,6 +80,7 @@ impl FormatOutput for WasmEvent {
             id: self.id,
             output_type,
             category: "WASM".to_string(),
+            value: 0.0,
         }
     }
 }

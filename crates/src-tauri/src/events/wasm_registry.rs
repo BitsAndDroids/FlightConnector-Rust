@@ -92,10 +92,16 @@ impl WASMRegistry {
         }
     }
 
-    pub fn get_wasm_output_by_id(&self, output_id: u32) -> Option<&Output> {
+    pub fn get_wasm_output_index_by_id(&self, output_id: u32) -> Option<usize> {
         self.parsed_wasm_outputs
             .iter()
-            .find(|&output| output.id == output_id)
+            .position(|output| output.id == output_id)
+    }
+
+    pub fn get_wasm_output_by_id(&mut self, output_id: u32) -> Option<&mut Output> {
+        self.parsed_wasm_outputs
+            .iter_mut()
+            .find(|output| output.id == output_id)
     }
 
     pub fn get_wasm_event_by_id(&self, event_id: u32) -> Option<&WasmEvent> {

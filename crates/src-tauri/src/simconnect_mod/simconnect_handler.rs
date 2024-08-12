@@ -30,7 +30,6 @@ use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
-use connector_types::types::output::Output;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
@@ -68,8 +67,8 @@ struct DataStructContainer {
 }
 
 struct RequestModes {
-    float: DWORD,
-    string: DWORD,
+    _float: DWORD,
+    _string: DWORD,
 }
 
 impl RequestModes {
@@ -350,37 +349,56 @@ impl SimconnectHandler {
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
         println!("Checking if output in bundle {}, {}", output_id, value);
-        let output_registry = self.output_registry.clone();
-        let wasm_registry = self.wasm_registry.clone();
-        let output = match output_registry.get_output_by_id(output_id) {
-            Some(output) => output,
-            None => match wasm_registry.get_wasm_output_by_id(output_id) {
-                Some(output) => output,
-                None => return,
-            },
-        };
-        let mut com_ports = vec![];
-        for run_bundle in self.run_bundles.iter() {
-            if run_bundle
-                .bundle
-                .outputs
+
+        let output_idx = self
+            .output_registry
+            .get_output_index_by_id(output_id)
+            .map(Some)
+            .or_else(|| {
+                self.wasm_registry
+                    .get_wasm_output_index_by_id(output_id)
+                    .map(Some)
+            })
+            .unwrap_or(None);
+
+        if let Some(output_idx) = output_idx {
+            let com_ports: Vec<_> = self
+                .run_bundles
                 .iter()
-                .any(|output| output.id == output_id)
-            {
-                com_ports.push(run_bundle.com_port.clone())
+                .filter_map(|run_bundle| {
+                    if run_bundle
+                        .bundle
+                        .outputs
+                        .iter()
+                        .any(|output| output.id == output_id)
+                    {
+                        Some(run_bundle.com_port.clone())
+                    } else {
+                        None
+                    }
+                })
+                .collect();
+
+            for com_port in com_ports {
+                self.send_output_to_device(output_idx, &com_port, value);
             }
-        }
-        for com_port in com_ports {
-            self.send_output_to_device(output, &com_port, value);
         }
     }
 
-    fn send_output_to_device(&mut self, output: &Output, com_port: &str, value: f64) {
+    fn send_output_to_device(&mut self, output_idx: usize, com_port: &str, value: f64) {
+        println!(
+            "Sending output to device: {}, {}, {}",
+            output_idx, com_port, value
+        );
+        let output = &mut self.output_registry.outputs[output_idx]; // Accessing output directly by index
+
         let formatted_str = format!(
             "{} {}\n",
             output.id,
             parse_output_based_on_type(value, output)
         );
+        println!("Prev value: {}", output.value);
+        output.value = value;
 
         match self.active_com_ports.get_mut(com_port) {
             Some(port) => match port.write_all(formatted_str.as_bytes()) {
@@ -395,8 +413,12 @@ impl SimconnectHandler {
                 error!(target: "output", "Port not connected: {}", com_port);
             }
         }
-    }
 
+        println!(
+            "Output sent to device: {}, value = {}",
+            formatted_str, output.value
+        );
+    }
     fn poll_microcontroller_for_inputs(&mut self) {
         let mut messages: Vec<String> = Vec::new();
         for active_com_port in &mut self.active_com_ports {

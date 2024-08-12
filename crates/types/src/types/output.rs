@@ -13,6 +13,12 @@ pub struct Output {
     pub id: u32,
     pub output_type: OutputType,
     pub category: String,
+    #[serde(default = "default_value")]
+    pub value: f64,
+}
+
+fn default_value() -> f64 {
+    0.0
 }
 
 #[derive(Serialize, Clone, Debug)]
