@@ -104,7 +104,7 @@ impl SimconnectHandler {
         let action_registry = ActionRegistry::new();
         let wasm_registry = WASMRegistry::new();
         let connector_settings = ConnectorSettings {
-            use_trs: false,
+            use_trs: true,
             adc_resolution: 1023,
             installed_wasm_version: "0.0.0".to_owned(),
         };
