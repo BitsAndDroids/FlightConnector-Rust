@@ -274,6 +274,8 @@ impl SimconnectHandler {
         for connected_port in connected_ports.iter() {
             self.emit_connections(connected_port.to_owned());
         }
+        //Allow time for the controllers to boot after a connection reset
+        sleep(Duration::from_millis(2000));
     }
 
     fn emit_connections(&mut self, conn: Connections) {
