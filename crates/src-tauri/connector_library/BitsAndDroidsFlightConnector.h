@@ -5,7 +5,8 @@
 #ifndef BitsAndDroidsFlightConnector_h
 #define BitsAndDroidsFlightConnector_h
 
-#if !defined(ARDUINO_SAM_DUE) && !defined(ESP32) && !defined(ESP8266)
+#if !defined(ARDUINO_SAM_DUE) && !defined(ESP32) && !defined(ESP8266) &&       \
+    !defined(PICO_RP2040)
 #include "SoftwareSerial.h"
 #endif
 
@@ -630,6 +631,8 @@ enum sendCommands {
   sendSimPauseOff = 909
 };
 
+#define SEND_GET_COMMAND 999
+
 // library interface description
 class BitsAndDroidsFlightConnector {
   // user-accessible "public" interface
@@ -671,6 +674,7 @@ public:
   void sendSetKohlmanAltimeterMb(float kohlmanMb);
   void setEMA_a(float a);
   byte getPercentage(int value, int minVal, float maxVal, bool reversed);
+  void sendGetValueById(int id);
   // void setSampleSize(byte amntSamples){sampleSize = amntSamples;};
   // Data
   int feetAboveGround = 0;

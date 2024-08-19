@@ -423,6 +423,24 @@ impl SimconnectHandler {
         }
     }
 
+    fn send_last_output_value_to_controller(&mut self, output_id: u32) {
+        let output_value = {
+            let output = match self.output_registry.get_output_by_id(output_id) {
+                Some(output) => output,
+                None => {
+                    println!("Output does not exist: {}", output_id);
+                    return;
+                }
+            };
+            output.value
+        };
+        info!(target: "output",
+            "Sending last output value to controller: {}, {}",
+            output_id, output_value
+        );
+        self.check_if_output_in_bundle(output_id, output_value);
+    }
+
     fn poll_microcontroller_for_inputs(&mut self) {
         let mut messages: Vec<String> = Vec::new();
         for active_com_port in &mut self.active_com_ports {
@@ -473,8 +491,18 @@ impl SimconnectHandler {
                     }
                 };
                 let mut value = 0;
-                if count > 5 {
-                    value = message[5..].trim().parse::<DWORD>().unwrap_or(0);
+                if count > 4 {
+                    let mut message_split = message.split_whitespace();
+                    value = message_split
+                        .nth(1)
+                        .unwrap_or("")
+                        .trim()
+                        .parse::<DWORD>()
+                        .unwrap_or(0);
+                }
+                if (id == 999) {
+                    self.send_last_output_value_to_controller(value);
+                    return;
                 }
                 self.send_input_to_simconnect(id, value, message.to_string());
             }
