@@ -12,6 +12,7 @@ use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_store::{with_store, Store, StoreCollection};
 use tauri_plugin_updater::UpdaterExt;
 mod events;
+mod serial;
 mod settings;
 mod sim_utils;
 mod simconnect_mod;

@@ -164,6 +164,9 @@ void BitsAndDroidsFlightConnector::dataHandling() {
     switchHandling();
   }
 }
+void BitsAndDroidsFlightConnector::checkConnection() {
+  this->sendGetValueById(1);
+}
 
 void BitsAndDroidsFlightConnector::switchHandling() {
 
@@ -173,6 +176,10 @@ void BitsAndDroidsFlightConnector::switchHandling() {
   lastPrefix = prefixVal;
 
   switch (prefixVal) {
+  case 1: {
+    connected = 1;
+    break;
+  }
   // Ap
   case 4000: {
     fuelLevel = cutValue.toInt();
