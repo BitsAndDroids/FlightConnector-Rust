@@ -14,7 +14,7 @@ const SettingsPage = () => {
       adc_resolution: 1023,
       launch_when_sim_starts: false,
       installed_wasm_version: "0.0.0",
-      send_every_ms: 3,
+      send_every_ms: 6,
     },
   );
   const [communityFolderVisible, setCommunityFolderVisible] = useState(false);
@@ -44,7 +44,7 @@ const SettingsPage = () => {
         savedSettings.adc_resolution = 1023;
       }
       if (!savedSettings.send_every_ms) {
-        savedSettings.send_every_ms = 3;
+        savedSettings.send_every_ms = 6;
       }
       setConnectorSettings(savedSettings);
     };

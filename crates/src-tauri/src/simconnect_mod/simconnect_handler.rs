@@ -160,7 +160,7 @@ impl SimconnectHandler {
                 self.connector_settings.send_every_ms = saved_settings.send_every_ms.unwrap();
             }
             None => {
-                self.connector_settings.send_every_ms = 3;
+                self.connector_settings.send_every_ms = 6;
             }
         }
     }
@@ -363,14 +363,7 @@ impl SimconnectHandler {
 
         // Mutably borrow self.active_com_ports to send data
         match self.active_com_ports.get_mut(com_port) {
-            Some(port) => match port.write(formatted_str.as_bytes()) {
-                Ok(_) => {
-                    info!(target: "output", "Output {} sent to port: {}", formatted_str, com_port);
-                }
-                Err(e) => {
-                    error!(target: "output", "Failed to write to port: {}", e);
-                }
-            },
+            Some(port) => port.write(formatted_str.as_bytes()),
             None => {
                 error!(target: "output", "Port not connected: {}", com_port);
             }

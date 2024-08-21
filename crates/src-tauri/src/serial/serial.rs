@@ -11,7 +11,7 @@ pub struct Serial {
 pub trait Commands {
     fn send_connected_signal(&mut self, connected: bool);
     fn read_full_message(&mut self) -> Option<String>;
-    fn write(&mut self, data: &[u8]) -> Result<usize, std::io::Error>;
+    fn write(&mut self, data: &[u8]);
     fn get_name(&self) -> String;
 }
 
@@ -90,8 +90,15 @@ impl Serial {
 }
 
 impl Commands for Serial {
-    fn write(&mut self, data: &[u8]) -> Result<usize, std::io::Error> {
-        self.port.write(data)
+    fn write(&mut self, data: &[u8]) {
+        match self.port.write_all(data) {
+            Ok(_) => {
+                info!(target: "connections", "Data sent");
+            }
+            Err(e) => {
+                error!(target: "connections", "Failed to send data: {}", e);
+            }
+        }
     }
     fn get_name(&self) -> String {
         self.name.clone()
