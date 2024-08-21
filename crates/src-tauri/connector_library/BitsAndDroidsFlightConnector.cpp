@@ -177,7 +177,7 @@ void BitsAndDroidsFlightConnector::switchHandling() {
 
   switch (prefixVal) {
   case 1: {
-    connected = 1;
+    connected = cutValue.toInt();
     break;
   }
   // Ap

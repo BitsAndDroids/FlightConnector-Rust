@@ -219,6 +219,10 @@ impl SimconnectHandler {
         }
         //Allow time for the controllers to boot after a connection reset
         sleep(Duration::from_millis(2000));
+
+        for port in self.active_com_ports.values_mut() {
+            port.send_connected_signal(true);
+        }
     }
 
     fn emit_connections(&mut self, conn: Connections) {
@@ -435,12 +439,18 @@ impl SimconnectHandler {
             match self.rx.try_recv() {
                 Ok(r) => {
                     if r == 9999 {
+                        for port in self.active_com_ports.values_mut() {
+                            port.send_connected_signal(false);
+                        }
                         break;
                     }
                 }
                 Err(mpsc::TryRecvError::Empty) => (),
                 Err(mpsc::TryRecvError::Disconnected) => {
                     println!("Disconnected");
+                    for port in self.active_com_ports.values_mut() {
+                        port.send_connected_signal(false);
+                    }
                     break;
                 }
             }

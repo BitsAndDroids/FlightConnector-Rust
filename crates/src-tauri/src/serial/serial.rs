@@ -97,11 +97,7 @@ impl Commands for Serial {
         self.name.clone()
     }
     fn send_connected_signal(&mut self, connected: bool) {
-        let message = if connected {
-            b"0001 0001\n"
-        } else {
-            b"0001 0000\n"
-        };
+        let message = if connected { b"0001 1\n" } else { b"0001 0\n" };
         match self.port.write_all(message) {
             Ok(_) => {
                 info!(target: "connections", "Connected signal sent");
