@@ -1,13 +1,11 @@
 use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::connector_settings::SavedConnectorSettings;
 use connector_types::types::input::InputType;
-use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
 use log::{error, info};
 use serde::Deserialize;
 use serde::Serialize;
 use simconnect::DWORD;
-use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
 use std::path::PathBuf;
 use std::sync::mpsc;
@@ -22,7 +20,7 @@ use tauri_plugin_store::Store;
 use tauri_plugin_store::StoreCollection;
 
 use crate::events::action_registry::ActionRegistry;
-use crate::events::input_registry::input_registry::InputRegistry;
+use crate::events::input_registry::InputRegistry;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
 use crate::serial::serial::Commands;
@@ -106,6 +104,7 @@ impl SimconnectHandler {
             use_trs: true,
             adc_resolution: 1023,
             installed_wasm_version: "0.0.0".to_owned(),
+            send_every_ms: 3,
         };
 
         Self {
@@ -154,6 +153,14 @@ impl SimconnectHandler {
             }
             None => {
                 self.connector_settings.installed_wasm_version = "0.0.0".to_owned();
+            }
+        }
+        match saved_settings.send_every_ms {
+            Some(_) => {
+                self.connector_settings.send_every_ms = saved_settings.send_every_ms.unwrap();
+            }
+            None => {
+                self.connector_settings.send_every_ms = 3;
             }
         }
     }
@@ -368,6 +375,7 @@ impl SimconnectHandler {
                 error!(target: "output", "Port not connected: {}", com_port);
             }
         }
+        sleep(Duration::from_millis(self.connector_settings.send_every_ms));
     }
 
     fn send_last_output_value_to_controller(&mut self, output_id: u32) {
@@ -532,7 +540,6 @@ impl SimconnectHandler {
         wasm::register_wasm_data(&mut self.simconnect);
         self.define_outputs();
         self.define_inputs();
-        self.define_wasm_outputs();
     }
 
     fn initialize_simconnect(&mut self) {
@@ -569,35 +576,11 @@ impl SimconnectHandler {
     }
 
     pub fn define_inputs(&mut self) {
-        let inputs = self.input_registry.get_inputs();
-        for input in inputs {
-            self.simconnect.map_client_event_to_sim_event(
-                *input.0 as SIMCONNECT_CLIENT_EVENT_ID,
-                input.1.event.as_str(),
-            );
-        }
-        let wasm_inputs = self.wasm_registry.get_wasm_inputs();
-        println!("Wasm inputs: {:?}", wasm_inputs);
-        for wasm_input in wasm_inputs.values() {
-            let wasm_event = WasmEvent {
-                id: wasm_input.id,
-                action: wasm_input.action.to_string(),
-                action_text: "".to_string(),
-                action_type: "input".to_string(),
-                output_format: "".to_string(),
-                update_every: 0.0,
-                value: 0.0,
-                min: 0.0,
-                max: 0.0,
-                offset: 0,
-                plane_or_category: "".to_string(),
-            };
-            register_wasm_event(&mut self.simconnect, wasm_event);
-        }
-    }
+        self.input_registry
+            .register_inputs_to_simconnect(&mut self.simconnect);
 
-    pub fn define_wasm_outputs(&self) {
-        //
+        self.wasm_registry
+            .register_wasm_inputs_to_simconnect(&mut self.simconnect);
     }
 
     pub fn define_outputs(&mut self) {

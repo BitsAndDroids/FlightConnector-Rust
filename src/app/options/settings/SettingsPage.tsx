@@ -14,6 +14,7 @@ const SettingsPage = () => {
       adc_resolution: 1023,
       launch_when_sim_starts: false,
       installed_wasm_version: "0.0.0",
+      send_every_ms: 3,
     },
   );
   const [communityFolderVisible, setCommunityFolderVisible] = useState(false);
@@ -33,14 +34,17 @@ const SettingsPage = () => {
       setCommunityFolderPath(
         await connectorSettingsHandler.getCommunityFolderPath(),
       );
-      if (savedSettings.launch_when_sim_starts === undefined) {
+      if (!savedSettings.launch_when_sim_starts) {
         savedSettings.launch_when_sim_starts = false;
       }
-      if (savedSettings.use_trs === undefined) {
+      if (!savedSettings.use_trs) {
         savedSettings.use_trs = false;
       }
-      if (savedSettings.adc_resolution === undefined) {
+      if (!savedSettings.adc_resolution) {
         savedSettings.adc_resolution = 1023;
+      }
+      if (!savedSettings.send_every_ms) {
+        savedSettings.send_every_ms = 3;
       }
       setConnectorSettings(savedSettings);
     };
@@ -56,6 +60,7 @@ const SettingsPage = () => {
     key: keyof ConnectorSettings,
     value: unknown,
   ) => {
+    console.log(key, value);
     if (key === "use_trs") {
       if (typeof value === "boolean")
         setConnectorSettings({ ...connectorSettings, use_trs: value });
@@ -76,9 +81,17 @@ const SettingsPage = () => {
         changeLaunchWhenSimStarts(value);
       }
     }
-    if (key === "adc_resolution") {
-      if (typeof value === "number")
-        setConnectorSettings({ ...connectorSettings, adc_resolution: value });
+    if (key === "adc_resolution" && typeof value === "string") {
+      setConnectorSettings((prevState) => ({
+        ...prevState,
+        adc_resolution: parseInt(value),
+      }));
+    }
+    if (key === "send_every_ms" && typeof value === "string") {
+      setConnectorSettings((prevState) => ({
+        ...prevState,
+        send_every_ms: parseInt(value),
+      }));
     }
   };
 
@@ -147,6 +160,20 @@ const SettingsPage = () => {
             <InfoWindow
               docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch05-00-settings.html#enable-trs"
               message="The terminal ready signal can be used to force a reset when the connector initializes a connection with a microcontroller. Depending on your connected devices it might be nescesarry to order your devices to work with the resets."
+            />
+          }
+        />
+        <Input
+          label="Send message every ms"
+          type="number"
+          mt={2}
+          infoLeft={true}
+          onChange={(val) => onSettingsChange("send_every_ms", val)}
+          value={connectorSettings.send_every_ms.toString()}
+          infoWindow={
+            <InfoWindow
+              docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch05-00-settings.html#adc-resolution"
+              message="The ADC resolution of the microcontroller. This value is used to calculate the voltage of the ADC input."
             />
           }
         />

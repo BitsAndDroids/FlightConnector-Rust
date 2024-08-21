@@ -5,6 +5,8 @@ use log::error;
 use serde_json::json;
 use tauri::{Manager, Wry};
 use tauri_plugin_store::{with_store, Store, StoreCollection};
+
+use crate::simconnect_mod::wasm::send_wasm_command;
 #[derive(Debug, Clone)]
 pub struct WASMRegistry {
     wasm_outputs: HashMap<u32, WasmEvent>,
@@ -116,5 +118,26 @@ impl WASMRegistry {
 
     pub fn get_default_wasm_events(&self) -> Vec<WasmEvent> {
         self.wasm_default_events.clone()
+    }
+
+    pub fn register_wasm_inputs_to_simconnect(&self, conn: &mut simconnect::SimConnector) {
+        for wasm_input in self.wasm_inputs.values() {
+            let wasm_event = WasmEvent {
+                id: wasm_input.id,
+                action: wasm_input.action.to_string(),
+                action_text: "".to_string(),
+                action_type: "input".to_string(),
+                output_format: "".to_string(),
+                update_every: 0.0,
+                value: 0.0,
+                min: 0.0,
+                max: 0.0,
+                offset: 0,
+                plane_or_category: "".to_string(),
+            };
+
+            let event_json = serde_json::to_string(&wasm_event).unwrap();
+            send_wasm_command(conn, event_json.as_str());
+        }
     }
 }
