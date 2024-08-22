@@ -881,30 +881,7 @@ void BitsAndDroidsFlightConnector::switchHandling() {
   // DO NOT REMOVE THIS COMMENT ITS USED BY THE CONNECTOR TO GENERATE CUSTOM
   // EVENTS
   // START CASE TEMPLATE
-  case 6011: {
-    output6011 = cutValue.toInt();
-    break;
-  }
 
-  case 1001: {
-    output1001 = cutValue.toInt();
-    break;
-  }
-
-  case 1000: {
-    output1000 = cutValue.toInt();
-    break;
-  }
-
-  case 6010: {
-    output6010 = cutValue.toInt();
-    break;
-  }
-
-  case 6012: {
-    output6012 = cutValue.toInt();
-    break;
-  }
   // END CASE TEMPLATE
   default:
     break;
