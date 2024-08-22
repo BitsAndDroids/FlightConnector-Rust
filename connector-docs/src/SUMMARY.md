@@ -8,6 +8,7 @@
 - [Bundles](ch02-00-bundles.md)
 - [Inputs](ch03-00-inputs.md)
 - [Outputs](ch03-01-outputs.md)
+  - [Outputs](ch03-02-outputlist.md)
 - [Presets](ch04-00-presets.md)
 - [Settings](ch05-00-settings.md)
   - [Logs](ch05-01-logs.md)
@@ -25,4 +26,6 @@
 
 # Connector code docs
 
-- [Outputs](ch10-01-output.md)
+- [Contributing](ch10-00-contributing.md)
+  - [Events](ch10-01-events.md)
+    - [Events](ch10-01-01-outputs.md)

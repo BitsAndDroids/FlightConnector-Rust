@@ -1,36 +1,27 @@
 use connector_types::types::connector_settings::ConnectorSettings;
-use connector_types::types::connector_settings::SavedConnectorSettings;
 use connector_types::types::input::InputType;
-use connector_types::types::wasm_event::WasmEvent;
 use lazy_static::lazy_static;
 use log::{error, info};
 use serde::Deserialize;
 use serde::Serialize;
-use serialport::SerialPort;
-use serialport::SerialPortType;
 use simconnect::DWORD;
-use simconnect::SIMCONNECT_CLIENT_EVENT_ID;
 use std::collections::HashMap;
-use std::io::Read;
-use std::path::PathBuf;
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::sync::Mutex;
 use std::thread::sleep;
 use std::time::Duration;
-use tauri::Manager;
-use tauri::Wry;
-use tauri_plugin_store::with_store;
-use tauri_plugin_store::Store;
-use tauri_plugin_store::StoreCollection;
+use tauri::Emitter;
 
 use crate::events::action_registry::ActionRegistry;
-use crate::events::input_registry::input_registry::InputRegistry;
+use crate::events::input_registry::InputRegistry;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
+use crate::serial::serial::Commands;
+use crate::serial::serial::Serial;
+use crate::settings::connector_settings::load_connector_settings;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
-use connector_types::types::output::Output;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
@@ -68,8 +59,8 @@ struct DataStructContainer {
 }
 
 struct RequestModes {
-    float: DWORD,
-    string: DWORD,
+    _float: DWORD,
+    _string: DWORD,
 }
 
 impl RequestModes {
@@ -85,7 +76,7 @@ pub struct SimconnectHandler {
     pub(crate) wasm_registry: WASMRegistry,
     pub(crate) app_handle: tauri::AppHandle,
     pub(crate) rx: mpsc::Receiver<u16>,
-    active_com_ports: HashMap<String, Box<dyn SerialPort>>,
+    active_com_ports: HashMap<String, Serial>,
     run_bundles: Vec<RunBundle>,
     connector_settings: ConnectorSettings,
 }
@@ -105,9 +96,10 @@ impl SimconnectHandler {
         let action_registry = ActionRegistry::new();
         let wasm_registry = WASMRegistry::new();
         let connector_settings = ConnectorSettings {
-            use_trs: false,
+            use_trs: true,
             adc_resolution: 1023,
             installed_wasm_version: "0.0.0".to_owned(),
+            send_every_ms: 3,
         };
 
         Self {
@@ -132,61 +124,9 @@ impl SimconnectHandler {
         }
     }
 
-    fn set_settings(&mut self, saved_settings: SavedConnectorSettings) {
-        match saved_settings.use_trs {
-            Some(_) => {
-                self.connector_settings.use_trs = saved_settings.use_trs.unwrap();
-            }
-            None => {
-                self.connector_settings.use_trs = false;
-            }
-        }
-        match saved_settings.adc_resolution {
-            Some(_) => {
-                self.connector_settings.adc_resolution = saved_settings.adc_resolution.unwrap();
-            }
-            None => {
-                self.connector_settings.adc_resolution = 1023;
-            }
-        }
-        match saved_settings.installed_wasm_version {
-            Some(_) => {
-                self.connector_settings.installed_wasm_version =
-                    saved_settings.installed_wasm_version.unwrap();
-            }
-            None => {
-                self.connector_settings.installed_wasm_version = "0.0.0".to_owned();
-            }
-        }
-    }
-
-    fn load_connector_settings(&mut self) {
-        let stores = self.app_handle.app_handle().state::<StoreCollection<Wry>>();
-        let path = PathBuf::from(".connectorSettings.dat");
-        let mut saved_settings: Option<SavedConnectorSettings> = None;
-
-        let handle_store = |store: &mut Store<Wry>| {
-            if let Some(settings) = store.get("connectorSettings") {
-                saved_settings = Some(serde_json::from_value(settings.clone()).unwrap());
-            }
-            Ok(())
-        };
-
-        match with_store(
-            self.app_handle.app_handle().clone(),
-            stores,
-            path,
-            handle_store,
-        ) {
-            Ok(_) => {}
-            Err(e) => {
-                error!("Failed to load connector settings: {:?}", e);
-            }
-        }
-        //if saved settings exist, set the default settings
-        if let Some(settings) = saved_settings {
-            self.set_settings(settings);
-        }
+    fn set_settings(&mut self) {
+        self.connector_settings =
+            ConnectorSettings::from(load_connector_settings(&self.app_handle));
     }
 
     fn set_com_ports(&mut self) {
@@ -198,72 +138,16 @@ impl SimconnectHandler {
 
     fn connect_to_devices(&mut self) {
         let mut connected_ports: Vec<Connections> = vec![];
-
-        let ports = match serialport::available_ports() {
-            Ok(ports) => ports,
-            Err(_) => Vec::new(),
-        };
-        let ports_output = ports
-            .iter()
-            .map(|port| {
-                let port_type_info = match &port.port_type {
-                    SerialPortType::UsbPort(info) => (match &info.product {
-                        Some(product) => product.to_string(),
-                        None => "Unknown".to_string(),
-                    })
-                    .to_string(),
-                    SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
-                    SerialPortType::PciPort => "PCI Serial".to_string(),
-                    _ => "".to_string(),
-                };
-                format!("{}, {}", port.port_name.as_str(), port_type_info)
-            })
-            .collect::<Vec<_>>();
-
         for run_bundle in self.run_bundles.iter() {
-            let com_port = run_bundle.com_port.clone();
-            let flow_control = if ports_output.iter().any(|s| {
-                s.contains(&format!("({})", &com_port))
-                    && (s.contains("Leonardo") || s.contains("Micro"))
-            }) {
-                serialport::FlowControl::Hardware
-            } else {
-                serialport::FlowControl::Software
-            };
-
-            match serialport::new(com_port.clone(), 115200)
-                .flow_control(flow_control)
-                .open()
-            {
-                Ok(mut port) => {
-                    // if connector_settings is Some()
-                    if self.connector_settings.use_trs {
-                        match port.write_data_terminal_ready(true) {
-                            Ok(_) => {
-                                println!("Data terminal ready sent")
-                            }
-                            Err(e) => {
-                                println!("Failed to send data terminal ready: {}", e)
-                            }
-                        };
-                        std::thread::sleep(Duration::from_millis(300));
-                        match port.write_data_terminal_ready(false) {
-                            Ok(_) => {
-                                println!("Data terminal ready sent")
-                            }
-                            Err(e) => {
-                                println!("Failed to send data terminal ready: {}", e)
-                            }
-                        };
-                    }
-                    std::thread::sleep(Duration::from_millis(400));
-                    self.active_com_ports.insert(com_port.clone(), port);
-                    info!(target: "connections", "Connected to port: {}", com_port);
+            match Serial::new(run_bundle.com_port.clone(), self.connector_settings.use_trs) {
+                Ok(serial) => {
                     connected_ports.push(Connections {
-                        name: com_port,
+                        name: serial.get_name(),
                         connected: true,
                         id: run_bundle.id,
                     });
+                    self.active_com_ports
+                        .insert(run_bundle.com_port.clone(), serial);
                 }
                 Err(e) => {
                     error!(target: "connections", "Failed to open port: {}", e);
@@ -275,6 +159,12 @@ impl SimconnectHandler {
         for connected_port in connected_ports.iter() {
             self.emit_connections(connected_port.to_owned());
         }
+        //Allow time for the controllers to boot after a connection reset
+        sleep(Duration::from_millis(2000));
+
+        for port in self.active_com_ports.values_mut() {
+            port.send_connected_signal(true);
+        }
     }
 
     fn emit_connections(&mut self, conn: Connections) {
@@ -283,7 +173,7 @@ impl SimconnectHandler {
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
         self.run_bundles = run_bundles;
-        self.load_connector_settings();
+        self.set_settings();
         self.set_com_ports();
         self.connect_to_devices();
         self.initialize_connection();
@@ -327,7 +217,6 @@ impl SimconnectHandler {
             }
             InputType::Action => {
                 let action = self.action_registry.get_action_by_id(command).unwrap();
-                println!("Action found: {}", action.id);
                 // After loading the settings we've established that
                 action.excecute_action(
                     &self.simconnect,
@@ -349,86 +238,104 @@ impl SimconnectHandler {
     }
 
     pub fn check_if_output_in_bundle(&mut self, output_id: u32, value: f64) {
-        println!("Checking if output in bundle {}, {}", output_id, value);
-        let output_registry = self.output_registry.clone();
-        let wasm_registry = self.wasm_registry.clone();
-        let output = match output_registry.get_output_by_id(output_id) {
-            Some(output) => output,
-            None => match wasm_registry.get_wasm_output_by_id(output_id) {
-                Some(output) => output,
-                None => return,
-            },
-        };
-        let mut com_ports = vec![];
-        for run_bundle in self.run_bundles.iter() {
-            if run_bundle
-                .bundle
-                .outputs
-                .iter()
-                .any(|output| output.id == output_id)
-            {
-                com_ports.push(run_bundle.com_port.clone())
-            }
+        // Check if output exists in outputs or wasm_registry
+        let output_exists = self
+            .output_registry
+            .get_output_by_id(output_id)
+            .map(|output| (true, output.id))
+            .or_else(|| {
+                self.wasm_registry
+                    .get_wasm_output_by_id(output_id)
+                    .map(|output| (true, output.id))
+            })
+            .unwrap_or((false, output_id));
+
+        if !output_exists.0 {
+            println!("Output does not exist: {}", output_id);
+            return;
         }
+
+        let com_ports: Vec<_> = self
+            .run_bundles
+            .iter()
+            .filter_map(|run_bundle| {
+                if run_bundle
+                    .bundle
+                    .outputs
+                    .iter()
+                    .any(|output| output.id == output_id)
+                {
+                    Some(run_bundle.com_port.clone())
+                } else {
+                    None
+                }
+            })
+            .collect();
+
         for com_port in com_ports {
-            self.send_output_to_device(output, &com_port, value);
+            self.send_output_to_device(output_exists.1, &com_port, value);
         }
     }
 
-    fn send_output_to_device(&mut self, output: &Output, com_port: &str, value: f64) {
+    fn send_output_to_device(&mut self, output_id: u32, com_port: &str, value: f64) {
+        println!(
+            "Sending output to device: {}, {}, {}",
+            output_id, com_port, value
+        );
+
+        // Mutably borrow self.output_registry to set the value
+        self.output_registry.set_output_value(output_id, value);
+
+        // After setting the value, we only need immutable access to output_registry
+        let output = self.output_registry.get_output_by_id(output_id).unwrap();
+
+        // Format the output string
         let formatted_str = format!(
             "{} {}\n",
             output.id,
             parse_output_based_on_type(value, output)
         );
-
+        // Mutably borrow self.active_com_ports to send data
         match self.active_com_ports.get_mut(com_port) {
-            Some(port) => match port.write_all(formatted_str.as_bytes()) {
-                Ok(_) => {
-                    info!(target: "output", "Output {} sent to port: {}", formatted_str, com_port);
-                }
-                Err(e) => {
-                    error!(target: "output", "Failed to write to port: {}", e);
-                }
-            },
+            Some(port) => {
+                info!(target: "output", "{} --> {}", port.get_name(), formatted_str);
+                port.write(formatted_str.as_bytes())
+            }
             None => {
                 error!(target: "output", "Port not connected: {}", com_port);
             }
         }
+        sleep(Duration::from_millis(self.connector_settings.send_every_ms));
+    }
+
+    fn send_last_output_value_to_controller(&mut self, output_id: u32) {
+        if output_id == 1 {
+            for port in self.active_com_ports.values_mut() {
+                port.send_connected_signal(true)
+            }
+        }
+        let output_value = {
+            let output = match self.output_registry.get_output_by_id(output_id) {
+                Some(output) => output,
+                None => {
+                    error!("Output does not exist: {}", output_id);
+                    return;
+                }
+            };
+            output.value
+        };
+        info!(target: "output",
+            "Sending last output value to controller: {}, {}",
+            output_id, output_value
+        );
+        self.check_if_output_in_bundle(output_id, output_value);
     }
 
     fn poll_microcontroller_for_inputs(&mut self) {
         let mut messages: Vec<String> = Vec::new();
-        for active_com_port in &mut self.active_com_ports {
-            let mut buffer: Vec<u8> = Vec::new();
-            let mut byte = [0u8; 1];
-            let mut reading = true;
-            match active_com_port.1.bytes_to_read() {
-                Ok(result) => {
-                    if result == 0 {
-                        continue;
-                    }
-                    while reading {
-                        match active_com_port.1.read(&mut byte) {
-                            Ok(bytes_read) => {
-                                (0..bytes_read).for_each(|i| {
-                                    if byte[i] == b'\n' || byte[i] == b'\r' {
-                                        let message = String::from_utf8_lossy(&buffer);
-                                        messages.push(message.to_string());
-                                        buffer.push(byte[i]);
-                                        buffer.clear();
-                                        //set buffer to \n
-                                        reading = false;
-                                    } else if byte[i] != b'\r' {
-                                        buffer.push(byte[i]);
-                                    }
-                                });
-                            }
-                            Err(e) => eprintln!("{:?}", e),
-                        }
-                    }
-                }
-                Err(e) => eprintln!("{:?}", e),
+        for active_com_port in self.active_com_ports.values_mut() {
+            if let Some(message) = active_com_port.read_full_message() {
+                messages.push(message);
             }
         }
         for message in &messages {
@@ -447,8 +354,18 @@ impl SimconnectHandler {
                     }
                 };
                 let mut value = 0;
-                if count > 5 {
-                    value = message[5..].trim().parse::<DWORD>().unwrap_or(0);
+                if count > 4 {
+                    let mut message_split = message.split_whitespace();
+                    value = message_split
+                        .nth(1)
+                        .unwrap_or("")
+                        .trim()
+                        .parse::<DWORD>()
+                        .unwrap_or(0);
+                }
+                if id == 999 {
+                    self.send_last_output_value_to_controller(value);
+                    return;
                 }
                 self.send_input_to_simconnect(id, value, message.to_string());
             }
@@ -460,12 +377,18 @@ impl SimconnectHandler {
             match self.rx.try_recv() {
                 Ok(r) => {
                     if r == 9999 {
+                        for port in self.active_com_ports.values_mut() {
+                            port.send_connected_signal(false);
+                        }
                         break;
                     }
                 }
                 Err(mpsc::TryRecvError::Empty) => (),
                 Err(mpsc::TryRecvError::Disconnected) => {
                     println!("Disconnected");
+                    for port in self.active_com_ports.values_mut() {
+                        port.send_connected_signal(false);
+                    }
                     break;
                 }
             }
@@ -476,7 +399,6 @@ impl SimconnectHandler {
                     match data.dwDefineID {
                         RequestModes::FLOAT => {
                             unsafe {
-                                println!("Received float data");
                                 let sim_data_ptr =
                                     std::ptr::addr_of!(data.dwData) as *const DataStructContainer;
                                 let sim_data_value = std::ptr::read_unaligned(sim_data_ptr);
@@ -485,7 +407,7 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    // TODO: Move to an event triggered on plane swap
+                                    // TODO: Add to an event triggered on plane swap as well
                                     //
                                     //This value is the lower throttle limit
                                     //This is a special case for the throttle since the range
@@ -548,7 +470,6 @@ impl SimconnectHandler {
         wasm::register_wasm_data(&mut self.simconnect);
         self.define_outputs();
         self.define_inputs();
-        self.define_wasm_outputs();
     }
 
     fn initialize_simconnect(&mut self) {
@@ -585,35 +506,11 @@ impl SimconnectHandler {
     }
 
     pub fn define_inputs(&mut self) {
-        let inputs = self.input_registry.get_inputs();
-        for input in inputs {
-            self.simconnect.map_client_event_to_sim_event(
-                *input.0 as SIMCONNECT_CLIENT_EVENT_ID,
-                input.1.event.as_str(),
-            );
-        }
-        let wasm_inputs = self.wasm_registry.get_wasm_inputs();
-        println!("Wasm inputs: {:?}", wasm_inputs);
-        for wasm_input in wasm_inputs {
-            let wasm_event = WasmEvent {
-                id: wasm_input.id,
-                action: wasm_input.action.to_string(),
-                action_text: "".to_string(),
-                action_type: "input".to_string(),
-                output_format: "".to_string(),
-                update_every: 0.0,
-                value: 0.0,
-                min: 0.0,
-                max: 0.0,
-                offset: 0,
-                plane_or_category: "".to_string(),
-            };
-            register_wasm_event(&mut self.simconnect, wasm_event);
-        }
-    }
+        self.input_registry
+            .register_inputs_to_simconnect(&mut self.simconnect);
 
-    pub fn define_wasm_outputs(&self) {
-        //
+        self.wasm_registry
+            .register_wasm_inputs_to_simconnect(&mut self.simconnect);
     }
 
     pub fn define_outputs(&mut self) {
