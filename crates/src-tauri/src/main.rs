@@ -166,6 +166,9 @@ fn main() {
         .plugin(tauri_plugin_fs::init())
         .plugin(
             tauri_plugin_log::Builder::new()
+                .filter(|metadata| {
+                    metadata.target() != "tao::platform_impl::platform::event_loop::runner"
+                })
                 .targets([
                     Target::new(TargetKind::Stdout),
                     Target::new(TargetKind::LogDir { file_name: None }),

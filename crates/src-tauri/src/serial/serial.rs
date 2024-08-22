@@ -92,9 +92,7 @@ impl Serial {
 impl Commands for Serial {
     fn write(&mut self, data: &[u8]) {
         match self.port.write_all(data) {
-            Ok(_) => {
-                info!(target: "connections", "Data sent");
-            }
+            Ok(_) => {}
             Err(e) => {
                 error!(target: "connections", "Failed to send data: {}", e);
             }

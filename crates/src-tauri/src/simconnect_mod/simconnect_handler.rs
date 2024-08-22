@@ -1,5 +1,4 @@
 use connector_types::types::connector_settings::ConnectorSettings;
-use connector_types::types::connector_settings::SavedConnectorSettings;
 use connector_types::types::input::InputType;
 use lazy_static::lazy_static;
 use log::{error, info};
@@ -7,17 +6,12 @@ use serde::Deserialize;
 use serde::Serialize;
 use simconnect::DWORD;
 use std::collections::HashMap;
-use std::path::PathBuf;
 use std::sync::mpsc;
 use std::sync::Arc;
 use std::sync::Mutex;
 use std::thread::sleep;
 use std::time::Duration;
-use tauri::Manager;
-use tauri::Wry;
-use tauri_plugin_store::with_store;
-use tauri_plugin_store::Store;
-use tauri_plugin_store::StoreCollection;
+use tauri::Emitter;
 
 use crate::events::action_registry::ActionRegistry;
 use crate::events::input_registry::InputRegistry;
@@ -25,6 +19,7 @@ use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
 use crate::serial::serial::Commands;
 use crate::serial::serial::Serial;
+use crate::settings::connector_settings::load_connector_settings;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::run_bundle::RunBundle;
@@ -129,69 +124,9 @@ impl SimconnectHandler {
         }
     }
 
-    fn set_settings(&mut self, saved_settings: SavedConnectorSettings) {
-        match saved_settings.use_trs {
-            Some(_) => {
-                self.connector_settings.use_trs = saved_settings.use_trs.unwrap();
-            }
-            None => {
-                self.connector_settings.use_trs = false;
-            }
-        }
-        match saved_settings.adc_resolution {
-            Some(_) => {
-                self.connector_settings.adc_resolution = saved_settings.adc_resolution.unwrap();
-            }
-            None => {
-                self.connector_settings.adc_resolution = 1023;
-            }
-        }
-        match saved_settings.installed_wasm_version {
-            Some(_) => {
-                self.connector_settings.installed_wasm_version =
-                    saved_settings.installed_wasm_version.unwrap();
-            }
-            None => {
-                self.connector_settings.installed_wasm_version = "0.0.0".to_owned();
-            }
-        }
-        match saved_settings.send_every_ms {
-            Some(_) => {
-                self.connector_settings.send_every_ms = saved_settings.send_every_ms.unwrap();
-            }
-            None => {
-                self.connector_settings.send_every_ms = 6;
-            }
-        }
-    }
-
-    fn load_connector_settings(&mut self) {
-        let stores = self.app_handle.app_handle().state::<StoreCollection<Wry>>();
-        let path = PathBuf::from(".connectorSettings.dat");
-        let mut saved_settings: Option<SavedConnectorSettings> = None;
-
-        let handle_store = |store: &mut Store<Wry>| {
-            if let Some(settings) = store.get("connectorSettings") {
-                saved_settings = Some(serde_json::from_value(settings.clone()).unwrap());
-            }
-            Ok(())
-        };
-
-        match with_store(
-            self.app_handle.app_handle().clone(),
-            stores,
-            path,
-            handle_store,
-        ) {
-            Ok(_) => {}
-            Err(e) => {
-                error!("Failed to load connector settings: {:?}", e);
-            }
-        }
-        //if saved settings exist, set the default settings
-        if let Some(settings) = saved_settings {
-            self.set_settings(settings);
-        }
+    fn set_settings(&mut self) {
+        self.connector_settings =
+            ConnectorSettings::from(load_connector_settings(&self.app_handle));
     }
 
     fn set_com_ports(&mut self) {
@@ -238,7 +173,7 @@ impl SimconnectHandler {
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
         self.run_bundles = run_bundles;
-        self.load_connector_settings();
+        self.set_settings();
         self.set_com_ports();
         self.connect_to_devices();
         self.initialize_connection();
@@ -360,10 +295,12 @@ impl SimconnectHandler {
             output.id,
             parse_output_based_on_type(value, output)
         );
-
         // Mutably borrow self.active_com_ports to send data
         match self.active_com_ports.get_mut(com_port) {
-            Some(port) => port.write(formatted_str.as_bytes()),
+            Some(port) => {
+                info!(target: "output", "{} --> {}", port.get_name(), formatted_str);
+                port.write(formatted_str.as_bytes())
+            }
             None => {
                 error!(target: "output", "Port not connected: {}", com_port);
             }
@@ -381,7 +318,7 @@ impl SimconnectHandler {
             let output = match self.output_registry.get_output_by_id(output_id) {
                 Some(output) => output,
                 None => {
-                    println!("Output does not exist: {}", output_id);
+                    error!("Output does not exist: {}", output_id);
                     return;
                 }
             };
@@ -470,7 +407,7 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let value = sim_data_value.data[i].value;
                                     let prefix = sim_data_value.data[i].id;
-                                    // TODO: Move to an event triggered on plane swap
+                                    // TODO: Add to an event triggered on plane swap as well
                                     //
                                     //This value is the lower throttle limit
                                     //This is a special case for the throttle since the range
