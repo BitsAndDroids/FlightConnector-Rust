@@ -12,5 +12,10 @@ pub mod wasm_registry;
 pub async fn get_wasm_events(app: tauri::AppHandle) -> Vec<WasmEvent> {
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     wasm_registry.load_wasm(app);
-    wasm_registry.get_wasm_events()
+    let wasm_events = wasm_registry.get_wasm_events();
+    let mut wasm_event_vec: Vec<WasmEvent> = Vec::new();
+    for (_, wasm_event) in wasm_events {
+        wasm_event_vec.push(wasm_event.clone());
+    }
+    wasm_event_vec
 }

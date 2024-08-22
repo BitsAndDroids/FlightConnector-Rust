@@ -8,6 +8,7 @@
 - [Bundles](ch02-00-bundles.md)
 - [Inputs](ch03-00-inputs.md)
 - [Outputs](ch03-01-outputs.md)
+  - [Outputs](ch03-02-outputlist.md)
 - [Presets](ch04-00-presets.md)
 - [Settings](ch05-00-settings.md)
   - [Logs](ch05-01-logs.md)

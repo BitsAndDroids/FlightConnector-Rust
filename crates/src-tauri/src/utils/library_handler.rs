@@ -1,4 +1,4 @@
-use std::{fs, path::Path};
+use std::{collections::HashMap, fs, path::Path};
 
 use connector_types::types::wasm_event::WasmEvent;
 use tauri::Manager;
@@ -63,13 +63,13 @@ pub fn generate_library(
 }
 
 #[tauri::command]
-pub fn get_library_outputs(app: tauri::AppHandle) -> Vec<WasmEvent> {
-    let mut outputs = Vec::new();
+pub fn get_library_outputs(app: tauri::AppHandle) -> HashMap<u32, WasmEvent> {
+    let mut outputs = HashMap::new();
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     wasm_registry.load_wasm(app);
     let wasm_outputs = wasm_registry.get_wasm_outputs();
-    for output in wasm_outputs {
-        outputs.push(output.clone());
+    for (_, output) in wasm_outputs {
+        outputs.insert(output.id, output.clone());
     }
     outputs
 }
