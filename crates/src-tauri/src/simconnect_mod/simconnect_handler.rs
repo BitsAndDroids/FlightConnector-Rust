@@ -1,6 +1,7 @@
 use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::input::InputType;
 use lazy_static::lazy_static;
+use log::warn;
 use log::{error, info};
 use serde::Deserialize;
 use serde::Serialize;
@@ -147,7 +148,6 @@ impl SimconnectHandler {
                 }
                 Err(e) => {
                     error!(target: "connections", "Failed to open port: {}", e);
-                    println!("Failed to open port: {}", e);
                 }
             };
         }
@@ -247,7 +247,7 @@ impl SimconnectHandler {
             .unwrap_or((false, output_id));
 
         if !output_exists.0 {
-            println!("Output does not exist: {}", output_id);
+            error!("Output does not exist: {}", output_id);
             return;
         }
 
@@ -314,7 +314,7 @@ impl SimconnectHandler {
             let output = match self.output_registry.get_output_by_id(output_id) {
                 Some(output) => output,
                 None => {
-                    error!("Output does not exist: {}", output_id);
+                    warn!(target: "output", "Output does not exist: {}", output_id);
                     return;
                 }
             };
@@ -381,8 +381,9 @@ impl SimconnectHandler {
                 }
                 Err(mpsc::TryRecvError::Empty) => (),
                 Err(mpsc::TryRecvError::Disconnected) => {
-                    println!("Disconnected");
+                    info!("Disconnected");
                     for port in self.active_com_ports.values_mut() {
+                        info!("{} Sending connected signal: false", port.get_name());
                         port.send_connected_signal(false);
                     }
                     break;
@@ -391,7 +392,6 @@ impl SimconnectHandler {
             self.poll_microcontroller_for_inputs();
             match &mut self.simconnect.get_next_message() {
                 Ok(simconnect::DispatchResult::SimObjectData(data)) => {
-                    println!("Processing sim object data");
                     match data.dwDefineID {
                         RequestModes::FLOAT => {
                             unsafe {
@@ -424,9 +424,9 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let item_ptr = sim_data_ptr.offset(i);
                                     let sim_data_value = std::ptr::read_unaligned(item_ptr);
-                                    let string =
+                                    // TODO: HANDLE STRING DATA
+                                    let _string =
                                         std::str::from_utf8(&sim_data_value.value).unwrap();
-                                    println!("{}", string);
                                 }
                             }
                         }
@@ -551,7 +551,7 @@ impl SimconnectHandler {
             let wasm_event = match self.wasm_registry.get_wasm_event_by_id(output.id) {
                 Some(wasm_event) => wasm_event.clone(),
                 None => {
-                    println!("Wasm output not found: {:?}", output);
+                    warn!("Wasm output not found: {:?}", output);
                     return;
                 }
             };

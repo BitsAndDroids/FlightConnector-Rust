@@ -143,7 +143,7 @@ impl Commands for Serial {
                     }
                 }
             }
-            Err(e) => error!(target: "connections", "{} Failed to read bytes: {}", self.name,e),
+            Err(e) => error!(target: "connections", "{} Failed to read bytes: {}", self.name, e),
         }
 
         Some(message)
