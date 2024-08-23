@@ -1,6 +1,7 @@
 use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::input::InputType;
 use lazy_static::lazy_static;
+use log::warn;
 use log::{error, info};
 use serde::Deserialize;
 use serde::Serialize;
@@ -95,12 +96,7 @@ impl SimconnectHandler {
         let output_registry = OutputRegistry::new();
         let action_registry = ActionRegistry::new();
         let wasm_registry = WASMRegistry::new();
-        let connector_settings = ConnectorSettings {
-            use_trs: true,
-            adc_resolution: 1023,
-            installed_wasm_version: "0.0.0".to_owned(),
-            send_every_ms: 3,
-        };
+        let connector_settings = ConnectorSettings::get_default_settings();
 
         Self {
             simconnect,
@@ -141,6 +137,7 @@ impl SimconnectHandler {
         for run_bundle in self.run_bundles.iter() {
             match Serial::new(run_bundle.com_port.clone(), self.connector_settings.use_trs) {
                 Ok(serial) => {
+                    info!(target: "connections", "Connected to port: {}", run_bundle.com_port);
                     connected_ports.push(Connections {
                         name: serial.get_name(),
                         connected: true,
@@ -151,7 +148,6 @@ impl SimconnectHandler {
                 }
                 Err(e) => {
                     error!(target: "connections", "Failed to open port: {}", e);
-                    println!("Failed to open port: {}", e);
                 }
             };
         }
@@ -251,7 +247,7 @@ impl SimconnectHandler {
             .unwrap_or((false, output_id));
 
         if !output_exists.0 {
-            println!("Output does not exist: {}", output_id);
+            error!("Output does not exist: {}", output_id);
             return;
         }
 
@@ -318,7 +314,7 @@ impl SimconnectHandler {
             let output = match self.output_registry.get_output_by_id(output_id) {
                 Some(output) => output,
                 None => {
-                    error!("Output does not exist: {}", output_id);
+                    warn!(target: "output", "Output does not exist: {}", output_id);
                     return;
                 }
             };
@@ -385,8 +381,9 @@ impl SimconnectHandler {
                 }
                 Err(mpsc::TryRecvError::Empty) => (),
                 Err(mpsc::TryRecvError::Disconnected) => {
-                    println!("Disconnected");
+                    info!("Disconnected");
                     for port in self.active_com_ports.values_mut() {
+                        info!("{} Sending connected signal: false", port.get_name());
                         port.send_connected_signal(false);
                     }
                     break;
@@ -395,7 +392,6 @@ impl SimconnectHandler {
             self.poll_microcontroller_for_inputs();
             match &mut self.simconnect.get_next_message() {
                 Ok(simconnect::DispatchResult::SimObjectData(data)) => {
-                    println!("Processing sim object data");
                     match data.dwDefineID {
                         RequestModes::FLOAT => {
                             unsafe {
@@ -428,9 +424,9 @@ impl SimconnectHandler {
                                 for i in 0..count {
                                     let item_ptr = sim_data_ptr.offset(i);
                                     let sim_data_value = std::ptr::read_unaligned(item_ptr);
-                                    let string =
+                                    // TODO: HANDLE STRING DATA
+                                    let _string =
                                         std::str::from_utf8(&sim_data_value.value).unwrap();
-                                    println!("{}", string);
                                 }
                             }
                         }
@@ -555,7 +551,7 @@ impl SimconnectHandler {
             let wasm_event = match self.wasm_registry.get_wasm_event_by_id(output.id) {
                 Some(wasm_event) => wasm_event.clone(),
                 None => {
-                    println!("Wasm output not found: {:?}", output);
+                    warn!("Wasm output not found: {:?}", output);
                     return;
                 }
             };

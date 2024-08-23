@@ -35,4 +35,3 @@ pub fn load_connector_settings(app_handle: &tauri::AppHandle) -> SavedConnectorS
         }
     }
 }
-

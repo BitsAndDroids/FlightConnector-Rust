@@ -50,6 +50,7 @@ impl Serial {
 
         match serialport::new(com_port.clone(), 115200)
             .flow_control(flow_control)
+            .timeout(Duration::from_millis(10))
             .open()
         {
             Ok(mut port) => {
@@ -57,19 +58,19 @@ impl Serial {
                 if trs {
                     match port.write_data_terminal_ready(true) {
                         Ok(_) => {
-                            println!("Data terminal ready sent")
+                            info!("Data terminal ready open sent")
                         }
                         Err(e) => {
-                            println!("Failed to send data terminal ready: {}", e)
+                            error!("Failed to send data terminal open ready: {}", e)
                         }
                     };
                     std::thread::sleep(Duration::from_millis(500));
                     match port.write_data_terminal_ready(false) {
                         Ok(_) => {
-                            println!("Data terminal ready sent")
+                            info!("Data terminal ready close sent")
                         }
                         Err(e) => {
-                            println!("Failed to send data terminal ready: {}", e)
+                            error!("Failed to send data terminal close ready: {}", e)
                         }
                     };
                 }
@@ -82,7 +83,6 @@ impl Serial {
             }
             Err(e) => {
                 error!(target: "connections", "Failed to open port: {}", e);
-                println!("Failed to open port: {}", e);
                 Err(e)
             }
         }
@@ -105,7 +105,7 @@ impl Commands for Serial {
         let message = if connected { b"0001 1\n" } else { b"0001 0\n" };
         match self.port.write_all(message) {
             Ok(_) => {
-                info!(target: "connections", "Connected signal sent");
+                info!(target: "connections", "Connected signal sent {}", connected);
             }
             Err(e) => {
                 error!(target: "connections", "Failed to send connected signal: {}", e);
@@ -137,11 +137,13 @@ impl Commands for Serial {
                                 }
                             });
                         }
-                        Err(e) => eprintln!("{:?}", e),
+                        Err(e) => {
+                            error!(target: "connections", "{} Failed to read bytes: {}", self.name, e)
+                        }
                     }
                 }
             }
-            Err(e) => eprintln!("{:?}", e),
+            Err(e) => error!(target: "connections", "{} Failed to read bytes: {}", self.name, e),
         }
 
         Some(message)
