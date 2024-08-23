@@ -95,12 +95,7 @@ impl SimconnectHandler {
         let output_registry = OutputRegistry::new();
         let action_registry = ActionRegistry::new();
         let wasm_registry = WASMRegistry::new();
-        let connector_settings = ConnectorSettings {
-            use_trs: true,
-            adc_resolution: 1023,
-            installed_wasm_version: "0.0.0".to_owned(),
-            send_every_ms: 3,
-        };
+        let connector_settings = ConnectorSettings::get_default_settings();
 
         Self {
             simconnect,
@@ -141,6 +136,7 @@ impl SimconnectHandler {
         for run_bundle in self.run_bundles.iter() {
             match Serial::new(run_bundle.com_port.clone(), self.connector_settings.use_trs) {
                 Ok(serial) => {
+                    info!(target: "connections", "Connected to port: {}", run_bundle.com_port);
                     connected_ports.push(Connections {
                         name: serial.get_name(),
                         connected: true,
