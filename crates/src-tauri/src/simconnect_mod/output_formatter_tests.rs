@@ -13,6 +13,7 @@ fn test_parse_output_percentages() {
         id: 1,
         category: "percentage".to_string(),
         output_type: connector_types::types::output::OutputType::Percentage,
+        value: 0.0,
     };
 
     let val = 0.5;
@@ -30,6 +31,7 @@ fn test_seconds_after_midnight_to_hours() {
         id: 1,
         category: "seconds_after_midnight".to_string(),
         output_type: connector_types::types::output::OutputType::Secondsaftermidnight,
+        value: 0.0,
     };
 
     let val = 3600.0;
@@ -47,6 +49,7 @@ fn test_radians_to_degrees() {
         id: 1,
         category: "degrees".to_string(),
         output_type: connector_types::types::output::OutputType::Degrees,
+        value: 0.0,
     };
 
     let val = std::f64::consts::PI;
@@ -64,6 +67,7 @@ fn test_val_to_inhg() {
         id: 1,
         category: "inhg".to_string(),
         output_type: connector_types::types::output::OutputType::INHG,
+        value: 0.0,
     };
 
     let val = 29.92;
@@ -80,6 +84,7 @@ fn test_val_to_adf() {
         cb_text: "adf".to_string(),
         id: 1,
         category: "adf".to_string(),
+        value: 0.0,
         output_type: connector_types::types::output::OutputType::ADF,
     };
 
@@ -98,6 +103,7 @@ fn test_mps_to_kmh() {
         id: 1,
         category: "mps".to_string(),
         output_type: connector_types::types::output::OutputType::Meterspersecond,
+        value: 0.0,
     };
 
     let val = 1.0;
@@ -114,6 +120,7 @@ fn test_val_to_bool() {
         cb_text: "bool".to_string(),
         id: 1,
         category: "bool".to_string(),
+        value: 0.0,
         output_type: connector_types::types::output::OutputType::Boolean,
     };
     let val = 0.5;
@@ -134,6 +141,7 @@ fn test_val_to_integer() {
         id: 1,
         category: "int".to_string(),
         output_type: connector_types::types::output::OutputType::Integer,
+        value: 0.0,
     };
 
     let val = 1.0;
@@ -151,6 +159,7 @@ fn test_val_to_seconds() {
         id: 1,
         category: "seconds".to_string(),
         output_type: connector_types::types::output::OutputType::Seconds,
+        value: 0.0,
     };
 
     let val = 1.0;

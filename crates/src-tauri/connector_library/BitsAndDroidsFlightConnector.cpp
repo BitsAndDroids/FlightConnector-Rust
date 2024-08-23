@@ -1,4 +1,4 @@
-
+#pragma clang diagnostic pop
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
@@ -14,7 +14,7 @@ BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector() {
 BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector(Serial_ *serial) {
   this->serial = serial;
 }
-#elif defined(ARDUINO_ARCH_ESP32) || defined(ESP8266)
+#elif defined(ARDUINO_ARCH_ESP32) || defined(ESP8266) || defined(PICO_RP2040)
 BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector(
     HardwareSerial *serial) {
   this->serial = &Serial;
@@ -25,6 +25,11 @@ BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector(
   this->serial = serial;
 }
 #endif
+
+void BitsAndDroidsFlightConnector::sendGetValueById(int id) {
+  packagedData = sprintf(valuesBuffer, "%i %i", SEND_GET_COMMAND, id);
+  this->serial->println(valuesBuffer);
+}
 
 int BitsAndDroidsFlightConnector::smoothPot(byte potPin) {
   int readings[samples] = {};
@@ -159,6 +164,9 @@ void BitsAndDroidsFlightConnector::dataHandling() {
     switchHandling();
   }
 }
+void BitsAndDroidsFlightConnector::checkConnection() {
+  this->sendGetValueById(1);
+}
 
 void BitsAndDroidsFlightConnector::switchHandling() {
 
@@ -168,6 +176,10 @@ void BitsAndDroidsFlightConnector::switchHandling() {
   lastPrefix = prefixVal;
 
   switch (prefixVal) {
+  case 1: {
+    connected = cutValue.toInt();
+    break;
+  }
   // Ap
   case 4000: {
     fuelLevel = cutValue.toInt();
@@ -869,6 +881,7 @@ void BitsAndDroidsFlightConnector::switchHandling() {
   // DO NOT REMOVE THIS COMMENT ITS USED BY THE CONNECTOR TO GENERATE CUSTOM
   // EVENTS
   // START CASE TEMPLATE
+
   // END CASE TEMPLATE
   default:
     break;
@@ -1043,5 +1056,3 @@ BitsAndDroidsFlightConnector::convertToNavFreq(const String &unprocFreq) {
 //----------------------
 // TRANSMIT FUNCTIONS
 // AP
-
-#pragma clang diagnostic pop
