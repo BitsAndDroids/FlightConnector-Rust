@@ -105,7 +105,7 @@ impl Commands for Serial {
         let message = if connected { b"0001 1\n" } else { b"0001 0\n" };
         match self.port.write_all(message) {
             Ok(_) => {
-                info!(target: "connections", "Connected signal sent");
+                info!(target: "connections", "Connected signal sent {}", connected);
             }
             Err(e) => {
                 error!(target: "connections", "Failed to send connected signal: {}", e);
