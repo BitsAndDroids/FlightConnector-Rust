@@ -174,6 +174,7 @@ fn main() {
                     Target::new(TargetKind::LogDir { file_name: None }),
                     Target::new(TargetKind::Webview),
                 ])
+                .max_file_size(10_000)
                 .build(),
         )
         .invoke_handler(tauri::generate_handler![
