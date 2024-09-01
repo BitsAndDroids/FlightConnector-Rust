@@ -20,8 +20,9 @@ export const Checkbox = ({
     <div className="flex flex-row items-center">
       {infoWindow}
       <div className="flex flex-col items-start">
-        <Label text={label || ""} required={required} />
+        <Label text={label || ""} required={required} onLight={true} />
         <input
+          className="h-5 w-5 mr-2 focus:ring-green-500 text-green-600 rounded-md"
           type="checkbox"
           checked={value}
           onChange={(e) => onChange && onChange(e.target.checked)}

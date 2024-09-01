@@ -5,7 +5,7 @@ interface CategoryCheckboxesProps {
   toggleOutput: (output: Output) => void;
 }
 
-const CategoryCheckboxes = ({
+export const OutputSelectRow = ({
   outputs,
   dialogOpen,
   toggleOutput,
@@ -24,14 +24,19 @@ const CategoryCheckboxes = ({
               tabIndex={dialogOpen ? -1 : 1}
               checked={output.selected}
             />
-            <label className="bg-white p-2 rounded-md mb-2">
-              {output.simvar.toLowerCase()}
-            </label>
+            <div className="p-2 bg-white rounded-md mb-2 flex flex-row items-center">
+              <div className="flex flex-col">
+                <p className="rounded-md">{output.cb_text}</p>
+                <p className="text-xs text-gray-500">{output.category}</p>
+              </div>
+              <div className="ml-2">
+                <p>Update Every: </p>
+                <p>{output.update_every}</p>
+              </div>
+            </div>
           </div>
         );
       })}
     </div>
   );
 };
-
-export default CategoryCheckboxes;

@@ -1,7 +1,7 @@
 "use client";
 import { Category } from "@/model/Category";
 import { useState } from "react";
-import CategoryCheckboxes from "./CategoryCheckboxes";
+import { OutputSelectRow } from "./OutputSelectRow";
 import { Output } from "@/model/Output";
 import { Select } from "./elements/Select";
 import { Input } from "./elements/Input";
@@ -56,7 +56,7 @@ const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
             label="Selected"
           />
         </div>
-        <CategoryCheckboxes
+        <OutputSelectRow
           outputs={filteredOutputs}
           dialogOpen={dialogOpen}
           toggleOutput={toggleOutput}
