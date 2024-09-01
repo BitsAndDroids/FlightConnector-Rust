@@ -1,9 +1,10 @@
 "use client";
 import { Category } from "@/model/Category";
-import TabHeader from "./TabHeader";
 import { useState } from "react";
 import CategoryCheckboxes from "./CategoryCheckboxes";
 import { Output } from "@/model/Output";
+import { Select } from "./elements/Select";
+import { Input } from "./elements/Input";
 
 interface TabFoldersProps {
   outputs: Output[];
@@ -23,37 +24,40 @@ const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
       });
     }
   }
-  let index = categories.size;
 
-  const [activeTab, setActiveTab] = useState<string>(
-    categories.keys().next().value,
-  );
+  let filters = {
+    category: "All",
+    selected: "All",
+    query: "",
+  };
 
-  function setTab(name: string) {
-    setActiveTab(name);
-  }
+  const [filteredOutputs, setFilteredOutputs] = useState<Output[]>(outputs);
 
   return (
     <div className="m-2 relative">
-      <div className="flex flex-row justify-start mb-[-2px] relative">
-        {categories &&
-          [...categories?.keys()].map((key) => {
-            index--;
-            return (
-              <TabHeader
-                key={key}
-                name={key}
-                first={index === categories.size - 1}
-                index={index}
-                collapsed={key === activeTab}
-                toggleCollapsed={setTab}
-              />
-            );
-          })}
-      </div>
-      <div className="flex flex-col h-[550px] rounded-b-lg rounded-tr-lg flex-wrap max-h-[550px] bg-white z-40 relative p-2">
+      <div className="flex flex-row h-[550px] rounded-b-lg rounded-tr-lg max-h-[550px] z-40 relative p-2">
+        <div className="mr-4">
+          <Input
+            onLight={false}
+            label="Search"
+            placeholder="Search"
+            value={filters.query}
+          />
+          <Select
+            onLight={false}
+            label="Category"
+            options={["All", ...categories.keys()]}
+            values={["All", ...categories.keys()]}
+          />
+          <Select
+            onLight={false}
+            options={["All", "Selected", "Not selected"]}
+            values={["All", "Selected", "Not selected"]}
+            label="Selected"
+          />
+        </div>
         <CategoryCheckboxes
-          category={categories.get(activeTab)!}
+          outputs={filteredOutputs}
           dialogOpen={dialogOpen}
           toggleOutput={toggleOutput}
         />

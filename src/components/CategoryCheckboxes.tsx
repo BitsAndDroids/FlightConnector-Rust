@@ -2,31 +2,33 @@ import { Category } from "@/model/Category";
 import { Output } from "@/model/Output";
 import React from "react";
 interface CategoryCheckboxesProps {
-  category: Category;
+  outputs: Output[];
   dialogOpen: boolean;
   toggleOutput: (output: Output) => void;
 }
 
 const CategoryCheckboxes = ({
-  category,
+  outputs,
   dialogOpen,
   toggleOutput,
 }: CategoryCheckboxesProps) => {
   return (
-    <div className="flex flex-col flex-wrap h-full w-full relative">
-      {category.outputs.map((output) => {
+    <div className="flex flex-col h-full w-full relative overflow-y-scroll">
+      {outputs.map((output) => {
         return (
-          <div key={output.simvar} className="flex flex-row items-center">
+          <div key={output.cb_text} className="flex flex-row items-center">
             <input
               type="checkbox"
-              className="mr-2"
+              className="rounded-md mr-2 h-6 w-6 -mt-1 accent-green-600"
               onChange={() => {
                 toggleOutput(output);
               }}
               tabIndex={dialogOpen ? -1 : 1}
               checked={output.selected}
             />
-            <label>{output.simvar.toLowerCase()}</label>
+            <label className="bg-white p-2 rounded-md mb-2">
+              {output.simvar.toLowerCase()}
+            </label>
           </div>
         );
       })}
