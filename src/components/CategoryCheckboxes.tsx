@@ -1,6 +1,4 @@
-import { Category } from "@/model/Category";
 import { Output } from "@/model/Output";
-import React from "react";
 interface CategoryCheckboxesProps {
   outputs: Output[];
   dialogOpen: boolean;
@@ -19,7 +17,7 @@ const CategoryCheckboxes = ({
           <div key={output.cb_text} className="flex flex-row items-center">
             <input
               type="checkbox"
-              className="rounded-md mr-2 h-6 w-6 -mt-1 accent-green-600"
+              className="text-green-600 focus:ring-green-500 rounded-md mr-2 h-6 w-6 -mt-1 accent-green-600"
               onChange={() => {
                 toggleOutput(output);
               }}
