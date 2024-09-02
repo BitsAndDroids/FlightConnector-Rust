@@ -8,6 +8,21 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+.tooltip {
+  @apply invisible absolute;
+  @apply -mt-9;
+  @apply ml-2;
+}
+
+.has-tooltip {
+  @apply cursor-help;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+  @apply cursor-help;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

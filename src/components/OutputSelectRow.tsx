@@ -32,21 +32,30 @@ export const OutputSelectRow = ({
                   {output.cb_text}
                 </p>
                 <div className="flex flex-row">
-                  <img
-                    src="https://api.iconify.design/tabler:category-2.svg"
-                    className={"fill-amber-50 mr-2"}
-                    alt="update_every"
-                  />
-
+                  <span className="has-tooltip">
+                    <span className="tooltip rounded shadow-lg p-1 bg-gray-100">
+                      category
+                    </span>
+                    <img
+                      src="https://api.iconify.design/tabler:category-2.svg"
+                      className={"fill-amber-50 mr-2"}
+                      alt="update_every"
+                    />
+                  </span>
                   <p className="text-xs text-gray-500 ">{output.category}</p>
                 </div>
               </div>
-              <div className="ml-2 flex flex-row">
-                <img
-                  src="https://api.iconify.design/lucide:between-horizontal-start.svg"
-                  className={"fill-amber-50 mr-2"}
-                  alt="update_every"
-                />
+              <div className="ml-2 flex flex-row items-center">
+                <span className="has-tooltip">
+                  <span className="tooltip rounded shadow-lg p-1 bg-gray-100">
+                    update every X
+                  </span>
+                  <img
+                    src="https://api.iconify.design/lucide:between-horizontal-start.svg"
+                    className={"fill-amber-50 mr-2"}
+                    alt="update_every"
+                  />
+                </span>
                 <p className="">{output.update_every}</p>
               </div>
             </div>
