@@ -1,6 +1,6 @@
 "use client";
 import { Category } from "@/model/Category";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OutputSelectRow } from "./OutputSelectRow";
 import { Output } from "@/model/Output";
 import { Select } from "./elements/Select";
@@ -24,12 +24,29 @@ const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
       });
     }
   }
-
-  let filters = {
+  let filtersDefault = {
     category: "All",
     selected: "All",
     query: "",
   };
+  const [filters, setFilters] = useState(filtersDefault);
+  useEffect(() => {
+    //
+    let filtered = outputs.filter((output) => {
+      let categoryMatch =
+        filters.category === "All" ||
+        output.category.toLowerCase() === filters.category.toLowerCase();
+      let selectedMatch =
+        filters.selected === "All" ||
+        (filters.selected === "Selected" && output.selected) ||
+        (filters.selected === "Not selected" && !output.selected);
+      let queryMatch =
+        output.cb_text.toLowerCase().includes(filters.query.toLowerCase()) ||
+        output.simvar.toLowerCase().includes(filters.query.toLowerCase());
+      return categoryMatch && selectedMatch && queryMatch;
+    });
+    setFilteredOutputs(filtered);
+  }, [filters, outputs]);
 
   const [filteredOutputs, setFilteredOutputs] = useState<Output[]>(outputs);
 
@@ -42,18 +59,27 @@ const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
             label="Search"
             placeholder="Search"
             value={filters.query}
+            onChange={(value) =>
+              setFilters({ ...filters, query: value as string })
+            }
           />
           <Select
             onLight={false}
             label="Category"
             options={["All", ...categories.keys()]}
             values={["All", ...categories.keys()]}
+            onChange={(value) =>
+              setFilters({ ...filters, category: value as string })
+            }
           />
           <Select
             onLight={false}
             options={["All", "Selected", "Not selected"]}
             values={["All", "Selected", "Not selected"]}
             label="Selected"
+            onChange={(value) =>
+              setFilters({ ...filters, selected: value as string })
+            }
           />
         </div>
         <OutputSelectRow
