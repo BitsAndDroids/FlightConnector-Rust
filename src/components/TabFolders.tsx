@@ -5,6 +5,7 @@ import { OutputSelectRow } from "./OutputSelectRow";
 import { Output } from "@/model/Output";
 import { Select } from "./elements/Select";
 import { Input } from "./elements/Input";
+import { Header } from "./elements/header";
 
 interface TabFoldersProps {
   outputs: Output[];
@@ -53,7 +54,8 @@ const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
   return (
     <div className="m-2 relative">
       <div className="flex flex-row h-[550px] rounded-b-lg rounded-tr-lg max-h-[550px] z-40 relative p-2">
-        <div className="mr-4">
+        <div className="mr-4 shadow-lg box-shadow p-4 bg-gradient-to-b from-[#305d7b] to-[#596d96] bg-opacity-20 rounded-md">
+          <Header title="Filters" level={2} onLight={false} />
           <Input
             onLight={false}
             label="Search"

@@ -2,6 +2,7 @@
 import BundleInfo from "@/info_blocks/BundleInfo";
 import { Bundle } from "@/model/Bundle";
 import BundleRow from "./BundleRow";
+import { Header } from "../elements/header";
 
 interface BundleEditWidgetProps {
   bundles: Bundle[];
@@ -20,11 +21,11 @@ const BundleEditWidget = ({
   deleteBundle,
 }: BundleEditWidgetProps) => {
   return (
-    <div className="flex flex-row mt-12 z-50 relative">
-      <div className="flex flex-col h-fit w-80 bg-white rounded-md mr-2 p-4 relative">
+    <div className="flex flex-row mt-14 z-50 relative">
+      <div className="flex flex-col h-fit w-80 bg-gradient-to-b from-[#305d7b] to-[#596d96] rounded-md mr-2 p-4 relative">
         <div className="flex flex-row mb-4">
-          <h2 className="my-2 font-bold text-xl">Available bundles</h2>
-          <div className="mt-2">
+          <Header level={2} onLight={false} title="Available bundles" />
+          <div className="mt-4 ml-1">
             <BundleInfo />
           </div>
           <button
