@@ -2,21 +2,24 @@ use log::{error, info};
 use serialport::{Error, SerialPort, SerialPortType};
 use std::time::Duration;
 
-pub struct Serial {
+pub struct SerialDevice {
     port: Box<dyn SerialPort>,
     name: String,
     _trs: bool,
 }
 
-pub trait Commands {
+pub trait Serial {
+    fn new(device_name: String, trs: bool) -> Result<Self, Error>
+    where
+        Self: Sized;
+    fn get_name(&self) -> String;
     fn send_connected_signal(&mut self, connected: bool);
     fn read_full_message(&mut self) -> Option<String>;
     fn write(&mut self, data: &[u8]);
-    fn get_name(&self) -> String;
 }
 
-impl Serial {
-    pub fn new(device_name: String, trs: bool) -> Result<Self, Error> {
+impl Serial for SerialDevice {
+    fn new(device_name: String, trs: bool) -> Result<Self, Error> {
         let ports = match serialport::available_ports() {
             Ok(ports) => ports,
             Err(_) => Vec::new(),
@@ -87,9 +90,6 @@ impl Serial {
             }
         }
     }
-}
-
-impl Commands for Serial {
     fn write(&mut self, data: &[u8]) {
         match self.port.write_all(data) {
             Ok(_) => {}
