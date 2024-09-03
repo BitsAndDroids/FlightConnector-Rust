@@ -57,7 +57,6 @@ impl Serial for SerialDevice {
             .open()
         {
             Ok(mut port) => {
-                // if connector_settings is Some()
                 if trs {
                     match port.write_data_terminal_ready(true) {
                         Ok(_) => {
