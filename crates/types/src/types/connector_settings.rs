@@ -1,3 +1,7 @@
+#[cfg(test)]
+#[path = "connector_settings_tests.rs"]
+mod connector_settings_tests;
+
 use serde::{Deserialize, Serialize};
 
 pub const USE_TRS: bool = false;

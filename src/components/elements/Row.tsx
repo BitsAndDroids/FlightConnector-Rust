@@ -11,7 +11,7 @@ interface RowProps {
 export const Row = (props: RowProps) => {
   return (
     <div
-      className="flex flex-row items-center justify-between mb-2 bg-white rounded-md p-1 px-3 drop-shadow"
+      className="flex flex-row items-center justify-between mb-2 p-2 bg-white rounded-md px-3 drop-shadow"
       key={props.id}
       onClick={() => {
         props.onClick(props.object);

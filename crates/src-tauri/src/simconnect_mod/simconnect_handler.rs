@@ -18,8 +18,8 @@ use crate::events::action_registry::ActionRegistry;
 use crate::events::input_registry::InputRegistry;
 use crate::events::output_registry::OutputRegistry;
 use crate::events::wasm_registry::WASMRegistry;
-use crate::serial::serial::Commands;
 use crate::serial::serial::Serial;
+use crate::serial::serial::SerialDevice;
 use crate::settings::connector_settings::load_connector_settings;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
@@ -77,7 +77,7 @@ pub struct SimconnectHandler {
     pub(crate) wasm_registry: WASMRegistry,
     pub(crate) app_handle: tauri::AppHandle,
     pub(crate) rx: mpsc::Receiver<u16>,
-    active_com_ports: HashMap<String, Serial>,
+    active_com_ports: HashMap<String, Box<dyn Serial>>,
     run_bundles: Vec<RunBundle>,
     connector_settings: ConnectorSettings,
 }
@@ -135,7 +135,7 @@ impl SimconnectHandler {
     fn connect_to_devices(&mut self) {
         let mut connected_ports: Vec<Connections> = vec![];
         for run_bundle in self.run_bundles.iter() {
-            match Serial::new(run_bundle.com_port.clone(), self.connector_settings.use_trs) {
+            match SerialDevice::new(run_bundle.com_port.clone(), self.connector_settings.use_trs) {
                 Ok(serial) => {
                     info!(target: "connections", "Connected to port: {}", run_bundle.com_port);
                     connected_ports.push(Connections {
@@ -144,7 +144,7 @@ impl SimconnectHandler {
                         id: run_bundle.id,
                     });
                     self.active_com_ports
-                        .insert(run_bundle.com_port.clone(), serial);
+                        .insert(run_bundle.com_port.clone(), Box::new(serial));
                 }
                 Err(e) => {
                     error!(target: "connections", "Failed to open port: {}", e);
