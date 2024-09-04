@@ -77,7 +77,7 @@ impl Serial for SerialDevice {
                     };
                 }
                 std::thread::sleep(Duration::from_millis(400));
-                Ok(Serial {
+                Ok(SerialDevice {
                     port,
                     _trs: trs,
                     name: device_name,
