@@ -127,7 +127,7 @@ const OutputsPage = () => {
         />
       )}
       <div
-        className="flex flex-row relative z-0"
+        className="flex flex-row relative z-0 mt-2"
         tabIndex={dialogOpen ? -1 : 1}
       >
         <BundleEditWidget
@@ -143,7 +143,7 @@ const OutputsPage = () => {
             <OutputList bundle={selectedBundle} />
           )}
           {editMode && (
-            <div className="flex flex-row items-center">
+            <div className="ml-4 flex flex-row items-center">
               <BundleEditControls saveBundle={saveBundle} />
               <h2 className="text-white text-4xl font-bold pl-2">
                 {bundles.length > 0 && selectedBundle?.name}

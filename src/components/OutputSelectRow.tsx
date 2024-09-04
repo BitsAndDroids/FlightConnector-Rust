@@ -11,8 +11,8 @@ export const OutputSelectRow = ({
   toggleOutput,
 }: CategoryCheckboxesProps) => {
   return (
-    <div className="flex flex-col h-full w-full relative overflow-y-scroll pl-2">
-      {outputs.map((output) => {
+    <div className="flex flex-col h-full w-full overflow-y-scroll pl-2">
+      {outputs.map((output, index) => {
         return (
           <div key={output.id} className="flex flex-row items-center">
             <input
@@ -28,9 +28,16 @@ export const OutputSelectRow = ({
               className={`p-2 w-full bg-gradient-to-r from-[rgba(255,255,255,0.9)]   ${output.selected ? "to-[rgba(200,255,200,0.7)]" : "to-[rgba(200,200,220,0.7)]"} rounded-md mb-2 flex flex-row items-center drop-shadow mr-2 align-middle shadow-[inset_0_-2px_4px_rgba(180,255,255,0.9)]`}
             >
               <div className="flex flex-col w-3/4">
-                <p className="rounded-md  font-bold text-lg">
-                  {output.cb_text}
-                </p>
+                <span className="has-tooltip">
+                  <span
+                    className={`${index === 0 ? "tooltip-bot" : "tooltip"} rounded shadow-lg p-1 bg-gray-100`}
+                  >
+                    {output.simvar}
+                  </span>
+                  <p className="rounded-md  font-bold text-lg">
+                    {output.cb_text}
+                  </p>
+                </span>
                 <div className="flex flex-row">
                   <span className="has-tooltip">
                     <span className="tooltip rounded shadow-lg p-1 bg-gray-100">

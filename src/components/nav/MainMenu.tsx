@@ -142,7 +142,7 @@ export const MainMenu: React.FC = () => {
       )}
       <div
         className={
-          "w-screen h-screen min-h-screen flex flex-col bg-bitsanddroids-blue overflow-x-hidden overflow-hidden"
+          "w-screen h-fit min-h-screen min-w-[102%] flex flex-col bg-bitsanddroids-blue overflow-x-hidden overflow-hidden"
         }
       >
         <div className=" bg-bitsanddroids-blue w-screen mt-7 flex flex-row align-middle justify-start h-fit">
@@ -185,7 +185,7 @@ export const MainMenu: React.FC = () => {
             report a bug
           </span>
           <img
-            src="https://api.iconify.design/mdi:bug-outline.svg?color=%23ad0314"
+            src="https://api.iconify.design/streamline:bug-virus-document.svg?color=%23ad0314"
             className={"fill-amber-50"}
             alt="report a bug"
           />
