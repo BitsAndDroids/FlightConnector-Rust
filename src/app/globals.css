@@ -8,6 +8,27 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+.tooltip {
+  @apply invisible absolute;
+  @apply -mt-7;
+  @apply ml-2;
+}
+
+.tooltip-bot {
+  @apply invisible absolute;
+  @apply mt-7;
+  @apply ml-2;
+}
+
+.has-tooltip {
+  @apply cursor-help;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+  @apply cursor-help;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -17,12 +38,13 @@
 }
 
 html {
-  height: 100%;
+  height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 
 body {
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 
@@ -49,10 +71,13 @@ body {
   background: #5bbec3;
 }
 
-.tooltip {
+.tooltip,
+.tooltip-bot {
   @apply invisible absolute;
+  overflow: visible;
 }
 
-.has-tooltip:hover .tooltip {
+.has-tooltip:hover .tooltip,
+.has-tooltip:hover .tooltip-bot {
   @apply visible z-50;
 }

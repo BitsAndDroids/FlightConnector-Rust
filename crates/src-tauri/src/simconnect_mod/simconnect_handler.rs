@@ -144,7 +144,7 @@ impl SimconnectHandler {
                         id: run_bundle.id,
                     });
                     self.active_com_ports
-                        .insert(run_bundle.com_port.clone(), serial);
+                        .insert(run_bundle.com_port.clone(), Box::new(serial));
                 }
                 Err(e) => {
                     error!(target: "connections", "Failed to open port: {}", e);
