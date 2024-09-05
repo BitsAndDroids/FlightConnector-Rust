@@ -29,9 +29,8 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         )}
 
         <select
-          // generate a unique key for each select element
           key={Math.random()}
-          className={"rounded m-2 text-gray-700 p-2 w-[150px]"}
+          className={"rounded m-2 text-gray-700 p-2 w-[180px] pr-8"}
           value={props.runBundle.com_port}
           onChange={(e) => {
             console.log(e.currentTarget.value);

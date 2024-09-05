@@ -12,8 +12,8 @@ export const Table = ({
   headers,
 }: TableProps) => {
   return (
-    <div className="bg-white rounded-md h-[88%]">
-      <div className="overflow-auto h-full ml-4 mr-1">
+    <div className="bg-white rounded-md h-[88%] mr-4">
+      <div className="overflow-auto overflow-y-scroll h-full ml-4 mr-1">
         <table className="divide-y divide-gray-300 mt-2">
           <thead className="sticky top-0 bg-white z-10">
             <tr key={`table-${typeof elements.at(0)}`}>
@@ -48,7 +48,7 @@ export const Table = ({
                 {headers.map((header, headerIndex) => (
                   <td
                     key={`${headerIndex}-${index}`}
-                    className="py-4 pl-4 pr-3 text-sm sm:pl-6 max-w-[300px] break-words"
+                    className="py-4 pl-4 pr-3 text-sm sm:pl-6 max-w-[200px] break-words"
                   >
                     {element[header as keyof typeof element]}
                   </td>

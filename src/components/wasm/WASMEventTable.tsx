@@ -13,7 +13,7 @@ export const WASMEventTable = ({
   editEvent,
 }: WASMEventTableProps) => {
   return (
-    <div className="h-full">
+    <div className="h-[800px]">
       <Table
         headers={[
           "id",

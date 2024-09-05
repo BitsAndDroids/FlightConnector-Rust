@@ -80,7 +80,7 @@ export const PresetControls = (props: PresetControlsProps) => {
         </button>
         <select
           key={Math.random()}
-          className="rounded-lg h-10 mt-2 px-4"
+          className="rounded-lg h-10 mt-2 px-4 pr-8"
           value={props.activePreset.id}
           onChange={async (e) => {
             let preset = await presetSettingsHandler.getPresetById(
