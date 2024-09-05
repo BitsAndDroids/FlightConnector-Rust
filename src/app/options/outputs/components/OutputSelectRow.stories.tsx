@@ -37,17 +37,4 @@ const OutputSelectRowWithHooks = () => {
 
 export const OutputSelectRowStory: StoryObj = {
   render: OutputSelectRowWithHooks,
-  // args: {
-  //   output: {
-  //     id: 1,
-  //     simvar: "A:SIMCONNECT:GENERAL_ENG1_COMBUSTION",
-  //     cb_text: "Engine 1 Combustion",
-  //     category: "Engine",
-  //     selected: false,
-  //   },
-  //   dialogOpen: false,
-  //   toggleOutput: (output: any) => {
-  //     console.log(output);
-  //   },
-  // },
 };

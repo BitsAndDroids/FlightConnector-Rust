@@ -55,6 +55,7 @@ export const Input = ({
           label={label as string}
           onChange={onChange as (value: boolean) => void}
           infoWindow={infoWindow}
+          onLight={onLight}
         />
       ) : type === "textarea" ? (
         <TextArea
@@ -64,6 +65,7 @@ export const Input = ({
           placeholder={placeholder as string}
           errorState={errorState}
           required={required}
+          onLight={onLight}
           onChange={onChange as (value: string) => void}
         />
       ) : (

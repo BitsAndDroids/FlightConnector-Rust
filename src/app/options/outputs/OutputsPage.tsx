@@ -9,7 +9,7 @@ import { Output } from "@/model/Output";
 import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
-import TabFolders from "./elements/TabFolders";
+import TabFolders from "./components/TabFolders";
 
 const OutputsPage = () => {
   const [editBundle, setEditBundle] = useState<Bundle | undefined>(undefined); // [1

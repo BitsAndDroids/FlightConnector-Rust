@@ -11,6 +11,7 @@ interface TextAreaProps {
   infoWindow?: ReactElement<InfoWindowProps>;
   errorState?: InputErrorState;
   required?: boolean;
+  onLight?: boolean;
   onChange?: (value: string) => void;
 }
 
@@ -22,11 +23,12 @@ export const TextArea = ({
   infoWindow,
   errorState,
   required,
+  onLight,
   onChange,
 }: TextAreaProps) => {
   return (
     <div className="flex flex-col">
-      {label && <Label text={label} required={required} />}
+      {label && <Label text={label} required={required} onLight={onLight} />}
       <textarea
         value={value}
         onChange={(e) => onChange && onChange(e.target.value)}
