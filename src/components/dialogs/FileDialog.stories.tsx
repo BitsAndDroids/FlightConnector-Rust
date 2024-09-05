@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { FileDialog } from "./FileDialog";
-import InfoWindow from "./InfoWindow";
+import InfoWindow from "../InfoWindow";
 
 const meta: Meta<typeof FileDialog> = {
   component: FileDialog,

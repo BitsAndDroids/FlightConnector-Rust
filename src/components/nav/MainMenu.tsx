@@ -2,7 +2,7 @@ import { Titlebar } from "@/components/nav/titlebar";
 import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
-import { FileDialog } from "../FileDialog";
+import { FileDialog } from "../dialogs/FileDialog";
 import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
