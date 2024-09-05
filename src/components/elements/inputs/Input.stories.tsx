@@ -28,6 +28,17 @@ export const InputType: StoryObj = {
     onLight: true,
     onChange: () => {},
   },
+  decorators: [
+    (Story, { args }: any) => (
+      <div
+        className={`${args.onLight ? "bg-white" : "bg-bitsanddroids-blue"} -m-4 h-screen w-screen`}
+      >
+        <div className="p-4">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 };
 
 export const TextAreaType: StoryObj = {
@@ -38,6 +49,18 @@ export const TextAreaType: StoryObj = {
     onLight: true,
     onChange: () => {},
   },
+
+  decorators: [
+    (Story, { args }: any) => (
+      <div
+        className={`${args.onLight ? "bg-white" : "bg-bitsanddroids-blue"} -m-4 h-screen w-screen`}
+      >
+        <div className="m-4">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 };
 
 export const NumberType: StoryObj = {
@@ -48,6 +71,18 @@ export const NumberType: StoryObj = {
     onLight: true,
     onChange: () => {},
   },
+
+  decorators: [
+    (Story, { args }: any) => (
+      <div
+        className={`${args.onLight ? "bg-white" : "bg-bitsanddroids-blue"} -m-4 h-screen w-screen`}
+      >
+        <div className="p-4">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 };
 
 export const CheckboxType: StoryObj = {
@@ -58,4 +93,16 @@ export const CheckboxType: StoryObj = {
     onLight: true,
     onChange: () => {},
   },
+
+  decorators: [
+    (Story, { args }: any) => (
+      <div
+        className={`${args.onLight ? "bg-white" : "bg-bitsanddroids-blue"} -m-4 h-screen w-screen`}
+      >
+        <div className="p-4">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 };
