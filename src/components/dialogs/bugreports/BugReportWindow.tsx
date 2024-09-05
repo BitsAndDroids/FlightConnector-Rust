@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "../elements/Button";
-import { Input } from "../elements/Input";
+import { Button } from "../../elements/Button";
+import { Input } from "../../elements/Input";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
