@@ -37,3 +37,5 @@ next-env.d.ts
 .vscode
 .idea
 crates/file_parsers/target
+
+*storybook.log

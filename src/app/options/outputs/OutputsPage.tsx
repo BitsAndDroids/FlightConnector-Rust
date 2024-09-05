@@ -1,6 +1,5 @@
 "use client";
 import InputDialog from "@/components/InputDialog";
-import TabFolders from "@/components/TabFolders";
 import BundleEditControls from "@/components/bundle/BundleEditControls";
 import BundleEditWidget from "@/components/bundle/BundleEditWidget";
 import OutputList from "@/components/outputs/Outputlist";
@@ -10,6 +9,7 @@ import { Output } from "@/model/Output";
 import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
+import BundleEditor from "./components/BundleEditor";
 
 const OutputsPage = () => {
   const [editBundle, setEditBundle] = useState<Bundle | undefined>(undefined); // [1
@@ -151,7 +151,7 @@ const OutputsPage = () => {
             </div>
           )}
           {editMode && outputs.length > 0 && (
-            <TabFolders
+            <BundleEditor
               outputs={outputs}
               toggleOutput={toggleOutput}
               dialogOpen={dialogOpen}
