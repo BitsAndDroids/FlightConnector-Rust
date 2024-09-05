@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "../../elements/Button";
-import { Input } from "../../elements/Input";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
@@ -9,6 +8,7 @@ import { RunSettingsHandler } from "@/utils/runSettingsHandler";
 import { BugReport } from "@/model/BugReport";
 import { fetch } from "@tauri-apps/plugin-http";
 import { message } from "@tauri-apps/plugin-dialog";
+import { Input } from "@/components/elements/inputs/Input";
 interface BugReportWindowProps {
   closeWindow: () => void;
 }
