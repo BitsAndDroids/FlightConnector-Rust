@@ -3,17 +3,21 @@ import { Category } from "@/model/Category";
 import { useEffect, useState } from "react";
 import { Output } from "@/model/Output";
 import { Select } from "../../../../components/elements/Select";
-import { Input } from "../../../../components/elements/Input";
+import { Input } from "../../../../components/elements/inputs/Input";
 import { Header } from "../../../../components/elements/header";
 import { OutputSelectRows } from "./OutputSelectRows";
 
-interface TabFoldersProps {
+interface BundleEditorProps {
   outputs: Output[];
   dialogOpen: boolean;
   toggleOutput: (output: Output) => void;
 }
 
-const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
+const BundleEditor = ({
+  outputs,
+  dialogOpen,
+  toggleOutput,
+}: BundleEditorProps) => {
   let categories = new Map<string, Category>();
   for (let output of outputs) {
     if (categories.has(output.category)) {
@@ -94,4 +98,4 @@ const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
   );
 };
 
-export default TabFolders;
+export default BundleEditor;

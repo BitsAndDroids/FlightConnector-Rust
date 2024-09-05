@@ -1,6 +1,6 @@
 import { InfoWindowProps } from "@/components/InfoWindow";
 import { ReactElement } from "react";
-import { InputErrorState } from "../Input";
+import { InputErrorState } from "./Input";
 import { Label } from "../Label";
 
 interface TextAreaProps {

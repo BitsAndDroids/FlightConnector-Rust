@@ -17,4 +17,11 @@ export const FileDialogStory: StoryObj = {
       <InfoWindow message="Info Window" docs_url="https://google.com" />
     ),
   },
+  decorators: [
+    (Story) => (
+      <div className=" bg-bitsanddroids-blue w-screen h-screen -m-4 p-0">
+        {<Story />}
+      </div>
+    ),
+  ],
 };
