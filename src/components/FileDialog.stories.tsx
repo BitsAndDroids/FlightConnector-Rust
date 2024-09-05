@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { FileDialog } from "./FileDialog";
+import InfoWindow from "./InfoWindow";
 
 const meta: Meta<typeof FileDialog> = {
   component: FileDialog,
@@ -12,6 +13,8 @@ export const FileDialogStory: StoryObj = {
     message: "File Dialog",
     value: "File Dialog Value",
     placeholder: "File Dialog Placeholder",
-    InfoWindow: "File Dialog InfoWindow",
+    InfoWindow: (
+      <InfoWindow message="Info Window" docs_url="https://google.com" />
+    ),
   },
 };
