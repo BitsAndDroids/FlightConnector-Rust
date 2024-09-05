@@ -1,11 +1,11 @@
 "use client";
 import { Category } from "@/model/Category";
 import { useEffect, useState } from "react";
-import { OutputSelectRow } from "./OutputSelectRow";
 import { Output } from "@/model/Output";
-import { Select } from "./elements/Select";
-import { Input } from "./elements/Input";
-import { Header } from "./elements/header";
+import { Select } from "../../../../components/elements/Select";
+import { Input } from "../../../../components/elements/Input";
+import { Header } from "../../../../components/elements/header";
+import { OutputSelectRows } from "./OutputSelectRows";
 
 interface TabFoldersProps {
   outputs: Output[];
@@ -84,7 +84,7 @@ const TabFolders = ({ outputs, dialogOpen, toggleOutput }: TabFoldersProps) => {
             }
           />
         </div>
-        <OutputSelectRow
+        <OutputSelectRows
           outputs={filteredOutputs}
           dialogOpen={dialogOpen}
           toggleOutput={toggleOutput}
