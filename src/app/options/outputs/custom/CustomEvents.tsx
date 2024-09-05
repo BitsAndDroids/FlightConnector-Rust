@@ -221,23 +221,23 @@ export const CustomEvents = () => {
         />
       )}
       <div className="h-[96%] overflow-y-hidden">
-        <div className="flex flew-row align-middle">
-          <Header level={1} title="Custom Events" />
+        <div className="flex flew-row align-middle items-center mt-4">
+          <Header level={1} title="Custom Events" addToClassName="mt-0" />
           <Button
             text="Add Event"
             onClick={addEvent}
             style="primary"
-            addToClassName="mt-10 mb-4 ml-2"
+            addToClassName="ml-4"
           />
           <Button
             text="Refresh default events"
             onClick={updateDefaultEvents}
             style="primary"
-            addToClassName="mt-10 mb-4 ml-2"
+            addToClassName=""
           />
           <Input
             placeholder="Search"
-            addToClassName="mt-10"
+            addToClassName="mt-2"
             onChange={searchId as (value: string | boolean) => void}
           />
           <Select
@@ -247,7 +247,7 @@ export const CustomEvents = () => {
             values={keyArray}
             value={sortSettings.sortBy}
             onChange={changeSortBy}
-            addToClassName="mt-2 text-white"
+            addToClassName="-mt-4 text-white"
           />
           <Select
             label="Sort Order"
@@ -256,7 +256,7 @@ export const CustomEvents = () => {
             values={["asc", "desc"]}
             value={sortSettings.sortOrder}
             onChange={changeSortOrder}
-            addToClassName="mt-2 text-white"
+            addToClassName="-mt-4 text-white"
           />
         </div>
         <WASMEventTable
