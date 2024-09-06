@@ -8,7 +8,7 @@ import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { RunSettingsHandler } from "@/utils/runSettingsHandler";
 import PresetControls from "./presets/PresetControls";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
-import { listen } from "@tauri-apps/api/event";
+import { emit, listen } from "@tauri-apps/api/event";
 import { RunBundlePopulated, populateRunBundles } from "@/model/RunBundle";
 interface Connections {
   name: string;
@@ -46,6 +46,11 @@ export const ControllerSelectComponent = () => {
   }
 
   useEffect(() => {
+    invoke("launch_on_startup").then((result) => {
+      if (result) {
+        startEventListeners();
+      }
+    });
     async function getComPorts() {
       try {
         invoke("get_com_ports").then(async (result) => {
