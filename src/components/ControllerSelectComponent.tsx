@@ -16,13 +16,7 @@ interface Connections {
   id: number;
 }
 export const ControllerSelectComponent = () => {
-  const [connectionRunning, setConnectionRunning] = useState<boolean>(false);
-  const [loaded, setLoaded] = useState<boolean>(false);
-  const [comPorts, setComPorts] = useState<string[]>([]);
-  const [comPort, setComPort] = useState<string>("");
-  const [bundles, setBundles] = useState<Bundle[]>([]);
-  const [unlisten, setUnlisten] = useState<any>();
-  const [preset, setPreset] = useState<Preset>({
+  const defaultPreset = {
     name: "default",
     runBundles: [
       {
@@ -34,10 +28,15 @@ export const ControllerSelectComponent = () => {
     ],
     version: "1.0",
     id: "0",
-  });
-  const [presets, setPresets] = useState<Preset[]>([preset]);
+  };
+  const [connectionRunning, setConnectionRunning] = useState<boolean>(false);
+  const [loaded, setLoaded] = useState<boolean>(false);
+  const [comPorts, setComPorts] = useState<string[]>([]);
+  const [bundles, setBundles] = useState<Bundle[]>([]);
+  const [unlisten, setUnlisten] = useState<any>();
+  const [preset, setPreset] = useState<Preset>();
+  const [presets, setPresets] = useState<Preset[]>();
 
-  const presetRef = useRef(preset);
   function startEventListeners() {
     setUnlisten(
       listen<Connections>("connection_event", (event) => {
@@ -45,10 +44,6 @@ export const ControllerSelectComponent = () => {
       }),
     );
   }
-
-  useEffect(() => {
-    presetRef.current = preset;
-  }, [preset]);
 
   useEffect(() => {
     if (loaded) {
@@ -83,7 +78,6 @@ export const ControllerSelectComponent = () => {
       try {
         invoke("get_com_ports").then(async (result) => {
           setComPorts(result as string[]);
-          setComPort((result as string[])[0]);
         });
       } catch (e) {
         console.log(e);
@@ -102,7 +96,7 @@ export const ControllerSelectComponent = () => {
       if (presets.length > 0) {
         setPresets(presets);
       } else {
-        await presetSettingsHandler.addPreset(preset);
+        await presetSettingsHandler.addPreset(defaultPreset);
       }
     }
 
@@ -110,7 +104,15 @@ export const ControllerSelectComponent = () => {
       getBundles();
       getActivePreset().then((lastPreset) => {
         if (lastPreset) {
-          setPreset(lastPreset);
+          let newPreset = { ...lastPreset };
+          newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
+            if (!runBundle.com_port) {
+              runBundle.com_port = comPorts[0];
+            }
+            return runBundle;
+          });
+          setPreset(newPreset);
+          updatePresets(newPreset);
         }
       });
       getPresets();
@@ -119,6 +121,9 @@ export const ControllerSelectComponent = () => {
   }, []);
 
   const resetAllConnections = () => {
+    if (!preset) {
+      return;
+    }
     let newPreset = { ...preset };
     newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
       runBundle.connected = false;
@@ -128,6 +133,9 @@ export const ControllerSelectComponent = () => {
   };
 
   const setConnected = (connected: boolean, id: number) => {
+    if (!preset) {
+      return;
+    }
     let newPreset = { ...preset };
     newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
       if (runBundle.id === id) {
@@ -139,14 +147,20 @@ export const ControllerSelectComponent = () => {
   };
 
   const deleteRow = (id: number) => {
+    if (!preset) {
+      return;
+    }
     let newPreset = { ...preset };
     newPreset.runBundles = newPreset.runBundles.filter(
       (runBundle) => runBundle.id !== id,
     );
-    setPreset(newPreset);
+    updatePresets(newPreset);
   };
 
   async function invokeConnection(runBundles: RunBundlePopulated[]) {
+    if (!preset) {
+      return;
+    }
     invoke("start_simconnect_connection", {
       runBundles: runBundles,
       presetId: preset.id,
@@ -160,12 +174,6 @@ export const ControllerSelectComponent = () => {
       resetAllConnections();
     } else {
       startEventListeners();
-      let newPreset = { ...presetRef.current };
-      if (preset.runBundles[0].com_port === "") {
-        newPreset.runBundles[0].com_port = (comPorts as string[])[0];
-        setPreset(newPreset);
-        updatePresets(newPreset);
-      }
       const activePreset = await getActivePreset();
       if (activePreset) {
         if (activePreset) {
@@ -174,7 +182,17 @@ export const ControllerSelectComponent = () => {
           );
         }
       } else {
-        await invokeConnection(await populateRunBundles(newPreset.runBundles));
+        if (!preset) {
+          return;
+        }
+        preset.runBundles.map((runBundle, index) => {
+          if (!runBundle.com_port) {
+            let newPreset = { ...preset };
+            newPreset.runBundles[index].com_port = comPorts[0];
+            updatePresets(newPreset);
+          }
+        });
+        await invokeConnection(await populateRunBundles(preset.runBundles));
       }
     }
     setConnectionRunning(!connectionRunning);
@@ -188,6 +206,9 @@ export const ControllerSelectComponent = () => {
   }
 
   function setComPortForRunBundle(comPort: string, runBundle: any) {
+    if (!preset) {
+      return;
+    }
     let set = preset;
     let newPreset = { ...set };
 
@@ -200,18 +221,20 @@ export const ControllerSelectComponent = () => {
     updatePresets(newPreset);
   }
 
-  function updatePresets(preset: Preset) {
+  function updatePresets(presetUpdate: Preset) {
     const presetSettingsHandler = new PresetSettingsHandler();
-    presetSettingsHandler.updatePreset(preset);
-    setPreset(preset);
+    presetSettingsHandler.updatePreset(presetUpdate);
+    setPreset(presetUpdate);
   }
 
   function setBundleForRunBundle(bundleName: string, runBundle: any) {
+    if (!preset) {
+      return;
+    }
     let set = preset;
     let newPreset = { ...set };
     newPreset.runBundles = newPreset.runBundles.map((rb) => {
       if (bundleName === "No outputs") {
-        console.log("setting bundle to no outputs");
         if (rb.id === runBundle.id) {
           rb.bundle_name = "";
           return rb;
@@ -232,7 +255,7 @@ export const ControllerSelectComponent = () => {
 
   return (
     <>
-      {loaded && (
+      {loaded && preset && presets && (
         <div className="flex flex-col items-start">
           <div className={"flex flex-col"}>
             <div className={"flex flex-row"}>
@@ -257,11 +280,11 @@ export const ControllerSelectComponent = () => {
             <p className="ml-24">Bundle</p>
           </div>
           {preset &&
-            preset.runBundles.map((runBundle) => (
+            preset.runBundles.map((runBundle, index) => (
               <ControllerSelect
                 bundles={bundles}
                 comPorts={comPorts}
-                selectedComPort={comPort}
+                selectedComPort={preset.runBundles[index].com_port}
                 setComPort={setComPortForRunBundle}
                 setBundle={setBundleForRunBundle}
                 runBundle={runBundle}
