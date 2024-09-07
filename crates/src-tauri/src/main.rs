@@ -214,6 +214,7 @@ fn main() {
             get_library_source_content,
             get_library_outputs,
             toggle_run_on_sim_launch,
+            launch_on_startup,
             generate_library
         ])
         .setup(|app| {
