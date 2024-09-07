@@ -62,7 +62,7 @@ export const ControllerSelectComponent = () => {
     }
   }, [loaded]);
 
-  async function getLastPreset(): Promise<Preset | undefined> {
+  async function getActivePreset(): Promise<Preset | undefined> {
     const runSettingsHandler = new RunSettingsHandler();
     const lastPreset = await runSettingsHandler.getLastPresetId();
     if (lastPreset) {
@@ -108,7 +108,7 @@ export const ControllerSelectComponent = () => {
 
     getComPorts().then(() => {
       getBundles();
-      getLastPreset().then((lastPreset) => {
+      getActivePreset().then((lastPreset) => {
         if (lastPreset) {
           setPreset(lastPreset);
         }
@@ -166,11 +166,11 @@ export const ControllerSelectComponent = () => {
         setPreset(newPreset);
         updatePresets(newPreset);
       }
-      const lastPreset = await getLastPreset();
-      if (lastPreset) {
-        if (lastPreset) {
+      const activePreset = await getActivePreset();
+      if (activePreset) {
+        if (activePreset) {
           await invokeConnection(
-            await populateRunBundles(lastPreset.runBundles),
+            await populateRunBundles(activePreset.runBundles),
           );
         }
       } else {
