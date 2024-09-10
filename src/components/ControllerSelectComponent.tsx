@@ -29,6 +29,7 @@ export const ControllerSelectComponent = () => {
     version: "1.0",
     id: "0",
   };
+
   const [connectionRunning, setConnectionRunning] = useState<boolean>(false);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPorts, setComPorts] = useState<string[]>([]);
@@ -49,8 +50,6 @@ export const ControllerSelectComponent = () => {
     if (loaded) {
       invoke("launch_on_startup").then((result) => {
         if (result) {
-          console.log("launched on startup");
-          console.log(result);
           toggleRunConnection();
         }
       });
@@ -201,7 +200,6 @@ export const ControllerSelectComponent = () => {
   function onChangePreset(newPreset: Preset) {
     const runSettingsHandler = new RunSettingsHandler();
     runSettingsHandler.setLastPresetId(newPreset.id);
-    console.log("new preset", newPreset);
     setPreset(newPreset);
   }
 
