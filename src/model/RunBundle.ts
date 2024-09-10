@@ -19,7 +19,10 @@ export async function populateRunBundles(
     runBundles.map(async (runBundle) => {
       if (!runBundle.bundle_name) {
         console.log("No outputs");
-        return { ...runBundle, bundle: { outputs: [], name: "", version: 0 } };
+        return {
+          ...runBundle,
+          bundle: { com_port: "", outputs: [], name: "", version: 0 },
+        };
       }
       return populateRunBundle(runBundle);
     }),

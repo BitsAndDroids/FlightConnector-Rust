@@ -8,6 +8,9 @@ export class PresetSettingsHandler {
   }
 
   async getPreset(id: string): Promise<Preset | null> {
+    if (!this.store.has(id)) {
+      return null;
+    }
     return this.store.get(id);
   }
   async updatePreset(preset: Preset): Promise<void> {
