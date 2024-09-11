@@ -140,6 +140,7 @@ const SettingsPage = () => {
         <HeaderDivider text="Connector settings" />
         <Input
           label="Launch when sim starts"
+          onLight={true}
           type="checkbox"
           value={connectorSettings.launch_when_sim_starts}
           onChange={(val) => onSettingsChange("launch_when_sim_starts", val)}
@@ -153,6 +154,7 @@ const SettingsPage = () => {
         <HeaderDivider text="Microcontroller settings" />
         <Input
           label="Use terminal ready signal"
+          onLight={true}
           type="checkbox"
           onChange={(val) => onSettingsChange("use_trs", val)}
           value={connectorSettings.use_trs}
@@ -167,6 +169,7 @@ const SettingsPage = () => {
           label="Send message every ms"
           type="number"
           mt={2}
+          onLight={true}
           infoLeft={true}
           onChange={(val) => onSettingsChange("send_every_ms", val)}
           value={connectorSettings.send_every_ms.toString()}
@@ -179,6 +182,7 @@ const SettingsPage = () => {
         />
         <Input
           label="ADC Resolution"
+          onLight={true}
           type="number"
           mt={2}
           infoLeft={true}
