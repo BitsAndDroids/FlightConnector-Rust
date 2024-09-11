@@ -283,7 +283,16 @@ impl SimconnectHandler {
         self.output_registry.set_output_value(output_id, value);
 
         // After setting the value, we only need immutable access to output_registry
-        let output = self.output_registry.get_output_by_id(output_id).unwrap();
+        let output = match self.output_registry.get_output_by_id(output_id) {
+            Some(output) => output,
+            None => match self.wasm_registry.get_wasm_output_by_id(output_id) {
+                Some(output) => output,
+                None => {
+                    error!("Output does not exist: {}", output_id);
+                    return;
+                }
+            },
+        };
 
         // Format the output string
         let formatted_str = format!(

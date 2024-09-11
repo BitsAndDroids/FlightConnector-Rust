@@ -1,33 +1,27 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
 import { ControllerSelect } from "./ControllerSelect";
 import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { RunSettingsHandler } from "@/utils/runSettingsHandler";
-import PresetControls from "./presets/PresetControls";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
 import { listen } from "@tauri-apps/api/event";
 import { RunBundlePopulated, populateRunBundles } from "@/model/RunBundle";
+import PresetControls from "./presets/PresetControls";
 interface Connections {
   name: string;
   connected: boolean;
   id: number;
 }
 export const ControllerSelectComponent = () => {
-  const [connectionRunning, setConnectionRunning] = useState<boolean>(false);
-  const [loaded, setLoaded] = useState<boolean>(false);
-  const [comPorts, setComPorts] = useState<string[]>([]);
-  const [comPort, setComPort] = useState<string>("");
-  const [bundles, setBundles] = useState<Bundle[]>([]);
-  const [unlisten, setUnlisten] = useState<any>();
-  const [preset, setPreset] = useState<Preset>({
+  const defaultPreset = (com: string) => ({
     name: "default",
     runBundles: [
       {
         id: 0,
-        com_port: "",
+        com_port: com,
         bundle_name: "",
         connected: false,
       },
@@ -35,7 +29,34 @@ export const ControllerSelectComponent = () => {
     version: "1.0",
     id: "0",
   });
-  const [presets, setPresets] = useState<Preset[]>([preset]);
+  let firstBoot = useRef(true);
+  const presetSettingsHandler = new PresetSettingsHandler();
+
+  const runSettingsHandler = new RunSettingsHandler();
+  const [connectionRunning, setConnectionRunning] = useState<boolean>(false);
+  const [loaded, setLoaded] = useState<boolean>(false);
+  const [comPorts, setComPorts] = useState<string[]>([]);
+  const [bundles, setBundles] = useState<Bundle[]>([]);
+  const [unlisten, setUnlisten] = useState<any>();
+  const [preset, setPreset] = useState<Preset>();
+  const [presets, setPresets] = useState<Preset[]>();
+
+  async function initPreset() {
+    const lastPreset = await getActivePreset();
+    if (lastPreset) {
+      let newPreset = { ...lastPreset };
+      newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
+        if (!runBundle.com_port) {
+          runBundle.com_port = comPorts[0];
+        }
+        return runBundle;
+      });
+      updatePresets(newPreset);
+    } else {
+      setPresets([defaultPreset(comPorts[0])]);
+      updatePresets(defaultPreset(comPorts[0]));
+    }
+  }
 
   function startEventListeners() {
     setUnlisten(
@@ -45,35 +66,32 @@ export const ControllerSelectComponent = () => {
     );
   }
 
-  useEffect(() => {
-    async function getComPorts() {
-      try {
-        invoke("get_com_ports").then(async (result) => {
-          setComPorts(result as string[]);
-          setComPort((result as string[])[0]);
-        });
-      } catch (e) {
-        console.log(e);
+  async function getActivePreset(): Promise<Preset | undefined> {
+    const lastPresetId = await runSettingsHandler.getLastPresetId();
+    if (lastPresetId) {
+      const lastPresetId = await runSettingsHandler.getLastPresetId();
+      if (!lastPresetId) {
+        return;
       }
-    }
-
-    async function getLastPreset() {
-      const runSettingsHandler = new RunSettingsHandler();
-      const lastPreset = await runSettingsHandler.getLastPresetId();
+      const lastPreset = await presetSettingsHandler.getPreset(lastPresetId);
       if (lastPreset) {
-        const presetSettingsHandler = new PresetSettingsHandler();
-        const lastPresetId = await runSettingsHandler.getLastPresetId();
-        if (!lastPresetId) {
-          return;
-        }
-        const lastPreset = await presetSettingsHandler.getPreset(lastPresetId);
-        if (lastPreset) {
-          console.log(lastPreset);
-          setPreset(lastPreset);
-        }
+        return lastPreset;
       }
     }
+  }
 
+  useEffect(() => {
+    if (loaded && preset && firstBoot.current) {
+      invoke("launch_on_startup").then((result) => {
+        firstBoot.current = false;
+        if (result) {
+          toggleRunConnection();
+        }
+      });
+    }
+  }, [loaded, preset]);
+
+  useEffect(() => {
     async function getBundles() {
       let bundleSettingsHandler = new BundleSettingsHandler();
       let bundles = await bundleSettingsHandler.getSavedBundles();
@@ -81,24 +99,48 @@ export const ControllerSelectComponent = () => {
     }
 
     async function getPresets() {
-      const presetSettingsHandler = new PresetSettingsHandler();
       const presets = await presetSettingsHandler.getAllPresets();
       if (presets.length > 0) {
         setPresets(presets);
       } else {
-        await presetSettingsHandler.addPreset(preset);
+        await presetSettingsHandler.addPreset(defaultPreset(comPorts[0]));
       }
     }
 
-    getComPorts().then(() => {
-      getBundles();
-      getLastPreset();
-      getPresets();
+    async function getComPorts() {
+      try {
+        invoke("get_com_ports").then(async (result) => {
+          const comPorts = (await result) as string[];
+          if (comPorts.length == 0) {
+            setComPorts(["No com ports"]);
+            return;
+          }
+          setComPorts(result as string[]);
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    async function init() {
+      await getBundles();
+      await initPreset();
+      await getPresets();
       setLoaded(true);
-    });
-  }, []);
+    }
+
+    if (comPorts.length == 0) {
+      getComPorts();
+    }
+    if (!loaded && comPorts.length > 0) {
+      init();
+    }
+  }, [comPorts]);
 
   const resetAllConnections = () => {
+    if (!preset) {
+      return;
+    }
     let newPreset = { ...preset };
     newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
       runBundle.connected = false;
@@ -108,6 +150,9 @@ export const ControllerSelectComponent = () => {
   };
 
   const setConnected = (connected: boolean, id: number) => {
+    if (!preset) {
+      return;
+    }
     let newPreset = { ...preset };
     newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
       if (runBundle.id === id) {
@@ -115,25 +160,27 @@ export const ControllerSelectComponent = () => {
       }
       return runBundle;
     });
-    console.log("connected", newPreset);
     setPreset(newPreset);
   };
 
   const deleteRow = (id: number) => {
+    if (!preset) {
+      return;
+    }
     let newPreset = { ...preset };
     newPreset.runBundles = newPreset.runBundles.filter(
       (runBundle) => runBundle.id !== id,
     );
-    setPreset(newPreset);
+    updatePresets(newPreset);
   };
 
   async function invokeConnection(runBundles: RunBundlePopulated[]) {
-    console.log("starting connection", preset.name);
+    if (!preset) {
+      return;
+    }
     invoke("start_simconnect_connection", {
       runBundles: runBundles,
       presetId: preset.id,
-    }).then((result) => {
-      console.log(result);
     });
   }
 
@@ -143,26 +190,26 @@ export const ControllerSelectComponent = () => {
       invoke("stop_simconnect_connection");
       resetAllConnections();
     } else {
-      startEventListeners();
-      if (preset.runBundles[0].com_port === "") {
-        let newPreset = { ...preset };
-        newPreset.runBundles[0].com_port = (comPorts as string[])[0];
-        setPreset(newPreset);
-        updatePresets(newPreset);
+      if (!preset) {
+        return;
       }
+      startEventListeners();
+
+      runSettingsHandler.setLastPresetId(preset.id);
       await invokeConnection(await populateRunBundles(preset.runBundles));
     }
     setConnectionRunning(!connectionRunning);
   }
 
   function onChangePreset(newPreset: Preset) {
-    const runSettingsHandler = new RunSettingsHandler();
     runSettingsHandler.setLastPresetId(newPreset.id);
-    console.log("new preset", newPreset);
     setPreset(newPreset);
   }
 
   function setComPortForRunBundle(comPort: string, runBundle: any) {
+    if (!preset) {
+      return;
+    }
     let set = preset;
     let newPreset = { ...set };
 
@@ -175,18 +222,19 @@ export const ControllerSelectComponent = () => {
     updatePresets(newPreset);
   }
 
-  function updatePresets(preset: Preset) {
-    const presetSettingsHandler = new PresetSettingsHandler();
-    presetSettingsHandler.updatePreset(preset);
-    setPreset(preset);
+  function updatePresets(presetUpdate: Preset) {
+    presetSettingsHandler.updatePreset(presetUpdate);
+    setPreset(presetUpdate);
   }
 
   function setBundleForRunBundle(bundleName: string, runBundle: any) {
+    if (!preset) {
+      return;
+    }
     let set = preset;
     let newPreset = { ...set };
     newPreset.runBundles = newPreset.runBundles.map((rb) => {
       if (bundleName === "No outputs") {
-        console.log("setting bundle to no outputs");
         if (rb.id === runBundle.id) {
           rb.bundle_name = "";
           return rb;
@@ -207,7 +255,7 @@ export const ControllerSelectComponent = () => {
 
   return (
     <>
-      {loaded && (
+      {loaded && preset && presets && (
         <div className="flex flex-col items-start">
           <div className={"flex flex-col"}>
             <div className={"flex flex-row"}>
@@ -232,11 +280,11 @@ export const ControllerSelectComponent = () => {
             <p className="ml-24">Bundle</p>
           </div>
           {preset &&
-            preset.runBundles.map((runBundle) => (
+            preset.runBundles.map((runBundle, index) => (
               <ControllerSelect
                 bundles={bundles}
                 comPorts={comPorts}
-                selectedComPort={comPort}
+                selectedComPort={preset.runBundles[index].com_port}
                 setComPort={setComPortForRunBundle}
                 setBundle={setBundleForRunBundle}
                 runBundle={runBundle}

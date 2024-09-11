@@ -20,6 +20,7 @@ pub fn toggle_run_on_sim_launch(enable: bool, exe_xml_path: String) -> ActionRes
                 <Name>Bits and Droids FlightConnector</Name>
                 <Disabled>False</Disabled>
                 <Path>{}</Path>
+                <CommandLine>sim</CommandLine>
         </Launch.Addon>",
         exe_path.to_str().unwrap()
     );
