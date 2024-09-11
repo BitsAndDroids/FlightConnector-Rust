@@ -1,11 +1,10 @@
 import { WASMEvent } from "@/model/WASMEvent";
 import { Button } from "../elements/Button";
-import { Input, InputErrorState } from "../elements/Input";
+import { Input } from "../elements/inputs/Input";
 import { Select } from "../elements/Select";
 import { useState } from "react";
 import InfoWindow from "../InfoWindow";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
-import { message } from "@tauri-apps/plugin-dialog";
 import { EventErrors } from "@/app/options/outputs/custom/CustomEvents";
 
 interface EventEditorProps {

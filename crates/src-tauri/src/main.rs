@@ -7,7 +7,7 @@ use log::error;
 use once_cell::sync::OnceCell;
 use serde_json::json;
 use serialport::SerialPortType;
-use tauri::{AppHandle, Manager, Wry};
+use tauri::{AppHandle, Emitter, Manager, Wry};
 use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_store::{with_store, Store, StoreCollection};
 use tauri_plugin_updater::UpdaterExt;
@@ -24,6 +24,8 @@ use std::ops::Deref;
 use std::path::PathBuf;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
+use std::thread::sleep;
+use std::time::Duration;
 use tauri_plugin_log::{Target, TargetKind};
 use utils::library_handler::generate_library;
 use utils::library_handler::get_library_header_content;
@@ -31,7 +33,7 @@ use utils::library_handler::get_library_outputs;
 use utils::library_handler::get_library_source_content;
 use utils::wasm_installer::{check_if_wasm_up_to_date, install_wasm};
 
-use std::thread;
+use std::{env, thread};
 
 pub use serialport::SerialPort;
 
@@ -40,9 +42,14 @@ lazy_static! {
 }
 
 static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
+static LAUNCH_ON_STARTUP: OnceCell<bool> = OnceCell::new();
 
 pub fn get_app_handle() -> Option<&'static AppHandle> {
     APP_HANDLE.get()
+}
+
+pub fn get_launch_on_startup() -> Option<&'static bool> {
+    LAUNCH_ON_STARTUP.get()
 }
 
 #[tauri::command]
@@ -89,6 +96,14 @@ async fn get_com_ports() -> Vec<String> {
         })
         .collect::<Vec<_>>();
     ports_output
+}
+
+#[tauri::command]
+async fn launch_on_startup() -> bool {
+    if let Some(launch_on_startup) = get_launch_on_startup() {
+        return *launch_on_startup;
+    }
+    false
 }
 
 #[tauri::command]
@@ -158,6 +173,16 @@ fn init_wasm_events_to_store(app: tauri::AppHandle) {
 }
 
 fn main() {
+    let exe_path = env::current_exe().expect("Failed to get executable path");
+
+    // Get the directory of the executable file
+    let exe_dir = exe_path
+        .parent()
+        .expect("Failed to get executable directory");
+
+    // Change the current directory to the directory of the executable file
+    env::set_current_dir(exe_dir).expect("Failed to change current directory");
+
     tauri::Builder::default()
         .plugin(tauri_plugin_http::init())
         .plugin(tauri_plugin_dialog::init())
@@ -189,10 +214,12 @@ fn main() {
             get_library_source_content,
             get_library_outputs,
             toggle_run_on_sim_launch,
+            launch_on_startup,
             generate_library
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
+
             tauri::async_runtime::spawn(async move {
                 let builder = app_handle.updater_builder();
                 let updater = builder.build().unwrap();
@@ -239,7 +266,16 @@ fn main() {
                 println!("Wasm is not up to date");
                 install_wasm(app.handle().clone());
             }
+
             APP_HANDLE.set(app.handle().clone()).unwrap();
+            let args: Vec<String> = std::env::args().collect();
+            if args.len() > 1 {
+                println!("ARGS FOUND");
+                println!("args: {:?}", args);
+                app.handle().emit("start_event", "").unwrap();
+                LAUNCH_ON_STARTUP.set(true).unwrap();
+            }
+
             Ok(())
         })
         .run(tauri::generate_context!())

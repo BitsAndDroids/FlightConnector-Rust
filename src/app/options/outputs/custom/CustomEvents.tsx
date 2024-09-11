@@ -1,7 +1,7 @@
 import { Button } from "@/components/elements/Button";
-import { Input, InputErrorState } from "@/components/elements/Input";
 import { Select } from "@/components/elements/Select";
 import { Header } from "@/components/elements/header";
+import { Input, InputErrorState } from "@/components/elements/inputs/Input";
 import { EventEditor } from "@/components/outputs/EventEditor";
 import { WASMEventTable } from "@/components/wasm/WASMEventTable";
 import { WASMEvent } from "@/model/WASMEvent";

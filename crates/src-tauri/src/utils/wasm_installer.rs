@@ -13,7 +13,6 @@ pub fn install_wasm(app: tauri::AppHandle) {
     let stores = app.app_handle().state::<StoreCollection<Wry>>();
     let path = PathBuf::from(".connectorSettings.dat");
     let mut community_folder_path = "".to_owned();
-    // TODO: store wasm version
     let handle_store = |store: &mut Store<Wry>| {
         if let Some(v) = store.get("communityFolderPath") {
             community_folder_path = v.as_str().unwrap().to_owned();
