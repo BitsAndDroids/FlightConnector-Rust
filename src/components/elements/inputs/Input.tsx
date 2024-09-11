@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
-import InfoWindow, { InfoWindowProps } from "../InfoWindow";
-import { Checkbox } from "./inputs/Checkbox";
-import { TextArea } from "./inputs/TextArea";
-import { Label } from "./Label";
+import { InfoWindowProps } from "../../InfoWindow";
+import { Checkbox } from "./Checkbox";
+import { TextArea } from "./TextArea";
+import { Label } from "../Label";
 
 interface InputProps {
   label?: string;
@@ -55,6 +55,7 @@ export const Input = ({
           label={label as string}
           onChange={onChange as (value: boolean) => void}
           infoWindow={infoWindow}
+          onLight={onLight}
         />
       ) : type === "textarea" ? (
         <TextArea
@@ -64,6 +65,7 @@ export const Input = ({
           placeholder={placeholder as string}
           errorState={errorState}
           required={required}
+          onLight={onLight}
           onChange={onChange as (value: string) => void}
         />
       ) : (

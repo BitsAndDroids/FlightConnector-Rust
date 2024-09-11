@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useState } from "react";
-import React from "react";
 import { open } from "@tauri-apps/plugin-dialog";
 interface InputDialogProps {
   message: string;
