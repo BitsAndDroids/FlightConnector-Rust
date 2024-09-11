@@ -1,11 +1,11 @@
 import InfoWindow from "@/components/InfoWindow";
-import { Input } from "@/components/elements/Input";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { ConnectorSettings } from "@/utils/models/ConnectorSettings";
 import { useEffect, useState } from "react";
-import { FileDialog } from "@/components/FileDialog";
 import { changeLaunchWhenSimStarts } from "./services/LaunchService";
 import { HeaderDivider } from "@/components/elements/HeaderDivider";
+import { FileDialog } from "@/components/dialogs/file/FileDialog";
+import { Input } from "@/components/elements/inputs/Input";
 
 const SettingsPage = () => {
   const [connectorSettings, setConnectorSettings] = useState<ConnectorSettings>(
