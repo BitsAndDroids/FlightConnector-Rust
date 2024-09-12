@@ -1,4 +1,4 @@
-import { FilterCard } from "@/components/card/FilterCard";
+import { PrimaryCard } from "@/components/card/PrimaryCard";
 import { Input } from "@/components/elements/inputs/Input";
 import { Select } from "@/components/elements/Select";
 import { ReactNode, useState } from "react";
@@ -20,5 +20,5 @@ export const WasmEventFilter = () => {
       />
     </div>
   );
-  return <FilterCard children={filterContent} />;
+  return <PrimaryCard children={filterContent} />;
 };

@@ -6,7 +6,7 @@ import { Select } from "../../../../components/elements/Select";
 import { Input } from "../../../../components/elements/inputs/Input";
 import { Header } from "../../../../components/elements/header";
 import { OutputSelectRows } from "./OutputSelectRows";
-import { FilterCard } from "@/components/card/FilterCard";
+import { PrimaryCard } from "@/components/card/PrimaryCard";
 
 interface BundleEditorProps {
   outputs: Output[];
@@ -59,7 +59,7 @@ const BundleEditor = ({
   return (
     <div className="m-2 relative">
       <div className="flex flex-row h-[550px] rounded-b-lg rounded-tr-lg max-h-[550px] z-40 relative p-2">
-        <FilterCard
+        <PrimaryCard
           children={
             <>
               <Header title="Filters" level={2} onLight={false} />
