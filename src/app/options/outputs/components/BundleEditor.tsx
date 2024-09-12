@@ -6,6 +6,7 @@ import { Select } from "../../../../components/elements/Select";
 import { Input } from "../../../../components/elements/inputs/Input";
 import { Header } from "../../../../components/elements/header";
 import { OutputSelectRows } from "./OutputSelectRows";
+import { FilterCard } from "@/components/card/FilterCard";
 
 interface BundleEditorProps {
   outputs: Output[];
@@ -58,36 +59,40 @@ const BundleEditor = ({
   return (
     <div className="m-2 relative">
       <div className="flex flex-row h-[550px] rounded-b-lg rounded-tr-lg max-h-[550px] z-40 relative p-2">
-        <div className="mr-4 shadow-lg box-shadow p-4 bg-gradient-to-b from-[#305d7b] to-[#596d96] bg-opacity-20 rounded-md">
-          <Header title="Filters" level={2} onLight={false} />
-          <Input
-            onLight={false}
-            label="Search"
-            placeholder="Search"
-            value={filters.query}
-            onChange={(value) =>
-              setFilters({ ...filters, query: value as string })
-            }
-          />
-          <Select
-            onLight={false}
-            label="Category"
-            options={["All", ...categories.keys()]}
-            values={["All", ...categories.keys()]}
-            onChange={(value) =>
-              setFilters({ ...filters, category: value as string })
-            }
-          />
-          <Select
-            onLight={false}
-            options={["All", "Selected", "Not selected"]}
-            values={["All", "Selected", "Not selected"]}
-            label="Selected"
-            onChange={(value) =>
-              setFilters({ ...filters, selected: value as string })
-            }
-          />
-        </div>
+        <FilterCard
+          children={
+            <>
+              <Header title="Filters" level={2} onLight={false} />
+              <Input
+                onLight={false}
+                label="Search"
+                placeholder="Search"
+                value={filters.query}
+                onChange={(value) =>
+                  setFilters({ ...filters, query: value as string })
+                }
+              />
+              <Select
+                onLight={false}
+                label="Category"
+                options={["All", ...categories.keys()]}
+                values={["All", ...categories.keys()]}
+                onChange={(value) =>
+                  setFilters({ ...filters, category: value as string })
+                }
+              />
+              <Select
+                onLight={false}
+                options={["All", "Selected", "Not selected"]}
+                values={["All", "Selected", "Not selected"]}
+                label="Selected"
+                onChange={(value) =>
+                  setFilters({ ...filters, selected: value as string })
+                }
+              />
+            </>
+          }
+        />
         <OutputSelectRows
           outputs={filteredOutputs}
           dialogOpen={dialogOpen}
