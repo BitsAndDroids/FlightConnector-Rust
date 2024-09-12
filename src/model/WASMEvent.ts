@@ -9,5 +9,5 @@ export interface WASMEvent {
   max: number;
   value: number;
   offset: number;
-  plane_or_category: string;
+  plane_or_category: string[];
 }
