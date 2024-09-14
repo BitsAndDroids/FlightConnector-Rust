@@ -654,7 +654,7 @@ public:
   String getVersion() { return "0.9.9.9"; }
   void send(int command);
   void switchHandling();
-  void getConnected() { return connected; };
+  int getConnected() { return connected; };
   void checkConnection();
   void dataHandling();
   void simpleInputHandling(int throttlePin);

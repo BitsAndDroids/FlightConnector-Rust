@@ -322,10 +322,13 @@ impl SimconnectHandler {
         let output_value = {
             let output = match self.output_registry.get_output_by_id(output_id) {
                 Some(output) => output,
-                None => {
-                    warn!(target: "output", "Output does not exist: {}", output_id);
-                    return;
-                }
+                None => match self.wasm_registry.get_wasm_output_by_id(output_id) {
+                    Some(output) => output,
+                    None => {
+                        warn!(target: "output", "Output does not exist: {}", output_id);
+                        return;
+                    }
+                },
             };
             output.value
         };
