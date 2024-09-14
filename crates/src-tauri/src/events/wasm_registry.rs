@@ -120,6 +120,12 @@ impl WASMRegistry {
         self.wasm_default_events.clone()
     }
 
+    pub fn set_wasm_output_value(&mut self, output_id: u32, value: f64) {
+        if let Some(output) = self.wasm_outputs.get_mut(&output_id) {
+            output.value = value;
+        }
+    }
+
     pub fn register_wasm_inputs_to_simconnect(&self, conn: &mut simconnect::SimConnector) {
         for wasm_input in self.wasm_inputs.values() {
             let wasm_event = WasmEvent {
