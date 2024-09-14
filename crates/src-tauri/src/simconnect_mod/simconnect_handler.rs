@@ -280,6 +280,7 @@ impl SimconnectHandler {
         );
 
         // Mutably borrow self.output_registry to set the value
+        // TODO: refactor to return result instead
         self.output_registry.set_output_value(output_id, value);
         self.wasm_registry.set_wasm_output_value(output_id, value);
 
