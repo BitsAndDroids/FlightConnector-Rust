@@ -281,6 +281,7 @@ impl SimconnectHandler {
 
         // Mutably borrow self.output_registry to set the value
         self.output_registry.set_output_value(output_id, value);
+        self.wasm_registry.set_wasm_output_value(output_id, value);
 
         // After setting the value, we only need immutable access to output_registry
         let output = match self.output_registry.get_output_by_id(output_id) {
