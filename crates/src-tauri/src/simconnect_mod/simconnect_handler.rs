@@ -280,7 +280,9 @@ impl SimconnectHandler {
         );
 
         // Mutably borrow self.output_registry to set the value
+        // TODO: refactor to return result instead
         self.output_registry.set_output_value(output_id, value);
+        self.wasm_registry.set_wasm_output_value(output_id, value);
 
         // After setting the value, we only need immutable access to output_registry
         let output = match self.output_registry.get_output_by_id(output_id) {
@@ -322,10 +324,13 @@ impl SimconnectHandler {
         let output_value = {
             let output = match self.output_registry.get_output_by_id(output_id) {
                 Some(output) => output,
-                None => {
-                    warn!(target: "output", "Output does not exist: {}", output_id);
-                    return;
-                }
+                None => match self.wasm_registry.get_wasm_output_by_id(output_id) {
+                    Some(output) => output,
+                    None => {
+                        warn!(target: "output", "Output does not exist: {}", output_id);
+                        return;
+                    }
+                },
             };
             output.value
         };
