@@ -5,12 +5,18 @@ import { ReactNode, useState } from "react";
 
 export const WasmEventFilter = () => {
   const [filter, setFilter] = useState({
+    query: "",
     categories: "All",
     type: "All",
   });
+
+  const onChangeQuery = (value: string | boolean) => {
+    setFilter({ ...filter, query: value as string });
+  };
+
   const filterContent: ReactNode = (
     <div>
-      <Input label="Filter" onLight={false} />
+      <Input label="Search" onLight={false} onChange={onChangeQuery} />
       <Select
         label="Type"
         onLight={false}
