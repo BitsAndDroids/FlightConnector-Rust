@@ -1,5 +1,5 @@
 import { WASMEvent } from "../../model/WASMEvent";
-
+import { test, expect, describe } from "vitest";
 import {
   generateCase,
   generateGetter,
@@ -38,32 +38,32 @@ const wasm_output_float: WASMEvent = {
 
 describe("library generation strings single lines", () => {
   test("should generate a c++ switch case for wasm_output_integer", () => {
-    const expected_result = `case ${wasm_output_integer.id}: \{ output${wasm_output_integer.id} = cutValue.toInt();\nbreak;\n  \} \n`;
+    const expected_result = `  case ${wasm_output_integer.id}: \{\n    output${wasm_output_integer.id} = cutValue.toInt();\n    break;\n  \} \n`;
     const result = generateCase(wasm_output_integer);
     expect(result).toBe(expected_result);
   });
   test("should generate a c++ switch case for wasm_output_float", () => {
-    const expected_result = `case ${wasm_output_float.id}: \{ output${wasm_output_float.id} = cutValue.toFloat();\nbreak;\n  \} \n`;
+    const expected_result = `  case ${wasm_output_float.id}: \{\n    output${wasm_output_float.id} = cutValue.toFloat();\n    break;\n  \} \n`;
     const result = generateCase(wasm_output_float);
     expect(result).toBe(expected_result);
   });
   test("should generate a c++ getter for wasm_output_integer", () => {
-    const expected_result = `int getOutput${wasm_output_integer.id}(){ return output${wasm_output_integer.id}; }\n`;
+    const expected_result = `  int getOutput${wasm_output_integer.id}() { return output${wasm_output_integer.id}; }\n`;
     const result = generateGetter(wasm_output_integer);
     expect(result).toBe(expected_result);
   });
   test("should generate a c++ getter for wasm_output_float", () => {
-    const expected_result = `float getOutput${wasm_output_float.id}(){ return output${wasm_output_float.id}; }\n`;
+    const expected_result = `  float getOutput${wasm_output_float.id}() { return output${wasm_output_float.id}; }\n`;
     const result = generateGetter(wasm_output_float);
     expect(result).toBe(expected_result);
   });
   test("should generate a c++ variable for wasm_output_integer", () => {
-    const expected_result = `int output${wasm_output_integer.id};\n`;
+    const expected_result = `  int output${wasm_output_integer.id};\n`;
     const result = generateVariable(wasm_output_integer);
     expect(result).toBe(expected_result);
   });
   test("should generate a c++ variable for wasm_output_float", () => {
-    const expected_result = `float output${wasm_output_float.id};\n`;
+    const expected_result = `  float output${wasm_output_float.id};\n`;
     const result = generateVariable(wasm_output_float);
     expect(result).toBe(expected_result);
   });
