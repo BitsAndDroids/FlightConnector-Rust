@@ -14,8 +14,8 @@ const saveSettings = async (
 ) => {
   if (!initialized) return;
   await connectorSettingsHandler.setConnectorSettings(connectorSettings);
-  console.log("saved settings", connectorSettings);
 };
+
 const SettingsPage = () => {
   const [connectorSettings, setConnectorSettings] = useState<ConnectorSettings>(
     {
