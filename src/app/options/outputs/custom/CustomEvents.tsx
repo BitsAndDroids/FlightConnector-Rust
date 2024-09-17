@@ -66,6 +66,7 @@ export const CustomEvents = () => {
 
   useEffect(() => {
     sortEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortSettings, events]);
 
   const sortEvents = () => {

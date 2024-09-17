@@ -1,8 +1,8 @@
 import { Output } from "./Output";
 
 export interface Category {
-  name: string,
+  name: string;
   //outputs: Vec<Output>,
-  outputs: Output[],
-  collapsed?: boolean,
+  outputs: Output[];
+  collapsed?: boolean;
 }
