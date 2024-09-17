@@ -1,4 +1,3 @@
-"use client";
 import InputDialog from "@/components/InputDialog";
 import BundleEditControls from "@/components/bundle/BundleEditControls";
 import BundleEditWidget from "@/components/bundle/BundleEditWidget";
@@ -8,9 +7,18 @@ import { Bundle } from "@/model/Bundle";
 import { Output } from "@/model/Output";
 import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { invoke } from "@tauri-apps/api/core";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BundleEditor from "./components/BundleEditor";
 
+async function getOutputs() {
+  return invoke("get_outputs").then((r) => {
+    return r as Output[];
+  });
+}
+
+async function getBundles(bundleSettingsHandler: BundleSettingsHandler) {
+  return (await bundleSettingsHandler.getBundleSettings()) as Bundle[];
+}
 const OutputsPage = () => {
   const [editBundle, setEditBundle] = useState<Bundle | undefined>(undefined); // [1
   const [editMode, setEditMode] = useState<boolean>(false);
@@ -19,12 +27,12 @@ const OutputsPage = () => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [selectedBundle, setSelectedBundle] = useState<Bundle | undefined>();
 
-  const bundleSettingsHandler = new BundleSettingsHandler();
+  const bundleSettingsHandler = useRef(new BundleSettingsHandler());
   useEffect(() => {
     getOutputs().then((outputs) => {
       setOutputs(outputs);
     });
-    getBundles().then((bundles) => {
+    getBundles(bundleSettingsHandler.current).then((bundles) => {
       setBundles(bundles);
     });
   }, []);
@@ -44,7 +52,7 @@ const OutputsPage = () => {
       ),
     );
     setSelectedBundle(updatedBundle);
-    bundleSettingsHandler.updateBundleSettings(updatedBundle);
+    bundleSettingsHandler.current.updateBundleSettings(updatedBundle);
   }
 
   function toggleOutput(output: Output) {
@@ -61,16 +69,6 @@ const OutputsPage = () => {
     return outputsToSearch;
   }
 
-  async function getOutputs() {
-    return invoke("get_outputs").then((r) => {
-      return r as Output[];
-    });
-  }
-
-  async function getBundles() {
-    return (await bundleSettingsHandler.getBundleSettings()) as Bundle[];
-  }
-
   function dialogResult(input: string | undefined) {
     if (input !== undefined) {
       const bundle: Bundle = {
@@ -78,7 +76,7 @@ const OutputsPage = () => {
         version: 1,
         outputs: [],
       };
-      bundleSettingsHandler.addBundleSettings(bundle);
+      bundleSettingsHandler.current.addBundleSettings(bundle);
       setBundles([...bundles, bundle]);
     }
     setDialogOpen(false);
@@ -113,7 +111,7 @@ const OutputsPage = () => {
   function deleteBundle(bundle: Bundle) {
     setBundles(bundles.filter((b) => b.name !== bundle.name));
     if (selectedBundle?.name === bundle.name) setSelectedBundle(undefined);
-    bundleSettingsHandler.deleteBundleSettings(bundle);
+    bundleSettingsHandler.current.deleteBundleSettings(bundle);
   }
 
   return (
