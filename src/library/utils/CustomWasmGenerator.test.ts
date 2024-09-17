@@ -55,6 +55,7 @@ describe("library generation strings single lines", () => {
   test("should generate a c++ getter for wasm_output_float", () => {
     const expected_result = `  float getOutput${wasm_output_float.id}() { return output${wasm_output_float.id}; }\n`;
     const result = generateGetter(wasm_output_float);
+    //test
     expect(result).toBe(expected_result);
   });
   test("should generate a c++ variable for wasm_output_integer", () => {
