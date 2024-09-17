@@ -20,7 +20,7 @@ export const FileDialog = (props: InputDialogProps) => {
     if (props.value) {
       setSelectedDirectory(props.value);
     }
-  }, []);
+  }, [props.value]);
 
   function validateInput(input: string) {
     if (!input || input.length === 0) {

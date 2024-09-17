@@ -36,7 +36,7 @@ export const UpdateWindow = (props: UpdateWindowProps) => {
         },
       );
       const data = await response.json();
-      updates = data;
+      const updates = data;
       setUpdates(updates);
       setLoading(false);
     };
