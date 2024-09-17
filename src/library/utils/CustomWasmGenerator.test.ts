@@ -38,12 +38,12 @@ const wasm_output_float: WASMEvent = {
 
 describe("library generation strings single lines", () => {
   test("should generate a c++ switch case for wasm_output_integer", () => {
-    const expected_result = `  case ${wasm_output_integer.id}: \{\n    output${wasm_output_integer.id} = cutValue.toInt();\n    break;\n  \} \n`;
+    const expected_result = `  case ${wasm_output_integer.id}: {\n    output${wasm_output_integer.id} = cutValue.toInt();\n    break;\n  } \n`;
     const result = generateCase(wasm_output_integer);
     expect(result).toBe(expected_result);
   });
   test("should generate a c++ switch case for wasm_output_float", () => {
-    const expected_result = `  case ${wasm_output_float.id}: \{\n    output${wasm_output_float.id} = cutValue.toFloat();\n    break;\n  \} \n`;
+    const expected_result = `  case ${wasm_output_float.id}: {\n    output${wasm_output_float.id} = cutValue.toFloat();\n    break;\n  } \n`;
     const result = generateCase(wasm_output_float);
     expect(result).toBe(expected_result);
   });

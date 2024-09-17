@@ -91,7 +91,7 @@ export const UpdateWindow = (props: UpdateWindowProps) => {
                   <p className="text-sm mb-4">
                     {new Date(update.published).toLocaleDateString()}
                   </p>
-                  <Markdown children={update.body} components={renderers} />
+                  <Markdown components={renderers}>{update.body}</Markdown>
                 </div>
               );
             })}

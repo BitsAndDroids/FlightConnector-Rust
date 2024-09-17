@@ -7,6 +7,7 @@ ConnectorSettingsHandler.prototype.getLatestPatchNotesRead = async () =>
   "1.0.0";
 
 // Mock fetch
+// eslint-disable-next-line no-undef
 global.fetch = async () =>
   ({
     json: async () => ({ tag: "1.0.1" }),

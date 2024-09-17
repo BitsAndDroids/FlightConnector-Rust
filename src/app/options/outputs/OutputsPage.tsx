@@ -27,7 +27,7 @@ const OutputsPage = () => {
     getBundles().then((bundles) => {
       setBundles(bundles);
     });
-  }, []);
+  });
 
   function saveBundle() {
     setEditMode(false);
