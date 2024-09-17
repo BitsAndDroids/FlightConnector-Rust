@@ -4,7 +4,11 @@ interface BundleEditControlsProps {
 
 const BundleEditControls = ({ saveBundle }: BundleEditControlsProps) => {
   return (
-    <div className="bg-white mt-1 rounded-md p-1" onClick={() => saveBundle()}>
+    <div
+      data-testid="btn-save-bundle"
+      className="bg-white mt-1 rounded-md p-1"
+      onClick={() => saveBundle()}
+    >
       <img src={"/save.svg"} alt="edit" className="h-[22px]" />
     </div>
   );

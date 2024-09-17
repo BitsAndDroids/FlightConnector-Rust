@@ -19,7 +19,7 @@ async function getOutputs() {
 async function getBundles(bundleSettingsHandler: BundleSettingsHandler) {
   return (await bundleSettingsHandler.getBundleSettings()) as Bundle[];
 }
-const OutputsPage = () => {
+const OutputsPage: React.FC = () => {
   const [editBundle, setEditBundle] = useState<Bundle | undefined>(undefined); // [1
   const [editMode, setEditMode] = useState<boolean>(false);
   const [outputs, setOutputs] = useState<Output[]>([]);
