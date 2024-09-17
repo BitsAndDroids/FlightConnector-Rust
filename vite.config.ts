@@ -5,7 +5,10 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
   plugins: [react()],
-
+  test: {
+    environment: "jsdom",
+    setupFiles: "./src/tests/setup.tsx",
+  },
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   resolve: {
     alias: {
