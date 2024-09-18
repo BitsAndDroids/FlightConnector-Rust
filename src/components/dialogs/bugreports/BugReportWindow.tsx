@@ -118,8 +118,8 @@ export const BugReportWindow = (props: BugReportWindowProps) => {
           onChange={(value) => onChangeDiscordUsername(value as string)}
         />
         <p className="text-sm text-gray-500">
-          By submitting a report you'll automatically sumbmit the application
-          data for further analysis.
+          By submitting a report you&lsquo;ll automatically sumbmit the
+          application data for further analysis.
         </p>
 
         <div className="flex flex-row mt-2">

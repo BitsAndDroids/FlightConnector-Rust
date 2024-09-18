@@ -135,11 +135,11 @@ const mapOutputType = (type: string): string => {
 };
 
 const generateCase = (variable: WASMEvent): string => {
-  return `  case ${variable.id}: \{\n    output${variable.id} = cutValue${mapOutputTypeParser(variable.output_format)};\n    break;\n  \} \n`;
+  return `  case ${variable.id}: {\n    output${variable.id} = cutValue${mapOutputTypeParser(variable.output_format)};\n    break;\n  } \n`;
 };
 
 const generateGetter = (variable: WASMEvent): string => {
-  return `  ${mapOutputType(variable.output_format)} getOutput${variable.id}() \{ return output${variable.id}; \}\n`;
+  return `  ${mapOutputType(variable.output_format)} getOutput${variable.id}() { return output${variable.id}; }\n`;
 };
 
 const generateVariable = (variable: WASMEvent): string => {

@@ -12,7 +12,9 @@ interface ControllerSelectProps {
   runBundle: RunBundle;
 }
 
-export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
+export const ControllerSelect: React.FC<ControllerSelectProps> = (
+  props: ControllerSelectProps,
+) => {
   return (
     <Suspense>
       {" "}

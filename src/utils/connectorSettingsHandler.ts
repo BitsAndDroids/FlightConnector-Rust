@@ -1,4 +1,3 @@
-import { RunBundle } from "@/model/RunBundle";
 import { Store } from "@tauri-apps/plugin-store";
 import { ConnectorSettings } from "./models/ConnectorSettings";
 export class ConnectorSettingsHandler {
