@@ -81,6 +81,7 @@ impl From<WasmEvent> for Output {
             output_type,
             category: "WASM".to_string(),
             value: 0.0,
+            custom: true,
         }
     }
 }
