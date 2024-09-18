@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use connector_types::types::{category::Category, output::Output};
+use connector_types::types::{category::Category, output::Output, wasm_event::WasmEvent};
 use file_parsers::parsers::output_parser;
 
 #[derive(Clone, Debug)]
@@ -26,6 +26,11 @@ impl OutputRegistry {
         }
     }
 
+    pub fn add_wasm_outputs(&mut self, outputs: &HashMap<u32, WasmEvent>) {
+        for (id, wasm_output) in outputs {
+            self.outputs.insert(*id, wasm_output.clone().into());
+        }
+    }
     pub fn get_output_by_id(&mut self, output_id: u32) -> Option<&Output> {
         self.outputs.get(&output_id)
     }
