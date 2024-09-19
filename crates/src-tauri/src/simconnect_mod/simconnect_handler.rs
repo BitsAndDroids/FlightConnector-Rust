@@ -26,6 +26,7 @@ use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
+use super::simconnect_definitions::add_outputs_to_simconnect_definition;
 use super::wasm;
 use super::wasm::send_wasm_command;
 
@@ -468,6 +469,12 @@ impl SimconnectHandler {
         let wasm_outputs = self.wasm_registry.get_wasm_outputs();
         self.output_registry.add_wasm_outputs(wasm_outputs);
         wasm::register_wasm_data(&mut self.simconnect);
+        add_outputs_to_simconnect_definition(
+            self.simconnect,
+            &self.output_registry,
+            &self.wasm_registry,
+            &self.run_bundles,
+        );
         self.define_outputs();
         self.define_inputs();
     }
@@ -511,75 +518,5 @@ impl SimconnectHandler {
 
         self.wasm_registry
             .register_wasm_inputs_to_simconnect(&mut self.simconnect);
-    }
-
-    pub fn define_outputs(&mut self) {
-        let run_bundles = &self.run_bundles;
-        let mut outputs_not_found = vec![];
-        //we need this event to set the throttle min value
-        self.simconnect.add_data_definition(
-            RequestModes::FLOAT,
-            "THROTTLE LOWER LIMIT",
-            "Percentage",
-            simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-            655,
-            0.0,
-        );
-
-        self.simconnect
-            .add_to_client_data_definition(106, 0, 4096, 0.0, 0);
-        send_wasm_command(&mut self.simconnect, "clear");
-        for run_bundle in run_bundles {
-            for output in &run_bundle.bundle.outputs {
-                match self.output_registry.get_output_by_id(output.id) {
-                    Some(latest_output) => {
-                        println!("Output found: {:?} {}", output.id, output.simvar);
-                        if latest_output.custom {
-                            let wasm_event =
-                                match self.wasm_registry.get_wasm_event_by_id(output.id) {
-                                    Some(wasm_event) => wasm_event.clone(),
-                                    None => {
-                                        warn!("Wasm output not found: {:?}", output);
-                                        return;
-                                    }
-                                };
-
-                            self.simconnect.add_to_client_data_definition(
-                                wasm_event.id,
-                                wasm_event.offset,
-                                std::mem::size_of::<f64>() as u32,
-                                wasm_event.update_every,
-                                0,
-                            );
-                            register_wasm_event(&mut self.simconnect, wasm_event.clone());
-                            self.simconnect.request_client_data(
-                2,
-                wasm_event.id,
-                wasm_event.id,
-                simconnect::SIMCONNECT_CLIENT_DATA_PERIOD_SIMCONNECT_CLIENT_DATA_PERIOD_ON_SET,
-                simconnect::SIMCONNECT_CLIENT_DATA_REQUEST_FLAG_CHANGED,
-                0,
-                0,
-                0,
-            );
-                        }
-                        if !latest_output.custom {
-                            self.simconnect.add_data_definition(
-                                RequestModes::FLOAT,
-                                &latest_output.simvar,
-                                &latest_output.metric,
-                                simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
-                                latest_output.id,
-                                latest_output.update_every,
-                            );
-                        }
-                    }
-                    None => {
-                        outputs_not_found.push(output);
-                        println!("Output not found: {:?}", output);
-                    }
-                }
-            }
-        }
     }
 }
