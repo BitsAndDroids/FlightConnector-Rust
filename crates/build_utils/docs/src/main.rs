@@ -1,6 +1,7 @@
 use connector_types::types::output::Output;
 use connector_types::types::{input::Input, library_function::LibraryFunction};
-use file_parsers::parsers::{input_parser, output_parser};
+use file_parsers::parsers::library_function_parser::get_outgoing_functions_from_file;
+use file_parsers::parsers::{input_parser, library_function_parser, output_parser};
 use std::{env, path::PathBuf};
 
 struct LibraryEvents {
@@ -133,6 +134,9 @@ fn generate_library_list() {
         .expect("Failed to get great-grandparent directory")
         .join("crates/src-tauri/connector_library/BitsAndDroidsFlightConnector.h");
     let normalized_path = normalize_path(&target_dir);
+    let converted_path = normalized_path.to_str().unwrap();
+    let functions: Vec<LibraryFunction> = get_outgoing_functions_from_file(converted_path);
+    generate_md_list(functions);
 }
 
 fn generate_input_list() {
