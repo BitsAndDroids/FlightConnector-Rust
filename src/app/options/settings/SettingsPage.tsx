@@ -114,7 +114,6 @@ const SettingsPage = () => {
   ) => {
     setCommunityFolderVisible(false);
     if (!folderPath) {
-      console.log("no folder path");
       return;
     }
     await connectorSettingsHandler.current.setCommunityFolderPath(folderPath);
