@@ -1,7 +1,12 @@
-use connector_types::types::input::Input;
 use connector_types::types::output::Output;
+use connector_types::types::{input::Input, library_function::LibraryFunction};
 use file_parsers::parsers::{input_parser, output_parser};
 use std::{env, path::PathBuf};
+
+struct LibraryEvents {
+    name: String,
+    id: u16,
+}
 
 trait EventMD {
     fn to_md_row(&self) -> String;
@@ -9,13 +14,41 @@ trait EventMD {
     fn md_file_path() -> String;
 }
 
+impl EventMD for LibraryFunction {
+    fn to_md_row(&self) -> String {
+        format!(
+            "| {} | {} | {} | {} |\n",
+            self.name,
+            self.direction,
+            self.return_type,
+            self.parameters.join(", ")
+        )
+    }
+
+    fn md_header() -> String {
+        "# Library Functions\n| Name | Direction | Return Type | Parameters |\n| --- | --- | --- | --- |\n".to_string()
+    }
+
+    fn md_file_path() -> String {
+        let current_dir = env::current_dir().expect("Failed to get current directory");
+        let target_dir = current_dir
+            .parent()
+            .expect("Failed to get parent directory")
+            .parent()
+            .expect("Failed to get grandparent directory")
+            .parent()
+            .expect("Failed to get great-grandparent directory")
+            .join("connector-docs/src/generated/library_list.md");
+        return target_dir.to_str().unwrap().to_string();
+    }
+}
+
 impl EventMD for Input {
     fn to_md_row(&self) -> String {
-        let row = format!(
+        format!(
             "| {} | {} | {} |\n",
             self.event, self.input_type, self.input_id
-        );
-        row
+        )
     }
     fn md_header() -> String {
         let mut md = String::new();
@@ -77,6 +110,7 @@ impl EventMD for Output {
 fn main() {
     generate_input_list();
     generate_output_list();
+    generate_library_list();
 }
 fn normalize_path(path: &PathBuf) -> PathBuf {
     // Convert backslashes to forward slashes for cross-platform compatibility
@@ -85,6 +119,20 @@ fn normalize_path(path: &PathBuf) -> PathBuf {
         normalized.push(component.as_os_str());
     }
     normalized.to_path_buf()
+}
+
+fn generate_library_list() {
+    //
+    let current_dir = env::current_dir().expect("Failed to get current directory");
+    let target_dir = current_dir
+        .parent()
+        .expect("Failed to get parent directory")
+        .parent()
+        .expect("Failed to get grandparent directory")
+        .parent()
+        .expect("Failed to get great-grandparent directory")
+        .join("crates/src-tauri/connector_library/BitsAndDroidsFlightConnector.h");
+    let normalized_path = normalize_path(&target_dir);
 }
 
 fn generate_input_list() {
