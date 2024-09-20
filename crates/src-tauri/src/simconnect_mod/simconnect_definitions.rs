@@ -1,16 +1,31 @@
-use connector_types::types::{output::Output, run_bundle::RunBundle};
+use connector_types::types::run_bundle::RunBundle;
 use log::warn;
+use simconnect::DWORD;
+
+#[cfg(test)]
+#[path = "simconnect_definition_tests.rs"]
+mod simconnect_definition_tests;
 
 use crate::{
     events::{self, output_registry},
     simconnect_mod::wasm::register_wasm_event,
 };
 
-use super::wasm::send_wasm_command;
+use super::{simconnector::SimConnectorTrait, wasm::send_wasm_command};
+
+struct RequestModes {
+    _float: DWORD,
+    _string: DWORD,
+}
+
+impl RequestModes {
+    const FLOAT: DWORD = 0;
+    const STRING: DWORD = 1;
+}
 
 pub fn add_outputs_to_simconnect_definition(
-    conn: &simconnect::SimConnector,
-    output_registry: &output_registry::OutputRegistry,
+    conn: &mut dyn SimConnectorTrait,
+    output_registry: &mut output_registry::OutputRegistry,
     wasm_registry: &events::wasm_registry::WASMRegistry,
     run_bundles: &Vec<RunBundle>,
 ) {
@@ -25,13 +40,12 @@ pub fn add_outputs_to_simconnect_definition(
 
     conn.add_to_client_data_definition(106, 0, 4096, 0.0, 0);
 
-    send_wasm_command(&mut conn, "clear");
+    send_wasm_command(conn, "clear");
 
     for run_bundle in run_bundles {
         for output in &run_bundle.bundle.outputs {
             match output_registry.get_output_by_id(output.id) {
                 Some(latest_output) => {
-                    println!("Output found: {:?} {}", output.id, output.simvar);
                     if latest_output.custom {
                         let wasm_event = match wasm_registry.get_wasm_event_by_id(output.id) {
                             Some(wasm_event) => wasm_event.clone(),
@@ -48,7 +62,7 @@ pub fn add_outputs_to_simconnect_definition(
                             wasm_event.update_every,
                             0,
                         );
-                        register_wasm_event(&mut conn, wasm_event.clone());
+                        register_wasm_event(conn, wasm_event.clone());
                         conn.request_client_data(
                 2,
                 wasm_event.id,

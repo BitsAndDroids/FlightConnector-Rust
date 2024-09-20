@@ -34,6 +34,10 @@ impl WASMRegistry {
         println!("Default event count: {}", self.wasm_default_events.len());
     }
 
+    pub fn set_wasm_outputs(&mut self, wasm_outputs: HashMap<u32, WasmEvent>) {
+        self.wasm_outputs = wasm_outputs;
+    }
+
     pub fn update_defauts_to_store(&mut self, app: tauri::AppHandle) {
         let stores = app.app_handle().state::<StoreCollection<Wry>>();
         let path = PathBuf::from(".events.dat");

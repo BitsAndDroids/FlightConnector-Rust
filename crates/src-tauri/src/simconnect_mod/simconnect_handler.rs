@@ -22,13 +22,11 @@ use crate::serial::serial::Serial;
 use crate::serial::serial::SerialDevice;
 use crate::settings::connector_settings::load_connector_settings;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
-use crate::simconnect_mod::wasm::register_wasm_event;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
 use super::simconnect_definitions::add_outputs_to_simconnect_definition;
 use super::wasm;
-use super::wasm::send_wasm_command;
 
 const MAX_RETURNED_ITEMS: usize = 255;
 
@@ -470,12 +468,11 @@ impl SimconnectHandler {
         self.output_registry.add_wasm_outputs(wasm_outputs);
         wasm::register_wasm_data(&mut self.simconnect);
         add_outputs_to_simconnect_definition(
-            self.simconnect,
-            &self.output_registry,
+            &mut self.simconnect,
+            &mut self.output_registry,
             &self.wasm_registry,
             &self.run_bundles,
         );
-        self.define_outputs();
         self.define_inputs();
     }
 

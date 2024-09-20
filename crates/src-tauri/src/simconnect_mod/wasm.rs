@@ -5,6 +5,8 @@ use simconnect::{
     SIMCONNECT_UNUSED,
 };
 
+use super::simconnector::SimConnectorTrait;
+
 const WASM_DATA_ID: SIMCONNECT_CLIENT_DATA_ID = 1;
 const WASM_DEFINITION_ID: u32 = 101;
 const DATASIZE: DWORD = 256;
@@ -70,7 +72,7 @@ fn create_wasm_client(
     }
 }
 
-pub fn register_wasm_event(conn: &mut simconnect::SimConnector, event: WasmEvent) {
+pub fn register_wasm_event(conn: &mut dyn SimConnectorTrait, event: WasmEvent) {
     let event_json = serde_json::to_string(&event).unwrap();
     send_wasm_command(conn, event_json.as_str());
 }
@@ -98,7 +100,7 @@ pub fn send_wasm_data(conn: &mut simconnect::SimConnector, id: u32) {
         );
     }
 }
-pub fn send_wasm_command(conn: &mut simconnect::SimConnector, command: &str) {
+pub fn send_wasm_command(conn: &mut dyn SimConnectorTrait, command: &str) {
     unsafe {
         let mut data_to_send_array: [u8; 4096] = [0; 4096];
         let bytes = command.as_bytes();
