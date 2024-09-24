@@ -8,6 +8,7 @@ declare global {
   interface Window {
     __TAURI_INTERNALS__: {
       invoke: (command: string, args?: any) => Promise<any>;
+      transformCallback: (callback: Function) => Function;
     };
   }
 }
@@ -24,6 +25,7 @@ beforeAll(() => {
   });
   global.window.__TAURI_INTERNALS__ = {
     invoke: vi.fn().mockResolvedValue([]),
+    transformCallback: vi.fn().mockResolvedValue([]),
   };
 });
 
