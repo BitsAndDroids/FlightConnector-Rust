@@ -5,6 +5,7 @@ pub mod types {
     pub mod category;
     pub mod connector_settings;
     pub mod input;
+    pub mod library_function;
     pub mod output;
     pub mod output_format;
     pub mod run_bundle;

@@ -15,6 +15,8 @@ pub struct Output {
     pub category: String,
     #[serde(default = "default_value")]
     pub value: f64,
+    #[serde(default)]
+    pub custom: bool,
 }
 
 fn default_value() -> f64 {

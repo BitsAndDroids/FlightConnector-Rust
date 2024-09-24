@@ -14,6 +14,7 @@ fn test_parse_output_percentages() {
         category: "percentage".to_string(),
         output_type: connector_types::types::output::OutputType::Percentage,
         value: 0.0,
+        custom: false,
     };
 
     let val = 0.5;
@@ -32,6 +33,7 @@ fn test_seconds_after_midnight_to_hours() {
         category: "seconds_after_midnight".to_string(),
         output_type: connector_types::types::output::OutputType::Secondsaftermidnight,
         value: 0.0,
+        custom: false,
     };
 
     let val = 3600.0;
@@ -50,6 +52,7 @@ fn test_radians_to_degrees() {
         category: "degrees".to_string(),
         output_type: connector_types::types::output::OutputType::Degrees,
         value: 0.0,
+        custom: false,
     };
 
     let val = std::f64::consts::PI;
@@ -68,6 +71,7 @@ fn test_val_to_inhg() {
         category: "inhg".to_string(),
         output_type: connector_types::types::output::OutputType::INHG,
         value: 0.0,
+        custom: false,
     };
 
     let val = 29.92;
@@ -86,6 +90,7 @@ fn test_val_to_adf() {
         category: "adf".to_string(),
         value: 0.0,
         output_type: connector_types::types::output::OutputType::ADF,
+        custom: false,
     };
 
     let val = 113000.0;
@@ -104,6 +109,7 @@ fn test_mps_to_kmh() {
         category: "mps".to_string(),
         output_type: connector_types::types::output::OutputType::Meterspersecond,
         value: 0.0,
+        custom: false,
     };
 
     let val = 1.0;
@@ -122,6 +128,7 @@ fn test_val_to_bool() {
         category: "bool".to_string(),
         value: 0.0,
         output_type: connector_types::types::output::OutputType::Boolean,
+        custom: false,
     };
     let val = 0.5;
     let result = output_formatter::parse_output_based_on_type(val, &bool_output);
@@ -142,6 +149,7 @@ fn test_val_to_integer() {
         category: "int".to_string(),
         output_type: connector_types::types::output::OutputType::Integer,
         value: 0.0,
+        custom: false,
     };
 
     let val = 1.0;
@@ -160,6 +168,7 @@ fn test_val_to_seconds() {
         category: "seconds".to_string(),
         output_type: connector_types::types::output::OutputType::Seconds,
         value: 0.0,
+        custom: false,
     };
 
     let val = 1.0;
