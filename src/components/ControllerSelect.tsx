@@ -18,7 +18,10 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (
   return (
     <Suspense>
       {" "}
-      <div className="flex flex-row items-center relative">
+      <div
+        className="flex flex-row items-center relative"
+        data-testid="controller_select"
+      >
         {props?.runBundle?.connected && (
           <div>
             <div className="rounded-lg w-4 h-4 min-w-4 min-h-4 bg-green-400 mr-1 absolute -left-4 top-5" />
@@ -39,7 +42,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (
             props?.setComPort(e.currentTarget.value, props.runBundle);
           }}
         >
-          {props.comPorts.map((port) => (
+          {props?.comPorts?.map((port) => (
             <option className={"text-gray-700"} key={port} value={port}>
               {port}
             </option>
@@ -61,7 +64,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (
           >
             No outputs
           </option>
-          {props.bundles.length > 0 &&
+          {props?.bundles?.length > 0 &&
             props.bundles.map((bundle) => (
               <option
                 className={"text-gray-700"}
