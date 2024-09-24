@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
@@ -263,9 +263,10 @@ export const ControllerSelectComponent = () => {
   }
 
   return (
-    <>
-      {(loaded && preset && presets) ||
-        (process.env.NODE_ENV !== "production" && (
+    <Suspense>
+      <>
+        {((loaded && preset && presets) ||
+          process.env.NODE_ENV !== "production") && (
           <div className="flex flex-col items-start">
             <div className={"flex flex-col"}>
               <div className={"flex flex-row"}>
@@ -301,21 +302,24 @@ export const ControllerSelectComponent = () => {
                 key={Math.random()}
               />
             ) : (
-              preset?.runBundles.map((runBundle, index) => (
-                <ControllerSelect
-                  bundles={bundles}
-                  comPorts={comPorts}
-                  selectedComPort={preset.runBundles[index].com_port}
-                  setComPort={setComPortForRunBundle}
-                  setBundle={setBundleForRunBundle}
-                  runBundle={runBundle}
-                  removeRow={deleteRow}
-                  key={Math.random()}
-                />
-              ))
+              <>
+                {preset?.runBundles.map((runBundle) => (
+                  <ControllerSelect
+                    bundles={bundles}
+                    comPorts={comPorts}
+                    selectedComPort={runBundle.com_port}
+                    setComPort={setComPortForRunBundle}
+                    setBundle={setBundleForRunBundle}
+                    runBundle={runBundle}
+                    removeRow={deleteRow}
+                    key={Math.random()}
+                  />
+                ))}
+              </>
             )}
           </div>
-        ))}
-    </>
+        )}
+      </>
+    </Suspense>
   );
 };
