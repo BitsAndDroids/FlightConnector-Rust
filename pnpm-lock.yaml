@@ -110,7 +110,7 @@ importers:
         version: 4.3.1(vite@5.4.3(@types/node@20.16.5))
       '@vitest/coverage-v8':
         specifier: ^2.1.1
-        version: 2.1.1(vitest@2.1.1(@types/node@20.16.5))
+        version: 2.1.1(vitest@2.1.1(@types/node@20.16.5)(jsdom@25.0.0))
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.20(postcss@8.4.45)
@@ -7248,7 +7248,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@20.16.5))':
+  '@vitest/coverage-v8@2.1.1(vitest@2.1.1(@types/node@20.16.5)(jsdom@25.0.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -7262,7 +7262,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.1(@types/node@20.16.5)
+      vitest: 2.1.1(@types/node@20.16.5)(jsdom@25.0.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -8741,13 +8741,12 @@ snapshots:
   hast-util-whitespace@3.0.0:
     dependencies:
       '@types/hast': 3.0.4
+
   html-encoding-sniffer@4.0.0:
     dependencies:
       whatwg-encoding: 3.1.1
 
-  html-escaper@2.0.2:
-    optional: true
-
+  html-escaper@2.0.2: {}
 
   html-tags@3.3.1: {}
 
