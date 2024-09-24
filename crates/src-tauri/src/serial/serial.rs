@@ -53,7 +53,7 @@ impl Serial for SerialDevice {
 
         match serialport::new(com_port.clone(), 115200)
             .flow_control(flow_control)
-            .timeout(Duration::from_millis(10))
+            .timeout(Duration::from_millis(100))
             .open()
         {
             Ok(mut port) => {
