@@ -12,9 +12,7 @@ export const changeLaunchWhenSimStarts = async (value: boolean) => {
     "\\Packages\\Community",
     "",
   );
-  console.log("localCachePath", localCachePath);
   const exeXMLPath = `${localCachePath}\\exe.xml`;
-  console.log("exeXMLPath", exeXMLPath);
   value
     ? enableLaunchWhenSimStarts(exeXMLPath)
     : disableLaunchWhenSimStarts(exeXMLPath);

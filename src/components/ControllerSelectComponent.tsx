@@ -112,7 +112,7 @@ export const ControllerSelectComponent = () => {
     const lastPreset = await getActivePreset();
     if (lastPreset) {
       let newPreset = { ...lastPreset };
-      newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
+      newPreset.runBundles = newPreset?.runBundles?.map((runBundle) => {
         if (!runBundle.com_port) {
           runBundle.com_port = comPorts[0];
         }
@@ -222,7 +222,7 @@ export const ControllerSelectComponent = () => {
     let set = preset;
     let newPreset = { ...set };
 
-    newPreset.runBundles = newPreset.runBundles.map((bundle) => {
+    newPreset.runBundles = newPreset?.runBundles?.map((bundle) => {
       if (bundle.id === runBundle.id) {
         bundle.com_port = comPort;
       }
@@ -242,7 +242,7 @@ export const ControllerSelectComponent = () => {
     }
     let set = preset;
     let newPreset = { ...set };
-    newPreset.runBundles = newPreset.runBundles.map((rb) => {
+    newPreset.runBundles = newPreset?.runBundles?.map((rb) => {
       if (bundleName === "No outputs") {
         if (rb.id === runBundle.id) {
           rb.bundle_name = "";
@@ -292,6 +292,7 @@ export const ControllerSelectComponent = () => {
             </div>
             {!preset ? (
               <ControllerSelect
+                data-testid="controller_select"
                 bundles={[]}
                 comPorts={[]}
                 selectedComPort=""
@@ -305,6 +306,7 @@ export const ControllerSelectComponent = () => {
               <>
                 {preset?.runBundles.map((runBundle) => (
                   <ControllerSelect
+                    data-testid="controller_select"
                     bundles={bundles}
                     comPorts={comPorts}
                     selectedComPort={runBundle.com_port}

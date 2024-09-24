@@ -16,6 +16,7 @@ export const OutputSelectRow = ({
     <div key={output.id} className="flex flex-row items-center">
       <input
         type="checkbox"
+        name="checked"
         className="text-green-600 focus:ring-green-500 rounded-md mr-2 h-6 w-6 -mt-1 accent-green-600"
         onChange={() => {
           toggleOutput(output);
