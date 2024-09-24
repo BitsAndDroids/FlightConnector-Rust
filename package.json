@@ -36,6 +36,8 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@testing-library/user-event": "14.5.2",
+    "msw": "2.4.9",
     "@chromatic-com/storybook": "^1.8.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/react": "16.0.1",
