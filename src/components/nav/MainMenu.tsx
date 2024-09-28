@@ -148,6 +148,7 @@ export const MainMenu: React.FC = () => {
         className={
           "w-screen h-fit min-h-screen min-w-[102%] flex flex-col bg-bitsanddroids-blue overflow-x-hidden overflow-hidden"
         }
+        data-testid="main_menu"
       >
         <div className=" bg-bitsanddroids-blue w-screen mt-7 flex flex-row align-middle justify-start h-fit">
           <nav

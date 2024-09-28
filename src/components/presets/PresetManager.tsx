@@ -29,7 +29,7 @@ export const PresetManager = (props: PresetManagerProps) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-testid="preset_manager_component">
       <Header level={1} title="Presets" />
       <div className="flex flex-row mt-4">
         <PresetList
