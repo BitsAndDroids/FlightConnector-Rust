@@ -7,14 +7,14 @@
 
 # testing
 /coverage
-
+ 
 # next.js
 /.next/
 /out/
 dist
 # production
 /build
-target/ 
+**/target/ 
 crates/file_parsers/target
 # misc
 .DS_Store

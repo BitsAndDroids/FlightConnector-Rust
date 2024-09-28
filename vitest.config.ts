@@ -4,7 +4,13 @@ export default defineConfig({
   test: {
     coverage: {
       include: ["src"],
-      exclude: ["src/model", "**/*.stories.tsx"],
+      exclude: [
+        "src/model",
+        "**/*.stories.tsx",
+        "**/*.test.*",
+        "mocks/**",
+        "src/utils/models",
+      ],
     },
     environment: "jsdom",
     setupFiles: "./src/tests/setup.tsx",

@@ -22,17 +22,17 @@ export const FileDialog = (props: InputDialogProps) => {
     }
   }, [props.value]);
 
-  function validateInput(input: string) {
-    if (!input || input.length === 0) {
-      setErrorState(true);
-      setErrorMessage("The name can't be empty");
-      return false;
-    } else {
-      setErrorState(false);
-      setErrorMessage("");
-      return true;
-    }
-  }
+  // function validateInput(input: string) {
+  //   if (!input || input.length === 0) {
+  //     setErrorState(true);
+  //     setErrorMessage("The name can't be empty");
+  //     return false;
+  //   } else {
+  //     setErrorState(false);
+  //     setErrorMessage("");
+  //     return true;
+  //   }
+  // }
 
   function handleConfirm() {
     if (selectedDirectory === undefined || selectedDirectory === null) {
