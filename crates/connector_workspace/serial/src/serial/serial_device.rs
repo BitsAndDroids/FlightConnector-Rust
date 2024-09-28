@@ -1,6 +1,7 @@
+use std::time::Duration;
+
 use log::{error, info};
 use serialport::{Error, SerialPort, SerialPortType};
-use std::time::Duration;
 
 pub struct SerialDevice {
     port: Box<dyn SerialPort>,
@@ -53,7 +54,7 @@ impl Serial for SerialDevice {
 
         match serialport::new(com_port.clone(), 115200)
             .flow_control(flow_control)
-            .timeout(Duration::from_millis(100))
+            .timeout(Duration::from_millis(50))
             .open()
         {
             Ok(mut port) => {
@@ -111,6 +112,7 @@ impl Serial for SerialDevice {
             }
         }
     }
+
     fn read_full_message(&mut self) -> Option<String> {
         let mut buffer: Vec<u8> = Vec::new();
         let mut byte = [0u8; 1];
@@ -137,7 +139,16 @@ impl Serial for SerialDevice {
                             });
                         }
                         Err(e) => {
-                            error!(target: "connections", "{} Failed to read bytes: {}", self.name, e)
+                            match e.kind() {
+                                std::io::ErrorKind::TimedOut => {
+                                    // Handle timeout error here
+                                    info!(target: "connections", "{} Read timed out", self.name);
+                                    return None;
+                                }
+                                _ => {
+                                    error!(target: "connections", "{} Failed to read bytes: {}", self.name, e);
+                                }
+                            }
                         }
                     }
                 }
