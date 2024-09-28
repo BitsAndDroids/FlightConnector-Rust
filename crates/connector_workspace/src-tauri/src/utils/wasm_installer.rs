@@ -32,7 +32,7 @@ pub fn install_wasm(app: tauri::AppHandle) {
         Ok(())
     };
 
-    match with_store(app.app_handle().clone(), stores, &path, handle_store) {
+    match with_store(app.app_handle().clone(), stores, path, handle_store) {
         Ok(_) => {}
         Err(e) => {
             error!("Failed to load connector settings: {:?}", e);

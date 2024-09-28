@@ -6,13 +6,12 @@ use lazy_static::lazy_static;
 use log::error;
 use once_cell::sync::OnceCell;
 use serde_json::json;
-use serialport::SerialPortType;
+use serial::serial::serial_utils::get_serial_devices;
 use tauri::{AppHandle, Emitter, Manager, Wry};
 use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_store::{with_store, Store, StoreCollection};
 use tauri_plugin_updater::UpdaterExt;
 mod events;
-mod serial;
 mod settings;
 mod sim_utils;
 mod simconnect_mod;
@@ -24,8 +23,6 @@ use std::ops::Deref;
 use std::path::PathBuf;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
-use std::thread::sleep;
-use std::time::Duration;
 use tauri_plugin_log::{Target, TargetKind};
 use utils::library_handler::generate_library;
 use utils::library_handler::get_library_header_content;
@@ -34,8 +31,6 @@ use utils::library_handler::get_library_source_content;
 use utils::wasm_installer::{check_if_wasm_up_to_date, install_wasm};
 
 use std::{env, thread};
-
-pub use serialport::SerialPort;
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
@@ -74,28 +69,7 @@ fn stop_simconnect_connection() {
 
 #[tauri::command]
 async fn get_com_ports() -> Vec<String> {
-    // TODO This
-    let ports = match serialport::available_ports() {
-        Ok(ports) => ports,
-        Err(_) => Vec::new(),
-    };
-    let ports_output = ports
-        .iter()
-        .map(|port| {
-            let port_type_info = match &port.port_type {
-                SerialPortType::UsbPort(info) => (match &info.product {
-                    Some(product) => product.to_string(),
-                    None => "Unknown".to_string(),
-                })
-                .to_string(),
-                SerialPortType::BluetoothPort => "BluetoothSerial".to_string(),
-                SerialPortType::PciPort => "PCI Serial".to_string(),
-                _ => "".to_string(),
-            };
-            format!("{}, {}", port.port_name.as_str(), port_type_info)
-        })
-        .collect::<Vec<_>>();
-    ports_output
+    get_serial_devices()
 }
 
 #[tauri::command]
@@ -122,7 +96,7 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
     for (_, output) in wasm_registry.get_wasm_outputs().iter() {
         outputs.insert(output.id, output.clone().into());
     }
-    let outputs: Vec<Output> = outputs.into_iter().map(|(_, output)| output).collect();
+    let outputs: Vec<Output> = outputs.into_values().collect();
     outputs
 }
 
