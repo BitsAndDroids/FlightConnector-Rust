@@ -6,7 +6,7 @@ export default defineConfig({
       include: ["src"],
       exclude: [
         "src/model",
-        "tests/",
+        "src/tests/*",
         "**/*.stories.tsx",
         "**/*.test.*",
         "mocks/**",
