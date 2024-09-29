@@ -1,9 +1,7 @@
 import { beforeAll, describe, expect, test, vi } from "vitest";
 import InfoWindow from "./InfoWindow";
 import { screen, render, fireEvent } from "@testing-library/react";
-import { clearMocks } from "@tauri-apps/api/mocks";
-import { randomFillSync } from "crypto";
-import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
+import { setupTauriInternalMocks } from "@/tests/testUtils";
 
 describe("InfoWindow", () => {
   const mockInstance = {
@@ -11,18 +9,7 @@ describe("InfoWindow", () => {
   };
 
   beforeAll(() => {
-    clearMocks();
-    Object.defineProperty(window, "crypto", {
-      value: {
-        // @ts-ignore
-        getRandomValues: (buffer) => {
-          return randomFillSync(buffer);
-        },
-      },
-    });
-    global.window.__TAURI_INTERNALS__ = {
-      invoke: vi.fn().mockResolvedValue([]),
-    };
+    setupTauriInternalMocks();
   });
   test("renders InfoWindow component", async () => {
     const { container } = render(<InfoWindow message={"test_message"} />);
