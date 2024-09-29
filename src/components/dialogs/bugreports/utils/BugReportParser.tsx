@@ -3,7 +3,7 @@ import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
 import { RunSettingsHandler } from "@/utils/runSettingsHandler";
-
+//TODO: Create class instead of functions
 export const getEventData = async () => {
   const eventHandler = new CustomEventHandler();
   let eventData = await eventHandler.getAllEvents();
