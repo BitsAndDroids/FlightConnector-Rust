@@ -21,8 +21,12 @@ export const setupTauriInternalMocks = () => {
       },
     },
   });
+  const mockInvoke = vi.fn().mockResolvedValue([]);
+  const mockTransformCallback = vi.fn().mockResolvedValue([]);
   global.window.__TAURI_INTERNALS__ = {
-    invoke: vi.fn().mockResolvedValue([]),
-    transformCallback: vi.fn().mockResolvedValue([]),
+    invoke: mockInvoke,
+    transformCallback: mockTransformCallback,
   };
+
+  return { mockInvoke, mockTransformCallback };
 };

@@ -224,7 +224,10 @@ export const CustomEvents = () => {
           setEventErrors={setEventErrors}
         />
       )}
-      <div className="h-[96%] overflow-y-hidden">
+      <div
+        className="h-[96%] overflow-y-hidden"
+        data-testid="custom_event_page"
+      >
         <div className="flex flew-row align-middle items-center mt-4">
           <Header level={1} title="Custom Events" addToClassName="mt-0" />
           <Button

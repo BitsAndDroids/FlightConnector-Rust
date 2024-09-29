@@ -25,6 +25,7 @@ export const Checkbox = ({
         {" "}
         <Label text={label || ""} required={required} onLight={onLight} />
         <input
+          data-testid="checkbox"
           className="h-5 w-5 mr-2 focus:ring-green-500 text-green-600 rounded-md"
           type="checkbox"
           checked={value}

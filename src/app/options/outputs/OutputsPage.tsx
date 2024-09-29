@@ -126,6 +126,7 @@ const OutputsPage: React.FC = () => {
       )}
       <div
         className="flex flex-row relative z-0 mt-2"
+        data-testid="outputs_page"
         tabIndex={dialogOpen ? -1 : 1}
       >
         <BundleEditWidget
