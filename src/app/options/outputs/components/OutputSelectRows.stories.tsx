@@ -90,4 +90,13 @@ const OutputSelectRowsWithHooks = () => {
 };
 export const OutputSelectRowsStory: StoryObj = {
   render: OutputSelectRowsWithHooks,
+  decorators: [
+    (Story) => (
+      <div className="w-screen h-screen bg-bitsanddroids-blue -m-4">
+        <div className="p-4">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 };

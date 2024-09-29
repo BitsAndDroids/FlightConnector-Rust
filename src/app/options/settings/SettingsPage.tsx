@@ -14,8 +14,8 @@ const saveSettings = async (
 ) => {
   if (!initialized) return;
   await connectorSettingsHandler.setConnectorSettings(connectorSettings);
-  console.log("saved settings", connectorSettings);
 };
+
 const SettingsPage = () => {
   const [connectorSettings, setConnectorSettings] = useState<ConnectorSettings>(
     {
@@ -114,7 +114,6 @@ const SettingsPage = () => {
   ) => {
     setCommunityFolderVisible(false);
     if (!folderPath) {
-      console.log("no folder path");
       return;
     }
     await connectorSettingsHandler.current.setCommunityFolderPath(folderPath);

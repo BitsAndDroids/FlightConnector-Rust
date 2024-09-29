@@ -22,6 +22,7 @@ export const Row = (props: RowProps) => {
       <div className="flex flex-row justify-between w-12">
         {props.setDelete === undefined || props.setDelete ? (
           <img
+            data-testid="ico_delete"
             src={"/trashcan.svg"}
             alt="info"
             onClick={(e) => {
@@ -35,6 +36,7 @@ export const Row = (props: RowProps) => {
         )}
         <img
           src={"/edit.svg"}
+          data-testid="ico_edit"
           alt="info"
           onClick={() => {
             props.onEdit(props.object);

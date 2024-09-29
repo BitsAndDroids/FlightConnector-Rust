@@ -43,9 +43,11 @@ const insertSwitchCases = (caseString: string, templateString: string) => {
   const templateStartIndex = templateString.indexOf(templateStartMarker);
   if (templateStartIndex === -1) {
     console.log("Could not find switch start marker");
+    // TODO: implement fallback
   }
   if (templateString.indexOf(templateEndMarker) === -1) {
     console.log("Could not find switch end marker");
+    // TODO: implement fallback
   }
   const templateStart = templateString.slice(
     0,
@@ -62,6 +64,7 @@ const insertGetters = (getterString: string, templateString: string) => {
   const templateStartIndex = templateString.indexOf(templateStartMarker);
   if (templateStartIndex === -1) {
     console.log("Could not find getter start marker");
+    // TODO: implement fallback
   }
   const templateStart = templateString.slice(
     0,
@@ -70,6 +73,7 @@ const insertGetters = (getterString: string, templateString: string) => {
   const templateEndIndex = templateString.indexOf(templateEndMarker);
   if (templateEndIndex === -1) {
     console.log("Could not find getter end marker");
+    // TODO: implement fallback
   }
   const templateEnd = templateString.slice(templateEndIndex);
   return `${templateStart}\n${getterString}${templateEnd}`;
@@ -80,6 +84,7 @@ const insertVariables = (variableString: string, templateString: string) => {
   const templateEndMarker = "  // END VAR TEMPLATE";
   if (templateString.indexOf(templateStartMarker) === -1) {
     console.log("Could not find variable start marker");
+    // TODO: implement fallback
   }
   const templateStartIndex = templateString.indexOf(templateStartMarker);
   const templateStart = templateString.slice(
@@ -89,6 +94,7 @@ const insertVariables = (variableString: string, templateString: string) => {
   const templateEndIndex = templateString.indexOf(templateEndMarker);
   if (templateEndIndex === -1) {
     console.log("Could not find variable end marker");
+    // TODO: implement fallback
   }
   const templateEnd = templateString.slice(templateEndIndex);
   return `${templateStart}\n${variableString}${templateEnd}`;

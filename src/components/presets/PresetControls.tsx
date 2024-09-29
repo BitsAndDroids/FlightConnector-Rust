@@ -7,17 +7,19 @@ import { Preset } from "@/model/Preset";
 interface PresetControlsProps {
   setPreset: (preset: Preset) => void;
   setPresets: (presets: Preset[]) => void;
-  activePreset: Preset;
-  presets: Preset[];
+  activePreset?: Preset;
+  presets?: Preset[];
 }
 
 export const PresetControls = (props: PresetControlsProps) => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const presetSettingsHandler = new PresetSettingsHandler();
   async function updatePreset() {
+    if (!props.activePreset) return;
     presetSettingsHandler.updatePreset(props.activePreset);
   }
   const addRow = () => {
+    if (!props.activePreset) return;
     let presetToAlter: Preset = props.activePreset;
     let newPreset = { ...presetToAlter };
     newPreset.runBundles.push({
@@ -33,6 +35,7 @@ export const PresetControls = (props: PresetControlsProps) => {
     setDialogOpen(true);
   }
   async function dialogResult(input?: string) {
+    if (!props.presets) return;
     const newUuid = uuidv4();
 
     if (input !== undefined) {
@@ -81,7 +84,7 @@ export const PresetControls = (props: PresetControlsProps) => {
         <select
           key={Math.random()}
           className="rounded-lg h-10 mt-2 px-4 pr-8"
-          value={props.activePreset.id}
+          value={props?.activePreset?.id}
           onChange={async (e) => {
             let preset = await presetSettingsHandler.getPresetById(
               e.currentTarget.value,
@@ -91,7 +94,7 @@ export const PresetControls = (props: PresetControlsProps) => {
             }
           }}
         >
-          {props.presets.map((preset) => (
+          {props?.presets?.map((preset) => (
             <option key={preset.id} value={preset.id}>
               {preset.name}
             </option>

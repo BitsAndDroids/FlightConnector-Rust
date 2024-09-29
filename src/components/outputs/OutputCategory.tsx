@@ -39,7 +39,11 @@ const OutputCategory = ({ category, toggleOutput }: Props) => {
       {!collapsed &&
         outputs.map((output) => {
           return (
-            <div className="flex flex-row ml-4" key={output.simvar}>
+            <div
+              className="flex flex-row ml-4"
+              key={output.simvar}
+              data-testid=""
+            >
               <input
                 className="text-white"
                 type="checkbox"

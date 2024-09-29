@@ -7,6 +7,14 @@
     "plugin:import/errors",
     "prettier"
   ],
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "build/",
+    "coverage/",
+    "storybook-static/",
+    "**.config.ts"
+  ],
   "plugins": ["storybook", "react", "react-hooks", "import", "vitest"],
   "settings": {
     "react": {
