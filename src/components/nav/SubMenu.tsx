@@ -1,4 +1,4 @@
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from "./model/MenuItem";
 import { SubmenuItem } from "./SubmenuItem";
 
 interface SubMenuProps {

@@ -49,10 +49,12 @@ const InputDialog = (props: InputDialogProps) => {
         <input
           className={`drop-shadow border rounded-md p-2 m-2 ${errorState ? "border-pink-300" : "border-gray-200"}`}
           placeholder={props.placeholder}
+          data-testid="input_dialog_input"
         />
         <div className="flex flex-row justify-center">
           <button
             className="bg-green-800 rounded-md p-2 m-2 text-white"
+            data-testid="confirm_dialog_button"
             onClick={() => handleConfirm()}
           >
             Confirm

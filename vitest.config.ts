@@ -6,10 +6,13 @@ export default defineConfig({
       include: ["src"],
       exclude: [
         "src/model",
+        "tests/",
         "**/*.stories.tsx",
         "**/*.test.*",
         "mocks/**",
         "src/utils/models",
+        "**/model/*",
+        "src/main.tsx",
       ],
     },
     environment: "jsdom",

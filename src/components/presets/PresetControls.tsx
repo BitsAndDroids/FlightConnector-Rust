@@ -34,6 +34,7 @@ export const PresetControls = (props: PresetControlsProps) => {
   async function createPreset() {
     setDialogOpen(true);
   }
+
   async function dialogResult(input?: string) {
     if (!props.presets) return;
     const newUuid = uuidv4();
@@ -102,6 +103,7 @@ export const PresetControls = (props: PresetControlsProps) => {
         </select>
         <button
           className="rounded-md bg-green-600 text-white text-sm font-semibold px-3.5 py-2.5 m-2"
+          data-testid="create_preset_button"
           onClick={createPreset}
         >
           create new preset

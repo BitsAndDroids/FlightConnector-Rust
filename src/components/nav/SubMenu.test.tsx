@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 import { SubMenu } from "./SubMenu";
 import { render } from "@testing-library/react";
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from "./model/MenuItem";
 import { MemoryRouter } from "react-router-dom";
 
 const getMenuItems = (): MenuItem[] => {
