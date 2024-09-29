@@ -1,6 +1,7 @@
-import { describe, test, expect } from "vitest";
+import { describe, test, expect, vi, beforeEach } from "vitest";
 import { BugReportWindow } from "./BugReportWindow";
-import { render } from "@testing-library/react";
+import { fireEvent, render, renderHook } from "@testing-library/react";
+import { CustomEventHandler } from "@/utils/CustomEventHandler";
 
 describe("BugReportWindow", async () => {
   test("renders without crashing", async () => {
