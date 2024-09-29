@@ -1,32 +1,12 @@
-import { render, screen } from "@testing-library/react";
-import { describe, vi, expect, test, beforeAll } from "vitest";
-import { ControllerSelectComponent } from "./ControllerSelectComponent";
-import { randomFillSync } from "crypto";
+import { setupTauriInternalMocks } from "@/tests/testUtils";
 import { clearMocks } from "@tauri-apps/api/mocks";
-
-declare global {
-  interface Window {
-    __TAURI_INTERNALS__: {
-      invoke: (command: string, args?: any) => Promise<any>;
-      transformCallback: (callback: Function) => Function;
-    };
-  }
-}
+import { render, screen } from "@testing-library/react";
+import { beforeAll, describe, expect, test, vi } from "vitest";
+import { ControllerSelectComponent } from "./ControllerSelectComponent";
 
 beforeAll(() => {
   clearMocks();
-  Object.defineProperty(window, "crypto", {
-    value: {
-      // @ts-ignore
-      getRandomValues: (buffer) => {
-        return randomFillSync(buffer);
-      },
-    },
-  });
-  global.window.__TAURI_INTERNALS__ = {
-    invoke: vi.fn().mockResolvedValue([]),
-    transformCallback: vi.fn().mockResolvedValue([]),
-  };
+  setupTauriInternalMocks();
 });
 
 vi.mock("./ControllerSelectComponent", async (importOriginal) => {
