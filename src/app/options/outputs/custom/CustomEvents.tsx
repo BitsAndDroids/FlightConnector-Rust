@@ -9,6 +9,7 @@ import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { invoke } from "@tauri-apps/api/core";
 import { message } from "@tauri-apps/plugin-dialog";
 import { useEffect, useState } from "react";
+import { WasmEventManager } from "./components/WasmEventManager";
 
 interface SortSettings {
   sortBy: keyof WASMEvent;
@@ -230,6 +231,7 @@ export const CustomEvents = () => {
       >
         <div className="flex flew-row align-middle items-center mt-4">
           <Header level={1} title="Custom Events" addToClassName="mt-0" />
+          <WasmEventManager events={filteredEvents} />
           <Button
             text="Add Event"
             onClick={addEvent}

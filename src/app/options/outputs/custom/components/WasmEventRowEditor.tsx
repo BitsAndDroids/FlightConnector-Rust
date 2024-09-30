@@ -51,6 +51,7 @@ export const WasmEventRowEditor = ({
             toggleOpen();
           }}
           style="primary"
+          testid="btn_save_wasm"
         />
       </div>
     </div>

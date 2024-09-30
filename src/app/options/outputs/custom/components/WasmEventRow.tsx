@@ -4,10 +4,13 @@ import { useState } from "react";
 import { stringifyCategories } from "../utils/stringifyCategories";
 
 interface WasmEventRowProps {
-  wasmEvent: WASMEvent;
+  event: WASMEvent;
   index: number;
 }
-export const WasmEventRow = ({ wasmEvent, index }: WasmEventRowProps) => {
+export const WasmEventRow = ({
+  event: wasmEvent,
+  index,
+}: WasmEventRowProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const closeEditor = () => {
@@ -19,6 +22,7 @@ export const WasmEventRow = ({ wasmEvent, index }: WasmEventRowProps) => {
       onClick={() => {
         if (!open) setOpen(true);
       }}
+      data-testid="wasm_event_row"
     >
       <div className="flex flex-col w-full">
         <div className="flex flex-row align-middle w-full">
@@ -79,6 +83,7 @@ export const WasmEventRow = ({ wasmEvent, index }: WasmEventRowProps) => {
         </div>
         <div
           className={`mt-4 transition-all ease-in-out duration-500 ${open ? "max-h-screen" : "max-h-0"} overflow-hidden `}
+          data-testid="wasm_event_row_editor"
         >
           <WasmEventRowEditor wasmEvent={wasmEvent} toggleOpen={closeEditor} />
         </div>

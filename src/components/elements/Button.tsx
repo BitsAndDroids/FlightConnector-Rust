@@ -3,6 +3,7 @@ interface ButtonProps {
   text: string;
   style?: "primary" | "secondary" | "danger";
   addToClassName?: string;
+  testid?: string;
 }
 
 export const Button = ({
@@ -10,6 +11,7 @@ export const Button = ({
   text,
   style,
   addToClassName,
+  testid,
 }: ButtonProps) => {
   const primary =
     "rounded-md h-10 bg-green-600 text-white text-sm font-semibold px-3.5 py-2.5 flex flex-row items-center mr-2";
@@ -35,6 +37,7 @@ export const Button = ({
       className={
         styleSwitch(style || "primar") || `${primary} ${addToClassName}`
       }
+      data-testid={testid}
     >
       {text}
     </button>

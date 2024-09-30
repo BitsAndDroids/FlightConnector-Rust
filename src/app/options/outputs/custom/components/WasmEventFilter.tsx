@@ -26,5 +26,5 @@ export const WasmEventFilter = () => {
       />
     </div>
   );
-  return <PrimaryCard children={filterContent} />;
+  return <PrimaryCard>{filterContent}</PrimaryCard>;
 };
