@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Button } from "../../elements/Button";
-import { CustomEventHandler } from "@/utils/CustomEventHandler";
-import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
-import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
-import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
-import { RunSettingsHandler } from "@/utils/runSettingsHandler";
 import { BugReport } from "@/model/BugReport";
 import { fetch } from "@tauri-apps/plugin-http";
 import { message } from "@tauri-apps/plugin-dialog";
 import { Input } from "@/components/elements/inputs/Input";
+import {
+  getBundleData,
+  getEventData,
+  getPresetData,
+  getSettingsData,
+} from "./utils/BugReportParser";
 interface BugReportWindowProps {
   closeWindow: () => void;
 }
@@ -17,35 +18,6 @@ export const BugReportWindow = (props: BugReportWindowProps) => {
   const [issueMessage, setIssueMessage] = useState<string>("");
   const [issueNumber, setIssueNumber] = useState<string>("");
   const [discordUsername, setDiscordUsername] = useState<string>("");
-
-  const getEventData = async () => {
-    const eventHandler = new CustomEventHandler();
-    let eventData = await eventHandler.getAllEvents();
-    // filter all events > id 3000 (non-default events)
-    eventData = eventData.filter((event) => event.id > 3000);
-    return JSON.stringify(eventData);
-  };
-
-  const getBundleData = async () => {
-    const bundleHandler = new BundleSettingsHandler();
-    const bundles = await bundleHandler.getSavedBundles();
-    return JSON.stringify(bundles);
-  };
-
-  const getPresetData = async () => {
-    const presetHandler = new PresetSettingsHandler();
-    const presets = await presetHandler.getAllPresets();
-    return JSON.stringify(presets);
-  };
-
-  const getSettingsData = async () => {
-    const connectorSettingsHandler = new ConnectorSettingsHandler();
-    const connectors = await connectorSettingsHandler.getAllConnectorSettings();
-
-    const runSettingsHandler = new RunSettingsHandler();
-    const runSettings = await runSettingsHandler.getAllRunSettings();
-    return JSON.stringify({ connector: connectors, run: runSettings });
-  };
 
   const submitBugReport = async () => {
     // send bug report to server
@@ -118,12 +90,17 @@ export const BugReportWindow = (props: BugReportWindowProps) => {
           onChange={(value) => onChangeDiscordUsername(value as string)}
         />
         <p className="text-sm text-gray-500">
-          By submitting a report you'll automatically sumbmit the application
-          data for further analysis.
+          By submitting a report you&lsquo;ll automatically sumbmit the
+          application data for further analysis.
         </p>
 
         <div className="flex flex-row mt-2">
-          <Button text="Submit" style="primary" onClick={submitBugReport} />
+          <Button
+            text="Submit"
+            style="primary"
+            onClick={submitBugReport}
+            data-testid="btn_submit_report"
+          />
           <Button text="Cancel" style="danger" onClick={props.closeWindow} />
         </div>
       </div>

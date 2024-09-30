@@ -1,5 +1,4 @@
 import { ReactNode, useState } from "react";
-import React from "react";
 
 interface InputDialogProps {
   message: string;
@@ -33,7 +32,10 @@ const InputDialog = (props: InputDialogProps) => {
   }
 
   return (
-    <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
+    <div
+      className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg"
+      data-testid="inputdialog"
+    >
       <div className="flex flex-col mb-16 rounded-md w-fit h-fit bg-white p-8 border-gray-200 border">
         <div className="flex flex-row justify-center items-center">
           <label className="rounded-md mx-2 text-center">{props.message}</label>
@@ -47,10 +49,12 @@ const InputDialog = (props: InputDialogProps) => {
         <input
           className={`drop-shadow border rounded-md p-2 m-2 ${errorState ? "border-pink-300" : "border-gray-200"}`}
           placeholder={props.placeholder}
+          data-testid="input_dialog_input"
         />
         <div className="flex flex-row justify-center">
           <button
             className="bg-green-800 rounded-md p-2 m-2 text-white"
+            data-testid="confirm_dialog_button"
             onClick={() => handleConfirm()}
           >
             Confirm

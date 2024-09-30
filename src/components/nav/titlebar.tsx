@@ -10,7 +10,6 @@ export const Titlebar: React.FC = () => {
         import("@tauri-apps/api/window").then((tauri) =>
           setAppWindow(new Window("bits-and-droids-connector")),
         );
-        console.log("here we go");
       } catch (e) {
         console.error(e);
       }

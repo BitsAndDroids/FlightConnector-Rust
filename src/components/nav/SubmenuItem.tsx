@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from "./model/MenuItem";
 
 interface SubmenuItemProps {
   menuItem: MenuItem;

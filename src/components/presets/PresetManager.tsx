@@ -1,6 +1,6 @@
 import { Preset } from "@/model/Preset";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Header } from "../elements/header";
 import { PresetList } from "./PresetList";
 import { Table } from "../elements/Table";
@@ -8,12 +8,12 @@ import { Table } from "../elements/Table";
 interface PresetManagerProps {}
 
 export const PresetManager = (props: PresetManagerProps) => {
-  const presetSettingsHandler = new PresetSettingsHandler();
+  const presetSettingsHandler = useRef(new PresetSettingsHandler());
   const [presets, setPresets] = useState<Preset[]>([]);
   const [selectedPreset, setSelectedPreset] = useState<Preset | null>(null);
   useEffect(() => {
     const fetchPresets = async () => {
-      const presets = await presetSettingsHandler.getAllPresets();
+      const presets = await presetSettingsHandler.current.getAllPresets();
       setPresets(presets);
     };
 
@@ -24,12 +24,12 @@ export const PresetManager = (props: PresetManagerProps) => {
     if (preset.name === "Default") {
       return;
     }
-    presetSettingsHandler.deletePreset(preset.id);
+    presetSettingsHandler.current.deletePreset(preset.id);
     setPresets(presets.filter((p) => p.id !== preset.id));
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-testid="preset_manager_component">
       <Header level={1} title="Presets" />
       <div className="flex flex-row mt-4">
         <PresetList

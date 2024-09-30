@@ -20,22 +20,22 @@ export const FileDialog = (props: InputDialogProps) => {
     if (props.value) {
       setSelectedDirectory(props.value);
     }
-  }, []);
+  }, [props.value]);
 
-  function validateInput(input: string) {
-    if (!input || input.length === 0) {
-      setErrorState(true);
-      setErrorMessage("The name can't be empty");
-      return false;
-    } else {
-      setErrorState(false);
-      setErrorMessage("");
-      return true;
-    }
-  }
+  // function validateInput(input: string) {
+  //   if (!input || input.length === 0) {
+  //     setErrorState(true);
+  //     setErrorMessage("The name can't be empty");
+  //     return false;
+  //   } else {
+  //     setErrorState(false);
+  //     setErrorMessage("");
+  //     return true;
+  //   }
+  // }
 
   function handleConfirm() {
-    if (selectedDirectory === undefined || selectedDirectory === null) {
+    if (!selectedDirectory) {
       setErrorState(true);
       setErrorMessage("Please select a directory");
       return;
@@ -67,17 +67,20 @@ export const FileDialog = (props: InputDialogProps) => {
           placeholder={props.placeholder}
           value={selectedDirectory || ""}
           onChange={(e) => setSelectedDirectory(e.target.value)}
+          data-testid="input_file"
         />
         <div className="flex flex-row justify-center">
           <button
             className="rounded-md bg-bitsanddroids-blue text-white p-2 m-2"
             onClick={() => openDirectoryDialog()}
+            data-testid="btn_open_file"
           >
             Select directory
           </button>
           <button
             className="bg-green-800 rounded-md p-2 m-2 text-white"
             onClick={() => handleConfirm()}
+            data-testid="btn_confirm"
           >
             Confirm
           </button>

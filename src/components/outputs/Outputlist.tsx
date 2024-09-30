@@ -6,7 +6,7 @@ interface OutputListProps {
 
 const OutputList = ({ bundle }: OutputListProps) => {
   return (
-    <div className="rounded-md bg-white p-4 mt-14">
+    <div className="rounded-md bg-white p-4 mt-14" data-testid="output_list">
       {bundle?.name && (
         <h1 className="mt-2 font-bold text-lg">{bundle.name}</h1>
       )}

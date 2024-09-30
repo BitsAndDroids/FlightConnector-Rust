@@ -9,20 +9,25 @@ interface ControllerSelectProps {
   setComPort: (comPort: string, runBundle: any) => void;
   setBundle: (bundle: string, runBundle: any) => void;
   removeRow: (id: number) => void;
-  runBundle: RunBundle;
+  runBundle?: RunBundle;
 }
 
-export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
+export const ControllerSelect: React.FC<ControllerSelectProps> = (
+  props: ControllerSelectProps,
+) => {
   return (
     <Suspense>
       {" "}
-      <div className="flex flex-row items-center relative">
-        {props.runBundle.connected && (
+      <div
+        className="flex flex-row items-center relative"
+        data-testid="controller_select"
+      >
+        {props?.runBundle?.connected && (
           <div>
             <div className="rounded-lg w-4 h-4 min-w-4 min-h-4 bg-green-400 mr-1 absolute -left-4 top-5" />
           </div>
         )}
-        {!props.runBundle.connected && (
+        {!props?.runBundle?.connected && (
           <div>
             <div className="rounded-lg w-4 h-4 min-w-4 min-h-4 bg-red-400 mr-1 absolute -left-4 top-5" />
           </div>
@@ -31,13 +36,13 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         <select
           key={Math.random()}
           className={"rounded m-2 text-gray-700 p-2 w-[180px] pr-8"}
-          value={props.runBundle.com_port}
+          value={props?.runBundle?.com_port}
           onChange={(e) => {
             console.log(e.currentTarget.value);
-            props.setComPort(e.currentTarget.value, props.runBundle);
+            props?.setComPort(e.currentTarget.value, props.runBundle);
           }}
         >
-          {props.comPorts.map((port) => (
+          {props?.comPorts?.map((port) => (
             <option className={"text-gray-700"} key={port} value={port}>
               {port}
             </option>
@@ -46,7 +51,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
         <select
           key={Math.random()}
           className={"rounded m-2 text-gray-700 p-2 w-[300px]"}
-          value={props.runBundle.bundle_name || ""}
+          value={props?.runBundle?.bundle_name || ""}
           onChange={(e) => {
             console.log(e.currentTarget.value);
             props.setBundle(e.currentTarget.value, props.runBundle);
@@ -59,7 +64,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
           >
             No outputs
           </option>
-          {props.bundles.length > 0 &&
+          {props?.bundles?.length > 0 &&
             props.bundles.map((bundle) => (
               <option
                 className={"text-gray-700"}
@@ -70,7 +75,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (props) => {
               </option>
             ))}
         </select>
-        <div onClick={() => props.removeRow(props.runBundle.id)}>
+        <div onClick={() => props.removeRow(props?.runBundle?.id || 0)}>
           <img
             src={"/trashcan.svg"}
             alt="trashcan"

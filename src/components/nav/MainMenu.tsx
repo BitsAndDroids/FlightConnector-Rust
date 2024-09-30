@@ -3,7 +3,7 @@ import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
 import { FileDialog } from "../dialogs/file/FileDialog";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
@@ -11,7 +11,7 @@ import { UpdateWindow } from "../UpdateWindow";
 import { hasReadLatestPatchNotes } from "@/utils/UpdateChecker";
 import { BugReportWindow } from "../dialogs/bugreports/BugReportWindow";
 export const MainMenu: React.FC = () => {
-  const connectorSettingsHandler = new ConnectorSettingsHandler();
+  const connectorSettingsHandler = useRef(new ConnectorSettingsHandler());
   const [installWASMDialogOpen, setInstallWASMDialogOpen] =
     useState<boolean>(false);
   const [generateLibraryDialogOpen, setGenerateLibraryDialogOpen] =
@@ -26,7 +26,9 @@ export const MainMenu: React.FC = () => {
     const checkForUpdates = async () => {
       const hasRead = await hasReadLatestPatchNotes();
       if (!hasRead.read) {
-        connectorSettingsHandler.setLatestPatchNotesRead(hasRead.tag.tag);
+        connectorSettingsHandler.current.setLatestPatchNotesRead(
+          hasRead.tag.tag,
+        );
         setUpdateWindowOpen(true);
       }
     };
@@ -78,7 +80,8 @@ export const MainMenu: React.FC = () => {
   ];
 
   const openWASMDialog = async () => {
-    const savedPath = await connectorSettingsHandler.getCommunityFolderPath();
+    const savedPath =
+      await connectorSettingsHandler.current.getCommunityFolderPath();
     if (savedPath) {
       setCommunityFolderPath(savedPath);
     }
@@ -86,7 +89,8 @@ export const MainMenu: React.FC = () => {
   };
 
   const openGenerateWASMLibrary = async (path?: string) => {
-    const savedPath = await connectorSettingsHandler.getLibraryFolderPath();
+    const savedPath =
+      await connectorSettingsHandler.current.getLibraryFolderPath();
     if (savedPath) {
       setLibraryFolderPath(savedPath);
     }
@@ -97,9 +101,9 @@ export const MainMenu: React.FC = () => {
     setInstallWASMDialogOpen(false);
     if (!dirResult) return;
     console.log("installing wasm to ", dirResult);
-    await connectorSettingsHandler.setCommunityFolderPath(dirResult);
+    await connectorSettingsHandler.current.setCommunityFolderPath(dirResult);
     invoke("install_wasm", { path: dirResult });
-    await connectorSettingsHandler.setWASMModulePath(
+    await connectorSettingsHandler.current.setWASMModulePath(
       `${dirResult}\\BitsAndDroidsModule`,
     );
   };
@@ -108,7 +112,7 @@ export const MainMenu: React.FC = () => {
     setGenerateLibraryDialogOpen(false);
     if (!dirResult) return;
     console.log("generating wasm library to ", dirResult);
-    await connectorSettingsHandler.setLibraryFolderPath(dirResult);
+    await connectorSettingsHandler.current.setLibraryFolderPath(dirResult);
     generateLibrary(dirResult);
   };
 
@@ -144,6 +148,7 @@ export const MainMenu: React.FC = () => {
         className={
           "w-screen h-fit min-h-screen min-w-[102%] flex flex-col bg-bitsanddroids-blue overflow-x-hidden overflow-hidden"
         }
+        data-testid="main_menu"
       >
         <div className=" bg-bitsanddroids-blue w-screen mt-7 flex flex-row align-middle justify-start h-fit">
           <nav

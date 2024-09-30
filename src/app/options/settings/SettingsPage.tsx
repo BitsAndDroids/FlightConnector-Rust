@@ -1,11 +1,20 @@
 import InfoWindow from "@/components/InfoWindow";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { ConnectorSettings } from "@/utils/models/ConnectorSettings";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { changeLaunchWhenSimStarts } from "./services/LaunchService";
 import { HeaderDivider } from "@/components/elements/HeaderDivider";
 import { FileDialog } from "@/components/dialogs/file/FileDialog";
 import { Input } from "@/components/elements/inputs/Input";
+
+const saveSettings = async (
+  initialized: boolean,
+  connectorSettingsHandler: ConnectorSettingsHandler,
+  connectorSettings: ConnectorSettings,
+) => {
+  if (!initialized) return;
+  await connectorSettingsHandler.setConnectorSettings(connectorSettings);
+};
 
 const SettingsPage = () => {
   const [connectorSettings, setConnectorSettings] = useState<ConnectorSettings>(
@@ -23,16 +32,17 @@ const SettingsPage = () => {
   );
   const [initialized, setInitialized] = useState(false);
 
-  const connectorSettingsHandler = new ConnectorSettingsHandler();
+  const connectorSettingsHandler = useRef(new ConnectorSettingsHandler());
 
   useEffect(() => {
     const initSettings = async () => {
-      let savedSettings = await connectorSettingsHandler.getConnectorSettings();
+      let savedSettings =
+        await connectorSettingsHandler.current.getConnectorSettings();
       if (!savedSettings) {
         return;
       }
       setCommunityFolderPath(
-        await connectorSettingsHandler.getCommunityFolderPath(),
+        await connectorSettingsHandler.current.getCommunityFolderPath(),
       );
       if (!savedSettings.launch_when_sim_starts) {
         savedSettings.launch_when_sim_starts = false;
@@ -53,8 +63,12 @@ const SettingsPage = () => {
   }, []);
 
   useEffect(() => {
-    saveSettings();
-  }, [connectorSettings]);
+    saveSettings(
+      initialized,
+      connectorSettingsHandler.current,
+      connectorSettings,
+    );
+  }, [connectorSettings, initialized]);
 
   const onSettingsChange = async (
     key: keyof ConnectorSettings,
@@ -68,7 +82,7 @@ const SettingsPage = () => {
     if (key === "launch_when_sim_starts") {
       if (typeof value === "boolean") {
         const communityFolderPresent =
-          await connectorSettingsHandler.getCommunityFolderPath();
+          await connectorSettingsHandler.current.getCommunityFolderPath();
         if (!communityFolderPresent) {
           setCommunityFolderVisible(true);
           return;
@@ -95,21 +109,14 @@ const SettingsPage = () => {
     }
   };
 
-  const saveSettings = async () => {
-    if (!initialized) return;
-    await connectorSettingsHandler.setConnectorSettings(connectorSettings);
-    console.log("saved settings", connectorSettings);
-  };
-
   const setCommunityFolderFromLaunchSetting = async (
     folderPath: string | undefined,
   ) => {
     setCommunityFolderVisible(false);
     if (!folderPath) {
-      console.log("no folder path");
       return;
     }
-    await connectorSettingsHandler.setCommunityFolderPath(folderPath);
+    await connectorSettingsHandler.current.setCommunityFolderPath(folderPath);
     changeLaunchWhenSimStarts(true);
     setConnectorSettings({
       ...connectorSettings,

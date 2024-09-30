@@ -23,6 +23,31 @@ export interface EventErrors {
   action_text: InputErrorState;
 }
 
+const sortEvents = (
+  sortSettings: SortSettings,
+  events: WASMEvent[],
+): WASMEvent[] => {
+  const sortedEvents = [...events].sort((a, b) => {
+    const aValue = a[sortSettings.sortBy];
+    const bValue = b[sortSettings.sortBy];
+    console.log(
+      `Sorting by: ${sortSettings.sortBy}, aValue: ${aValue}, bValue: ${bValue}, sortOrder: ${sortSettings.sortOrder}`,
+    );
+    if (typeof aValue === "number" && typeof bValue === "number") {
+      return sortSettings.sortOrder === "asc"
+        ? bValue - aValue
+        : aValue - bValue;
+    }
+    if (typeof aValue === "string" && typeof bValue === "string") {
+      return sortSettings.sortOrder === "asc"
+        ? aValue.localeCompare(bValue)
+        : bValue.localeCompare(aValue);
+    }
+    return 0;
+  });
+  return sortedEvents;
+};
+
 export const CustomEvents = () => {
   const [sortSettings, setSortSettings] = useState<SortSettings>({
     sortBy: "id",
@@ -65,30 +90,9 @@ export const CustomEvents = () => {
   }, []);
 
   useEffect(() => {
-    sortEvents();
+    const sorted = sortEvents(sortSettings, events);
+    setFilteredEvents(sorted);
   }, [sortSettings, events]);
-
-  const sortEvents = () => {
-    const sortedEvents = [...events].sort((a, b) => {
-      const aValue = a[sortSettings.sortBy];
-      const bValue = b[sortSettings.sortBy];
-      console.log(
-        `Sorting by: ${sortSettings.sortBy}, aValue: ${aValue}, bValue: ${bValue}, sortOrder: ${sortSettings.sortOrder}`,
-      );
-      if (typeof aValue === "number" && typeof bValue === "number") {
-        return sortSettings.sortOrder === "asc"
-          ? bValue - aValue
-          : aValue - bValue;
-      }
-      if (typeof aValue === "string" && typeof bValue === "string") {
-        return sortSettings.sortOrder === "asc"
-          ? aValue.localeCompare(bValue)
-          : bValue.localeCompare(aValue);
-      }
-      return 0;
-    });
-    setFilteredEvents(sortedEvents);
-  };
 
   const addEvent = async () => {
     setEventEditorOpen(true);
@@ -220,7 +224,10 @@ export const CustomEvents = () => {
           setEventErrors={setEventErrors}
         />
       )}
-      <div className="h-[96%] overflow-y-hidden">
+      <div
+        className="h-[96%] overflow-y-hidden"
+        data-testid="custom_event_page"
+      >
         <div className="flex flew-row align-middle items-center mt-4">
           <Header level={1} title="Custom Events" addToClassName="mt-0" />
           <Button
