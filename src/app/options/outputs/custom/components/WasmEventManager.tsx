@@ -25,7 +25,7 @@ const filterEvents = (
       (event) => event.action_type.toLowerCase() === filter.type.toLowerCase(),
     );
   }
-  if (filter.category) {
+  if (filter.category && filter.category !== "All") {
     filteredEvents = filteredEvents.filter((event) =>
       event.plane_or_category.includes(filter.category.toLowerCase()),
     );
@@ -48,6 +48,16 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     setFilter(filter);
   };
 
+  const onEventChanged = (event: WASMEvent) => {
+    const index = events.findIndex((e) => e.id === event.id);
+    if (index === -1) {
+      return;
+    }
+    const newEvents = [...events];
+    newEvents[index] = event;
+    setEvents(newEvents);
+  };
+
   useEffect(() => {
     setFilteredEvents(filterEvents(events, filter));
   }, [filter, events]);
@@ -60,7 +70,12 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
         <div className="flex flex-col w-full overflow-y-scroll max-h-[800px]">
           {filteredEvents.map((event, index) => (
             <div key={index} className="mb-2">
-              <WasmEventRow index={index} key={event.id} event={event} />
+              <WasmEventRow
+                index={index}
+                key={event.id}
+                event={event}
+                onEventChanged={onEventChanged}
+              />
             </div>
           ))}
         </div>

@@ -5,10 +5,12 @@ import { stringifyCategories } from "../utils/stringifyCategories";
 
 interface WasmEventRowProps {
   event: WASMEvent;
+  onEventChanged: (event: WASMEvent) => void;
   index: number;
 }
 export const WasmEventRow = ({
   event: wasmEvent,
+  onEventChanged,
   index,
 }: WasmEventRowProps) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -85,7 +87,11 @@ export const WasmEventRow = ({
           className={`mt-4 transition-all ease-in-out duration-500 ${open ? "max-h-screen" : "max-h-0"} overflow-hidden `}
           data-testid="wasm_event_row_editor"
         >
-          <WasmEventRowEditor wasmEvent={wasmEvent} toggleOpen={closeEditor} />
+          <WasmEventRowEditor
+            originalEvent={wasmEvent}
+            toggleOpen={closeEditor}
+            onEventChanged={onEventChanged}
+          />
         </div>
       </div>
     </div>
