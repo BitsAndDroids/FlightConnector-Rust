@@ -17,14 +17,26 @@ export const WasmEventRowEditor = ({
   toggleOpen,
 }: WasmEventRowEditorProps) => {
   const [wasmEvent, setWasmEvent] = useState<WASMEvent>(originalEvent);
+  const checkLastCharOfCategories = (categories: string) => {
+    return categories.endsWith(",");
+  };
   const changeEvent = (key: string, value: string) => {
     if (key === "plane_or_category") {
-      value = parseCategories(value).join(", ");
+      if (value.endsWith(",")) {
+      }
+      console.log("parsing categories");
+      console.log(value);
+      const parsedValue = parseCategories(value);
+      setWasmEvent({ ...wasmEvent, plane_or_category: parsedValue });
+      return;
     }
     setWasmEvent({ ...wasmEvent, [key]: value });
   };
 
   const parseCategories = (categories: string) => {
+    if (checkLastCharOfCategories(categories)) {
+      categories = categories + " ";
+    }
     return categories.split(",").map((c) => c.trim());
   };
 
