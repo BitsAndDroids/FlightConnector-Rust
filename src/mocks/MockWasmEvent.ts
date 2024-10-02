@@ -1,5 +1,4 @@
 import { WASMEvent } from "@/model/WASMEvent";
-import { readFileSync } from "fs";
 import { MockWASMEventArray } from "./WasmEventArray";
 
 export const MockWasmEvent: WASMEvent = {
