@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { CustomEvents } from "./CustomEvents";
+import { getMockWasmEvents } from "@/mocks/MockWasmEvent";
 
 const meta: Meta<typeof CustomEvents> = {
   component: CustomEvents,
@@ -8,6 +9,9 @@ const meta: Meta<typeof CustomEvents> = {
 export default meta;
 
 export const Primary: StoryObj = {
+  args: {
+    events: getMockWasmEvents(10),
+  },
   decorators: [
     (Story) => {
       return (

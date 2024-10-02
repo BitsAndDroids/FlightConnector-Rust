@@ -232,47 +232,7 @@ export const CustomEvents = () => {
         <div className="flex flew-row align-middle items-center mt-4">
           <Header level={1} title="Custom Events" addToClassName="mt-0" />
           <WasmEventManager events={filteredEvents} />
-          <Button
-            text="Add Event"
-            onClick={addEvent}
-            style="primary"
-            addToClassName="ml-4"
-          />
-          <Button
-            text="Refresh default events"
-            onClick={updateDefaultEvents}
-            style="primary"
-            addToClassName=""
-          />
-          <Input
-            placeholder="Search"
-            addToClassName="mt-2"
-            onChange={searchId as (value: string | boolean) => void}
-          />
-          <Select
-            label="Sort By"
-            labelPosition="top"
-            options={keyArray}
-            values={keyArray}
-            value={sortSettings.sortBy}
-            onChange={changeSortBy}
-            addToClassName="-mt-4 text-white"
-          />
-          <Select
-            label="Sort Order"
-            labelPosition="top"
-            options={["asc", "desc"]}
-            values={["asc", "desc"]}
-            value={sortSettings.sortOrder}
-            onChange={changeSortOrder}
-            addToClassName="-mt-4 text-white"
-          />
         </div>
-        <WASMEventTable
-          events={filteredEvents}
-          deleteEvent={deleteEvent}
-          editEvent={editEvent}
-        />
       </div>
     </>
   );

@@ -1,4 +1,6 @@
 import { WASMEvent } from "@/model/WASMEvent";
+import { readFileSync } from "fs";
+import { MockWASMEventArray } from "./WasmEventArray";
 
 export const MockWasmEvent: WASMEvent = {
   id: 0,
@@ -15,9 +17,10 @@ export const MockWasmEvent: WASMEvent = {
 };
 
 export const getMockWasmEvents = (count: number): WASMEvent[] => {
-  const events: WASMEvent[] = [];
+  let events: WASMEvent[] = [];
   for (let i = 0; i < count; i++) {
-    events.push({ ...MockWasmEvent, id: i });
+    let randomIndex = Math.floor(Math.random() * MockWASMEventArray.length);
+    events.push(MockWASMEventArray[randomIndex]);
   }
   return events;
 };
