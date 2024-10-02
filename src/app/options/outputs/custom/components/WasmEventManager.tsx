@@ -3,6 +3,7 @@ import { WasmEventRow } from "./WasmEventRow";
 import { WasmEventFilter } from "./WasmEventFilter";
 import { useEffect, useState } from "react";
 import { WasmEventFilterParams } from "../models/WasmEventFilter";
+import { Header } from "@/components/elements/header";
 
 interface WasmEventManagerProps {
   events: WASMEvent[];
@@ -64,7 +65,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
 
   return (
     <div className="w-full flex flex-col">
-      <div>WasmEventManager</div>
+      <Header level={1} title="Custom events" />
       <div className="flex flex-row w-full">
         <WasmEventFilter filter={filter} setFilter={onFilterChange} />
         <div className="flex flex-col w-full overflow-y-scroll max-h-[800px]">

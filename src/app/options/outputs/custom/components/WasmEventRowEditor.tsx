@@ -47,6 +47,14 @@ export const WasmEventRowEditor = ({
   return (
     <div className="">
       <Input
+        value={wasmEvent.id.toString()}
+        label="ID"
+        onLight={true}
+        onChange={(value) => {
+          changeEvent("id", value as string);
+        }}
+      />
+      <Input
         value={wasmEvent.action_text}
         label="Checkbox text"
         onLight={true}
