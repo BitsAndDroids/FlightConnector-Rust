@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { CustomEvents } from "./CustomEvents";
 import { getMockWasmEvents } from "@/mocks/MockWasmEvent";
+import { CustomEvents } from "./CustomEvents";
 
 const meta: Meta<typeof CustomEvents> = {
   component: CustomEvents,

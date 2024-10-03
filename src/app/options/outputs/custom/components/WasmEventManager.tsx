@@ -31,6 +31,7 @@ const filterEvents = (
       event.plane_or_category.includes(filter.category.toLowerCase()),
     );
   }
+  console.log(filteredEvents);
   return filteredEvents;
 };
 
