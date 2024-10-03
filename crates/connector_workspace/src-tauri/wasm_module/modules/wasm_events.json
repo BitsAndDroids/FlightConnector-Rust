@@ -9,7 +9,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1001,
@@ -20,7 +20,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1002,
@@ -31,7 +31,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1003,
@@ -42,7 +42,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
 
     {
@@ -54,7 +54,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1005,
@@ -65,7 +65,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1006,
@@ -76,7 +76,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1007,
@@ -87,7 +87,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1008,
@@ -98,7 +98,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 1009,
@@ -109,1602 +109,1602 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 753,
       "action": "(>H:AS1000_PFD_FPL_Push)",
-      "action_text": "test",
+      "action_text": "AS1000 pfd flightplan push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 754,
       "action": "(>H:AS1000_PFD_PROC_Push)",
-      "action_text": "",
+      "action_text": "AS1000 pfd procedure push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 755,
       "action": "(>H:AS1000_PFD_RANGE_INC)",
-      "action_text": "",
+      "action_text": "AS1000 pfd range increment",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 756,
       "action": "(>H:AS1000_PFD_RANGE_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 pfd range decrement",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 757,
       "action": "(>H:AS1000_PFD_DIRECTTO)",
-      "action_text": "",
+      "action_text": "AS1000 pfd direct to",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 758,
       "action": "(>H:AS1000_PFD_MENU_Push)",
-      "action_text": "",
+      "action_text": "AS1000 pfd menu push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 759,
       "action": "(>H:AS1000_PFD_CLR)",
-      "action_text": "",
+      "action_text": "AS1000 pfd clear push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 760,
       "action": "(>H:AS1000_PFD_ENT_Push)",
-      "action_text": "",
+      "action_text": "AS1000 pfd enter push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 761,
       "action": "(>H:AS1000_PFD_ActivateMapCursor)",
-      "action_text": "",
+      "action_text": "AS1000 pfd activate map cursor",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 762,
       "action": "(>H:AS1000_PFD_FMS_Lower_INC)",
-      "action_text": "",
+      "action_text": "AS1000 pfd fms lower increment",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 763,
       "action": "(>H:AS1000_PFD_FMS_Lower_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 pfd fms lower decrement",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 764,
       "action": "(>H:AS1000_PFD_FMS_Upper_INC)",
-      "action_text": "",
+      "action_text": "AS1000 pfd fms upper inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 765,
       "action": "(>H:AS1000_PFD_FMS_Upper_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 pfd fms upper decrement",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 766,
       "action": "(>H:AS1000_PFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 767,
       "action": "(>H:AS1000_PFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 768,
       "action": "(>H:AS1000_PFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 769,
       "action": "(>H:AS1000_PFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 770,
       "action": "(>H:AS1000_PFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 771,
       "action": "(>H:AS1000_PFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkeys 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 772,
       "action": "(>H:AS1000_PFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 773,
       "action": "(>H:AS1000_PFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 774,
       "action": "(>H:AS1000_PFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 775,
       "action": "(>H:AS1000_PFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 776,
       "action": "(>H:AS1000_PFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 777,
       "action": "(>H:AS1000_PFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS1000 pfd softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 778,
       "action": "(>H:AS1000_MFD_FPL_Push)",
-      "action_text": "",
+      "action_text": "AS1000 mfd flight plan push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 779,
       "action": "(>H:AS1000_MFD_PROC_Push)",
-      "action_text": "",
+      "action_text": "AS1000 mfd proc push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 780,
       "action": "(>H:AS1000_MFD_RANGE_INC)",
-      "action_text": "",
+      "action_text": "AS1000 mfd range increment",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 781,
       "action": "(>H:AS1000_MFD_RANGE_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD RANGE DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 782,
       "action": "(>H:AS1000_MFD_DIRECTTO)",
-      "action_text": "",
+      "action_text": "AS1000 MFD DIRECTTO",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 783,
       "action": "(>H:AS1000_MFD_MENU_Push)",
-      "action_text": "",
+      "action_text": "AS1000 MFD MENU Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 784,
       "action": "(>H:AS1000_MFD_CLR)",
-      "action_text": "",
+      "action_text": "AS1000 MFD CLR",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 785,
       "action": "(>H:AS1000_MFD_ENT_Push)",
-      "action_text": "",
+      "action_text": "AS1000 MFD ENT Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 786,
       "action": "(>H:AS1000_MFD_ActivateMapCursor)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Activate Map Cursor",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 787,
       "action": "(>H:AS1000_MFD_FMS_Lower_INC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Lower Increment",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 788,
       "action": "(>H:AS1000_MFD_FMS_Lower_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Lower Decrement",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 789,
       "action": "(>H:AS1000_MFD_FMS_Upper_INC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Upper INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 790,
       "action": "(>H:AS1000_MFD_FMS_Upper_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Upper DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 791,
       "action": "(>H:AS1000_MFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS 1000 MFD Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 792,
       "action": "(>H:AS1000_MFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 793,
       "action": "(>H:AS1000_MFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 794,
       "action": "(>H:AS1000_MFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 795,
       "action": "(>H:AS1000_MFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 796,
       "action": "(>H:AS1000_MFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 797,
       "action": "(>H:AS1000_MFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 798,
       "action": "(>H:AS1000_MFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 799,
       "action": "(>H:AS1000_MFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 800,
       "action": "(>H:AS1000_MFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 801,
       "action": "(>H:AS1000_MFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkeys 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 802,
       "action": "(>H:AS1000_MFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "S1000 MFD Softkeys 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 811,
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Push)",
-      "action_text": "",
+      "action_text": "S3000 TSC horizontal bottom knob push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 812,
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Horizontal BottomKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 813,
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Horizontal bottom knob small increment",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 814,
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_1)",
-      "action_text": "",
+      "action_text": "S3000 TSC Horizontal SoftKey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 815,
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_2)",
-      "action_text": "",
+      "action_text": "S3000 TSC Horizontal SoftKey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 816,
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_3)",
-      "action_text": "",
+      "action_text": "S3000 TSC Horizontal SoftKey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 817,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Horizontal TopKnob Large Decrement",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 818,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal top knob large increment",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 819,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push)",
-      "action_text": "",
+      "action_text": "AS3000 TSX Horizontal TopKnob Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 820,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push_Long)",
-      "action_text": "",
+      "action_text": "AS3000 TSX Horizontal TopKnob Push Long",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 821,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSX Horizontal TopKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 822,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSX Horizontal TopKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 823,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 824,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 825,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "S3000 PFD 1 Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 826,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 827,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 828,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 829,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 830,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 831,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 832,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 833,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 834,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 835,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 836,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 837,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 838,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 839,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkeys 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 840,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 841,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 842,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 843,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 844,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 845,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 846,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 847,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 848,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 849,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 850,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 851,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 852,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 853,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 854,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 855,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 856,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 857,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 858,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 859,
       "action": "(>H:AS3000_MFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 MFD softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 860,
       "action": "(>H:AS3000_MFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 861,
       "action": "(>H:AS3000_MFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 MFD softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 862,
       "action": "(>H:AS3000_MFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 MFD softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 863,
       "action": "(>H:AS3000_MFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 864,
       "action": "(>H:AS3000_MFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 MFD softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 865,
       "action": "(>H:AS3000_MFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 866,
       "action": "(>H:AS3000_MFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 867,
       "action": "(>H:AS3000_MFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 868,
       "action": "(>H:AS3000_MFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 869,
       "action": "(>H:AS3000_MFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "S3000 MFD Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 870,
       "action": "(>H:AS3000_MFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "S3000 MFD Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 871,
       "action": "(>H:AS3000_PFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "S3000 PFD Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 872,
       "action": "(>H:AS3000_PFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "S3000 PFD Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 873,
       "action": "(>H:AS3000_PFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "S3000 PFD SOFTKEYS 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 874,
       "action": "(>H:AS3000_PFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "S3000 PFD softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 875,
       "action": "(>H:AS3000_PFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "S3000 PFD Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 876,
       "action": "(>H:AS3000_PFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "S3000 PFD SOFTKEYS 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 877,
       "action": "(>H:AS3000_PFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "S3000 PFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 878,
       "action": "(>H:AS3000_PFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "S3000 PFD Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 879,
       "action": "(>H:AS3000_PFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "S3000 PFD SOFTKEYS 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 880,
       "action": "(>H:AS3000_PFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "S3000 PFD softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 881,
       "action": "(>H:AS3000_PFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "S3000 PFD Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 882,
       "action": "(>H:AS3000_PFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "S3000 PFD Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 883,
       "action": "(>H:AS3000_PFD_BottomKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "S3000 PFD BottomKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 884,
       "action": "(>H:AS3000_PFD_BottomKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "S3000 PFD BottomKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 885,
       "action": "(>H:AS3000_PFD_BottomKnob_Push)",
-      "action_text": "",
+      "action_text": "S3000 PFD Bottom Knob Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 886,
       "action": "(>H:AS3000_PFD_BottomKnob_Push_Long)",
-      "action_text": "",
+      "action_text": "S3000 PFD BottomKnob Push Long",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 887,
       "action": "(>H:AS3000_PFD_BottomKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "S3000 PFD BottomKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 888,
       "action": "(>H:AS3000_PFD_BottomKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "S3000 PFD BottomKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 889,
       "action": "(>H:AS3000_PFD_TopKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "S3000 PFD TopKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 890,
       "action": "(>H:AS3000_PFD_TopKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "S3000 PFD TopKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 891,
       "action": "(>H:AS3000_PFD_TopKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "S3000 PFD TopKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 892,
       "action": "(>H:AS3000_PFD_TopKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "S3000 PFD TopKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 893,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical Bottom Knob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 894,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical Bottom Knob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 895,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical BottomKnob Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 896,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push_Long)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical BottomKnob Push Long",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 897,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical BottomKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 898,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical Bottom Knob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 899,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical TopKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 903,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical TopKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 904,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical TopKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 905,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "S3000 TSC Vertical TopKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 906,
       "action": "(>H:Generic_Master_Warning_Push)",
-      "action_text": "",
+      "action_text": "Master Warning Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 907,
       "action": "(>H:Generic_Master_Caution_Push)",
-      "action_text": "",
+      "action_text": "Master Caution",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 910,
       "action": "(>H:adf_frqTransfert)",
-      "action_text": "",
+      "action_text": "ADF frequency transfer",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2000,
@@ -1715,7 +1715,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2001,
@@ -1726,7 +1726,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2002,
@@ -1737,7 +1737,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2003,
@@ -1748,29 +1748,29 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2004,
       "action": "(>H:AS3000_PFD_BARO_INC)",
-      "action_text": "",
+      "action_text": "S3000 PFD BARO INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2005,
       "action": "(>H:AS3000_PFD_BARO_DEC)",
-      "action_text": "",
+      "action_text": "S3000 PFD BARO DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2006,
@@ -1781,7 +1781,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2007,
@@ -1792,7 +1792,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2008,
@@ -1803,7 +1803,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2009,
@@ -1814,7 +1814,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2010,
@@ -1825,7 +1825,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2011,
@@ -1836,7 +1836,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2012,
@@ -1847,7 +1847,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2013,
@@ -1858,62 +1858,62 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2014,
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_DEC_TRACK) } els { 1 (>K:HEADING_BUG_DEC) (>H:A320_Neo_CDU_AP_DEC_HEADING) }",
-      "action_text": " FCU heading dec",
+      "action_text": "A320 FCU heading dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2015,
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_INC) } els { 1 (>K:AP_SPD_VAR_INC) } (>H:A320_Neo_CDU_AP_INC_SPEED)",
-      "action_text": " FCU speed inc",
+      "action_text": "A320 FCU speed inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2016,
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_DEC) } els { 1 (>K:AP_SPD_VAR_DEC) } (>H:A320_Neo_CDU_AP_DEC_SPEED)",
-      "action_text": " FCU speed dec",
+      "action_text": "A320 FCU speed dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2017,
       "action": "(>H:A320_Neo_FCU_SPEED_PULL)",
-      "action_text": " FCU speed pull",
+      "action_text": "A320 FCU speed pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2018,
       "action": "(>H:A320_Neo_FCU_SPEED_PUSH)",
-      "action_text": " FCU speed push",
+      "action_text": "A320 FCU speed push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2019,
@@ -1924,7 +1924,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2020,
@@ -1935,7 +1935,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2021,
@@ -1946,7 +1946,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2022,
@@ -1957,7 +1957,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2023,
@@ -1968,7 +1968,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2024,
@@ -1979,7 +1979,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2025,
@@ -1990,7 +1990,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2026,
@@ -2001,7 +2001,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2027,
@@ -2012,7 +2012,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2028,
@@ -2023,7 +2023,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2029,
@@ -2034,7 +2034,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2030,
@@ -2045,7 +2045,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2031,
@@ -2056,7 +2056,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2032,
@@ -2067,7 +2067,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2033,
@@ -2078,7 +2078,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2034,
@@ -2089,7 +2089,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2035,
@@ -2100,7 +2100,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2036,
@@ -2111,7 +2111,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2037,
@@ -2122,7 +2122,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2038,
@@ -2133,18 +2133,18 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2039,
       "action": "4 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": "",
+      "action_text": "A320 MFD nav mode",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2040,
@@ -2155,18 +2155,18 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2041,
       "action": "1 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": "",
+      "action_text": "A320 MFD range 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2042,
@@ -2177,7 +2177,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2043,
@@ -2188,7 +2188,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2044,
@@ -2199,18 +2199,18 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2045,
       "action": "5 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": "",
+      "action_text": "A320 MFD range 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2046,
@@ -2221,7 +2221,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2047,
@@ -2232,7 +2232,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2048,
@@ -2243,7 +2243,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2049,
@@ -2254,7 +2254,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2050,
@@ -2265,7 +2265,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2051,
@@ -2276,7 +2276,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2052,
@@ -2287,7 +2287,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2053,
@@ -2298,7 +2298,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2054,
@@ -2309,7 +2309,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2055,
@@ -2320,7 +2320,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2056,
@@ -2331,7 +2331,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2057,
@@ -2342,7 +2342,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2058,
@@ -2353,7 +2353,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2059,
@@ -2364,7 +2364,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2060,
@@ -2375,7 +2375,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2061,
@@ -2386,7 +2386,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2062,
@@ -2397,7 +2397,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2063,
@@ -2408,7 +2408,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2064,
@@ -2419,7 +2419,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2065,
@@ -2430,62 +2430,62 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 9000,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1) (>H:AS1000_PFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "S3000/S1000 PFD 1 Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 9001,
       "action": "(L:XMLVAR_SWITCH_OVHD_INTLT_SEATBELT_Position) ! (>K:CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE)",
-      "action_text": "",
+      "action_text": "Seatbelt toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2500,
       "action": "2 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
-      "action_text": "",
+      "action_text": "Fuel pum 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2501,
       "action": "1 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
-      "action_text": "",
+      "action_text": "Fuel pump 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2502,
       "action": "0 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
-      "action_text": "",
+      "action_text": "Fuel Pump 0",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5000,
@@ -2496,7 +2496,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5001,
@@ -2507,7 +2507,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5002,
@@ -2518,7 +2518,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5003,
@@ -2529,7 +2529,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5004,
@@ -2540,7 +2540,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5005,
@@ -2551,7 +2551,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5006,
@@ -2562,7 +2562,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5007,
@@ -2573,7 +2573,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5008,
@@ -2584,7 +2584,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5009,
@@ -2595,7 +2595,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5010,
@@ -2606,7 +2606,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5011,
@@ -2617,7 +2617,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5012,
@@ -2628,7 +2628,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5013,
@@ -2639,7 +2639,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5014,
@@ -2650,7 +2650,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5015,
@@ -2661,7 +2661,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5016,
@@ -2672,7 +2672,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5017,
@@ -2683,7 +2683,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5018,
@@ -2694,7 +2694,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5019,
@@ -2705,7 +2705,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5020,
@@ -2716,7 +2716,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5021,
@@ -2727,7 +2727,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5022,
@@ -2738,7 +2738,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5023,
@@ -2749,7 +2749,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5023,
@@ -2760,1602 +2760,1602 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 753,
       "action": "(>H:AS1000_PFD_FPL_Push)",
-      "action_text": "",
+      "action_text": "AS1000 PFD FPLN",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 754,
       "action": "(>H:AS1000_PFD_PROC_Push)",
-      "action_text": "",
+      "action_text": "AS1000 PFD PROC Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 755,
       "action": "(>H:AS1000_PFD_RANGE_INC)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Range +",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 756,
       "action": "(>H:AS1000_PFD_RANGE_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Range Decrement",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 757,
       "action": "(>H:AS1000_PFD_DIRECTTO)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Direct To",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 758,
       "action": "(>H:AS1000_PFD_MENU_Push)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Menu Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 759,
       "action": "(>H:AS1000_PFD_CLR)",
-      "action_text": "",
+      "action_text": "AS1000 PFD CLR",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 760,
       "action": "(>H:AS1000_PFD_ENT_Push)",
-      "action_text": "",
+      "action_text": "AS1000 PFD ENT",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 761,
       "action": "(>H:AS1000_PFD_ActivateMapCursor)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Activate Map Cursor",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 762,
       "action": "(>H:AS1000_PFD_FMS_Lower_INC)",
-      "action_text": "",
+      "action_text": "AS1000 PFD FMS Lower INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 763,
       "action": "(>H:AS1000_PFD_FMS_Lower_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 PFD FMS Lower DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 764,
       "action": "(>H:AS1000_PFD_FMS_Upper_INC)",
-      "action_text": "",
+      "action_text": "AS1000 PFD FMS Upper INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 765,
       "action": "(>H:AS1000_PFD_FMS_Upper_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 PFD FMS Upper DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 766,
       "action": "(>H:AS1000_PFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 767,
       "action": "(>H:AS1000_PFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 768,
       "action": "(>H:AS1000_PFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 769,
       "action": "(>H:AS1000_PFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 770,
       "action": "(>H:AS1000_PFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 771,
       "action": "(>H:AS1000_PFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 772,
       "action": "(>H:AS1000_PFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 773,
       "action": "(>H:AS1000_PFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 774,
       "action": "(>H:AS1000_PFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 775,
       "action": "(>H:AS1000_PFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 776,
       "action": "(>H:AS1000_PFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 777,
       "action": "(>H:AS1000_PFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS1000 PFD Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 778,
       "action": "(>H:AS1000_MFD_FPL_Push)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FPL Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 779,
       "action": "(>H:AS1000_MFD_PROC_Push)",
-      "action_text": "",
+      "action_text": "AS1000 MFD PROC Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 780,
       "action": "(>H:AS1000_MFD_RANGE_INC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Range Increase",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 781,
       "action": "(>H:AS1000_MFD_RANGE_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Range Decrease",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 782,
       "action": "(>H:AS1000_MFD_DIRECTTO)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Direct To",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 783,
       "action": "(>H:AS1000_MFD_MENU_Push)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Menu Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 784,
       "action": "(>H:AS1000_MFD_CLR)",
-      "action_text": "",
+      "action_text": "AS1000 MFD CLR",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 785,
       "action": "(>H:AS1000_MFD_ENT_Push)",
-      "action_text": "",
+      "action_text": "AS1000 MFD ENT Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 786,
       "action": "(>H:AS1000_MFD_ActivateMapCursor)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Activate Map Cursor",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 787,
       "action": "(>H:AS1000_MFD_FMS_Lower_INC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Lower INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 788,
       "action": "(>H:AS1000_MFD_FMS_Lower_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Lower DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 789,
       "action": "(>H:AS1000_MFD_FMS_Upper_INC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Upper INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 790,
       "action": "(>H:AS1000_MFD_FMS_Upper_DEC)",
-      "action_text": "",
+      "action_text": "AS1000 MFD FMS Upper DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 791,
       "action": "(>H:AS1000_MFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 792,
       "action": "(>H:AS1000_MFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 793,
       "action": "(>H:AS1000_MFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 794,
       "action": "(>H:AS1000_MFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 795,
       "action": "(>H:AS1000_MFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 796,
       "action": "(>H:AS1000_MFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 797,
       "action": "(>H:AS1000_MFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 798,
       "action": "(>H:AS1000_MFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 799,
       "action": "(>H:AS1000_MFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 800,
       "action": "(>H:AS1000_MFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 801,
       "action": "(>H:AS1000_MFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 802,
       "action": "(>H:AS1000_MFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS1000 MFD Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 811,
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Push)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal Bottom Knob Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 812,
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal BottomKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 813,
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal BottomKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 814,
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_1)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 815,
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_2)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 816,
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_3)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 817,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal TopKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 818,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal TopKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 819,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal TopKnob Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 820,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push_Long)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal TopKnob Push Long",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 821,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal TopKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 822,
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Horizontal TopKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 823,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 824,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 825,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 826,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 827,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 828,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 829,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 830,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 831,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 832,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 833,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 834,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 1 Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 835,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 836,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 837,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 838,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 839,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 840,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 841,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 842,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 843,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 844,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 845,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 846,
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 2 Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 847,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 848,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 849,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 850,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 851,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 852,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 853,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 854,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 855,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 856,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 857,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 858,
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 PFD 3 Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 859,
       "action": "(>H:AS3000_MFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 860,
       "action": "(>H:AS3000_MFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 861,
       "action": "(>H:AS3000_MFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 862,
       "action": "(>H:AS3000_MFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 863,
       "action": "(>H:AS3000_MFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 864,
       "action": "(>H:AS3000_MFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 865,
       "action": "(>H:AS3000_MFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 866,
       "action": "(>H:AS3000_MFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 867,
       "action": "(>H:AS3000_MFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 868,
       "action": "(>H:AS3000_MFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 869,
       "action": "(>H:AS3000_MFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 870,
       "action": "(>H:AS3000_MFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 MFD Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 871,
       "action": "(>H:AS3000_PFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 872,
       "action": "(>H:AS3000_PFD_SOFTKEYS_2)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 873,
       "action": "(>H:AS3000_PFD_SOFTKEYS_3)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 874,
       "action": "(>H:AS3000_PFD_SOFTKEYS_4)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 875,
       "action": "(>H:AS3000_PFD_SOFTKEYS_5)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 876,
       "action": "(>H:AS3000_PFD_SOFTKEYS_6)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 6",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 877,
       "action": "(>H:AS3000_PFD_SOFTKEYS_7)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 7",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 878,
       "action": "(>H:AS3000_PFD_SOFTKEYS_8)",
-      "action_text": "",
+      "action_text": "AS3000 PFD softkey 8",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 879,
       "action": "(>H:AS3000_PFD_SOFTKEYS_9)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 9",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 880,
       "action": "(>H:AS3000_PFD_SOFTKEYS_10)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 10",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 881,
       "action": "(>H:AS3000_PFD_SOFTKEYS_11)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 11",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 882,
       "action": "(>H:AS3000_PFD_SOFTKEYS_12)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Softkey 12",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 883,
       "action": "(>H:AS3000_PFD_BottomKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD BottomKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 884,
       "action": "(>H:AS3000_PFD_BottomKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD BottomKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 885,
       "action": "(>H:AS3000_PFD_BottomKnob_Push)",
-      "action_text": "",
+      "action_text": "AS3000 PFD BottomKnob Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 886,
       "action": "(>H:AS3000_PFD_BottomKnob_Push_Long)",
-      "action_text": "",
+      "action_text": "AS3000 PFD BottomKnob Push Long",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 887,
       "action": "(>H:AS3000_PFD_BottomKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD BottomKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 888,
       "action": "(>H:AS3000_PFD_BottomKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD BottomKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 889,
       "action": "(>H:AS3000_PFD_TopKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD TopKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 890,
       "action": "(>H:AS3000_PFD_TopKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD TopKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 891,
       "action": "(>H:AS3000_PFD_TopKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD Top Knob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 892,
       "action": "(>H:AS3000_PFD_TopKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD TopKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 893,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical BottomKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 894,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical BottomKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 895,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical BottomKnob Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 896,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push_Long)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical BottomKnob Push Long",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 897,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical BottomKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 898,
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical BottomKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 899,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical TopKnob Large DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 903,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical TopKnob Large INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 904,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical TopKnob Small DEC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 905,
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_INC)",
-      "action_text": "",
+      "action_text": "AS3000 TSC Vertical TopKnob Small INC",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 906,
       "action": "(>H:Generic_Master_Warning_Push)",
-      "action_text": "",
+      "action_text": "Generic Master Warning Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 907,
       "action": "(>H:Generic_Master_Caution_Push)",
-      "action_text": "",
+      "action_text": "Generic Master Caution Push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 910,
       "action": "(>H:adf_frqTransfert)",
-      "action_text": "",
+      "action_text": "ADF Frequency Transfer",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2000,
@@ -4366,7 +4366,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2001,
@@ -4377,7 +4377,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2002,
@@ -4388,7 +4388,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2003,
@@ -4399,29 +4399,29 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2004,
       "action": "(>H:AS3000_PFD_BARO_INC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD baro increase",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2005,
       "action": "(>H:AS3000_PFD_BARO_DEC)",
-      "action_text": "",
+      "action_text": "AS3000 PFD baro decrease",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2006,
@@ -4432,7 +4432,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2007,
@@ -4443,7 +4443,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2008,
@@ -4454,7 +4454,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2009,
@@ -4465,7 +4465,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2010,
@@ -4476,7 +4476,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2011,
@@ -4487,7 +4487,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2012,
@@ -4498,7 +4498,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2013,
@@ -4509,7 +4509,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2014,
@@ -4520,7 +4520,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2015,
@@ -4531,7 +4531,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2016,
@@ -4542,7 +4542,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2017,
@@ -4553,7 +4553,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2018,
@@ -4564,7 +4564,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2019,
@@ -4575,7 +4575,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2020,
@@ -4586,7 +4586,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2021,
@@ -4597,7 +4597,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2022,
@@ -4608,7 +4608,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2023,
@@ -4619,7 +4619,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2024,
@@ -4630,7 +4630,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2025,
@@ -4641,7 +4641,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2026,
@@ -4652,7 +4652,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2027,
@@ -4663,7 +4663,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2028,
@@ -4674,7 +4674,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2029,
@@ -4685,7 +4685,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2030,
@@ -4696,7 +4696,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2031,
@@ -4707,7 +4707,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2032,
@@ -4718,7 +4718,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2033,
@@ -4729,7 +4729,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2034,
@@ -4740,7 +4740,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2035,
@@ -4751,7 +4751,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2036,
@@ -4762,7 +4762,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2037,
@@ -4773,7 +4773,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2038,
@@ -4784,18 +4784,18 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2039,
       "action": "4 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": "",
+      "action_text": "A320 MFD 1 nav mode 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2040,
@@ -4806,18 +4806,18 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2041,
       "action": "1 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": "",
+      "action_text": "A320 MFD 1 range 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2042,
@@ -4828,7 +4828,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2043,
@@ -4839,7 +4839,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2044,
@@ -4850,18 +4850,18 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2045,
       "action": "5 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": "",
+      "action_text": "A320 MFD 1 range 5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2046,
@@ -4872,7 +4872,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2047,
@@ -4883,7 +4883,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2048,
@@ -4894,7 +4894,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2049,
@@ -4905,7 +4905,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2050,
@@ -4916,7 +4916,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2051,
@@ -4927,7 +4927,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2052,
@@ -4938,7 +4938,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2053,
@@ -4949,7 +4949,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2054,
@@ -4960,7 +4960,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2055,
@@ -4971,7 +4971,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2056,
@@ -4982,7 +4982,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2057,
@@ -4993,7 +4993,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2058,
@@ -5004,7 +5004,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2059,
@@ -5015,7 +5015,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2060,
@@ -5026,7 +5026,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2061,
@@ -5037,7 +5037,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2062,
@@ -5048,7 +5048,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2063,
@@ -5059,7 +5059,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2064,
@@ -5070,7 +5070,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2065,
@@ -5081,62 +5081,62 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 9000,
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1) (>H:AS1000_PFD_SOFTKEYS_1)",
-      "action_text": "",
+      "action_text": "AS3000 / AS1000 softkey 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 9001,
       "action": "(L:XMLVAR_SWITCH_OVHD_INTLT_SEATBELT_Position) ! (>K:CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE)",
-      "action_text": "",
+      "action_text": "A320 Seatbelt toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2500,
       "action": "2 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
-      "action_text": "",
+      "action_text": "A320 switch fuel pumps 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2501,
       "action": "1 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
-      "action_text": "",
+      "action_text": "A320 switch fuel pumps 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 2502,
       "action": "0 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
-      "action_text": "",
+      "action_text": "A320 switch fuel pumps 0",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5000,
@@ -5147,7 +5147,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5001,
@@ -5158,7 +5158,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5002,
@@ -5169,7 +5169,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5003,
@@ -5180,7 +5180,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5004,
@@ -5191,7 +5191,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5005,
@@ -5202,7 +5202,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5006,
@@ -5213,7 +5213,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5007,
@@ -5224,7 +5224,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5008,
@@ -5235,7 +5235,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5009,
@@ -5246,7 +5246,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5010,
@@ -5257,7 +5257,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5011,
@@ -5268,7 +5268,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5012,
@@ -5279,7 +5279,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5013,
@@ -5290,7 +5290,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5014,
@@ -5301,7 +5301,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5015,
@@ -5312,7 +5312,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5016,
@@ -5323,7 +5323,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5017,
@@ -5334,7 +5334,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5018,
@@ -5345,7 +5345,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5019,
@@ -5356,7 +5356,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5020,
@@ -5367,7 +5367,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5021,
@@ -5378,7 +5378,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5022,
@@ -5389,7 +5389,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 5023,
@@ -5400,7 +5400,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 6010,
@@ -5411,7 +5411,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 6011,
@@ -5422,7 +5422,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     },
     {
       "id": 6012,
@@ -5433,7 +5433,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": "generic"
+      "plane_or_category": ["generic"]
     }
   ]
 }

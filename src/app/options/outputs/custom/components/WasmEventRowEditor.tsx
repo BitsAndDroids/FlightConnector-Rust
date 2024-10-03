@@ -78,23 +78,27 @@ export const WasmEventRowEditor = ({
           changeEvent("plane_or_category", value as string);
         }}
       />
-      <Input
-        value={wasmEvent.output_format}
-        label="Output format"
-        onLight={true}
-        onChange={(value) => {
-          changeEvent("output_format", value as string);
-        }}
-      />
-      <Input
-        value={wasmEvent.update_every.toString()}
-        type="number"
-        label="Update every"
-        onLight={true}
-        onChange={(value) => {
-          changeEvent("update_every", value as string);
-        }}
-      />
+      {wasmEvent.action_type === "output" && (
+        <Input
+          value={wasmEvent.output_format}
+          label="Output format"
+          onLight={true}
+          onChange={(value) => {
+            changeEvent("output_format", value as string);
+          }}
+        />
+      )}
+      {wasmEvent.action_type === "output" && (
+        <Input
+          value={wasmEvent.update_every.toString()}
+          type="number"
+          label="Update every"
+          onLight={true}
+          onChange={(value) => {
+            changeEvent("update_every", value as string);
+          }}
+        />
+      )}
       <Select
         value={wasmEvent.action_type}
         label="Action type"

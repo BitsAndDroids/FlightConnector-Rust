@@ -57,7 +57,7 @@ fn parse_event_line(line: &str) -> WasmEvent {
         max,
         offset: 0,
         value: 0.0,
-        plane_or_category: "".to_string(),
+        plane_or_category: vec!["".to_string()],
     }
 }
 

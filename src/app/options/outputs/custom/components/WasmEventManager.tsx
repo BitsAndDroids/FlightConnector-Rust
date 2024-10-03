@@ -69,9 +69,9 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
       <Header level={1} title="Custom events" />
       <div className="flex flex-row w-full">
         <WasmEventFilter filter={filter} setFilter={onFilterChange} />
-        <div className="flex flex-col w-full overflow-y-scroll max-h-[800px]">
+        <div className="flex flex-col w-full overflow-y-scroll max-h-[650px]">
           {filteredEvents.map((event, index) => (
-            <div key={index} className="mb-2">
+            <div key={index} className="mb-2 mr-4">
               <WasmEventRow
                 index={index}
                 key={event.id}

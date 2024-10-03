@@ -14,13 +14,18 @@ export const WasmEventRow = ({
   index,
 }: WasmEventRowProps) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [animationEnded, setAnimationEnded] = useState<boolean>(false);
 
   const closeEditor = () => {
+    setAnimationEnded(false);
     setOpen(false);
+    setTimeout(() => {
+      setAnimationEnded(true);
+    }, 500);
   };
   return (
     <div
-      className="rounded-md p-4 bg-white bg-gradient-to-r from-[rgba(255,255,255,0.9)] to-[rgba(200,200,220,0.7)] shadow-[inset_0_-2px_4px_rgba(180,255,255,0.9)] drop-shadow flex flex-row align-middle transition ease-in-out delay-150 duration-300"
+      className="rounded-md p-4 bg-white bg-gradient-to-r from-[rgba(255,255,255,0.9)] to-[rgba(200,200,220,0.7)] shadow-[inset_0_-2px_4px_rgba(180,180,255,0.9)] drop-shadow flex flex-row align-middle transition ease-in-out delay-150 duration-300"
       onClick={() => {
         if (!open) setOpen(true);
       }}
@@ -87,11 +92,13 @@ export const WasmEventRow = ({
           className={`mt-4 transition-all ease-in-out duration-500 ${open ? "max-h-screen" : "max-h-0"} overflow-hidden `}
           data-testid="wasm_event_row_editor"
         >
-          <WasmEventRowEditor
-            originalEvent={wasmEvent}
-            toggleOpen={closeEditor}
-            onEventChanged={onEventChanged}
-          />
+          {(open || !animationEnded) && (
+            <WasmEventRowEditor
+              originalEvent={wasmEvent}
+              toggleOpen={closeEditor}
+              onEventChanged={onEventChanged}
+            />
+          )}
         </div>
       </div>
     </div>
