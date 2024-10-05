@@ -33,7 +33,6 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
   const onChangeField = (field: string, value: string | boolean) => {};
   return (
     <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
-      <Header level={1} title="New event" />
       <div className="bg-white p-8 rounded-md w-[50%]">
         <div>
           <Input
@@ -41,6 +40,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             type="number"
             value={newEvent?.id.toString()}
             onChange={onChangeField as (value: string | boolean) => void}
+            onLight={true}
             errorState={eventErrors.id}
             infoWindow={
               <InfoWindow
@@ -52,6 +52,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
           <Input
             label="Action"
             type="textarea"
+            onLight={true}
             value={newEvent?.action}
             onChange={onChangeField as (value: string | boolean) => void}
             errorState={eventErrors.action}
@@ -67,6 +68,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             value={newEvent?.action_text}
             onChange={onChangeField as (value: string | boolean) => void}
             errorState={eventErrors.action_text}
+            onLight={true}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#description"
@@ -80,6 +82,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             options={["input", "output"]}
             values={["input", "output"]}
             onChange={onChangeField as (value: string | boolean) => void}
+            onLight={true}
             infoWindow={
               <InfoWindow
                 docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#type"
@@ -107,6 +110,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
                 ]}
                 value={newEvent?.output_format}
                 onChange={onChangeField as (value: string | boolean) => void}
+                onLight={true}
               />
               <Input
                 label="Update every change of"
@@ -114,6 +118,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
                 onChange={onChangeField as (value: string | boolean) => void}
                 type="number"
                 decimals={true}
+                onLight={true}
               />
             </>
           )}
