@@ -4,9 +4,11 @@ import { WasmEventFilter } from "./WasmEventFilter";
 import { useEffect, useState } from "react";
 import { WasmEventFilterParams } from "../models/WasmEventFilter";
 import { Header } from "@/components/elements/header";
+import { CustomEventHandler } from "@/utils/CustomEventHandler";
 
 interface WasmEventManagerProps {
   events: WASMEvent[];
+  updateEvents: () => void;
 }
 
 const filterEvents = (
@@ -31,7 +33,6 @@ const filterEvents = (
       event.plane_or_category.includes(filter.category.toLowerCase()),
     );
   }
-  console.log(filteredEvents);
   return filteredEvents;
 };
 
@@ -45,6 +46,12 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     category: "All",
     type: "All",
   });
+
+  const updateEvent = (event: WASMEvent) => {
+    const eventHandler = new CustomEventHandler();
+    eventHandler.updateEvent(event);
+    props.updateEvents();
+  };
 
   const onFilterChange = (filter: WasmEventFilterParams) => {
     setFilter(filter);
@@ -73,6 +80,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
           {filteredEvents.map((event, index) => (
             <div key={index} className="mb-2 mr-4">
               <WasmEventRow
+                updateEvent={updateEvent}
                 index={index}
                 key={event.id}
                 event={event}

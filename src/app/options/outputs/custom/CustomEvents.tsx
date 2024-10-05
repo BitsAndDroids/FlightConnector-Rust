@@ -23,6 +23,10 @@ export const CustomEvents = () => {
   const [eventEditorOpen, setEventEditorOpen] = useState(false);
   const [events, setEvents] = useState<WASMEvent[]>([]);
 
+  const updateEvents = () => {
+    fetchWasmEvents().then((events) => setEvents(events));
+  };
+
   useEffect(() => {
     fetchWasmEvents().then((events) => setEvents(events));
   }, []);
@@ -43,7 +47,9 @@ export const CustomEvents = () => {
         data-testid="custom_event_page"
       >
         <div className="flex flew-row align-middle items-center mt-4">
-          {events.length > 0 && <WasmEventManager events={events} />}
+          {events.length > 0 && (
+            <WasmEventManager events={events} updateEvents={updateEvents} />
+          )}
         </div>
       </div>
     </>

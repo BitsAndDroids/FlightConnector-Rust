@@ -2,15 +2,18 @@ import { WASMEvent } from "@/model/WASMEvent";
 import { WasmEventRowEditor } from "./WasmEventRowEditor";
 import { useState } from "react";
 import { stringifyCategories } from "../utils/stringifyCategories";
+import { CustomEventHandler } from "@/utils/CustomEventHandler";
 
 interface WasmEventRowProps {
   event: WASMEvent;
   onEventChanged: (event: WASMEvent) => void;
+  updateEvent: (event: WASMEvent) => void;
   index: number;
 }
 export const WasmEventRow = ({
   event: wasmEvent,
   onEventChanged,
+  updateEvent,
   index,
 }: WasmEventRowProps) => {
   const [open, setOpen] = useState<boolean>(false);
