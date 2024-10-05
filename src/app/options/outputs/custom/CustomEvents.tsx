@@ -3,6 +3,7 @@ import { WASMEvent } from "@/model/WASMEvent";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
 import { WasmEventManager } from "./components/WasmEventManager";
+import { EventEditor } from "./components/EventEditor";
 
 export interface EventErrors {
   id: InputErrorState;
@@ -33,15 +34,12 @@ export const CustomEvents = () => {
 
   return (
     <>
-      {/* {eventEditorOpen && ( */}
-      {/*   <EventEditor */}
-      {/*     onSave={saveEvent} */}
-      {/*     event={eventToEdit} */}
-      {/*     onCancel={closeEventEditor} */}
-      {/*     eventErrors={eventErrors} */}
-      {/*     setEventErrors={setEventErrors} */}
-      {/*   /> */}
-      {/* )} */}
+      {eventEditorOpen && (
+        <EventEditor
+          onSave={() => {}}
+          onCancel={() => setEventEditorOpen(false)}
+        />
+      )}
       <div
         className="h-[96%] overflow-y-hidden"
         data-testid="custom_event_page"
