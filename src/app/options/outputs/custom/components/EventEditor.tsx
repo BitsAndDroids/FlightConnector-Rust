@@ -1,5 +1,4 @@
 import { Button } from "@/components/elements/Button";
-import { Header } from "@/components/elements/header";
 import { Input } from "@/components/elements/inputs/Input";
 import { Select } from "@/components/elements/Select";
 import InfoWindow from "@/components/InfoWindow";
@@ -7,7 +6,6 @@ import { WASMEvent } from "@/model/WASMEvent";
 import { useState } from "react";
 import { EventErrors } from "../CustomEvents";
 import {
-  checkLastCharOfCategories,
   parseCategories,
   stringifyCategories,
 } from "../utils/CategoriesStringUtils";
@@ -88,60 +86,69 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
               />
             }
           />
-          <Select
-            label="Type"
-            value={newEvent?.action_type}
-            options={["input", "output"]}
-            values={["input", "output"]}
-            onChange={(value) => onChangeField("action_type", value)}
-            onLight={true}
-            infoWindow={
-              <InfoWindow
-                docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#type"
-                message="Type of the event. An Input lets you send data from your controller to MFS. An Output is data that gets send from MFS to your controller."
-              />
-            }
-          />
-          {newEvent.action_type === "output" && (
-            <>
-              <Select
-                label="Output format"
-                options={[
-                  "Integer (1)",
-                  "Float (1.0)",
-                  "Boolean (true, false)",
-                  'String ("string")',
-                  "Time",
-                ]}
-                values={[
-                  "integer",
-                  "float",
-                  "boolean",
-                  "string",
-                  "secondsaftermidnight",
-                ]}
-                value={newEvent?.output_format}
-                onChange={(value) => onChangeField("output_format", value)}
-                onLight={true}
-              />
-              <Input
-                label="Update every change of"
-                value={newEvent.update_every.toString()}
-                onChange={(value: string | boolean) =>
-                  onChangeField("update_every", value)
-                }
-                type="number"
-                decimals={true}
-                onLight={true}
-                infoWindow={
-                  <InfoWindow
-                    docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#update-every"
-                    message="The rate at which the output is updated. This event will be triggered every change of this value. If the value is 0, the event will be triggered every change (even the smallest change 0.001). If the value is 10, the event will be triggered every change of 10. i.e. 10 feet, 20 feet, 30 feet..."
-                  />
-                }
-              />
-            </>
-          )}
+          <div className="flex flex-row">
+            <Select
+              label="Type"
+              value={newEvent?.action_type}
+              options={["input", "output"]}
+              values={["input", "output"]}
+              onChange={(value) => onChangeField("action_type", value)}
+              addToClassName="max-w-[150px] w-[150px]"
+              onLight={true}
+              infoWindow={
+                <InfoWindow
+                  docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#type"
+                  message="Type of the event. An Input lets you send data from your controller to MFS. An Output is data that gets send from MFS to your controller."
+                />
+              }
+            />
+            {newEvent.action_type === "output" && (
+              <>
+                <Select
+                  label="Output format"
+                  options={[
+                    "Integer (1)",
+                    "Float (1.0)",
+                    "Boolean (true, false)",
+                    'String ("string")',
+                    "Time",
+                  ]}
+                  values={[
+                    "integer",
+                    "float",
+                    "boolean",
+                    "string",
+                    "secondsaftermidnight",
+                  ]}
+                  value={newEvent?.output_format}
+                  onChange={(value) => onChangeField("output_format", value)}
+                  onLight={true}
+                  infoWindow={
+                    <InfoWindow
+                      docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#output-format"
+                      message="The format of the output data send to your controller. Integer: 1, Float: 1.0, Boolean: true/false, String: 'string', Time: seconds after midnight."
+                    />
+                  }
+                />
+                <Input
+                  label="Update every change of"
+                  value={newEvent.update_every.toString()}
+                  onChange={(value: string | boolean) =>
+                    onChangeField("update_every", value)
+                  }
+                  type="number"
+                  decimals={true}
+                  onLight={true}
+                  infoWindow={
+                    <InfoWindow
+                      docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#update-every"
+                      message="The rate at which the output is updated. This event will be triggered every change of this value. If the value is 0, the event will be triggered every change (even the smallest change 0.001). If the value is 10, the event will be triggered every change of 10. i.e. 10 feet, 20 feet, 30 feet..."
+                    />
+                  }
+                />
+              </>
+            )}
+          </div>
           <Input
             label="Plane or category (seperated by comma)"
             value={stringifyCategories(newEvent?.plane_or_category)}
