@@ -90,8 +90,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             <Select
               label="Type"
               value={newEvent?.action_type}
-              options={["input", "output"]}
-              values={["input", "output"]}
+              options={[{ value: "input" }, { value: "output" }]}
               onChange={(value) => onChangeField("action_type", value)}
               addToClassName="max-w-[150px] w-[150px]"
               onLight={true}
@@ -107,18 +106,11 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
                 <Select
                   label="Output format"
                   options={[
-                    "Integer (1)",
-                    "Float (1.0)",
-                    "Boolean (true, false)",
-                    'String ("string")',
-                    "Time",
-                  ]}
-                  values={[
-                    "integer",
-                    "float",
-                    "boolean",
-                    "string",
-                    "secondsaftermidnight",
+                    { value: "integer", label: "Integer (1)" },
+                    { value: "float", label: "Float (1.0)" },
+                    { value: "boolean", label: "Boolean (true, false)" },
+                    { value: "string", label: 'String ("string")' },
+                    { value: "secondsaftermidnight", label: "Time" },
                   ]}
                   value={newEvent?.output_format}
                   onChange={(value) => onChangeField("output_format", value)}

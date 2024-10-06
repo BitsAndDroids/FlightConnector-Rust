@@ -54,45 +54,53 @@ const BundleEditor = ({
     setFilteredOutputs(filtered);
   }, [filters, outputs]);
 
+  const getCategoryOptions = () => {
+    const options = [{ value: "All" }];
+    categories.forEach((category, index) => {
+      options.push({ value: category.name });
+    });
+    return options;
+  };
+
   const [filteredOutputs, setFilteredOutputs] = useState<Output[]>(outputs);
 
   return (
     <div className="m-2 relative">
       <div className="flex flex-row h-[550px] rounded-b-lg rounded-tr-lg max-h-[550px] z-40 relative p-2">
-        <PrimaryCard
-          children={
-            <>
-              <Header title="Filters" level={2} onLight={false} />
-              <Input
-                onLight={false}
-                label="Search"
-                placeholder="Search"
-                value={filters.query}
-                onChange={(value) =>
-                  setFilters({ ...filters, query: value as string })
-                }
-              />
-              <Select
-                onLight={false}
-                label="Category"
-                options={["All", ...categories.keys()]}
-                values={["All", ...categories.keys()]}
-                onChange={(value) =>
-                  setFilters({ ...filters, category: value as string })
-                }
-              />
-              <Select
-                onLight={false}
-                options={["All", "Selected", "Not selected"]}
-                values={["All", "Selected", "Not selected"]}
-                label="Selected"
-                onChange={(value) =>
-                  setFilters({ ...filters, selected: value as string })
-                }
-              />
-            </>
-          }
-        />
+        <PrimaryCard>
+          <>
+            <Header title="Filters" level={2} onLight={false} />
+            <Input
+              onLight={false}
+              label="Search"
+              placeholder="Search"
+              value={filters.query}
+              onChange={(value) =>
+                setFilters({ ...filters, query: value as string })
+              }
+            />
+            <Select
+              onLight={false}
+              label="Category"
+              options={getCategoryOptions()}
+              onChange={(value) =>
+                setFilters({ ...filters, category: value as string })
+              }
+            />
+            <Select
+              onLight={false}
+              options={[
+                { value: "All" },
+                { value: "Selected" },
+                { value: "Not selected" },
+              ]}
+              label="Selected"
+              onChange={(value) =>
+                setFilters({ ...filters, selected: value as string })
+              }
+            />
+          </>
+        </PrimaryCard>
         <OutputSelectRows
           outputs={filteredOutputs}
           dialogOpen={dialogOpen}

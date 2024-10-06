@@ -32,8 +32,7 @@ export const WasmEventFilter = (props: WasmEventFilterProps) => {
       <Select
         label="Type"
         onLight={false}
-        options={["All", "Input", "Output"]}
-        values={["All", "Input", "Output"]}
+        options={[{ value: "All" }, { value: "Input" }, { value: "Output" }]}
         value={props.filter.type}
         onChange={onChangeType}
       />

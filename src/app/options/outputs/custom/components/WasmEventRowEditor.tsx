@@ -96,8 +96,7 @@ export const WasmEventRowEditor = ({
         value={wasmEvent.action_type}
         label="Action type"
         onLight={true}
-        options={["input", "output"]}
-        values={["input", "output"]}
+        options={[{ value: "input" }, { value: "output" }]}
         onChange={(value) => {
           changeEvent("action_type", value as string);
         }}

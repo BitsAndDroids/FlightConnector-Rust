@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
 import { InfoWindowProps } from "../InfoWindow";
 import { Label } from "./Label";
+import { SelectOption } from "@/model/SelectOption";
 
 interface SelectProps {
   label?: string;
   labelPosition?: "top" | "left";
   value?: string;
-  options: string[];
-  values: string[];
+  options: Array<SelectOption>;
   onLight?: boolean;
   addToClassName?: string;
   infoWindow?: ReactElement<InfoWindowProps>;
@@ -19,7 +19,6 @@ export const Select = ({
   labelPosition,
   value,
   options,
-  values,
   onLight,
   addToClassName,
   infoWindow,
@@ -40,9 +39,9 @@ export const Select = ({
           onChange={(e) => onChange && onChange(e.target.value)}
           className="border border-gray-200 w-full rounded-md p-2 mb-2 mr-2 drop-shadow w"
         >
-          {options.map((option, index) => (
-            <option key={option} value={values[index]}>
-              {option}
+          {options.map((option) => (
+            <option key={option.id || option.value} value={option.value}>
+              {option.label || option.value}
             </option>
           ))}
         </select>
