@@ -133,6 +133,12 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
                 type="number"
                 decimals={true}
                 onLight={true}
+                infoWindow={
+                  <InfoWindow
+                    docs_url="https://bitsanddroids.github.io/FlightConnector-Rust/ch06-01-custom-events.html#update-every"
+                    message="The rate at which the output is updated. This event will be triggered every change of this value. If the value is 0, the event will be triggered every change (even the smallest change 0.001). If the value is 10, the event will be triggered every change of 10. i.e. 10 feet, 20 feet, 30 feet..."
+                  />
+                }
               />
             </>
           )}
