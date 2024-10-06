@@ -2,7 +2,10 @@ import { Button } from "@/components/elements/Button";
 import { Input } from "@/components/elements/inputs/Input";
 import { Select } from "@/components/elements/Select";
 import { WASMEvent } from "@/model/WASMEvent";
-import { stringifyCategories } from "../utils/stringifyCategories";
+import {
+  parseCategories,
+  stringifyCategories,
+} from "../utils/CategoriesStringUtils";
 import { useState } from "react";
 
 interface WasmEventRowEditorProps {
@@ -17,9 +20,6 @@ export const WasmEventRowEditor = ({
   toggleOpen,
 }: WasmEventRowEditorProps) => {
   const [wasmEvent, setWasmEvent] = useState<WASMEvent>(originalEvent);
-  const checkLastCharOfCategories = (categories: string) => {
-    return categories.endsWith(",");
-  };
   const changeEvent = (key: string, value: string) => {
     if (key === "plane_or_category") {
       if (value.endsWith(",")) {
@@ -31,13 +31,6 @@ export const WasmEventRowEditor = ({
       return;
     }
     setWasmEvent({ ...wasmEvent, [key]: value });
-  };
-
-  const parseCategories = (categories: string) => {
-    if (checkLastCharOfCategories(categories)) {
-      categories = categories + " ";
-    }
-    return categories.split(",").map((c) => c.trim());
   };
 
   const onSavePressed = () => {

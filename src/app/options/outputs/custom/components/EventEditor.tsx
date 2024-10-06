@@ -6,6 +6,11 @@ import InfoWindow from "@/components/InfoWindow";
 import { WASMEvent } from "@/model/WASMEvent";
 import { useState } from "react";
 import { EventErrors } from "../CustomEvents";
+import {
+  checkLastCharOfCategories,
+  parseCategories,
+  stringifyCategories,
+} from "../utils/CategoriesStringUtils";
 interface EventEditorProps {
   onSave: (event: WASMEvent) => void;
   onCancel: () => void;
@@ -30,7 +35,14 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
     plane_or_category: [""],
   });
 
-  const onChangeField = (field: string, value: string | boolean) => {};
+  const onChangeField = (field: string, value: string | boolean) => {
+    if (field === "plane_or_category") {
+      const parsedValue = parseCategories(value as string);
+      setNewEvent({ ...newEvent, plane_or_category: parsedValue });
+      return;
+    }
+    setNewEvent({ ...newEvent, [field]: value });
+  };
   return (
     <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
       <div className="bg-white p-8 rounded-md w-[50%]">
@@ -39,7 +51,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             label="ID"
             type="number"
             value={newEvent?.id.toString()}
-            onChange={onChangeField as (value: string | boolean) => void}
+            onChange={(value) => onChangeField("id", value)}
             onLight={true}
             errorState={eventErrors.id}
             infoWindow={
@@ -54,7 +66,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             type="textarea"
             onLight={true}
             value={newEvent?.action}
-            onChange={onChangeField as (value: string | boolean) => void}
+            onChange={(value) => onChangeField("action", value)}
             errorState={eventErrors.action}
             infoWindow={
               <InfoWindow
@@ -66,7 +78,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
           <Input
             label="Description"
             value={newEvent?.action_text}
-            onChange={onChangeField as (value: string | boolean) => void}
+            onChange={(value) => onChangeField("action_text", value)}
             errorState={eventErrors.action_text}
             onLight={true}
             infoWindow={
@@ -81,7 +93,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             value={newEvent?.action_type}
             options={["input", "output"]}
             values={["input", "output"]}
-            onChange={onChangeField as (value: string | boolean) => void}
+            onChange={(value) => onChangeField("action_type", value)}
             onLight={true}
             infoWindow={
               <InfoWindow
@@ -109,26 +121,29 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
                   "secondsaftermidnight",
                 ]}
                 value={newEvent?.output_format}
-                onChange={onChangeField as (value: string | boolean) => void}
+                onChange={(value) => onChangeField("output_format", value)}
                 onLight={true}
               />
               <Input
                 label="Update every change of"
                 value={newEvent.update_every.toString()}
-                onChange={onChangeField as (value: string | boolean) => void}
+                onChange={(value: string | boolean) =>
+                  onChangeField("update_every", value)
+                }
                 type="number"
                 decimals={true}
                 onLight={true}
               />
             </>
           )}
-          {/* <Select */}
-          {/*   label="Plane or category" */}
-          {/*   options={categories} */}
-          {/*   values={categories} */}
-          {/*   value={newEvent?.plane_or_category} */}
-          {/*   onChange={changePlaneOrCategory} */}
-          {/* /> */}
+          <Input
+            label="Plane or category (seperated by comma)"
+            value={stringifyCategories(newEvent?.plane_or_category)}
+            onChange={(value: string | boolean) =>
+              onChangeField("plane_or_category", value)
+            }
+            onLight={true}
+          />
         </div>
         <div className="flex flex-row justify-center items-center">
           <Button
@@ -136,11 +151,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
             text="Save"
             style="primary"
           />
-          <Button
-            onClick={onCancel || (() => {})}
-            text="Cancel"
-            style="danger"
-          />
+          <Button onClick={() => onCancel()} text="Cancel" style="danger" />
         </div>
       </div>
     </div>

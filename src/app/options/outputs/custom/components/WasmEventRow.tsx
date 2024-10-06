@@ -1,7 +1,7 @@
 import { WASMEvent } from "@/model/WASMEvent";
 import { WasmEventRowEditor } from "./WasmEventRowEditor";
 import { useState } from "react";
-import { stringifyCategories } from "../utils/stringifyCategories";
+import { stringifyCategories } from "../utils/CategoriesStringUtils";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
 
 interface WasmEventRowProps {
