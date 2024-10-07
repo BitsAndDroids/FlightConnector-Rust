@@ -10,4 +10,5 @@ export interface WASMEvent {
   value: number;
   offset: number;
   plane_or_category: string[];
+  made_by: string;
 }

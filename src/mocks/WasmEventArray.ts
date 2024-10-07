@@ -13,6 +13,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     plane_or_category: ["generic"],
     value: 0,
     offset: 0,
+    made_by: "BitsAndDroids",
   },
   {
     id: 1001,
@@ -26,6 +27,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 1002,
@@ -39,6 +41,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 1003,
@@ -52,6 +55,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
 
   {
@@ -66,6 +70,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 1005,
@@ -79,6 +84,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     min: 0.0,
     max: 100.0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 1006,
@@ -92,6 +98,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 1007,
@@ -105,6 +112,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     min: 0.0,
     max: 100.0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 1008,
@@ -119,6 +127,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 1009,
@@ -133,6 +142,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 753,
@@ -146,6 +156,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 754,
@@ -159,6 +170,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 755,
@@ -172,6 +184,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
     id: 756,
@@ -185,9 +198,10 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "BitsAndDroids",
   },
   {
-    id: 757,
+    id: 3000,
     action: "(>H:AS1000_PFD_DIRECTTO)",
     action_text: "PFD direction AS1000",
     action_type: "input",
@@ -198,9 +212,10 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "User",
   },
   {
-    id: 758,
+    id: 3001,
     action: "(>H:AS1000_PFD_MENU_Push)",
     action_text: "PFD menu push",
     action_type: "input",
@@ -211,5 +226,6 @@ export const MockWASMEventArray: WASMEvent[] = [
     value: 0,
     offset: 0,
     plane_or_category: ["generic"],
+    made_by: "User",
   },
 ];

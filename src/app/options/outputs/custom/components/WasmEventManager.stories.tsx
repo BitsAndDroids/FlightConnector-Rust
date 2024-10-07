@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { WasmEventManager } from "./WasmEventManager";
-import { getMockWasmEvents } from "@/mocks/MockWasmEvent";
+import { getAllMockWasmEvents, getMockWasmEvents } from "@/mocks/MockWasmEvent";
 
 const meta: Meta<typeof WasmEventManager> = {
   component: WasmEventManager,
@@ -10,7 +10,7 @@ export default meta;
 
 export const Primary: StoryObj = {
   args: {
-    events: getMockWasmEvents(10),
+    events: getAllMockWasmEvents(),
   },
   decorators: [
     (Story) => {

@@ -13,6 +13,7 @@ export const MockWasmEvent: WASMEvent = {
   value: 0,
   offset: 0,
   plane_or_category: ["category", "plane type"],
+  made_by: "BitsAndDroids",
 };
 
 export const getMockWasmEvents = (count: number): WASMEvent[] => {
@@ -22,4 +23,8 @@ export const getMockWasmEvents = (count: number): WASMEvent[] => {
     events.push(MockWASMEventArray[randomIndex]);
   }
   return events;
+};
+
+export const getAllMockWasmEvents = (): WASMEvent[] => {
+  return MockWASMEventArray;
 };

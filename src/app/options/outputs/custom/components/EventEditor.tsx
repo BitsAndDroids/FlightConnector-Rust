@@ -13,15 +13,29 @@ import { OutputFormats } from "@/model/Output";
 interface EventEditorProps {
   onSave: (event: WASMEvent) => void;
   onCancel: () => void;
+  events: Array<WASMEvent>;
 }
-export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
+
+const getValidID = (events: Array<WASMEvent>): number => {
+  const ids = new Set();
+  for (const event of events) {
+    ids.add(event.id);
+  }
+  let id = 3000;
+  while (ids.has(id)) {
+    id++;
+  }
+  return id;
+};
+
+export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
   const [eventErrors, setEventErrors] = useState<EventErrors>({
     id: { state: false, message: "" },
     action: { state: false, message: "" },
     action_text: { state: false, message: "" },
   });
   const [newEvent, setNewEvent] = useState<WASMEvent>({
-    id: 0,
+    id: getValidID(events),
     action: "",
     action_text: "",
     action_type: "input",
@@ -32,6 +46,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
     value: 0,
     offset: 0,
     plane_or_category: [""],
+    made_by: "User",
   });
 
   const onChangeField = (field: string, value: string | boolean) => {
@@ -42,6 +57,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
     }
     setNewEvent({ ...newEvent, [field]: value });
   };
+
   return (
     <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
       <div className="bg-white p-8 rounded-md w-[50%]">

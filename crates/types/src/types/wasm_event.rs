@@ -15,6 +15,7 @@ pub struct WasmEvent {
     pub value: f64,
     pub offset: u32,
     pub plane_or_category: Vec<String>,
+    pub made_by: String,
 }
 
 impl<'de> Deserialize<'de> for WasmEvent {
@@ -43,6 +44,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
         let value = helper.value.unwrap_or(0.0);
         let offset = helper.offset.unwrap_or(0);
         let action_text = helper.action_text.unwrap_or("".to_string());
+        let made_by = "BitsAndDroids".to_string();
 
         Ok(WasmEvent {
             id: helper.id,
@@ -56,6 +58,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
             value,
             offset,
             plane_or_category: helper.plane_or_category,
+            made_by,
         })
     }
 }

@@ -25,6 +25,13 @@ export const WasmEventFilter = (props: WasmEventFilterProps) => {
     props.setFilter({ ...props.filter, type: value });
   };
 
+  const onChangeMadeBy = (value: string) => {
+    if (value !== "All" && value !== "Me" && value !== "BitsAndDroids") {
+      return;
+    }
+    props.setFilter({ ...props.filter, madeBy: value });
+  };
+
   const filterContent: ReactNode = (
     <div>
       <Input label="Search" onLight={false} onChange={onChangeQuery} />
@@ -35,6 +42,17 @@ export const WasmEventFilter = (props: WasmEventFilterProps) => {
         options={[{ value: "All" }, { value: "Input" }, { value: "Output" }]}
         value={props.filter.type}
         onChange={onChangeType}
+      />
+      <Select
+        label="Made by"
+        onLight={false}
+        options={[
+          { value: "All" },
+          { value: "Me" },
+          { value: "BitsAndDroids" },
+        ]}
+        value={props.filter.madeBy}
+        onChange={onChangeMadeBy}
       />
     </div>
   );

@@ -7,6 +7,8 @@ import { Header } from "@/components/elements/header";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
+import { Button } from "@/components/elements/Button";
+import { EventEditor } from "./EventEditor";
 
 interface WasmEventManagerProps {
   events: WASMEvent[];
@@ -34,11 +36,24 @@ const filterEvents = (
       event.plane_or_category.includes(filter.category.toLowerCase()),
     );
   }
+  if (filter.madeBy && filter.madeBy !== "All") {
+    if (filter.madeBy === "Me") {
+      filteredEvents = filteredEvents.filter(
+        (event) => event.made_by === "User",
+      );
+    }
+    if (filter.madeBy === "BitsAndDroids") {
+      filteredEvents = filteredEvents.filter(
+        (event) => event.made_by === "BitsAndDroids",
+      );
+    }
+  }
   return filteredEvents;
 };
 const connectorSettingsHandler = new ConnectorSettingsHandler();
 
 export const WasmEventManager = (props: WasmEventManagerProps) => {
+  const [eventEditorVisible, setEventEditorVisible] = useState(false);
   const [events, setEvents] = useState<WASMEvent[]>(props.events);
   const [filteredEvents, setFilteredEvents] = useState<WASMEvent[]>(
     props.events,
@@ -47,6 +62,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     query: "",
     category: "All",
     type: "All",
+    madeBy: "All",
   });
   const [customEventVersion, setCustomEventVersion] = useState<string>();
   const [latestCustomEventVersion, setLatestCustomEventVersion] = useState<
@@ -120,10 +136,30 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
 
   return (
     <div className="w-full flex flex-col">
-      <Header level={1} title="Custom events" />
-      <div className="flex flex-row w-full overflow-y-scroll">
+      {eventEditorVisible && (
+        <EventEditor
+          onSave={function (event: WASMEvent): void {
+            throw new Error("Function not implemented.");
+          }}
+          onCancel={() => {
+            setEventEditorVisible(false);
+          }}
+          events={events}
+        />
+      )}
+      <div className="flex flex-row items-center">
+        <Header level={1} title="Custom events" />
+        <Button
+          onClick={() => {
+            setEventEditorVisible(true);
+          }}
+          text="Add event"
+          addToClassName="mt-6 ml-4"
+        />
+      </div>
+      <div className="flex flex-row w-full ">
         <WasmEventFilter filter={filter} setFilter={onFilterChange} />
-        <div className="flex flex-col w-full  max-h-[650px] relative">
+        <div className="flex flex-col w-full  max-h-[650px] overflow-y-scroll relative">
           {filteredEvents.map((event, index) => (
             <div key={index} className="mb-2 mr-4 relative ">
               <WasmEventRow
