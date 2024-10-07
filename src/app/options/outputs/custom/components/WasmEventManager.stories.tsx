@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { WasmEventManager } from "./WasmEventManager";
-import { getAllMockWasmEvents, getMockWasmEvents } from "@/mocks/MockWasmEvent";
+import { getAllMockWasmEvents } from "@/mocks/MockWasmEvent";
 
 const meta: Meta<typeof WasmEventManager> = {
   component: WasmEventManager,

@@ -51,7 +51,7 @@ const filterEvents = (
   return filteredEvents;
 };
 const connectorSettingsHandler = new ConnectorSettingsHandler();
-
+const eventHandler = new CustomEventHandler();
 export const WasmEventManager = (props: WasmEventManagerProps) => {
   const [eventEditorVisible, setEventEditorVisible] = useState(false);
   const [events, setEvents] = useState<WASMEvent[]>(props.events);
@@ -69,9 +69,12 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     string | undefined | null
   >(undefined);
 
-  const updateEvent = (event: WASMEvent) => {
-    const eventHandler = new CustomEventHandler();
-    eventHandler.updateEvent(event);
+  const onSaveEvent = (event: WASMEvent) => {
+    const newEvents = [...events];
+    newEvents.push(event);
+    eventHandler.addEvent(event);
+    setEvents(newEvents);
+    setFilteredEvents(filterEvents(newEvents, filter));
   };
 
   const onFilterChange = (filter: WasmEventFilterParams) => {
@@ -85,7 +88,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     }
     const newEvents = [...events];
     newEvents[index] = event;
-    updateEvent(event);
+    eventHandler.updateEvent(event);
     setEvents(newEvents);
   };
 
@@ -93,7 +96,6 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     const fetchCustomEventVersion = async () => {
       const customEventVersion =
         await connectorSettingsHandler.getLastCustomEventVersion();
-      console.log(customEventVersion);
       if (!customEventVersion) {
         setCustomEventVersion("none");
         return;
@@ -102,18 +104,13 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     };
     const fetchLatestCustomEventVersion = async () => {
       invoke("get_latest_custom_event_version").then((result) => {
-        console.log(result);
         setLatestCustomEventVersion(result as string);
       });
     };
 
     const compareVersions = () => {
-      console.log("Comparing versions");
       if (customEventVersion !== latestCustomEventVersion) {
-        console.log("Reloading custom events");
         invoke("reload_custom_events");
-        console.log("Setting latest version");
-        console.log(customEventVersion);
         connectorSettingsHandler.setLastCustomEventVersion(
           latestCustomEventVersion as string,
         );
@@ -139,7 +136,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
       {eventEditorVisible && (
         <EventEditor
           onSave={function (event: WASMEvent): void {
-            throw new Error("Function not implemented.");
+            onSaveEvent(event);
           }}
           onCancel={() => {
             setEventEditorVisible(false);

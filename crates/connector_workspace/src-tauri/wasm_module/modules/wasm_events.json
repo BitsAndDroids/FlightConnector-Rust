@@ -3,6 +3,7 @@
   "events": [
     {
       "id": 1000,
+      "made_by": "BitsAndDroids",
       "action": "(L:Generic_Master_Caution_Active)",
       "action_text": "Master caution on",
       "action_type": "output",
@@ -14,6 +15,7 @@
     },
     {
       "id": 1001,
+      "made_by": "BitsAndDroids",
       "action": "(L:Generic_Master_Warning_Active)",
       "action_text": "Master warning on",
       "action_type": "output",
@@ -25,6 +27,7 @@
     },
     {
       "id": 1002,
+      "made_by": "BitsAndDroids",
       "action": "0 (>A:TRANSPONDER STATE:1, enum)",
       "action_text": "Tranpsponder state off",
       "action_type": "input",
@@ -36,6 +39,7 @@
     },
     {
       "id": 1003,
+      "made_by": "BitsAndDroids",
       "action": "1 (>A:TRANSPONDER STATE:1, enum)",
       "action_text": "Tranpsponder state standby",
       "action_type": "input",
@@ -48,6 +52,7 @@
 
     {
       "id": 1004,
+      "made_by": "BitsAndDroids",
       "action": "2 (>A:TRANSPONDER STATE:1, enum)",
       "action_text": "Tranpsponder state test",
       "action_type": "input",
@@ -59,6 +64,7 @@
     },
     {
       "id": 1005,
+      "made_by": "BitsAndDroids",
       "action": "3 (>A:TRANSPONDER STATE:1, enum)",
       "action_text": "Tranpsponder state on",
       "action_type": "input",
@@ -70,6 +76,7 @@
     },
     {
       "id": 1006,
+      "made_by": "BitsAndDroids",
       "action": "4 (>A:TRANSPONDER STATE:1, enum)",
       "action_text": "Tranpsponder state alt",
       "action_type": "input",
@@ -81,6 +88,7 @@
     },
     {
       "id": 1007,
+      "made_by": "BitsAndDroids",
       "action": "5 (>A:TRANSPONDER STATE:1, enum)",
       "action_text": "Tranpsponder state ground",
       "action_type": "input",
@@ -92,6 +100,7 @@
     },
     {
       "id": 1008,
+      "made_by": "BitsAndDroids",
       "action": "0 1 3 4 4 (A:TRANSPONDER STATE:1, Number) case (>A:TRANSPONDER STATE:1, Number)",
       "action_text": "Tranpsponder state up",
       "action_type": "input",
@@ -103,6 +112,7 @@
     },
     {
       "id": 1009,
+      "made_by": "BitsAndDroids",
       "action": "4 3 1 0 4 (A:TRANSPONDER STATE:1, Number) case (>A:TRANSPONDER STATE:1, Number)",
       "action_text": "Tranpsponder state down",
       "action_type": "input",
@@ -114,6 +124,7 @@
     },
     {
       "id": 753,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FPL_Push)",
       "action_text": "AS1000 pfd flightplan push",
       "action_type": "input",
@@ -125,6 +136,7 @@
     },
     {
       "id": 754,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_PROC_Push)",
       "action_text": "AS1000 pfd procedure push",
       "action_type": "input",
@@ -136,6 +148,7 @@
     },
     {
       "id": 755,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_RANGE_INC)",
       "action_text": "AS1000 pfd range increment",
       "action_type": "input",
@@ -147,6 +160,7 @@
     },
     {
       "id": 756,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_RANGE_DEC)",
       "action_text": "AS1000 pfd range decrement",
       "action_type": "input",
@@ -158,6 +172,7 @@
     },
     {
       "id": 757,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_DIRECTTO)",
       "action_text": "AS1000 pfd direct to",
       "action_type": "input",
@@ -169,6 +184,7 @@
     },
     {
       "id": 758,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_MENU_Push)",
       "action_text": "AS1000 pfd menu push",
       "action_type": "input",
@@ -180,6 +196,7 @@
     },
     {
       "id": 759,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_CLR)",
       "action_text": "AS1000 pfd clear push",
       "action_type": "input",
@@ -191,6 +208,7 @@
     },
     {
       "id": 760,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_ENT_Push)",
       "action_text": "AS1000 pfd enter push",
       "action_type": "input",
@@ -202,6 +220,7 @@
     },
     {
       "id": 761,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_ActivateMapCursor)",
       "action_text": "AS1000 pfd activate map cursor",
       "action_type": "input",
@@ -213,6 +232,7 @@
     },
     {
       "id": 762,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Lower_INC)",
       "action_text": "AS1000 pfd fms lower increment",
       "action_type": "input",
@@ -224,6 +244,7 @@
     },
     {
       "id": 763,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Lower_DEC)",
       "action_text": "AS1000 pfd fms lower decrement",
       "action_type": "input",
@@ -235,6 +256,7 @@
     },
     {
       "id": 764,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Upper_INC)",
       "action_text": "AS1000 pfd fms upper inc",
       "action_type": "input",
@@ -246,6 +268,7 @@
     },
     {
       "id": 765,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Upper_DEC)",
       "action_text": "AS1000 pfd fms upper decrement",
       "action_type": "input",
@@ -257,6 +280,7 @@
     },
     {
       "id": 766,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_1)",
       "action_text": "AS1000 pfd softkey 1",
       "action_type": "input",
@@ -268,6 +292,7 @@
     },
     {
       "id": 767,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_2)",
       "action_text": "AS1000 pfd softkey 2",
       "action_type": "input",
@@ -279,6 +304,7 @@
     },
     {
       "id": 768,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_3)",
       "action_text": "AS1000 pfd softkey 3",
       "action_type": "input",
@@ -290,6 +316,7 @@
     },
     {
       "id": 769,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_4)",
       "action_text": "AS1000 pfd softkey 4",
       "action_type": "input",
@@ -301,6 +328,7 @@
     },
     {
       "id": 770,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_5)",
       "action_text": "AS1000 pfd softkey 5",
       "action_type": "input",
@@ -312,6 +340,7 @@
     },
     {
       "id": 771,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_6)",
       "action_text": "AS1000 pfd softkeys 6",
       "action_type": "input",
@@ -323,6 +352,7 @@
     },
     {
       "id": 772,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_7)",
       "action_text": "AS1000 pfd softkey 7",
       "action_type": "input",
@@ -334,6 +364,7 @@
     },
     {
       "id": 773,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_8)",
       "action_text": "AS1000 pfd softkey 8",
       "action_type": "input",
@@ -345,6 +376,7 @@
     },
     {
       "id": 774,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_9)",
       "action_text": "AS1000 pfd softkey 9",
       "action_type": "input",
@@ -356,6 +388,7 @@
     },
     {
       "id": 775,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_10)",
       "action_text": "AS1000 pfd softkey 10",
       "action_type": "input",
@@ -367,6 +400,7 @@
     },
     {
       "id": 776,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_11)",
       "action_text": "AS1000 pfd softkey 11",
       "action_type": "input",
@@ -378,6 +412,7 @@
     },
     {
       "id": 777,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_12)",
       "action_text": "AS1000 pfd softkey 12",
       "action_type": "input",
@@ -389,6 +424,7 @@
     },
     {
       "id": 778,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FPL_Push)",
       "action_text": "AS1000 mfd flight plan push",
       "action_type": "input",
@@ -400,6 +436,7 @@
     },
     {
       "id": 779,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_PROC_Push)",
       "action_text": "AS1000 mfd proc push",
       "action_type": "input",
@@ -411,6 +448,7 @@
     },
     {
       "id": 780,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_RANGE_INC)",
       "action_text": "AS1000 mfd range increment",
       "action_type": "input",
@@ -422,6 +460,7 @@
     },
     {
       "id": 781,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_RANGE_DEC)",
       "action_text": "AS1000 MFD RANGE DEC",
       "action_type": "input",
@@ -433,6 +472,7 @@
     },
     {
       "id": 782,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_DIRECTTO)",
       "action_text": "AS1000 MFD DIRECTTO",
       "action_type": "input",
@@ -444,6 +484,7 @@
     },
     {
       "id": 783,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_MENU_Push)",
       "action_text": "AS1000 MFD MENU Push",
       "action_type": "input",
@@ -455,6 +496,7 @@
     },
     {
       "id": 784,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_CLR)",
       "action_text": "AS1000 MFD CLR",
       "action_type": "input",
@@ -466,6 +508,7 @@
     },
     {
       "id": 785,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_ENT_Push)",
       "action_text": "AS1000 MFD ENT Push",
       "action_type": "input",
@@ -477,6 +520,7 @@
     },
     {
       "id": 786,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_ActivateMapCursor)",
       "action_text": "AS1000 MFD Activate Map Cursor",
       "action_type": "input",
@@ -488,6 +532,7 @@
     },
     {
       "id": 787,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Lower_INC)",
       "action_text": "AS1000 MFD FMS Lower Increment",
       "action_type": "input",
@@ -499,6 +544,7 @@
     },
     {
       "id": 788,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Lower_DEC)",
       "action_text": "AS1000 MFD FMS Lower Decrement",
       "action_type": "input",
@@ -510,6 +556,7 @@
     },
     {
       "id": 789,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Upper_INC)",
       "action_text": "AS1000 MFD FMS Upper INC",
       "action_type": "input",
@@ -521,6 +568,7 @@
     },
     {
       "id": 790,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Upper_DEC)",
       "action_text": "AS1000 MFD FMS Upper DEC",
       "action_type": "input",
@@ -532,6 +580,7 @@
     },
     {
       "id": 791,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_1)",
       "action_text": "AS 1000 MFD Softkey 1",
       "action_type": "input",
@@ -543,6 +592,7 @@
     },
     {
       "id": 792,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_2)",
       "action_text": "S1000 MFD Softkey 2",
       "action_type": "input",
@@ -554,6 +604,7 @@
     },
     {
       "id": 793,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_3)",
       "action_text": "S1000 MFD Softkey 3",
       "action_type": "input",
@@ -565,6 +616,7 @@
     },
     {
       "id": 794,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_4)",
       "action_text": "S1000 MFD Softkey 4",
       "action_type": "input",
@@ -576,6 +628,7 @@
     },
     {
       "id": 795,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_5)",
       "action_text": "S1000 MFD Softkey 5",
       "action_type": "input",
@@ -587,6 +640,7 @@
     },
     {
       "id": 796,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_6)",
       "action_text": "S1000 MFD Softkey 6",
       "action_type": "input",
@@ -598,6 +652,7 @@
     },
     {
       "id": 797,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_7)",
       "action_text": "S1000 MFD Softkey 7",
       "action_type": "input",
@@ -609,6 +664,7 @@
     },
     {
       "id": 798,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_8)",
       "action_text": "S1000 MFD Softkey 8",
       "action_type": "input",
@@ -620,6 +676,7 @@
     },
     {
       "id": 799,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_9)",
       "action_text": "S1000 MFD Softkey 9",
       "action_type": "input",
@@ -631,6 +688,7 @@
     },
     {
       "id": 800,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_10)",
       "action_text": "S1000 MFD Softkey 10",
       "action_type": "input",
@@ -642,6 +700,7 @@
     },
     {
       "id": 801,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_11)",
       "action_text": "S1000 MFD Softkeys 11",
       "action_type": "input",
@@ -653,6 +712,7 @@
     },
     {
       "id": 802,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_12)",
       "action_text": "S1000 MFD Softkeys 12",
       "action_type": "input",
@@ -664,6 +724,7 @@
     },
     {
       "id": 811,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Push)",
       "action_text": "S3000 TSC horizontal bottom knob push",
       "action_type": "input",
@@ -675,6 +736,7 @@
     },
     {
       "id": 812,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_DEC)",
       "action_text": "S3000 TSC Horizontal BottomKnob Small DEC",
       "action_type": "input",
@@ -686,6 +748,7 @@
     },
     {
       "id": 813,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_INC)",
       "action_text": "S3000 TSC Horizontal bottom knob small increment",
       "action_type": "input",
@@ -697,6 +760,7 @@
     },
     {
       "id": 814,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_1)",
       "action_text": "S3000 TSC Horizontal SoftKey 1",
       "action_type": "input",
@@ -708,6 +772,7 @@
     },
     {
       "id": 815,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_2)",
       "action_text": "S3000 TSC Horizontal SoftKey 2",
       "action_type": "input",
@@ -719,6 +784,7 @@
     },
     {
       "id": 816,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_3)",
       "action_text": "S3000 TSC Horizontal SoftKey 3",
       "action_type": "input",
@@ -730,6 +796,7 @@
     },
     {
       "id": 817,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_DEC)",
       "action_text": "S3000 TSC Horizontal TopKnob Large Decrement",
       "action_type": "input",
@@ -741,6 +808,7 @@
     },
     {
       "id": 818,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_INC)",
       "action_text": "AS3000 TSC Horizontal top knob large increment",
       "action_type": "input",
@@ -752,6 +820,7 @@
     },
     {
       "id": 819,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push)",
       "action_text": "AS3000 TSX Horizontal TopKnob Push",
       "action_type": "input",
@@ -763,6 +832,7 @@
     },
     {
       "id": 820,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push_Long)",
       "action_text": "AS3000 TSX Horizontal TopKnob Push Long",
       "action_type": "input",
@@ -774,6 +844,7 @@
     },
     {
       "id": 821,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_DEC)",
       "action_text": "AS3000 TSX Horizontal TopKnob Small DEC",
       "action_type": "input",
@@ -785,6 +856,7 @@
     },
     {
       "id": 822,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_INC)",
       "action_text": "AS3000 TSX Horizontal TopKnob Small INC",
       "action_type": "input",
@@ -796,6 +868,7 @@
     },
     {
       "id": 823,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1)",
       "action_text": "AS3000 PFD 1 Softkey 1",
       "action_type": "input",
@@ -807,6 +880,7 @@
     },
     {
       "id": 824,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_2)",
       "action_text": "AS3000 PFD 1 Softkey 2",
       "action_type": "input",
@@ -818,6 +892,7 @@
     },
     {
       "id": 825,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_3)",
       "action_text": "S3000 PFD 1 Softkey 3",
       "action_type": "input",
@@ -829,6 +904,7 @@
     },
     {
       "id": 826,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_4)",
       "action_text": "AS3000 PFD 1 Softkey 4",
       "action_type": "input",
@@ -840,6 +916,7 @@
     },
     {
       "id": 827,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_5)",
       "action_text": "AS3000 PFD 1 Softkey 5",
       "action_type": "input",
@@ -851,6 +928,7 @@
     },
     {
       "id": 828,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_6)",
       "action_text": "AS3000 PFD 1 Softkey 6",
       "action_type": "input",
@@ -862,6 +940,7 @@
     },
     {
       "id": 829,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_7)",
       "action_text": "AS3000 PFD 1 Softkey 7",
       "action_type": "input",
@@ -873,6 +952,7 @@
     },
     {
       "id": 830,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_8)",
       "action_text": "AS3000 PFD 1 Softkey 8",
       "action_type": "input",
@@ -884,6 +964,7 @@
     },
     {
       "id": 831,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_9)",
       "action_text": "AS3000 PFD 1 Softkey 9",
       "action_type": "input",
@@ -895,6 +976,7 @@
     },
     {
       "id": 832,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_10)",
       "action_text": "AS3000 PFD 1 Softkey 10",
       "action_type": "input",
@@ -906,6 +988,7 @@
     },
     {
       "id": 833,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_11)",
       "action_text": "AS3000 PFD 1 Softkey 11",
       "action_type": "input",
@@ -917,6 +1000,7 @@
     },
     {
       "id": 834,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_12)",
       "action_text": "AS3000 PFD 1 Softkey 12",
       "action_type": "input",
@@ -928,6 +1012,7 @@
     },
     {
       "id": 835,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_1)",
       "action_text": "AS3000 PFD 2 Softkey 1",
       "action_type": "input",
@@ -939,6 +1024,7 @@
     },
     {
       "id": 836,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_2)",
       "action_text": "AS3000 PFD 2 Softkey 2",
       "action_type": "input",
@@ -950,6 +1036,7 @@
     },
     {
       "id": 837,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_3)",
       "action_text": "AS3000 PFD 2 Softkey 3",
       "action_type": "input",
@@ -961,6 +1048,7 @@
     },
     {
       "id": 838,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_4)",
       "action_text": "AS3000 PFD 2 Softkey 4",
       "action_type": "input",
@@ -972,6 +1060,7 @@
     },
     {
       "id": 839,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_5)",
       "action_text": "AS3000 PFD 2 Softkeys 5",
       "action_type": "input",
@@ -983,6 +1072,7 @@
     },
     {
       "id": 840,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_6)",
       "action_text": "AS3000 PFD 2 Softkey 6",
       "action_type": "input",
@@ -994,6 +1084,7 @@
     },
     {
       "id": 841,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_7)",
       "action_text": "AS3000 PFD 2 Softkey 7",
       "action_type": "input",
@@ -1005,6 +1096,7 @@
     },
     {
       "id": 842,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_8)",
       "action_text": "AS3000 PFD 2 Softkey 8",
       "action_type": "input",
@@ -1016,6 +1108,7 @@
     },
     {
       "id": 843,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_9)",
       "action_text": "AS3000 PFD 2 Softkey 9",
       "action_type": "input",
@@ -1027,6 +1120,7 @@
     },
     {
       "id": 844,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_10)",
       "action_text": "AS3000 PFD 2 Softkey 10",
       "action_type": "input",
@@ -1038,6 +1132,7 @@
     },
     {
       "id": 845,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_11)",
       "action_text": "AS3000 PFD 2 Softkey 11",
       "action_type": "input",
@@ -1049,6 +1144,7 @@
     },
     {
       "id": 846,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_12)",
       "action_text": "AS3000 PFD 2 Softkey 12",
       "action_type": "input",
@@ -1060,6 +1156,7 @@
     },
     {
       "id": 847,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_1)",
       "action_text": "AS3000 PFD 3 Softkey 1",
       "action_type": "input",
@@ -1071,6 +1168,7 @@
     },
     {
       "id": 848,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_2)",
       "action_text": "AS3000 PFD 3 softkey 2",
       "action_type": "input",
@@ -1082,6 +1180,7 @@
     },
     {
       "id": 849,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_3)",
       "action_text": "AS3000 PFD 3 Softkey 3",
       "action_type": "input",
@@ -1093,6 +1192,7 @@
     },
     {
       "id": 850,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_4)",
       "action_text": "AS3000 PFD 3 Softkey 4",
       "action_type": "input",
@@ -1104,6 +1204,7 @@
     },
     {
       "id": 851,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_5)",
       "action_text": "AS3000 PFD 3 Softkey 5",
       "action_type": "input",
@@ -1115,6 +1216,7 @@
     },
     {
       "id": 852,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_6)",
       "action_text": "AS3000 PFD 3 Softkey 6",
       "action_type": "input",
@@ -1126,6 +1228,7 @@
     },
     {
       "id": 853,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_7)",
       "action_text": "AS3000 PFD 3 Softkey 7",
       "action_type": "input",
@@ -1137,6 +1240,7 @@
     },
     {
       "id": 854,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_8)",
       "action_text": "AS3000 PFD 3 Softkey 8",
       "action_type": "input",
@@ -1148,6 +1252,7 @@
     },
     {
       "id": 855,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_9)",
       "action_text": "AS3000 PFD 3 Softkey 9",
       "action_type": "input",
@@ -1159,6 +1264,7 @@
     },
     {
       "id": 856,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_10)",
       "action_text": "AS3000 PFD 3 Softkey 10",
       "action_type": "input",
@@ -1170,6 +1276,7 @@
     },
     {
       "id": 857,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_11)",
       "action_text": "AS3000 PFD 3 Softkey 11",
       "action_type": "input",
@@ -1181,6 +1288,7 @@
     },
     {
       "id": 858,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_12)",
       "action_text": "AS3000 PFD 3 Softkey 12",
       "action_type": "input",
@@ -1192,6 +1300,7 @@
     },
     {
       "id": 859,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_1)",
       "action_text": "AS3000 MFD softkey 1",
       "action_type": "input",
@@ -1203,6 +1312,7 @@
     },
     {
       "id": 860,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_2)",
       "action_text": "AS3000 MFD Softkey 2",
       "action_type": "input",
@@ -1214,6 +1324,7 @@
     },
     {
       "id": 861,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_3)",
       "action_text": "AS3000 MFD softkey 3",
       "action_type": "input",
@@ -1225,6 +1336,7 @@
     },
     {
       "id": 862,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_4)",
       "action_text": "AS3000 MFD softkey 4",
       "action_type": "input",
@@ -1236,6 +1348,7 @@
     },
     {
       "id": 863,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_5)",
       "action_text": "AS3000 MFD Softkey 5",
       "action_type": "input",
@@ -1247,6 +1360,7 @@
     },
     {
       "id": 864,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_6)",
       "action_text": "AS3000 MFD softkey 6",
       "action_type": "input",
@@ -1258,6 +1372,7 @@
     },
     {
       "id": 865,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_7)",
       "action_text": "AS3000 MFD Softkey 7",
       "action_type": "input",
@@ -1269,6 +1384,7 @@
     },
     {
       "id": 866,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_8)",
       "action_text": "AS3000 MFD Softkey 8",
       "action_type": "input",
@@ -1280,6 +1396,7 @@
     },
     {
       "id": 867,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_9)",
       "action_text": "AS3000 MFD Softkey 9",
       "action_type": "input",
@@ -1291,6 +1408,7 @@
     },
     {
       "id": 868,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_10)",
       "action_text": "AS3000 MFD Softkey 10",
       "action_type": "input",
@@ -1302,6 +1420,7 @@
     },
     {
       "id": 869,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_11)",
       "action_text": "S3000 MFD Softkey 12",
       "action_type": "input",
@@ -1313,6 +1432,7 @@
     },
     {
       "id": 870,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_12)",
       "action_text": "S3000 MFD Softkey 12",
       "action_type": "input",
@@ -1324,6 +1444,7 @@
     },
     {
       "id": 871,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_1)",
       "action_text": "S3000 PFD Softkey 1",
       "action_type": "input",
@@ -1335,6 +1456,7 @@
     },
     {
       "id": 872,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_2)",
       "action_text": "S3000 PFD Softkey 2",
       "action_type": "input",
@@ -1346,6 +1468,7 @@
     },
     {
       "id": 873,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_3)",
       "action_text": "S3000 PFD SOFTKEYS 3",
       "action_type": "input",
@@ -1357,6 +1480,7 @@
     },
     {
       "id": 874,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_4)",
       "action_text": "S3000 PFD softkey 4",
       "action_type": "input",
@@ -1368,6 +1492,7 @@
     },
     {
       "id": 875,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_5)",
       "action_text": "S3000 PFD Softkey 5",
       "action_type": "input",
@@ -1379,6 +1504,7 @@
     },
     {
       "id": 876,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_6)",
       "action_text": "S3000 PFD SOFTKEYS 6",
       "action_type": "input",
@@ -1390,6 +1516,7 @@
     },
     {
       "id": 877,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_7)",
       "action_text": "S3000 PFD Softkey 7",
       "action_type": "input",
@@ -1401,6 +1528,7 @@
     },
     {
       "id": 878,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_8)",
       "action_text": "S3000 PFD Softkey 8",
       "action_type": "input",
@@ -1412,6 +1540,7 @@
     },
     {
       "id": 879,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_9)",
       "action_text": "S3000 PFD SOFTKEYS 9",
       "action_type": "input",
@@ -1423,6 +1552,7 @@
     },
     {
       "id": 880,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_10)",
       "action_text": "S3000 PFD softkey 10",
       "action_type": "input",
@@ -1434,6 +1564,7 @@
     },
     {
       "id": 881,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_11)",
       "action_text": "S3000 PFD Softkey 11",
       "action_type": "input",
@@ -1445,6 +1576,7 @@
     },
     {
       "id": 882,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_12)",
       "action_text": "S3000 PFD Softkey 12",
       "action_type": "input",
@@ -1456,6 +1588,7 @@
     },
     {
       "id": 883,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Large_DEC)",
       "action_text": "S3000 PFD BottomKnob Large DEC",
       "action_type": "input",
@@ -1467,6 +1600,7 @@
     },
     {
       "id": 884,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Large_INC)",
       "action_text": "S3000 PFD BottomKnob Large INC",
       "action_type": "input",
@@ -1478,6 +1612,7 @@
     },
     {
       "id": 885,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Push)",
       "action_text": "S3000 PFD Bottom Knob Push",
       "action_type": "input",
@@ -1489,6 +1624,7 @@
     },
     {
       "id": 886,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Push_Long)",
       "action_text": "S3000 PFD BottomKnob Push Long",
       "action_type": "input",
@@ -1500,6 +1636,7 @@
     },
     {
       "id": 887,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Small_DEC)",
       "action_text": "S3000 PFD BottomKnob Small DEC",
       "action_type": "input",
@@ -1511,6 +1648,7 @@
     },
     {
       "id": 888,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Small_INC)",
       "action_text": "S3000 PFD BottomKnob Small INC",
       "action_type": "input",
@@ -1522,6 +1660,7 @@
     },
     {
       "id": 889,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Large_DEC)",
       "action_text": "S3000 PFD TopKnob Large DEC",
       "action_type": "input",
@@ -1533,6 +1672,7 @@
     },
     {
       "id": 890,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Large_INC)",
       "action_text": "S3000 PFD TopKnob Large INC",
       "action_type": "input",
@@ -1544,6 +1684,7 @@
     },
     {
       "id": 891,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Small_DEC)",
       "action_text": "S3000 PFD TopKnob Small DEC",
       "action_type": "input",
@@ -1555,6 +1696,7 @@
     },
     {
       "id": 892,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Small_INC)",
       "action_text": "S3000 PFD TopKnob Small INC",
       "action_type": "input",
@@ -1566,6 +1708,7 @@
     },
     {
       "id": 893,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_DEC)",
       "action_text": "S3000 TSC Vertical Bottom Knob Large DEC",
       "action_type": "input",
@@ -1577,6 +1720,7 @@
     },
     {
       "id": 894,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_INC)",
       "action_text": "S3000 TSC Vertical Bottom Knob Large INC",
       "action_type": "input",
@@ -1588,6 +1732,7 @@
     },
     {
       "id": 895,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push)",
       "action_text": "S3000 TSC Vertical BottomKnob Push",
       "action_type": "input",
@@ -1599,6 +1744,7 @@
     },
     {
       "id": 896,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push_Long)",
       "action_text": "S3000 TSC Vertical BottomKnob Push Long",
       "action_type": "input",
@@ -1610,6 +1756,7 @@
     },
     {
       "id": 897,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_DEC)",
       "action_text": "S3000 TSC Vertical BottomKnob Small DEC",
       "action_type": "input",
@@ -1621,6 +1768,7 @@
     },
     {
       "id": 898,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_INC)",
       "action_text": "S3000 TSC Vertical Bottom Knob Small INC",
       "action_type": "input",
@@ -1632,6 +1780,7 @@
     },
     {
       "id": 899,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_DEC)",
       "action_text": "S3000 TSC Vertical TopKnob Large DEC",
       "action_type": "input",
@@ -1643,6 +1792,7 @@
     },
     {
       "id": 903,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_INC)",
       "action_text": "S3000 TSC Vertical TopKnob Large INC",
       "action_type": "input",
@@ -1654,6 +1804,7 @@
     },
     {
       "id": 904,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_DEC)",
       "action_text": "S3000 TSC Vertical TopKnob Small DEC",
       "action_type": "input",
@@ -1665,6 +1816,7 @@
     },
     {
       "id": 905,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_INC)",
       "action_text": "S3000 TSC Vertical TopKnob Small INC",
       "action_type": "input",
@@ -1676,6 +1828,7 @@
     },
     {
       "id": 906,
+      "made_by": "BitsAndDroids",
       "action": "(>H:Generic_Master_Warning_Push)",
       "action_text": "Master Warning Push",
       "action_type": "input",
@@ -1687,6 +1840,7 @@
     },
     {
       "id": 907,
+      "made_by": "BitsAndDroids",
       "action": "(>H:Generic_Master_Caution_Push)",
       "action_text": "Master Caution",
       "action_type": "input",
@@ -1698,6 +1852,7 @@
     },
     {
       "id": 910,
+      "made_by": "BitsAndDroids",
       "action": "(>H:adf_frqTransfert)",
       "action_text": "ADF frequency transfer",
       "action_type": "input",
@@ -1709,6 +1864,7 @@
     },
     {
       "id": 2000,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
       "action_text": " altitude ap + 100",
       "action_type": "input",
@@ -1720,6 +1876,7 @@
     },
     {
       "id": 2001,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
       "action_text": " altitude ap + 1000",
       "action_type": "input",
@@ -1731,6 +1888,7 @@
     },
     {
       "id": 2002,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
       "action_text": " altitude ap - 100",
       "action_type": "input",
@@ -1742,6 +1900,7 @@
     },
     {
       "id": 2003,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
       "action_text": " altitude ap - 1000",
       "action_type": "input",
@@ -1753,6 +1912,7 @@
     },
     {
       "id": 2004,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BARO_INC)",
       "action_text": "S3000 PFD BARO INC",
       "action_type": "input",
@@ -1764,6 +1924,7 @@
     },
     {
       "id": 2005,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BARO_DEC)",
       "action_text": "S3000 PFD BARO DEC",
       "action_type": "input",
@@ -1775,6 +1936,7 @@
     },
     {
       "id": 2006,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_MANAGED_SPEED)",
       "action_text": " Managed speed CDU",
       "action_type": "input",
@@ -1786,6 +1948,7 @@
     },
     {
       "id": 2007,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_MODE_MANAGED_SPEED)",
       "action_text": " Managed speed FCU",
       "action_type": "input",
@@ -1797,6 +1960,7 @@
     },
     {
       "id": 2008,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_SELECTED_SPEED)",
       "action_text": " Selected seed CDU",
       "action_type": "input",
@@ -1808,6 +1972,7 @@
     },
     {
       "id": 2009,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_EXPEDITE_MODE)",
       "action_text": " Expedite mode",
       "action_type": "input",
@@ -1819,6 +1984,7 @@
     },
     {
       "id": 2010,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PUSH)",
       "action_text": " FCU heading push",
       "action_type": "input",
@@ -1830,6 +1996,7 @@
     },
     {
       "id": 2011,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PULL)",
       "action_text": " FCU heading pull",
       "action_type": "input",
@@ -1841,6 +2008,7 @@
     },
     {
       "id": 2012,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT HEADING SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_HDG_PUSH) } els { (>K:A32NX.FCU_HDG_PULL) }",
       "action_text": "Heading push pull togle",
       "action_type": "input",
@@ -1852,6 +2020,7 @@
     },
     {
       "id": 2013,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_INC_TRACK) } els { 1 (>K:HEADING_BUG_INC) (>H:A320_Neo_CDU_AP_INC_HEADING) }",
       "action_text": " FCU heading inc",
       "action_type": "input",
@@ -1863,6 +2032,7 @@
     },
     {
       "id": 2014,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_DEC_TRACK) } els { 1 (>K:HEADING_BUG_DEC) (>H:A320_Neo_CDU_AP_DEC_HEADING) }",
       "action_text": "A320 FCU heading dec",
       "action_type": "input",
@@ -1874,6 +2044,7 @@
     },
     {
       "id": 2015,
+      "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_INC) } els { 1 (>K:AP_SPD_VAR_INC) } (>H:A320_Neo_CDU_AP_INC_SPEED)",
       "action_text": "A320 FCU speed inc",
       "action_type": "input",
@@ -1885,6 +2056,7 @@
     },
     {
       "id": 2016,
+      "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_DEC) } els { 1 (>K:AP_SPD_VAR_DEC) } (>H:A320_Neo_CDU_AP_DEC_SPEED)",
       "action_text": "A320 FCU speed dec",
       "action_type": "input",
@@ -1896,6 +2068,7 @@
     },
     {
       "id": 2017,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_PULL)",
       "action_text": "A320 FCU speed pull",
       "action_type": "input",
@@ -1907,6 +2080,7 @@
     },
     {
       "id": 2018,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_PUSH)",
       "action_text": "A320 FCU speed push",
       "action_type": "input",
@@ -1918,6 +2092,7 @@
     },
     {
       "id": 2019,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT SPEED SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_SPD_PUSH) } els { (>K:A32NX.FCU_SPD_PULL) }",
       "action_text": " Speed push pull toggle",
       "action_type": "input",
@@ -1929,6 +2104,7 @@
     },
     {
       "id": 2020,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_INC_FPA) } els { 3 (>K:AP_VS_VAR_INC)  (>H:A320_Neo_FCU_VS_INC) }",
       "action_text": " FCU vertical speed inc",
       "action_type": "input",
@@ -1940,6 +2116,7 @@
     },
     {
       "id": 2021,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_DEC_FPA) } els { 3 (>K:AP_VS_VAR_DEC) (>H:A320_Neo_FCU_VS_DEC) }",
       "action_text": " FCU vertical speed dec",
       "action_type": "input",
@@ -1951,6 +2128,7 @@
     },
     {
       "id": 2022,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PULL) (>H:A320_Neo_CDU_VS)",
       "action_text": " FCU vs pull",
       "action_type": "input",
@@ -1962,6 +2140,7 @@
     },
     {
       "id": 2023,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PUSH) (>H:A320_Neo_CDU_VS)",
       "action_text": " FCU vs push",
       "action_type": "input",
@@ -1973,6 +2152,7 @@
     },
     {
       "id": 2024,
+      "made_by": "BitsAndDroids",
       "action": "(L:MF_VS_TOG,Bool) if { (>H:A320_Neo_FCU_VS_ZERO) } els { (>H:A320_Neo_FCU_VS_HOLD) } (L:MF_VS_TOG,Bool) ! (>L:MF_VS_TOG,Bool)",
       "action_text": " FCU vs push pull toggle",
       "action_type": "input",
@@ -1984,6 +2164,7 @@
     },
     {
       "id": 2025,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PULL) (>H:A320_Neo_CDU_MODE_SELECTED_ALTITUDE)",
       "action_text": " Selected altitude pull",
       "action_type": "input",
@@ -1995,6 +2176,7 @@
     },
     {
       "id": 2026,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PUSH) (>H:A320_Neo_CDU_MODE_MANAGED_ALTITUDE)",
       "action_text": " Selected altitude push",
       "action_type": "input",
@@ -2006,6 +2188,7 @@
     },
     {
       "id": 2027,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_ALT_PUSH) } els { (>K:A32NX.FCU_ALT_PULL) }",
       "action_text": " Altitude push toggle",
       "action_type": "input",
@@ -2017,6 +2200,7 @@
     },
     {
       "id": 2028,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
       "action_text": "Alt inc",
       "action_type": "input",
@@ -2028,6 +2212,7 @@
     },
     {
       "id": 2029,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
       "action_text": "alt dec",
       "action_type": "input",
@@ -2039,6 +2224,7 @@
     },
     {
       "id": 2030,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
       "action_text": " alt inc 100",
       "action_type": "input",
@@ -2050,6 +2236,7 @@
     },
     {
       "id": 2031,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
       "action_text": " alt dec 100",
       "action_type": "input",
@@ -2061,6 +2248,7 @@
     },
     {
       "id": 2032,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
       "action_text": " alt inc 1000",
       "action_type": "input",
@@ -2072,6 +2260,7 @@
     },
     {
       "id": 2033,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
       "action_text": " alt dec 1000",
       "action_type": "input",
@@ -2083,6 +2272,7 @@
     },
     {
       "id": 2034,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_TOGGLE_SPEED_MACH)",
       "action_text": " Toggle speed mach",
       "action_type": "input",
@@ -2094,6 +2284,7 @@
     },
     {
       "id": 2035,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " nav mode 0-5",
       "action_type": "input",
@@ -2105,6 +2296,7 @@
     },
     {
       "id": 2036,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " ",
       "action_type": "input",
@@ -2116,6 +2308,7 @@
     },
     {
       "id": 2037,
+      "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " ",
       "action_type": "input",
@@ -2127,6 +2320,7 @@
     },
     {
       "id": 2038,
+      "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " ",
       "action_type": "input",
@@ -2138,6 +2332,7 @@
     },
     {
       "id": 2039,
+      "made_by": "BitsAndDroids",
       "action": "4 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": "A320 MFD nav mode",
       "action_type": "input",
@@ -2149,6 +2344,7 @@
     },
     {
       "id": 2040,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " MFD range 010,20,40,80,160,320",
       "action_type": "input",
@@ -2160,6 +2356,7 @@
     },
     {
       "id": 2041,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:A320_Neo_MFD_Range_1)",
       "action_text": "A320 MFD range 1",
       "action_type": "input",
@@ -2171,6 +2368,7 @@
     },
     {
       "id": 2042,
+      "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " ",
       "action_type": "input",
@@ -2182,6 +2380,7 @@
     },
     {
       "id": 2043,
+      "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " ",
       "action_type": "input",
@@ -2193,6 +2392,7 @@
     },
     {
       "id": 2044,
+      "made_by": "BitsAndDroids",
       "action": "4 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " ",
       "action_type": "input",
@@ -2204,6 +2404,7 @@
     },
     {
       "id": 2045,
+      "made_by": "BitsAndDroids",
       "action": "5 (>L:A320_Neo_MFD_Range_1)",
       "action_text": "A320 MFD range 1",
       "action_type": "input",
@@ -2215,6 +2416,7 @@
     },
     {
       "id": 2046,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_WPT_1_FILTER_ACTIVE)",
       "action_text": " Wpt btn off",
       "action_type": "input",
@@ -2226,6 +2428,7 @@
     },
     {
       "id": 2047,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_WPT_1_FILTER_ACTIVE)",
       "action_text": " Wpt btn on",
       "action_type": "input",
@@ -2237,6 +2440,7 @@
     },
     {
       "id": 2048,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn off",
       "action_type": "input",
@@ -2248,6 +2452,7 @@
     },
     {
       "id": 2049,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn on",
       "action_type": "input",
@@ -2259,6 +2464,7 @@
     },
     {
       "id": 2050,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_VORD_1_FILTER_ACTIVE)",
       "action_text": " VORD btn off",
       "action_type": "input",
@@ -2270,6 +2476,7 @@
     },
     {
       "id": 2051,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_VORD_1_FILTER_ACTIVE)",
       "action_text": " VORD btn on",
       "action_type": "input",
@@ -2281,6 +2488,7 @@
     },
     {
       "id": 2052,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_NDB_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn off",
       "action_type": "input",
@@ -2292,6 +2500,7 @@
     },
     {
       "id": 2053,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_NDB_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn on",
       "action_type": "input",
@@ -2303,6 +2512,7 @@
     },
     {
       "id": 2054,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn off",
       "action_type": "input",
@@ -2314,6 +2524,7 @@
     },
     {
       "id": 2055,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn on",
       "action_type": "input",
@@ -2325,6 +2536,7 @@
     },
     {
       "id": 2056,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_LS_1_FILTER_ACTIVE)",
       "action_text": " LS btn off",
       "action_type": "input",
@@ -2336,6 +2548,7 @@
     },
     {
       "id": 2057,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_LS_1_FILTER_ACTIVE)",
       "action_text": " LS btn on",
       "action_type": "input",
@@ -2347,6 +2560,7 @@
     },
     {
       "id": 2058,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_1_PUSH)",
       "action_text": " AP 1 pushed ",
       "action_type": "input",
@@ -2358,6 +2572,7 @@
     },
     {
       "id": 2059,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_2_PUSH)",
       "action_text": " AP 2 pushed ",
       "action_type": "input",
@@ -2369,6 +2584,7 @@
     },
     {
       "id": 2060,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_LOC_PUSH)",
       "action_text": " Loc pushed",
       "action_type": "input",
@@ -2380,6 +2596,7 @@
     },
     {
       "id": 2061,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_APPR_PUSH)",
       "action_text": " Appr pushed",
       "action_type": "input",
@@ -2391,6 +2608,7 @@
     },
     {
       "id": 2062,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_EXPED_PUSH)",
       "action_text": " Exped pushed",
       "action_type": "input",
@@ -2402,6 +2620,7 @@
     },
     {
       "id": 2063,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FMGC_DIR_TO_TRIGGER)",
       "action_text": " dir to trigger pushed",
       "action_type": "input",
@@ -2413,6 +2632,7 @@
     },
     {
       "id": 2064,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_ATHR_PUSH)",
       "action_text": " A",
       "action_type": "input",
@@ -2424,6 +2644,7 @@
     },
     {
       "id": 2065,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE) ! (>L:A32NX_TRK_FPA_MODE_ACTIVE)",
       "action_text": "FPA mode",
       "action_type": "input",
@@ -2435,6 +2656,7 @@
     },
     {
       "id": 9000,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1) (>H:AS1000_PFD_SOFTKEYS_1)",
       "action_text": "S3000/S1000 PFD 1 Softkey 1",
       "action_type": "input",
@@ -2446,6 +2668,7 @@
     },
     {
       "id": 9001,
+      "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_SWITCH_OVHD_INTLT_SEATBELT_Position) ! (>K:CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE)",
       "action_text": "Seatbelt toggle",
       "action_type": "input",
@@ -2457,6 +2680,7 @@
     },
     {
       "id": 2500,
+      "made_by": "BitsAndDroids",
       "action": "2 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
       "action_text": "Fuel pum 2",
       "action_type": "input",
@@ -2468,6 +2692,7 @@
     },
     {
       "id": 2501,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
       "action_text": "Fuel pump 1",
       "action_type": "input",
@@ -2479,6 +2704,7 @@
     },
     {
       "id": 2502,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
       "action_text": "Fuel Pump 0",
       "action_type": "input",
@@ -2490,6 +2716,7 @@
     },
     {
       "id": 5000,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightLargeKnob_Left) (>H:AS3000_PFD_BottomKnob_Large_DEC) (>H:AS1000_PFD_FMS_Lower_DEC)",
       "action_text": "PFD Group  -",
       "action_type": "input",
@@ -2501,6 +2728,7 @@
     },
     {
       "id": 5001,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightLargeKnob_Right) (>H:AS3000_PFD_BottomKnob_Large_INC) (>H:AS1000_PFD_FMS_Lower_INC)",
       "action_text": "PFD Group  +",
       "action_type": "input",
@@ -2512,6 +2740,7 @@
     },
     {
       "id": 5002,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightSmallKnob_Left) (>H:AS3000_TSC_Vertical_TopKnob_Large_DEC) (>H:AS1000_PFD_FMS_Upper_DEC)",
       "action_text": "PFD Page -",
       "action_type": "input",
@@ -2523,6 +2752,7 @@
     },
     {
       "id": 5003,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightSmallKnob_Right) (>H:AS3000_TSC_Vertical_TopKnob_Large_INC) (>H:AS1000_PFD_FMS_Upper_INC)",
       "action_text": "PFD Page +",
       "action_type": "input",
@@ -2534,6 +2764,7 @@
     },
     {
       "id": 5004,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightSmallKnob_Push) (>H:AS530_ENT_Push) (>H:AS3000_PFD_BottomKnob_Push) (>H:AS1000_PFD_ENT_Push)",
       "action_text": "PFD Enter",
       "action_type": "input",
@@ -2545,6 +2776,7 @@
     },
     {
       "id": 5005,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_MENU_Push) (>H:AS1000_PFD_MENU_Push)",
       "action_text": "PFD Menu",
       "action_type": "input",
@@ -2556,6 +2788,7 @@
     },
     {
       "id": 5006,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_PROC_Push) (>H:AS1000_PFD_PROC_Push)",
       "action_text": "PFD Procedure",
       "action_type": "input",
@@ -2567,6 +2800,7 @@
     },
     {
       "id": 5007,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_FPL_Push) (>H:AS1000_PFD_FPL_Push)",
       "action_text": "PFD FPLN",
       "action_type": "input",
@@ -2578,6 +2812,7 @@
     },
     {
       "id": 5008,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RNG_Zoom) (>H:AS1000_PFD_RANGE_INC)",
       "action_text": "PFD +",
       "action_type": "input",
@@ -2589,6 +2824,7 @@
     },
     {
       "id": 5009,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RNG_Dezoom) (>H:AS1000_PFD_RANGE_DEC)",
       "action_text": "PFD -",
       "action_type": "input",
@@ -2600,6 +2836,7 @@
     },
     {
       "id": 5010,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_DirectTo_Push) (>H:AS1000_PFD_DIRECTTO)",
       "action_text": "PFD DIR",
       "action_type": "input",
@@ -2611,6 +2848,7 @@
     },
     {
       "id": 5011,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_CLR_Push) (>H:AS1000_PFD_CLR)",
       "action_text": "PFD CLR",
       "action_type": "input",
@@ -2622,6 +2860,7 @@
     },
     {
       "id": 5012,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1) (>H:AS1000_PFD_SOFTKEYS_1)",
       "action_text": "PFD Softkey 1",
       "action_type": "input",
@@ -2633,6 +2872,7 @@
     },
     {
       "id": 5013,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_2) (>H:AS1000_PFD_SOFTKEYS_2)",
       "action_text": "PFD Softkey 2",
       "action_type": "input",
@@ -2644,6 +2884,7 @@
     },
     {
       "id": 5014,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_3) (>H:AS1000_PFD_SOFTKEYS_3)",
       "action_text": "PFD Softkey 3",
       "action_type": "input",
@@ -2655,6 +2896,7 @@
     },
     {
       "id": 5015,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_4) (>H:AS1000_PFD_SOFTKEYS_4)",
       "action_text": "PFD Softkey 4",
       "action_type": "input",
@@ -2666,6 +2908,7 @@
     },
     {
       "id": 5016,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_5) (>H:AS1000_PFD_SOFTKEYS_5)",
       "action_text": "PFD Softkey 5",
       "action_type": "input",
@@ -2677,6 +2920,7 @@
     },
     {
       "id": 5017,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_6) (>H:AS1000_PFD_SOFTKEYS_6)",
       "action_text": "PFD Softkey 6",
       "action_type": "input",
@@ -2688,6 +2932,7 @@
     },
     {
       "id": 5018,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_7) (>H:AS1000_PFD_SOFTKEYS_7)",
       "action_text": "PFD Softkey 7",
       "action_type": "input",
@@ -2699,6 +2944,7 @@
     },
     {
       "id": 5019,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_8) (>H:AS1000_PFD_SOFTKEYS_8)",
       "action_text": "PFD Softkey 8",
       "action_type": "input",
@@ -2710,6 +2956,7 @@
     },
     {
       "id": 5020,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_9) (>H:AS1000_PFD_SOFTKEYS_9)",
       "action_text": "PFD Softkey 9",
       "action_type": "input",
@@ -2721,6 +2968,7 @@
     },
     {
       "id": 5021,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_10) (>H:AS1000_PFD_SOFTKEYS_10)",
       "action_text": "PFD Softkey 10",
       "action_type": "input",
@@ -2732,6 +2980,7 @@
     },
     {
       "id": 5022,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_11) (>H:AS1000_PFD_SOFTKEYS_11)",
       "action_text": "PFD Softkey 11",
       "action_type": "input",
@@ -2743,6 +2992,7 @@
     },
     {
       "id": 5023,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_12) (>H:AS1000_PFD_SOFTKEYS_12)",
       "action_text": "PFD Softkey 12",
       "action_type": "input",
@@ -2754,6 +3004,7 @@
     },
     {
       "id": 5023,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_12) (>H:AS1000_PFD_SOFTKEYS_12)",
       "action_text": "PFD Softkey 12",
       "action_type": "input",
@@ -2765,6 +3016,7 @@
     },
     {
       "id": 753,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FPL_Push)",
       "action_text": "AS1000 PFD FPLN",
       "action_type": "input",
@@ -2776,6 +3028,7 @@
     },
     {
       "id": 754,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_PROC_Push)",
       "action_text": "AS1000 PFD PROC Push",
       "action_type": "input",
@@ -2787,6 +3040,7 @@
     },
     {
       "id": 755,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_RANGE_INC)",
       "action_text": "AS1000 PFD Range +",
       "action_type": "input",
@@ -2798,6 +3052,7 @@
     },
     {
       "id": 756,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_RANGE_DEC)",
       "action_text": "AS1000 PFD Range Decrement",
       "action_type": "input",
@@ -2809,6 +3064,7 @@
     },
     {
       "id": 757,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_DIRECTTO)",
       "action_text": "AS1000 PFD Direct To",
       "action_type": "input",
@@ -2820,6 +3076,7 @@
     },
     {
       "id": 758,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_MENU_Push)",
       "action_text": "AS1000 PFD Menu Push",
       "action_type": "input",
@@ -2831,6 +3088,7 @@
     },
     {
       "id": 759,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_CLR)",
       "action_text": "AS1000 PFD CLR",
       "action_type": "input",
@@ -2842,6 +3100,7 @@
     },
     {
       "id": 760,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_ENT_Push)",
       "action_text": "AS1000 PFD ENT",
       "action_type": "input",
@@ -2853,6 +3112,7 @@
     },
     {
       "id": 761,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_ActivateMapCursor)",
       "action_text": "AS1000 PFD Activate Map Cursor",
       "action_type": "input",
@@ -2864,6 +3124,7 @@
     },
     {
       "id": 762,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Lower_INC)",
       "action_text": "AS1000 PFD FMS Lower INC",
       "action_type": "input",
@@ -2875,6 +3136,7 @@
     },
     {
       "id": 763,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Lower_DEC)",
       "action_text": "AS1000 PFD FMS Lower DEC",
       "action_type": "input",
@@ -2886,6 +3148,7 @@
     },
     {
       "id": 764,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Upper_INC)",
       "action_text": "AS1000 PFD FMS Upper INC",
       "action_type": "input",
@@ -2897,6 +3160,7 @@
     },
     {
       "id": 765,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_FMS_Upper_DEC)",
       "action_text": "AS1000 PFD FMS Upper DEC",
       "action_type": "input",
@@ -2908,6 +3172,7 @@
     },
     {
       "id": 766,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_1)",
       "action_text": "AS1000 PFD Softkey 1",
       "action_type": "input",
@@ -2919,6 +3184,7 @@
     },
     {
       "id": 767,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_2)",
       "action_text": "AS1000 PFD Softkey 2",
       "action_type": "input",
@@ -2930,6 +3196,7 @@
     },
     {
       "id": 768,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_3)",
       "action_text": "AS1000 PFD Softkey 3",
       "action_type": "input",
@@ -2941,6 +3208,7 @@
     },
     {
       "id": 769,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_4)",
       "action_text": "AS1000 PFD Softkey 4",
       "action_type": "input",
@@ -2952,6 +3220,7 @@
     },
     {
       "id": 770,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_5)",
       "action_text": "AS1000 PFD Softkey 5",
       "action_type": "input",
@@ -2963,6 +3232,7 @@
     },
     {
       "id": 771,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_6)",
       "action_text": "AS1000 PFD Softkey 6",
       "action_type": "input",
@@ -2974,6 +3244,7 @@
     },
     {
       "id": 772,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_7)",
       "action_text": "AS1000 PFD Softkey 7",
       "action_type": "input",
@@ -2985,6 +3256,7 @@
     },
     {
       "id": 773,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_8)",
       "action_text": "AS1000 PFD Softkey 8",
       "action_type": "input",
@@ -2996,6 +3268,7 @@
     },
     {
       "id": 774,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_9)",
       "action_text": "AS1000 PFD Softkey 9",
       "action_type": "input",
@@ -3007,6 +3280,7 @@
     },
     {
       "id": 775,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_10)",
       "action_text": "AS1000 PFD Softkey 10",
       "action_type": "input",
@@ -3018,6 +3292,7 @@
     },
     {
       "id": 776,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_11)",
       "action_text": "AS1000 PFD Softkey 11",
       "action_type": "input",
@@ -3029,6 +3304,7 @@
     },
     {
       "id": 777,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_PFD_SOFTKEYS_12)",
       "action_text": "AS1000 PFD Softkey 12",
       "action_type": "input",
@@ -3040,6 +3316,7 @@
     },
     {
       "id": 778,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FPL_Push)",
       "action_text": "AS1000 MFD FPL Push",
       "action_type": "input",
@@ -3051,6 +3328,7 @@
     },
     {
       "id": 779,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_PROC_Push)",
       "action_text": "AS1000 MFD PROC Push",
       "action_type": "input",
@@ -3062,6 +3340,7 @@
     },
     {
       "id": 780,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_RANGE_INC)",
       "action_text": "AS1000 MFD Range Increase",
       "action_type": "input",
@@ -3073,6 +3352,7 @@
     },
     {
       "id": 781,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_RANGE_DEC)",
       "action_text": "AS1000 MFD Range Decrease",
       "action_type": "input",
@@ -3084,6 +3364,7 @@
     },
     {
       "id": 782,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_DIRECTTO)",
       "action_text": "AS1000 MFD Direct To",
       "action_type": "input",
@@ -3095,6 +3376,7 @@
     },
     {
       "id": 783,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_MENU_Push)",
       "action_text": "AS1000 MFD Menu Push",
       "action_type": "input",
@@ -3106,6 +3388,7 @@
     },
     {
       "id": 784,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_CLR)",
       "action_text": "AS1000 MFD CLR",
       "action_type": "input",
@@ -3117,6 +3400,7 @@
     },
     {
       "id": 785,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_ENT_Push)",
       "action_text": "AS1000 MFD ENT Push",
       "action_type": "input",
@@ -3128,6 +3412,7 @@
     },
     {
       "id": 786,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_ActivateMapCursor)",
       "action_text": "AS1000 MFD Activate Map Cursor",
       "action_type": "input",
@@ -3139,6 +3424,7 @@
     },
     {
       "id": 787,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Lower_INC)",
       "action_text": "AS1000 MFD FMS Lower INC",
       "action_type": "input",
@@ -3150,6 +3436,7 @@
     },
     {
       "id": 788,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Lower_DEC)",
       "action_text": "AS1000 MFD FMS Lower DEC",
       "action_type": "input",
@@ -3161,6 +3448,7 @@
     },
     {
       "id": 789,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Upper_INC)",
       "action_text": "AS1000 MFD FMS Upper INC",
       "action_type": "input",
@@ -3172,6 +3460,7 @@
     },
     {
       "id": 790,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_FMS_Upper_DEC)",
       "action_text": "AS1000 MFD FMS Upper DEC",
       "action_type": "input",
@@ -3183,6 +3472,7 @@
     },
     {
       "id": 791,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_1)",
       "action_text": "AS1000 MFD Softkey 1",
       "action_type": "input",
@@ -3194,6 +3484,7 @@
     },
     {
       "id": 792,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_2)",
       "action_text": "AS1000 MFD Softkey 2",
       "action_type": "input",
@@ -3205,6 +3496,7 @@
     },
     {
       "id": 793,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_3)",
       "action_text": "AS1000 MFD Softkey 3",
       "action_type": "input",
@@ -3216,6 +3508,7 @@
     },
     {
       "id": 794,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_4)",
       "action_text": "AS1000 MFD Softkey 4",
       "action_type": "input",
@@ -3227,6 +3520,7 @@
     },
     {
       "id": 795,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_5)",
       "action_text": "AS1000 MFD Softkey 5",
       "action_type": "input",
@@ -3238,6 +3532,7 @@
     },
     {
       "id": 796,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_6)",
       "action_text": "AS1000 MFD Softkey 6",
       "action_type": "input",
@@ -3249,6 +3544,7 @@
     },
     {
       "id": 797,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_7)",
       "action_text": "AS1000 MFD Softkey 7",
       "action_type": "input",
@@ -3260,6 +3556,7 @@
     },
     {
       "id": 798,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_8)",
       "action_text": "AS1000 MFD Softkey 8",
       "action_type": "input",
@@ -3271,6 +3568,7 @@
     },
     {
       "id": 799,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_9)",
       "action_text": "AS1000 MFD Softkey 9",
       "action_type": "input",
@@ -3282,6 +3580,7 @@
     },
     {
       "id": 800,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_10)",
       "action_text": "AS1000 MFD Softkey 10",
       "action_type": "input",
@@ -3293,6 +3592,7 @@
     },
     {
       "id": 801,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_11)",
       "action_text": "AS1000 MFD Softkey 11",
       "action_type": "input",
@@ -3304,6 +3604,7 @@
     },
     {
       "id": 802,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS1000_MFD_SOFTKEYS_12)",
       "action_text": "AS1000 MFD Softkey 12",
       "action_type": "input",
@@ -3315,6 +3616,7 @@
     },
     {
       "id": 811,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Push)",
       "action_text": "AS3000 TSC Horizontal Bottom Knob Push",
       "action_type": "input",
@@ -3326,6 +3628,7 @@
     },
     {
       "id": 812,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_DEC)",
       "action_text": "AS3000 TSC Horizontal BottomKnob Small DEC",
       "action_type": "input",
@@ -3337,6 +3640,7 @@
     },
     {
       "id": 813,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_BottomKnob_Small_INC)",
       "action_text": "AS3000 TSC Horizontal BottomKnob Small INC",
       "action_type": "input",
@@ -3348,6 +3652,7 @@
     },
     {
       "id": 814,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_1)",
       "action_text": "AS3000 TSC Horizontal Softkey 1",
       "action_type": "input",
@@ -3359,6 +3664,7 @@
     },
     {
       "id": 815,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_2)",
       "action_text": "AS3000 TSC Horizontal Softkey 2",
       "action_type": "input",
@@ -3370,6 +3676,7 @@
     },
     {
       "id": 816,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_SoftKey_3)",
       "action_text": "AS3000 TSC Horizontal Softkey 3",
       "action_type": "input",
@@ -3381,6 +3688,7 @@
     },
     {
       "id": 817,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_DEC)",
       "action_text": "AS3000 TSC Horizontal TopKnob Large DEC",
       "action_type": "input",
@@ -3392,6 +3700,7 @@
     },
     {
       "id": 818,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Large_INC)",
       "action_text": "AS3000 TSC Horizontal TopKnob Large INC",
       "action_type": "input",
@@ -3403,6 +3712,7 @@
     },
     {
       "id": 819,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push)",
       "action_text": "AS3000 TSC Horizontal TopKnob Push",
       "action_type": "input",
@@ -3414,6 +3724,7 @@
     },
     {
       "id": 820,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Push_Long)",
       "action_text": "AS3000 TSC Horizontal TopKnob Push Long",
       "action_type": "input",
@@ -3425,6 +3736,7 @@
     },
     {
       "id": 821,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_DEC)",
       "action_text": "AS3000 TSC Horizontal TopKnob Small DEC",
       "action_type": "input",
@@ -3436,6 +3748,7 @@
     },
     {
       "id": 822,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Horizontal_TopKnob_Small_INC)",
       "action_text": "AS3000 TSC Horizontal TopKnob Small INC",
       "action_type": "input",
@@ -3447,6 +3760,7 @@
     },
     {
       "id": 823,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1)",
       "action_text": "AS3000 PFD 1 Softkey 1",
       "action_type": "input",
@@ -3458,6 +3772,7 @@
     },
     {
       "id": 824,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_2)",
       "action_text": "AS3000 PFD 1 Softkey 2",
       "action_type": "input",
@@ -3469,6 +3784,7 @@
     },
     {
       "id": 825,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_3)",
       "action_text": "AS3000 PFD 1 Softkey 3",
       "action_type": "input",
@@ -3480,6 +3796,7 @@
     },
     {
       "id": 826,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_4)",
       "action_text": "AS3000 PFD 1 Softkey 4",
       "action_type": "input",
@@ -3491,6 +3808,7 @@
     },
     {
       "id": 827,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_5)",
       "action_text": "AS3000 PFD 1 Softkey 5",
       "action_type": "input",
@@ -3502,6 +3820,7 @@
     },
     {
       "id": 828,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_6)",
       "action_text": "AS3000 PFD 1 Softkey 6",
       "action_type": "input",
@@ -3513,6 +3832,7 @@
     },
     {
       "id": 829,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_7)",
       "action_text": "AS3000 PFD 1 Softkey 7",
       "action_type": "input",
@@ -3524,6 +3844,7 @@
     },
     {
       "id": 830,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_8)",
       "action_text": "AS3000 PFD 1 Softkey 8",
       "action_type": "input",
@@ -3535,6 +3856,7 @@
     },
     {
       "id": 831,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_9)",
       "action_text": "AS3000 PFD 1 Softkey 9",
       "action_type": "input",
@@ -3546,6 +3868,7 @@
     },
     {
       "id": 832,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_10)",
       "action_text": "AS3000 PFD 1 Softkey 10",
       "action_type": "input",
@@ -3557,6 +3880,7 @@
     },
     {
       "id": 833,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_11)",
       "action_text": "AS3000 PFD 1 Softkey 11",
       "action_type": "input",
@@ -3568,6 +3892,7 @@
     },
     {
       "id": 834,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_12)",
       "action_text": "AS3000 PFD 1 Softkey 12",
       "action_type": "input",
@@ -3579,6 +3904,7 @@
     },
     {
       "id": 835,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_1)",
       "action_text": "AS3000 PFD 2 Softkey 1",
       "action_type": "input",
@@ -3590,6 +3916,7 @@
     },
     {
       "id": 836,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_2)",
       "action_text": "AS3000 PFD 2 Softkey 2",
       "action_type": "input",
@@ -3601,6 +3928,7 @@
     },
     {
       "id": 837,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_3)",
       "action_text": "AS3000 PFD 2 Softkey 3",
       "action_type": "input",
@@ -3612,6 +3940,7 @@
     },
     {
       "id": 838,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_4)",
       "action_text": "AS3000 PFD 2 Softkey 4",
       "action_type": "input",
@@ -3623,6 +3952,7 @@
     },
     {
       "id": 839,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_5)",
       "action_text": "AS3000 PFD 2 Softkey 5",
       "action_type": "input",
@@ -3634,6 +3964,7 @@
     },
     {
       "id": 840,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_6)",
       "action_text": "AS3000 PFD 2 Softkey 6",
       "action_type": "input",
@@ -3645,6 +3976,7 @@
     },
     {
       "id": 841,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_7)",
       "action_text": "AS3000 PFD 2 Softkey 7",
       "action_type": "input",
@@ -3656,6 +3988,7 @@
     },
     {
       "id": 842,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_8)",
       "action_text": "AS3000 PFD 2 Softkey 8",
       "action_type": "input",
@@ -3667,6 +4000,7 @@
     },
     {
       "id": 843,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_9)",
       "action_text": "AS3000 PFD 2 Softkey 9",
       "action_type": "input",
@@ -3678,6 +4012,7 @@
     },
     {
       "id": 844,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_10)",
       "action_text": "AS3000 PFD 2 Softkey 10",
       "action_type": "input",
@@ -3689,6 +4024,7 @@
     },
     {
       "id": 845,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_11)",
       "action_text": "AS3000 PFD 2 Softkey 11",
       "action_type": "input",
@@ -3700,6 +4036,7 @@
     },
     {
       "id": 846,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_2_SOFTKEYS_12)",
       "action_text": "AS3000 PFD 2 Softkey 12",
       "action_type": "input",
@@ -3711,6 +4048,7 @@
     },
     {
       "id": 847,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_1)",
       "action_text": "AS3000 PFD 3 Softkey 1",
       "action_type": "input",
@@ -3722,6 +4060,7 @@
     },
     {
       "id": 848,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_2)",
       "action_text": "AS3000 PFD 3 Softkey 2",
       "action_type": "input",
@@ -3733,6 +4072,7 @@
     },
     {
       "id": 849,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_3)",
       "action_text": "AS3000 PFD 3 Softkey 3",
       "action_type": "input",
@@ -3744,6 +4084,7 @@
     },
     {
       "id": 850,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_4)",
       "action_text": "AS3000 PFD 3 Softkey 4",
       "action_type": "input",
@@ -3755,6 +4096,7 @@
     },
     {
       "id": 851,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_5)",
       "action_text": "AS3000 PFD 3 Softkey 5",
       "action_type": "input",
@@ -3766,6 +4108,7 @@
     },
     {
       "id": 852,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_6)",
       "action_text": "AS3000 PFD Softkey 6",
       "action_type": "input",
@@ -3777,6 +4120,7 @@
     },
     {
       "id": 853,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_7)",
       "action_text": "AS3000 PFD Softkey 7",
       "action_type": "input",
@@ -3788,6 +4132,7 @@
     },
     {
       "id": 854,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_8)",
       "action_text": "AS3000 PFD 3 Softkey 8",
       "action_type": "input",
@@ -3799,6 +4144,7 @@
     },
     {
       "id": 855,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_9)",
       "action_text": "AS3000 PFD 3 Softkey 9",
       "action_type": "input",
@@ -3810,6 +4156,7 @@
     },
     {
       "id": 856,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_10)",
       "action_text": "AS3000 PFD 3 Softkey 10",
       "action_type": "input",
@@ -3821,6 +4168,7 @@
     },
     {
       "id": 857,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_11)",
       "action_text": "AS3000 PFD 3 Softkey 11",
       "action_type": "input",
@@ -3832,6 +4180,7 @@
     },
     {
       "id": 858,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_3_SOFTKEYS_12)",
       "action_text": "AS3000 PFD 3 Softkey 12",
       "action_type": "input",
@@ -3843,6 +4192,7 @@
     },
     {
       "id": 859,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_1)",
       "action_text": "AS3000 MFD Softkey 1",
       "action_type": "input",
@@ -3854,6 +4204,7 @@
     },
     {
       "id": 860,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_2)",
       "action_text": "AS3000 MFD Softkey 2",
       "action_type": "input",
@@ -3865,6 +4216,7 @@
     },
     {
       "id": 861,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_3)",
       "action_text": "AS3000 MFD Softkey 3",
       "action_type": "input",
@@ -3876,6 +4228,7 @@
     },
     {
       "id": 862,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_4)",
       "action_text": "AS3000 MFD Softkey 4",
       "action_type": "input",
@@ -3887,6 +4240,7 @@
     },
     {
       "id": 863,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_5)",
       "action_text": "AS3000 MFD Softkey 5",
       "action_type": "input",
@@ -3898,6 +4252,7 @@
     },
     {
       "id": 864,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_6)",
       "action_text": "AS3000 MFD Softkey 6",
       "action_type": "input",
@@ -3909,6 +4264,7 @@
     },
     {
       "id": 865,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_7)",
       "action_text": "AS3000 MFD Softkey 7",
       "action_type": "input",
@@ -3920,6 +4276,7 @@
     },
     {
       "id": 866,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_8)",
       "action_text": "AS3000 MFD Softkey 8",
       "action_type": "input",
@@ -3931,6 +4288,7 @@
     },
     {
       "id": 867,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_9)",
       "action_text": "AS3000 MFD Softkey 9",
       "action_type": "input",
@@ -3942,6 +4300,7 @@
     },
     {
       "id": 868,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_10)",
       "action_text": "AS3000 MFD Softkey 10",
       "action_type": "input",
@@ -3953,6 +4312,7 @@
     },
     {
       "id": 869,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_11)",
       "action_text": "AS3000 MFD Softkey 11",
       "action_type": "input",
@@ -3964,6 +4324,7 @@
     },
     {
       "id": 870,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_MFD_SOFTKEYS_12)",
       "action_text": "AS3000 MFD Softkey 12",
       "action_type": "input",
@@ -3975,6 +4336,7 @@
     },
     {
       "id": 871,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_1)",
       "action_text": "AS3000 PFD Softkey 1",
       "action_type": "input",
@@ -3986,6 +4348,7 @@
     },
     {
       "id": 872,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_2)",
       "action_text": "AS3000 PFD Softkey 2",
       "action_type": "input",
@@ -3997,6 +4360,7 @@
     },
     {
       "id": 873,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_3)",
       "action_text": "AS3000 PFD Softkey 3",
       "action_type": "input",
@@ -4008,6 +4372,7 @@
     },
     {
       "id": 874,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_4)",
       "action_text": "AS3000 PFD Softkey 4",
       "action_type": "input",
@@ -4019,6 +4384,7 @@
     },
     {
       "id": 875,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_5)",
       "action_text": "AS3000 PFD Softkey 5",
       "action_type": "input",
@@ -4030,6 +4396,7 @@
     },
     {
       "id": 876,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_6)",
       "action_text": "AS3000 PFD Softkey 6",
       "action_type": "input",
@@ -4041,6 +4408,7 @@
     },
     {
       "id": 877,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_7)",
       "action_text": "AS3000 PFD Softkey 7",
       "action_type": "input",
@@ -4052,6 +4420,7 @@
     },
     {
       "id": 878,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_8)",
       "action_text": "AS3000 PFD softkey 8",
       "action_type": "input",
@@ -4063,6 +4432,7 @@
     },
     {
       "id": 879,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_9)",
       "action_text": "AS3000 PFD Softkey 9",
       "action_type": "input",
@@ -4074,6 +4444,7 @@
     },
     {
       "id": 880,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_10)",
       "action_text": "AS3000 PFD Softkey 10",
       "action_type": "input",
@@ -4085,6 +4456,7 @@
     },
     {
       "id": 881,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_11)",
       "action_text": "AS3000 PFD Softkey 11",
       "action_type": "input",
@@ -4096,6 +4468,7 @@
     },
     {
       "id": 882,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_SOFTKEYS_12)",
       "action_text": "AS3000 PFD Softkey 12",
       "action_type": "input",
@@ -4107,6 +4480,7 @@
     },
     {
       "id": 883,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Large_DEC)",
       "action_text": "AS3000 PFD BottomKnob Large DEC",
       "action_type": "input",
@@ -4118,6 +4492,7 @@
     },
     {
       "id": 884,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Large_INC)",
       "action_text": "AS3000 PFD BottomKnob Large INC",
       "action_type": "input",
@@ -4129,6 +4504,7 @@
     },
     {
       "id": 885,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Push)",
       "action_text": "AS3000 PFD BottomKnob Push",
       "action_type": "input",
@@ -4140,6 +4516,7 @@
     },
     {
       "id": 886,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Push_Long)",
       "action_text": "AS3000 PFD BottomKnob Push Long",
       "action_type": "input",
@@ -4151,6 +4528,7 @@
     },
     {
       "id": 887,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Small_DEC)",
       "action_text": "AS3000 PFD BottomKnob Small DEC",
       "action_type": "input",
@@ -4162,6 +4540,7 @@
     },
     {
       "id": 888,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BottomKnob_Small_INC)",
       "action_text": "AS3000 PFD BottomKnob Small INC",
       "action_type": "input",
@@ -4173,6 +4552,7 @@
     },
     {
       "id": 889,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Large_DEC)",
       "action_text": "AS3000 PFD TopKnob Large DEC",
       "action_type": "input",
@@ -4184,6 +4564,7 @@
     },
     {
       "id": 890,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Large_INC)",
       "action_text": "AS3000 PFD TopKnob Large INC",
       "action_type": "input",
@@ -4195,6 +4576,7 @@
     },
     {
       "id": 891,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Small_DEC)",
       "action_text": "AS3000 PFD Top Knob Small DEC",
       "action_type": "input",
@@ -4206,6 +4588,7 @@
     },
     {
       "id": 892,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_TopKnob_Small_INC)",
       "action_text": "AS3000 PFD TopKnob Small INC",
       "action_type": "input",
@@ -4217,6 +4600,7 @@
     },
     {
       "id": 893,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_DEC)",
       "action_text": "AS3000 TSC Vertical BottomKnob Large DEC",
       "action_type": "input",
@@ -4228,6 +4612,7 @@
     },
     {
       "id": 894,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Large_INC)",
       "action_text": "AS3000 TSC Vertical BottomKnob Large INC",
       "action_type": "input",
@@ -4239,6 +4624,7 @@
     },
     {
       "id": 895,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push)",
       "action_text": "AS3000 TSC Vertical BottomKnob Push",
       "action_type": "input",
@@ -4250,6 +4636,7 @@
     },
     {
       "id": 896,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Push_Long)",
       "action_text": "AS3000 TSC Vertical BottomKnob Push Long",
       "action_type": "input",
@@ -4261,6 +4648,7 @@
     },
     {
       "id": 897,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_DEC)",
       "action_text": "AS3000 TSC Vertical BottomKnob Small DEC",
       "action_type": "input",
@@ -4272,6 +4660,7 @@
     },
     {
       "id": 898,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_BottomKnob_Small_INC)",
       "action_text": "AS3000 TSC Vertical BottomKnob Small INC",
       "action_type": "input",
@@ -4283,6 +4672,7 @@
     },
     {
       "id": 899,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_DEC)",
       "action_text": "AS3000 TSC Vertical TopKnob Large DEC",
       "action_type": "input",
@@ -4294,6 +4684,7 @@
     },
     {
       "id": 903,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Large_INC)",
       "action_text": "AS3000 TSC Vertical TopKnob Large INC",
       "action_type": "input",
@@ -4305,6 +4696,7 @@
     },
     {
       "id": 904,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_DEC)",
       "action_text": "AS3000 TSC Vertical TopKnob Small DEC",
       "action_type": "input",
@@ -4316,6 +4708,7 @@
     },
     {
       "id": 905,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_TSC_Vertical_TopKnob_Small_INC)",
       "action_text": "AS3000 TSC Vertical TopKnob Small INC",
       "action_type": "input",
@@ -4327,6 +4720,7 @@
     },
     {
       "id": 906,
+      "made_by": "BitsAndDroids",
       "action": "(>H:Generic_Master_Warning_Push)",
       "action_text": "Generic Master Warning Push",
       "action_type": "input",
@@ -4338,6 +4732,7 @@
     },
     {
       "id": 907,
+      "made_by": "BitsAndDroids",
       "action": "(>H:Generic_Master_Caution_Push)",
       "action_text": "Generic Master Caution Push",
       "action_type": "input",
@@ -4349,6 +4744,7 @@
     },
     {
       "id": 910,
+      "made_by": "BitsAndDroids",
       "action": "(>H:adf_frqTransfert)",
       "action_text": "ADF Frequency Transfer",
       "action_type": "input",
@@ -4360,6 +4756,7 @@
     },
     {
       "id": 2000,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
       "action_text": " altitude ap + 100",
       "action_type": "input",
@@ -4371,6 +4768,7 @@
     },
     {
       "id": 2001,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
       "action_text": " altitude ap + 1000",
       "action_type": "input",
@@ -4382,6 +4780,7 @@
     },
     {
       "id": 2002,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
       "action_text": " altitude ap - 100",
       "action_type": "input",
@@ -4393,6 +4792,7 @@
     },
     {
       "id": 2003,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
       "action_text": " altitude ap - 1000",
       "action_type": "input",
@@ -4404,6 +4804,7 @@
     },
     {
       "id": 2004,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BARO_INC)",
       "action_text": "AS3000 PFD baro increase",
       "action_type": "input",
@@ -4415,6 +4816,7 @@
     },
     {
       "id": 2005,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_BARO_DEC)",
       "action_text": "AS3000 PFD baro decrease",
       "action_type": "input",
@@ -4426,6 +4828,7 @@
     },
     {
       "id": 2006,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_MANAGED_SPEED)",
       "action_text": " Managed speed CDU",
       "action_type": "input",
@@ -4437,6 +4840,7 @@
     },
     {
       "id": 2007,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_MODE_MANAGED_SPEED)",
       "action_text": " Managed speed FCU",
       "action_type": "input",
@@ -4448,6 +4852,7 @@
     },
     {
       "id": 2008,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_SELECTED_SPEED)",
       "action_text": " Selected seed CDU",
       "action_type": "input",
@@ -4459,6 +4864,7 @@
     },
     {
       "id": 2009,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_EXPEDITE_MODE)",
       "action_text": " Expedite mode",
       "action_type": "input",
@@ -4470,6 +4876,7 @@
     },
     {
       "id": 2010,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PUSH)",
       "action_text": " FCU heading push",
       "action_type": "input",
@@ -4481,6 +4888,7 @@
     },
     {
       "id": 2011,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PULL)",
       "action_text": " FCU heading pull",
       "action_type": "input",
@@ -4492,6 +4900,7 @@
     },
     {
       "id": 2012,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT HEADING SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_HDG_PUSH) } els { (>K:A32NX.FCU_HDG_PULL) }",
       "action_text": "Heading push pull togle",
       "action_type": "input",
@@ -4503,6 +4912,7 @@
     },
     {
       "id": 2013,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_INC_TRACK) } els { 1 (>K:HEADING_BUG_INC) (>H:A320_Neo_CDU_AP_INC_HEADING) }",
       "action_text": " FCU heading inc",
       "action_type": "input",
@@ -4514,6 +4924,7 @@
     },
     {
       "id": 2014,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_DEC_TRACK) } els { 1 (>K:HEADING_BUG_DEC) (>H:A320_Neo_CDU_AP_DEC_HEADING) }",
       "action_text": " FCU heading dec",
       "action_type": "input",
@@ -4525,6 +4936,7 @@
     },
     {
       "id": 2015,
+      "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_INC) } els { 1 (>K:AP_SPD_VAR_INC) } (>H:A320_Neo_CDU_AP_INC_SPEED)",
       "action_text": " FCU speed inc",
       "action_type": "input",
@@ -4536,6 +4948,7 @@
     },
     {
       "id": 2016,
+      "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_DEC) } els { 1 (>K:AP_SPD_VAR_DEC) } (>H:A320_Neo_CDU_AP_DEC_SPEED)",
       "action_text": " FCU speed dec",
       "action_type": "input",
@@ -4547,6 +4960,7 @@
     },
     {
       "id": 2017,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_PULL)",
       "action_text": " FCU speed pull",
       "action_type": "input",
@@ -4558,6 +4972,7 @@
     },
     {
       "id": 2018,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_PUSH)",
       "action_text": " FCU speed push",
       "action_type": "input",
@@ -4569,6 +4984,7 @@
     },
     {
       "id": 2019,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT SPEED SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_SPD_PUSH) } els { (>K:A32NX.FCU_SPD_PULL) }",
       "action_text": " Speed push pull toggle",
       "action_type": "input",
@@ -4580,6 +4996,7 @@
     },
     {
       "id": 2020,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_INC_FPA) } els { 3 (>K:AP_VS_VAR_INC)  (>H:A320_Neo_FCU_VS_INC) }",
       "action_text": " FCU vertical speed inc",
       "action_type": "input",
@@ -4591,6 +5008,7 @@
     },
     {
       "id": 2021,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_DEC_FPA) } els { 3 (>K:AP_VS_VAR_DEC) (>H:A320_Neo_FCU_VS_DEC) }",
       "action_text": " FCU vertical speed dec",
       "action_type": "input",
@@ -4602,6 +5020,7 @@
     },
     {
       "id": 2022,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PULL) (>H:A320_Neo_CDU_VS)",
       "action_text": " FCU vs pull",
       "action_type": "input",
@@ -4613,6 +5032,7 @@
     },
     {
       "id": 2023,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PUSH) (>H:A320_Neo_CDU_VS)",
       "action_text": " FCU vs push",
       "action_type": "input",
@@ -4624,6 +5044,7 @@
     },
     {
       "id": 2024,
+      "made_by": "BitsAndDroids",
       "action": "(L:MF_VS_TOG,Bool) if { (>H:A320_Neo_FCU_VS_ZERO) } els { (>H:A320_Neo_FCU_VS_HOLD) } (L:MF_VS_TOG,Bool) ! (>L:MF_VS_TOG,Bool)",
       "action_text": " FCU vs push pull toggle",
       "action_type": "input",
@@ -4635,6 +5056,7 @@
     },
     {
       "id": 2025,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PULL) (>H:A320_Neo_CDU_MODE_SELECTED_ALTITUDE)",
       "action_text": " Selected altitude pull",
       "action_type": "input",
@@ -4646,6 +5068,7 @@
     },
     {
       "id": 2026,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PUSH) (>H:A320_Neo_CDU_MODE_MANAGED_ALTITUDE)",
       "action_text": " Selected altitude push",
       "action_type": "input",
@@ -4657,6 +5080,7 @@
     },
     {
       "id": 2027,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_ALT_PUSH) } els { (>K:A32NX.FCU_ALT_PULL) }",
       "action_text": " Altitude push toggle",
       "action_type": "input",
@@ -4668,6 +5092,7 @@
     },
     {
       "id": 2028,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
       "action_text": "Alt inc",
       "action_type": "input",
@@ -4679,6 +5104,7 @@
     },
     {
       "id": 2029,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
       "action_text": "alt dec",
       "action_type": "input",
@@ -4690,6 +5116,7 @@
     },
     {
       "id": 2030,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
       "action_text": " alt inc 100",
       "action_type": "input",
@@ -4701,6 +5128,7 @@
     },
     {
       "id": 2031,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
       "action_text": " alt dec 100",
       "action_type": "input",
@@ -4712,6 +5140,7 @@
     },
     {
       "id": 2032,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
       "action_text": " alt inc 1000",
       "action_type": "input",
@@ -4723,6 +5152,7 @@
     },
     {
       "id": 2033,
+      "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
       "action_text": " alt dec 1000",
       "action_type": "input",
@@ -4734,6 +5164,7 @@
     },
     {
       "id": 2034,
+      "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_TOGGLE_SPEED_MACH)",
       "action_text": " Toggle speed mach",
       "action_type": "input",
@@ -4745,6 +5176,7 @@
     },
     {
       "id": 2035,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " nav mode 0-5",
       "action_type": "input",
@@ -4756,6 +5188,7 @@
     },
     {
       "id": 2036,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " ",
       "action_type": "input",
@@ -4767,6 +5200,7 @@
     },
     {
       "id": 2037,
+      "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " ",
       "action_type": "input",
@@ -4778,6 +5212,7 @@
     },
     {
       "id": 2038,
+      "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": " ",
       "action_type": "input",
@@ -4789,6 +5224,7 @@
     },
     {
       "id": 2039,
+      "made_by": "BitsAndDroids",
       "action": "4 (>L:A320_Neo_MFD_NAV_MODE_1)",
       "action_text": "A320 MFD 1 nav mode 4",
       "action_type": "input",
@@ -4800,6 +5236,7 @@
     },
     {
       "id": 2040,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " MFD range 010,20,40,80,160,320",
       "action_type": "input",
@@ -4811,6 +5248,7 @@
     },
     {
       "id": 2041,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:A320_Neo_MFD_Range_1)",
       "action_text": "A320 MFD 1 range 1",
       "action_type": "input",
@@ -4822,6 +5260,7 @@
     },
     {
       "id": 2042,
+      "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " ",
       "action_type": "input",
@@ -4833,6 +5272,7 @@
     },
     {
       "id": 2043,
+      "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " ",
       "action_type": "input",
@@ -4844,6 +5284,7 @@
     },
     {
       "id": 2044,
+      "made_by": "BitsAndDroids",
       "action": "4 (>L:A320_Neo_MFD_Range_1)",
       "action_text": " ",
       "action_type": "input",
@@ -4855,6 +5296,7 @@
     },
     {
       "id": 2045,
+      "made_by": "BitsAndDroids",
       "action": "5 (>L:A320_Neo_MFD_Range_1)",
       "action_text": "A320 MFD 1 range 5",
       "action_type": "input",
@@ -4866,6 +5308,7 @@
     },
     {
       "id": 2046,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_WPT_1_FILTER_ACTIVE)",
       "action_text": " Wpt btn off",
       "action_type": "input",
@@ -4877,6 +5320,7 @@
     },
     {
       "id": 2047,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_WPT_1_FILTER_ACTIVE)",
       "action_text": " Wpt btn on",
       "action_type": "input",
@@ -4888,6 +5332,7 @@
     },
     {
       "id": 2048,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn off",
       "action_type": "input",
@@ -4899,6 +5344,7 @@
     },
     {
       "id": 2049,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn on",
       "action_type": "input",
@@ -4910,6 +5356,7 @@
     },
     {
       "id": 2050,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_VORD_1_FILTER_ACTIVE)",
       "action_text": " VORD btn off",
       "action_type": "input",
@@ -4921,6 +5368,7 @@
     },
     {
       "id": 2051,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_VORD_1_FILTER_ACTIVE)",
       "action_text": " VORD btn on",
       "action_type": "input",
@@ -4932,6 +5380,7 @@
     },
     {
       "id": 2052,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_NDB_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn off",
       "action_type": "input",
@@ -4943,6 +5392,7 @@
     },
     {
       "id": 2053,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_NDB_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn on",
       "action_type": "input",
@@ -4954,6 +5404,7 @@
     },
     {
       "id": 2054,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn off",
       "action_type": "input",
@@ -4965,6 +5416,7 @@
     },
     {
       "id": 2055,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
       "action_text": " CSTR btn on",
       "action_type": "input",
@@ -4976,6 +5428,7 @@
     },
     {
       "id": 2056,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_LS_1_FILTER_ACTIVE)",
       "action_text": " LS btn off",
       "action_type": "input",
@@ -4987,6 +5440,7 @@
     },
     {
       "id": 2057,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_LS_1_FILTER_ACTIVE)",
       "action_text": " LS btn on",
       "action_type": "input",
@@ -4998,6 +5452,7 @@
     },
     {
       "id": 2058,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_1_PUSH)",
       "action_text": " AP 1 pushed ",
       "action_type": "input",
@@ -5009,6 +5464,7 @@
     },
     {
       "id": 2059,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_2_PUSH)",
       "action_text": " AP 2 pushed ",
       "action_type": "input",
@@ -5020,6 +5476,7 @@
     },
     {
       "id": 2060,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_LOC_PUSH)",
       "action_text": " Loc pushed",
       "action_type": "input",
@@ -5031,6 +5488,7 @@
     },
     {
       "id": 2061,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_APPR_PUSH)",
       "action_text": " Appr pushed",
       "action_type": "input",
@@ -5042,6 +5500,7 @@
     },
     {
       "id": 2062,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_EXPED_PUSH)",
       "action_text": " Exped pushed",
       "action_type": "input",
@@ -5053,6 +5512,7 @@
     },
     {
       "id": 2063,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FMGC_DIR_TO_TRIGGER)",
       "action_text": " dir to trigger pushed",
       "action_type": "input",
@@ -5064,6 +5524,7 @@
     },
     {
       "id": 2064,
+      "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_ATHR_PUSH)",
       "action_text": " A",
       "action_type": "input",
@@ -5075,6 +5536,7 @@
     },
     {
       "id": 2065,
+      "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE) ! (>L:A32NX_TRK_FPA_MODE_ACTIVE)",
       "action_text": "FPA mode",
       "action_type": "input",
@@ -5086,6 +5548,7 @@
     },
     {
       "id": 9000,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1) (>H:AS1000_PFD_SOFTKEYS_1)",
       "action_text": "AS3000 / AS1000 softkey 1",
       "action_type": "input",
@@ -5097,6 +5560,7 @@
     },
     {
       "id": 9001,
+      "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_SWITCH_OVHD_INTLT_SEATBELT_Position) ! (>K:CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE)",
       "action_text": "A320 Seatbelt toggle",
       "action_type": "input",
@@ -5108,6 +5572,7 @@
     },
     {
       "id": 2500,
+      "made_by": "BitsAndDroids",
       "action": "2 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 2 != if { 2 (>K:ELECT_FUEL_PUMP1_SET) }",
       "action_text": "A320 switch fuel pumps 2",
       "action_type": "input",
@@ -5119,6 +5584,7 @@
     },
     {
       "id": 2501,
+      "made_by": "BitsAndDroids",
       "action": "1 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 1 != if { 1 (>K:ELECT_FUEL_PUMP1_SET) }",
       "action_text": "A320 switch fuel pumps 1",
       "action_type": "input",
@@ -5130,6 +5596,7 @@
     },
     {
       "id": 2502,
+      "made_by": "BitsAndDroids",
       "action": "0 (>L:XMLVAR_BoostFuelPump, Number) (A:GENERAL ENG FUEL PUMP SWITCH EX1:1, Enum) 0 != if { 0 (>K:ELECT_FUEL_PUMP1_SET) }",
       "action_text": "A320 switch fuel pumps 0",
       "action_type": "input",
@@ -5141,6 +5608,7 @@
     },
     {
       "id": 5000,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightLargeKnob_Left) (>H:AS3000_PFD_BottomKnob_Large_DEC) (>H:AS1000_PFD_FMS_Lower_DEC)",
       "action_text": "PFD Group  -",
       "action_type": "input",
@@ -5152,6 +5620,7 @@
     },
     {
       "id": 5001,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightLargeKnob_Right) (>H:AS3000_PFD_BottomKnob_Large_INC) (>H:AS1000_PFD_FMS_Lower_INC)",
       "action_text": "PFD Group  +",
       "action_type": "input",
@@ -5163,6 +5632,7 @@
     },
     {
       "id": 5002,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightSmallKnob_Left) (>H:AS3000_TSC_Vertical_TopKnob_Large_DEC) (>H:AS1000_PFD_FMS_Upper_DEC)",
       "action_text": "PFD Page -",
       "action_type": "input",
@@ -5174,6 +5644,7 @@
     },
     {
       "id": 5003,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightSmallKnob_Right) (>H:AS3000_TSC_Vertical_TopKnob_Large_INC) (>H:AS1000_PFD_FMS_Upper_INC)",
       "action_text": "PFD Page +",
       "action_type": "input",
@@ -5185,6 +5656,7 @@
     },
     {
       "id": 5004,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RightSmallKnob_Push) (>H:AS530_ENT_Push) (>H:AS3000_PFD_BottomKnob_Push) (>H:AS1000_PFD_ENT_Push)",
       "action_text": "PFD Enter",
       "action_type": "input",
@@ -5196,6 +5668,7 @@
     },
     {
       "id": 5005,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_MENU_Push) (>H:AS1000_PFD_MENU_Push)",
       "action_text": "PFD Menu",
       "action_type": "input",
@@ -5207,6 +5680,7 @@
     },
     {
       "id": 5006,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_PROC_Push) (>H:AS1000_PFD_PROC_Push)",
       "action_text": "PFD Procedure",
       "action_type": "input",
@@ -5218,6 +5692,7 @@
     },
     {
       "id": 5007,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_FPL_Push) (>H:AS1000_PFD_FPL_Push)",
       "action_text": "PFD FPLN",
       "action_type": "input",
@@ -5229,6 +5704,7 @@
     },
     {
       "id": 5008,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RNG_Zoom) (>H:AS1000_PFD_RANGE_INC)",
       "action_text": "PFD +",
       "action_type": "input",
@@ -5240,6 +5716,7 @@
     },
     {
       "id": 5009,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_RNG_Dezoom) (>H:AS1000_PFD_RANGE_DEC)",
       "action_text": "PFD -",
       "action_type": "input",
@@ -5251,6 +5728,7 @@
     },
     {
       "id": 5010,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_DirectTo_Push) (>H:AS1000_PFD_DIRECTTO)",
       "action_text": "PFD DIR",
       "action_type": "input",
@@ -5262,6 +5740,7 @@
     },
     {
       "id": 5011,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS530_CLR_Push) (>H:AS1000_PFD_CLR)",
       "action_text": "PFD CLR",
       "action_type": "input",
@@ -5273,6 +5752,7 @@
     },
     {
       "id": 5012,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_1) (>H:AS1000_PFD_SOFTKEYS_1)",
       "action_text": "PFD Softkey 1",
       "action_type": "input",
@@ -5284,6 +5764,7 @@
     },
     {
       "id": 5013,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_2) (>H:AS1000_PFD_SOFTKEYS_2)",
       "action_text": "PFD Softkey 2",
       "action_type": "input",
@@ -5295,6 +5776,7 @@
     },
     {
       "id": 5014,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_3) (>H:AS1000_PFD_SOFTKEYS_3)",
       "action_text": "PFD Softkey 3",
       "action_type": "input",
@@ -5306,6 +5788,7 @@
     },
     {
       "id": 5015,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_4) (>H:AS1000_PFD_SOFTKEYS_4)",
       "action_text": "PFD Softkey 4",
       "action_type": "input",
@@ -5317,6 +5800,7 @@
     },
     {
       "id": 5016,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_5) (>H:AS1000_PFD_SOFTKEYS_5)",
       "action_text": "PFD Softkey 5",
       "action_type": "input",
@@ -5328,6 +5812,7 @@
     },
     {
       "id": 5017,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_6) (>H:AS1000_PFD_SOFTKEYS_6)",
       "action_text": "PFD Softkey 6",
       "action_type": "input",
@@ -5339,6 +5824,7 @@
     },
     {
       "id": 5018,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_7) (>H:AS1000_PFD_SOFTKEYS_7)",
       "action_text": "PFD Softkey 7",
       "action_type": "input",
@@ -5350,6 +5836,7 @@
     },
     {
       "id": 5019,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_8) (>H:AS1000_PFD_SOFTKEYS_8)",
       "action_text": "PFD Softkey 8",
       "action_type": "input",
@@ -5361,6 +5848,7 @@
     },
     {
       "id": 5020,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_9) (>H:AS1000_PFD_SOFTKEYS_9)",
       "action_text": "PFD Softkey 9",
       "action_type": "input",
@@ -5372,6 +5860,7 @@
     },
     {
       "id": 5021,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_10) (>H:AS1000_PFD_SOFTKEYS_10)",
       "action_text": "PFD Softkey 10",
       "action_type": "input",
@@ -5383,6 +5872,7 @@
     },
     {
       "id": 5022,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_11) (>H:AS1000_PFD_SOFTKEYS_11)",
       "action_text": "PFD Softkey 11",
       "action_type": "input",
@@ -5394,6 +5884,7 @@
     },
     {
       "id": 5023,
+      "made_by": "BitsAndDroids",
       "action": "(>H:AS3000_PFD_1_SOFTKEYS_12) (>H:AS1000_PFD_SOFTKEYS_12)",
       "action_text": "PFD Softkey 12",
       "action_type": "input",
@@ -5405,6 +5896,7 @@
     },
     {
       "id": 6010,
+      "made_by": "BitsAndDroids",
       "action": "(A:AVIONICS MASTER SWITCH,Bool)",
       "action_text": "avionics master switch",
       "action_type": "output",
@@ -5416,6 +5908,7 @@
     },
     {
       "id": 6011,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR,Feet)",
       "action_text": "Alt ap lock var",
       "action_type": "output",
@@ -5427,6 +5920,7 @@
     },
     {
       "id": 6012,
+      "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT HEADING LOCK DIR,Degrees)",
       "action_text": "Heading lock direction",
       "action_type": "output",
