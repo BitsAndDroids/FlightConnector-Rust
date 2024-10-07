@@ -192,7 +192,7 @@ export const MockWASMEventArray: WASMEvent[] = [
     action_text: "PFD Range Decrease",
     action_type: "input",
     output_format: "",
-    update_every: 0.0,
+    update_every: 10.0,
     min: 0.0,
     max: 100.0,
     value: 0,

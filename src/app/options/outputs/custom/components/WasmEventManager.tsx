@@ -72,9 +72,9 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
   const onSaveEvent = (event: WASMEvent) => {
     const newEvents = [...events];
     newEvents.push(event);
-    eventHandler.addEvent(event);
     setEvents(newEvents);
     setFilteredEvents(filterEvents(newEvents, filter));
+    eventHandler.addEvent(event);
   };
 
   const onFilterChange = (filter: WasmEventFilterParams) => {
@@ -88,8 +88,8 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     }
     const newEvents = [...events];
     newEvents[index] = event;
-    eventHandler.updateEvent(event);
     setEvents(newEvents);
+    eventHandler.updateEvent(event);
   };
 
   useEffect(() => {
@@ -102,6 +102,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
       }
       setCustomEventVersion(customEventVersion as string);
     };
+
     const fetchLatestCustomEventVersion = async () => {
       invoke("get_latest_custom_event_version").then((result) => {
         setLatestCustomEventVersion(result as string);
