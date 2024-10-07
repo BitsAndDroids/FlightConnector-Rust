@@ -16,7 +16,7 @@ mod settings;
 mod sim_utils;
 mod simconnect_mod;
 mod utils;
-use events::get_wasm_events;
+use events::{get_latest_custom_event_version, get_wasm_events, reload_custom_events};
 use settings::settings_actions::toggle_run_on_sim_launch;
 use std::collections::HashMap;
 use std::ops::Deref;
@@ -85,7 +85,7 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
     let mut output_registry = output_registry::OutputRegistry::new();
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     output_registry.load_outputs();
-    wasm_registry.load_wasm(app);
+    wasm_registry.load_wasm(&app);
 
     //merge the two outputs from the registries
     //using the FormatOutput trait
@@ -128,12 +128,7 @@ fn init_wasm_events_to_store(app: tauri::AppHandle) {
         let keys = store.keys();
         if keys.count() == 0 {
             let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
-            wasm_registry.load_default_events();
-            let events = wasm_registry.get_default_wasm_events();
-            for event in events {
-                store.insert(event.id.to_string().clone(), json!(event))?;
-            }
-            store.save()?;
+            wasm_registry.init_custom_events_to_store(&app);
         }
         Ok(())
     };
@@ -183,6 +178,8 @@ fn main() {
             stop_simconnect_connection, /*send_command*/
             install_wasm,
             get_wasm_events,
+            get_latest_custom_event_version,
+            reload_custom_events,
             update_default_events,
             get_library_header_content,
             get_library_source_content,

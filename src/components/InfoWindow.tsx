@@ -2,11 +2,13 @@ import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 export interface InfoWindowProps {
   message: string;
   docs_url?: string;
+  openLeft?: boolean;
   createWebviewWindow?: (name: string, options: any) => WebviewWindow;
 }
 const InfoWindow = ({
   message,
   docs_url,
+  openLeft,
   createWebviewWindow = (name, options) => new WebviewWindow(name, options),
 }: InfoWindowProps) => {
   const openDocs = () => {
@@ -26,7 +28,9 @@ const InfoWindow = ({
           className="h-[30px] max-h-[30px] min-h-[30px] min-w-[30px]"
         />
       </div>
-      <div className="hidden group-hover:visible group-hover:flex flex-col justify-center items-center absolute z-50 top-[-45px] right-[-320px] p-4 rounded-md bg-white drop-shadow w-80">
+      <div
+        className={`hidden group-hover:visible group-hover:flex flex-col justify-center items-center absolute z-[999] top-[-45px] ${openLeft ? "left-[-320px]" : "right-[-320px]"} p-4 rounded-md bg-white drop-shadow w-80`}
+      >
         <label className="rounded-md mx-2 text-center">{message}</label>
         {docs_url && (
           <p

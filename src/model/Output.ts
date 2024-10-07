@@ -8,3 +8,10 @@ export interface Output {
   category: string;
   selected?: boolean;
 }
+export const OutputFormats = [
+  { value: "integer", label: "Integer (1)" },
+  { value: "float", label: "Float (1.0)" },
+  { value: "boolean", label: "Boolean (true, false)" },
+  { value: "string", label: 'String ("string")' },
+  { value: "secondsaftermidnight", label: "Time" },
+];

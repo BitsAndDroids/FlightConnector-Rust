@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { InfoWindowProps } from "../InfoWindow";
 import { Label } from "./Label";
 import { SelectOption } from "@/model/SelectOption";
+import { getInputSize, InputSize } from "./inputs/utils/SizeParser";
 
 interface SelectProps {
   label?: string;
@@ -11,6 +12,7 @@ interface SelectProps {
   onLight?: boolean;
   addToClassName?: string;
   infoWindow?: ReactElement<InfoWindowProps>;
+  size?: InputSize;
   onChange?: (value: string) => void;
 }
 
@@ -22,6 +24,7 @@ export const Select = ({
   onLight,
   addToClassName,
   infoWindow,
+  size,
   onChange,
 }: SelectProps) => {
   return (
@@ -33,11 +36,11 @@ export const Select = ({
       }
     >
       {label && <Label text={label} onLight={onLight} />}
-      <div className={"flex flex-row items-center w-full text-gray-800"}>
+      <div className={"flex flex-row items-center w-full mb-2 text-gray-800"}>
         <select
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
-          className="border border-gray-200 w-full rounded-md p-2 mb-2 mr-2 drop-shadow w"
+          className={`border border-gray-200 w-full rounded-md p-2  mr-2 drop-shadow ${size ? getInputSize(size) : ""}`}
         >
           {options.map((option) => (
             <option key={option.id || option.value} value={option.value}>

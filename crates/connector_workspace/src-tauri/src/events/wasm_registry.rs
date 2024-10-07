@@ -30,7 +30,7 @@ impl WASMRegistry {
     pub fn load_default_events(&mut self) {
         let wasm_events =
             file_parsers::parsers::wasm_event_parser::parse_events_from_file(&self.wasm_file_path);
-        self.wasm_default_events = wasm_events;
+        self.wasm_default_events = wasm_events.events;
         println!("Default event count: {}", self.wasm_default_events.len());
     }
 
@@ -61,10 +61,16 @@ impl WASMRegistry {
             }
         }
 
-        self.load_wasm(app);
+        self.load_wasm(&app);
     }
 
-    pub fn load_wasm(&mut self, app: tauri::AppHandle) {
+    pub fn get_latest_custom_event_version(&mut self, app: &tauri::AppHandle) -> String {
+        let parsed_custom_event_file =
+            file_parsers::parsers::wasm_event_parser::parse_events_from_file(&self.wasm_file_path);
+        parsed_custom_event_file.version
+    }
+
+    pub fn load_wasm(&mut self, app: &tauri::AppHandle) {
         let stores = app.app_handle().state::<StoreCollection<Wry>>();
         let path = PathBuf::from(".events.dat");
         let mut output_counter = 0;
@@ -123,6 +129,28 @@ impl WASMRegistry {
     pub fn set_wasm_output_value(&mut self, output_id: u32, value: f64) {
         if let Some(output) = self.wasm_outputs.get_mut(&output_id) {
             output.value = value;
+        }
+    }
+
+    pub fn init_custom_events_to_store(&mut self, app: &tauri::AppHandle) {
+        let stores = app.app_handle().state::<StoreCollection<Wry>>();
+        let path = PathBuf::from(".events.dat");
+
+        let handle_store = |store: &mut Store<Wry>| {
+            self.load_default_events();
+            let events = self.get_default_wasm_events();
+            for event in events {
+                store.insert(event.id.to_string().clone(), json!(event))?;
+            }
+            store.save()?;
+            Ok(())
+        };
+
+        match with_store(app.app_handle().clone(), stores, path, handle_store) {
+            Ok(_) => {}
+            Err(e) => {
+                error!("Failed to load connector settings: {:?}", e);
+            }
         }
     }
 

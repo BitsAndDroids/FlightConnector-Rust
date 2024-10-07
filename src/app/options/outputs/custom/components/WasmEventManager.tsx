@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { WasmEventFilterParams } from "../models/WasmEventFilter";
 import { Header } from "@/components/elements/header";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
+import { invoke } from "@tauri-apps/api/core";
+import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 
 interface WasmEventManagerProps {
   events: WASMEvent[];
-  updateEvents: () => void;
 }
 
 const filterEvents = (
@@ -35,6 +36,7 @@ const filterEvents = (
   }
   return filteredEvents;
 };
+const connectorSettingsHandler = new ConnectorSettingsHandler();
 
 export const WasmEventManager = (props: WasmEventManagerProps) => {
   const [events, setEvents] = useState<WASMEvent[]>(props.events);
@@ -46,11 +48,14 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     category: "All",
     type: "All",
   });
+  const [customEventVersion, setCustomEventVersion] = useState<string>();
+  const [latestCustomEventVersion, setLatestCustomEventVersion] = useState<
+    string | undefined | null
+  >(undefined);
 
   const updateEvent = (event: WASMEvent) => {
     const eventHandler = new CustomEventHandler();
     eventHandler.updateEvent(event);
-    props.updateEvents();
   };
 
   const onFilterChange = (filter: WasmEventFilterParams) => {
@@ -64,8 +69,50 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     }
     const newEvents = [...events];
     newEvents[index] = event;
+    updateEvent(event);
     setEvents(newEvents);
   };
+
+  useEffect(() => {
+    const fetchCustomEventVersion = async () => {
+      const customEventVersion =
+        await connectorSettingsHandler.getLastCustomEventVersion();
+      console.log(customEventVersion);
+      if (!customEventVersion) {
+        setCustomEventVersion("none");
+        return;
+      }
+      setCustomEventVersion(customEventVersion as string);
+    };
+    const fetchLatestCustomEventVersion = async () => {
+      invoke("get_latest_custom_event_version").then((result) => {
+        console.log(result);
+        setLatestCustomEventVersion(result as string);
+      });
+    };
+
+    const compareVersions = () => {
+      console.log("Comparing versions");
+      if (customEventVersion !== latestCustomEventVersion) {
+        console.log("Reloading custom events");
+        invoke("reload_custom_events");
+        console.log("Setting latest version");
+        console.log(customEventVersion);
+        connectorSettingsHandler.setLastCustomEventVersion(
+          latestCustomEventVersion as string,
+        );
+      }
+    };
+
+    fetchCustomEventVersion();
+    fetchLatestCustomEventVersion();
+    if (
+      customEventVersion &&
+      (latestCustomEventVersion || latestCustomEventVersion === "none")
+    ) {
+      compareVersions();
+    }
+  }, [customEventVersion, latestCustomEventVersion]);
 
   useEffect(() => {
     setFilteredEvents(filterEvents(events, filter));
@@ -74,13 +121,12 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
   return (
     <div className="w-full flex flex-col">
       <Header level={1} title="Custom events" />
-      <div className="flex flex-row w-full">
+      <div className="flex flex-row w-full overflow-y-scroll">
         <WasmEventFilter filter={filter} setFilter={onFilterChange} />
-        <div className="flex flex-col w-full overflow-y-scroll max-h-[650px]">
+        <div className="flex flex-col w-full  max-h-[650px] relative">
           {filteredEvents.map((event, index) => (
-            <div key={index} className="mb-2 mr-4">
+            <div key={index} className="mb-2 mr-4 relative ">
               <WasmEventRow
-                updateEvent={updateEvent}
                 index={index}
                 key={event.id}
                 event={event}

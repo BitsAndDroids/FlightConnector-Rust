@@ -9,6 +9,7 @@ import {
   parseCategories,
   stringifyCategories,
 } from "../utils/CategoriesStringUtils";
+import { OutputFormats } from "@/model/Output";
 interface EventEditorProps {
   onSave: (event: WASMEvent) => void;
   onCancel: () => void;
@@ -92,7 +93,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
               value={newEvent?.action_type}
               options={[{ value: "input" }, { value: "output" }]}
               onChange={(value) => onChangeField("action_type", value)}
-              addToClassName="max-w-[150px] w-[150px]"
+              size="md"
               onLight={true}
               infoWindow={
                 <InfoWindow
@@ -105,13 +106,7 @@ export const EventEditor = ({ onSave, onCancel }: EventEditorProps) => {
               <>
                 <Select
                   label="Output format"
-                  options={[
-                    { value: "integer", label: "Integer (1)" },
-                    { value: "float", label: "Float (1.0)" },
-                    { value: "boolean", label: "Boolean (true, false)" },
-                    { value: "string", label: 'String ("string")' },
-                    { value: "secondsaftermidnight", label: "Time" },
-                  ]}
+                  options={OutputFormats}
                   value={newEvent?.output_format}
                   onChange={(value) => onChangeField("output_format", value)}
                   onLight={true}

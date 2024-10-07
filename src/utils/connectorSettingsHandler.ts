@@ -11,6 +11,11 @@ export class ConnectorSettingsHandler {
     this.runSettingsStore.save();
   }
 
+  async setLastCustomEventVersion(version: string): Promise<void> {
+    this.runSettingsStore.set("lastCustomEventVersion", version);
+    this.runSettingsStore.save();
+  }
+
   async setLibraryFolderPath(folder: string): Promise<void> {
     this.runSettingsStore.set("libraryFolderPath", folder);
     this.runSettingsStore.save();
@@ -34,6 +39,10 @@ export class ConnectorSettingsHandler {
   async setLatestPatchNotesRead(patchNotes: string): Promise<void> {
     this.runSettingsStore.set("latestPatchNotesRead", patchNotes);
     this.runSettingsStore.save();
+  }
+
+  async getLastCustomEventVersion(): Promise<string | null> {
+    return await this.runSettingsStore.get("lastCustomEventVersion");
   }
 
   async getConnectorSettings(): Promise<ConnectorSettings | null> {
