@@ -58,6 +58,7 @@ fn parse_event_line(line: &str) -> WasmEvent {
         offset: 0,
         value: 0.0,
         plane_or_category: vec!["".to_string()],
+        made_by: "BitsAndDroids".to_string(),
     }
 }
 

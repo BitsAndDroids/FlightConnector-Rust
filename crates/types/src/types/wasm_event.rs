@@ -36,6 +36,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
             value: Option<f64>,  // Use Option<u32> for fields that may be missing
             offset: Option<u32>, // Use Option<u32> for fields that may be missing
             plane_or_category: Vec<String>,
+            made_by: Option<String>,
         }
 
         let helper = WasmEventHelper::deserialize(deserializer)?;
@@ -44,7 +45,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
         let value = helper.value.unwrap_or(0.0);
         let offset = helper.offset.unwrap_or(0);
         let action_text = helper.action_text.unwrap_or("".to_string());
-        let made_by = "BitsAndDroids".to_string();
+        let made_by = helper.made_by.unwrap_or("BitsAndDroids".to_string());
 
         Ok(WasmEvent {
             id: helper.id,

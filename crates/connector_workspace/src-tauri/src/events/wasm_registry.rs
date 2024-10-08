@@ -168,6 +168,7 @@ impl WASMRegistry {
                 max: 0.0,
                 offset: 0,
                 plane_or_category: vec!["".to_string()],
+                made_by: "".to_string(),
             };
 
             let event_json = serde_json::to_string(&wasm_event).unwrap();

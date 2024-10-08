@@ -75,6 +75,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     setEvents(newEvents);
     setFilteredEvents(filterEvents(newEvents, filter));
     eventHandler.addEvent(event);
+    setEventEditorVisible(false);
   };
 
   const onFilterChange = (filter: WasmEventFilterParams) => {
