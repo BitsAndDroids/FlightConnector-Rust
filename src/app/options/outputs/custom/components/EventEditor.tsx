@@ -10,6 +10,10 @@ import {
   stringifyCategories,
 } from "../utils/CategoriesStringUtils";
 import { OutputFormats } from "@/model/Output";
+import {
+  validateEventDescription,
+  validateEventID,
+} from "../utils/EventValidator";
 interface EventEditorProps {
   onSave: (event: WASMEvent) => void;
   onCancel: () => void;
@@ -50,12 +54,42 @@ export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
   });
 
   const onChangeField = (field: string, value: string | boolean) => {
+    if (typeof value !== "string") {
+      return;
+    }
     if (field === "plane_or_category") {
       const parsedValue = parseCategories(value as string);
       setNewEvent({ ...newEvent, plane_or_category: parsedValue });
       return;
     }
+    if (field === "id") {
+      const idState = validateEventID(value);
+      setEventErrors({
+        ...eventErrors,
+        ...idState,
+      });
+    }
+    if (field === "action_text") {
+      const actionTextState = validateEventDescription(value);
+      setEventErrors({
+        ...eventErrors,
+        ...actionTextState,
+      });
+    }
     setNewEvent({ ...newEvent, [field]: value });
+  };
+
+  const saveEvent = (event: WASMEvent) => {
+    //itterate over the eventErrors and check if there is any error
+    //if there is an error, return
+    if (
+      eventErrors.id.state ||
+      eventErrors.action.state ||
+      eventErrors.action_text.state
+    ) {
+      return;
+    }
+    onSave(event);
   };
 
   return (
@@ -163,7 +197,7 @@ export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
         </div>
         <div className="flex flex-row justify-center items-center">
           <Button
-            onClick={() => onSave(newEvent)}
+            onClick={() => saveEvent(newEvent)}
             text="Save"
             style="primary"
           />
