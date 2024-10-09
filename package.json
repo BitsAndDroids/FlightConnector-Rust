@@ -20,6 +20,21 @@
       "react-app"
     ]
   },
+  "imports": {
+    "#store": {
+      "storybook": "./src/mocks/PluginStoreMock",
+      "default": "@tauri-apps/plugin-store"
+    },
+    "#tauri": {
+      "storybook": "./src/mocks/TauriCoreMock",
+      "default": "@tauri-apps/api/core"
+    },
+    "#*": [
+      "./*",
+      "./*.ts",
+      "./*.tsx"
+    ]
+  },
   "dependencies": {
     "@tauri-apps/api": "2.0.0-rc.2",
     "@tauri-apps/plugin-dialog": "2.0.0-rc.0",

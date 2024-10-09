@@ -1,5 +1,5 @@
 import { WASMEvent } from "@/model/WASMEvent";
-import { Store } from "@tauri-apps/plugin-store";
+import { Store } from "#store";
 
 export class CustomEventHandler {
   store: Store;

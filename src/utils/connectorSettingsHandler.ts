@@ -1,4 +1,4 @@
-import { Store } from "@tauri-apps/plugin-store";
+import { Store } from "#store";
 import { ConnectorSettings } from "./models/ConnectorSettings";
 export class ConnectorSettingsHandler {
   runSettingsStore: Store;
