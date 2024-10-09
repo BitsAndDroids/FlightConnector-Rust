@@ -1,6 +1,9 @@
+import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { EventErrors } from "../CustomEvents";
 
-export const validateEventID = (value: string): Partial<EventErrors> => {
+export const validateEventID = async (
+  value: string,
+): Promise<Partial<EventErrors>> => {
   const errorState = {
     id: { state: false, message: "" },
   };
@@ -15,6 +18,12 @@ export const validateEventID = (value: string): Partial<EventErrors> => {
   if (parseInt(value) > 9999) {
     errorState.id.state = true;
     errorState.id.message += "Event ID must be smaller than 10000";
+  }
+
+  const eventHandler = new CustomEventHandler();
+  if (await eventHandler.getEvent(value)) {
+    errorState.id.state = true;
+    errorState.id.message += "Event ID already exists";
   }
 
   return errorState;

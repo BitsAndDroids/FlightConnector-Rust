@@ -53,7 +53,7 @@ export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
     made_by: "User",
   });
 
-  const onChangeField = (field: string, value: string | boolean) => {
+  const onChangeField = async (field: string, value: string | boolean) => {
     if (typeof value !== "string") {
       return;
     }
@@ -63,7 +63,7 @@ export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
       return;
     }
     if (field === "id") {
-      const idState = validateEventID(value);
+      const idState = await validateEventID(value);
       setEventErrors({
         ...eventErrors,
         ...idState,
@@ -81,7 +81,6 @@ export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
 
   const saveEvent = (event: WASMEvent) => {
     //itterate over the eventErrors and check if there is any error
-    //if there is an error, return
     if (
       eventErrors.id.state ||
       eventErrors.action.state ||
