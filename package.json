@@ -25,14 +25,14 @@
       "storybook": "./src/mocks/PluginStoreMock",
       "default": "@tauri-apps/plugin-store"
     },
-    "#tauri": {
-      "storybook": "./src/mocks/TauriCoreMock",
+    "#tauri/invoke": {
+      "storybook": "./src/mocks/TauriCore.mock.ts",
       "default": "@tauri-apps/api/core"
     },
     "#*": [
-      "./*",
-      "./*.ts",
-      "./*.tsx"
+      "./src/*",
+      "./src/*.ts",
+      "./src/*.tsx"
     ]
   },
   "dependencies": {

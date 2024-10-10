@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { WasmEventFilterParams } from "../models/WasmEventFilter";
 import { Header } from "@/components/elements/header";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
-import { invoke } from "#tauri";
+import { invoke } from "#tauri/invoke";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { Button } from "@/components/elements/Button";
 import { EventEditor } from "./EventEditor";

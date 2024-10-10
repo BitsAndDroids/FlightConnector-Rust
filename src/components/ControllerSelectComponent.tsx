@@ -1,5 +1,5 @@
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { invoke } from "@tauri-apps/api/core";
+import { invoke } from "#tauri/invoke";
 import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
 import { ControllerSelect } from "./ControllerSelect";
