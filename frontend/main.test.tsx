@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it } from "vitest";
-import HomePage from "./app/HomePage";
-import MenuLayout from "./app/MenuLayout";
-import OutputsPage from "./app/options/outputs/OutputsPage";
-import { LogPage } from "./app/logs/LogPage";
-import SettingsPage from "./app/options/settings/SettingsPage";
-import { PresetManagerPage } from "./app/options/settings/PresetManagerPage";
-import { CustomEvents } from "./app/options/outputs/custom/CustomEvents";
+import HomePage from "./pages/HomePage";
+import MenuLayout from "./pages/MenuLayout";
+import OutputsPage from "./pages/options/outputs/OutputsPage";
+import { LogPage } from "./pages/logs/LogPage";
+import SettingsPage from "./pages/options/settings/SettingsPage";
+import { PresetManagerPage } from "./pages/options/settings/PresetManagerPage";
+import { CustomEvents } from "./pages/options/outputs/custom/CustomEvents";
 import { setupTauriInternalMocks } from "./tests/testUtils";
 
 const routes = [

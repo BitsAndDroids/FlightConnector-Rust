@@ -1,9 +1,13 @@
 import { render } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { beforeEach, describe, expect, test } from "vitest";
 import { WasmEventManager } from "./WasmEventManager";
 import { getMockWasmEvents } from "@/mocks/MockWasmEvent";
+import { setupTauriInternalMocks } from "#tests/testUtils.js";
 
 describe("WasmEventManager", () => {
+  beforeEach(() => {
+    setupTauriInternalMocks();
+  });
   test("should render without crashing", () => {
     const { container } = render(<WasmEventManager events={[]} />);
     expect(container).toBeTruthy();

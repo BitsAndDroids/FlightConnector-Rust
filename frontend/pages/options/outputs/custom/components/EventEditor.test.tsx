@@ -7,12 +7,9 @@ describe("EventEditor", () => {
   test("should render without crashing", () => {
     const { container } = render(
       <EventEditor
-        onSave={function (event: WASMEvent): void {
-          throw new Error("Function not implemented.");
-        }}
-        onCancel={function (): void {
-          throw new Error("Function not implemented.");
-        }}
+        onSave={function (event: WASMEvent): void {}}
+        onCancel={function (): void {}}
+        events={[]}
       />,
     );
     expect(container).toBeTruthy();
