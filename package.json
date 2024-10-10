@@ -7,10 +7,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint-fix": "eslint --fix \"src/**/*.{ts,tsx}\"",
-    "prettier-check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css}'",
-    "prettier-fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css}'",
+    "lint": "eslint \"frontend/**/*.{ts,tsx}\"",
+    "lint-fix": "eslint --fix \"frontend/**/*.{ts,tsx}\"",
+    "prettier-check": "prettier --check 'frontend/**/*.{js,jsx,ts,tsx,json,css}'",
+    "prettier-fix": "prettier --write 'frontend/**/*.{js,jsx,ts,tsx,json,css}'",
     "test": "vitest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -22,17 +22,17 @@
   },
   "imports": {
     "#store": {
-      "storybook": "./src/mocks/PluginStoreMock",
+      "storybook": "./frontend/mocks/PluginStoreMock",
       "default": "@tauri-apps/plugin-store"
     },
     "#tauri/invoke": {
-      "storybook": "./src/mocks/TauriCore.mock.ts",
+      "storybook": "./frontend/mocks/TauriCore.mock.ts",
       "default": "@tauri-apps/api/core"
     },
     "#*": [
-      "./src/*",
-      "./src/*.ts",
-      "./src/*.tsx"
+      "./frontend/*",
+      "./frontend/*.ts",
+      "./frontend/*.tsx"
     ]
   },
   "dependencies": {
