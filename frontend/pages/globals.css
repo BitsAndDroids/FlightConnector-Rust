@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+.tooltip {
+  @apply invisible absolute;
+  @apply -mt-7;
+  @apply ml-2;
+}
+
+.tooltip-bot {
+  @apply invisible absolute;
+  @apply mt-7;
+  @apply ml-2;
+}
+
+.has-tooltip {
+  @apply cursor-help;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+  @apply cursor-help;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+.titlebar {
+  height: 30px;
+  user-select: none;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.titlebar-button:hover {
+  background: #5bbec3;
+}
+
+.tooltip,
+.tooltip-bot {
+  @apply invisible absolute;
+  overflow: visible;
+}
+
+.has-tooltip:hover .tooltip,
+.has-tooltip:hover .tooltip-bot {
+  @apply visible z-50;
+}
