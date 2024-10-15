@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "events": [
     {
       "id": 1000,
@@ -1866,7 +1866,7 @@
       "id": 2000,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
-      "action_text": " altitude ap + 100",
+      "action_text": "altitude ap + 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -1878,7 +1878,7 @@
       "id": 2001,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
-      "action_text": " altitude ap + 1000",
+      "action_text": "altitude ap + 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -1890,7 +1890,7 @@
       "id": 2002,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
-      "action_text": " altitude ap - 100",
+      "action_text": "altitude ap - 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -1902,7 +1902,7 @@
       "id": 2003,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
-      "action_text": " altitude ap - 1000",
+      "action_text": "altitude ap - 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -1938,97 +1938,97 @@
       "id": 2006,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_MANAGED_SPEED)",
-      "action_text": " Managed speed CDU",
+      "action_text": "A320 Managed speed CDU",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2007,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_MODE_MANAGED_SPEED)",
-      "action_text": " Managed speed FCU",
+      "action_text": "A320 Managed speed FCU",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2008,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_SELECTED_SPEED)",
-      "action_text": " Selected seed CDU",
+      "action_text": "A320 Selected seed CDU",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2009,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_EXPEDITE_MODE)",
-      "action_text": " Expedite mode",
+      "action_text": "A320 Expedite mode",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2010,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PUSH)",
-      "action_text": " FCU heading push",
+      "action_text": "A320 FCU heading push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2011,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PULL)",
-      "action_text": " FCU heading pull",
+      "action_text": "A320 FCU heading pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2012,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT HEADING SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_HDG_PUSH) } els { (>K:A32NX.FCU_HDG_PULL) }",
-      "action_text": "Heading push pull togle",
+      "action_text": "A320 Heading push pull togle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2013,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_INC_TRACK) } els { 1 (>K:HEADING_BUG_INC) (>H:A320_Neo_CDU_AP_INC_HEADING) }",
-      "action_text": " FCU heading inc",
+      "action_text": "FCU heading inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2014,
@@ -2040,7 +2040,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2015,
@@ -2052,7 +2052,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2016,
@@ -2064,7 +2064,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2017,
@@ -2076,7 +2076,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2018,
@@ -2088,271 +2088,271 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2019,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT SPEED SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_SPD_PUSH) } els { (>K:A32NX.FCU_SPD_PULL) }",
-      "action_text": " Speed push pull toggle",
+      "action_text": "A320 Speed push pull toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2020,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_INC_FPA) } els { 3 (>K:AP_VS_VAR_INC)  (>H:A320_Neo_FCU_VS_INC) }",
-      "action_text": " FCU vertical speed inc",
+      "action_text": "A320 FCU vertical speed inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2021,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_DEC_FPA) } els { 3 (>K:AP_VS_VAR_DEC) (>H:A320_Neo_FCU_VS_DEC) }",
-      "action_text": " FCU vertical speed dec",
+      "action_text": "A320 FCU vertical speed dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2022,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PULL) (>H:A320_Neo_CDU_VS)",
-      "action_text": " FCU vs pull",
+      "action_text": "A320 FCU vs pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2023,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PUSH) (>H:A320_Neo_CDU_VS)",
-      "action_text": " FCU vs push",
+      "action_text": "A320 FCU vs push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2024,
       "made_by": "BitsAndDroids",
       "action": "(L:MF_VS_TOG,Bool) if { (>H:A320_Neo_FCU_VS_ZERO) } els { (>H:A320_Neo_FCU_VS_HOLD) } (L:MF_VS_TOG,Bool) ! (>L:MF_VS_TOG,Bool)",
-      "action_text": " FCU vs push pull toggle",
+      "action_text": "A320 FCU vs push pull toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2025,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PULL) (>H:A320_Neo_CDU_MODE_SELECTED_ALTITUDE)",
-      "action_text": " Selected altitude pull",
+      "action_text": "A320 Selected altitude pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2026,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PUSH) (>H:A320_Neo_CDU_MODE_MANAGED_ALTITUDE)",
-      "action_text": " Selected altitude push",
+      "action_text": "A320 Selected altitude push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2027,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_ALT_PUSH) } els { (>K:A32NX.FCU_ALT_PULL) }",
-      "action_text": " Altitude push toggle",
+      "action_text": "A320 Altitude push toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2028,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
-      "action_text": "Alt inc",
+      "action_text": "A320 Alt inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2029,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
-      "action_text": "alt dec",
+      "action_text": "A320 alt dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2030,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
-      "action_text": " alt inc 100",
+      "action_text": "A320 alt inc 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2031,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
-      "action_text": " alt dec 100",
+      "action_text": "A320 alt dec 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2032,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
-      "action_text": " alt inc 1000",
+      "action_text": "A320 alt inc 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2033,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
-      "action_text": " alt dec 1000",
+      "action_text": "A320 alt dec 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2034,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_TOGGLE_SPEED_MACH)",
-      "action_text": " Toggle speed mach",
+      "action_text": "A320 Toggle speed mach",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2035,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " nav mode 0-5",
+      "action_text": "A320 nav mode 0-5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2036,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD NAV mode 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2037,
       "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD NAV mode 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2038,
       "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " ",
+      "action_text": "A 320 MFD nav mode 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2039,
       "made_by": "BitsAndDroids",
       "action": "4 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": "A320 MFD nav mode",
+      "action_text": "A320 MFD nav mode 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2040,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " MFD range 010,20,40,80,160,320",
+      "action_text": "A320 MFD range 010,20,40,80,160,320",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2041,
@@ -2364,43 +2364,43 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2042,
       "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD 1 range 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2043,
       "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD 1 range 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2044,
       "made_by": "BitsAndDroids",
       "action": "4 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD 1 range 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2045,
@@ -2412,13 +2412,13 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2046,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_WPT_1_FILTER_ACTIVE)",
-      "action_text": " Wpt btn off",
+      "action_text": "Wpt btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2430,7 +2430,7 @@
       "id": 2047,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_WPT_1_FILTER_ACTIVE)",
-      "action_text": " Wpt btn on",
+      "action_text": "Wpt btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2442,7 +2442,7 @@
       "id": 2048,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn off",
+      "action_text": "CSTR btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2454,7 +2454,7 @@
       "id": 2049,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn on",
+      "action_text": "CSTR btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2466,7 +2466,7 @@
       "id": 2050,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_VORD_1_FILTER_ACTIVE)",
-      "action_text": " VORD btn off",
+      "action_text": "VORD btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2478,7 +2478,7 @@
       "id": 2051,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_VORD_1_FILTER_ACTIVE)",
-      "action_text": " VORD btn on",
+      "action_text": "VORD btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2490,7 +2490,7 @@
       "id": 2052,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_NDB_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn off",
+      "action_text": "CSTR btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2502,7 +2502,7 @@
       "id": 2053,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_NDB_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn on",
+      "action_text": "CSTR btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2514,7 +2514,7 @@
       "id": 2054,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn off",
+      "action_text": "CSTR btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2526,7 +2526,7 @@
       "id": 2055,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn on",
+      "action_text": "CSTR btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2538,7 +2538,7 @@
       "id": 2056,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_LS_1_FILTER_ACTIVE)",
-      "action_text": " LS btn off",
+      "action_text": "LS btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2550,7 +2550,7 @@
       "id": 2057,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_LS_1_FILTER_ACTIVE)",
-      "action_text": " LS btn on",
+      "action_text": "LS btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2562,55 +2562,55 @@
       "id": 2058,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_1_PUSH)",
-      "action_text": " AP 1 pushed ",
+      "action_text": "A320 AP 1 pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2059,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_2_PUSH)",
-      "action_text": " AP 2 pushed ",
+      "action_text": "A320 AP 2 pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2060,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_LOC_PUSH)",
-      "action_text": " Loc pushed",
+      "action_text": "A320 Loc pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2061,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_APPR_PUSH)",
-      "action_text": " Appr pushed",
+      "action_text": "A320 Appr pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2062,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_EXPED_PUSH)",
-      "action_text": " Exped pushed",
+      "action_text": "A320 Exped pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2622,7 +2622,7 @@
       "id": 2063,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FMGC_DIR_TO_TRIGGER)",
-      "action_text": " dir to trigger pushed",
+      "action_text": "A320 dir to trigger pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2634,7 +2634,7 @@
       "id": 2064,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_ATHR_PUSH)",
-      "action_text": " A",
+      "action_text": "A320 ATHR pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -2646,7 +2646,7 @@
       "id": 2065,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE) ! (>L:A32NX_TRK_FPA_MODE_ACTIVE)",
-      "action_text": "FPA mode",
+      "action_text": "A320 FPA mode",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -4758,7 +4758,7 @@
       "id": 2000,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
-      "action_text": " altitude ap + 100",
+      "action_text": "altitude ap + 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -4770,7 +4770,7 @@
       "id": 2001,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)",
-      "action_text": " altitude ap + 1000",
+      "action_text": "altitude ap + 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -4782,7 +4782,7 @@
       "id": 2002,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 100 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
-      "action_text": " altitude ap - 100",
+      "action_text": "altitude ap - 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -4794,7 +4794,7 @@
       "id": 2003,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE LOCK VAR, feet) - 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down)",
-      "action_text": " altitude ap - 1000",
+      "action_text": "altitude ap - 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -4830,163 +4830,163 @@
       "id": 2006,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_MANAGED_SPEED)",
-      "action_text": " Managed speed CDU",
+      "action_text": "A320 Managed speed CDU",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2007,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_MODE_MANAGED_SPEED)",
-      "action_text": " Managed speed FCU",
+      "action_text": "A320 Managed speed FCU",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2008,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_CDU_MODE_SELECTED_SPEED)",
-      "action_text": " Selected seed CDU",
+      "action_text": "A320 Selected seed CDU",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2009,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_EXPEDITE_MODE)",
-      "action_text": " Expedite mode",
+      "action_text": "A320 Expedite mode",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2010,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PUSH)",
-      "action_text": " FCU heading push",
+      "action_text": "A320 FCU heading push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2011,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_HDG_PULL)",
-      "action_text": " FCU heading pull",
+      "action_text": "A320 FCU heading pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2012,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT HEADING SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_HDG_PUSH) } els { (>K:A32NX.FCU_HDG_PULL) }",
-      "action_text": "Heading push pull togle",
+      "action_text": "A320 Heading push pull togle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2013,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_INC_TRACK) } els { 1 (>K:HEADING_BUG_INC) (>H:A320_Neo_CDU_AP_INC_HEADING) }",
-      "action_text": " FCU heading inc",
+      "action_text": "A320 FCU heading inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2014,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) if { (>H:A320_Neo_FCU_AP_DEC_TRACK) } els { 1 (>K:HEADING_BUG_DEC) (>H:A320_Neo_CDU_AP_DEC_HEADING) }",
-      "action_text": " FCU heading dec",
+      "action_text": "A320 FCU heading dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2015,
       "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_INC) } els { 1 (>K:AP_SPD_VAR_INC) } (>H:A320_Neo_CDU_AP_INC_SPEED)",
-      "action_text": " FCU speed inc",
+      "action_text": "A320 FCU speed inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2016,
       "made_by": "BitsAndDroids",
       "action": "(L:XMLVAR_AirSpeedIsInMach) if { 1 (>K:AP_MACH_VAR_DEC) } els { 1 (>K:AP_SPD_VAR_DEC) } (>H:A320_Neo_CDU_AP_DEC_SPEED)",
-      "action_text": " FCU speed dec",
+      "action_text": "A320 FCU speed dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2017,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_PULL)",
-      "action_text": " FCU speed pull",
+      "action_text": "A320 FCU speed pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2018,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_PUSH)",
-      "action_text": " FCU speed push",
+      "action_text": "A320 FCU speed push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2019,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT SPEED SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_SPD_PUSH) } els { (>K:A32NX.FCU_SPD_PULL) }",
-      "action_text": " Speed push pull toggle",
+      "action_text": "A320 Speed push pull toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -4998,199 +4998,199 @@
       "id": 2020,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_INC_FPA) } els { 3 (>K:AP_VS_VAR_INC)  (>H:A320_Neo_FCU_VS_INC) }",
-      "action_text": " FCU vertical speed inc",
+      "action_text": "A320 FCU vertical speed inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2021,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE, bool) 1 == if { (>H:A320_Neo_FCU_AP_DEC_FPA) } els { 3 (>K:AP_VS_VAR_DEC) (>H:A320_Neo_FCU_VS_DEC) }",
-      "action_text": " FCU vertical speed dec",
+      "action_text": "A320 FCU vertical speed dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2022,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PULL) (>H:A320_Neo_CDU_VS)",
-      "action_text": " FCU vs pull",
+      "action_text": "A320 FCU vs pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2023,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_VS_PUSH) (>H:A320_Neo_CDU_VS)",
-      "action_text": " FCU vs push",
+      "action_text": "A320 FCU vs push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2024,
       "made_by": "BitsAndDroids",
       "action": "(L:MF_VS_TOG,Bool) if { (>H:A320_Neo_FCU_VS_ZERO) } els { (>H:A320_Neo_FCU_VS_HOLD) } (L:MF_VS_TOG,Bool) ! (>L:MF_VS_TOG,Bool)",
-      "action_text": " FCU vs push pull toggle",
+      "action_text": "A320 FCU vs push pull toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2025,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PULL) (>H:A320_Neo_CDU_MODE_SELECTED_ALTITUDE)",
-      "action_text": " Selected altitude pull",
+      "action_text": "A320 Selected altitude pull",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2026,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_ALT_PUSH) (>H:A320_Neo_CDU_MODE_MANAGED_ALTITUDE)",
-      "action_text": " Selected altitude push",
+      "action_text": "A320 Selected altitude push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2027,
       "made_by": "BitsAndDroids",
       "action": "(A:AUTOPILOT ALTITUDE SLOT INDEX, Number) 1 == if { (>K:A32NX.FCU_ALT_PUSH) } els { (>K:A32NX.FCU_ALT_PULL) }",
-      "action_text": " Altitude push toggle",
+      "action_text": "A320 Altitude push toggle",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2028,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
-      "action_text": "Alt inc",
+      "action_text": "A320 Alt inc",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2029,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) - (L:XMLVAR_Autopilot_Altitude_Increment) (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) (L:XMLVAR_Autopilot_Altitude_Increment) % - (L:XMLVAR_Autopilot_Altitude_Increment) % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
-      "action_text": "alt dec",
+      "action_text": "A320 alt dec",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2030,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
-      "action_text": " alt inc 100",
+      "action_text": "A320 alt inc 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2031,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 - 100 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 100 % - 100 % + 100 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
-      "action_text": " alt dec 100",
+      "action_text": "A320 alt dec 100",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2032,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 + (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 49000 min (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up) (>H:A320_Neo_CDU_AP_INC_ALT)",
-      "action_text": " alt inc 1000",
+      "action_text": "A320 alt inc 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2033,
       "made_by": "BitsAndDroids",
       "action": "3 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 - 1000 (A:AUTOPILOT ALTITUDE LOCK VAR:3, feet) 1000 % - 1000 % + 1000 max (>K:2:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Down) (>H:A320_Neo_CDU_AP_DEC_ALT)",
-      "action_text": " alt dec 1000",
+      "action_text": "A320 alt dec 1000",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2034,
       "made_by": "BitsAndDroids",
       "action": "(>H:A320_Neo_FCU_SPEED_TOGGLE_SPEED_MACH)",
-      "action_text": " Toggle speed mach",
+      "action_text": "A320 Toggle speed mach",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2035,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " nav mode 0-5",
+      "action_text": "A320 nav mode 0-5",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2036,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD NAV mode 1",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5202,7 +5202,7 @@
       "id": 2037,
       "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD NAV mode 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5214,13 +5214,13 @@
       "id": 2038,
       "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_NAV_MODE_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD NAV mode 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2039,
@@ -5232,19 +5232,19 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2040,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " MFD range 010,20,40,80,160,320",
+      "action_text": "A320 MFD range 010,20,40,80,160,320",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2041,
@@ -5256,25 +5256,25 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2042,
       "made_by": "BitsAndDroids",
       "action": "2 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD 1 range 2",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2043,
       "made_by": "BitsAndDroids",
       "action": "3 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD 1 range 3",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5286,13 +5286,13 @@
       "id": 2044,
       "made_by": "BitsAndDroids",
       "action": "4 (>L:A320_Neo_MFD_Range_1)",
-      "action_text": " ",
+      "action_text": "A320 MFD 1 range 4",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2045,
@@ -5304,13 +5304,13 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2046,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_WPT_1_FILTER_ACTIVE)",
-      "action_text": " Wpt btn off",
+      "action_text": "Wpt btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5322,7 +5322,7 @@
       "id": 2047,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_WPT_1_FILTER_ACTIVE)",
-      "action_text": " Wpt btn on",
+      "action_text": "Wpt btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5334,7 +5334,7 @@
       "id": 2048,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn off",
+      "action_text": "CSTR btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5346,7 +5346,7 @@
       "id": 2049,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_CSTR_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn on",
+      "action_text": "CSTR btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5358,7 +5358,7 @@
       "id": 2050,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_VORD_1_FILTER_ACTIVE)",
-      "action_text": " VORD btn off",
+      "action_text": "VORD btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5370,7 +5370,7 @@
       "id": 2051,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_VORD_1_FILTER_ACTIVE)",
-      "action_text": " VORD btn on",
+      "action_text": "VORD btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5382,7 +5382,7 @@
       "id": 2052,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_NDB_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn off",
+      "action_text": "CSTR btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5394,7 +5394,7 @@
       "id": 2053,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_NDB_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn on",
+      "action_text": "CSTR btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5406,7 +5406,7 @@
       "id": 2054,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn off",
+      "action_text": "CSTR btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5418,7 +5418,7 @@
       "id": 2055,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_ARPT_1_FILTER_ACTIVE)",
-      "action_text": " CSTR btn on",
+      "action_text": "CSTR btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5430,7 +5430,7 @@
       "id": 2056,
       "made_by": "BitsAndDroids",
       "action": "0 (>L:BTN_LS_1_FILTER_ACTIVE)",
-      "action_text": " LS btn off",
+      "action_text": "LS btn off",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5442,7 +5442,7 @@
       "id": 2057,
       "made_by": "BitsAndDroids",
       "action": "1 (>L:BTN_LS_1_FILTER_ACTIVE)",
-      "action_text": " LS btn on",
+      "action_text": "LS btn on",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
@@ -5454,97 +5454,97 @@
       "id": 2058,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_1_PUSH)",
-      "action_text": " AP 1 pushed ",
+      "action_text": "A320 AP 1 pushed",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2059,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_AP_2_PUSH)",
-      "action_text": " AP 2 pushed ",
+      "action_text": "A320 AP 2 push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2060,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_LOC_PUSH)",
-      "action_text": " Loc pushed",
+      "action_text": "A320 Loc push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2061,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_APPR_PUSH)",
-      "action_text": " Appr pushed",
+      "action_text": "A320 Appr push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2062,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_EXPED_PUSH)",
-      "action_text": " Exped pushed",
+      "action_text": "A320 Exped push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2063,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FMGC_DIR_TO_TRIGGER)",
-      "action_text": " dir to trigger pushed",
+      "action_text": "A320 dir to trigger push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2064,
       "made_by": "BitsAndDroids",
       "action": "(>K:A32NX.FCU_ATHR_PUSH)",
-      "action_text": " A",
+      "action_text": "A320 ATHR push",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2065,
       "made_by": "BitsAndDroids",
       "action": "(L:A32NX_TRK_FPA_MODE_ACTIVE) ! (>L:A32NX_TRK_FPA_MODE_ACTIVE)",
-      "action_text": "FPA mode",
+      "action_text": "A320 FPA mode",
       "action_type": "input",
       "output_format": "",
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 9000,
@@ -5568,7 +5568,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2500,
@@ -5580,7 +5580,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2501,
@@ -5592,7 +5592,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 2502,
@@ -5604,7 +5604,7 @@
       "update_every": 0.0,
       "min": 0.0,
       "max": 100.0,
-      "plane_or_category": ["generic"]
+      "plane_or_category": ["A320", "generic"]
     },
     {
       "id": 5000,

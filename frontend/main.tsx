@@ -1,13 +1,13 @@
 import React from "react";
-import HomePage from "./app/HomePage";
+import HomePage from "./pages/HomePage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as ReactDOM from "react-dom/client";
-import MenuLayout from "./app/MenuLayout";
-import OutputsPage from "./app/options/outputs/OutputsPage";
-import { LogPage } from "./app/logs/LogPage";
-import SettingsPage from "./app/options/settings/SettingsPage";
-import { PresetManagerPage } from "./app/options/settings/PresetManagerPage";
-import { CustomEvents } from "./app/options/outputs/custom/CustomEvents";
+import MenuLayout from "./pages/MenuLayout";
+import OutputsPage from "./pages/options/outputs/OutputsPage";
+import { LogPage } from "./pages/logs/LogPage";
+import SettingsPage from "./pages/options/settings/SettingsPage";
+import { PresetManagerPage } from "./pages/options/settings/PresetManagerPage";
+import { CustomEvents } from "./pages/options/outputs/custom/CustomEvents";
 const router = createBrowserRouter([
   {
     path: "/",
