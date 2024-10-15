@@ -33,7 +33,9 @@ const filterEvents = (
   }
   if (filter.category && filter.category !== "All") {
     filteredEvents = filteredEvents.filter((event) =>
-      event.plane_or_category.includes(filter.category.toLowerCase()),
+      event.plane_or_category.find((cat) =>
+        cat.toLowerCase().includes(filter.category),
+      ),
     );
   }
   if (filter.madeBy && filter.madeBy !== "All") {
