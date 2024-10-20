@@ -42,6 +42,8 @@ export const WasmEventRowEditor = ({
       if (value !== originalEvent.id.toString()) {
         const idState = validateEventID(value);
         setEventErrors({ ...eventErrors, ...idState });
+      } else {
+        setEventErrors({ ...eventErrors, id: { state: false, message: "" } });
       }
     }
     setWasmEvent({ ...wasmEvent, [key]: value });
