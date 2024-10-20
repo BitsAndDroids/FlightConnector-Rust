@@ -9,7 +9,7 @@ export default defineConfig({
         "frontend/tests/*",
         "**/*.stories.tsx",
         "**/*.test.*",
-        "mocks/**",
+        "frontend/mocks/**",
         "frontend/utils/models",
         "**/model/*",
         "frontend/main.tsx",
