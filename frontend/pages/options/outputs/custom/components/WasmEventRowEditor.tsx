@@ -32,8 +32,6 @@ export const WasmEventRowEditor = ({
     if (key === "plane_or_category") {
       if (value.endsWith(",")) {
       }
-      console.log("parsing categories");
-      console.log(value);
       const parsedValue = parseCategories(value);
       setWasmEvent({ ...wasmEvent, plane_or_category: parsedValue });
       return;
