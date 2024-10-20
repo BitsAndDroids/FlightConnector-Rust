@@ -20,6 +20,7 @@ interface InputProps {
   onLight?: boolean;
   size?: InputSize;
   onChange?: (value: string | boolean) => void;
+  testid?: string;
 }
 
 export interface InputErrorState {
@@ -49,6 +50,7 @@ export const Input = ({
   onLight,
   size,
   onChange,
+  testid,
 }: InputProps) => {
   return (
     <>
@@ -62,6 +64,7 @@ export const Input = ({
         />
       ) : type === "textarea" ? (
         <TextArea
+          testid={testid}
           value={value as string}
           label={label}
           addToClassName={addToClassName as string}
@@ -83,6 +86,7 @@ export const Input = ({
               <div className="flex flex-row align-middle items-center overflow-visible mb-2">
                 {infoLeft && <div className="mr-2">{infoWindow}</div>}
                 <input
+                  data-testid={testid}
                   value={value as string}
                   onChange={(e) => onChange && onChange(e.target.value)}
                   type={type}

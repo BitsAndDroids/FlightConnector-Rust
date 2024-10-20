@@ -54,6 +54,7 @@ export const WasmEventRowEditor = ({
   return (
     <div className="">
       <Input
+        testid="input_id"
         value={wasmEvent.id.toString()}
         label="ID"
         onLight={true}
@@ -70,6 +71,7 @@ export const WasmEventRowEditor = ({
         }
       />
       <Input
+        testid="input_action_text"
         value={wasmEvent.action_text}
         label="Checkbox text"
         onLight={true}
@@ -85,6 +87,7 @@ export const WasmEventRowEditor = ({
         }
       />
       <Input
+        testid="input_action"
         value={wasmEvent.action}
         label="Action"
         onLight={true}
@@ -101,6 +104,7 @@ export const WasmEventRowEditor = ({
       />
       <div className="flex flex-row">
         <Select
+          testid="select_action_type"
           value={wasmEvent.action_type}
           label="Action type"
           onLight={true}
@@ -120,6 +124,7 @@ export const WasmEventRowEditor = ({
         {wasmEvent.action_type === "output" && (
           <>
             <Select
+              testid="select_output_format"
               options={OutputFormats}
               value={wasmEvent.output_format}
               label="Output format"

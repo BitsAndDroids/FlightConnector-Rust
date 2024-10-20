@@ -14,6 +14,7 @@ interface SelectProps {
   infoWindow?: ReactElement<InfoWindowProps>;
   size?: InputSize;
   onChange?: (value: string) => void;
+  testid?: string;
 }
 
 export const Select = ({
@@ -26,6 +27,7 @@ export const Select = ({
   infoWindow,
   size,
   onChange,
+  testid,
 }: SelectProps) => {
   return (
     <div
@@ -38,6 +40,7 @@ export const Select = ({
       {label && <Label text={label} onLight={onLight} />}
       <div className={"flex flex-row items-center w-full mb-2 text-gray-800"}>
         <select
+          data-testid={testid}
           value={value}
           onChange={(e) => onChange && onChange(e.target.value)}
           className={`border border-gray-200 w-full rounded-md p-2  mr-2 drop-shadow ${size ? getInputSize(size) : ""}`}

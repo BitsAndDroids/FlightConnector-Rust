@@ -13,6 +13,7 @@ interface TextAreaProps {
   required?: boolean;
   onLight?: boolean;
   onChange?: (value: string) => void;
+  testid?: string;
 }
 
 export const TextArea = ({
@@ -25,11 +26,13 @@ export const TextArea = ({
   required,
   onLight,
   onChange,
+  testid,
 }: TextAreaProps) => {
   return (
     <div className="flex flex-col">
       {label && <Label text={label} required={required} onLight={onLight} />}
       <textarea
+        data-testid={testid}
         value={value}
         onChange={(e) => onChange && onChange(e.target.value)}
         className={`border border-gray-200 w-full rounded-md p-2 mb-2 drop-shadow ${addToClassName} ${errorState?.state && "border-red-800"}`}
