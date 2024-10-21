@@ -2,7 +2,7 @@ import { WASMEvent } from "@/model/WASMEvent";
 import { WasmEventRow } from "./WasmEventRow";
 import { WasmEventFilter } from "./WasmEventFilter";
 import { useEffect, useState } from "react";
-import { WasmEventFilterParams } from "../models/WasmEventFilter";
+import { WasmEventFilterParams } from "../model/WasmEventFilter";
 import { Header } from "@/components/elements/header";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { invoke } from "#tauri/invoke";

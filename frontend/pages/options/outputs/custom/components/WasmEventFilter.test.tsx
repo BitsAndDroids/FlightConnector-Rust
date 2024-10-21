@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { WasmEventFilter } from "./WasmEventFilter";
 import { render } from "@testing-library/react";
-import { WasmEventFilterParams } from "../models/WasmEventFilter";
+import { WasmEventFilterParams } from "../model/WasmEventFilter";
 
 describe("WasmEventFilter", () => {
   test("should render without crashing", () => {

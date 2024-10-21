@@ -2,7 +2,7 @@ import { PrimaryCard } from "@/components/card/PrimaryCard";
 import { Input } from "@/components/elements/inputs/Input";
 import { Select } from "@/components/elements/Select";
 import { ReactNode } from "react";
-import { WasmEventFilterParams } from "../models/WasmEventFilter";
+import { WasmEventFilterParams } from "../model/WasmEventFilter";
 
 interface WasmEventFilterProps {
   filter: WasmEventFilterParams;
