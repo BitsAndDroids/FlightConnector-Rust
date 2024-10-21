@@ -1,12 +1,13 @@
 import { setupTauriInternalMocks } from "@/tests/testUtils";
 import { clearMocks } from "@tauri-apps/api/mocks";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { beforeAll, describe, expect, test, vi } from "vitest";
 import { ControllerSelectComponent } from "./ControllerSelectComponent";
-
+let invokeMock = vi.fn();
 beforeAll(() => {
   clearMocks();
-  setupTauriInternalMocks();
+  const mocks = setupTauriInternalMocks();
+  invokeMock = mocks.mockInvoke;
 });
 
 vi.mock("./ControllerSelectComponent", async (importOriginal) => {

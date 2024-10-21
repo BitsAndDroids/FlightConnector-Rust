@@ -16,7 +16,7 @@ export async function populateRunBundles(
   runBundles: RunBundle[],
 ): Promise<RunBundlePopulated[]> {
   const populatedRunBundles = await Promise.all(
-    runBundles.map(async (runBundle) => {
+    runBundles?.map(async (runBundle) => {
       if (!runBundle.bundle_name) {
         console.log("No outputs");
         return {
@@ -27,6 +27,10 @@ export async function populateRunBundles(
       return populateRunBundle(runBundle);
     }),
   );
+  if (!populatedRunBundles) {
+    console.log("No outputs");
+    return [];
+  }
   return populatedRunBundles;
 }
 

@@ -59,7 +59,7 @@ export const ControllerSelectComponent = () => {
         return;
       }
       let newPreset = { ...preset };
-      newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
+      newPreset.runBundles = newPreset.runBundles?.map((runBundle) => {
         if (runBundle.id === id) {
           runBundle.connected = connected;
         }
@@ -76,7 +76,7 @@ export const ControllerSelectComponent = () => {
         return;
       }
       let newPreset = { ...preset };
-      newPreset.runBundles = newPreset.runBundles.map((runBundle) => {
+      newPreset.runBundles = newPreset.runBundles?.map((runBundle) => {
         runBundle.connected = false;
         return runBundle;
       });
@@ -272,6 +272,7 @@ export const ControllerSelectComponent = () => {
               <div className={"flex flex-row"}>
                 <button
                   type="button"
+                  data-testid="start_stop_button"
                   className={`${connectionRunning ? "bg-red-700 hover:bg-red-800" : "bg-green-600 hover:bg-green-800"} rounded-md bg-green-600 px-3.5 py-2.5 m-2 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400`}
                   onClick={toggleRunConnection}
                 >
@@ -304,7 +305,7 @@ export const ControllerSelectComponent = () => {
               />
             ) : (
               <>
-                {preset?.runBundles.map((runBundle) => (
+                {preset?.runBundles?.map((runBundle) => (
                   <ControllerSelect
                     data-testid="controller_select"
                     bundles={bundles}

@@ -35,6 +35,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (
 
         <select
           key={Math.random()}
+          data-testid="com_port_select"
           className={"rounded m-2 text-gray-700 p-2 w-[180px] pr-8"}
           value={props?.runBundle?.com_port}
           onChange={(e) => {
@@ -65,7 +66,7 @@ export const ControllerSelect: React.FC<ControllerSelectProps> = (
             No outputs
           </option>
           {props?.bundles?.length > 0 &&
-            props.bundles.map((bundle) => (
+            props.bundles?.map((bundle) => (
               <option
                 className={"text-gray-700"}
                 key={bundle.name}
