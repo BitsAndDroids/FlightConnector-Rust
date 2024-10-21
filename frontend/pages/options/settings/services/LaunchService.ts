@@ -23,8 +23,6 @@ const enableLaunchWhenSimStarts = async (xmlPath: string) => {
     enable: true,
     exeXmlPath: xmlPath,
   });
-  console.log(result);
-  console.log("enable");
 };
 
 const disableLaunchWhenSimStarts = async (xmlPath: string) => {
@@ -32,6 +30,4 @@ const disableLaunchWhenSimStarts = async (xmlPath: string) => {
     enable: false,
     exeXmlPath: xmlPath,
   });
-  console.log(result);
-  console.log("disable");
 };
