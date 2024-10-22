@@ -1,4 +1,9 @@
-use serde::{Deserialize, Deserializer, Serialize};
+use std::fmt;
+
+use serde::{
+    de::{self, SeqAccess, Visitor},
+    Deserialize, Deserializer, Serialize,
+};
 
 use super::output::{Output, OutputType};
 
@@ -18,6 +23,41 @@ pub struct WasmEvent {
     pub made_by: String,
 }
 
+fn deserialize_plane_or_category<'de, D>(deserializer: D) -> Result<Vec<String>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    struct PlaneOrCategoryVisitor;
+
+    impl<'de> Visitor<'de> for PlaneOrCategoryVisitor {
+        type Value = Vec<String>;
+
+        fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+            formatter.write_str("a string or a list of strings")
+        }
+
+        fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
+        where
+            E: de::Error,
+        {
+            Ok(vec![value.to_string()])
+        }
+
+        fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+        where
+            A: SeqAccess<'de>,
+        {
+            let mut vec = Vec::new();
+            while let Some(value) = seq.next_element()? {
+                vec.push(value);
+            }
+            Ok(vec)
+        }
+    }
+
+    deserializer.deserialize_any(PlaneOrCategoryVisitor)
+}
+
 impl<'de> Deserialize<'de> for WasmEvent {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
@@ -35,6 +75,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
             max: f32,
             value: Option<f64>,  // Use Option<u32> for fields that may be missing
             offset: Option<u32>, // Use Option<u32> for fields that may be missing
+            #[serde(deserialize_with = "deserialize_plane_or_category")]
             plane_or_category: Vec<String>,
             made_by: Option<String>,
         }

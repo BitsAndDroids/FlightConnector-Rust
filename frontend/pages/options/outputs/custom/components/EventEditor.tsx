@@ -68,6 +68,8 @@ export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
         ...eventErrors,
         ...idState,
       });
+
+      setNewEvent({ ...newEvent, id: parseInt(value) });
     }
     if (field === "action_text") {
       const actionTextState = validateEventDescription(value);
