@@ -1,10 +1,11 @@
 use connector_types::types::wasm_event::WasmEvent;
 use serde::{Deserialize, Serialize};
 #[derive(Debug, Serialize, Deserialize)]
-struct EventFile {
-    events: Vec<WasmEvent>,
+pub struct EventFile {
+    pub version: String,
+    pub events: Vec<WasmEvent>,
 }
-pub fn parse_events_from_file(path: &str) -> Vec<WasmEvent> {
+pub fn parse_events_from_file(path: &str) -> EventFile {
     let file = match std::fs::File::open(path) {
         Ok(file) => file,
         Err(e) => panic!("Failed to open file at {:?}: {}", &path, e),
@@ -14,5 +15,5 @@ pub fn parse_events_from_file(path: &str) -> Vec<WasmEvent> {
         Ok(data) => data,
         Err(e) => panic!("Failed to parse events from file: {}", e),
     };
-    events.events
+    events
 }

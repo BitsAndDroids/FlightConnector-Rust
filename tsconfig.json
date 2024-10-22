@@ -14,10 +14,10 @@
     "jsx": "react-jsx",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./frontend/*"]
     }
   },
-  "include": ["src", "index.html"],
+  "include": ["frontend", "index.html"],
   "exclude": ["node_modules", "src-tauri"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

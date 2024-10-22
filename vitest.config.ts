@@ -3,21 +3,24 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     coverage: {
-      include: ["src"],
+      include: ["frontend"],
       exclude: [
-        "src/model",
+        "frontend/model",
+        "frontend/tests/*",
         "**/*.stories.tsx",
         "**/*.test.*",
-        "mocks/**",
-        "src/utils/models",
+        "frontend/mocks/**",
+        "frontend/utils/models",
+        "**/model/*",
+        "frontend/main.tsx",
       ],
     },
     environment: "jsdom",
-    setupFiles: "./src/tests/setup.tsx",
+    setupFiles: "./frontend/tests/setup.tsx",
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./frontend"),
     },
   },
 });
