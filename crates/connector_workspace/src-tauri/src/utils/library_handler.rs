@@ -1,7 +1,7 @@
 use std::{collections::HashMap, fs, path::Path};
 
 use connector_types::types::wasm_event::WasmEvent;
-use tauri::Manager;
+use tauri::{path::BaseDirectory, Manager};
 
 use crate::events::{self};
 
@@ -9,10 +9,16 @@ use crate::events::{self};
 pub fn get_library_header_content(app: tauri::AppHandle) -> String {
     let mut content = String::new();
     let library_path = app.app_handle().path().resource_dir().unwrap();
-    let library_header_path = library_path.join("connector_library/BitsAndDroidsFlightConnector.h");
-    println!("Library header path: {:?}", library_header_path);
-    if library_header_path.exists() {
-        content = fs::read_to_string(library_header_path).unwrap();
+    let resource_path = app
+        .app_handle()
+        .path()
+        .resolve(
+            "connectory_library/BitsAndDroidsFlightConnector.h",
+            BaseDirectory::Resource,
+        )
+        .unwrap();
+    if resource_path.exists() {
+        content = fs::read_to_string(resource_path).unwrap();
     }
     content
 }
@@ -20,11 +26,16 @@ pub fn get_library_header_content(app: tauri::AppHandle) -> String {
 #[tauri::command]
 pub fn get_library_source_content(app: tauri::AppHandle) -> String {
     let mut content = String::new();
-    let library_path = app.app_handle().path().resource_dir().unwrap();
-    let library_source_path =
-        library_path.join("connector_library/BitsAndDroidsFlightConnector.cpp");
-    if library_source_path.exists() {
-        content = fs::read_to_string(library_source_path).unwrap();
+    let resource_path = app
+        .app_handle()
+        .path()
+        .resolve(
+            "connector_library/BitsAndDroidsFlightConnector.cpp",
+            BaseDirectory::Resource,
+        )
+        .unwrap();
+    if resource_path.exists() {
+        content = fs::read_to_string(resource_path).unwrap();
     }
     content
 }
