@@ -9,7 +9,7 @@ export default defineConfig(async () => ({
   resolve: {
     alias: {
       // 4. tell vite to use the `src-tauri` directory
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./frontend"),
     },
   },
   // 1. prevent vite from obscuring rust errors

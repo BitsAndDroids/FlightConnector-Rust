@@ -1,9 +1,11 @@
-use serde::{Deserialize, Deserializer, Serialize};
+use std::fmt;
 
-use super::{
-    output::{Output, OutputType},
-    output_format::FormatOutput,
+use serde::{
+    de::{self, SeqAccess, Visitor},
+    Deserialize, Deserializer, Serialize,
 };
+
+use super::output::{Output, OutputType};
 
 #[derive(Debug, Serialize, Clone)]
 pub struct WasmEvent {
@@ -17,7 +19,43 @@ pub struct WasmEvent {
     pub max: f32,
     pub value: f64,
     pub offset: u32,
-    pub plane_or_category: String,
+    pub plane_or_category: Vec<String>,
+    pub made_by: String,
+}
+
+fn deserialize_plane_or_category<'de, D>(deserializer: D) -> Result<Vec<String>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    struct PlaneOrCategoryVisitor;
+
+    impl<'de> Visitor<'de> for PlaneOrCategoryVisitor {
+        type Value = Vec<String>;
+
+        fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+            formatter.write_str("a string or a list of strings")
+        }
+
+        fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
+        where
+            E: de::Error,
+        {
+            Ok(vec![value.to_string()])
+        }
+
+        fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+        where
+            A: SeqAccess<'de>,
+        {
+            let mut vec = Vec::new();
+            while let Some(value) = seq.next_element()? {
+                vec.push(value);
+            }
+            Ok(vec)
+        }
+    }
+
+    deserializer.deserialize_any(PlaneOrCategoryVisitor)
 }
 
 impl<'de> Deserialize<'de> for WasmEvent {
@@ -37,7 +75,9 @@ impl<'de> Deserialize<'de> for WasmEvent {
             max: f32,
             value: Option<f64>,  // Use Option<u32> for fields that may be missing
             offset: Option<u32>, // Use Option<u32> for fields that may be missing
-            plane_or_category: String,
+            #[serde(deserialize_with = "deserialize_plane_or_category")]
+            plane_or_category: Vec<String>,
+            made_by: Option<String>,
         }
 
         let helper = WasmEventHelper::deserialize(deserializer)?;
@@ -46,6 +86,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
         let value = helper.value.unwrap_or(0.0);
         let offset = helper.offset.unwrap_or(0);
         let action_text = helper.action_text.unwrap_or("".to_string());
+        let made_by = helper.made_by.unwrap_or("BitsAndDroids".to_string());
 
         Ok(WasmEvent {
             id: helper.id,
@@ -59,6 +100,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
             value,
             offset,
             plane_or_category: helper.plane_or_category,
+            made_by,
         })
     }
 }
