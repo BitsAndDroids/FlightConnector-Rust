@@ -8,7 +8,6 @@ use crate::events::{self};
 #[tauri::command]
 pub fn get_library_header_content(app: tauri::AppHandle) -> String {
     let mut content = String::new();
-    let library_path = app.app_handle().path().resource_dir().unwrap();
     let resource_path = app
         .app_handle()
         .path()
@@ -62,14 +61,15 @@ pub fn generate_library(
         source_string,
     )
     .unwrap();
-
-    let resource_path = app.app_handle().path().resource_dir().unwrap();
-    let lib_properties_path = resource_path.join("connector_library/library.properties");
-    fs::copy(
-        lib_properties_path,
-        library_dest_path.join("library.properties"),
-    )
-    .unwrap();
+    let resource_path = app
+        .app_handle()
+        .path()
+        .resolve(
+            "connector_library/library.properties",
+            BaseDirectory::Resource,
+        )
+        .unwrap();
+    fs::copy(resource_path, library_dest_path.join("library.properties")).unwrap();
     println!("Library generated in dir: {}", path);
 }
 
