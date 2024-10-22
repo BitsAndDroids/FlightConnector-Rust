@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { WasmEventRowEditor } from "./WasmEventRowEditor";
 import { beforeEach, describe, expect, test } from "vitest";
 import { WASMEvent } from "#model/WASMEvent.js";
@@ -38,7 +38,7 @@ describe("WasmEventRowEditor", () => {
     expect(container).toBeTruthy();
   });
 
-  test("Should update state when inputs change", () => {
+  test("Should update state when inputs change", async () => {
     const wasmEvent: WASMEvent = {
       id: 0,
       action: "",
@@ -64,7 +64,6 @@ describe("WasmEventRowEditor", () => {
         }}
       />,
     );
-    const idInput = getByTestId("input_id");
 
     // const actionInput = getByLabelText("Action");
     // const actionTextInput = getByLabelText("Action Text");
@@ -89,8 +88,11 @@ describe("WasmEventRowEditor", () => {
     // expect(offsetInput).toBeTruthy();
     // expect(planeOrCategoryInput).toBeTruthy();
     // expect(madeByInput).toBeTruthy();
-    fireEvent.change(idInput, { target: { value: "1" } });
-    expect((idInput as HTMLInputElement).value).toBe("1");
+    const idInput = getByTestId("input_id");
+    fireEvent.change(idInput, { target: { value: "3468" } });
+    await waitFor(() => {
+      expect((idInput as HTMLInputElement).value).toBe("3468");
+    });
 
     const actionInput = getByTestId("input_action");
     fireEvent.change(actionInput, { target: { value: "action" } });

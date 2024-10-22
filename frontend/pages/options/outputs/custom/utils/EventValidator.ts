@@ -25,7 +25,6 @@ export const validateEventID = async (
     errorState.id.state = true;
     errorState.id.message += "Event ID already exists ";
   }
-  console.log(errorState);
   return errorState;
 };
 
