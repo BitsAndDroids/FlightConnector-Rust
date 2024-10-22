@@ -13,19 +13,19 @@ export const validateEventID = async (
   }
   if (parseInt(value) < 3000) {
     errorState.id.state = true;
-    errorState.id.message += "Event ID must be greater than 3000";
+    errorState.id.message += "Event ID must be greater than 3000 ";
   }
   if (parseInt(value) > 9999) {
     errorState.id.state = true;
-    errorState.id.message += "Event ID must be smaller than 10000";
+    errorState.id.message += "Event ID must be smaller than 10000 ";
   }
 
   const eventHandler = new CustomEventHandler();
   if (await eventHandler.getEvent(value)) {
     errorState.id.state = true;
-    errorState.id.message += "Event ID already exists";
+    errorState.id.message += "Event ID already exists ";
   }
-
+  console.log(errorState);
   return errorState;
 };
 

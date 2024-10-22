@@ -10,6 +10,7 @@ import { useState } from "react";
 import { OutputFormats } from "@/model/Output";
 import InfoWindow from "@/components/InfoWindow";
 import { validateEventID } from "../utils/EventValidator";
+import { EventErrors } from "../CustomEvents";
 
 interface WasmEventRowEditorProps {
   originalEvent: WASMEvent;
@@ -23,12 +24,12 @@ export const WasmEventRowEditor = ({
   toggleOpen,
 }: WasmEventRowEditorProps) => {
   const [wasmEvent, setWasmEvent] = useState<WASMEvent>(originalEvent);
-  const [eventErrors, setEventErrors] = useState({
+  const [eventErrors, setEventErrors] = useState<EventErrors>({
     id: { state: false, message: "" },
     action: { state: false, message: "" },
     action_text: { state: false, message: "" },
   });
-  const changeEvent = (key: string, value: string) => {
+  const changeEvent = async (key: string, value: string) => {
     if (key === "plane_or_category") {
       if (value.endsWith(",")) {
       }
@@ -37,8 +38,10 @@ export const WasmEventRowEditor = ({
       return;
     }
     if (key === "id") {
+      console.log("id", value);
       if (value !== originalEvent.id.toString()) {
-        const idState = validateEventID(value);
+        console.log("id", value);
+        const idState = await validateEventID(value);
         setEventErrors({ ...eventErrors, ...idState });
       } else {
         setEventErrors({ ...eventErrors, id: { state: false, message: "" } });
