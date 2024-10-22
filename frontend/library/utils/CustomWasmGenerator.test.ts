@@ -20,7 +20,8 @@ const wasm_output_integer: WASMEvent = {
   max: 1,
   value: 1,
   offset: 1,
-  plane_or_category: "plane_or_category",
+  plane_or_category: ["plane_or_category"],
+  made_by: "made_by",
 };
 const wasm_output_float: WASMEvent = {
   id: 2,
@@ -33,7 +34,8 @@ const wasm_output_float: WASMEvent = {
   max: 1,
   value: 1,
   offset: 1,
-  plane_or_category: "plane_or_category",
+  plane_or_category: ["plane_or_category"],
+  made_by: "made_by",
 };
 
 describe("library generation strings single lines", () => {

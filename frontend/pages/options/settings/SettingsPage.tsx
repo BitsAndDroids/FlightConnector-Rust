@@ -24,6 +24,7 @@ const SettingsPage = () => {
       launch_when_sim_starts: false,
       installed_wasm_version: "0.0.0",
       send_every_ms: 6,
+      last_custom_event_version: "0.0.0",
     },
   );
   const [communityFolderVisible, setCommunityFolderVisible] = useState(false);

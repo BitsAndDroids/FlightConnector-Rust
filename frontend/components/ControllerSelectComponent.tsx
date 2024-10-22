@@ -1,4 +1,11 @@
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import {
+  Suspense,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { invoke } from "#tauri/invoke";
 import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
@@ -9,6 +16,7 @@ import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
 import { listen } from "@tauri-apps/api/event";
 import { RunBundlePopulated, populateRunBundles } from "@/model/RunBundle";
 import PresetControls from "./presets/PresetControls";
+import { RunStateContext } from "#context/RunStateContext.js";
 
 async function invokeConnection(
   preset: Preset,
@@ -46,7 +54,8 @@ export const ControllerSelectComponent = () => {
   const presetSettingsHandler = useRef(new PresetSettingsHandler());
 
   const runSettingsHandler = useRef(new RunSettingsHandler());
-  const [connectionRunning, setConnectionRunning] = useState<boolean>(false);
+  const context = useContext(RunStateContext);
+  const { connectionRunning, setConnectionRunning } = context;
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPorts, setComPorts] = useState<string[]>([]);
   const [bundles, setBundles] = useState<Bundle[]>([]);
@@ -106,7 +115,14 @@ export const ControllerSelectComponent = () => {
       );
     }
     setConnectionRunning(!connectionRunning);
-  }, [connectionRunning, unlisten, preset, runSettingsHandler, setConnected]);
+  }, [
+    connectionRunning,
+    unlisten,
+    preset,
+    runSettingsHandler,
+    setConnected,
+    setConnectionRunning,
+  ]);
 
   const initPresets = useCallback(async () => {
     const lastPreset = await getActivePreset();

@@ -8,6 +8,7 @@ import { LogPage } from "./pages/logs/LogPage";
 import SettingsPage from "./pages/options/settings/SettingsPage";
 import { PresetManagerPage } from "./pages/options/settings/PresetManagerPage";
 import { CustomEvents } from "./pages/options/outputs/custom/CustomEvents";
+import { RunStateContextProvider } from "#context/RunStateContext.js";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +45,8 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById("root")! as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RunStateContextProvider>
+      <RouterProvider router={router} />
+    </RunStateContextProvider>
   </React.StrictMode>,
 );

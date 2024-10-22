@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { WasmEventManager } from "./WasmEventManager";
 import { getAllMockWasmEvents } from "@/mocks/MockWasmEvent";
-import { invoke } from "#tauri/invoke.mock";
+import { invoke } from "#tauri/invoke";
 
 const meta: Meta<typeof WasmEventManager> = {
   component: WasmEventManager,

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { MenuItem } from "./model/MenuItem";
 import { SubMenu } from "./SubMenu";
 
@@ -13,9 +14,9 @@ export const TopMenuItem = (props: MenuItemProps) => {
       {!props.subMenuItems ? (
         <>
           {props.href && (
-            <a href={props.href} className={"p-2 bg-bitsanddroids-blue"}>
+            <Link to={props.href} className={"p-2 bg-bitsanddroids-blue"}>
               {props.text}
-            </a>
+            </Link>
           )}
           {props.action && (
             <a onClick={props.action} className={"p-2 bg-bitsanddroids-blue"}>
