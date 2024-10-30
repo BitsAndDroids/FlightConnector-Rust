@@ -118,11 +118,10 @@ fn update_default_events(app: tauri::AppHandle) {
 }
 
 fn init_wasm_events_to_store(app: tauri::AppHandle) {
-    // let stores = app.app_handle().state::<StoreCollection<Wry>>();
     let store = app.store(".events.dat").unwrap();
     let keys = store.keys();
 
-    if keys.len() == 0 {
+    if keys.is_empty() {
         let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
         wasm_registry.init_custom_events_to_store(&app);
     }

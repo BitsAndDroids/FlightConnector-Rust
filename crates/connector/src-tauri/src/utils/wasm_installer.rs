@@ -10,8 +10,13 @@ pub fn install_wasm(app: tauri::AppHandle) {
     let wasm_path = exe_path.join("wasm_module");
     let version = get_version_from_manifest();
     let mut community_folder_path = "".to_owned();
-    //TODO: handle unwraps
-    let store = app.store(".connectorSettings.dat").unwrap();
+    let store = match app.store(".connectorSettings.dat") {
+        Ok(s) => s,
+        Err(e) => {
+            error!("Failed to open store {}", e);
+            return;
+        }
+    };
     if let Some(v) = store.get("communityFolderPath") {
         community_folder_path = v.to_owned().to_string();
         store.set("installedWASMVersion".to_owned(), json!(version))
