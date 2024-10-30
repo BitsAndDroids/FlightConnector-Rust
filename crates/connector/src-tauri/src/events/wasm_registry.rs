@@ -1,10 +1,8 @@
-use std::{collections::HashMap, path::PathBuf};
+use std::collections::HashMap;
 
-use connector_types::types::{output::Output, output_format::FormatOutput, wasm_event::WasmEvent};
-use log::error;
+use connector_types::types::{output::Output, wasm_event::WasmEvent};
 use serde_json::json;
-use tauri::{Manager, Wry};
-use tauri_plugin_store::{with_store, Store, StoreCollection};
+use tauri_plugin_store::StoreExt;
 
 use crate::simconnect_mod::wasm::send_wasm_command;
 #[derive(Debug, Clone)]
@@ -35,32 +33,11 @@ impl WASMRegistry {
     }
 
     pub fn update_defauts_to_store(&mut self, app: tauri::AppHandle) {
-        let stores = app.app_handle().state::<StoreCollection<Wry>>();
-        let path = PathBuf::from(".events.dat");
-        let handle_store = |store: &mut Store<Wry>| {
-            for event in &self.wasm_default_events {
-                match store.insert(event.id.to_string().clone(), json!(event)) {
-                    Ok(_) => {}
-                    Err(e) => {
-                        error!("Failed to insert default event: {:?}", e);
-                    }
-                }
-            }
-            match store.save() {
-                Ok(_) => {}
-                Err(e) => {
-                    error!("Failed to save default events: {:?}", e);
-                }
-            }
-            Ok(())
-        };
-        match with_store(app.app_handle().clone(), stores, path, handle_store) {
-            Ok(_) => {}
-            Err(e) => {
-                error!("Failed to load connector settings: {:?}", e);
-            }
+        let store = app.store(".events.dat").unwrap();
+        for event in &self.wasm_default_events {
+            store.set(event.id.to_string().clone(), json!(event));
         }
-
+        store.close_resource();
         self.load_wasm(&app);
     }
 
@@ -71,33 +48,23 @@ impl WASMRegistry {
     }
 
     pub fn load_wasm(&mut self, app: &tauri::AppHandle) {
-        let stores = app.app_handle().state::<StoreCollection<Wry>>();
-        let path = PathBuf::from(".events.dat");
+        let store = app.store(".events.dat").unwrap();
+        let keys = store.keys();
         let mut output_counter = 0;
-        let handle_store = |store: &mut Store<Wry>| {
-            let keys = store.keys();
-            for key in keys {
-                let value = store.get(key).unwrap();
-                let mut wasm_event: WasmEvent = serde_json::from_value(value.clone()).unwrap();
-                wasm_event.offset = output_counter * 8;
-                if wasm_event.action_type == "output" {
-                    self.wasm_outputs.insert(wasm_event.id, wasm_event.clone());
-                    self.parsed_wasm_outputs
-                        .insert(wasm_event.id, wasm_event.into());
-                    output_counter += 1;
-                } else {
-                    self.wasm_inputs.insert(wasm_event.id, wasm_event);
-                }
-            }
-            Ok(())
-        };
-
-        match with_store(app.app_handle().clone(), stores, path, handle_store) {
-            Ok(_) => {}
-            Err(e) => {
-                error!("Failed to load connector settings: {:?}", e);
+        for key in keys {
+            let value = store.get(key).unwrap();
+            let mut wasm_event: WasmEvent = serde_json::from_value(value.clone()).unwrap();
+            wasm_event.offset = output_counter * 8;
+            if wasm_event.action_type == "output" {
+                self.wasm_outputs.insert(wasm_event.id, wasm_event.clone());
+                self.parsed_wasm_outputs
+                    .insert(wasm_event.id, wasm_event.into());
+                output_counter += 1;
+            } else {
+                self.wasm_inputs.insert(wasm_event.id, wasm_event);
             }
         }
+        store.close_resource();
     }
 
     pub fn get_wasm_output_by_id(&mut self, output_id: u32) -> Option<&Output> {
@@ -133,25 +100,13 @@ impl WASMRegistry {
     }
 
     pub fn init_custom_events_to_store(&mut self, app: &tauri::AppHandle) {
-        let stores = app.app_handle().state::<StoreCollection<Wry>>();
-        let path = PathBuf::from(".events.dat");
-
-        let handle_store = |store: &mut Store<Wry>| {
-            self.load_default_events();
-            let events = self.get_default_wasm_events();
-            for event in events {
-                store.insert(event.id.to_string().clone(), json!(event))?;
-            }
-            store.save()?;
-            Ok(())
-        };
-
-        match with_store(app.app_handle().clone(), stores, path, handle_store) {
-            Ok(_) => {}
-            Err(e) => {
-                error!("Failed to load connector settings: {:?}", e);
-            }
+        let store = app.store(".events.dat").unwrap();
+        self.load_default_events();
+        let events = self.get_default_wasm_events();
+        for event in events {
+            store.set(event.id.to_string().clone(), json!(event));
         }
+        store.close_resource();
     }
 
     pub fn register_wasm_inputs_to_simconnect(&self, conn: &mut simconnect::SimConnector) {

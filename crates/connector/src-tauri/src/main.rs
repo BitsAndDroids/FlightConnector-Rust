@@ -3,13 +3,11 @@ use connector_types::types::output::Output;
 use connector_types::types::run_bundle::RunBundle;
 use events::output_registry;
 use lazy_static::lazy_static;
-use log::error;
 use once_cell::sync::OnceCell;
-use serde_json::json;
 use serial::serial::serial_utils::get_serial_devices;
-use tauri::{AppHandle, Emitter, Manager, Wry};
-use tauri_plugin_dialog::DialogExt;
-use tauri_plugin_store::{with_store, Store, StoreCollection};
+use tauri::{AppHandle, Emitter, Manager};
+use tauri_plugin_dialog::{DialogExt, MessageDialogButtons};
+use tauri_plugin_store::StoreExt;
 use tauri_plugin_updater::UpdaterExt;
 mod events;
 mod settings;
@@ -20,7 +18,6 @@ use events::{get_latest_custom_event_version, get_wasm_events, reload_custom_eve
 use settings::settings_actions::toggle_run_on_sim_launch;
 use std::collections::HashMap;
 use std::ops::Deref;
-use std::path::PathBuf;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
@@ -121,24 +118,16 @@ fn update_default_events(app: tauri::AppHandle) {
 }
 
 fn init_wasm_events_to_store(app: tauri::AppHandle) {
-    let stores = app.app_handle().state::<StoreCollection<Wry>>();
-    let path = PathBuf::from(".events.dat");
+    // let stores = app.app_handle().state::<StoreCollection<Wry>>();
+    let store = app.store(".events.dat").unwrap();
+    let keys = store.keys();
 
-    let handle_store = |store: &mut Store<Wry>| {
-        let keys = store.keys();
-        if keys.count() == 0 {
-            let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
-            wasm_registry.init_custom_events_to_store(&app);
-        }
-        Ok(())
-    };
-
-    match with_store(app.app_handle().clone(), stores, path, handle_store) {
-        Ok(_) => {}
-        Err(e) => {
-            error!("Failed to load connector settings: {:?}", e);
-        }
+    if keys.len() == 0 {
+        let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+        wasm_registry.init_custom_events_to_store(&app);
     }
+
+    store.close_resource();
 }
 
 fn main() {
@@ -211,8 +200,10 @@ fn main() {
                     .dialog()
                     .message("A new update is available. Do you want to download and install it?")
                     .title("Update available")
-                    .ok_button_label("Update")
-                    .cancel_button_label("Later")
+                    .buttons(MessageDialogButtons::OkCancelCustom(
+                        "Update".to_string(),
+                        "Later".to_string(),
+                    ))
                     .blocking_show();
 
                 if message {

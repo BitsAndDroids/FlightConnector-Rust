@@ -1,9 +1,9 @@
-import { Store } from "#store";
+import { LazyStore } from "#store";
 import { ConnectorSettings } from "./models/ConnectorSettings";
 export class ConnectorSettingsHandler {
-  runSettingsStore: Store;
+  runSettingsStore: LazyStore;
   constructor() {
-    this.runSettingsStore = new Store(".connectorSettings.dat");
+    this.runSettingsStore = new LazyStore(".connectorSettings.dat");
   }
 
   async setCommunityFolderPath(folder: string): Promise<void> {

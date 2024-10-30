@@ -1,43 +1,22 @@
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 use log::error;
 use serde_json::json;
-use tauri::{Manager, Wry};
-use tauri_plugin_store::{with_store, Store, StoreCollection};
+use tauri_plugin_store::StoreExt;
 
 #[tauri::command]
 pub fn install_wasm(app: tauri::AppHandle) {
     let exe_path = std::env::current_dir().unwrap();
     let wasm_path = exe_path.join("wasm_module");
     let version = get_version_from_manifest();
-    let stores = app.app_handle().state::<StoreCollection<Wry>>();
-    let path = PathBuf::from(".connectorSettings.dat");
     let mut community_folder_path = "".to_owned();
-    let handle_store = |store: &mut Store<Wry>| {
-        if let Some(v) = store.get("communityFolderPath") {
-            community_folder_path = v.as_str().unwrap().to_owned();
-            match store.insert("installedWASMVersion".to_owned(), json!(version)) {
-                Ok(_) => {}
-                Err(e) => {
-                    error!("Failed to insert installedWASMVersion: {:?}", e);
-                }
-            };
-            match store.save() {
-                Ok(_) => {}
-                Err(e) => {
-                    error!("Failed to save store: {:?}", e);
-                }
-            }
-        }
-        Ok(())
-    };
-
-    match with_store(app.app_handle().clone(), stores, path, handle_store) {
-        Ok(_) => {}
-        Err(e) => {
-            error!("Failed to load connector settings: {:?}", e);
-        }
+    //TODO: handle unwraps
+    let store = app.store(".connectorSettings.dat").unwrap();
+    if let Some(v) = store.get("communityFolderPath") {
+        community_folder_path = v.to_owned().to_string();
+        store.set("installedWASMVersion".to_owned(), json!(version))
     }
+    store.close_resource();
 
     let files = return_files_in_dir(wasm_path.to_str().unwrap());
     for file in files {
@@ -78,29 +57,20 @@ fn get_version_from_manifest() -> String {
 
 pub fn check_if_wasm_up_to_date(app: tauri::AppHandle) -> bool {
     //get last installed version from store
-    let stores = app.app_handle().state::<StoreCollection<Wry>>();
-    let path = PathBuf::from(".connectorSettings.dat");
+    let store = app.store(".connectorSettings.dat").unwrap();
 
-    let mut version: String = "".to_owned();
-    let mut community_folder: String = "".to_owned();
-    let handle_store = |store: &mut Store<Wry>| {
-        version = match store.get("installedWASMVersion") {
-            Some(v) => v.as_str().unwrap().to_owned(),
-            None => "".to_owned(),
-        };
-        community_folder = match store.get("communityFolderPath") {
-            Some(v) => v.as_str().unwrap().to_owned(),
-            None => "".to_owned(),
-        };
-        Ok(())
-    };
-
-    match with_store(app.app_handle().clone(), stores, path, handle_store) {
-        Ok(_) => {}
-        Err(e) => {
-            error!("Failed to load connector settings: {:?}", e);
-        }
-    }
+    let version: String = store
+        .get("installedWASMVersion")
+        .unwrap()
+        .as_str()
+        .unwrap()
+        .to_owned();
+    let community_folder: String = store
+        .get("communityFolderPath")
+        .unwrap()
+        .as_str()
+        .unwrap()
+        .to_owned();
 
     if community_folder.is_empty() && version.is_empty() {
         return true;

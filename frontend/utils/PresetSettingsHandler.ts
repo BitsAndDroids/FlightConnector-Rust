@@ -1,10 +1,10 @@
 import { Preset } from "@/model/Preset";
-import { Store } from "@tauri-apps/plugin-store";
+import { LazyStore } from "@tauri-apps/plugin-store";
 
 export class PresetSettingsHandler {
-  store: Store;
+  store: LazyStore;
   constructor() {
-    this.store = new Store(".presets.dat");
+    this.store = new LazyStore(".presets.dat");
   }
 
   async getPreset(id: string): Promise<Preset | null> {
