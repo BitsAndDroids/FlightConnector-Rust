@@ -24,10 +24,10 @@ describe("PresetControls", async () => {
   test("renders without crashing", async () => {
     const { container } = render(
       <PresetControls
-        setPreset={function (preset: Preset): void {
+        setPreset={function(preset: Preset): void {
           throw new Error("Function not implemented.");
         }}
-        setPresets={function (presets: Preset[]): void {
+        setPresets={function(presets: Preset[]): void {
           throw new Error("Function not implemented.");
         }}
       />,
@@ -40,7 +40,7 @@ describe("PresetControls", async () => {
     const { getByText } = render(
       <PresetControls
         setPreset={mockSetPreset}
-        setPresets={function (presets: Preset[]): void {
+        setPresets={function(presets: Preset[]): void {
           throw new Error("Function not implemented.");
         }}
         activePreset={{
@@ -61,7 +61,7 @@ describe("PresetControls", async () => {
     const { getByText } = render(
       <PresetControls
         setPreset={mockSetPreset}
-        setPresets={function (presets: Preset[]): void {
+        setPresets={function(presets: Preset[]): void {
           throw new Error("Function not implemented.");
         }}
       />,
@@ -129,10 +129,10 @@ describe("PresetControls", async () => {
   test("Should not render inputdialog whitout dialog click", () => {
     const { queryByTestId } = render(
       <PresetControls
-        setPreset={function (preset: Preset): void {
+        setPreset={function(preset: Preset): void {
           throw new Error("Function not implemented.");
         }}
-        setPresets={function (presets: Preset[]): void {
+        setPresets={function(presets: Preset[]): void {
           throw new Error("Function not implemented.");
         }}
       />,
@@ -144,10 +144,10 @@ describe("PresetControls", async () => {
   test("Should render inputdialog when dialog click", () => {
     const { getByTestId } = render(
       <PresetControls
-        setPreset={function (preset: Preset): void {
+        setPreset={function(preset: Preset): void {
           throw new Error("Function not implemented.");
         }}
-        setPresets={function (presets: Preset[]): void {
+        setPresets={function(presets: Preset[]): void {
           throw new Error("Function not implemented.");
         }}
       />,
