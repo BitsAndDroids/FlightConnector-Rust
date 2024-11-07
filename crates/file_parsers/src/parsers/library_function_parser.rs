@@ -2,11 +2,6 @@ use std::fs::read_to_string;
 
 use connector_types::types::library_function::LibraryFunction;
 
-/// .
-///
-/// # Panics
-///
-/// Panics if .
 pub fn get_outgoing_functions_from_file(path: &str) -> Vec<LibraryFunction> {
     let file_content =
         read_to_string(path).unwrap_or_else(|_| panic!("Failed to open file at {:?}", &path));

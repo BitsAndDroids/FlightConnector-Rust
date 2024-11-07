@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
-import HomePage from "./HomePage";
+import ConnectionPage from "./ConnectionPage";
 
-const meta: Meta<typeof HomePage> = {
-  component: HomePage,
+const meta: Meta<typeof ConnectionPage> = {
+  component: ConnectionPage,
 };
 
 export default meta;

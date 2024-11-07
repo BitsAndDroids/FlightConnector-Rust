@@ -1,5 +1,5 @@
 import React from "react";
-import HomePage from "./pages/HomePage";
+import ConnectionPage from "./pages/connection_page/ConnectionPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as ReactDOM from "react-dom/client";
 import MenuLayout from "./pages/MenuLayout";
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MenuLayout />,
-    children: [{ path: "/", element: <HomePage /> }],
+    children: [{ path: "/", element: <ConnectionPage /> }],
   },
   {
     path: "/options/outputs",
