@@ -21,6 +21,7 @@ const compat = new FlatCompat({
 
 export default [
   {
+    files: ["**/*.ts", "**/*.tsx"],
     ignores: [
       "**/node_modules/",
       "**/dist/",
