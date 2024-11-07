@@ -1,10 +1,10 @@
 import { Bundle } from "@/model/Bundle";
-import { Store } from "@tauri-apps/plugin-store";
+import { LazyStore } from "@tauri-apps/plugin-store";
 export class BundleSettingsHandler {
-  bundleStore: Store;
+  bundleStore: LazyStore;
 
   constructor() {
-    this.bundleStore = new Store(".bundleSettings.dat");
+    this.bundleStore = new LazyStore(".bundleSettings.dat");
   }
 
   async getBundleSettings(): Promise<Bundle[]> {

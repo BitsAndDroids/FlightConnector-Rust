@@ -1,9 +1,9 @@
 import { RunBundle } from "@/model/RunBundle";
-import { Store } from "@tauri-apps/plugin-store";
+import { LazyStore } from "@tauri-apps/plugin-store";
 export class RunSettingsHandler {
-  runSettingsStore: Store;
+  runSettingsStore: LazyStore;
   constructor() {
-    this.runSettingsStore = new Store(".runSettings.dat");
+    this.runSettingsStore = new LazyStore(".runSettings.dat");
   }
 
   setAmountOfConnections(amount: number): any {
