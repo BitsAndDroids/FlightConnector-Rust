@@ -1,5 +1,5 @@
 import { Bundle } from "@/model/Bundle";
-import { LazyStore } from "@tauri-apps/plugin-store";
+import { LazyStore } from "#store";
 export class BundleSettingsHandler {
   bundleStore: LazyStore;
 

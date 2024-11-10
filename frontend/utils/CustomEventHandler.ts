@@ -1,10 +1,10 @@
 import { WASMEvent } from "@/model/WASMEvent";
-import { Store } from "#store";
+import { LazyStore } from "#store";
 
 export class CustomEventHandler {
-  store: Store;
+  store: LazyStore;
   constructor() {
-    this.store = new Store(".events.dat");
+    this.store = new LazyStore(".events.dat");
   }
 
   async getEvent(id: string): Promise<any> {

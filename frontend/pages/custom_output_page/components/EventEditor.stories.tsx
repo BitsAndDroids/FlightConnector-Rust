@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { EventEditor } from "./EventEditor";
+import { MockWasmEvent } from "#mocks/MockWasmEvent.js";
 
 const meta: Meta<typeof EventEditor> = {
   component: EventEditor,
@@ -8,6 +9,9 @@ const meta: Meta<typeof EventEditor> = {
 export default meta;
 
 export const Primary: StoryObj = {
+  args: {
+    events: [MockWasmEvent],
+  },
   decorators: [
     (Story) => (
       <div className="h-screen overflow-y-hidden bg-bitsanddroids-blue -m-4">

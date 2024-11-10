@@ -2,7 +2,7 @@ import { setupTauriInternalMocks } from "@/tests/testUtils";
 import { describe, beforeEach, test, vi, it, expect } from "vitest";
 import { CustomEventHandler } from "./CustomEventHandler";
 import { WASMEvent } from "@/model/WASMEvent";
-import { Store } from "@tauri-apps/plugin-store";
+import { LazyStore } from "#store";
 
 describe("CustomEventHandler", () => {
   vi.mock("@tauri-apps/plugin-store", () => {
@@ -19,7 +19,7 @@ describe("CustomEventHandler", () => {
   let handler: CustomEventHandler;
 
   beforeEach(() => {
-    store = new Store("test");
+    store = new LazyStore("test");
     handler = new CustomEventHandler();
   });
 
