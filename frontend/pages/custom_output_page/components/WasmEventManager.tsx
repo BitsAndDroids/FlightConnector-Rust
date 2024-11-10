@@ -84,6 +84,13 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     setFilter(filter);
   };
 
+  const onEventDeleted = (id: number) => {
+    const newEvents = events.filter((event) => event.id !== id);
+    setEvents(newEvents);
+    setFilteredEvents(filterEvents(newEvents, filter));
+    eventHandler.deleteEvent(id);
+  };
+
   const onEventChanged = (event: WASMEvent) => {
     const index = events.findIndex((e) => e.id === event.id);
     if (index === -1) {
@@ -164,6 +171,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
           {filteredEvents.map((event, index) => (
             <div key={index} className="mb-2 mr-4 relative ">
               <WasmEventRow
+                onEventDeleted={onEventDeleted}
                 index={index}
                 key={event.id}
                 event={event}

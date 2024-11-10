@@ -8,11 +8,13 @@ import { Checkbox } from "#components/elements/inputs/Checkbox.js";
 interface WasmEventRowProps {
   event: WASMEvent;
   onEventChanged: (event: WASMEvent) => void;
+  onEventDeleted: (id: number) => void;
   index: number;
 }
 export const WasmEventRow = ({
   event: wasmEvent,
   onEventChanged,
+  onEventDeleted,
   index,
 }: WasmEventRowProps) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -100,6 +102,7 @@ export const WasmEventRow = ({
               className={`transition-all ease-in-out duration-500 ${open ? "opacity-100" : "opacity-0"}`}
             >
               <WasmEventRowEditor
+                onEventDeleted={onEventDeleted}
                 originalEvent={wasmEvent}
                 toggleOpen={closeEditor}
                 onEventChanged={onEventChanged}
