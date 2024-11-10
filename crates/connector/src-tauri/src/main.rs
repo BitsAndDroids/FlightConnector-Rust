@@ -4,11 +4,13 @@ use connector_types::types::run_bundle::RunBundle;
 use events::output_registry;
 use lazy_static::lazy_static;
 use once_cell::sync::OnceCell;
+use serde::{Deserialize, Serialize};
 use serial::serial::serial_utils::get_serial_devices;
 use tauri::{AppHandle, Emitter, Manager};
 use tauri_plugin_dialog::{DialogExt, MessageDialogButtons};
 use tauri_plugin_store::StoreExt;
 use tauri_plugin_updater::UpdaterExt;
+mod debug;
 mod events;
 mod settings;
 mod sim_utils;
@@ -28,9 +30,14 @@ use utils::library_handler::get_library_source_content;
 use utils::wasm_installer::{check_if_wasm_up_to_date, install_wasm};
 
 use std::{env, thread};
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+struct Message {
+    id: u32,
+    value: i32,
+}
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<Message>>>> = Arc::new(Mutex::new(None));
 }
 
 static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
@@ -49,7 +56,7 @@ fn stop_simconnect_connection() {
     let sender = SENDER.lock().unwrap().deref().clone();
     match sender {
         Some(sender) => {
-            match sender.send(9999) {
+            match sender.send(Message { id: 0, value: 9999 }) {
                 Ok(_) => {
                     eprintln!("Sent stop message to simconnect");
                 }
@@ -98,13 +105,21 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
+fn send_debug_message(app: tauri::AppHandle, message: Message) {
+    println!("Received message: {:?}", message);
+
+    let sender = SENDER.lock().unwrap().deref().clone().unwrap();
+    sender.send(message).unwrap();
+}
+
+#[tauri::command]
+fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>, debug: bool) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx, true);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -161,6 +176,7 @@ fn main() {
         )
         .invoke_handler(tauri::generate_handler![
             get_com_ports,
+            send_debug_message,
             get_outputs,
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/

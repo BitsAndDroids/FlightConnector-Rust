@@ -1,20 +1,20 @@
 import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it } from "vitest";
-import HomePage from "./pages/HomePage";
+import ConnectionPage from "./pages/connection_page/ConnectionPage";
 import MenuLayout from "./pages/MenuLayout";
 import OutputsPage from "./pages/options/outputs/OutputsPage";
 import { LogPage } from "./pages/logs/LogPage";
 import SettingsPage from "./pages/options/settings/SettingsPage";
 import { PresetManagerPage } from "./pages/options/settings/PresetManagerPage";
-import { CustomEvents } from "./pages/options/outputs/custom/CustomEvents";
+import { CustomEvents } from "./pages/custom_output_page/CustomEvents";
 import { setupTauriInternalMocks } from "./tests/testUtils";
 
 const routes = [
   {
     path: "/",
     element: <MenuLayout />,
-    children: [{ path: "/", element: <HomePage /> }],
+    children: [{ path: "/", element: <ConnectionPage /> }],
   },
   {
     path: "/options/outputs",

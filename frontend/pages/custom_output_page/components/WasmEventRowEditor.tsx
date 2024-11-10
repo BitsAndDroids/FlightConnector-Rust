@@ -170,6 +170,7 @@ export const WasmEventRowEditor = ({
           changeEvent("plane_or_category", value as string);
         }}
       />
+
       <div className="flex flex-row">
         <Button
           text="Save"
@@ -177,6 +178,15 @@ export const WasmEventRowEditor = ({
           style="primary"
           testid="btn_save_wasm"
         />
+        <div className="mt-1" onClick={() => {}}>
+          <img
+            src={"/trashcan.svg"}
+            alt="trashcan"
+            className="h-[30px]"
+            height={30}
+            width={30}
+          />
+        </div>
       </div>
     </div>
   );

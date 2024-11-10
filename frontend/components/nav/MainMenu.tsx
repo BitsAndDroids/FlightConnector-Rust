@@ -47,6 +47,13 @@ export const MainMenu: React.FC = () => {
       title: "Logs",
     });
   }
+
+  const openEventTestWindow = async () => {
+    new WebviewWindow("eventTestWindow", {
+      url: "/event-test",
+      title: "Event Test",
+    });
+  };
   const eventMenuItems = [
     { title: "Bundle settings", route: "/options/outputs", active: true },
     {
@@ -77,6 +84,10 @@ export const MainMenu: React.FC = () => {
       action: () => openWASMDialog(),
       active: true,
     },
+  ];
+  const debugmenuItems = [
+    { title: "Logs", action: () => openLogWindow(), active: true },
+    { title: "Test events", action: () => openEventTestWindow(), active: true },
   ];
 
   const openWASMDialog = async () => {
@@ -168,9 +179,11 @@ export const MainMenu: React.FC = () => {
               href={"/options/outputs"}
               subMenuItems={eventMenuItems}
             />
-            <button className="mx-2 " onClick={() => openLogWindow()}>
-              Logs
-            </button>
+            <TopMenuItem
+              text={"Debug"}
+              href={"/options/outputs"}
+              subMenuItems={debugmenuItems}
+            />
             <TopMenuItem
               text={"Release notes"}
               action={() => setUpdateWindowOpen(true)}

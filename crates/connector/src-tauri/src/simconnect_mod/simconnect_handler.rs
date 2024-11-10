@@ -22,6 +22,7 @@ use crate::events::wasm_registry::WASMRegistry;
 use crate::settings::connector_settings::load_connector_settings;
 use crate::sim_utils::input_converters::convert_dec_to_dcb;
 use crate::simconnect_mod::wasm::register_wasm_event;
+use crate::Message;
 use connector_types::types::run_bundle::RunBundle;
 
 use super::output_formatter::parse_output_based_on_type;
@@ -75,10 +76,11 @@ pub struct SimconnectHandler {
     pub(crate) output_registry: OutputRegistry,
     pub(crate) wasm_registry: WASMRegistry,
     pub(crate) app_handle: tauri::AppHandle,
-    pub(crate) rx: mpsc::Receiver<u16>,
+    pub(crate) rx: mpsc::Receiver<Message>,
     active_com_ports: HashMap<String, Box<dyn Serial>>,
     run_bundles: Vec<RunBundle>,
     connector_settings: ConnectorSettings,
+    debug: bool,
 }
 
 // define the payload struct
@@ -88,7 +90,7 @@ struct Payload {
 }
 
 impl SimconnectHandler {
-    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<u16>) -> Self {
+    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<Message>, debug: bool) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -108,6 +110,7 @@ impl SimconnectHandler {
             active_com_ports: HashMap::new(),
             run_bundles: vec![],
             connector_settings,
+            debug,
         }
     }
 
@@ -176,7 +179,7 @@ impl SimconnectHandler {
         self.main_event_loop();
     }
 
-    fn send_input_to_simconnect(&mut self, command: DWORD, val: DWORD, raw: String) {
+    fn send_input_to_simconnect(&mut self, command: DWORD, val: i32, raw: String) {
         let input = match self.input_registry.get_input(command) {
             Some(input) => input,
             None => {
@@ -226,7 +229,7 @@ impl SimconnectHandler {
         self.simconnect.transmit_client_event(
             0,
             command,
-            value,
+            value as u32,
             simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
             simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
         );
@@ -305,14 +308,14 @@ impl SimconnectHandler {
         sleep(Duration::from_millis(self.connector_settings.send_every_ms));
     }
 
-    fn send_last_output_value_to_controller(&mut self, output_id: u32) {
+    fn send_last_output_value_to_controller(&mut self, output_id: i32) {
         if output_id == 1 {
             for port in self.active_com_ports.values_mut() {
                 port.send_connected_signal(true)
             }
         }
         let output_value = {
-            let output = match self.output_registry.get_output_by_id(output_id) {
+            let output = match self.output_registry.get_output_by_id(output_id as u32) {
                 Some(output) => output,
                 None => {
                     warn!(target: "output", "Output does not exist: {}", output_id);
@@ -325,7 +328,7 @@ impl SimconnectHandler {
             "Sending last output value to controller: {}, {}",
             output_id, output_value
         );
-        self.check_if_output_in_bundle(output_id, output_value);
+        self.check_if_output_in_bundle(output_id as u32, output_value);
     }
 
     fn poll_microcontroller_for_inputs(&mut self) {
@@ -343,7 +346,7 @@ impl SimconnectHandler {
                     .next()
                     .unwrap_or("")
                     .trim()
-                    .parse::<DWORD>()
+                    .parse::<i32>()
                 {
                     Ok(id) => id,
                     Err(_) => {
@@ -357,14 +360,14 @@ impl SimconnectHandler {
                         .nth(1)
                         .unwrap_or("")
                         .trim()
-                        .parse::<DWORD>()
+                        .parse::<i32>()
                         .unwrap_or(0);
                 }
                 if id == 999 {
                     self.send_last_output_value_to_controller(value);
                     return;
                 }
-                self.send_input_to_simconnect(id, value, message.to_string());
+                self.send_input_to_simconnect(id as u32, value, message.to_string());
             }
         }
     }
@@ -373,12 +376,13 @@ impl SimconnectHandler {
         loop {
             match self.rx.try_recv() {
                 Ok(r) => {
-                    if r == 9999 {
+                    if r.id == 0 && r.value == 9999 {
                         for port in self.active_com_ports.values_mut() {
                             port.send_connected_signal(false);
                         }
                         break;
                     }
+                    self.send_input_to_simconnect(r.id, r.value, "".to_string());
                 }
                 Err(mpsc::TryRecvError::Empty) => (),
                 Err(mpsc::TryRecvError::Disconnected) => {

@@ -3,6 +3,7 @@ import { WasmEventRowEditor } from "./WasmEventRowEditor";
 import { useState } from "react";
 import { stringifyCategories } from "../utils/CategoriesStringUtils";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
+import { Checkbox } from "#components/elements/inputs/Checkbox.js";
 
 interface WasmEventRowProps {
   event: WASMEvent;
@@ -33,7 +34,8 @@ export const WasmEventRow = ({
       data-testid="wasm_event_row"
     >
       <div className="flex flex-col w-full">
-        <div className="flex flex-row align-middle w-full">
+        <div className="flex flex-row align-middle items-center w-full">
+          <Checkbox onChange={() => {}} />
           <div className="flex flex-col w-4/5 justify-center">
             <span className="has-tooltip">
               <span

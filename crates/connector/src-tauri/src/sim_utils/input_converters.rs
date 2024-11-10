@@ -1,9 +1,9 @@
-pub fn convert_dec_to_dcb(val: u32) -> u32 {
+pub fn convert_dec_to_dcb(val: i32) -> i32 {
     let divider = 10;
-    let factor = 0x10;
+    let factor: i32 = 0x10;
     let remainder = val % divider;
     let quotient = val / divider;
-    let mut result = 0;
+    let mut result: i32 = 0;
 
     if !(quotient == 0 && remainder == 0) {
         result += convert_dec_to_dcb(quotient) * factor + remainder;
