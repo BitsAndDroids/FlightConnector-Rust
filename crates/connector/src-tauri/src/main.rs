@@ -38,6 +38,7 @@ struct Message {
 
 lazy_static! {
     static ref SENDER: Arc<Mutex<Option<mpsc::Sender<Message>>>> = Arc::new(Mutex::new(None));
+    static ref RECEIVER: Arc<Mutex<Option<mpsc::Receiver<Message>>>> = Arc::new(Mutex::new(None));
 }
 
 static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
@@ -107,19 +108,17 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
 #[tauri::command]
 fn send_debug_message(app: tauri::AppHandle, message: Message) {
     println!("Received message: {:?}", message);
-
     let sender = SENDER.lock().unwrap().deref().clone().unwrap();
     sender.send(message).unwrap();
 }
 
 #[tauri::command]
 fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>, debug: bool) {
-    let (tx, rx) = mpsc::channel();
-    *SENDER.lock().unwrap() = Some(tx);
+    let receiver = RECEIVER.lock().unwrap().deref().clone().unwrap();
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx, true);
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, receiver, true);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -237,6 +236,10 @@ fn main() {
                         }
                     }
                 }
+
+                let (tx, rx) = mpsc::channel();
+                *SENDER.lock().unwrap() = Some(tx);
+                *RECEIVER.lock().unwrap() = Some(rx);
             });
             init_wasm_events_to_store(app.handle().clone());
             if !check_if_wasm_up_to_date(app.handle().clone()) {

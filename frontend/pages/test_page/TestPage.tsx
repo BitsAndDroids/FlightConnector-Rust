@@ -11,20 +11,23 @@ export const TestPage = () => {
     invoke("send_debug_message", { message: { id: id, value: value } });
   };
   return (
-    <div className="bg-bitsanddroids-blue h-screen min-w-screen min-h-screen -mt-10">
-      <Header title="Test Page" level={1} />
-      <Input label="ID" onChange={(val) => setId(parseInt(val as string))} />
-      <Input
-        label="Value"
-        type="number"
-        onChange={(val) => setValue(parseInt(val as string))}
-      />
-      <Button
-        text="Send"
-        onClick={() => {
-          sendEvent();
-        }}
-      />
+    <div className="bg-bitsanddroids-blue h-screen min-w-screen min-h-screen mt-10 flex flex-col items-center justify-start max-w-[400px]">
+      <div className="w-3/4">
+        <Header title="Test Page" level={1} />
+        <Input label="ID" onChange={(val) => setId(parseInt(val as string))} />
+        <Input
+          label="Value"
+          type="number"
+          onChange={(val) => setValue(parseInt(val as string))}
+        />
+        <Button
+          text="Send"
+          addToClassName="mt-4"
+          onClick={() => {
+            sendEvent();
+          }}
+        />
+      </div>
     </div>
   );
 };
