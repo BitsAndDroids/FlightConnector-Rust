@@ -6,15 +6,17 @@ import { CustomEventHandler } from "@/utils/CustomEventHandler";
 import { Checkbox } from "#components/elements/inputs/Checkbox.js";
 
 interface WasmEventRowProps {
-  event: WASMEvent;
+  wasmEvent: WASMEvent;
   onEventChanged: (event: WASMEvent) => void;
   onEventDeleted: (id: number) => void;
+  onEventSelected: (event: WASMEvent) => void;
   index: number;
 }
 export const WasmEventRow = ({
-  event: wasmEvent,
+  wasmEvent: wasmEvent,
   onEventChanged,
   onEventDeleted,
+  onEventSelected,
   index,
 }: WasmEventRowProps) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -37,7 +39,11 @@ export const WasmEventRow = ({
     >
       <div className="flex flex-col w-full">
         <div className="flex flex-row align-middle items-center w-full">
-          <Checkbox onChange={() => {}} />
+          <Checkbox
+            onChange={() => {
+              onEventSelected(wasmEvent);
+            }}
+          />
           <div className="flex flex-col w-4/5 justify-center">
             <span className="has-tooltip">
               <span

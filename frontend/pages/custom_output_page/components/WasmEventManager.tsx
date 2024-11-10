@@ -55,6 +55,7 @@ const filterEvents = (
 const connectorSettingsHandler = new ConnectorSettingsHandler();
 const eventHandler = new CustomEventHandler();
 export const WasmEventManager = (props: WasmEventManagerProps) => {
+  const [eventsSelected, setEventsSelected] = useState<WASMEvent[]>([]);
   const [eventEditorVisible, setEventEditorVisible] = useState(false);
   const [events, setEvents] = useState<WASMEvent[]>(props.events);
   const [filteredEvents, setFilteredEvents] = useState<WASMEvent[]>(
@@ -89,6 +90,29 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     setEvents(newEvents);
     setFilteredEvents(filterEvents(newEvents, filter));
     eventHandler.deleteEvent(id);
+  };
+
+  const onEventSelected = (event: WASMEvent) => {
+    const index = eventsSelected.findIndex((e) => e.id === event.id);
+    if (index === -1) {
+      setEventsSelected([...eventsSelected, event]);
+    } else {
+      const newEventsSelected = [...eventsSelected];
+      newEventsSelected.splice(index, 1);
+      setEventsSelected(newEventsSelected);
+    }
+  };
+
+  const delete_bulk_events = () => {
+    const newEvents = events.filter(
+      (event) => !eventsSelected.some((e) => e.id === event.id),
+    );
+    for (const event of eventsSelected) {
+      eventHandler.deleteEvent(event.id);
+    }
+    setEvents(newEvents);
+    setFilteredEvents(filterEvents(newEvents, filter));
+    setEventsSelected([]);
   };
 
   const onEventChanged = (event: WASMEvent) => {
@@ -164,6 +188,20 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
           text="Add event"
           addToClassName="mt-6 ml-4"
         />
+        <div
+          className="mt-5"
+          onClick={() => {
+            delete_bulk_events();
+          }}
+        >
+          <img
+            src={"/trashcan.svg"}
+            alt="trashcan"
+            className="h-[30px]"
+            height={30}
+            width={30}
+          />
+        </div>
       </div>
       <div className="flex flex-row w-full ">
         <WasmEventFilter filter={filter} setFilter={onFilterChange} />
@@ -171,10 +209,11 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
           {filteredEvents.map((event, index) => (
             <div key={index} className="mb-2 mr-4 relative ">
               <WasmEventRow
+                onEventSelected={onEventSelected}
                 onEventDeleted={onEventDeleted}
                 index={index}
                 key={event.id}
-                event={event}
+                wasmEvent={event}
                 onEventChanged={onEventChanged}
               />
             </div>
