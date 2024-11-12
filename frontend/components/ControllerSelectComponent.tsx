@@ -69,11 +69,6 @@ export const ControllerSelectComponent = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPorts, setComPorts] = useState<string[]>([]);
 
-  const [partnerDevicesOpen, setPartnerDevicesOpen] = useState<boolean>(true);
-
-  const closePartnerDevicesOpen = (open: boolean) => {
-    setPartnerDevicesOpen(open);
-  };
   const [bundles, setBundles] = useState<Bundle[]>([]);
   const [unlisten, setUnlisten] = useState<any>();
   const [preset, setPreset] = useState<Preset>();
@@ -297,16 +292,6 @@ export const ControllerSelectComponent = () => {
   return (
     <Suspense>
       <>
-        {partnerDevicesOpen && (
-          <PartnerDeviceSettings
-            onConfirm={function (input?: string): void {
-              throw new Error("Function not implemented.");
-            }}
-            setDialogOpen={function (open: boolean): void {
-              setPartnerDevicesOpen(open);
-            }}
-          />
-        )}
         {((loaded && preset && presets) ||
           process.env.NODE_ENV !== "production") && (
           <div className="flex flex-col items-start">

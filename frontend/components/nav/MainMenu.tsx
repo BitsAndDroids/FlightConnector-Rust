@@ -10,6 +10,7 @@ import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
 import { UpdateWindow } from "../UpdateWindow";
 import { hasReadLatestPatchNotes } from "@/utils/UpdateChecker";
 import { BugReportWindow } from "../dialogs/bugreports/BugReportWindow";
+import { PartnerDeviceSettings } from "#pages/connection_page/components/PartnerDeviceSettings.js";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = useRef(new ConnectorSettingsHandler());
   const [installWASMDialogOpen, setInstallWASMDialogOpen] =
@@ -21,7 +22,7 @@ export const MainMenu: React.FC = () => {
   const [updateWindowOpen, setUpdateWindowOpen] = useState<boolean>(false);
   const [bugReportWindowOpen, setBugReportWindowOpen] =
     useState<boolean>(false);
-
+  const [partnerDevicesOpen, setPartnerDevicesOpen] = useState<boolean>(true);
   useEffect(() => {
     const checkForUpdates = async () => {
       const hasRead = await hasReadLatestPatchNotes();
@@ -66,6 +67,11 @@ export const MainMenu: React.FC = () => {
       action: () => openGenerateWASMLibrary(),
       active: true,
     },
+    {
+      title: "Partner devices",
+      action: () => setPartnerDevicesOpen(true),
+      active: true,
+    },
   ];
   const settingsMenuItems = [
     {
@@ -108,6 +114,9 @@ export const MainMenu: React.FC = () => {
     setGenerateLibraryDialogOpen(true);
   };
 
+  const closePartnerDevicesOpen = (open: boolean) => {
+    setPartnerDevicesOpen(open);
+  };
   const installWasm = async (dirResult?: string) => {
     setInstallWASMDialogOpen(false);
     if (!dirResult) return;
@@ -133,6 +142,16 @@ export const MainMenu: React.FC = () => {
 
   return (
     <>
+      {partnerDevicesOpen && (
+        <PartnerDeviceSettings
+          onConfirm={function (input?: string): void {
+            throw new Error("Function not implemented.");
+          }}
+          setDialogOpen={function (open: boolean): void {
+            setPartnerDevicesOpen(open);
+          }}
+        />
+      )}
       {bugReportWindowOpen && (
         <BugReportWindow closeWindow={closeBugReportWindow} />
       )}

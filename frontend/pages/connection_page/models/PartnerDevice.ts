@@ -2,7 +2,7 @@ import { Bundle } from "../../../model/Bundle";
 
 export interface PartnerDevice {
   name: string;
-  imgUrl?: string;
+  imageUrl?: string;
   madeBy: string;
   bundle: Bundle;
   version: string;
