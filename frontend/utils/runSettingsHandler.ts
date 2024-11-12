@@ -1,9 +1,9 @@
 import { RunBundle } from "@/model/RunBundle";
-import { Store } from "@tauri-apps/plugin-store";
+import { LazyStore } from "#store";
 export class RunSettingsHandler {
-  runSettingsStore: Store;
+  runSettingsStore: LazyStore;
   constructor() {
-    this.runSettingsStore = new Store(".runSettings.dat");
+    this.runSettingsStore = new LazyStore(".runSettings.dat");
   }
 
   setAmountOfConnections(amount: number): any {
@@ -21,7 +21,7 @@ export class RunSettingsHandler {
     this.runSettingsStore.save();
   }
 
-  async getLastPresetId(): Promise<string | null> {
+  async getLastPresetId(): Promise<string | null | undefined> {
     return await this.runSettingsStore.get("lastPresetId");
   }
 

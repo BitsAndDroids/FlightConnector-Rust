@@ -1,9 +1,9 @@
-import { Store } from "#store";
+import { LazyStore } from "#store";
 import { ConnectorSettings } from "./models/ConnectorSettings";
 export class ConnectorSettingsHandler {
-  runSettingsStore: Store;
+  runSettingsStore: LazyStore;
   constructor() {
-    this.runSettingsStore = new Store(".connectorSettings.dat");
+    this.runSettingsStore = new LazyStore(".connectorSettings.dat");
   }
 
   async setCommunityFolderPath(folder: string): Promise<void> {
@@ -41,27 +41,27 @@ export class ConnectorSettingsHandler {
     this.runSettingsStore.save();
   }
 
-  async getLastCustomEventVersion(): Promise<string | null> {
+  async getLastCustomEventVersion(): Promise<string | null | undefined> {
     return await this.runSettingsStore.get("lastCustomEventVersion");
   }
 
-  async getConnectorSettings(): Promise<ConnectorSettings | null> {
+  async getConnectorSettings(): Promise<ConnectorSettings | null | undefined> {
     return await this.runSettingsStore.get("connectorSettings");
   }
 
-  async getCommunityFolderPath(): Promise<string | null> {
+  async getCommunityFolderPath(): Promise<string | null | undefined> {
     return await this.runSettingsStore.get("communityFolderPath");
   }
 
-  async getLibraryFolderPath(): Promise<string | null> {
+  async getLibraryFolderPath(): Promise<string | null | undefined> {
     return await this.runSettingsStore.get("libraryFolderPath");
   }
 
-  async getWASMModulePath(): Promise<string | null> {
+  async getWASMModulePath(): Promise<string | null | undefined> {
     return await this.runSettingsStore.get("wasmModulePath");
   }
 
-  async getLatestPatchNotesRead(): Promise<string | null> {
+  async getLatestPatchNotesRead(): Promise<string | null | undefined> {
     return await this.runSettingsStore.get("latestPatchNotesRead");
   }
 

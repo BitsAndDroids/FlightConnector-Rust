@@ -15,12 +15,14 @@ import { EventErrors } from "../CustomEvents";
 interface WasmEventRowEditorProps {
   originalEvent: WASMEvent;
   onEventChanged: (event: WASMEvent) => void;
+  onEventDeleted: (id: number) => void;
   toggleOpen: () => void;
 }
 
 export const WasmEventRowEditor = ({
   originalEvent,
   onEventChanged,
+  onEventDeleted,
   toggleOpen,
 }: WasmEventRowEditorProps) => {
   const [wasmEvent, setWasmEvent] = useState<WASMEvent>(originalEvent);
@@ -170,6 +172,7 @@ export const WasmEventRowEditor = ({
           changeEvent("plane_or_category", value as string);
         }}
       />
+
       <div className="flex flex-row">
         <Button
           text="Save"
@@ -177,6 +180,20 @@ export const WasmEventRowEditor = ({
           style="primary"
           testid="btn_save_wasm"
         />
+        <div
+          className="mt-1"
+          onClick={() => {
+            onEventDeleted(originalEvent.id);
+          }}
+        >
+          <img
+            src={"/trashcan.svg"}
+            alt="trashcan"
+            className="h-[30px]"
+            height={30}
+            width={30}
+          />
+        </div>
       </div>
     </div>
   );

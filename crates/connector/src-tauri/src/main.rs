@@ -3,14 +3,14 @@ use connector_types::types::output::Output;
 use connector_types::types::run_bundle::RunBundle;
 use events::output_registry;
 use lazy_static::lazy_static;
-use log::error;
 use once_cell::sync::OnceCell;
-use serde_json::json;
+use serde::{Deserialize, Serialize};
 use serial::serial::serial_utils::get_serial_devices;
-use tauri::{AppHandle, Emitter, Manager, Wry};
-use tauri_plugin_dialog::DialogExt;
-use tauri_plugin_store::{with_store, Store, StoreCollection};
+use tauri::{AppHandle, Emitter, Manager};
+use tauri_plugin_dialog::{DialogExt, MessageDialogButtons};
+use tauri_plugin_store::StoreExt;
 use tauri_plugin_updater::UpdaterExt;
+mod debug;
 mod events;
 mod settings;
 mod sim_utils;
@@ -20,7 +20,6 @@ use events::{get_latest_custom_event_version, get_wasm_events, reload_custom_eve
 use settings::settings_actions::toggle_run_on_sim_launch;
 use std::collections::HashMap;
 use std::ops::Deref;
-use std::path::PathBuf;
 use std::string::ToString;
 use std::sync::{mpsc, Arc, Mutex};
 use tauri_plugin_log::{Target, TargetKind};
@@ -31,9 +30,15 @@ use utils::library_handler::get_library_source_content;
 use utils::wasm_installer::{check_if_wasm_up_to_date, install_wasm};
 
 use std::{env, thread};
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+struct Message {
+    id: u32,
+    value: i32,
+}
 
 lazy_static! {
-    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<u16>>>> = Arc::new(Mutex::new(None));
+    static ref SENDER: Arc<Mutex<Option<mpsc::Sender<Message>>>> = Arc::new(Mutex::new(None));
+    static ref RECEIVER: Arc<Mutex<Option<mpsc::Receiver<Message>>>> = Arc::new(Mutex::new(None));
 }
 
 static APP_HANDLE: OnceCell<AppHandle> = OnceCell::new();
@@ -52,7 +57,7 @@ fn stop_simconnect_connection() {
     let sender = SENDER.lock().unwrap().deref().clone();
     match sender {
         Some(sender) => {
-            match sender.send(9999) {
+            match sender.send(Message { id: 0, value: 9999 }) {
                 Ok(_) => {
                     eprintln!("Sent stop message to simconnect");
                 }
@@ -101,13 +106,19 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
 }
 
 #[tauri::command]
-fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
-    let (tx, rx) = mpsc::channel();
-    *SENDER.lock().unwrap() = Some(tx);
+fn send_debug_message(app: tauri::AppHandle, message: Message) {
+    println!("Received message: {:?}", message);
+    let sender = SENDER.lock().unwrap().deref().clone().unwrap();
+    sender.send(message).unwrap();
+}
+
+#[tauri::command]
+fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>, debug: bool) {
+    let receiver = RECEIVER.lock().unwrap().take().expect("Receiver not found");
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, rx);
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, receiver, true);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -121,24 +132,15 @@ fn update_default_events(app: tauri::AppHandle) {
 }
 
 fn init_wasm_events_to_store(app: tauri::AppHandle) {
-    let stores = app.app_handle().state::<StoreCollection<Wry>>();
-    let path = PathBuf::from(".events.dat");
+    let store = app.store(".events.dat").unwrap();
+    let keys = store.keys();
 
-    let handle_store = |store: &mut Store<Wry>| {
-        let keys = store.keys();
-        if keys.count() == 0 {
-            let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
-            wasm_registry.init_custom_events_to_store(&app);
-        }
-        Ok(())
-    };
-
-    match with_store(app.app_handle().clone(), stores, path, handle_store) {
-        Ok(_) => {}
-        Err(e) => {
-            error!("Failed to load connector settings: {:?}", e);
-        }
+    if keys.is_empty() {
+        let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
+        wasm_registry.init_custom_events_to_store(&app);
     }
+
+    store.close_resource();
 }
 
 fn main() {
@@ -173,6 +175,7 @@ fn main() {
         )
         .invoke_handler(tauri::generate_handler![
             get_com_ports,
+            send_debug_message,
             get_outputs,
             start_simconnect_connection,
             stop_simconnect_connection, /*send_command*/
@@ -190,6 +193,9 @@ fn main() {
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
+            let (tx, rx) = mpsc::channel();
+            *SENDER.lock().unwrap() = Some(tx);
+            *RECEIVER.lock().unwrap() = Some(rx);
 
             tauri::async_runtime::spawn(async move {
                 let builder = app_handle.updater_builder();
@@ -211,8 +217,10 @@ fn main() {
                     .dialog()
                     .message("A new update is available. Do you want to download and install it?")
                     .title("Update available")
-                    .ok_button_label("Update")
-                    .cancel_button_label("Later")
+                    .buttons(MessageDialogButtons::OkCancelCustom(
+                        "Update".to_string(),
+                        "Later".to_string(),
+                    ))
                     .blocking_show();
 
                 if message {

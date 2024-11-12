@@ -3,15 +3,20 @@ import { WasmEventRowEditor } from "./WasmEventRowEditor";
 import { useState } from "react";
 import { stringifyCategories } from "../utils/CategoriesStringUtils";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
+import { Checkbox } from "#components/elements/inputs/Checkbox.js";
 
 interface WasmEventRowProps {
-  event: WASMEvent;
+  wasmEvent: WASMEvent;
   onEventChanged: (event: WASMEvent) => void;
+  onEventDeleted: (id: number) => void;
+  onEventSelected: (event: WASMEvent) => void;
   index: number;
 }
 export const WasmEventRow = ({
-  event: wasmEvent,
+  wasmEvent: wasmEvent,
   onEventChanged,
+  onEventDeleted,
+  onEventSelected,
   index,
 }: WasmEventRowProps) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -33,7 +38,12 @@ export const WasmEventRow = ({
       data-testid="wasm_event_row"
     >
       <div className="flex flex-col w-full">
-        <div className="flex flex-row align-middle w-full">
+        <div className="flex flex-row align-middle items-center w-full">
+          <Checkbox
+            onChange={() => {
+              onEventSelected(wasmEvent);
+            }}
+          />
           <div className="flex flex-col w-4/5 justify-center">
             <span className="has-tooltip">
               <span
@@ -98,6 +108,7 @@ export const WasmEventRow = ({
               className={`transition-all ease-in-out duration-500 ${open ? "opacity-100" : "opacity-0"}`}
             >
               <WasmEventRowEditor
+                onEventDeleted={onEventDeleted}
                 originalEvent={wasmEvent}
                 toggleOpen={closeEditor}
                 onEventChanged={onEventChanged}

@@ -8,9 +8,15 @@ describe("WasmEventRow", () => {
   test("should render without crashing", () => {
     const { container } = render(
       <WasmEventRow
-        event={MockWasmEvent}
+        wasmEvent={MockWasmEvent}
         index={0}
         onEventChanged={function (event: WASMEvent): void {
+          throw new Error("Function not implemented.");
+        }}
+        onEventDeleted={function (id: number): void {
+          throw new Error("Function not implemented.");
+        }}
+        onEventSelected={function (event: WASMEvent): void {
           throw new Error("Function not implemented.");
         }}
       />,
@@ -21,9 +27,15 @@ describe("WasmEventRow", () => {
   test("should open editor on click", async () => {
     const { getByTestId } = render(
       <WasmEventRow
-        event={MockWasmEvent}
+        wasmEvent={MockWasmEvent}
         index={0}
         onEventChanged={function (event: WASMEvent): void {
+          throw new Error("Function not implemented.");
+        }}
+        onEventDeleted={function (id: number): void {
+          throw new Error("Function not implemented.");
+        }}
+        onEventSelected={function (event: WASMEvent): void {
           throw new Error("Function not implemented.");
         }}
       />,
@@ -39,9 +51,15 @@ describe("WasmEventRow", () => {
   test("should close editor on click", async () => {
     const { getByTestId } = render(
       <WasmEventRow
-        event={MockWasmEvent}
+        wasmEvent={MockWasmEvent}
         index={0}
         onEventChanged={function (event: WASMEvent): void {}}
+        onEventDeleted={function (id: number): void {
+          throw new Error("Function not implemented.");
+        }}
+        onEventSelected={function (event: WASMEvent): void {
+          throw new Error("Function not implemented.");
+        }}
       />,
     );
     await waitFor(() => {

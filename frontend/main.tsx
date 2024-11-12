@@ -1,5 +1,5 @@
 import React from "react";
-import HomePage from "./pages/HomePage";
+import ConnectionPage from "./pages/connection_page/ConnectionPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as ReactDOM from "react-dom/client";
 import MenuLayout from "./pages/MenuLayout";
@@ -7,13 +7,14 @@ import OutputsPage from "./pages/options/outputs/OutputsPage";
 import { LogPage } from "./pages/logs/LogPage";
 import SettingsPage from "./pages/options/settings/SettingsPage";
 import { PresetManagerPage } from "./pages/options/settings/PresetManagerPage";
-import { CustomEvents } from "./pages/options/outputs/custom/CustomEvents";
+import { CustomEvents } from "./pages/custom_output_page/CustomEvents";
 import { RunStateContextProvider } from "#context/RunStateContext.js";
+import { TestPage } from "#pages/test_page/TestPage.js";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MenuLayout />,
-    children: [{ path: "/", element: <HomePage /> }],
+    children: [{ path: "/", element: <ConnectionPage /> }],
   },
   {
     path: "/options/outputs",
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/logs",
     element: <LogPage />,
+  },
+  {
+    path: "/event-test",
+    element: <TestPage />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")! as HTMLElement).render(

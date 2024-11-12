@@ -17,7 +17,7 @@
       "@/*": ["./frontend/*"]
     }
   },
-  "include": ["frontend", "index.html"],
+  "include": ["frontend", "index.html", "eslint.config.mjs"],
   "exclude": ["node_modules", "src-tauri"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
