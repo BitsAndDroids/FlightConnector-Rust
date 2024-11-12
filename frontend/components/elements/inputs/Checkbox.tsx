@@ -19,7 +19,10 @@ export const Checkbox = ({
   onLight,
 }: CheckboxProps) => {
   return (
-    <div className="flex flex-row items-center">
+    <div
+      className="flex flex-row items-center"
+      onClick={(e) => e.stopPropagation()}
+    >
       {infoWindow}
       <div className="flex flex-col items-start">
         {" "}
@@ -29,7 +32,10 @@ export const Checkbox = ({
           className="h-5 w-5 mr-2 focus:ring-green-500 text-green-600 rounded-md"
           type="checkbox"
           checked={value}
-          onChange={(e) => onChange && onChange(e.target.checked)}
+          onChange={(e) => {
+            e.stopPropagation();
+            onChange && onChange(e.target.checked);
+          }}
         ></input>
       </div>
     </div>

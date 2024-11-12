@@ -1,5 +1,5 @@
 import { Preset } from "@/model/Preset";
-import { LazyStore } from "@tauri-apps/plugin-store";
+import { LazyStore } from "#store";
 
 export class PresetSettingsHandler {
   store: LazyStore;
@@ -7,7 +7,7 @@ export class PresetSettingsHandler {
     this.store = new LazyStore(".presets.dat");
   }
 
-  async getPreset(id: string): Promise<Preset | null> {
+  async getPreset(id: string): Promise<Preset | null | undefined> {
     if (!this.store.has(id)) {
       return null;
     }
@@ -37,7 +37,7 @@ export class PresetSettingsHandler {
     }
     this.updatePreset(data);
   }
-  async getPresetById(id: string): Promise<Preset | null> {
+  async getPresetById(id: string): Promise<Preset | null | undefined> {
     return this.store.get(id);
   }
   async getAllPresets(): Promise<Preset[]> {

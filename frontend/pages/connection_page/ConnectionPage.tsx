@@ -1,6 +1,6 @@
 import { Header } from "@/components/elements/header";
-import { RunComponent } from "../components/RunComponent";
-export default function HomePage() {
+import { RunComponent } from "../../components/RunComponent";
+export default function ConnectionPage() {
   return (
     <div
       className="flex justify-start align-middle  h-full w-full flex-col"

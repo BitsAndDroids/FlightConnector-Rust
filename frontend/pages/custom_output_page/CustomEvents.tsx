@@ -1,6 +1,6 @@
 import { InputErrorState } from "@/components/elements/inputs/Input";
 import { WASMEvent } from "@/model/WASMEvent";
-import { invoke } from "@tauri-apps/api/core";
+import { invoke } from "#tauri/invoke";
 import { useEffect, useState } from "react";
 import { WasmEventManager } from "./components/WasmEventManager";
 import { EventEditor } from "./components/EventEditor";

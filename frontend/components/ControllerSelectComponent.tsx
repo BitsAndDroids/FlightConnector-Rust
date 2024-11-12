@@ -25,9 +25,18 @@ async function invokeConnection(
   if (!preset) {
     return;
   }
+  if (process.env.NODE_ENV !== "production") {
+    invoke("start_simconnect_connection", {
+      runBundles: runBundles,
+      presetId: preset.id,
+      debug: true,
+    });
+    return;
+  }
   invoke("start_simconnect_connection", {
     runBundles: runBundles,
     presetId: preset.id,
+    debug: false,
   });
 }
 interface Connections {

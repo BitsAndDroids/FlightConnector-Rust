@@ -1,4 +1,4 @@
-export class Store {
+export class LazyStore {
   store: any;
   constructor() {
     this.store = {};
