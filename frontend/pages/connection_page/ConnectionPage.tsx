@@ -1,5 +1,6 @@
 import { Header } from "@/components/elements/header";
 import { RunComponent } from "../../components/RunComponent";
+import { PartnerDeviceSettings } from "./components/PartnerDeviceSettings";
 export default function ConnectionPage() {
   return (
     <div
