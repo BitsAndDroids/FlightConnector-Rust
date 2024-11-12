@@ -2,8 +2,6 @@ import path from "path";
 import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
-    reporters: ["json", "default"],
-    outputFile: "./test-output.json",
     coverage: {
       include: ["frontend"],
       exclude: [
