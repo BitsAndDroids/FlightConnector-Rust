@@ -5,4 +5,5 @@ export const FlightCompanion: PartnerDevice = {
   name: "Flight companion",
   madeBy: "BitsAndDroids",
   bundle: FlightCompanionBundle,
+  version: "1.0.0",
 };
