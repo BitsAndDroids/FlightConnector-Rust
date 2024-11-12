@@ -6,13 +6,13 @@ import { LazyStore } from "#store";
 
 describe("CustomEventHandler", () => {
   vi.mock("@tauri-apps/plugin-store", () => {
-    const Store = vi.fn();
-    Store.prototype.get = vi.fn();
-    Store.prototype.set = vi.fn();
-    Store.prototype.save = vi.fn();
-    Store.prototype.delete = vi.fn();
-    Store.prototype.keys = vi.fn();
-    return { Store };
+    const LazyStore = vi.fn();
+    LazyStore.prototype.get = vi.fn();
+    LazyStore.prototype.set = vi.fn();
+    LazyStore.prototype.save = vi.fn();
+    LazyStore.prototype.delete = vi.fn();
+    LazyStore.prototype.keys = vi.fn();
+    return { LazyStore };
   });
 
   let store: any;
