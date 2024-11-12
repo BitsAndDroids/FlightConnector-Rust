@@ -8,7 +8,7 @@ export const changeLaunchWhenSimStarts = async (value: boolean) => {
     return;
   }
 
-  const localCachePath = communityFolderPath.replace(
+  const localCachePath = communityFolderPath?.replace(
     "\\Packages\\Community",
     "",
   );

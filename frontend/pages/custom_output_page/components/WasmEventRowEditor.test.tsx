@@ -33,6 +33,9 @@ describe("WasmEventRowEditor", () => {
         toggleOpen={function (): void {
           throw new Error("Function not implemented.");
         }}
+        onEventDeleted={function (id: number): void {
+          throw new Error("Function not implemented.");
+        }}
       />,
     );
     expect(container).toBeTruthy();
@@ -60,6 +63,9 @@ describe("WasmEventRowEditor", () => {
           throw new Error("Function not implemented.");
         }}
         toggleOpen={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+        onEventDeleted={function (id: number): void {
           throw new Error("Function not implemented.");
         }}
       />,

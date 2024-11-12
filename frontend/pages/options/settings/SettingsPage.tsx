@@ -28,9 +28,9 @@ const SettingsPage = () => {
     },
   );
   const [communityFolderVisible, setCommunityFolderVisible] = useState(false);
-  const [communityFolderPath, setCommunityFolderPath] = useState<string | null>(
-    null,
-  );
+  const [communityFolderPath, setCommunityFolderPath] = useState<
+    string | null | undefined
+  >(null);
   const [initialized, setInitialized] = useState(false);
 
   const connectorSettingsHandler = useRef(new ConnectorSettingsHandler());
