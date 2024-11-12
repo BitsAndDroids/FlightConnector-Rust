@@ -114,7 +114,7 @@ fn send_debug_message(app: tauri::AppHandle, message: Message) {
 
 #[tauri::command]
 fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>, debug: bool) {
-    let receiver = RECEIVER.lock().unwrap().deref().clone().unwrap();
+    let receiver = RECEIVER.lock().unwrap().take().expect("Receiver not found");
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
@@ -193,6 +193,9 @@ fn main() {
         ])
         .setup(|app| {
             let app_handle = app.app_handle().clone();
+            let (tx, rx) = mpsc::channel();
+            *SENDER.lock().unwrap() = Some(tx);
+            *RECEIVER.lock().unwrap() = Some(rx);
 
             tauri::async_runtime::spawn(async move {
                 let builder = app_handle.updater_builder();
@@ -236,10 +239,6 @@ fn main() {
                         }
                     }
                 }
-
-                let (tx, rx) = mpsc::channel();
-                *SENDER.lock().unwrap() = Some(tx);
-                *RECEIVER.lock().unwrap() = Some(rx);
             });
             init_wasm_events_to_store(app.handle().clone());
             if !check_if_wasm_up_to_date(app.handle().clone()) {

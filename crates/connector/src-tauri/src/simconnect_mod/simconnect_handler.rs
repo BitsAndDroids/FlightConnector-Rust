@@ -229,7 +229,7 @@ impl SimconnectHandler {
         self.simconnect.transmit_client_event(
             0,
             command,
-            value as u32,
+            value as DWORD,
             simconnect::SIMCONNECT_GROUP_PRIORITY_HIGHEST,
             simconnect::SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY,
         );
