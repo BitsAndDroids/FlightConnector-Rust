@@ -30,6 +30,7 @@ export const PartnerDeviceSettings = ({
     }
     setBundles([...bundles, devices[parseInt(index)].bundle]);
     bundleSettingsHandler.addBundleSettings(devices[parseInt(index)].bundle);
+    setDialogOpen(false);
   };
   return (
     <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
@@ -46,16 +47,16 @@ export const PartnerDeviceSettings = ({
                   alt={device.name}
                   className="max-h-[150px] max-w-[200px] rounded-md mr-4"
                 />
-                <div className="flex flex-col mr-4">
+                <div className="flex flex-col items-start justify-start mr-4">
                   <Header
                     title={device.name}
                     level={2}
                     onLight={true}
-                    addToClassName="mt-0"
+                    withSubtitle={true}
                   />
-                  <div className="text-gray-500 -mt-4">
+                  <p className="text-gray-500 -mt-8">
                     made by: {device.madeBy}
-                  </div>
+                  </p>
                 </div>
                 <Button
                   text="Add to connector"
