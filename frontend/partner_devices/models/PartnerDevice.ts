@@ -1,4 +1,4 @@
-import { Bundle } from "../../../model/Bundle";
+import { Bundle } from "../../model/Bundle";
 
 export interface PartnerDevice {
   name: string;
@@ -6,4 +6,6 @@ export interface PartnerDevice {
   madeBy: string;
   bundle: Bundle;
   version: string;
+  gitHubUrl?: string;
+  productUrl?: string;
 }

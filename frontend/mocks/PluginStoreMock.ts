@@ -3,6 +3,9 @@ export class LazyStore {
   constructor() {
     this.store = {};
   }
+  has(key: string | number) {
+    return key in this.store;
+  }
   set(key: string | number, value: any) {
     this.store[key] = value;
   }

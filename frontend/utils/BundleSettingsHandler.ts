@@ -26,6 +26,10 @@ export class BundleSettingsHandler {
     this.bundleStore.save();
   }
 
+  doesBundleExist(name: string): Promise<boolean> {
+    return this.bundleStore.has(name);
+  }
+
   updateBundleSettings(bundle: Bundle): any {
     this.bundleStore.set(bundle.name, bundle);
     this.bundleStore.save();

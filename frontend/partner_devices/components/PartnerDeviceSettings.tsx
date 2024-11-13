@@ -1,6 +1,8 @@
 import { Button } from "#components/elements/Button.js";
 import { Header } from "#components/elements/header.js";
 import { PartnerDevices } from "#partner_devices/PartnerDevices.js";
+import { BundleSettingsHandler } from "#utils/BundleSettingsHandler.js";
+import { message } from "@tauri-apps/plugin-dialog";
 import { PartnerDevice } from "../models/PartnerDevice";
 
 interface DeviceSettingsProps {
@@ -13,6 +15,19 @@ export const PartnerDeviceSettings = ({
   setDialogOpen,
 }: DeviceSettingsProps) => {
   const devices: Array<PartnerDevice> = PartnerDevices;
+  const bundleSettingsHandler = new BundleSettingsHandler();
+
+  const onAddToConnector = async (index: string) => {
+    if (
+      await bundleSettingsHandler.doesBundleExist(
+        devices[parseInt(index)].bundle.name,
+      )
+    ) {
+      await message("Bundle already present");
+      return;
+    }
+    bundleSettingsHandler.addBundleSettings(devices[parseInt(index)].bundle);
+  };
   return (
     <div className="w-[100%] h-[100%] min-h-[100%] min-w-[100%] -translate-y-1/2 -translate-x-1/2 fixed top-1/2 left-1/2 bg-opacity-50 z-50 flex flew-row align-middle justify-center items-center backdrop-blur-sm drop-shadow-lg">
       <div className="bg-transparent p-32 rounded-md">
@@ -42,6 +57,7 @@ export const PartnerDeviceSettings = ({
                 <Button
                   text="Add to connector"
                   onClick={() => {
+                    onAddToConnector(index.toString());
                     onConfirm(index.toString());
                     setDialogOpen(false);
                   }}
