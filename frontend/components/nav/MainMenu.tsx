@@ -3,14 +3,14 @@ import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
 import { FileDialog } from "../dialogs/file/FileDialog";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
 import { UpdateWindow } from "../UpdateWindow";
 import { hasReadLatestPatchNotes } from "@/utils/UpdateChecker";
 import { BugReportWindow } from "../dialogs/bugreports/BugReportWindow";
-import { PartnerDeviceSettings } from "#pages/connection_page/components/PartnerDeviceSettings.js";
+import { PartnerDeviceSettings } from "#partner_devices/components/PartnerDeviceSettings";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = useRef(new ConnectorSettingsHandler());
   const [installWASMDialogOpen, setInstallWASMDialogOpen] =
@@ -144,9 +144,6 @@ export const MainMenu: React.FC = () => {
     <>
       {partnerDevicesOpen && (
         <PartnerDeviceSettings
-          onConfirm={function (input?: string): void {
-            throw new Error("Function not implemented.");
-          }}
           setDialogOpen={function (open: boolean): void {
             setPartnerDevicesOpen(open);
           }}

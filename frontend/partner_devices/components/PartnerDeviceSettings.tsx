@@ -4,16 +4,18 @@ import { PartnerDevices } from "#partner_devices/PartnerDevices.js";
 import { BundleSettingsHandler } from "#utils/BundleSettingsHandler.js";
 import { message } from "@tauri-apps/plugin-dialog";
 import { PartnerDevice } from "../models/PartnerDevice";
+import { RunStateContext } from "#context/RunStateContext.js";
+import { useContext } from "react";
 
 interface DeviceSettingsProps {
-  onConfirm: (input?: string) => void;
   setDialogOpen: (open: boolean) => void;
 }
 
 export const PartnerDeviceSettings = ({
-  onConfirm,
   setDialogOpen,
 }: DeviceSettingsProps) => {
+  const context = useContext(RunStateContext);
+  const { bundles, setBundles } = context;
   const devices: Array<PartnerDevice> = PartnerDevices;
   const bundleSettingsHandler = new BundleSettingsHandler();
 
@@ -26,6 +28,7 @@ export const PartnerDeviceSettings = ({
       await message("Bundle already present");
       return;
     }
+    setBundles([...bundles, devices[parseInt(index)].bundle]);
     bundleSettingsHandler.addBundleSettings(devices[parseInt(index)].bundle);
   };
   return (
@@ -58,7 +61,6 @@ export const PartnerDeviceSettings = ({
                   text="Add to connector"
                   onClick={() => {
                     onAddToConnector(index.toString());
-                    onConfirm(index.toString());
                     setDialogOpen(false);
                   }}
                 />
