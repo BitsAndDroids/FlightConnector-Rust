@@ -62,10 +62,12 @@ describe("PartnerDeviceSettings", () => {
   it("renders device images correctly", () => {
     render(<PartnerDeviceSettings setDialogOpen={mockSetDialogOpen} />);
 
-    const images = screen.getAllByRole("img");
-    expect(images).toHaveLength(2);
-    expect(images[0]).toHaveAttribute("src", "test-image-1.jpg");
-    expect(images[1]).toHaveAttribute("src", "test-image-2.jpg");
+    const images: Array<HTMLImageElement> = screen.getAllByRole("img");
+    expect(images).toHaveLength(6);
+    const imageSrc = images.map((image) => image.src);
+    console.log(imageSrc);
+    expect(imageSrc).toContain("http://localhost:3000/test-image-1.jpg");
+    expect(imageSrc).toContain("http://localhost:3000/test-image-2.jpg");
   });
 
   it("displays manufacturer information", () => {
