@@ -263,6 +263,7 @@ export const FlightCompanionBundle: Bundle = {
       update_every: 0,
     },
   ],
-  name: "",
+  name: "Flight companion",
   version: 0,
+  device: true,
 };

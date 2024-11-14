@@ -22,7 +22,7 @@ export const MainMenu: React.FC = () => {
   const [updateWindowOpen, setUpdateWindowOpen] = useState<boolean>(false);
   const [bugReportWindowOpen, setBugReportWindowOpen] =
     useState<boolean>(false);
-  const [partnerDevicesOpen, setPartnerDevicesOpen] = useState<boolean>(true);
+  const [partnerDevicesOpen, setPartnerDevicesOpen] = useState<boolean>(false);
   useEffect(() => {
     const checkForUpdates = async () => {
       const hasRead = await hasReadLatestPatchNotes();

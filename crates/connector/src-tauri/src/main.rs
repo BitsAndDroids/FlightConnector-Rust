@@ -114,6 +114,10 @@ fn send_debug_message(app: tauri::AppHandle, message: Message) {
 
 #[tauri::command]
 fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>, debug: bool) {
+    let (tx, rx) = mpsc::channel();
+    *SENDER.lock().unwrap() = Some(tx);
+    *RECEIVER.lock().unwrap() = Some(rx);
+
     let receiver = RECEIVER.lock().unwrap().take().expect("Receiver not found");
     thread::spawn(|| {
         #[cfg(target_os = "windows")]

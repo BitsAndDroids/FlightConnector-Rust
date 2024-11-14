@@ -1,11 +1,12 @@
-import { Button } from "#components/elements/Button.js";
-import { Header } from "#components/elements/header.js";
-import { PartnerDevices } from "#partner_devices/PartnerDevices.js";
-import { BundleSettingsHandler } from "#utils/BundleSettingsHandler.js";
+import { Button } from "#components/elements/Button";
+import { Header } from "#components/elements/header";
+import { PartnerDevices } from "#partner_devices/PartnerDevices";
+import { BundleSettingsHandler } from "#utils/BundleSettingsHandler";
 import { message } from "@tauri-apps/plugin-dialog";
 import { PartnerDevice } from "../models/PartnerDevice";
-import { RunStateContext } from "#context/RunStateContext.js";
+import { RunStateContext } from "#context/RunStateContext";
 import { useContext } from "react";
+import { TrackedDevicesHandler } from "#utils/TrackedDevicesHandler";
 
 interface DeviceSettingsProps {
   setDialogOpen: (open: boolean) => void;
@@ -18,6 +19,7 @@ export const PartnerDeviceSettings = ({
   const { bundles, setBundles } = context;
   const devices: Array<PartnerDevice> = PartnerDevices;
   const bundleSettingsHandler = new BundleSettingsHandler();
+  const trackedDevicesHandler = new TrackedDevicesHandler();
 
   const onAddToConnector = async (index: string) => {
     if (
@@ -30,6 +32,7 @@ export const PartnerDeviceSettings = ({
     }
     setBundles([...bundles, devices[parseInt(index)].bundle]);
     bundleSettingsHandler.addBundleSettings(devices[parseInt(index)].bundle);
+    trackedDevicesHandler.addTrackedDevice(devices[parseInt(index)]);
     setDialogOpen(false);
   };
   return (

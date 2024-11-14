@@ -1,4 +1,4 @@
-import { PartnerDevice } from "../pages/connection_page/models/PartnerDevice";
 import { FlightCompanion } from "./devices/BitsAndDroids/FlightCompanion";
+import { PartnerDevice } from "./models/PartnerDevice";
 
 export const PartnerDevices: Array<PartnerDevice> = [FlightCompanion];
