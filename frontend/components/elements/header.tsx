@@ -5,6 +5,7 @@ interface HeaderProps {
   title: string;
   level: number;
   onLight?: boolean;
+  withSubtitle?: boolean;
   addToClassName?: string;
 }
 
@@ -19,21 +20,21 @@ export const Header = (props: HeaderProps) => {
       1,
       {
         tag: "h1",
-        style: `mt-10 text-2xl font-bold tracking-tight ${props.onLight ? "text-gray-800" : "text-white"} sm:text-4xl mb-4`,
+        style: `text-2xl font-bold tracking-tight ${props.onLight ? "text-gray-800" : "text-white"} sm:text-4xl ${props.withSubtitle ? "mb-0 mt-0" : "mb-4 mt-10"}`,
       },
     ],
     [
       2,
       {
         tag: "h2",
-        style: `font-bold text-xl tracking-tight mb-4 mt-4 ${props.onLight ? "text-gray-800" : "text-white"}`,
+        style: `font-bold text-xl tracking-tight ${props.withSubtitle ? "mb-0 mt-0" : "mb-4 mt-4"} ${props.onLight ? "text-gray-800" : "text-white"}`,
       },
     ],
     [
       3,
       {
         tag: "h3",
-        style: `1.17em font-bold text-xl tracking-tight ${props.onLight ? "text-gray-800" : "text-white"} mb-4 mt-2`,
+        style: `1.17em font-bold text-xl tracking-tight ${props.onLight ? "text-gray-800" : "text-white"} ${props.withSubtitle ? "mb-0 mt-0" : "mb-4 mt-2"} `,
       },
     ],
   ]);

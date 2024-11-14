@@ -3,13 +3,14 @@ import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
 import { FileDialog } from "../dialogs/file/FileDialog";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
 import { UpdateWindow } from "../UpdateWindow";
 import { hasReadLatestPatchNotes } from "@/utils/UpdateChecker";
 import { BugReportWindow } from "../dialogs/bugreports/BugReportWindow";
+import { PartnerDeviceSettings } from "#partner_devices/components/PartnerDeviceSettings";
 export const MainMenu: React.FC = () => {
   const connectorSettingsHandler = useRef(new ConnectorSettingsHandler());
   const [installWASMDialogOpen, setInstallWASMDialogOpen] =
@@ -21,7 +22,7 @@ export const MainMenu: React.FC = () => {
   const [updateWindowOpen, setUpdateWindowOpen] = useState<boolean>(false);
   const [bugReportWindowOpen, setBugReportWindowOpen] =
     useState<boolean>(false);
-
+  const [partnerDevicesOpen, setPartnerDevicesOpen] = useState<boolean>(false);
   useEffect(() => {
     const checkForUpdates = async () => {
       const hasRead = await hasReadLatestPatchNotes();
@@ -66,6 +67,11 @@ export const MainMenu: React.FC = () => {
       action: () => openGenerateWASMLibrary(),
       active: true,
     },
+    {
+      title: "Partner devices",
+      action: () => setPartnerDevicesOpen(true),
+      active: true,
+    },
   ];
   const settingsMenuItems = [
     {
@@ -108,6 +114,9 @@ export const MainMenu: React.FC = () => {
     setGenerateLibraryDialogOpen(true);
   };
 
+  const closePartnerDevicesOpen = (open: boolean) => {
+    setPartnerDevicesOpen(open);
+  };
   const installWasm = async (dirResult?: string) => {
     setInstallWASMDialogOpen(false);
     if (!dirResult) return;
@@ -133,6 +142,13 @@ export const MainMenu: React.FC = () => {
 
   return (
     <>
+      {partnerDevicesOpen && (
+        <PartnerDeviceSettings
+          setDialogOpen={function (open: boolean): void {
+            setPartnerDevicesOpen(open);
+          }}
+        />
+      )}
       {bugReportWindowOpen && (
         <BugReportWindow closeWindow={closeBugReportWindow} />
       )}
