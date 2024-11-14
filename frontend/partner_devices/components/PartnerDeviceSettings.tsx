@@ -60,14 +60,35 @@ export const PartnerDeviceSettings = ({
                   <p className="text-gray-500 -mt-8">
                     made by: {device.madeBy}
                   </p>
+
+                  <div className="flex flex-row">
+                    <img
+                      src="https://api.iconify.design/mdi:web.svg"
+                      className={"fill-amber-50 mr-2 mt-4 cursor-pointer"}
+                      alt="update_every"
+                      onClick={() => {
+                        open(device.productUrl);
+                      }}
+                    />
+                    <img
+                      src="https://api.iconify.design/mdi:github.svg"
+                      className={"fill-amber-50 mr-2 mt-4 cursor-pointer"}
+                      alt="update_every"
+                      onClick={() => {
+                        open(device.gitHubUrl);
+                      }}
+                    />
+                  </div>
                 </div>
-                <Button
-                  text="Add to connector"
-                  onClick={() => {
-                    onAddToConnector(index.toString());
-                    setDialogOpen(false);
-                  }}
-                />
+                <div className="flex flex-col">
+                  <Button
+                    text="Add to connector"
+                    onClick={() => {
+                      onAddToConnector(index.toString());
+                      setDialogOpen(false);
+                    }}
+                  />
+                </div>
               </div>
             );
           })}
