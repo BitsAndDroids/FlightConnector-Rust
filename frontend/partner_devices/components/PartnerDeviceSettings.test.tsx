@@ -45,12 +45,7 @@ describe("PartnerDeviceSettings", () => {
   });
 
   it("renders all partner devices", () => {
-    render(
-      <PartnerDeviceSettings
-        onConfirm={mockOnConfirm}
-        setDialogOpen={mockSetDialogOpen}
-      />,
-    );
+    render(<PartnerDeviceSettings setDialogOpen={mockSetDialogOpen} />);
 
     expect(screen.getByText("Test Device 1")).toBeInTheDocument();
     expect(screen.getByText("Test Device 2")).toBeInTheDocument();
@@ -58,24 +53,14 @@ describe("PartnerDeviceSettings", () => {
   });
 
   it("handles close button click", () => {
-    render(
-      <PartnerDeviceSettings
-        onConfirm={mockOnConfirm}
-        setDialogOpen={mockSetDialogOpen}
-      />,
-    );
+    render(<PartnerDeviceSettings setDialogOpen={mockSetDialogOpen} />);
 
     fireEvent.click(screen.getByText("close"));
     expect(mockSetDialogOpen).toHaveBeenCalledWith(false);
   });
 
   it("renders device images correctly", () => {
-    render(
-      <PartnerDeviceSettings
-        onConfirm={mockOnConfirm}
-        setDialogOpen={mockSetDialogOpen}
-      />,
-    );
+    render(<PartnerDeviceSettings setDialogOpen={mockSetDialogOpen} />);
 
     const images = screen.getAllByRole("img");
     expect(images).toHaveLength(2);
@@ -84,12 +69,7 @@ describe("PartnerDeviceSettings", () => {
   });
 
   it("displays manufacturer information", () => {
-    render(
-      <PartnerDeviceSettings
-        onConfirm={mockOnConfirm}
-        setDialogOpen={mockSetDialogOpen}
-      />,
-    );
+    render(<PartnerDeviceSettings setDialogOpen={mockSetDialogOpen} />);
 
     expect(
       screen.getByText("made by: Test Manufacturer 1"),
