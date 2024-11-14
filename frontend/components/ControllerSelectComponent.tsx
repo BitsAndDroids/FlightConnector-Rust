@@ -64,10 +64,12 @@ export const ControllerSelectComponent = () => {
 
   const runSettingsHandler = useRef(new RunSettingsHandler());
   const context = useContext(RunStateContext);
-  const { connectionRunning, setConnectionRunning } = context;
+  const { connectionRunning, setConnectionRunning, bundles, setBundles } =
+    context;
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPorts, setComPorts] = useState<string[]>([]);
-  const [bundles, setBundles] = useState<Bundle[]>([]);
+
+  // const [bundles, setBundles] = useState<Bundle[]>([]);
   const [unlisten, setUnlisten] = useState<any>();
   const [preset, setPreset] = useState<Preset>();
   const [presets, setPresets] = useState<Preset[]>();
