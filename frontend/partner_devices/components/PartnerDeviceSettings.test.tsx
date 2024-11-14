@@ -1,9 +1,6 @@
-import { describe, it, expect, vi, beforeEach, Mock } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { PartnerDeviceSettings } from "./PartnerDeviceSettings";
-import { BundleSettingsHandler } from "#utils/BundleSettingsHandler";
-import { message } from "@tauri-apps/plugin-dialog";
-import { PartnerDevices } from "#partner_devices/PartnerDevices";
 import { setupTauriInternalMocks } from "#tests/testUtils.js";
 
 // Mock dependencies
