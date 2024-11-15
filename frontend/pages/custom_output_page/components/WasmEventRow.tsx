@@ -7,7 +7,7 @@ import { Checkbox } from "#components/elements/inputs/Checkbox.js";
 
 interface WasmEventRowProps {
   wasmEvent: WASMEvent;
-  onEventChanged: (event: WASMEvent) => void;
+  onEventChanged: (event: WASMEvent, oldEventId?: number) => void;
   onEventDeleted: (id: number) => void;
   onEventSelected: (event: WASMEvent) => void;
   index: number;

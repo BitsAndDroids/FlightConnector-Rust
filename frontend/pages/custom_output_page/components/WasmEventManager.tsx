@@ -115,15 +115,19 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     setEventsSelected([]);
   };
 
-  const onEventChanged = (event: WASMEvent) => {
-    const index = events.findIndex((e) => e.id === event.id);
-    if (index === -1) {
-      return;
+  const onEventChanged = (event: WASMEvent, oldEventId?: number) => {
+    let newEvents = [...events];
+    if (event.id === oldEventId) {
+      const index = events.findIndex((e) => e.id === oldEventId);
+      newEvents[index] = event;
+      eventHandler.updateEvent(event);
+    } else {
+      newEvents.push(event);
+      eventHandler.addEvent(event);
+      newEvents = newEvents.filter((e) => e.id !== oldEventId);
+      eventHandler.deleteEvent(oldEventId as number);
     }
-    const newEvents = [...events];
-    newEvents[index] = event;
     setEvents(newEvents);
-    eventHandler.updateEvent(event);
   };
 
   useEffect(() => {

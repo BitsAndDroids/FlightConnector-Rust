@@ -1,9 +1,9 @@
-use std::fmt;
-
 use serde::{
     de::{self, SeqAccess, Visitor},
     Deserialize, Deserializer, Serialize,
 };
+use std::fmt;
+use std::str::FromStr;
 
 use super::output::{Output, OutputType};
 
@@ -21,6 +21,37 @@ pub struct WasmEvent {
     pub offset: u32,
     pub plane_or_category: Vec<String>,
     pub made_by: String,
+}
+
+fn deserialize_id<'de, D>(deserializer: D) -> Result<u32, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    struct IdVisitor;
+
+    impl<'de> Visitor<'de> for IdVisitor {
+        type Value = u32;
+
+        fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+            formatter.write_str("a string or integer representing an id")
+        }
+
+        fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
+        where
+            E: de::Error,
+        {
+            u32::from_str(value).map_err(E::custom)
+        }
+
+        fn visit_u64<E>(self, value: u64) -> Result<Self::Value, E>
+        where
+            E: de::Error,
+        {
+            Ok(value as u32)
+        }
+    }
+
+    deserializer.deserialize_any(IdVisitor)
 }
 
 fn deserialize_plane_or_category<'de, D>(deserializer: D) -> Result<Vec<String>, D::Error>
@@ -65,6 +96,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
     {
         #[derive(Deserialize)]
         struct WasmEventHelper {
+            #[serde(deserialize_with = "deserialize_id")]
             id: u32,
             action: String,
             action_text: Option<String>,
