@@ -78,6 +78,16 @@ export const EventEditor = ({ onSave, onCancel, events }: EventEditorProps) => {
         ...actionTextState,
       });
     }
+    if (field === "update_every") {
+      if (newEvent.action_type === "output") {
+        if (value === "") {
+          setNewEvent({ ...newEvent, update_every: 0 });
+          return;
+        }
+        setNewEvent({ ...newEvent, update_every: parseFloat(value) });
+        return;
+      }
+    }
     setNewEvent({ ...newEvent, [field]: value });
   };
 
