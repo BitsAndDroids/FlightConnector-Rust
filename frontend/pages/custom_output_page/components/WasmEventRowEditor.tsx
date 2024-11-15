@@ -14,7 +14,7 @@ import { EventErrors } from "../CustomEvents";
 
 interface WasmEventRowEditorProps {
   originalEvent: WASMEvent;
-  onEventChanged: (event: WASMEvent) => void;
+  onEventChanged: (event: WASMEvent, oldEventId: number) => void;
   onEventDeleted: (id: number) => void;
   toggleOpen: () => void;
 }
@@ -40,9 +40,7 @@ export const WasmEventRowEditor = ({
       return;
     }
     if (key === "id") {
-      console.log("id", value);
       if (value !== originalEvent.id.toString()) {
-        console.log("id", value);
         const idState = await validateEventID(value);
         setEventErrors({ ...eventErrors, ...idState });
       } else {
@@ -56,7 +54,7 @@ export const WasmEventRowEditor = ({
   };
 
   const onSavePressed = () => {
-    onEventChanged(wasmEvent);
+    onEventChanged(wasmEvent, originalEvent.id);
     toggleOpen();
   };
   return (
