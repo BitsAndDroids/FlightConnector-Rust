@@ -48,6 +48,9 @@ export const WasmEventRowEditor = ({
       } else {
         setEventErrors({ ...eventErrors, id: { state: false, message: "" } });
       }
+
+      setWasmEvent({ ...wasmEvent, id: parseInt(value) });
+      return;
     }
     setWasmEvent({ ...wasmEvent, [key]: value });
   };
