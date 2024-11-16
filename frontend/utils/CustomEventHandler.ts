@@ -13,6 +13,7 @@ export class CustomEventHandler {
 
   async updateEvent(event: WASMEvent) {
     this.store.set(event.id.toString(), event);
+    console.log("Updated event", event);
     this.store.save();
   }
 
