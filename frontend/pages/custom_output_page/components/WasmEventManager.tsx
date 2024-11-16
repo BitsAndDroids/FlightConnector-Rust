@@ -1,7 +1,7 @@
 import { WASMEvent } from "@/model/WASMEvent";
 import { WasmEventRow } from "./WasmEventRow";
 import { WasmEventFilter } from "./WasmEventFilter";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { WasmEventFilterParams } from "../model/WasmEventFilter";
 import { Header } from "@/components/elements/header";
 import { CustomEventHandler } from "@/utils/CustomEventHandler";
@@ -52,9 +52,12 @@ const filterEvents = (
   }
   return filteredEvents;
 };
-const connectorSettingsHandler = new ConnectorSettingsHandler();
-const eventHandler = new CustomEventHandler();
 export const WasmEventManager = (props: WasmEventManagerProps) => {
+  const connectorSettingsHandler = useMemo(
+    () => new ConnectorSettingsHandler(),
+    [],
+  );
+  const eventHandler = useMemo(() => new CustomEventHandler(), []);
   const [eventsSelected, setEventsSelected] = useState<WASMEvent[]>([]);
   const [eventEditorVisible, setEventEditorVisible] = useState(false);
   const [events, setEvents] = useState<WASMEvent[]>(props.events);
@@ -164,7 +167,7 @@ export const WasmEventManager = (props: WasmEventManagerProps) => {
     ) {
       compareVersions();
     }
-  }, [customEventVersion, latestCustomEventVersion]);
+  }, [customEventVersion, latestCustomEventVersion, connectorSettingsHandler]);
 
   useEffect(() => {
     setFilteredEvents(filterEvents(events, filter));
