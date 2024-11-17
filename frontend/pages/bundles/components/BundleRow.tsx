@@ -1,6 +1,5 @@
-// import Image from "next/image";
 import { Bundle } from "@/model/Bundle";
-import { Row } from "../elements/Row";
+import { Row } from "../../../components/elements/Row";
 
 interface BundleRowProps {
   bundle: Bundle;

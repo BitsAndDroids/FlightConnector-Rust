@@ -3,7 +3,7 @@ import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it } from "vitest";
 import ConnectionPage from "./pages/connection_page/ConnectionPage";
 import MenuLayout from "./pages/MenuLayout";
-import OutputsPage from "./pages/options/outputs/OutputsPage";
+import OutputsPage from "./pages/bundles/OutputsPage";
 import { LogPage } from "./pages/logs/LogPage";
 import SettingsPage from "./pages/options/settings/SettingsPage";
 import { PresetManagerPage } from "./pages/options/settings/PresetManagerPage";
