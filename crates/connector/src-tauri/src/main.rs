@@ -136,15 +136,14 @@ fn update_default_events(app: tauri::AppHandle) {
 }
 
 fn init_wasm_events_to_store(app: tauri::AppHandle) {
-    let store = app.store(".events.dat").unwrap();
+    let store = app.store(".events.dat").expect("Failed to get store");
     let keys = store.keys();
 
     if keys.is_empty() {
         let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
         wasm_registry.init_custom_events_to_store(&app);
     }
-
-    store.close_resource();
+    store.save();
 }
 
 fn main() {
@@ -249,7 +248,6 @@ fn main() {
                 println!("Wasm is not up to date");
                 install_wasm(app.handle().clone());
             }
-
             APP_HANDLE.set(app.handle().clone()).unwrap();
             let args: Vec<String> = std::env::args().collect();
             if args.len() > 1 {

@@ -2,8 +2,8 @@
 import BundleInfo from "@/info_blocks/BundleInfo";
 import { Bundle } from "@/model/Bundle";
 import BundleRow from "./BundleRow";
-import { Header } from "../elements/header";
-import { PrimaryCard } from "../card/PrimaryCard";
+import { Header } from "../../../components/elements/header";
+import { PrimaryCard } from "../../../components/card/PrimaryCard";
 
 interface BundleEditWidgetProps {
   bundles: Bundle[];

@@ -37,7 +37,7 @@ impl WASMRegistry {
         for event in &self.wasm_default_events {
             store.set(event.id.to_string().clone(), json!(event));
         }
-        store.close_resource();
+        store.save();
         self.load_wasm(&app);
     }
 
@@ -64,7 +64,7 @@ impl WASMRegistry {
                 self.wasm_inputs.insert(wasm_event.id, wasm_event);
             }
         }
-        store.close_resource();
+        store.save();
     }
 
     pub fn get_wasm_output_by_id(&mut self, output_id: u32) -> Option<&Output> {
@@ -106,7 +106,7 @@ impl WASMRegistry {
         for event in events {
             store.set(event.id.to_string().clone(), json!(event));
         }
-        store.close_resource();
+        store.save();
     }
 
     pub fn register_wasm_inputs_to_simconnect(&self, conn: &mut simconnect::SimConnector) {

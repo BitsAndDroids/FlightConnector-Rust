@@ -1,6 +1,6 @@
 import InputDialog from "@/components/InputDialog";
-import BundleEditControls from "@/components/bundle/BundleEditControls";
-import BundleEditWidget from "@/components/bundle/BundleEditWidget";
+import BundleEditControls from "#pages/bundles/components/BundleEditControls.js";
+import BundleEditWidget from "#pages/bundles/components/BundleEditWidget.js";
 import OutputList from "@/components/outputs/Outputlist";
 import BundleInfo from "@/info_blocks/BundleInfo";
 import { Bundle } from "@/model/Bundle";

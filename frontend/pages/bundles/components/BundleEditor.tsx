@@ -2,11 +2,11 @@
 import { Category } from "@/model/Category";
 import { useEffect, useState } from "react";
 import { Output } from "@/model/Output";
-import { Select } from "../../../../components/elements/Select";
-import { Input } from "../../../../components/elements/inputs/Input";
-import { Header } from "../../../../components/elements/header";
 import { OutputSelectRows } from "./OutputSelectRows";
 import { PrimaryCard } from "@/components/card/PrimaryCard";
+import { Header } from "#components/elements/header.js";
+import { Input } from "#components/elements/inputs/Input.js";
+import { Select } from "#components/elements/Select.js";
 
 interface BundleEditorProps {
   outputs: Output[];
