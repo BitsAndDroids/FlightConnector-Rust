@@ -5,7 +5,6 @@ use tauri_plugin_store::StoreExt;
 pub fn load_connector_settings(app_handle: &tauri::AppHandle) -> SavedConnectorSettings {
     let store = app_handle.store(".connectorSettings.dat").unwrap();
     let settings = store.get("connectorSettings");
-    store.close_resource();
     match settings {
         Some(settings) => serde_json::from_value(settings.clone()).unwrap(),
         None => {
