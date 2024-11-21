@@ -9,7 +9,8 @@ pub fn install_wasm(app: tauri::AppHandle) {
     let exe_path = std::env::current_dir().unwrap();
     let wasm_path = exe_path.join("wasm_module");
     let version = get_version_from_manifest();
-    let mut community_folder_path = "".to_owned();
+    let mut community_folder_path: std::path::PathBuf = std::path::PathBuf::from("");
+
     let store = match app.store(".connectorSettings.dat") {
         Ok(s) => s,
         Err(e) => {
@@ -18,7 +19,8 @@ pub fn install_wasm(app: tauri::AppHandle) {
         }
     };
     if let Some(v) = store.get("communityFolderPath") {
-        community_folder_path = v.to_owned().to_string();
+        community_folder_path = std::path::PathBuf::from(v.as_str().unwrap());
+        println!("Community folder path: {:?}", community_folder_path);
         store.set("installedWASMVersion".to_owned(), json!(version))
     }
     store.save();
@@ -31,9 +33,10 @@ pub fn install_wasm(app: tauri::AppHandle) {
         }
         let file_path = file.path().clone();
         let relative_path = file_path.strip_prefix(&wasm_path);
-        let dest_path = Path::new(&community_folder_path)
+        let dest_path = std::path::PathBuf::from(&community_folder_path)
             .join("BitsAndDroidsModule")
             .join(relative_path.unwrap());
+
         if let Some(parent_dir) = dest_path.parent() {
             match std::fs::create_dir_all(parent_dir) {
                 Ok(_) => {}
@@ -68,13 +71,13 @@ pub fn check_if_wasm_up_to_date(app: tauri::AppHandle) -> bool {
         .expect("Failed to get store");
 
     let version_installed = match store.get("installedWASMVersion") {
-        Some(v) => v.to_string(),
-        None => "".to_owned(),
+        Some(v) => v.as_str().unwrap().to_owned(),
+        None => "".to_string(),
     };
 
-    let community_folder: String = match store.get("communityFolderPath") {
-        Some(v) => v.to_string(),
-        None => "".to_owned(),
+    let community_folder = match store.get("communityFolderPath") {
+        Some(v) => v.as_str().unwrap().to_owned(),
+        None => "".to_string(),
     };
 
     if community_folder.is_empty() && version_installed.is_empty() {
