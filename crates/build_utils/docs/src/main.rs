@@ -132,7 +132,7 @@ fn generate_library_list() {
         .expect("Failed to get grandparent directory")
         .parent()
         .expect("Failed to get great-grandparent directory")
-        .join("crates/src-tauri/connector_library/BitsAndDroidsFlightConnector.h");
+        .join("crates/connector/src-tauri/connector_library/BitsAndDroidsFlightConnector.h");
     let normalized_path = normalize_path(&target_dir);
     let converted_path = normalized_path.to_str().unwrap();
     let functions: Vec<LibraryFunction> = get_outgoing_functions_from_file(converted_path);
