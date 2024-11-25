@@ -1,5 +1,5 @@
 {
-  "version": "0.9.5",
+  "version": "0.9.6",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm run build",
@@ -14,9 +14,6 @@
       "src/events/inputs.json",
       "wasm_module",
       "connector_library/",
-      "connector_library/BitsAndDroidsFlightConnector.cpp",
-      "connector_library/BitsAndDroidsFlightConnector.h",
-      "connector_library/library.properties",
       "SimConnect.dll"
     ],
     "createUpdaterArtifacts": true,

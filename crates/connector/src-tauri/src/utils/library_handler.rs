@@ -12,12 +12,14 @@ pub fn get_library_header_content(app: tauri::AppHandle) -> String {
         .app_handle()
         .path()
         .resolve(
-            "connectory_library/BitsAndDroidsFlightConnector.h",
+            "connector_library/BitsAndDroidsFlightConnector.h",
             BaseDirectory::Resource,
         )
         .unwrap();
     if resource_path.exists() {
         content = fs::read_to_string(resource_path).unwrap();
+    } else {
+        println!("Resource path does not exist: {:?}", "h");
     }
     content
 }
@@ -35,6 +37,8 @@ pub fn get_library_source_content(app: tauri::AppHandle) -> String {
         .unwrap();
     if resource_path.exists() {
         content = fs::read_to_string(resource_path).unwrap();
+    } else {
+        println!("Resource path does not exist: {:?}", "cpp");
     }
     content
 }

@@ -32,7 +32,9 @@ We're almost ready to use the Flight Companion.
 Since you're able to use the Bits and Droids Flight Connector for more devices than your Flight Companion we need to do a minor setup.
 On the connection page make sure that your device is selected in the left dropdown (it should show up with Silicon Labs CP210x ... in the name).
 Make sure to select the Flight Companion bundle in the right dropdown.
+
 ![Setup connection](./images/flight_companion/com_settings.png)
+
 This ensures the connector knows which data to send to your Flight Companion.
 
 ## Unlock all features
@@ -49,11 +51,11 @@ The default location for this folder is:
 
 > ### Steam
 >
-> C:\Users\{USERNAME}\AppData\Roaming\Microsoft Flight Simulator\Packages\Community
+> C:\Users\\{USERNAME}\AppData\Roaming\Microsoft Flight Simulator\Packages\Community
 
 > ### Microsoft Store
 >
-> C:\Users\{USERNAME}\AppData\Local\Packages\Microsoft.FlightSimulator_8wekyb3d8bbwe\LocalCache\Packages\Community
+> C:\Users\\{USERNAME}\AppData\Local\Packages\Microsoft.FlightSimulator_8wekyb3d8bbwe\LocalCache\Packages\Community
 
 > ### MFS 2024
 >
@@ -69,6 +71,7 @@ Having to start the connector everytime you launch Microsoft Flight Simulator ca
 If you want the connector to Automatically launch and start you can enable the auto launch setting.
 From the connection page (the home page) -> go to the top navbar -> settings -> connection settings.
 In this window you can enable launch when sim starts.
+
 ![launch when sim starts](./images/flight_companion/launch_on_start.png)
 
 ## Controls
