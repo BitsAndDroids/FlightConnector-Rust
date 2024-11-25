@@ -151,7 +151,7 @@ fn generate_input_list() {
         .expect("Failed to get grandparent directory")
         .parent()
         .expect("Failed to get great-grandparent directory")
-        .join("crates/src-tauri/src/events/inputs.json");
+        .join("crates/connector/src-tauri/src/events/inputs.json");
     let normalized_path = normalize_path(&target_dir);
     let converted_path = normalized_path.to_str().unwrap();
     let inputs = input_parser::get_inputs_from_file(converted_path);
@@ -168,7 +168,7 @@ fn generate_output_list() {
         .expect("Failed to get grandparent directory")
         .parent()
         .expect("Failed to get great-grandparent directory")
-        .join("crates/src-tauri/src/events/outputs.json");
+        .join("crates/connector/src-tauri/src/events/outputs.json");
     let normalized_path = normalize_path(&target_dir);
     let converted_path = normalized_path.to_str().unwrap();
 
