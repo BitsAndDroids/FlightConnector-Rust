@@ -32,4 +32,4 @@
 
 # Manuals
 
-- [Flight companion](ch11-00-flightcompanion.md)
+- [Flight Companion](ch11-00-flightcompanion.md)
