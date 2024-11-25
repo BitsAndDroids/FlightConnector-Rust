@@ -29,3 +29,7 @@
 - [Contributing](ch10-00-contributing.md)
   - [Events](ch10-01-events.md)
     - [Events](ch10-01-01-outputs.md)
+
+# Manuals
+
+- [Flight companion](ch11-00-flightcompanion.md)
