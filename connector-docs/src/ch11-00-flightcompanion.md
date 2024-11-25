@@ -19,8 +19,11 @@ This software interprets the events the controller sends and transmits the game 
 To make your life easier I've made it really simple to setup your Flight Companion.
 On the connection page of the connector you're able to load all required settings using the add partner device option.
 This option can be found in the top navbar, events -> partner devices.
+
 ![events menu](./images/flight_companion/events_menu.png)
+
 In the window that opens you can add the device using the add to connector button.
+
 ![partner device window](./images/flight_companion/partner_device_window.png)
 
 ## First run
