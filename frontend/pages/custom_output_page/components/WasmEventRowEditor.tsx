@@ -39,6 +39,10 @@ export const WasmEventRowEditor = ({
       setWasmEvent({ ...wasmEvent, plane_or_category: parsedValue });
       return;
     }
+    if (key === "update_every") {
+      setWasmEvent({ ...wasmEvent, update_every: parseFloat(value) });
+      return;
+    }
     if (key === "id") {
       if (value !== originalEvent.id.toString()) {
         const idState = await validateEventID(value);

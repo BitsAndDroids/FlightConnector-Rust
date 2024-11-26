@@ -23,6 +23,38 @@ pub struct WasmEvent {
     pub made_by: String,
 }
 
+fn deserialize_f32<'de, D>(deserializer: D) -> Result<f32, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    struct F32Visitor;
+    impl<'de> Visitor<'de> for F32Visitor {
+        type Value = f32;
+        fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+            formatter.write_str("a float or integer representing a f32")
+        }
+        fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
+        where
+            E: de::Error,
+        {
+            f32::from_str(value).map_err(E::custom)
+        }
+        fn visit_f64<E>(self, value: f64) -> Result<Self::Value, E>
+        where
+            E: de::Error,
+        {
+            Ok(value as f32)
+        }
+        fn visit_u64<E>(self, value: u64) -> Result<Self::Value, E>
+        where
+            E: de::Error,
+        {
+            Ok(value as f32)
+        }
+    }
+    deserializer.deserialize_any(F32Visitor)
+}
+
 fn deserialize_id<'de, D>(deserializer: D) -> Result<u32, D::Error>
 where
     D: Deserializer<'de>,
@@ -102,6 +134,7 @@ impl<'de> Deserialize<'de> for WasmEvent {
             action_text: Option<String>,
             action_type: String,
             output_format: String,
+            #[serde(deserialize_with = "deserialize_f32")]
             update_every: f32,
             min: f32,
             max: f32,
