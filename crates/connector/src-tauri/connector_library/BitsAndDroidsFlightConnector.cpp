@@ -30,6 +30,49 @@ void BitsAndDroidsFlightConnector::sendGetValueById(int id) {
   this->serial->println(valuesBuffer);
 }
 
+void BitsAndDroidsFlightConnector::send(int command) {
+  packagedData = sprintf(valuesBuffer, "%i", command);
+  this->serial->println(valuesBuffer);
+}
+
+void BitsAndDroidsFlightConnector::setLight(uint8_t lightBit, bool state) {
+  if (state) {
+    lightStates |= (1 << lightBit);
+  } else {
+    lightStates &= ~(1 << lightBit);
+  }
+}
+
+void BitsAndDroidsFlightConnector::setAPBit(uint8_t apBit, bool state) {
+  if (apBit < 16) {
+    if (state) {
+      apStates1 |= (1 << apBit);
+    } else {
+      apStates1 &= ~(1 << apBit);
+    }
+  } else {
+    apBit -= 16;
+    if (state) {
+      apStates2 |= (1 << apBit);
+    } else {
+      apStates2 &= ~(1 << apBit);
+    }
+  }
+}
+
+void BitsAndDroidsFlightConnector::getAPBit(uint8_t apBit) {
+  if (apBit < 16) {
+    return apStates1 & (1 << apBit);
+  } else {
+    apBit -= 16;
+    return apStates2 & (1 << apBit);
+  }
+}
+
+bool BitsAndDroidsFlightConnector::getLight(uint8_t lightBit) {
+  return lightStates & (1 << lightBit);
+}
+
 int BitsAndDroidsFlightConnector::smoothPot(byte potPin) {
   int readings[samples] = {};
   total = 0;
@@ -191,52 +234,52 @@ void BitsAndDroidsFlightConnector::switchHandling() {
   }
   // lights
   case 133: {
-    lightTaxiOn = convBool(cutValue);
+    setLight(LIGHT_TAXI, convBool(cutValue));
     break;
   }
   case 134: {
-    lightStrobeOn = convBool(cutValue);
+    setLight(LIGHT_STROBE, convBool(cutValue));
     break;
   }
 
   case 135: {
-    lightPanelOn = convBool(cutValue);
+    setLight(LIGHT_PANEL, convBool(cutValue));
     break;
   }
   case 136: {
-    lightRecognitionOn = convBool(cutValue);
+    setLight(LIGHT_RECOGNITION, convBool(cutValue));
     break;
   }
   case 137: {
-    lightWingOn = convBool(cutValue);
+    setLight(LIGHT_WING, convBool(cutValue));
     break;
   }
   case 138: {
-    lightLogoOn = convBool(cutValue);
+    setLight(LIGHT_LOGO, convBool(cutValue));
     break;
   }
   case 139: {
-    lightCabinOn = convBool(cutValue);
+    setLight(LIGHT_CABIN, convBool(cutValue));
     break;
   }
   case 140: {
-    lightHeadOn = convBool(cutValue);
+    setLight(LIGHT_HEAD, convBool(cutValue));
     break;
   }
   case 141: {
-    lightBrakeOn = convBool(cutValue);
+    setLight(LIGHT_BRAKE, convBool(cutValue));
     break;
   }
   case 142: {
-    lightNavOn = convBool(cutValue);
+    setLight(LIGHT_NAV, convBool(cutValue));
     break;
   }
   case 143: {
-    lightBeaconOn = convBool(cutValue);
+    setLight(LIGHT_BEACON, convBool(cutValue));
     break;
   }
   case 144: {
-    lightLandingOn = convBool(cutValue);
+    setLight(LIGHT_LANDING, convBool(cutValue));
     break;
   }
   case 275: {
@@ -407,80 +450,80 @@ void BitsAndDroidsFlightConnector::switchHandling() {
 
     // AP
   case 576: {
-    APAvailable = convBool(cutValue);
+    setAPBit(AP_AVAILABLE, convBool(cutValue));
     break;
   }
   case 577: {
-    APMasterOn = convBool(cutValue);
+    setAPBit(AP_MASTER, convBool(cutValue));
     break;
   }
   case 579: {
-    APWingLevelerOn = convBool(cutValue);
+    setAPBit(AP_WING_LEVELER, convBool(cutValue));
     break;
   }
   case 580: {
-    APNav1LockOn = convBool(cutValue);
+    setAPBit(AP_NAV1_HOLD, convBool(cutValue));
     break;
   }
   case 581: {
-    APHeadingLockOn = convBool(cutValue);
+    setAPBit(AP_HEADING_HOLD, convBool(cutValue));
     break;
   }
   case 583: {
-    APAltitudeLockOn = convBool(cutValue);
+    setAPBit(AP_ALTITUDE_HOLD, convBool(cutValue));
     break;
   }
 
   case 585: {
-    APAttitudeLockOn = convBool(cutValue);
+    setAPBit(AP_ATTITUDE_HOLD, convBool(cutValue));
     break;
   }
   case 586: {
-    APGlideslopeHoldOn = convBool(cutValue);
+    setAPBit(AP_GLIDESLOPE_HOLD, convBool(cutValue));
     break;
   }
   case 588: {
-    APApproachHoldOn = convBool(cutValue);
+    setAPBit(AP_APPROACH_HOLD, convBool(cutValue));
     break;
   }
   case 589: {
-    APBackcourseHoldOn = convBool(cutValue);
+    setAPBit(AP_BACKCOURSE_HOLD, convBool(cutValue));
     break;
   }
   case 591: {
-    APFlightDirectorOn = convBool(cutValue);
+    setAPBit(AP_FLIGHT_DIRECTOR, convBool(cutValue));
     break;
   }
   case 594: {
-    APAirspeedHoldOn = convBool(cutValue);
+    setAPBit(AP_AIRSPEED_HOLD, convBool(cutValue));
     break;
   }
   case 596: {
-    APMachHoldOn = convBool(cutValue);
+    setAPBit(AP_MACH_HOLD, convBool(cutValue));
     break;
   }
   case 598: {
-    APYawDampenerOn = convBool(cutValue);
+    setAPBit(AP_YAW_DAMPENER, convBool(cutValue));
     break;
   }
   case 600: {
-    APAutothrottleArm = convBool(cutValue);
+    setAPBit(AP_AUTO_THROTTLE_ARM, convBool(cutValue));
     break;
   }
   case 601: {
-    APTakeoffPowerOn = convBool(cutValue);
+    setAPBit(AP_TAKEOFF_POWER, convBool(cutValue));
     break;
   }
   case 602: {
-    APAutothrottleOn = convBool(cutValue);
+    setAPBit(AP_AUTO_THROTTLE, convBool(cutValue));
     break;
   }
   case 604: {
-    APVerticalHoldOn = convBool(cutValue);
+    setAPBit(AP_VERTICAL_HOLD, convBool(cutValue));
     break;
   }
   case 605: {
-    APRPMHoldOn = convBool(cutValue);
+    setAPBit(AP_RPM_HOLD, convBool(cutValue));
     break;
   }
 

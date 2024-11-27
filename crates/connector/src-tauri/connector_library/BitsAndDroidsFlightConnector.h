@@ -710,18 +710,18 @@ public:
   int getLastPrefix();
 
   // Lights
-  bool getLightTaxiOn() { return lightTaxiOn; };
-  bool getLightStrobeOn() { return lightStrobeOn; };
-  bool getLightPanelOn() { return lightPanelOn; };
-  bool getLightRecognitionOn() { return lightRecognitionOn; };
-  bool getLightWingOn() { return lightWingOn; };
-  bool getLightLogoOn() { return lightLogoOn; };
-  bool getLightCabinOn() { return lightCabinOn; };
-  bool getLightHeadOn() { return lightHeadOn; };
-  bool getLightBrakeOn() { return lightBrakeOn; };
-  bool getLightNavOn() { return lightNavOn; };
-  bool getLightBeaconOn() { return lightBeaconOn; };
-  bool getLightLandingOn() { return lightLandingOn; };
+  bool getLightTaxiOn() { return getLight(LIGHT_TAXI); };
+  bool getLightStrobeOn() { return getLight(LIGHT_STROBE); };
+  bool getLightPanelOn() { return getLight(LIGHT_PANEL); };
+  bool getLightRecognitionOn() { return getLight(LIGHT_RECOGNITION); };
+  bool getLightWingOn() { return getLight(LIGHT_WING); };
+  bool getLightLogoOn() { return getLight(LIGHT_LOGO); };
+  bool getLightCabinOn() { return getLight(LIGHT_CABIN); };
+  bool getLightHeadOn() { return getLight(LIGHT_HEAD); };
+  bool getLightBrakeOn() { return getLight(LIGHT_BRAKE); };
+  bool getLightNavOn() { return getLight(LIGHT_NAV); };
+  bool getLightBeaconOn() { return getLight(LIGHT_BEACON); };
+  bool getLightLandingOn() { return getLight(LIGHT_LANDING); };
 
   // Coms
   long getActiveCom1() { return activeCom1; };
@@ -803,25 +803,25 @@ public:
   uint8_t getTransponderState2() { return transponderState2; };
 
   // AP
-  bool getAPAvailable() { return APAvailable; };
-  bool getAPMasterOn() { return APMasterOn; };
-  bool getAPWingLevelerOn() { return APWingLevelerOn; };
-  bool getAPNav1LockOn() { return APNav1LockOn; };
-  bool getAPHeadingLockOn() { return APHeadingLockOn; };
-  bool getAPAltitudeLockOn() { return APAltitudeLockOn; };
-  bool getAPAttitudeLockOn() { return APAttitudeLockOn; };
-  bool getAPGlideslopeHoldOn() { return APGlideslopeHoldOn; };
-  bool getAPApproachHoldOn() { return APApproachHoldOn; };
-  bool getAPBackcourseHoldOn() { return APBackcourseHoldOn; };
-  bool getAPFlightDirectorOn() { return APFlightDirectorOn; };
-  bool getAPAirspeedHoldOn() { return APAirspeedHoldOn; };
-  bool getAPMachHoldOn() { return APMachHoldOn; };
-  bool getAPYawDampenerOn() { return APYawDampenerOn; };
-  bool getAPAutothrottleArm() { return APAutothrottleArm; };
-  bool getAPTakeoffPowerOn() { return APTakeoffPowerOn; };
-  bool getAPAutothrottleOn() { return APAutothrottleOn; };
-  bool getAPVerticalHoldOn() { return APVerticalHoldOn; };
-  bool getAPRPMHoldOn() { return APRPMHoldOn; };
+  bool getAPAvailable() { return getAPBit(AP_AVAILABLE); };
+  bool getAPMasterOn() { return getAPBit(AP_MASTER); };
+  bool getAPWingLevelerOn() { return getAPBit(AP_WING_LEVELER); };
+  bool getAPNav1LockOn() { return getAPBit(AP_NAV1_HOLD); };
+  bool getAPHeadingLockOn() { return getAPBit(AP_HEADING_HOLD); };
+  bool getAPAltitudeLockOn() { return getAPBit(AP_ALTITUDE_HOLD); };
+  bool getAPAttitudeLockOn() { return getAPBit(AP_ATTITUDE_HOLD); };
+  bool getAPGlideslopeHoldOn() { return getAPBit(AP_GLIDESLOPE_HOLD); };
+  bool getAPApproachHoldOn() { return getAPBit(AP_APPROACH_HOLD); };
+  bool getAPBackcourseHoldOn() { return getAPBit(AP_BACKCOURSE_HOLD); };
+  bool getAPFlightDirectorOn() { return getAPBit(AP_FLIGHT_DIRECTOR); };
+  bool getAPAirspeedHoldOn() { return getAPBit(AP_AIRSPEED_HOLD); };
+  bool getAPMachHoldOn() { return getAPBit(AP_MACH_HOLD); };
+  bool getAPYawDampenerOn() { return getAPBit(AP_YAW_DAMPENER); };
+  bool getAPAutothrottleArm() { return getAPBit(AP_AUTO_THROTTLE_ARM); };
+  bool getAPTakeoffPowerOn() { return getAPBit(AP_TAKEOFF_POWER); };
+  bool getAPAutothrottleOn() { return getAPBit(AP_AUTO_THROTTLE); };
+  bool getAPVerticalHoldOn() { return getAPBit(AP_VERTICAL_HOLD); };
+  bool getAPRPMHoldOn() { return getAPBit(AP_RPM_HOLD); };
 
   bool getParkingBrakeIndicator() { return parkingBrakeIndicator; };
 
@@ -943,18 +943,25 @@ private:
   int headingTrue;
 
   // lights
-  bool lightTaxiOn = false;
-  bool lightStrobeOn = false;
-  bool lightPanelOn = false;
-  bool lightRecognitionOn = false;
-  bool lightWingOn = false;
-  bool lightLogoOn = false;
-  bool lightCabinOn = false;
-  bool lightHeadOn = false;
-  bool lightBrakeOn = false;
-  bool lightNavOn = false;
-  bool lightBeaconOn = false;
-  bool lightLandingOn = false;
+  uint16_t lightStates;
+
+  enum LightBits {
+    LIGHT_TAXI = 0,
+    LIGHT_STROBE = 1,
+    LIGHT_PANEL = 2,
+    LIGHT_RECOGNITION = 3,
+    LIGHT_WING = 4,
+    LIGHT_LOGO = 5,
+    LIGHT_CABIN = 6,
+    LIGHT_HEAD = 7,
+    LIGHT_BRAKE = 8,
+    LIGHT_NAV = 9,
+    LIGHT_BEACON = 10,
+    LIGHT_LANDING = 11,
+  };
+
+  void setLight(uint8_t lightBit, bool state);
+  bool getLight(uint8_t lightBit);
 
   // ambient
   float ambientTemperature;
@@ -964,26 +971,34 @@ private:
   int ambientPrecipRate;
   int ambientPrecipState;
 
+  int16_t apStates1;
+  int8_t apStates2;
+
+  enum APBits {
+    AP_MASTER = 0,
+    AP_WING_LEVELER = 1,
+    AP_NAV1_HOLD = 2,
+    AP_HEADING_HOLD = 3,
+    AP_ALTITUDE_HOLD = 4,
+    AP_ATTITUDE_HOLD = 5,
+    AP_GLIDESLOPE_HOLD = 6,
+    AP_APPROACH_HOLD = 7,
+    AP_BACKCOURSE_HOLD = 8,
+    AP_FLIGHT_DIRECTOR = 9,
+    AP_AIRSPEED_HOLD = 10,
+    AP_MACH_HOLD = 11,
+    AP_YAW_DAMPENER = 12,
+    AP_AUTO_THROTTLE_ARM = 13,
+    AP_TAKEOFF_POWER = 14,
+    AP_AUTO_THROTTLE = 15,
+    AP_VERTICAL_HOLD = 16,
+    AP_RPM_HOLD = 17,
+    AP_AVAILABLE = 18
+  };
+
+  void setAPBit(uint8_t apBit, bool state);
+  bool getAPBit(uint8_t apBit);
   // AP
-  bool APAvailable = false;
-  bool APMasterOn = false;
-  bool APWingLevelerOn = false;
-  bool APNav1LockOn = false;
-  bool APHeadingLockOn = false;
-  bool APAltitudeLockOn = false;
-  bool APAttitudeLockOn = false;
-  bool APGlideslopeHoldOn = false;
-  bool APApproachHoldOn = false;
-  bool APBackcourseHoldOn = false;
-  bool APFlightDirectorOn = false;
-  bool APAirspeedHoldOn = false;
-  bool APMachHoldOn = false;
-  bool APYawDampenerOn = false;
-  bool APAutothrottleArm = false;
-  bool APTakeoffPowerOn = false;
-  bool APAutothrottleOn = false;
-  bool APVerticalHoldOn = false;
-  bool APRPMHoldOn = false;
 
   byte fuelTankCenterLevel;
   byte fuelTankCenter2Level;
@@ -1149,12 +1164,12 @@ private:
   byte gearTotalPct;
 
   // Rudder/trim
-  int aileronTrimPct;
+  int8_t aileronTrimPct;
   int aileronTrimDegr;
   int rudderTrimDegr;
-  int rudderTrimPct;
+  int8_t rudderTrimPct;
   int elevatorTrimPos;
-  int elevatorTrimPct;
+  int8_t elevatorTrimPct;
 
   int fuelTankCenterCapacity;
   int fuelTankCenter2Capacity;
@@ -1171,7 +1186,7 @@ private:
   float fuelTankRightCapacity;
   int fuelTankCenterQuantity;
   int fuelTankCenter2Quantity;
-  int fuelTankCenter3Quantity;
+  int int fuelTankCenter3Quantity;
   int fuelTankLeftMainQuantity;
   int fuelTankLeftAuxQuantity;
   int fuelTankLeftTipQuantity;
