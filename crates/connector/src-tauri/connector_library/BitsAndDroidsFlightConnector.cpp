@@ -60,7 +60,7 @@ void BitsAndDroidsFlightConnector::setAPBit(uint8_t apBit, bool state) {
   }
 }
 
-void BitsAndDroidsFlightConnector::getAPBit(uint8_t apBit) {
+bool BitsAndDroidsFlightConnector::getAPBit(uint8_t apBit) {
   if (apBit < 16) {
     return apStates1 & (1 << apBit);
   } else {
@@ -73,7 +73,7 @@ bool BitsAndDroidsFlightConnector::getLight(uint8_t lightBit) {
   return lightStates & (1 << lightBit);
 }
 
-int BitsAndDroidsFlightConnector::smoothPot(byte potPin) {
+int BitsAndDroidsFlightConnector::smoothPot(int8_t potPin) {
   int readings[samples] = {};
   total = 0;
   for (int &reading : readings) {
@@ -86,8 +86,8 @@ int BitsAndDroidsFlightConnector::smoothPot(byte potPin) {
   return average;
 }
 
-void BitsAndDroidsFlightConnector::sendSetYokeAxis(byte elevatorPin,
-                                                   byte aileronPin) {
+void BitsAndDroidsFlightConnector::sendSetYokeAxis(int8_t elevatorPin,
+                                                   int8_t aileronPin) {
 
   elevator = smoothPot(elevatorPin);
 
@@ -126,7 +126,7 @@ void BitsAndDroidsFlightConnector::sendFlaps() {
   this->serial->println(valuesBuffer);
 }
 
-void BitsAndDroidsFlightConnector::sendSetElevatorTrimPot(byte potPin,
+void BitsAndDroidsFlightConnector::sendSetElevatorTrimPot(int8_t potPin,
                                                           int minVal,
                                                           int maxVal) {
   currentTrim = (EMA_a * analogRead(potPin)) + ((1 - EMA_a) * currentTrim);
@@ -138,8 +138,8 @@ void BitsAndDroidsFlightConnector::sendSetElevatorTrimPot(byte potPin,
   }
 }
 
-void BitsAndDroidsFlightConnector::sendSetBrakePot(byte leftPin,
-                                                   byte rightPin) {
+void BitsAndDroidsFlightConnector::sendSetBrakePot(int8_t leftPin,
+                                                   int8_t rightPin) {
   currentLeftBrake = smoothPot(leftPin);
   currentRightBrake = smoothPot(rightPin);
 
@@ -159,7 +159,7 @@ void BitsAndDroidsFlightConnector::sendSetBrakePot(byte leftPin,
   }
 }
 
-void BitsAndDroidsFlightConnector::sendSetRudderPot(byte potPin) {
+void BitsAndDroidsFlightConnector::sendSetRudderPot(int8_t potPin) {
   currentRudder = smoothPot(potPin);
   if (abs(currentRudder - oldRudderAxis) > analogDiff) {
     packagedData = sprintf(valuesBuffer, "%s %i", "901", currentRudder);
@@ -228,10 +228,6 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     break;
   }
 
-  case 1003: {
-    lightTaxiOn = true;
-    break;
-  }
   // lights
   case 133: {
     setLight(LIGHT_TAXI, convBool(cutValue));
@@ -1019,7 +1015,7 @@ void BitsAndDroidsFlightConnector::simpleInputHandling(int throttlePin) {
   }
 }
 
-void BitsAndDroidsFlightConnector::setPotFlaps(byte flapsPin) {
+void BitsAndDroidsFlightConnector::setPotFlaps(int8_t flapsPin) {
   flaps = smoothPot(flapsPin);
   if (flaps != oldFlaps && abs(oldFlaps - flaps) > 2) {
     oldFlaps = flaps;
@@ -1064,8 +1060,8 @@ void BitsAndDroidsFlightConnector::advancedInputHandling(int eng1Pin,
 }
 
 void BitsAndDroidsFlightConnector::superAdvancedInputHandling(
-    byte eng1Percentage, byte eng2Percentage, byte eng3Percentage,
-    byte eng4Percentage) {
+    int8_t eng1Percentage, int8_t eng2Percentage, int8_t eng3Percentage,
+    int8_t eng4Percentage) {
   engines[0] = eng1Percentage;
   engines[1] = eng2Percentage;
   engines[2] = eng3Percentage;
@@ -1075,10 +1071,6 @@ void BitsAndDroidsFlightConnector::superAdvancedInputHandling(
 
 // Set jitter algorithm EMA_a
 void BitsAndDroidsFlightConnector::setEMA_a(float a) { EMA_a = a; }
-
-void BitsAndDroidsFlightConnector::send(int command) {
-  Serial.println(command);
-}
 
 String BitsAndDroidsFlightConnector::convertToFreq(const String &unprocFreq) {
   String stringA = unprocFreq.substring(0, 3);

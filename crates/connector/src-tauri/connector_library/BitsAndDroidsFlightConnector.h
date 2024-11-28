@@ -1,3 +1,4 @@
+#include <cstdint>
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "modernize-use-nodiscard"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
@@ -660,8 +661,8 @@ public:
   void simpleInputHandling(int throttlePin);
   void advancedInputHandling(int eng1Pin, int eng2Pin, int eng3Pin,
                              int eng4Pin);
-  void superAdvancedInputHandling(byte eng1Percentage, byte eng2Percentage,
-                                  byte eng3Percentage, byte eng4Percentage);
+  void superAdvancedInputHandling(int8_t eng1Percentage, int8_t eng2Percentage,
+                                  int8_t eng3Percentage, int8_t eng4Percentage);
   void sendCombinedMixtureValues();
   void propsInputHandling(int propPin1, int propPin2, int propPin3,
                           int propPin4);
@@ -669,17 +670,17 @@ public:
                             int mixturePin4);
   void sendSetElevatorTrim(int value);
   void sendFlaps();
-  void setPotFlaps(byte flapsPin);
-  void sendSetBrakePot(byte leftPin, byte rightPin);
-  void sendSetYokeAxis(byte elevatorPin, byte aileronPin);
-  void sendSetRudderPot(byte potPin);
-  void sendSetElevatorTrimPot(byte potPin, int minVal, int maxVal);
+  void setPotFlaps(int8_t flapsPin);
+  void sendSetBrakePot(int8_t leftPin, int8_t rightPin);
+  void sendSetYokeAxis(int8_t elevatorPin, int8_t aileronPin);
+  void sendSetRudderPot(int8_t potPin);
+  void sendSetElevatorTrimPot(int8_t potPin, int minVal, int maxVal);
   void sendSetKohlmanAltimeterInHg(float kohlmanInhg);
   void sendSetKohlmanAltimeterMb(float kohlmanMb);
   void setEMA_a(float a);
-  byte getPercentage(int value, int minVal, float maxVal, bool reversed);
+  int8_t getPercentage(int value, int minVal, float maxVal, bool reversed);
   void sendGetValueById(int id);
-  // void setSampleSize(byte amntSamples){sampleSize = amntSamples;};
+  // void setSampleSize(int8_t amntSamples){sampleSize = amntSamples;};
   // Data
   int feetAboveGround = 0;
   int getFeetAboveGround() { return feetAboveGround; };
@@ -697,7 +698,7 @@ public:
   int getApHeadingLock() { return apHeadingLock; };
   int getKohlmanAltimeter() { return kohlmanAltimeter; };
   int getBarPressure() { return barPressure; };
-  byte getFuelTotalPercentage() { return fuelTotalPercentage; };
+  int8_t getFuelTotalPercentage() { return fuelTotalPercentage; };
 
   int getIndicatedAirspeed() { return indicatedAirspeed; };
   int getVarometerRate() { return varometerRate; };
@@ -743,19 +744,19 @@ public:
   bool getOverspeedWarningOn() { return overspeedWarning; };
 
   // flaps
-  byte getFlapsHandlePct() { return flapsHandlePct; };
-  byte getFlapsHandleIndex() { return flapsHandleIndex; };
-  byte getFlapsNumHandlePos() { return flapsNumHandlePos; };
-  byte getTrailingEdgeFlapsLeftPercent() {
+  int8_t getFlapsHandlePct() { return flapsHandlePct; };
+  int8_t getFlapsHandleIndex() { return flapsHandleIndex; };
+  int8_t getFlapsNumHandlePos() { return flapsNumHandlePos; };
+  int8_t getTrailingEdgeFlapsLeftPercent() {
     return trailingEdgeFlapsLeftPercent;
   };
-  byte getTrailingEdgeFlapsRightPercent() {
+  int8_t getTrailingEdgeFlapsRightPercent() {
     return trailingEdgeFlapsRightPercent;
   };
   int getTrailingEdgeFlapsLeftAngle() { return trailingEdgeFlapsLeftAngle; };
   int getTrailingEdgeFlapsRightAngle() { return trailingEdgeFlapsRightAngle; };
-  byte getLeadingEdgeFlapsLeftPct() { return leadingEdgeFlapsLeftPct; };
-  byte getLeadingEdgeFlapsRightPct() { return leadingEdgeFlapsRightPct; };
+  int8_t getLeadingEdgeFlapsLeftPct() { return leadingEdgeFlapsLeftPct; };
+  int8_t getLeadingEdgeFlapsRightPct() { return leadingEdgeFlapsRightPct; };
   int getLeadingEdgeFlapsLeftAngle() { return leadingEdgeFlapsLeftAngle; };
   int getLeadingEdgeFlapsRightAngle() { return leadingEdgeFlapsRightAngle; };
 
@@ -763,12 +764,12 @@ public:
   bool getGearHandlePos() { return gearHandlePos; };
   int getGearHydraulicPressure() { return gearHydraulicPressure; };
   bool getTailWheelLock() { return tailWheelLock; };
-  byte getGearCenterPositionPct() { return gearCenterPositionPct; };
-  byte getGearLeftPositionPct() { return gearLeftPositionPct; };
-  byte getGearRightPositionPct() { return gearRightPositionPct; };
-  byte getGearTailPositionPct() { return gearTailPositionPct; };
-  byte getGearAuxPosition() { return gearAuxPosition; };
-  byte getGearTotalPct() { return gearTotalPct; };
+  int8_t getGearCenterPositionPct() { return gearCenterPositionPct; };
+  int8_t getGearLeftPositionPct() { return gearLeftPositionPct; };
+  int8_t getGearRightPositionPct() { return gearRightPositionPct; };
+  int8_t getGearTailPositionPct() { return gearTailPositionPct; };
+  int8_t getGearAuxPosition() { return gearAuxPosition; };
+  int8_t getGearTotalPct() { return gearTotalPct; };
 
   // Rudder/Trim
   int getAileronTrimPct() { return aileronTrimPct; };
@@ -825,17 +826,17 @@ public:
 
   bool getParkingBrakeIndicator() { return parkingBrakeIndicator; };
 
-  byte getFuelTankCenterLevel() { return fuelTankCenterLevel; };
-  byte getFuelTankCenter2Level() { return fuelTankCenter2Level; };
-  byte getFuelTankCenter3Level() { return fuelTankCenter3Level; };
-  byte getFuelTankLeftMainLevel() { return fuelTankLeftMainLevel; };
-  byte getFuelTankLeftAuxLevel() { return fuelTankLeftAuxLevel; };
-  byte getFuelTankLeftTipLevel() { return fuelTankLeftTipLevel; };
-  byte getFuelTankRightMainLevel() { return fuelTankRightMainLevel; };
-  byte getFuelTankRightAuxLevel() { return fuelTankRightAuxLevel; };
-  byte getFuelTankRightTipLevel() { return fuelTankRightTipLevel; };
-  byte getFuelTankExternal1Level() { return fuelTankExternal1Level; };
-  byte getFuelTankExternal2Level() { return fuelTankExternal2Level; };
+  int8_t getFuelTankCenterLevel() { return fuelTankCenterLevel; };
+  int8_t getFuelTankCenter2Level() { return fuelTankCenter2Level; };
+  int8_t getFuelTankCenter3Level() { return fuelTankCenter3Level; };
+  int8_t getFuelTankLeftMainLevel() { return fuelTankLeftMainLevel; };
+  int8_t getFuelTankLeftAuxLevel() { return fuelTankLeftAuxLevel; };
+  int8_t getFuelTankLeftTipLevel() { return fuelTankLeftTipLevel; };
+  int8_t getFuelTankRightMainLevel() { return fuelTankRightMainLevel; };
+  int8_t getFuelTankRightAuxLevel() { return fuelTankRightAuxLevel; };
+  int8_t getFuelTankRightTipLevel() { return fuelTankRightTipLevel; };
+  int8_t getFuelTankExternal1Level() { return fuelTankExternal1Level; };
+  int8_t getFuelTankExternal2Level() { return fuelTankExternal2Level; };
 
   int getFuelTankCenter() { return fuelTankCenterCapacity; };
   int getFuelTankCenter2() { return fuelTankCenter2Capacity; };
@@ -892,7 +893,7 @@ public:
 
   // library-accessible "private" interface
 
-  int smoothPot(byte potPin);
+  int smoothPot(int8_t potPin);
   // Time data
 
   String getZuluTime() { return zuluTime; };
@@ -915,7 +916,7 @@ private:
 
   int analogDiff = 1;
 
-  byte lastPrefix = 0;
+  int8_t lastPrefix = 0;
 
   String inputText;
   String convertToFreq(const String &unprocFreq);
@@ -1000,17 +1001,17 @@ private:
   bool getAPBit(uint8_t apBit);
   // AP
 
-  byte fuelTankCenterLevel;
-  byte fuelTankCenter2Level;
-  byte fuelTankCenter3Level;
-  byte fuelTankLeftMainLevel;
-  byte fuelTankLeftAuxLevel;
-  byte fuelTankLeftTipLevel;
-  byte fuelTankRightMainLevel;
-  byte fuelTankRightAuxLevel;
-  byte fuelTankRightTipLevel;
-  byte fuelTankExternal1Level;
-  byte fuelTankExternal2Level;
+  int8_t fuelTankCenterLevel;
+  int8_t fuelTankCenter2Level;
+  int8_t fuelTankCenter3Level;
+  int8_t fuelTankLeftMainLevel;
+  int8_t fuelTankLeftAuxLevel;
+  int8_t fuelTankLeftTipLevel;
+  int8_t fuelTankRightMainLevel;
+  int8_t fuelTankRightAuxLevel;
+  int8_t fuelTankRightTipLevel;
+  int8_t fuelTankExternal1Level;
+  int8_t fuelTankExternal2Level;
 
   // warnings
   bool stallWarning = false;
@@ -1138,17 +1139,17 @@ private:
   uint8_t transponderState2 = 0;
 
   // Flaps
-  byte flapsHandlePct;
-  byte flapsHandleIndex;
-  byte flapsNumHandlePos;
-  byte trailingEdgeFlapsLeftPercent;
-  byte trailingEdgeFlapsRightPercent;
+  int8_t flapsHandlePct;
+  int8_t flapsHandleIndex;
+  int8_t flapsNumHandlePos;
+  int8_t trailingEdgeFlapsLeftPercent;
+  int8_t trailingEdgeFlapsRightPercent;
   int trailingEdgeFlapsLeftAngle;
   int trailingEdgeFlapsRightAngle;
-  byte leadingEdgeFlapsLeftPct;
+  int8_t leadingEdgeFlapsLeftPct;
   int leadingEdgeFlapsRightPct;
-  byte leadingEdgeFlapsLeftAngle;
-  byte leadingEdgeFlapsRightAngle;
+  int8_t leadingEdgeFlapsLeftAngle;
+  int8_t leadingEdgeFlapsRightAngle;
 
   bool parkingBrakeIndicator;
 
@@ -1156,12 +1157,12 @@ private:
   bool gearHandlePos = false;
   int gearHydraulicPressure;
   bool tailWheelLock = false;
-  byte gearCenterPositionPct;
-  byte gearLeftPositionPct;
-  byte gearRightPositionPct;
-  byte gearTailPositionPct;
-  byte gearAuxPosition;
-  byte gearTotalPct;
+  int8_t gearCenterPositionPct;
+  int8_t gearLeftPositionPct;
+  int8_t gearRightPositionPct;
+  int8_t gearTailPositionPct;
+  int8_t gearAuxPosition;
+  int8_t gearTotalPct;
 
   // Rudder/trim
   int8_t aileronTrimPct;
@@ -1186,7 +1187,7 @@ private:
   float fuelTankRightCapacity;
   int fuelTankCenterQuantity;
   int fuelTankCenter2Quantity;
-  int int fuelTankCenter3Quantity;
+  int fuelTankCenter3Quantity;
   int fuelTankLeftMainQuantity;
   int fuelTankLeftAuxQuantity;
   int fuelTankLeftTipQuantity;
