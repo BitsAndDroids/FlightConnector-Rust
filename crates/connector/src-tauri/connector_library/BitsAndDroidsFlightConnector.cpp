@@ -5,6 +5,17 @@
 
 #include "BitsAndDroidsFlightConnector.h"
 
+static const uint8_t ID_SIZE = 4;
+static const uint8_t BUFFER_SIZE = 32;
+
+char buffer[BUFFER_SIZE];
+uint8_t bufferIndex = 0;
+
+inline uint16_t parseId(const char *cmd) {
+  return (cmd[0] - '0') * 1000 + (cmd[1] - '0') * 100 + (cmd[2] - '0') * 10 +
+         (cmd[3] - '0');
+}
+
 BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector() {
   this->serial = &Serial;
 }
@@ -35,6 +46,7 @@ void BitsAndDroidsFlightConnector::send(int command) {
   this->serial->println(valuesBuffer);
 }
 
+#ifndef DISABLE_LIGHT_STATES
 void BitsAndDroidsFlightConnector::setLight(uint8_t lightBit, bool state) {
   if (state) {
     lightStates |= (1 << lightBit);
@@ -42,7 +54,11 @@ void BitsAndDroidsFlightConnector::setLight(uint8_t lightBit, bool state) {
     lightStates &= ~(1 << lightBit);
   }
 }
-
+bool BitsAndDroidsFlightConnector::getLightState(uint8_t lightBit) {
+  return lightStates & (1 << lightBit);
+}
+#endif // !DISABLE_LIGHTS
+#ifndef DISABLE_AP_STATES
 void BitsAndDroidsFlightConnector::setAPBit(uint8_t apBit, bool state) {
   if (apBit < 16) {
     if (state) {
@@ -60,7 +76,7 @@ void BitsAndDroidsFlightConnector::setAPBit(uint8_t apBit, bool state) {
   }
 }
 
-bool BitsAndDroidsFlightConnector::getAPBit(uint8_t apBit) {
+bool BitsAndDroidsFlightConnector::getAPState(uint8_t apBit) {
   if (apBit < 16) {
     return apStates1 & (1 << apBit);
   } else {
@@ -68,10 +84,7 @@ bool BitsAndDroidsFlightConnector::getAPBit(uint8_t apBit) {
     return apStates2 & (1 << apBit);
   }
 }
-
-bool BitsAndDroidsFlightConnector::getLight(uint8_t lightBit) {
-  return lightStates & (1 << lightBit);
-}
+#endif
 
 int BitsAndDroidsFlightConnector::smoothPot(int8_t potPin) {
   int readings[samples] = {};
@@ -191,452 +204,457 @@ void BitsAndDroidsFlightConnector::sendSetElevatorTrim(int value) {
   this->serial->println(valuesBuffer);
 }
 
-bool convBool(const String &input) {
-  if (input == "0") {
-    return false;
-  } else {
-    return true;
-  }
-}
+// Or even simpler, could be used directly in switch cases:
+static inline bool convBool(const char *value) { return value[0] != '0'; }
 
 void BitsAndDroidsFlightConnector::dataHandling() {
-
-  if (this->serial->available() > 0) {
-    receivedValue = this->serial->readStringUntil('\n');
-    switchHandling();
+  while (this->serial->available() > 0) {
+    char c = this->serial->read();
+    if (c == '\n') {
+      buffer[bufferIndex] = '\0';
+      switchHandling();
+      bufferIndex = 0;
+    } else if (bufferIndex < BUFFER_SIZE - 1) {
+      buffer[bufferIndex++] = c;
+    }
   }
 }
+
 void BitsAndDroidsFlightConnector::checkConnection() {
   this->sendGetValueById(1);
 }
 
 void BitsAndDroidsFlightConnector::switchHandling() {
 
-  prefix = receivedValue.substring(0, 4);
-  cutValue = receivedValue.substring(4);
-  int prefixVal = prefix.toInt();
-  lastPrefix = prefixVal;
+  if (bufferIndex < 5 || buffer[4] != ' ') {
+    return;
+  }
+  uint16_t id = parseId(buffer);
+  const char *value = &buffer[5];
 
-  switch (prefixVal) {
+  lastPrefix = id;
+
+  switch (id) {
   case 1: {
-    connected = cutValue.toInt();
+    connected = atoi(value);
     break;
   }
   // Ap
   case 4000: {
-    fuelLevel = cutValue.toInt();
+    fuelLevel = atoi(value);
     break;
   }
-
+#ifndef DISABLE_LIGHT_STATES
   // lights
   case 133: {
-    setLight(LIGHT_TAXI, convBool(cutValue));
+    setLight(LIGHT_TAXI, convBool(value));
     break;
   }
   case 134: {
-    setLight(LIGHT_STROBE, convBool(cutValue));
+    setLight(LIGHT_STROBE, convBool(value));
     break;
   }
 
   case 135: {
-    setLight(LIGHT_PANEL, convBool(cutValue));
+    setLight(LIGHT_PANEL, convBool(value));
     break;
   }
   case 136: {
-    setLight(LIGHT_RECOGNITION, convBool(cutValue));
+    setLight(LIGHT_RECOGNITION, convBool(value));
     break;
   }
   case 137: {
-    setLight(LIGHT_WING, convBool(cutValue));
+    setLight(LIGHT_WING, convBool(value));
     break;
   }
   case 138: {
-    setLight(LIGHT_LOGO, convBool(cutValue));
+    setLight(LIGHT_LOGO, convBool(value));
     break;
   }
   case 139: {
-    setLight(LIGHT_CABIN, convBool(cutValue));
+    setLight(LIGHT_CABIN, convBool(value));
     break;
   }
   case 140: {
-    setLight(LIGHT_HEAD, convBool(cutValue));
+    setLight(LIGHT_HEAD, convBool(value));
     break;
   }
   case 141: {
-    setLight(LIGHT_BRAKE, convBool(cutValue));
+    setLight(LIGHT_BRAKE, convBool(value));
     break;
   }
   case 142: {
-    setLight(LIGHT_NAV, convBool(cutValue));
+    setLight(LIGHT_NAV, convBool(value));
     break;
   }
   case 143: {
-    setLight(LIGHT_BEACON, convBool(cutValue));
+    setLight(LIGHT_BEACON, convBool(value));
     break;
   }
   case 144: {
-    setLight(LIGHT_LANDING, convBool(cutValue));
+    setLight(LIGHT_LANDING, convBool(value));
     break;
   }
+#endif // !DISABLE_LIGHTS
   case 275: {
-    fuelTotalPercentage = cutValue.toInt();
+    fuelTotalPercentage = atoi(value);
     break;
   }
   case 312: {
-    feetAboveGround = cutValue.toInt();
+    feetAboveGround = atoi(value);
     break;
   }
   case 323: {
-    onGround = convBool(cutValue);
+    onGround = convBool(value);
     break;
   }
   // ambient
   case 650: {
-    ambientPressure = cutValue.toInt();
+    ambientPressure = atoi(value);
     break;
   }
   case 651: {
-    ambientTemperature = cutValue.toFloat();
+    ambientTemperature = atof(value);
     break;
   }
   case 652: {
-    ambientWindVelocity = cutValue.toFloat();
+    ambientWindVelocity = atof(value);
     break;
   }
   case 653: {
-    ambientWindDirection = cutValue.toInt();
+    ambientWindDirection = atoi(value);
     break;
   }
   case 654: {
-    ambientPrecipRate = cutValue.toInt();
+    ambientPrecipRate = atoi(value);
     break;
   }
   case 655: {
-    ambientPrecipState = cutValue.toInt();
+    ambientPrecipState = atoi(value);
     break;
   }
   case 656: {
-    headingGyro = cutValue.toInt();
+    headingGyro = atoi(value);
     break;
   }
   case 657: {
-    headingMag = cutValue.toInt();
+    headingMag = atoi(value);
     break;
   }
   case 658: {
-    headingTrue = cutValue.toInt();
+    headingTrue = atoi(value);
     break;
   }
   case 659: {
-    indicatedAltitudeCalibrated = cutValue.toInt();
+    indicatedAltitudeCalibrated = atoi(value);
     break;
   }
 
   // time
   case 338: {
-    localTime = cutValue;
+    localTime = value;
     break;
   }
   case 339: {
-    timezoneOffset = cutValue.toInt();
+    timezoneOffset = atoi(value);
     break;
   }
   case 340: {
-    zuluTime = cutValue;
+    zuluTime = value;
     break;
   }
-    // warnings
+  // warnings
   case 333: {
-    stallWarning = convBool(cutValue);
+    stallWarning = convBool(value);
     break;
   }
   case 334: {
-    overspeedWarning = convBool(cutValue);
+    overspeedWarning = convBool(value);
     break;
   }
     // GPS
   case 454: {
-    gpsCourseToSteer = cutValue.toInt();
+    gpsCourseToSteer = atoi(value);
   }
 
     // Flaps
   case 510: {
-    flapsHandlePct = cutValue.toInt();
+    flapsHandlePct = atoi(value);
     break;
   }
   case 511: {
-    flapsHandleIndex = cutValue.toInt();
+    flapsHandleIndex = atoi(value);
     break;
   }
   case 512: {
-    flapsNumHandlePos = cutValue.toInt();
+    flapsNumHandlePos = atoi(value);
     break;
   }
   case 513: {
-    trailingEdgeFlapsLeftPercent = cutValue.toInt();
+    trailingEdgeFlapsLeftPercent = atoi(value);
     break;
   }
   case 514: {
-    trailingEdgeFlapsRightPercent = cutValue.toInt();
+    trailingEdgeFlapsRightPercent = atoi(value);
     break;
   }
   case 515: {
-    trailingEdgeFlapsLeftAngle = cutValue.toInt();
+    trailingEdgeFlapsLeftAngle = atoi(value);
     break;
   }
   case 516: {
-    trailingEdgeFlapsRightAngle = cutValue.toInt();
+    trailingEdgeFlapsRightAngle = atoi(value);
     break;
   }
   case 517: {
-    leadingEdgeFlapsLeftPct = cutValue.toInt();
+    leadingEdgeFlapsLeftPct = atoi(value);
     break;
   }
   case 518: {
-    leadingEdgeFlapsRightPct = cutValue.toInt();
+    leadingEdgeFlapsRightPct = atoi(value);
     break;
   }
   case 519: {
-    leadingEdgeFlapsLeftAngle = cutValue.toInt();
+    leadingEdgeFlapsLeftAngle = atoi(value);
     break;
   }
   case 520: {
-    leadingEdgeFlapsRightAngle = cutValue.toInt();
+    leadingEdgeFlapsRightAngle = atoi(value);
     break;
   }
 
     // Gears
   case 526: {
-    gearHandlePos = convBool(cutValue);
+    gearHandlePos = convBool(value);
     break;
   }
   case 527: {
-    gearHydraulicPressure = cutValue.toInt();
+    gearHydraulicPressure = atoi(value);
     break;
   }
   case 528: {
-    tailWheelLock = convBool(cutValue);
+    tailWheelLock = convBool(value);
     break;
   }
   case 529: {
-    gearCenterPositionPct = cutValue.toInt();
+    gearCenterPositionPct = atoi(value);
     break;
   }
   case 530: {
-    gearLeftPositionPct = cutValue.toInt();
+    gearLeftPositionPct = atoi(value);
     break;
   }
   case 531: {
-    gearRightPositionPct = cutValue.toInt();
+    gearRightPositionPct = atoi(value);
     break;
   }
   case 532: {
-    gearTailPositionPct = cutValue.toInt();
+    gearTailPositionPct = atoi(value);
     break;
   }
   case 533: {
-    gearAuxPosition = cutValue.toInt();
-    gearAuxPosition = cutValue.toInt();
+    gearAuxPosition = atoi(value);
+    gearAuxPosition = atoi(value);
     break;
   }
   case 536: {
-    gearTotalPct = cutValue.toInt();
+    gearTotalPct = atoi(value);
     break;
   }
-
+#ifndef DISABLE_AP_STATES
     // AP
   case 576: {
-    setAPBit(AP_AVAILABLE, convBool(cutValue));
+    setAPBit(AP_AVAILABLE, convBool(value));
     break;
   }
   case 577: {
-    setAPBit(AP_MASTER, convBool(cutValue));
+    setAPBit(AP_MASTER, convBool(value));
     break;
   }
   case 579: {
-    setAPBit(AP_WING_LEVELER, convBool(cutValue));
+    setAPBit(AP_WING_LEVELER, convBool(value));
     break;
   }
   case 580: {
-    setAPBit(AP_NAV1_HOLD, convBool(cutValue));
+    setAPBit(AP_NAV1_HOLD, convBool(value));
     break;
   }
   case 581: {
-    setAPBit(AP_HEADING_HOLD, convBool(cutValue));
+    setAPBit(AP_HEADING_HOLD, convBool(value));
     break;
   }
   case 583: {
-    setAPBit(AP_ALTITUDE_HOLD, convBool(cutValue));
+    setAPBit(AP_ALTITUDE_HOLD, convBool(value));
     break;
   }
 
   case 585: {
-    setAPBit(AP_ATTITUDE_HOLD, convBool(cutValue));
+    setAPBit(AP_ATTITUDE_HOLD, convBool(value));
     break;
   }
   case 586: {
-    setAPBit(AP_GLIDESLOPE_HOLD, convBool(cutValue));
+    setAPBit(AP_GLIDESLOPE_HOLD, convBool(value));
     break;
   }
   case 588: {
-    setAPBit(AP_APPROACH_HOLD, convBool(cutValue));
+    setAPBit(AP_APPROACH_HOLD, convBool(value));
     break;
   }
   case 589: {
-    setAPBit(AP_BACKCOURSE_HOLD, convBool(cutValue));
+    setAPBit(AP_BACKCOURSE_HOLD, convBool(value));
     break;
   }
   case 591: {
-    setAPBit(AP_FLIGHT_DIRECTOR, convBool(cutValue));
+    setAPBit(AP_FLIGHT_DIRECTOR, convBool(value));
     break;
   }
   case 594: {
-    setAPBit(AP_AIRSPEED_HOLD, convBool(cutValue));
+    setAPBit(AP_AIRSPEED_HOLD, convBool(value));
     break;
   }
   case 596: {
-    setAPBit(AP_MACH_HOLD, convBool(cutValue));
+    setAPBit(AP_MACH_HOLD, convBool(value));
     break;
   }
   case 598: {
-    setAPBit(AP_YAW_DAMPENER, convBool(cutValue));
+    setAPBit(AP_YAW_DAMPENER, convBool(value));
     break;
   }
   case 600: {
-    setAPBit(AP_AUTO_THROTTLE_ARM, convBool(cutValue));
+    setAPBit(AP_AUTO_THROTTLE_ARM, convBool(value));
     break;
   }
   case 601: {
-    setAPBit(AP_TAKEOFF_POWER, convBool(cutValue));
+    setAPBit(AP_TAKEOFF_POWER, convBool(value));
     break;
   }
   case 602: {
-    setAPBit(AP_AUTO_THROTTLE, convBool(cutValue));
+    setAPBit(AP_AUTO_THROTTLE, convBool(value));
     break;
   }
   case 604: {
-    setAPBit(AP_VERTICAL_HOLD, convBool(cutValue));
+    setAPBit(AP_VERTICAL_HOLD, convBool(value));
     break;
   }
   case 605: {
-    setAPBit(AP_RPM_HOLD, convBool(cutValue));
+    setAPBit(AP_RPM_HOLD, convBool(value));
     break;
   }
-
+#endif
     // Rudder trim
   case 498: {
-    elevatorTrimPos = cutValue.toInt();
+    elevatorTrimPos = atoi(value);
     break;
   }
   case 500: {
-    elevatorTrimPct = cutValue.toInt();
+    elevatorTrimPct = atoi(value);
     break;
   }
   case 562: {
-    aileronTrimDegr = cutValue.toInt();
+    aileronTrimDegr = atoi(value);
     break;
   }
   case 563: {
-    aileronTrimPct = cutValue.toInt();
+    aileronTrimPct = atoi(value);
     break;
   }
   case 566: {
-    rudderTrimDegr = cutValue.toInt();
+    rudderTrimDegr = atoi(value);
     break;
   }
   case 567: {
-    rudderTrimPct = cutValue.toInt();
+    rudderTrimPct = atoi(value);
     break;
   }
 
   case 330: {
-    trueVerticalSpeed = cutValue.toInt();
+    trueVerticalSpeed = atoi(value);
     break;
   }
 
   case 326: {
-    indicatedAirspeed = cutValue.toInt();
+    indicatedAirspeed = atoi(value);
     break;
   }
   case 335: {
-    indicatedAltitude = cutValue.toInt();
+    indicatedAltitude = atoi(value);
     break;
   }
   case 336: {
-    indicatedAltitude2 = cutValue.toInt();
+    indicatedAltitude2 = atoi(value);
     break;
   }
 
   case 337: {
-    kohlmanAltimeter = cutValue.toInt();
+    kohlmanAltimeter = atoi(value);
     break;
   }
   case 344: {
-    indicatedHeading = cutValue.toInt();
+    indicatedHeading = atoi(value);
     break;
   }
   case 345: {
-    varometerRate = cutValue.toInt();
+    varometerRate = atoi(value);
     break;
   }
   case 430: {
-    indicatedGPSGroundspeed = cutValue.toInt();
+    indicatedGPSGroundspeed = atoi(value);
     break;
   }
   case 582: {
-    apHeadingLock = cutValue.toInt();
+    apHeadingLock = atoi(value);
     break;
   }
   case 584: {
-    apAltLock = cutValue.toInt();
+    apAltLock = atoi(value);
     break;
   }
   case 590: {
-    apVerticalSpeed = cutValue.toInt();
+    apVerticalSpeed = atoi(value);
     break;
   }
   case 632: {
-    barPressure = cutValue.toInt();
+    barPressure = atoi(value);
     break;
   }
   case 900: {
-    activeCom1 = cutValue.toInt();
+    com1.setActive(&buffer[5]);
     break;
   }
   case 901: {
-    standByCom1 = cutValue.toInt();
+    com1.setStandby(&buffer[5]);
     break;
   }
   case 902: {
-    activeCom2 = cutValue.toInt();
+    com2.setActive(&buffer[5]);
     break;
   }
   case 903: {
-    standByCom2 = cutValue.toInt();
+    com2.setActive(&buffer[5]);
     break;
   }
   case 910: {
-    activeNav1 = cutValue.toInt();
+    nav1.setActive(&buffer[5]);
     break;
   }
   case 911: {
-    standbyNav1 = cutValue.toInt();
+    nav1.setStandby(&buffer[5]);
     break;
   }
   case 912: {
-    activeNav2 = cutValue.toInt();
+    nav2.setActive(&buffer[5]);
     break;
   }
   case 913: {
-    standbyNav2 = cutValue.toInt();
+    nav2.setStandby(&buffer[5]);
     break;
   }
   case 914: {
-    navRadialError1 = cutValue.toInt();
+    navRadialError1 = value;
     break;
   }
   case 915: {
-    navVorLationalt1 = cutValue.toInt();
+    navVorLationalt1 = value;
     break;
   }
     // DME
@@ -659,11 +677,11 @@ void BitsAndDroidsFlightConnector::switchHandling() {
 
     // ADF
   case 954: {
-    adfActiveFreq1 = cutValue.toInt();
+    adfActiveFreq1 = atoi(value);
     break;
   }
   case 955: {
-    adfStandbyFreq1 = cutValue.toInt();
+    adfStandbyFreq1 = atoi(value);
     break;
   }
   case 956: {
@@ -675,244 +693,244 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     break;
   }
   case 958: {
-    adfActiveFreq2 = cutValue.toInt();
+    adfActiveFreq2 = atoi(value);
     break;
   }
   case 959: {
-    adfStandbyFreq2 = cutValue.toInt();
+    adfStandbyFreq2 = atoi(value);
     break;
   }
-  case 960: {
-    adfRadial2 = cutValue;
-    break;
-  }
-  case 961: {
-    adfSignal2 = cutValue;
-    break;
-  }
-
-    // Transponder
-  case 962: {
-    transponderCode1 = cutValue;
-    break;
-  }
-  case 963: {
-    transponderCode2 = cutValue;
-    break;
-  }
+  // case 960: {
+  //   adfRadial2 = cutValue;
+  //   break;
+  // }
+  // case 961: {
+  //   adfSignal2 = cutValue;
+  //   break;
+  // }
+  //
+  //   // Transponder
+  // case 962: {
+  //   transponderCode1 = cutValue;
+  //   break;
+  // }
+  // case 963: {
+  //   transponderCode2 = cutValue;
+  //   break;
+  // }
   case 608: {
-    transponderIdent1 = cutValue.toInt() != 0;
+    transponderIdent1 = atoi(value) != 0;
     break;
   }
   case 609: {
-    transponderState1 = cutValue.toInt();
+    transponderState1 = atoi(value);
     break;
   }
   case 610: {
-    transponderIdent2 = cutValue.toInt() != 0;
+    transponderIdent2 = atoi(value) != 0;
     break;
   }
   case 611: {
-    transponderState2 = cutValue.toInt();
+    transponderState2 = atoi(value);
     break;
   }
 
-    // PLANE DATA
-  case 999: {
-    planeName = cutValue;
-    break;
-  }
+    //   // PLANE DATA
+    // case 999: {
+    //   planeName = cutValue;
+    //   break;
+    // }
 
   case 606: {
-    navObs1 = cutValue.toInt();
+    navObs1 = atoi(value);
     break;
   }
   case 607: {
-    navObs2 = cutValue.toInt();
+    navObs2 = atoi(value);
     break;
   }
   case 234: {
-    fuelTankCenterLevel = cutValue.toInt();
+    fuelTankCenterLevel = atoi(value);
     break;
   }
   case 235: {
-    fuelTankCenter2Level = cutValue.toInt();
+    fuelTankCenter2Level = atoi(value);
     break;
   }
 
   case 236: {
-    fuelTankCenter3Level = cutValue.toInt();
+    fuelTankCenter3Level = atoi(value);
     break;
   }
 
   case 237: {
-    fuelTankLeftMainLevel = cutValue.toInt();
+    fuelTankLeftMainLevel = atoi(value);
     break;
   }
 
   case 238: {
-    fuelTankLeftAuxLevel = cutValue.toInt();
+    fuelTankLeftAuxLevel = atoi(value);
     break;
   }
 
   case 239: {
-    fuelTankLeftTipLevel = cutValue.toInt();
+    fuelTankLeftTipLevel = atoi(value);
     break;
   }
 
   case 240: {
-    fuelTankRightMainLevel = cutValue.toInt();
+    fuelTankRightMainLevel = atoi(value);
     break;
   }
 
   case 241: {
-    fuelTankRightAuxLevel = cutValue.toInt();
+    fuelTankRightAuxLevel = atoi(value);
     break;
   }
 
   case 242: {
-    fuelTankRightTipLevel = cutValue.toInt();
+    fuelTankRightTipLevel = atoi(value);
     break;
   }
 
   case 243: {
-    fuelTankExternal1Level = cutValue.toInt();
+    fuelTankExternal1Level = atoi(value);
     break;
   }
 
   case 244: {
-    fuelTankExternal2Level = cutValue.toInt();
+    fuelTankExternal2Level = atoi(value);
     break;
   }
 
   case 245: {
-    fuelTankCenterCapacity = cutValue.toInt();
+    fuelTankCenterCapacity = atoi(value);
     break;
   }
 
   case 246: {
-    fuelTankCenter2Capacity = cutValue.toInt();
+    fuelTankCenter2Capacity = atoi(value);
     break;
   }
 
   case 247: {
-    fuelTankCenter3Capacity = cutValue.toInt();
+    fuelTankCenter3Capacity = atoi(value);
     break;
   }
 
   case 248: {
-    fuelTankLeftMainCapacity = cutValue.toInt();
+    fuelTankLeftMainCapacity = atoi(value);
     break;
   }
 
   case 249: {
-    fuelTankLeftAuxCapacity = cutValue.toInt();
+    fuelTankLeftAuxCapacity = atoi(value);
     break;
   }
 
   case 250: {
-    fuelTankLeftTipCapacity = cutValue.toInt();
+    fuelTankLeftTipCapacity = atoi(value);
     break;
   }
 
   case 251: {
-    fuelTankRightMainCapacity = cutValue.toInt();
+    fuelTankRightMainCapacity = atoi(value);
     break;
   }
 
   case 252: {
-    fuelTankRightAuxCapacity = cutValue.toInt();
+    fuelTankRightAuxCapacity = atoi(value);
     break;
   }
 
   case 253: {
-    fuelTankRightTipCapacity = cutValue.toInt();
+    fuelTankRightTipCapacity = atoi(value);
     break;
   }
 
   case 254: {
-    fuelTankExternal1Capacity = cutValue.toInt();
+    fuelTankExternal1Capacity = atoi(value);
     break;
   }
 
   case 255: {
-    fuelTankExternal2Capacity = cutValue.toInt();
+    fuelTankExternal2Capacity = atoi(value);
     break;
   }
 
   case 256: {
-    fuelTankLeftCapacity = cutValue.toFloat();
+    fuelTankLeftCapacity = atof(value);
     break;
   }
   case 257: {
-    fuelTankRightCapacity = cutValue.toFloat();
+    fuelTankRightCapacity = atof(value);
     break;
   }
   case 258: {
-    fuelTankCenterQuantity = cutValue.toInt();
+    fuelTankCenterQuantity = atoi(value);
     break;
   }
   case 259: {
-    fuelTankCenter2Quantity = cutValue.toInt();
+    fuelTankCenter2Quantity = atoi(value);
     break;
   }
   case 260: {
-    fuelTankCenter3Quantity = cutValue.toInt();
+    fuelTankCenter3Quantity = atoi(value);
     break;
   }
   case 261: {
-    fuelTankLeftMainQuantity = cutValue.toInt();
+    fuelTankLeftMainQuantity = atoi(value);
     break;
   }
 
   case 262: {
-    fuelTankLeftAuxQuantity = cutValue.toInt();
+    fuelTankLeftAuxQuantity = atoi(value);
     break;
   }
 
   case 263: {
-    fuelTankLeftTipQuantity = cutValue.toInt();
+    fuelTankLeftTipQuantity = atoi(value);
     break;
   }
 
   case 264: {
-    fuelTankRightMainQuantity = cutValue.toInt();
+    fuelTankRightMainQuantity = atoi(value);
     break;
   }
 
   case 265: {
-    fuelTankRightAuxCapacity = cutValue.toInt();
+    fuelTankRightAuxCapacity = atoi(value);
     break;
   }
 
   case 266: {
-    fuelTankRightTipQuantity = cutValue.toInt();
+    fuelTankRightTipQuantity = atoi(value);
     break;
   }
 
   case 267: {
-    fuelTankExternal1Quantity = cutValue.toInt();
+    fuelTankExternal1Quantity = atoi(value);
     break;
   }
   case 268: {
-    fuelTankExternal2Quantity = cutValue.toInt();
+    fuelTankExternal2Quantity = atoi(value);
     break;
   }
 
   case 269: {
-    fuelTankLeftQuantity = cutValue.toFloat();
+    fuelTankLeftQuantity = atof(value);
     break;
   }
   case 270: {
-    fuelTankRightQuantity = cutValue.toFloat();
+    fuelTankRightQuantity = atof(value);
     break;
   }
   case 271: {
-    fuelTankTotalQuantity = cutValue.toInt();
+    fuelTankTotalQuantity = atoi(value);
     break;
   }
   case 505: {
-    parkingBrakeIndicator = convBool(cutValue);
+    parkingBrakeIndicator = convBool(value);
     break;
   }
 
@@ -924,6 +942,43 @@ void BitsAndDroidsFlightConnector::switchHandling() {
   default:
     break;
   }
+}
+const char *
+BitsAndDroidsFlightConnector::convertToFreq(const char *unprocFreq) {
+  // Check input validity
+  if (!unprocFreq || strlen(unprocFreq) < 4)
+    return "000.000";
+
+  // Clear buffer
+  memset(freqBuffer, 0, FREQ_BUFFER_SIZE);
+
+  // Copy first 3 digits
+  strncpy(freqBuffer, unprocFreq, 3);
+  // Add decimal point
+  freqBuffer[3] = '.';
+  // Copy remaining digits
+  strcpy(freqBuffer + 4, unprocFreq + 3);
+
+  return freqBuffer;
+}
+
+const char *
+BitsAndDroidsFlightConnector::convertToNavFreq(const char *unprocFreq) {
+  // Check input validity
+  if (!unprocFreq || strlen(unprocFreq) < 5)
+    return "000.00";
+
+  // Clear buffer
+  memset(freqBuffer, 0, FREQ_BUFFER_SIZE);
+
+  // Copy first 3 digits
+  strncpy(freqBuffer, unprocFreq, 3);
+  // Add decimal point
+  freqBuffer[3] = '.';
+  // Copy exactly 2 digits for NAV freq
+  strncpy(freqBuffer + 4, unprocFreq + 3, 2);
+
+  return freqBuffer;
 }
 
 void BitsAndDroidsFlightConnector::propsInputHandling(int propPin1,
@@ -1072,21 +1127,10 @@ void BitsAndDroidsFlightConnector::superAdvancedInputHandling(
 // Set jitter algorithm EMA_a
 void BitsAndDroidsFlightConnector::setEMA_a(float a) { EMA_a = a; }
 
-String BitsAndDroidsFlightConnector::convertToFreq(const String &unprocFreq) {
-  String stringA = unprocFreq.substring(0, 3);
-  String stringB = unprocFreq.substring(3);
-  return stringA + "." + stringB;
-}
-
-String
-BitsAndDroidsFlightConnector::convertToNavFreq(const String &unprocFreq) {
-  String stringA = unprocFreq.substring(0, 3);
-  String stringB = unprocFreq.substring(3, 5);
-  return stringA + "." + stringB;
-}
 // RECEIVING VALUES
 // GPS
 
 //----------------------
 // TRANSMIT FUNCTIONS
 // AP
+char BitsAndDroidsFlightConnector::freqBuffer[FREQ_BUFFER_SIZE];

@@ -74,6 +74,24 @@ pub fn generate_library(
         )
         .unwrap();
     fs::copy(resource_path, library_dest_path.join("library.properties")).unwrap();
+
+    let resource_path = app
+        .app_handle()
+        .path()
+        .resolve("connector_library/UserSettings.h", BaseDirectory::Resource)
+        .unwrap();
+    fs::copy(resource_path, library_dest_path.join("UserSettings.h")).unwrap();
+
+    let resource_path = app
+        .app_handle()
+        .path()
+        .resolve(
+            "connector_library/RadioFrequencies.h",
+            BaseDirectory::Resource,
+        )
+        .unwrap();
+    fs::copy(resource_path, library_dest_path.join("RadioFrequencies.h")).unwrap();
+
     println!("Library generated in dir: {}", path);
 }
 

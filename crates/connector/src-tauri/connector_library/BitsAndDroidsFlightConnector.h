@@ -1,8 +1,9 @@
+#include "RadioFrequencies.h"
+#include "UserSettings.h"
 #include <cstdint>
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "modernize-use-nodiscard"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #ifndef BitsAndDroidsFlightConnector_h
 #define BitsAndDroidsFlightConnector_h
 
@@ -638,6 +639,50 @@ enum sendCommands {
 class BitsAndDroidsFlightConnector {
   // user-accessible "public" interface
 public:
+#ifndef DISABLE_LIGHT_STATES
+  bool getLightState(uint8_t lightBit);
+  enum LightBits {
+    LIGHT_TAXI = 0,
+    LIGHT_STROBE = 1,
+    LIGHT_PANEL = 2,
+    LIGHT_RECOGNITION = 3,
+    LIGHT_WING = 4,
+    LIGHT_LOGO = 5,
+    LIGHT_CABIN = 6,
+    LIGHT_HEAD = 7,
+    LIGHT_BRAKE = 8,
+    LIGHT_NAV = 9,
+    LIGHT_BEACON = 10,
+    LIGHT_LANDING = 11,
+  };
+
+#endif
+#ifndef DISABLE_AP_STATES
+  enum APBits {
+    AP_MASTER = 0,
+    AP_WING_LEVELER = 1,
+    AP_NAV1_HOLD = 2,
+    AP_HEADING_HOLD = 3,
+    AP_ALTITUDE_HOLD = 4,
+    AP_ATTITUDE_HOLD = 5,
+    AP_GLIDESLOPE_HOLD = 6,
+    AP_APPROACH_HOLD = 7,
+    AP_BACKCOURSE_HOLD = 8,
+    AP_FLIGHT_DIRECTOR = 9,
+    AP_AIRSPEED_HOLD = 10,
+    AP_MACH_HOLD = 11,
+    AP_YAW_DAMPENER = 12,
+    AP_AUTO_THROTTLE_ARM = 13,
+    AP_TAKEOFF_POWER = 14,
+    AP_AUTO_THROTTLE = 15,
+    AP_VERTICAL_HOLD = 16,
+    AP_RPM_HOLD = 17,
+    AP_AVAILABLE = 18
+  };
+
+  bool getAPState(uint8_t apBit);
+#endif
+
   int getFuelLevel() { return fuelLevel; };
 
   int connected = 0;
@@ -652,7 +697,7 @@ public:
 #else            // This handles the ESP32 and other boards with HardwareSerial
   BitsAndDroidsFlightConnector(SoftwareSerial *serial);
 #endif
-  String getVersion() { return "0.9.9.9"; }
+  const char *getVersion() { return "0.9.9.9"; }
   void send(int command);
   void switchHandling();
   int getConnected() { return connected; };
@@ -710,31 +755,18 @@ public:
   int getTrueVerticalSpeed() { return trueVerticalSpeed; };
   int getLastPrefix();
 
-  // Lights
-  bool getLightTaxiOn() { return getLight(LIGHT_TAXI); };
-  bool getLightStrobeOn() { return getLight(LIGHT_STROBE); };
-  bool getLightPanelOn() { return getLight(LIGHT_PANEL); };
-  bool getLightRecognitionOn() { return getLight(LIGHT_RECOGNITION); };
-  bool getLightWingOn() { return getLight(LIGHT_WING); };
-  bool getLightLogoOn() { return getLight(LIGHT_LOGO); };
-  bool getLightCabinOn() { return getLight(LIGHT_CABIN); };
-  bool getLightHeadOn() { return getLight(LIGHT_HEAD); };
-  bool getLightBrakeOn() { return getLight(LIGHT_BRAKE); };
-  bool getLightNavOn() { return getLight(LIGHT_NAV); };
-  bool getLightBeaconOn() { return getLight(LIGHT_BEACON); };
-  bool getLightLandingOn() { return getLight(LIGHT_LANDING); };
-
   // Coms
-  long getActiveCom1() { return activeCom1; };
-  long getActiveCom2() { return activeCom2; };
-  long getStandbyCom1() { return standByCom1; };
-  long getStandbyCom2() { return standByCom2; };
-  long getActiveNav1() { return activeNav1; };
-  long getActiveNav2() { return activeNav2; };
-  long getStandbyNav1() { return standbyNav1; };
-  long getStandbyNav2() { return standbyNav2; };
-  String getNavRadialError1() { return navRadialError1; };
-  String getNavVorLationalt1() { return navVorLationalt1; };
+  const char *getCom1ActiveFreq() { return com1.getActive(); };
+  const char *getCom1StandbyFreq() { return com1.getStandby(); };
+  const char *getCom2ActiveFreq() { return com2.getActive(); };
+  const char *getCom2StandbyFreq() { return com2.getStandby(); };
+  const char *getNav1ActiveFreq() { return nav1.getActive(); };
+  const char *getNav1StandbyFreq() { return nav1.getStandby(); };
+  const char *getNav2ActiveFreq() { return nav2.getActive(); };
+  const char *getNav2StandbyFreq() { return nav2.getStandby(); };
+
+  const char *getNavRadialError1() { return navRadialError1; };
+  const char *getNavVorLationalt1() { return navVorLationalt1; };
 
   int getNavObs1() { return navObs1; };
   int getNavObs2() { return navObs2; };
@@ -780,49 +812,51 @@ public:
   int getElevatorTrimPct() { return elevatorTrimPct; };
 
   // DME
-  String getNavDme1() { return navDme1; };
-  String getNavDme2() { return navDme2; };
-  String getNavDmeSpeed1() { return navDmeSpeed1; };
-  String getNavDmeSpeed2() { return navDmeSpeed2; };
+  const char *getNavDme1() { return navDme1; };
+  const char *getNavDme2() { return navDme2; };
+  const char *getNavDmeSpeed1() { return navDmeSpeed1; };
+  const char *getNavDmeSpeed2() { return navDmeSpeed2; };
 
   // ADF
   long getAdfActiveFreq1() { return adfActiveFreq1; };
   long getAdfStandbyFreq1() { return adfStandbyFreq1; };
-  String getAdfRadial1() { return adfRadial1; };
-  String getAdfSignal1() { return adfSignal1; };
+  const char *getAdfRadial1() { return adfRadial1; };
+  const char *getAdfSignal1() { return adfSignal1; };
   long getAdfActiveFreq2() { return adfActiveFreq2; };
   long getAdfStandbyFreq2() { return adfStandbyFreq2; };
-  String getAdfRadial2() { return adfRadial2; };
-  String getAdfSignal2() { return adfSignal2; };
+  const char *getAdfRadial2() { return adfRadial2; };
+  const char *getAdfSignal2() { return adfSignal2; };
 
   // Transponder
-  String getTransponderCode1() { return transponderCode1; };
-  String getTransponderCode2() { return transponderCode2; };
+  const char *getTransponderCode1() { return transponderCode1; };
+  const char *getTransponderCode2() { return transponderCode2; };
   bool getTransponderIdent1() { return transponderIdent1; };
   bool getTransponderIdent2() { return transponderIdent2; };
   uint8_t getTransponderState1() { return transponderState1; };
   uint8_t getTransponderState2() { return transponderState2; };
 
+#ifndef DISABLE_AP_STATES
   // AP
-  bool getAPAvailable() { return getAPBit(AP_AVAILABLE); };
-  bool getAPMasterOn() { return getAPBit(AP_MASTER); };
-  bool getAPWingLevelerOn() { return getAPBit(AP_WING_LEVELER); };
-  bool getAPNav1LockOn() { return getAPBit(AP_NAV1_HOLD); };
-  bool getAPHeadingLockOn() { return getAPBit(AP_HEADING_HOLD); };
-  bool getAPAltitudeLockOn() { return getAPBit(AP_ALTITUDE_HOLD); };
-  bool getAPAttitudeLockOn() { return getAPBit(AP_ATTITUDE_HOLD); };
-  bool getAPGlideslopeHoldOn() { return getAPBit(AP_GLIDESLOPE_HOLD); };
-  bool getAPApproachHoldOn() { return getAPBit(AP_APPROACH_HOLD); };
-  bool getAPBackcourseHoldOn() { return getAPBit(AP_BACKCOURSE_HOLD); };
-  bool getAPFlightDirectorOn() { return getAPBit(AP_FLIGHT_DIRECTOR); };
-  bool getAPAirspeedHoldOn() { return getAPBit(AP_AIRSPEED_HOLD); };
-  bool getAPMachHoldOn() { return getAPBit(AP_MACH_HOLD); };
-  bool getAPYawDampenerOn() { return getAPBit(AP_YAW_DAMPENER); };
-  bool getAPAutothrottleArm() { return getAPBit(AP_AUTO_THROTTLE_ARM); };
-  bool getAPTakeoffPowerOn() { return getAPBit(AP_TAKEOFF_POWER); };
-  bool getAPAutothrottleOn() { return getAPBit(AP_AUTO_THROTTLE); };
-  bool getAPVerticalHoldOn() { return getAPBit(AP_VERTICAL_HOLD); };
-  bool getAPRPMHoldOn() { return getAPBit(AP_RPM_HOLD); };
+  bool getAPAvailable() { return getAPState(AP_AVAILABLE); };
+  bool getAPMasterOn() { return getAPState(AP_MASTER); };
+  bool getAPWingLevelerOn() { return getAPState(AP_WING_LEVELER); };
+  bool getAPNav1LockOn() { return getAPState(AP_NAV1_HOLD); };
+  bool getAPHeadingLockOn() { return getAPState(AP_HEADING_HOLD); };
+  bool getAPAltitudeLockOn() { return getAPState(AP_ALTITUDE_HOLD); };
+  bool getAPAttitudeLockOn() { return getAPState(AP_ATTITUDE_HOLD); };
+  bool getAPGlideslopeHoldOn() { return getAPState(AP_GLIDESLOPE_HOLD); };
+  bool getAPApproachHoldOn() { return getAPState(AP_APPROACH_HOLD); };
+  bool getAPBackcourseHoldOn() { return getAPState(AP_BACKCOURSE_HOLD); };
+  bool getAPFlightDirectorOn() { return getAPState(AP_FLIGHT_DIRECTOR); };
+  bool getAPAirspeedHoldOn() { return getAPState(AP_AIRSPEED_HOLD); };
+  bool getAPMachHoldOn() { return getAPState(AP_MACH_HOLD); };
+  bool getAPYawDampenerOn() { return getAPState(AP_YAW_DAMPENER); };
+  bool getAPAutothrottleArm() { return getAPState(AP_AUTO_THROTTLE_ARM); };
+  bool getAPTakeoffPowerOn() { return getAPState(AP_TAKEOFF_POWER); };
+  bool getAPAutothrottleOn() { return getAPState(AP_AUTO_THROTTLE); };
+  bool getAPVerticalHoldOn() { return getAPState(AP_VERTICAL_HOLD); };
+  bool getAPRPMHoldOn() { return getAPState(AP_RPM_HOLD); };
+#endif
 
   bool getParkingBrakeIndicator() { return parkingBrakeIndicator; };
 
@@ -882,7 +916,7 @@ public:
   bool getMasterCautionOn() const { return masterCautionOn; };
 
   // Plane data
-  String getPlaneName() { return planeName; };
+  const char *getPlaneName() { return planeName; };
 
   //--------------------------------------------
   // TRANSMIT DATA
@@ -896,9 +930,9 @@ public:
   int smoothPot(int8_t potPin);
   // Time data
 
-  String getZuluTime() { return zuluTime; };
+  const char *getZuluTime() { return zuluTime; };
   int getTimezoneOffset() { return timezoneOffset; };
-  String getLocalTime() { return localTime; };
+  const char *getLocalTime() { return localTime; };
 
   // DO NOT REMOVE THIS COMMENT ITS USED BY THE CONNECTOR TO GENERATE CUSTOM
   // EVENTS
@@ -906,6 +940,9 @@ public:
   // END GETTER TEMPLATE
 
 private:
+  static const uint8_t FREQ_BUFFER_SIZE = 8; // Enough for "xxx.xxx\0"
+  static char freqBuffer[FREQ_BUFFER_SIZE];
+
   int fuelLevel;
   //--------------------------------------------
   // TRANSMIT DATA
@@ -916,11 +953,11 @@ private:
 
   int analogDiff = 1;
 
-  int8_t lastPrefix = 0;
+  int16_t lastPrefix = 0;
 
-  String inputText;
-  String convertToFreq(const String &unprocFreq);
-  String convertToNavFreq(const String &unprocFreq);
+  const char *inputText;
+  const char *convertToFreq(const char *unprocFreq);
+  const char *convertToNavFreq(const char *unprocFreq);
   bool masterWarningOn = false;
   bool masterCautionOn = false;
 
@@ -942,28 +979,14 @@ private:
   int headingGyro;
   int headingMag;
   int headingTrue;
+#ifndef DISABLE_LIGHT_STATES
 
   // lights
   uint16_t lightStates;
 
-  enum LightBits {
-    LIGHT_TAXI = 0,
-    LIGHT_STROBE = 1,
-    LIGHT_PANEL = 2,
-    LIGHT_RECOGNITION = 3,
-    LIGHT_WING = 4,
-    LIGHT_LOGO = 5,
-    LIGHT_CABIN = 6,
-    LIGHT_HEAD = 7,
-    LIGHT_BRAKE = 8,
-    LIGHT_NAV = 9,
-    LIGHT_BEACON = 10,
-    LIGHT_LANDING = 11,
-  };
-
   void setLight(uint8_t lightBit, bool state);
-  bool getLight(uint8_t lightBit);
 
+#endif // !DISABLE_LIGHTS
   // ambient
   float ambientTemperature;
   int ambientPressure;
@@ -972,34 +995,13 @@ private:
   int ambientPrecipRate;
   int ambientPrecipState;
 
+#ifndef DISABLE_AP_STATES
   int16_t apStates1;
   int8_t apStates2;
 
-  enum APBits {
-    AP_MASTER = 0,
-    AP_WING_LEVELER = 1,
-    AP_NAV1_HOLD = 2,
-    AP_HEADING_HOLD = 3,
-    AP_ALTITUDE_HOLD = 4,
-    AP_ATTITUDE_HOLD = 5,
-    AP_GLIDESLOPE_HOLD = 6,
-    AP_APPROACH_HOLD = 7,
-    AP_BACKCOURSE_HOLD = 8,
-    AP_FLIGHT_DIRECTOR = 9,
-    AP_AIRSPEED_HOLD = 10,
-    AP_MACH_HOLD = 11,
-    AP_YAW_DAMPENER = 12,
-    AP_AUTO_THROTTLE_ARM = 13,
-    AP_TAKEOFF_POWER = 14,
-    AP_AUTO_THROTTLE = 15,
-    AP_VERTICAL_HOLD = 16,
-    AP_RPM_HOLD = 17,
-    AP_AVAILABLE = 18
-  };
-
   void setAPBit(uint8_t apBit, bool state);
-  bool getAPBit(uint8_t apBit);
-  // AP
+// AP
+#endif
 
   int8_t fuelTankCenterLevel;
   int8_t fuelTankCenter2Level;
@@ -1095,44 +1097,41 @@ private:
   void sendCombinedPropValues();
 
   // Coms
-  long activeCom1;
-  long activeCom2;
-  long standByCom1;
-  long standByCom2;
-  long activeNav1;
-  long activeNav2;
-  long standbyNav1;
-  long standbyNav2;
-  String navRadialError1;
-  String navVorLationalt1;
+
+  RadioFrequencies com1{};
+  RadioFrequencies com2{};
+  RadioFrequencies nav1{};
+  RadioFrequencies nav2{};
+  const char *navRadialError1;
+  const char *navVorLationalt1;
 
   // GPS
   int gpsCourseToSteer;
 
   // DME
-  String navDme1 = "";
-  String navDme2 = "";
-  String navDmeSpeed1 = "";
-  String navDmeSpeed2 = "";
+  const char *navDme1 = "";
+  const char *navDme2 = "";
+  const char *navDmeSpeed1 = "";
+  const char *navDmeSpeed2 = "";
 
   // ADF
   long adfActiveFreq1 = 0;
   long adfStandbyFreq1 = 0;
-  String adfRadial1 = "";
-  String adfSignal1 = "";
+  const char *adfRadial1 = "";
+  const char *adfSignal1 = "";
   long adfActiveFreq2 = 0;
   long adfStandbyFreq2 = 0;
-  String adfRadial2 = "";
-  String adfSignal2 = "";
+  const char *adfRadial2 = "";
+  const char *adfSignal2 = "";
 
   // time
-  String zuluTime = "";
+  const char *zuluTime = "";
   int timezoneOffset;
-  String localTime = "";
+  const char *localTime = "";
 
   // Transponder
-  String transponderCode1 = "";
-  String transponderCode2 = "";
+  const char *transponderCode1 = "";
+  const char *transponderCode2 = "";
   bool transponderIdent1 = false;
   bool transponderIdent2 = false;
   uint8_t transponderState1 = 0;
@@ -1204,10 +1203,10 @@ private:
   int rightBrakeFormated = 0;
   int leftBrakeFormated = 0;
   // Plane data
-  String planeName = "";
-  String receivedValue;
-  String prefix = "";
-  String cutValue = "";
+  const char *planeName = "";
+  const char *receivedValue;
+  const char *prefix = "";
+  const char *cutValue = "";
   float EMA_a = 0.1;
   int EMA_S = 0;
   int average = 0;
