@@ -1,5 +1,7 @@
-#include "RadioFrequencies.h"
 #include "UserSettings.h"
+#ifndef DISABLE_COM_FREQUENCIES
+#include "RadioFrequencies.h"
+#endif
 #include <cstdint>
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "modernize-use-nodiscard"
@@ -11,7 +13,7 @@
     !defined(PICO_RP2040)
 #include "SoftwareSerial.h"
 #endif
-
+#ifndef DISABLE_INPUTS
 enum sendCommands {
 
   sendApMasterOn = 301,
@@ -632,6 +634,7 @@ enum sendCommands {
   sendSimPauseOn = 908,
   sendSimPauseOff = 909
 };
+#endif //! DISABLE_INPUTS
 
 #define SEND_GET_COMMAND 999
 
@@ -683,8 +686,6 @@ public:
   bool getAPState(uint8_t apBit);
 #endif
 
-  int getFuelLevel() { return fuelLevel; };
-
   int connected = 0;
 
   BitsAndDroidsFlightConnector();
@@ -699,10 +700,10 @@ public:
 #endif
   const char *getVersion() { return "0.9.9.9"; }
   void send(int command);
-  void switchHandling();
+
   int getConnected() { return connected; };
   void checkConnection();
-  void dataHandling();
+#ifndef DISABLE_PRIMARY_CONTROLS
   void simpleInputHandling(int throttlePin);
   void advancedInputHandling(int eng1Pin, int eng2Pin, int eng3Pin,
                              int eng4Pin);
@@ -720,13 +721,21 @@ public:
   void sendSetYokeAxis(int8_t elevatorPin, int8_t aileronPin);
   void sendSetRudderPot(int8_t potPin);
   void sendSetElevatorTrimPot(int8_t potPin, int minVal, int maxVal);
+#endif
+
+#ifndef DISABLE_INPUTS
   void sendSetKohlmanAltimeterInHg(float kohlmanInhg);
   void sendSetKohlmanAltimeterMb(float kohlmanMb);
   void setEMA_a(float a);
   int8_t getPercentage(int value, int minVal, float maxVal, bool reversed);
   void sendGetValueById(int id);
-  // void setSampleSize(int8_t amntSamples){sampleSize = amntSamples;};
-  // Data
+#endif // !DISABLE_INPUTS
+// void setSampleSize(int8_t amntSamples){sampleSize = amntSamples;};
+// Data
+#ifndef DISABLE_OUTPUTS
+  void switchHandling();
+  void dataHandling();
+  int getFuelLevel() { return fuelLevel; };
   int feetAboveGround = 0;
   int getFeetAboveGround() { return feetAboveGround; };
 
@@ -755,7 +764,8 @@ public:
   int getTrueVerticalSpeed() { return trueVerticalSpeed; };
   int getLastPrefix();
 
-  // Coms
+// Coms
+#ifndef DISABLE_COM_FREQUENCIES
   const char *getCom1ActiveFreq() { return com1.getActive(); };
   const char *getCom1StandbyFreq() { return com1.getStandby(); };
   const char *getCom2ActiveFreq() { return com2.getActive(); };
@@ -764,6 +774,7 @@ public:
   const char *getNav1StandbyFreq() { return nav1.getStandby(); };
   const char *getNav2ActiveFreq() { return nav2.getActive(); };
   const char *getNav2StandbyFreq() { return nav2.getStandby(); };
+#endif
 
   const char *getNavRadialError1() { return navRadialError1; };
   const char *getNavVorLationalt1() { return navVorLationalt1; };
@@ -918,6 +929,12 @@ public:
   // Plane data
   const char *getPlaneName() { return planeName; };
 
+  // Time data
+
+  const char *getZuluTime() { return zuluTime; };
+  int getTimezoneOffset() { return timezoneOffset; };
+  const char *getLocalTime() { return localTime; };
+#endif
   //--------------------------------------------
   // TRANSMIT DATA
   // These values can be retrieved to assure user is not able to overwrite the
@@ -928,11 +945,6 @@ public:
   // library-accessible "private" interface
 
   int smoothPot(int8_t potPin);
-  // Time data
-
-  const char *getZuluTime() { return zuluTime; };
-  int getTimezoneOffset() { return timezoneOffset; };
-  const char *getLocalTime() { return localTime; };
 
   // DO NOT REMOVE THIS COMMENT ITS USED BY THE CONNECTOR TO GENERATE CUSTOM
   // EVENTS
@@ -943,13 +955,14 @@ private:
   static const uint8_t FREQ_BUFFER_SIZE = 8; // Enough for "xxx.xxx\0"
   static char freqBuffer[FREQ_BUFFER_SIZE];
 
+  Stream *serial;
+#ifndef DISABLE_OUTPUTS
+
   int fuelLevel;
   //--------------------------------------------
   // TRANSMIT DATA
   // These values can be ommited and printed to serial directly
   // They are mainly implemented to improve readability of your code
-
-  Stream *serial;
 
   int analogDiff = 1;
 
@@ -1021,8 +1034,6 @@ private:
 
   int fuelTotalPercentage;
 
-  char valuesBuffer[40];
-
   bool advanced;
   int engine1 = 0;
   int engine2 = 0;
@@ -1039,69 +1050,16 @@ private:
   int prop1 = 0;
   int prop2 = 0;
 
-  int engines[4] = {0, 0, 0, 0};
-  int mixturePercentage[4] = {0, 0, 0, 0};
-  int props[4] = {0, 0, 0, 0};
-
-  int flaps;
-  int oldFlaps;
-
-  int value;
-  int oldValue;
-
   int navObs1;
   int navObs2;
 
-  int propValue1;
-  int propValue2;
-  int propValue3;
-  int propValue4;
-  int oldPropValue1;
-  int oldPropValue2;
-  int oldPropValue3;
-  int oldPropValue4;
-
-  int valueEng1;
-  int valueEng2;
-  int valueEng3;
-  int valueEng4;
-
-  int oldValueEng1;
-  int oldValueEng2;
-  int oldValueEng3;
-  int oldValueEng4;
-
-  int mixtureValue1;
-  int mixtureValue2;
-  int mixtureValue3;
-  int mixtureValue4;
-  int oldMixtureValue1;
-  int oldMixtureValue2;
-  int oldMixtureValue3;
-  int oldMixtureValue4;
-
-  int oldTrim;
-  int currentTrim;
-
-  int currentRudder;
-  int oldRudderAxis;
-
-  int currentLeftBrake;
-  int oldLeftBrake;
-
-  int currentRightBrake;
-  int oldRightBrake;
-
-  int packagedData;
-  void sendCombinedThrottleValues();
-  void sendCombinedPropValues();
-
-  // Coms
-
+// Coms
+#ifndef DISABLE_COM_FREQUENCIES
   RadioFrequencies com1{};
   RadioFrequencies com2{};
   RadioFrequencies nav1{};
   RadioFrequencies nav2{};
+#endif
   const char *navRadialError1;
   const char *navVorLationalt1;
 
@@ -1198,8 +1156,6 @@ private:
   float fuelTankLeftQuantity;
   float fuelTankRightQuantity;
   int fuelTankTotalQuantity;
-
-  int calculateAxis(int value, int minVal, int maxVal);
   int rightBrakeFormated = 0;
   int leftBrakeFormated = 0;
   // Plane data
@@ -1207,16 +1163,74 @@ private:
   const char *receivedValue;
   const char *prefix = "";
   const char *cutValue = "";
-  float EMA_a = 0.1;
-  int EMA_S = 0;
-  int average = 0;
-  int total = 0;
+#endif
+  int calculateAxis(int value, int minVal, int maxVal);
+#ifndef DISABLE_PRIMARY_CONTROLS
+  int engines[4] = {0, 0, 0, 0};
+  int mixturePercentage[4] = {0, 0, 0, 0};
+  int props[4] = {0, 0, 0, 0};
 
+  int flaps;
+  int oldFlaps;
+
+  int value;
+  int oldValue;
+
+  int propValue1;
+  int propValue2;
+  int propValue3;
+  int propValue4;
+  int oldPropValue1;
+  int oldPropValue2;
+  int oldPropValue3;
+  int oldPropValue4;
+
+  int valueEng1;
+  int valueEng2;
+  int valueEng3;
+  int valueEng4;
+
+  int oldValueEng1;
+  int oldValueEng2;
+  int oldValueEng3;
+  int oldValueEng4;
+
+  int mixtureValue1;
+  int mixtureValue2;
+  int mixtureValue3;
+  int mixtureValue4;
+  int oldMixtureValue1;
+  int oldMixtureValue2;
+  int oldMixtureValue3;
+  int oldMixtureValue4;
+
+  int oldTrim;
+  int currentTrim;
+
+  int currentRudder;
+  int oldRudderAxis;
+
+  int currentLeftBrake;
+  int oldLeftBrake;
+
+  int currentRightBrake;
+  int oldRightBrake;
+
+  void sendCombinedThrottleValues();
+  void sendCombinedPropValues();
+#endif // !DISABLE_PRIMARY_CONTROLS
   // DO NOT REMOVE THIS COMMENT ITS USED BY THE CONNECTOR TO GENERATE CUSTOM
   // EVENTS
   // START VAR TEMPLATE
   // END VAR TEMPLATE
+  int packagedData;
+  char valuesBuffer[40];
   static const int samples = 10;
+
+  float EMA_a = 0.1;
+  int EMA_S = 0;
+  int average = 0;
+  int total = 0;
 };
 
 #endif

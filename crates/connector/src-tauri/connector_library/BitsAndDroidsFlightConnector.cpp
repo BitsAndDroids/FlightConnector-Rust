@@ -36,6 +36,11 @@ BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector(
 }
 #endif
 
+#ifndef DISABLE_INPUTS
+
+// Set jitter algorithm EMA_a
+void BitsAndDroidsFlightConnector::setEMA_a(float a) { EMA_a = a; }
+
 void BitsAndDroidsFlightConnector::sendGetValueById(int id) {
   packagedData = sprintf(valuesBuffer, "%i %i", SEND_GET_COMMAND, id);
   this->serial->println(valuesBuffer);
@@ -46,6 +51,42 @@ void BitsAndDroidsFlightConnector::send(int command) {
   this->serial->println(valuesBuffer);
 }
 
+int BitsAndDroidsFlightConnector::smoothPot(int8_t potPin) {
+  int readings[samples] = {};
+  total = 0;
+  for (int &reading : readings) {
+    total = total - reading;
+    reading = analogRead(potPin);
+    total = total + reading;
+    delay(1);
+  }
+  average = total / samples;
+  return average;
+}
+
+void BitsAndDroidsFlightConnector::sendSetKohlmanAltimeterInHg(float value) {
+  float mbValue = value * 33.8639;
+  int valueToSend = mbValue * 16;
+  packagedData = sprintf(valuesBuffer, "%s %d", "377", valueToSend);
+  this->serial->println(valuesBuffer);
+}
+
+void BitsAndDroidsFlightConnector::sendSetKohlmanAltimeterMb(float value) {
+  int valueToSend = value * 16;
+  packagedData = sprintf(valuesBuffer, "%s %d", "377", valueToSend);
+  this->serial->println(valuesBuffer);
+}
+
+int BitsAndDroidsFlightConnector::calculateAxis(int value, int minVal,
+                                                int maxVal) {
+  return map(value, minVal, maxVal, -16383, 16383);
+}
+
+void BitsAndDroidsFlightConnector::checkConnection() {
+  this->sendGetValueById(1);
+}
+#endif //! DISABLE_INPUTS
+//
 #ifndef DISABLE_LIGHT_STATES
 void BitsAndDroidsFlightConnector::setLight(uint8_t lightBit, bool state) {
   if (state) {
@@ -86,17 +127,148 @@ bool BitsAndDroidsFlightConnector::getAPState(uint8_t apBit) {
 }
 #endif
 
-int BitsAndDroidsFlightConnector::smoothPot(int8_t potPin) {
-  int readings[samples] = {};
-  total = 0;
-  for (int &reading : readings) {
-    total = total - reading;
-    reading = analogRead(potPin);
-    total = total + reading;
-    delay(1);
+#ifndef DISABLE_PRIMARY_CONTROLS
+void BitsAndDroidsFlightConnector::propsInputHandling(int propPin1,
+                                                      int propPin2,
+                                                      int propPin3,
+                                                      int propPin4) {
+  bool changed = false;
+  propValue1 = smoothPot(propPin1);
+  propValue2 = smoothPot(propPin2);
+  propValue3 = smoothPot(propPin3);
+  propValue4 = smoothPot(propPin4);
+  if (propValue1 != oldPropValue1 || propValue2 != oldPropValue2) {
+
+    if (abs(propValue1 - oldPropValue1) > 2) {
+      props[0] = propValue1;
+      oldPropValue1 = propValue1;
+      changed = true;
+    }
+    if (abs(propValue2 - oldPropValue2) > 2) {
+      props[1] = propValue2;
+      oldPropValue2 = propValue2;
+      changed = true;
+    }
+    if (abs(propValue3 - oldPropValue3) > 2) {
+      props[2] = propValue3;
+      oldPropValue3 = propValue3;
+      changed = true;
+    }
+    if (abs(propValue4 - oldPropValue4) > 2) {
+      props[3] = propValue4;
+      oldPropValue4 = propValue4;
+      changed = true;
+    }
+    if (changed) {
+      sendCombinedPropValues();
+    }
   }
-  average = total / samples;
-  return average;
+}
+
+void BitsAndDroidsFlightConnector::mixtureInputHandling(int mixturePin1,
+                                                        int mixturePin2,
+                                                        int mixturePin3,
+                                                        int mixturePin4) {
+  bool changed = false;
+  mixtureValue1 = smoothPot(mixturePin1);
+  mixtureValue2 = smoothPot(mixturePin2);
+  mixtureValue3 = smoothPot(mixturePin3);
+  mixtureValue4 = smoothPot(mixturePin4);
+  if (mixtureValue1 != oldMixtureValue1 || mixtureValue2 != oldMixtureValue2) {
+
+    if (abs(mixtureValue1 - oldMixtureValue1) > 2) {
+      mixturePercentage[0] = mixtureValue1;
+      oldMixtureValue1 = mixtureValue1;
+      changed = true;
+    }
+    if (abs(mixtureValue2 - oldMixtureValue2) > 2) {
+      mixturePercentage[1] = mixtureValue2;
+      oldMixtureValue2 = mixtureValue2;
+      changed = true;
+    }
+    if (abs(mixtureValue3 - oldMixtureValue3) > 2) {
+      mixturePercentage[2] = mixtureValue3;
+      oldMixtureValue3 = mixtureValue3;
+      changed = true;
+    }
+    if (abs(mixtureValue4 - oldMixtureValue4) > 2) {
+      mixturePercentage[3] = mixtureValue4;
+      oldMixtureValue4 = mixtureValue4;
+      changed = true;
+    }
+    if (changed) {
+      sendCombinedMixtureValues();
+    }
+  }
+}
+
+void BitsAndDroidsFlightConnector::simpleInputHandling(int throttlePin) {
+  value = smoothPot(throttlePin);
+
+  if (value != oldValue && abs(oldValue - value) > 1) {
+    oldValue = value;
+
+    engines[0] = value;
+    engines[1] = value;
+    engines[2] = value;
+    engines[3] = value;
+
+    sendCombinedThrottleValues();
+  }
+}
+
+void BitsAndDroidsFlightConnector::setPotFlaps(int8_t flapsPin) {
+  flaps = smoothPot(flapsPin);
+  if (flaps != oldFlaps && abs(oldFlaps - flaps) > 2) {
+    oldFlaps = flaps;
+    sendFlaps();
+  }
+}
+
+void BitsAndDroidsFlightConnector::advancedInputHandling(int eng1Pin,
+                                                         int eng2Pin,
+                                                         int eng3Pin,
+                                                         int eng4Pin) {
+  valueEng1 = smoothPot(eng1Pin);
+  valueEng2 = smoothPot(eng2Pin);
+  valueEng3 = smoothPot(eng3Pin);
+  valueEng4 = smoothPot(eng4Pin);
+  bool changed = false;
+
+  if (valueEng1 != oldValueEng1) {
+    oldValueEng1 = valueEng1;
+    engines[0] = valueEng1;
+    changed = true;
+  }
+  if (valueEng2 != oldValueEng2) {
+    oldValueEng2 = valueEng2;
+    engines[1] = valueEng2;
+    changed = true;
+  }
+  if (valueEng3 != oldValueEng3) {
+    oldValueEng3 = valueEng3;
+    engines[2] = valueEng3;
+    changed = true;
+  }
+  if (valueEng4 != oldValueEng4) {
+    oldValueEng4 = valueEng4;
+    engines[3] = valueEng4;
+    changed = true;
+  }
+
+  if (changed) {
+    sendCombinedThrottleValues();
+  }
+}
+
+void BitsAndDroidsFlightConnector::superAdvancedInputHandling(
+    int8_t eng1Percentage, int8_t eng2Percentage, int8_t eng3Percentage,
+    int8_t eng4Percentage) {
+  engines[0] = eng1Percentage;
+  engines[1] = eng2Percentage;
+  engines[2] = eng3Percentage;
+  engines[3] = eng4Percentage;
+  sendCombinedThrottleValues();
 }
 
 void BitsAndDroidsFlightConnector::sendSetYokeAxis(int8_t elevatorPin,
@@ -180,33 +352,15 @@ void BitsAndDroidsFlightConnector::sendSetRudderPot(int8_t potPin) {
     this->serial->println(valuesBuffer);
   }
 }
-
-void BitsAndDroidsFlightConnector::sendSetKohlmanAltimeterInHg(float value) {
-  float mbValue = value * 33.8639;
-  int valueToSend = mbValue * 16;
-  packagedData = sprintf(valuesBuffer, "%s %d", "377", valueToSend);
-  this->serial->println(valuesBuffer);
-}
-
-void BitsAndDroidsFlightConnector::sendSetKohlmanAltimeterMb(float value) {
-  int valueToSend = value * 16;
-  packagedData = sprintf(valuesBuffer, "%s %d", "377", valueToSend);
-  this->serial->println(valuesBuffer);
-}
-
-int BitsAndDroidsFlightConnector::calculateAxis(int value, int minVal,
-                                                int maxVal) {
-  return map(value, minVal, maxVal, -16383, 16383);
-}
-
 void BitsAndDroidsFlightConnector::sendSetElevatorTrim(int value) {
   packagedData = sprintf(valuesBuffer, "%s %i", "900", value);
   this->serial->println(valuesBuffer);
 }
+#endif //! DISABLE_PRIMARY_CONTROLS
 
-// Or even simpler, could be used directly in switch cases:
+#ifndef DISABLE_OUTPUTS
+
 static inline bool convBool(const char *value) { return value[0] != '0'; }
-
 void BitsAndDroidsFlightConnector::dataHandling() {
   while (this->serial->available() > 0) {
     char c = this->serial->read();
@@ -218,10 +372,6 @@ void BitsAndDroidsFlightConnector::dataHandling() {
       buffer[bufferIndex++] = c;
     }
   }
-}
-
-void BitsAndDroidsFlightConnector::checkConnection() {
-  this->sendGetValueById(1);
 }
 
 void BitsAndDroidsFlightConnector::switchHandling() {
@@ -617,6 +767,8 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     barPressure = atoi(value);
     break;
   }
+#ifndef DISABLE_COM_FREQUENCIES
+
   case 900: {
     com1.setActive(&buffer[5]);
     break;
@@ -649,6 +801,8 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     nav2.setStandby(&buffer[5]);
     break;
   }
+
+#endif // !DISABLE_COM_FREQUENCIES
   case 914: {
     navRadialError1 = value;
     break;
@@ -943,6 +1097,8 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     break;
   }
 }
+#endif
+#ifndef DISABLE_OUTPUTS
 const char *
 BitsAndDroidsFlightConnector::convertToFreq(const char *unprocFreq) {
   // Check input validity
@@ -980,152 +1136,7 @@ BitsAndDroidsFlightConnector::convertToNavFreq(const char *unprocFreq) {
 
   return freqBuffer;
 }
-
-void BitsAndDroidsFlightConnector::propsInputHandling(int propPin1,
-                                                      int propPin2,
-                                                      int propPin3,
-                                                      int propPin4) {
-  bool changed = false;
-  propValue1 = smoothPot(propPin1);
-  propValue2 = smoothPot(propPin2);
-  propValue3 = smoothPot(propPin3);
-  propValue4 = smoothPot(propPin4);
-  if (propValue1 != oldPropValue1 || propValue2 != oldPropValue2) {
-
-    if (abs(propValue1 - oldPropValue1) > 2) {
-      props[0] = propValue1;
-      oldPropValue1 = propValue1;
-      changed = true;
-    }
-    if (abs(propValue2 - oldPropValue2) > 2) {
-      props[1] = propValue2;
-      oldPropValue2 = propValue2;
-      changed = true;
-    }
-    if (abs(propValue3 - oldPropValue3) > 2) {
-      props[2] = propValue3;
-      oldPropValue3 = propValue3;
-      changed = true;
-    }
-    if (abs(propValue4 - oldPropValue4) > 2) {
-      props[3] = propValue4;
-      oldPropValue4 = propValue4;
-      changed = true;
-    }
-    if (changed) {
-      sendCombinedPropValues();
-    }
-  }
-}
-
-void BitsAndDroidsFlightConnector::mixtureInputHandling(int mixturePin1,
-                                                        int mixturePin2,
-                                                        int mixturePin3,
-                                                        int mixturePin4) {
-  bool changed = false;
-  mixtureValue1 = smoothPot(mixturePin1);
-  mixtureValue2 = smoothPot(mixturePin2);
-  mixtureValue3 = smoothPot(mixturePin3);
-  mixtureValue4 = smoothPot(mixturePin4);
-  if (mixtureValue1 != oldMixtureValue1 || mixtureValue2 != oldMixtureValue2) {
-
-    if (abs(mixtureValue1 - oldMixtureValue1) > 2) {
-      mixturePercentage[0] = mixtureValue1;
-      oldMixtureValue1 = mixtureValue1;
-      changed = true;
-    }
-    if (abs(mixtureValue2 - oldMixtureValue2) > 2) {
-      mixturePercentage[1] = mixtureValue2;
-      oldMixtureValue2 = mixtureValue2;
-      changed = true;
-    }
-    if (abs(mixtureValue3 - oldMixtureValue3) > 2) {
-      mixturePercentage[2] = mixtureValue3;
-      oldMixtureValue3 = mixtureValue3;
-      changed = true;
-    }
-    if (abs(mixtureValue4 - oldMixtureValue4) > 2) {
-      mixturePercentage[3] = mixtureValue4;
-      oldMixtureValue4 = mixtureValue4;
-      changed = true;
-    }
-    if (changed) {
-      sendCombinedMixtureValues();
-    }
-  }
-}
-
-void BitsAndDroidsFlightConnector::simpleInputHandling(int throttlePin) {
-  value = smoothPot(throttlePin);
-
-  if (value != oldValue && abs(oldValue - value) > 1) {
-    oldValue = value;
-
-    engines[0] = value;
-    engines[1] = value;
-    engines[2] = value;
-    engines[3] = value;
-
-    sendCombinedThrottleValues();
-  }
-}
-
-void BitsAndDroidsFlightConnector::setPotFlaps(int8_t flapsPin) {
-  flaps = smoothPot(flapsPin);
-  if (flaps != oldFlaps && abs(oldFlaps - flaps) > 2) {
-    oldFlaps = flaps;
-    sendFlaps();
-  }
-}
-
-void BitsAndDroidsFlightConnector::advancedInputHandling(int eng1Pin,
-                                                         int eng2Pin,
-                                                         int eng3Pin,
-                                                         int eng4Pin) {
-  valueEng1 = smoothPot(eng1Pin);
-  valueEng2 = smoothPot(eng2Pin);
-  valueEng3 = smoothPot(eng3Pin);
-  valueEng4 = smoothPot(eng4Pin);
-  bool changed = false;
-
-  if (valueEng1 != oldValueEng1) {
-    oldValueEng1 = valueEng1;
-    engines[0] = valueEng1;
-    changed = true;
-  }
-  if (valueEng2 != oldValueEng2) {
-    oldValueEng2 = valueEng2;
-    engines[1] = valueEng2;
-    changed = true;
-  }
-  if (valueEng3 != oldValueEng3) {
-    oldValueEng3 = valueEng3;
-    engines[2] = valueEng3;
-    changed = true;
-  }
-  if (valueEng4 != oldValueEng4) {
-    oldValueEng4 = valueEng4;
-    engines[3] = valueEng4;
-    changed = true;
-  }
-
-  if (changed) {
-    sendCombinedThrottleValues();
-  }
-}
-
-void BitsAndDroidsFlightConnector::superAdvancedInputHandling(
-    int8_t eng1Percentage, int8_t eng2Percentage, int8_t eng3Percentage,
-    int8_t eng4Percentage) {
-  engines[0] = eng1Percentage;
-  engines[1] = eng2Percentage;
-  engines[2] = eng3Percentage;
-  engines[3] = eng4Percentage;
-  sendCombinedThrottleValues();
-}
-
-// Set jitter algorithm EMA_a
-void BitsAndDroidsFlightConnector::setEMA_a(float a) { EMA_a = a; }
+#endif
 
 // RECEIVING VALUES
 // GPS
