@@ -1,113 +1,107 @@
-# Flight Companion
+# Welcome to Your Flight Companion
 
-## Drivers
+Get ready to enhance your flight simulation experience! The Flight Companion puts essential aircraft controls right at your fingertips. Let's get you up and running in no time.
 
-In order to use this device you need to install two pieces of software.
-Firstly make sure to install the [device drivers](https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip).
-This ensures your pc can recognize and communicate with your Flight Companion.
+## Essential Setup Guide
 
-In order to connect your Flight Companion to Microsoft Flight Simulator you need to install the [Bits and Droids Flight Connector](https://github.com/BitsAndDroids/FlightConnector-Rust/releases/latest).
+### Step 1: Installing Drivers
 
-> The latest release can be retrieved using the link above.
-> Use the setup.exe to install the connector.
-> Updates are being pushed through the app after installation.
+Before takeoff, we need to install two crucial pieces of software:
 
-This software interprets the events the controller sends and transmits the game data.
+1. First, download and install the [device drivers](https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip) to enable seamless communication between your PC and Flight Companion.
 
-## Setup the controller
+2. Next, install the [Bits and Droids Flight Connector](https://github.com/BitsAndDroids/FlightConnector-Rust/releases/latest) to bridge your Flight Companion with Microsoft Flight Simulator.
 
-To make your life easier I've made it really simple to setup your Flight Companion.
-On the connection page of the connector you're able to load all required settings using the add partner device option.
-This option can be found in the top navbar, events -> partner devices.
-
-![events menu](./images/flight_companion/events_menu.png)
-
-In the window that opens you can add the device using the add to connector button.
-
-![partner device window](./images/flight_companion/partner_device_window.png)
-
-## First run
-
-We're almost ready to use the Flight Companion.
-Since you're able to use the Bits and Droids Flight Connector for more devices than your Flight Companion we need to do a minor setup.
-On the connection page make sure that your device is selected in the left dropdown (it should show up with Silicon Labs CP210x ... in the name).
-Make sure to select the Flight Companion bundle in the right dropdown.
-
-![Setup connection](./images/flight_companion/com_settings.png)
-
-This ensures the connector knows which data to send to your Flight Companion.
-
-## Unlock all features
-
-Microsoft Flight Simulator uses multiple layers of actions.
-In order to unlock all features we need to install a plugin to utilize features like the pfd controls.
-This can be done with a single click of a button.
-From the connection page (the homepage) go to the top navbar -> settings -> install wasm.
-A popup should appear asking for the location of your community folder.
-
-![Enter community path](./images/flight_companion/community_folder.png)
-
-The default location for this folder is:
-
-> ### Steam
+> **Quick Install Guide:**
 >
-> C:\Users\\{USERNAME}\AppData\Roaming\Microsoft Flight Simulator\Packages\Community
+> - Download the latest release
+> - Run setup.exe to install the connector
+> - Future updates will be delivered automatically through the app
 
-> ### Microsoft Store
+### Step 2: Quick Device Setup
+
+We've made setting up your Flight Companion as straightforward as possible:
+
+1. Open the Flight Connector and navigate to `Events -> Partner Devices` in the top navbar
+2. Click the "Add Partner Device" button in the window that appears
+3. Select your Flight Companion to import all required settings automatically
+
+![Events Menu Navigation](./images/flight_companion/events_menu.png)
+![Partner Device Window](./images/flight_companion/partner_device_window.png)
+
+### Step 3: Initial Configuration
+
+Let's configure your Flight Companion for its first flight:
+
+1. On the connection page, locate the device dropdown on the left
+2. Select your device (it will show as "Silicon Labs CP210x...")
+3. In the right dropdown, choose "Flight Companion bundle"
+
+![Connection Setup](./images/flight_companion/com_settings.png)
+
+### Step 4: Unlocking Full Potential
+
+To access advanced features like PFD controls, you'll need to install a quick plugin:
+
+1. Navigate to `Settings -> Install WASM` in the top navbar
+2. When prompted, locate your community folder:
+
+> **Community Folder Locations:**
 >
-> C:\Users\\{USERNAME}\AppData\Local\Packages\Microsoft.FlightSimulator_8wekyb3d8bbwe\LocalCache\Packages\Community
-
-> ### MFS 2024
+> **Steam Edition:** > `C:\Users\{USERNAME}\AppData\Roaming\Microsoft Flight Simulator\Packages\Community`
 >
-> %appdata%\Microsoft Flight Simulator 2024
+> **Microsoft Store Edition:** > `C:\Users\{USERNAME}\AppData\Local\Packages\Microsoft.FlightSimulator_8wekyb3d8bbwe\LocalCache\Packages\Community`
+>
+> **MFS 2024:** > `%appdata%\Microsoft Flight Simulator 2024`
 
-Click confirm after selecting the community folder.
+![Community Folder Selection](./images/flight_companion/community_folder.png)
 
-After this we are able to start our simulator and hit the green start button in the connector.
+### Step 5: Streamlining Your Experience
 
-## Automatically start the connector
+Want the connector to launch automatically with your simulator? Here's how:
 
-Having to start the connector everytime you launch Microsoft Flight Simulator can be a hassle.
-If you want the connector to Automatically launch and start you can enable the auto launch setting.
-From the connection page (the home page) -> go to the top navbar -> settings -> connection settings.
-In this window you can enable launch when sim starts.
+1. Go to `Settings -> Connection Settings`
+2. Enable "Launch when sim starts"
+3. You're all set for automatic startup!
 
-![launch when sim starts](./images/flight_companion/launch_on_start.png)
+![Auto-Launch Setting](./images/flight_companion/launch_on_start.png)
 
-## Controls
+## Control Modes Guide
 
-There are currently four modes available on your flight companion.
-The controls change depending on the current active mode.
-To Change the current mode rotate the lower encoder.
+Your Flight Companion features four versatile modes, each activated by rotating the lower encoder. Here's what you can do in each mode:
 
-### Radio
+### Radio Mode
 
-The radio mode let's you interact with the comms and ATC.
+Master your communications with these controls:
 
-| Control             | Action                                |
-| ------------------- | ------------------------------------- |
-| Upper outer encoder | Increase/decrease Khz frequency       |
-| Upper inner encoder | Increase/decrease Mhz frequency       |
-| Upper encoder push  | Swap frequencies                      |
-| Lower encoder push  | Swap radio mode (com1/com2/nav1/nav2) |
-| Touchscreen         | Buttons 0-9 to communicate with ATC   |
+| Control             | Function          | Description                         |
+| ------------------- | ----------------- | ----------------------------------- |
+| Upper Outer Encoder | Khz Frequency     | Fine-tune your radio frequency      |
+| Upper Inner Encoder | Mhz Frequency     | Make major frequency adjustments    |
+| Upper Encoder Push  | Swap Frequencies  | Quick switch between active/standby |
+| Lower Encoder Push  | Cycle Radio Modes | Switch between COM1/COM2/NAV1/NAV2  |
+| Touchscreen         | ATC Communication | Use buttons 0-9 for ATC responses   |
 
-### Autopilot
+### Autopilot Mode
 
-| Control             | Action                              |
-| ------------------- | ----------------------------------- |
-| Upper outer encoder | Select target ap value (alt/hdg/vs) |
-| Upper inner encoder | Increase/decrease target ap value   |
-| Upper encoder push  | Enable ap target mode (alt/hdg/vs)  |
-| Lower encoder push  | INOP.                               |
-| Touchscreen         | Enable/disable AP                   |
+Take command of your autopilot systems:
+
+| Control             | Function         | Description                     |
+| ------------------- | ---------------- | ------------------------------- |
+| Upper Outer Encoder | Select AP Target | Choose between ALT/HDG/VS       |
+| Upper Inner Encoder | Adjust Values    | Fine-tune your selected setting |
+| Upper Encoder Push  | Enable Mode      | Activate your chosen AP mode    |
+| Touchscreen         | Master Switch    | Toggle AP on/off                |
 
 ### PFD Controls
 
-| Control             | Action                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------- |
-| Upper outer encoder | Navigate menu items when window is open (i.e. G1000 dir window)                                   |
-| Upper inner encoder | Change values when window is open (i.e. G1000 dir window)                                         |
-| Upper encoder push  | Enable ap target mode (alt/hdg/vs)                                                                |
-| Lower encoder push  | INOP.                                                                                             |
-| Touchscreen         | Menu btn, Flightplan btn, zoom in, zoom out, procedure btn, dir btn, clear btn, pfd softkeys 1-12 |
+Access advanced flight deck functions:
+
+| Control             | Function           | Description                                                                    |
+| ------------------- | ------------------ | ------------------------------------------------------------------------------ |
+| Upper Outer Encoder | Menu Navigation    | Browse through open windows                                                    |
+| Upper Inner Encoder | Value Adjustment   | Modify selected parameters                                                     |
+| Upper Encoder Push  | Mode Selection     | Choose between ALT/HDG/VS                                                      |
+| Touchscreen         | Multiple Functions | Access menu, flight plan, zoom, procedures, directories, and PFD softkeys 1-12 |
+
+> **Pro Tip:** Practice switching between modes in a parked position until the controls feel natural. This will help you build muscle memory for in-flight operations.

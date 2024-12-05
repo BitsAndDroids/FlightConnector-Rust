@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SimBase.Document Type="Launch" version="1,0">
+	<Descr>Auto launch external applications on MSFS start</Descr>
+	<Filename>exe.xml</Filename>
+	<Disabled>False</Disabled>
+</SimBase.Document>
