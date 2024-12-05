@@ -1,5 +1,5 @@
 {
-  "version": "0.9.7",
+  "version": "0.9.9",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm run build",
@@ -14,7 +14,8 @@
       "src/events/inputs.json",
       "wasm_module",
       "connector_library/",
-      "SimConnect.dll"
+      "SimConnect.dll",
+      "resources/"
     ],
     "createUpdaterArtifacts": true,
     "icon": [
