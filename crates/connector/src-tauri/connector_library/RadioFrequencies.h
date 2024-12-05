@@ -1,5 +1,7 @@
+#if defined(ESP32) || defined(ESP8266)
 #include <cstdint>
 #include <cstring>
+#endif
 class RadioFrequencies {
 private:
   static const uint8_t FREQ_SIZE = 8; // "xxx.xxx\0"

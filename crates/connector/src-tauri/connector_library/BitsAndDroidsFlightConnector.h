@@ -2,13 +2,14 @@
 #ifndef DISABLE_COM_FREQUENCIES
 #include "RadioFrequencies.h"
 #endif
-#include <cstdint>
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "modernize-use-nodiscard"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #ifndef BitsAndDroidsFlightConnector_h
 #define BitsAndDroidsFlightConnector_h
-
+#if defined(ESP32) || defined(ESP8266)
+#include <cstdint>
+#endif
 #if !defined(ARDUINO_SAM_DUE) && !defined(ESP32) && !defined(ESP8266) &&       \
     !defined(PICO_RP2040)
 #include "SoftwareSerial.h"
