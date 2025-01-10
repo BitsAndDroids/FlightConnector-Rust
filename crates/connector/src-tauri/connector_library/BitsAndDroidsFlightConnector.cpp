@@ -882,8 +882,9 @@ void BitsAndDroidsFlightConnector::switchHandling() {
   // START CASE TEMPLATE
 
   // END CASE TEMPLATE
-  default:
+  default: {
     break;
+  }
   }
 }
 
