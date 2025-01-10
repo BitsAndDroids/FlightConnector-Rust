@@ -78,7 +78,7 @@ pub fn generate_library(
 }
 
 #[tauri::command]
-pub fn get_library_outputs(app: tauri::AppHandle) -> HashMap<u32, WasmEvent> {
+pub fn get_library_outputs(app: tauri::AppHandle) -> Vec<WasmEvent> {
     let mut outputs = HashMap::new();
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     wasm_registry.load_wasm(&app);
@@ -86,5 +86,5 @@ pub fn get_library_outputs(app: tauri::AppHandle) -> HashMap<u32, WasmEvent> {
     for output in wasm_outputs.values() {
         outputs.insert(output.id, output.clone());
     }
-    outputs
+    outputs.values().cloned().collect()
 }
