@@ -2,7 +2,7 @@ import { WASMEvent } from "@/model/WASMEvent";
 
 import { invoke } from "@tauri-apps/api/core";
 const generateVariables = (variables: WASMEvent[]): string => {
-  if (!variables.length) {
+  if (variables?.length == 0) {
     return "";
   }
   return variables.map(generateVariable).join("\n");
@@ -101,14 +101,14 @@ const insertVariables = (variableString: string, templateString: string) => {
 };
 
 const generateGetters = (variables: WASMEvent[]): string => {
-  if (!variables.length) {
+  if (variables?.length == 0) {
     return "";
   }
   return variables.map(generateGetter).join("\n");
 };
 
 const generateCases = (variables: WASMEvent[]): string => {
-  if (!variables.length) {
+  if (variables?.length == 0) {
     return "";
   }
   return variables.map(generateCase).join("\n");
