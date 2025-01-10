@@ -644,6 +644,7 @@ public:
   BitsAndDroidsFlightConnector();
 #if defined(ARDUINO_SAM_DUE)
   BitsAndDroidsFlightConnector(Serial_ *serial);
+  BitsAndDroidsFlightConnector(HardwareSerial *serial);
 #elif defined(ESP32) ||                                                        \
     defined(                                                                   \
         ESP8266) // This will handle all boards except ESP32 and Arduino Due
