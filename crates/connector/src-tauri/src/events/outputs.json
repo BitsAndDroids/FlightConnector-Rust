@@ -469,10 +469,37 @@
   },
   {
     "simvar": "VERTICAL SPEED",
-    "metric": "Feet per second",
+    "metric": "Feet per minute",
     "update_every": 10,
     "cb_text": "Vertical speed",
     "id": 330,
+    "output_type": "integer",
+    "category": "Data"
+  },
+  {
+    "simvar": "VELOCITY BODY X",
+    "metric": "Feet per minute",
+    "update_every": 10,
+    "cb_text": "Velocity body x",
+    "id": 331,
+    "output_type": "integer",
+    "category": "Data"
+  },
+  {
+    "simvar": "VELOCITY BODY Y",
+    "metric": "Feet per minute",
+    "update_every": 10,
+    "cb_text": "Velocity body y",
+    "id": 332,
+    "output_type": "integer",
+    "category": "Data"
+  },
+  {
+    "simvar": "VELOCITY BODY Z",
+    "metric": "Feet per minute",
+    "update_every": 10,
+    "cb_text": "Velocity body z",
+    "id": 341,
     "output_type": "integer",
     "category": "Data"
   },
