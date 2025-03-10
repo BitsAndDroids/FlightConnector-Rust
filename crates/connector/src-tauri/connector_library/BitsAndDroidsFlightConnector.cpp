@@ -13,7 +13,9 @@ BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector() {
 BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector(Serial_ *serial) {
   this->serial = serial;
 }
-#elif defined(ARDUINO_ARCH_ESP32) || defined(ESP8266) || defined(PICO_RP2040)
+#endif
+#if defined(ARDUINO_ARCH_ESP32) || defined(ESP8266) || defined(PICO_RP2040) || \
+    defined(ARDUINO_SAM_DUE)
 BitsAndDroidsFlightConnector::BitsAndDroidsFlightConnector(
     HardwareSerial *serial) {
   this->serial = &Serial;
