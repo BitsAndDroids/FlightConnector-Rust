@@ -516,7 +516,18 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     trueVerticalSpeed = cutValue.toInt();
     break;
   }
-
+  case 331: {
+    velocityBodyX = cutValue.toInt();
+    break;
+  }
+  case 332: {
+    velocityBodyY = cutValue.toInt();
+    break;
+  }
+  case 341: {
+    velocityBodyZ = cutValue.toInt();
+    break;
+  }
   case 326: {
     indicatedAirspeed = cutValue.toInt();
     break;
@@ -529,7 +540,6 @@ void BitsAndDroidsFlightConnector::switchHandling() {
     indicatedAltitude2 = cutValue.toInt();
     break;
   }
-
   case 337: {
     kohlmanAltimeter = cutValue.toInt();
     break;
