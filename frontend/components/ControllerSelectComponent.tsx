@@ -64,8 +64,13 @@ export const ControllerSelectComponent = () => {
 
   const runSettingsHandler = useRef(new RunSettingsHandler());
   const context = useContext(RunStateContext);
-  const { connectionRunning, setConnectionRunning, bundles, setBundles } =
-    context;
+  const {
+    connectionRunning,
+    setConnectionRunning,
+    bundles,
+    setBundles,
+    setCurrentRunBundle,
+  } = context;
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPorts, setComPorts] = useState<string[]>([]);
 
@@ -120,9 +125,14 @@ export const ControllerSelectComponent = () => {
       startEventListeners();
 
       runSettingsHandler.current.setLastPresetId(preset.id);
+      const populatedRunbundleArray = await populateRunBundles(
+        preset.runBundles,
+      );
+      console.log(populatedRunbundleArray);
+      setCurrentRunBundle(populatedRunbundleArray);
       await invokeConnection(
         preset,
-        await populateRunBundles(preset.runBundles),
+        populatedRunbundleArray as RunBundlePopulated[],
       );
     }
     setConnectionRunning(!connectionRunning);
