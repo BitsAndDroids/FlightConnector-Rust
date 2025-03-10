@@ -707,6 +707,9 @@ public:
   int getIndicatedAltitudeCalibrated() { return indicatedAltitudeCalibrated; };
   int getIndicatedHeading() { return indicatedHeading; };
   int getIndicatedGPSGroundspeed() { return indicatedGPSGroundspeed; };
+  int getVelocityBodyX() { return velocityBodyX; };
+  int getVelocityBodyY() { return velocityBodyY; };
+  int getVelocityBodyZ() { return velocityBodyZ; };
   int getTrueVerticalSpeed() { return trueVerticalSpeed; };
   int getLastPrefix();
 
@@ -937,6 +940,9 @@ private:
   int indicatedAltitudeCalibrated;
   int indicatedHeading;
   int indicatedGPSGroundspeed;
+  int velocityBodyX;
+  int velocityBodyY;
+  int velocityBodyZ;
   int trueVerticalSpeed;
 
   int headingGyro;
