@@ -50,7 +50,7 @@ export const MainMenu: React.FC = () => {
   }
   function openSimvarWatchWindow() {
     //TODO: pass data of runbundle state to window using events
-    new WebviewWindow("logWindow", {
+    const webView = new WebviewWindow("logWindow", {
       url: "/logs/simvarWatcher",
       title: "Simvar Watcher",
     });

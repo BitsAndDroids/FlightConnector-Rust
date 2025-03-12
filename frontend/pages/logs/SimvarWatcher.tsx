@@ -1,5 +1,6 @@
 import { RunStateContext } from "#context/RunStateContext.js";
 import { Output } from "#model/Output.js";
+import { RunBundlePopulated } from "#model/RunBundle.js";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { useContext, useEffect, useState } from "react";
@@ -39,22 +40,27 @@ const createSimvarRow = (output: Output) => {
 };
 
 export const SimvarWatcher: React.FC = () => {
-  const { currentRunBundle } = useContext(RunStateContext);
+  const [runBundles, setRunBundles] = useState<Array<RunBundlePopulated>>([]);
   const [simvarMap, setSimvarMap] = useState<Map<Output, string>>(
     new Map<Output, string>(),
   );
 
   useEffect(() => {
     const initSimvarMap = async () => {
-      console.log(currentRunBundle);
       const outputsInBundle: Output[] =
-        currentRunBundle.flatMap((bundle) => bundle?.bundle?.outputs || []) ||
-        [];
+        runBundles.flatMap((bundle) => bundle?.bundle?.outputs || []) || [];
       let outputMap = new Map<Output, string>();
       outputsInBundle.forEach((output) => {
         outputMap.set(output, "");
       });
       setSimvarMap(outputMap);
+    };
+    const handleOutputInvocations = async () => {
+      const unlisten = await listen<any>("runbundles_active", ({ payload }) => {
+        console.log("outputs_active", payload);
+        setRunBundles(payload.runBundles);
+      });
+      return unlisten;
     };
     const handleSimvarUpdate = async () => {
       const unlisten = await listen<simvar_update_message>(
@@ -65,11 +71,13 @@ export const SimvarWatcher: React.FC = () => {
     };
 
     const unsubscribe = handleSimvarUpdate();
+    const unsubscribeOutputsListener = handleOutputInvocations();
     initSimvarMap();
     return () => {
       unsubscribe.then((fn) => fn());
+      unsubscribeOutputsListener.then((fn) => fn());
     };
-  }, [currentRunBundle]);
+  }, [runBundles]);
 
   return (
     <div className="bg-bitsanddroids-blue h-screen w-screen p-4">
