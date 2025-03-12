@@ -7,6 +7,7 @@ export interface Output {
   output_type: string;
   category: string;
   selected?: boolean;
+  value?: string;
 }
 export const OutputFormats = [
   { value: "integer", label: "Integer (1)" },

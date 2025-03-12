@@ -41,17 +41,17 @@ const createSimvarRow = (output: Output) => {
 
 export const SimvarWatcher: React.FC = () => {
   const [runBundles, setRunBundles] = useState<Array<RunBundlePopulated>>([]);
-  const [simvarMap, setSimvarMap] = useState<Map<Output, string>>(
-    new Map<Output, string>(),
+  const [simvarMap, setSimvarMap] = useState<Map<number, Output>>(
+    new Map<number, Output>(),
   );
 
   useEffect(() => {
     const initSimvarMap = async () => {
       const outputsInBundle: Output[] =
         runBundles.flatMap((bundle) => bundle?.bundle?.outputs || []) || [];
-      let outputMap = new Map<Output, string>();
+      let outputMap = new Map<number, Output>();
       outputsInBundle.forEach((output) => {
-        outputMap.set(output, "");
+        outputMap.set(output.id, output);
       });
       setSimvarMap(outputMap);
     };
@@ -86,10 +86,10 @@ export const SimvarWatcher: React.FC = () => {
       </h1>
       <table>
         <tbody>
-          {Array.from(simvarMap.entries()).map(([id, value]) => (
-            <tr key={id?.id}>
-              <td>{id?.simvar}</td>
-              <td>{value}</td>
+          {Array.from(simvarMap.entries()).map(([id, output]) => (
+            <tr key={output?.id}>
+              <td>{output?.simvar}</td>
+              <td>{output.simvar}</td>
             </tr>
           ))}
         </tbody>
