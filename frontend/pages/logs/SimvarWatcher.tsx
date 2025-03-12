@@ -6,8 +6,8 @@ import { listen } from "@tauri-apps/api/event";
 import { useContext, useEffect, useState } from "react";
 
 interface simvar_update_message {
-  number: number;
-  value: string;
+  id: number;
+  value: number;
 }
 
 const createSimvarTable = async (vars: Map<number, string>) => {
@@ -63,10 +63,15 @@ export const SimvarWatcher: React.FC = () => {
       return unlisten;
     };
     const handleSimvarUpdate = async () => {
-      const unlisten = await listen<simvar_update_message>(
-        "simvar_update",
-        ({ payload }) => {},
-      );
+      const unlisten = await listen<any>("simvar_update", ({ payload }) => {
+        console.log("simvar_update", payload);
+        setSimvarMap((prevmap) =>
+          new Map(prevmap).set(payload.id, {
+            ...prevmap.get(payload.id)!,
+            value: payload.value,
+          }),
+        );
+      });
       return unlisten;
     };
 
@@ -89,7 +94,7 @@ export const SimvarWatcher: React.FC = () => {
           {Array.from(simvarMap.entries()).map(([id, output]) => (
             <tr key={output?.id}>
               <td>{output?.simvar}</td>
-              <td>{output.simvar}</td>
+              <td>{output.value}</td>
             </tr>
           ))}
         </tbody>

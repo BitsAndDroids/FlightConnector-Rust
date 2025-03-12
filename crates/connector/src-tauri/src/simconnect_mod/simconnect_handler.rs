@@ -1,5 +1,6 @@
 use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::input::InputType;
+use connector_types::types::simvar_update::SimvarUpdate;
 use lazy_static::lazy_static;
 use log::warn;
 use log::{error, info};
@@ -265,6 +266,15 @@ impl SimconnectHandler {
             })
             .collect();
 
+        self.app_handle
+            .emit(
+                "simvar_update",
+                SimvarUpdate {
+                    id: output_id,
+                    value,
+                },
+            )
+            .expect("Something went wrong emitting value");
         for com_port in com_ports {
             self.send_output_to_device(output_exists.1, &com_port, value);
         }
@@ -275,6 +285,16 @@ impl SimconnectHandler {
             "Sending output to device: {}, {}, {}",
             output_id, com_port, value
         );
+        self.app_handle
+            .emit_to(
+                "logWindow",
+                "simvar_update",
+                SimvarUpdate {
+                    id: output_id,
+                    value,
+                },
+            )
+            .expect("Something went wrong emitting value");
 
         // Mutably borrow self.output_registry to set the value
         // TODO: refactor to return result instead
