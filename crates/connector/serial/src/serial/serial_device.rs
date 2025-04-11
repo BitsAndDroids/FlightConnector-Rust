@@ -21,10 +21,7 @@ pub trait Serial {
 
 impl Serial for SerialDevice {
     fn new(device_name: String, trs: bool) -> Result<Self, Error> {
-        let ports = match serialport::available_ports() {
-            Ok(ports) => ports,
-            Err(_) => Vec::new(),
-        };
+        let ports = serialport::available_ports().unwrap_or_else(|_| Vec::new());
         let ports_output = ports
             .iter()
             .map(|port| {

@@ -24,7 +24,7 @@ pub async fn get_wasm_events(app: tauri::AppHandle) -> Vec<WasmEvent> {
 pub async fn get_latest_custom_event_version(app: tauri::AppHandle) -> String {
     let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
     wasm_registry.load_wasm(&app);
-    wasm_registry.get_latest_custom_event_version(&app)
+    wasm_registry.get_latest_custom_event_version()
 }
 
 #[tauri::command]

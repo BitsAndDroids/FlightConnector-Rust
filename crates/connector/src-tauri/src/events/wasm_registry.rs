@@ -4,7 +4,7 @@ use connector_types::types::{output::Output, wasm_event::WasmEvent};
 use serde_json::json;
 use tauri_plugin_store::StoreExt;
 
-use crate::simconnect_mod::wasm::send_wasm_command;
+use crate::{simconnect_mod::wasm::send_wasm_command, utils::store::save_store};
 #[derive(Debug, Clone)]
 pub struct WASMRegistry {
     wasm_outputs: HashMap<u32, WasmEvent>,
@@ -37,11 +37,11 @@ impl WASMRegistry {
         for event in &self.wasm_default_events {
             store.set(event.id.to_string().clone(), json!(event));
         }
-        store.save();
+        save_store(store);
         self.load_wasm(&app);
     }
 
-    pub fn get_latest_custom_event_version(&mut self, app: &tauri::AppHandle) -> String {
+    pub fn get_latest_custom_event_version(&mut self) -> String {
         let parsed_custom_event_file =
             file_parsers::parsers::wasm_event_parser::parse_events_from_file(&self.wasm_file_path);
         parsed_custom_event_file.version
@@ -64,11 +64,7 @@ impl WASMRegistry {
                 self.wasm_inputs.insert(wasm_event.id, wasm_event);
             }
         }
-        store.save();
-    }
-
-    pub fn get_wasm_output_by_id(&mut self, output_id: u32) -> Option<&Output> {
-        self.parsed_wasm_outputs.get(&output_id)
+        save_store(store);
     }
 
     pub fn get_wasm_event_by_id(&self, event_id: u32) -> Option<&WasmEvent> {
@@ -77,10 +73,6 @@ impl WASMRegistry {
 
     pub fn get_wasm_outputs(&self) -> &HashMap<u32, WasmEvent> {
         &self.wasm_outputs
-    }
-
-    pub fn get_wasm_inputs(&self) -> &HashMap<u32, WasmEvent> {
-        &self.wasm_inputs
     }
 
     pub fn get_wasm_events(&self) -> HashMap<u32, WasmEvent> {
@@ -93,12 +85,6 @@ impl WASMRegistry {
         self.wasm_default_events.clone()
     }
 
-    pub fn set_wasm_output_value(&mut self, output_id: u32, value: f64) {
-        if let Some(output) = self.wasm_outputs.get_mut(&output_id) {
-            output.value = value;
-        }
-    }
-
     pub fn init_custom_events_to_store(&mut self, app: &tauri::AppHandle) {
         let store = app.store(".events.dat").unwrap();
         self.load_default_events();
@@ -106,7 +92,7 @@ impl WASMRegistry {
         for event in events {
             store.set(event.id.to_string().clone(), json!(event));
         }
-        store.save();
+        save_store(store);
     }
 
     pub fn register_wasm_inputs_to_simconnect(&self, conn: &mut simconnect::SimConnector) {

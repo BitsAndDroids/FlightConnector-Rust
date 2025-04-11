@@ -13,7 +13,6 @@ struct ClientDataProperties {
     id: u32,
     name: &'static str,
     definition_id: u32,
-    request_id: u32,
     data_size: DWORD,
 }
 
@@ -22,7 +21,6 @@ pub fn register_wasm_data(conn: &mut simconnect::SimConnector) {
         id: 1,
         name: "shared",
         definition_id: 101,
-        request_id: 102,
         data_size: 256,
     };
     create_wasm_client(conn, &mut input_client);
@@ -31,7 +29,6 @@ pub fn register_wasm_data(conn: &mut simconnect::SimConnector) {
         id: 2,
         name: "messages",
         definition_id: 103,
-        request_id: 104,
         data_size: 4096,
     };
     create_wasm_client(conn, &mut output_client);
@@ -40,7 +37,6 @@ pub fn register_wasm_data(conn: &mut simconnect::SimConnector) {
         id: 3,
         name: "command_client",
         definition_id: 105,
-        request_id: 106,
         data_size: 4096,
     };
     create_wasm_client(conn, &mut command_client);

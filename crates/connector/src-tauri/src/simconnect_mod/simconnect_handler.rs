@@ -81,17 +81,10 @@ pub struct SimconnectHandler {
     active_com_ports: HashMap<String, Box<dyn Serial>>,
     run_bundles: Vec<RunBundle>,
     connector_settings: ConnectorSettings,
-    debug: bool,
-}
-
-// define the payload struct
-#[derive(Clone, serde::Serialize)]
-struct Payload {
-    message: String,
 }
 
 impl SimconnectHandler {
-    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<Message>, debug: bool) -> Self {
+    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<Message>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -111,7 +104,6 @@ impl SimconnectHandler {
             active_com_ports: HashMap::new(),
             run_bundles: vec![],
             connector_settings,
-            debug,
         }
     }
 
