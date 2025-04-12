@@ -80,11 +80,16 @@ const OutputSelectRowsWithHooks = () => {
     output.selected = !output.selected;
     setOutputs([...outputs]);
   };
+  const changeUpdateRate = (output: any) => {
+    output.update_every = output.update_every;
+    setOutputs([...outputs]);
+  };
   return (
     <OutputSelectRows
       outputs={outputs as Output[]}
       dialogOpen={false}
       toggleOutput={toggleOutput}
+      changeUpdateRate={changeUpdateRate}
     />
   );
 };

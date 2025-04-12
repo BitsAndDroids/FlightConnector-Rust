@@ -1,20 +1,20 @@
 use simconnect::SimConnector;
 
 pub struct Action {
-    pub id: u32,
-    pub name: ActionName,
+    pub _id: u32,
+    pub _name: ActionName,
     pub excecute_action: Box<dyn Fn(&SimConnector, String, f32, i32)>,
 }
 
 impl Action {
     pub const fn new(
-        id: u32,
-        name: ActionName,
+        _id: u32,
+        _name: ActionName,
         excecute_action: Box<dyn Fn(&SimConnector, String, f32, i32)>,
     ) -> Action {
         Action {
-            id,
-            name,
+            _id,
+            _name,
             excecute_action,
         }
     }
@@ -31,9 +31,7 @@ impl Action {
 }
 
 pub enum ActionName {
-    THROTTLE,
-    PROP,
-    MIXTURE,
-    RUDDER,
-    AILERON,
+    Throttle,
+    Prop,
+    Mixture,
 }

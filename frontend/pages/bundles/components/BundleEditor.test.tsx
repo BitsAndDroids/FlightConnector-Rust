@@ -12,6 +12,9 @@ describe("BundleEditor", () => {
         toggleOutput={function (output: Output): void {
           throw new Error("Function not implemented.");
         }}
+        changeUpdateRate={function (output: Output): void {
+          throw new Error("Function not implemented.");
+        }}
       />,
     );
     expect(container).toBeTruthy();
