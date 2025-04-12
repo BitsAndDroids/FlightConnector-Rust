@@ -22,6 +22,7 @@ describe("OutputSelectRow", () => {
         index={0}
         dialogOpen={false}
         toggleOutput={() => {}}
+        changeUpdateRate={() => {}}
       />,
     );
     expect(container).toBeTruthy();
@@ -34,6 +35,7 @@ describe("OutputSelectRow", () => {
         index={0}
         dialogOpen={true}
         toggleOutput={() => {}}
+        changeUpdateRate={() => {}}
       />,
     );
     expect(container).toBeTruthy();
@@ -48,6 +50,7 @@ describe("OutputSelectRow", () => {
         index={0}
         dialogOpen={false}
         toggleOutput={() => {}}
+        changeUpdateRate={() => {}}
       />,
     );
     expect(container).toBeTruthy();

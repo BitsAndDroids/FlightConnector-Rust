@@ -23,10 +23,6 @@ impl InputRegistry {
         }
     }
 
-    pub fn get_inputs(&self) -> &HashMap<u32, Input> {
-        &self.inputs
-    }
-
     pub fn get_input(&self, input_id: u32) -> Option<&Input> {
         self.inputs.get(&input_id)
     }

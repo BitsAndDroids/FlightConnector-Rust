@@ -1,8 +1,8 @@
-use std::path::Path;
-
 use log::error;
 use serde_json::json;
 use tauri_plugin_store::StoreExt;
+
+use super::store::save_store;
 
 #[tauri::command]
 pub fn install_wasm(app: tauri::AppHandle) {
@@ -23,7 +23,7 @@ pub fn install_wasm(app: tauri::AppHandle) {
         println!("Community folder path: {:?}", community_folder_path);
         store.set("installedWASMVersion".to_owned(), json!(version))
     }
-    store.save();
+    save_store(store);
 
     let files = return_files_in_dir(wasm_path.to_str().unwrap());
     for file in files {

@@ -3,7 +3,7 @@ import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Outlet } from "react-router-dom";
 import { TopMenuItem } from "@/components/nav/TopMenuItem";
 import { FileDialog } from "../dialogs/file/FileDialog";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { ConnectorSettingsHandler } from "@/utils/connectorSettingsHandler";
 import { generateLibrary } from "@/library/utils/CustomWasmGenerator";
@@ -46,6 +46,13 @@ export const MainMenu: React.FC = () => {
     new WebviewWindow("logWindow", {
       url: "/logs",
       title: "Logs",
+    });
+  }
+  function openSimvarWatchWindow() {
+    //TODO: pass data of runbundle state to window using events
+    const webView = new WebviewWindow("logWindow", {
+      url: "/logs/simvarWatcher",
+      title: "Simvar Watcher",
     });
   }
 
@@ -93,6 +100,11 @@ export const MainMenu: React.FC = () => {
   ];
   const debugmenuItems = [
     { title: "Logs", action: () => openLogWindow(), active: true },
+    {
+      title: "Simvar watcher",
+      action: () => openSimvarWatchWindow(),
+      active: true,
+    },
     { title: "Test events", action: () => openEventTestWindow(), active: true },
   ];
 

@@ -7,13 +7,12 @@ import {
   useState,
 } from "react";
 import { invoke } from "#tauri/invoke";
-import { Bundle } from "@/model/Bundle";
 import { Preset } from "@/model/Preset";
 import { ControllerSelect } from "./ControllerSelect";
 import { BundleSettingsHandler } from "@/utils/BundleSettingsHandler";
 import { RunSettingsHandler } from "@/utils/runSettingsHandler";
 import { PresetSettingsHandler } from "@/utils/PresetSettingsHandler";
-import { listen } from "@tauri-apps/api/event";
+import { emit, emitTo, listen } from "@tauri-apps/api/event";
 import { RunBundlePopulated, populateRunBundles } from "@/model/RunBundle";
 import PresetControls from "./presets/PresetControls";
 import { RunStateContext } from "#context/RunStateContext.js";
@@ -25,6 +24,7 @@ async function invokeConnection(
   if (!preset) {
     return;
   }
+  await emitTo("logWindow", "runbundles_active", { runBundles: runBundles });
   if (process.env.NODE_ENV !== "production") {
     invoke("start_simconnect_connection", {
       runBundles: runBundles,
@@ -64,8 +64,13 @@ export const ControllerSelectComponent = () => {
 
   const runSettingsHandler = useRef(new RunSettingsHandler());
   const context = useContext(RunStateContext);
-  const { connectionRunning, setConnectionRunning, bundles, setBundles } =
-    context;
+  const {
+    connectionRunning,
+    setConnectionRunning,
+    bundles,
+    setBundles,
+    setCurrentRunBundle,
+  } = context;
   const [loaded, setLoaded] = useState<boolean>(false);
   const [comPorts, setComPorts] = useState<string[]>([]);
 
@@ -120,9 +125,14 @@ export const ControllerSelectComponent = () => {
       startEventListeners();
 
       runSettingsHandler.current.setLastPresetId(preset.id);
+      const populatedRunbundleArray = await populateRunBundles(
+        preset.runBundles,
+      );
+      console.log(populatedRunbundleArray);
+      setCurrentRunBundle(populatedRunbundleArray);
       await invokeConnection(
         preset,
-        await populateRunBundles(preset.runBundles),
+        populatedRunbundleArray as RunBundlePopulated[],
       );
     }
     setConnectionRunning(!connectionRunning);

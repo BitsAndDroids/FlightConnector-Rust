@@ -27,6 +27,7 @@ use utils::library_handler::generate_library;
 use utils::library_handler::get_library_header_content;
 use utils::library_handler::get_library_outputs;
 use utils::library_handler::get_library_source_content;
+use utils::store::save_store;
 use utils::wasm_installer::{check_if_wasm_up_to_date, install_wasm};
 
 use std::{env, thread};
@@ -106,14 +107,14 @@ async fn get_outputs(app: tauri::AppHandle) -> Vec<Output> {
 }
 
 #[tauri::command]
-fn send_debug_message(app: tauri::AppHandle, message: Message) {
+fn send_debug_message(message: Message) {
     println!("Received message: {:?}", message);
     let sender = SENDER.lock().unwrap().deref().clone().unwrap();
     sender.send(message).unwrap();
 }
 
 #[tauri::command]
-fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>, debug: bool) {
+fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle>) {
     let (tx, rx) = mpsc::channel();
     *SENDER.lock().unwrap() = Some(tx);
     *RECEIVER.lock().unwrap() = Some(rx);
@@ -122,7 +123,7 @@ fn start_simconnect_connection(app: tauri::AppHandle, run_bundles: Vec<RunBundle
     thread::spawn(|| {
         #[cfg(target_os = "windows")]
         let mut simconnect_handler =
-            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, receiver, true);
+            simconnect_mod::simconnect_handler::SimconnectHandler::new(app, receiver);
         #[cfg(target_os = "windows")]
         simconnect_handler.start_connection(run_bundles);
     });
@@ -143,7 +144,7 @@ fn init_wasm_events_to_store(app: tauri::AppHandle) {
         let mut wasm_registry = events::wasm_registry::WASMRegistry::new();
         wasm_registry.init_custom_events_to_store(&app);
     }
-    store.save();
+    save_store(store);
 }
 
 fn main() {

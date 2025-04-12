@@ -1,11 +1,10 @@
 use std::collections::HashMap;
 
-use connector_types::types::{category::Category, output::Output, wasm_event::WasmEvent};
+use connector_types::types::{output::Output, wasm_event::WasmEvent};
 use file_parsers::parsers::output_parser;
 
 #[derive(Clone, Debug)]
 pub struct OutputRegistry {
-    pub categories: Vec<Category>,
     pub outputs: HashMap<u32, Output>,
     output_path: String,
 }
@@ -13,7 +12,6 @@ pub struct OutputRegistry {
 impl OutputRegistry {
     pub fn new() -> OutputRegistry {
         OutputRegistry {
-            categories: Vec::new(),
             outputs: HashMap::new(),
             output_path: String::from("src/events/outputs.json"),
         }

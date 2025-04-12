@@ -1,5 +1,6 @@
 use connector_types::types::connector_settings::ConnectorSettings;
 use connector_types::types::input::InputType;
+use connector_types::types::simvar_update::SimvarUpdate;
 use lazy_static::lazy_static;
 use log::warn;
 use log::{error, info};
@@ -80,17 +81,10 @@ pub struct SimconnectHandler {
     active_com_ports: HashMap<String, Box<dyn Serial>>,
     run_bundles: Vec<RunBundle>,
     connector_settings: ConnectorSettings,
-    debug: bool,
-}
-
-// define the payload struct
-#[derive(Clone, serde::Serialize)]
-struct Payload {
-    message: String,
 }
 
 impl SimconnectHandler {
-    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<Message>, debug: bool) -> Self {
+    pub fn new(app_handle: tauri::AppHandle, rx: mpsc::Receiver<Message>) -> Self {
         let mut simconnect = simconnect::SimConnector::new();
         simconnect.connect("Tauri Simconnect");
         let input_registry = InputRegistry::new();
@@ -110,7 +104,6 @@ impl SimconnectHandler {
             active_com_ports: HashMap::new(),
             run_bundles: vec![],
             connector_settings,
-            debug,
         }
     }
 
@@ -171,6 +164,10 @@ impl SimconnectHandler {
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
         self.run_bundles = run_bundles;
+        println!(
+            "Starting connection with run bundles: {:?}",
+            self.run_bundles
+        );
         self.set_settings();
         self.set_com_ports();
         self.connect_to_devices();
@@ -265,6 +262,15 @@ impl SimconnectHandler {
             })
             .collect();
 
+        self.app_handle
+            .emit(
+                "simvar_update",
+                SimvarUpdate {
+                    id: output_id,
+                    value,
+                },
+            )
+            .expect("Something went wrong emitting value");
         for com_port in com_ports {
             self.send_output_to_device(output_exists.1, &com_port, value);
         }
@@ -275,6 +281,16 @@ impl SimconnectHandler {
             "Sending output to device: {}, {}, {}",
             output_id, com_port, value
         );
+        self.app_handle
+            .emit_to(
+                "logWindow",
+                "simvar_update",
+                SimvarUpdate {
+                    id: output_id,
+                    value,
+                },
+            )
+            .expect("Something went wrong emitting value");
 
         // Mutably borrow self.output_registry to set the value
         // TODO: refactor to return result instead
@@ -573,7 +589,7 @@ impl SimconnectHandler {
                                 &latest_output.metric,
                                 simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
                                 latest_output.id,
-                                latest_output.update_every,
+                                output.update_every,
                             );
                         }
                     }

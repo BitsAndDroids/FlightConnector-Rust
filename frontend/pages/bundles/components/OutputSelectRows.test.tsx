@@ -33,6 +33,7 @@ describe("OutputSelectRows", () => {
         outputs={mockOutputs}
         dialogOpen={false}
         toggleOutput={(_output: Output) => {}}
+        changeUpdateRate={(_output: Output) => {}}
       />,
     );
     expect(container).toBeTruthy();
@@ -45,6 +46,7 @@ describe("OutputSelectRows", () => {
         outputs={mockOutputs}
         dialogOpen={false}
         toggleOutput={(_output: Output) => {}}
+        changeUpdateRate={(_output: Output) => {}}
       />,
     );
     expect(container).toBeTruthy();
