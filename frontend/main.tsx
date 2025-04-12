@@ -10,6 +10,7 @@ import { PresetManagerPage } from "./pages/options/settings/PresetManagerPage";
 import { CustomEvents } from "./pages/custom_output_page/CustomEvents";
 import { RunStateContextProvider } from "#context/RunStateContext.js";
 import { TestPage } from "#pages/test_page/TestPage.js";
+import { SimvarWatcher } from "#pages/logs/SimvarWatcher.js";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/logs",
     element: <LogPage />,
+  },
+  {
+    path: "/logs/simvarWatcher",
+    element: <SimvarWatcher />,
   },
   {
     path: "/event-test",

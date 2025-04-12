@@ -1,10 +1,7 @@
 use serialport::SerialPortType;
 
 pub fn get_serial_devices() -> Vec<String> {
-    let ports = match serialport::available_ports() {
-        Ok(ports) => ports,
-        Err(_) => Vec::new(),
-    };
+    let ports = serialport::available_ports().unwrap_or_else(|_| Vec::new());
     let ports_output = ports
         .iter()
         .map(|port| {

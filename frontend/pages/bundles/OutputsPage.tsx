@@ -69,6 +69,10 @@ const OutputsPage: React.FC = () => {
     return outputsToSearch;
   }
 
+  function changeUpdateRate(output: Output) {
+    setOutputs(outputs.map((o) => (o.id === output.id ? output : o)));
+  }
+
   function dialogResult(input: string | undefined) {
     if (input !== undefined) {
       const bundle: Bundle = {
@@ -82,17 +86,13 @@ const OutputsPage: React.FC = () => {
     setDialogOpen(false);
   }
 
-  function resetOutputs() {
-    let outputState = [...outputs];
-    for (let output of outputState) {
-      output.selected = false;
-    }
-    setOutputs(outputState);
+  async function resetOutputs() {
+    setOutputs(await getOutputs());
   }
 
-  function setEditBundleState(editBundle: Bundle) {
+  async function setEditBundleState(editBundle: Bundle) {
     setEditMode(true);
-    resetOutputs();
+    await resetOutputs();
     let outputState = [...outputs];
     if (!editBundle.outputs) {
       return;
@@ -101,6 +101,7 @@ const OutputsPage: React.FC = () => {
       for (let o of outputState) {
         if (o.id === output.id) {
           o.selected = true;
+          o.update_every = output.update_every;
         }
       }
     }
@@ -154,6 +155,7 @@ const OutputsPage: React.FC = () => {
               outputs={outputs}
               toggleOutput={toggleOutput}
               dialogOpen={dialogOpen}
+              changeUpdateRate={changeUpdateRate}
             />
           )}
         </div>

@@ -12,12 +12,14 @@ interface BundleEditorProps {
   outputs: Output[];
   dialogOpen: boolean;
   toggleOutput: (output: Output) => void;
+  changeUpdateRate: (output: Output) => void;
 }
 
 const BundleEditor = ({
   outputs,
   dialogOpen,
   toggleOutput,
+  changeUpdateRate,
 }: BundleEditorProps) => {
   let categories = new Map<string, Category>();
   for (let output of outputs) {
@@ -105,6 +107,7 @@ const BundleEditor = ({
           outputs={filteredOutputs}
           dialogOpen={dialogOpen}
           toggleOutput={toggleOutput}
+          changeUpdateRate={changeUpdateRate}
         />
       </div>
     </div>

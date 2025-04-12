@@ -9,5 +9,6 @@ pub mod types {
     pub mod output;
     pub mod output_format;
     pub mod run_bundle;
+    pub mod simvar_update;
     pub mod wasm_event;
 }

@@ -20,6 +20,6 @@ impl ActionRegistry {
     }
 
     pub fn get_action_by_id(&self, id: u32) -> Option<&Action> {
-        return self.actions.get(&id);
+        self.actions.get(&id)
     }
 }

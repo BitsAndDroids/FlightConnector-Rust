@@ -88,7 +88,7 @@ pub fn create_new_exe_xml(
         .resolve("resources/exe.xml", BaseDirectory::Resource)
     {
         Ok(path) => path,
-        Err(e) => {
+        Err(_) => {
             return Err(std::io::Error::new(
                 std::io::ErrorKind::NotFound,
                 "Failed to resolve exe.xml resource path",
