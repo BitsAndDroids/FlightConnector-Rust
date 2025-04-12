@@ -66,6 +66,8 @@ export const OutputSelectRow = ({
           </span>
           <Input
             value={output.update_every.toString()}
+            type="number"
+            decimals={true}
             onChange={(value) =>
               changeUpdateRate({
                 ...output,
