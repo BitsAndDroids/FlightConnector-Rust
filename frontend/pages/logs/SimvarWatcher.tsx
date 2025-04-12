@@ -85,20 +85,24 @@ export const SimvarWatcher: React.FC = () => {
   }, [runBundles]);
 
   return (
-    <div className="bg-bitsanddroids-blue h-screen w-screen p-4">
+    <div className="bg-bitsanddroids-blue min-h-screen h-screen w-screen p-4 flex flex-col">
       <h1 className="mb-4 text-2xl font-bold tracking-tight text-white sm:text-4xl">
         Simvar watcher
       </h1>
-      <table>
-        <tbody>
-          {Array.from(simvarMap.entries()).map(([id, output]) => (
-            <tr key={output?.id}>
-              <td>{output?.simvar}</td>
-              <td>{output.value}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="p-4 flex-1 max-h-[550px]">
+        <div className="bg-white rounded-lg max-h-[500px] overflow-y-scroll overflow-x-hidden">
+          <table className="w-full m-2 rounded-lg">
+            <tbody className="p-4">
+              {Array.from(simvarMap.entries()).map(([id, output]) => (
+                <tr key={output?.id} className="bg-white border-t">
+                  <td className="w-1/2 p-2 font-bold">{output?.simvar}</td>
+                  <td>{output.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

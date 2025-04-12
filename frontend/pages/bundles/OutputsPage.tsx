@@ -69,6 +69,10 @@ const OutputsPage: React.FC = () => {
     return outputsToSearch;
   }
 
+  function changeUpdateRate(output: Output) {
+    setOutputs(outputs.map((o) => (o.id === output.id ? output : o)));
+  }
+
   function dialogResult(input: string | undefined) {
     if (input !== undefined) {
       const bundle: Bundle = {
@@ -101,6 +105,7 @@ const OutputsPage: React.FC = () => {
       for (let o of outputState) {
         if (o.id === output.id) {
           o.selected = true;
+          o.update_every = output.update_every;
         }
       }
     }
@@ -154,6 +159,7 @@ const OutputsPage: React.FC = () => {
               outputs={outputs}
               toggleOutput={toggleOutput}
               dialogOpen={dialogOpen}
+              changeUpdateRate={changeUpdateRate}
             />
           )}
         </div>

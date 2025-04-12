@@ -164,6 +164,10 @@ impl SimconnectHandler {
 
     pub fn start_connection(&mut self, run_bundles: Vec<RunBundle>) {
         self.run_bundles = run_bundles;
+        println!(
+            "Starting connection with run bundles: {:?}",
+            self.run_bundles
+        );
         self.set_settings();
         self.set_com_ports();
         self.connect_to_devices();
@@ -585,7 +589,7 @@ impl SimconnectHandler {
                                 &latest_output.metric,
                                 simconnect::SIMCONNECT_DATATYPE_SIMCONNECT_DATATYPE_FLOAT64,
                                 latest_output.id,
-                                latest_output.update_every,
+                                output.update_every,
                             );
                         }
                     }

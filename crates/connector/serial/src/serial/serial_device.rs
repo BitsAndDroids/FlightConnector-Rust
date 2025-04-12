@@ -88,10 +88,16 @@ impl Serial for SerialDevice {
         }
     }
     fn write(&mut self, data: &[u8]) {
-        match self.port.write_all(data) {
-            Ok(_) => {}
-            Err(e) => {
-                error!(target: "connections", "Failed to send data: {}", e);
+        let mut remaining_data = data;
+        while !remaining_data.is_empty() {
+            match self.port.write(remaining_data) {
+                Ok(written) => {
+                    remaining_data = &remaining_data[written..];
+                }
+                Err(e) => {
+                    error!(target: "connections", "Failed to send data: {}", e);
+                    break;
+                }
             }
         }
     }

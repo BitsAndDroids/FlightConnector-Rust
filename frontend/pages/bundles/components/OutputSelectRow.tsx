@@ -1,9 +1,11 @@
+import { Input } from "#components/elements/inputs/Input.js";
 import { Output } from "@/model/Output";
 interface CategoryCheckboxesProps {
   output: Output;
   index: number;
   dialogOpen: boolean;
   toggleOutput: (output: Output) => void;
+  changeUpdateRate: (output: Output) => void;
 }
 
 export const OutputSelectRow = ({
@@ -11,6 +13,7 @@ export const OutputSelectRow = ({
   index,
   dialogOpen,
   toggleOutput,
+  changeUpdateRate,
 }: CategoryCheckboxesProps) => {
   return (
     <div key={output.id} className="flex flex-row items-center">
@@ -61,7 +64,17 @@ export const OutputSelectRow = ({
               alt="update_every"
             />
           </span>
-          <p className="">{output.update_every}</p>
+          <Input
+            value={output.update_every.toString()}
+            onChange={(value) =>
+              changeUpdateRate({
+                ...output,
+                update_every: parseFloat(value as string),
+              })
+            }
+          />
+
+          {/* <p className="">{output.update_every}</p> */}
         </div>
       </div>
     </div>
